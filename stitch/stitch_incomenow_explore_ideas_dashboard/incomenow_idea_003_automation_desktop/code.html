@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-highest":"#d7e6dc","inverse-on-surface":"#e5f4eb","on-tertiary":"#ffffff","tertiary-fixed-dim":"#c2c8c4","surface-tint":"#006c4a","surface-variant":"#d7e6dc","surface-dim":"#ceded4","primary-fixed-dim":"#80d8ad","on-primary":"#ffffff","on-error-container":"#93000a","on-tertiary-fixed":"#171d1b","surface-container":"#e2f2e8","error":"#ba1a1a","surface":"#eefdf3","on-tertiary-container":"#eaefeb","on-background":"#111e18","on-secondary-container":"#4d6a60","on-secondary-fixed":"#022019","surface-container-high":"#ddece2","on-secondary":"#ffffff","surface-container-lowest":"#ffffff","primary":"#006041","on-primary-fixed":"#002114","on-surface-variant":"#3f4943","primary-container":"#197a56","inverse-surface":"#26332d","on-primary-container":"#acffd4","on-primary-fixed-variant":"#005237","outline-variant":"#bec9c1","secondary":"#47645a","surface-bright":"#eefdf3","on-secondary-fixed-variant":"#304c43","tertiary-container":"#676d6a","background":"#eefdf3","secondary-fixed-dim":"#aecdc1","error-container":"#ffdad6","secondary-fixed":"#c9eadd","on-surface":"#111e18","on-tertiary-fixed-variant":"#424845","inverse-primary":"#80d8ad","surface-container-low":"#e8f7ed","on-error":"#ffffff","tertiary":"#4f5552","primary-fixed":"#9bf5c8","tertiary-fixed":"#dfe4e0","secondary-container":"#c9eadd","outline":"#6f7a72"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","margin":"2.5rem","space-sm":"0.5rem","space-md":"1rem","gutter-mobile":"1rem","space-lg":"1.5rem","space-xl":"2.5rem","margin-mobile":"1rem","gutter":"1.5rem"},"fontFamily":{"headline-lg-mobile":["Manrope"],"display-hero-mobile":["Manrope"],"headline-sm":["Manrope"],"headline-md":["Manrope"],"body-sm":["Inter"],"body-md":["Inter"],"headline-lg":["Manrope"],"label-md":["Inter"],"display-hero":["Manrope"],"label-sm":["Inter"],"body-lg":["Inter"]},"fontSize":{"headline-lg-mobile":["1.75rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"700"}],"display-hero-mobile":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.025em","fontWeight":"800"}],"headline-sm":["1.125rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["1.5rem",{"lineHeight":"1.35","letterSpacing":"-0.015em","fontWeight":"600"}],"body-sm":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"0.005em","fontWeight":"400"}],"body-md":["0.9375rem",{"lineHeight":"1.55","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["2.25rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"700"}],"label-md":["0.875rem",{"lineHeight":"1.25","letterSpacing":"0.01em","fontWeight":"500"}],"display-hero":["3.25rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"800"}],"label-sm":["0.75rem",{"lineHeight":"1.2","letterSpacing":"0.02em","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.005em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-[236px] bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="px-space-md pt-space-lg pb-space-md"><div class="flex items-baseline gap-0.5"><span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">IncomeNow</span><span class="font-label-sm text-label-sm text-primary font-semibold">.in</span></div><div class="mt-space-xs inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-[11px]">Design preview — sample content</div></div><nav class="px-space-sm mt-space-sm flex flex-col gap-1" data-active-classes="bg-secondary-container text-primary font-semibold"><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="explore-ideas" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">explore</span><span class="font-label-md text-label-md">Explore Ideas</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="saved-ideas" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">bookmark</span><span class="font-label-md text-label-md">Saved Ideas</span></div><span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant">2</span></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="my-projects" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">work</span><span class="font-label-md text-label-md">My Projects</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="latest-updates" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">update</span><span class="font-label-md text-label-md">Latest Updates</span></div></a></nav><div class="px-space-md pt-space-lg pb-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline text-[11px]">Support &amp; Account</span></div><nav class="px-space-sm flex flex-col gap-1" data-active-classes="bg-secondary-container text-primary font-semibold"><a class="flex items-center gap-3 px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="help-support" href="#"><span class="material-symbols-outlined text-[20px]">help</span><span class="font-label-md text-label-md">Help &amp; Support</span></a><a class="flex items-center gap-3 px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="account" href="#"><span class="material-symbols-outlined text-[20px]">manage_accounts</span><span class="font-label-md text-label-md">Account</span></a></nav></div><div class="p-space-sm m-space-sm rounded-lg bg-surface-container-low shadow-[0_1px_4px_rgba(0,0,0,0.03)] flex items-center justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md font-semibold text-on-surface truncate">Alex Mercer</span><span class="font-label-sm text-label-sm text-on-surface-variant">Member</span></div></div><span class="material-symbols-outlined text-[18px] text-outline">unfold_more</span></div></aside><div class="pl-[236px]"><header class="fixed top-0 left-[236px] right-0 h-14 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm"><span class="hover:text-on-surface transition-colors">Discovery Workspace</span><span class="text-outline text-xs">/</span><span class="text-on-surface font-medium">Overview</span></div><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-14 bg-surface min-h-screen px-space-lg pb-space-xl"><div class="flex flex-col w-full">
+<!-- Top Utility Bar / Breadcrumb Strip -->
+<div class="flex items-center justify-between py-space-sm mb-space-md">
+<div class="flex items-center gap-3">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Back to ideas</span>
+</a>
+<div class="h-4 w-px bg-outline-variant/40"></div>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span>Explore Ideas</span>
+<span class="text-outline text-xs">/</span>
+<span class="text-on-surface font-semibold">Idea #003</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>Design preview — sample opportunity</span>
+</div>
+</div>
+<!-- Idea Header & Hero Canvas -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-lg shadow-sm mb-space-lg relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-space-lg relative z-10">
+<div class="max-w-3xl">
+<div class="flex flex-wrap items-center gap-2 mb-space-sm">
+<span class="px-2.5 py-0.5 rounded-md bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm font-semibold tracking-wide">IDEA #003</span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm font-medium">Automation</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Professional Services</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Low-code setup</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-space-xs font-bold">
+          Quotation Follow-up Automation
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          Help service businesses organise follow-up tasks after sending a quotation without losing pipeline visibility or bombarding clients with unvetted automated messages.
+        </p>
+</div>
+<!-- Header Action Controls -->
+<div class="flex items-center gap-3 self-start lg:self-center shrink-0">
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container hover:text-primary transition-all font-label-md text-label-md" id="bookmark-btn" onclick="toggleBookmark()">
+<span class="material-symbols-outlined text-[20px]" id="bookmark-icon">bookmark_border</span>
+<span id="bookmark-text">Save idea</span>
+</button>
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-all duration-200 active:scale-[0.99] font-label-md text-label-md font-semibold shadow-sm" id="start-idea-hero-btn" onclick="toggleStartIdea()">
+<span class="material-symbols-outlined text-[18px]" id="start-hero-icon">play_arrow</span>
+<span id="start-hero-text">Start this idea</span>
+</button>
+</div>
+</div>
+<!-- Quick In-Page Anchor Navigation Bar -->
+<div class="mt-space-lg pt-space-md border-t border-outline-variant/30 flex items-center gap-1 overflow-x-auto select-none no-scrollbar">
+<a class="px-3.5 py-1.5 rounded-lg bg-secondary-container text-primary font-label-md text-label-md font-semibold whitespace-nowrap transition-colors" href="#overview">Overview</a>
+<a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md whitespace-nowrap" href="#workflow">Workflow</a>
+<a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md whitespace-nowrap" href="#action-plan">Action Plan</a>
+<a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md whitespace-nowrap" href="#resources">Resources</a>
+<a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md whitespace-nowrap" href="#customers">Finding Customers</a>
+<a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md whitespace-nowrap" href="#notes">Updates &amp; Notes</a>
+</div>
+</div>
+<!-- 12-Column Desktop Grid Layout: Main Stream + Sticky Facts Panel -->
+<div class="grid grid-cols-12 gap-space-lg items-start">
+<!-- LEFT MAIN COLUMN (8 cols) -->
+<div class="col-span-12 xl:col-span-8 flex flex-col gap-space-xl">
+<!-- SECTION 1: THE OPPORTUNITY -->
+<section class="scroll-mt-20 flex flex-col gap-space-md" id="overview">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Analysis &amp; Model</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Section 01</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">The Opportunity</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Explore a service that connects a business’s quotation records with its internal follow-up process, using tools the customer has already authorised. Rather than trying to automate sensitive client-facing emails without supervision, this service bridges record silos so internal account executives never miss a scheduled check-in.
+        </p>
+<!-- Before & After Comparison Matrix -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md mt-space-xs">
+<!-- Current Pain Point -->
+<div class="p-space-lg rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-space-sm text-error">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider">Current Process / Pain Point</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+                Staff manually scan through accounting software or spreadsheets to see which quotations need attention, leading to delayed follow-ups, awkward duplicated inquiries, and lost pipeline visibility.
+              </p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-outline">schedule</span>
+<span>Average delay: 4–9 days past quote expiry</span>
+</div>
+</div>
+<!-- Proposed Workflow Improvement -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-space-sm text-primary">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider">Proposed Improvement</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+                A scheduled check identifies eligible quotations and creates an internal follow-up task for the responsible employee. Everything stays logged in the team's existing task tracker or CRM.
+              </p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center gap-2 text-primary font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Zero direct external emails sent by the bot</span>
+</div>
+</div>
+</div>
+<!-- Clarification Callout -->
+<div class="p-space-md rounded-xl bg-secondary-container/50 flex items-start gap-space-md">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0 mt-0.5">rule</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Confirm the workflow first</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Ask how quotations are recorded, how replies are tracked, and who should receive follow-up tasks before configuring integrations. Never connect production API keys without a documented schema.
+            </p>
+</div>
+</div>
+<!-- Proposed Business Model -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">payments</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Proposed Business Model</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Implementation + Retainer</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Scoped configuration fee + monthly maintenance retainer for schema monitoring and exception handling. Typical engagement structures combine an initial 2-week implementation sprint with an optional operational warranty.
+          </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md pt-space-sm">
+<div class="p-space-md rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Initial Setup Scoping</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1">Fixed-Scope Blueprint</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Audit quotation state tracking, set up trigger logic, and configure task outputs.</p>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Monthly Health Retainer</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1">Schema &amp; Webhook Care</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Monitor webhook deliveries, handle staff seat reassignments, and audit edge failures.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: WORKFLOW VISUALIZATION -->
+<section class="scroll-mt-20 flex flex-col gap-space-md" id="workflow">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Workflow preview — illustrative architecture</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Section 02</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">See how the workflow could work</h2>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">Illustrative workflow — no tools connected.</p>
+</div>
+<!-- Connected Horizontal Workflow Architecture Diagram -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-lg overflow-hidden">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Scheduled Logic Tree (Evaluation Loop)</span>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded bg-surface-container text-on-surface-variant">Cron: Weekdays 08:30 AM</span>
+</div>
+<!-- Flowchart Stages -->
+<div class="flex flex-col gap-space-md">
+<!-- Steps 1 to 4 Pipeline -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-2 relative">
+<!-- Step 1 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col justify-between relative group hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-label-sm text-primary font-bold">STEP 01</span>
+<span class="material-symbols-outlined text-[16px] text-outline">description</span>
+</div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Quotation Record</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Status flagged as "Sent" in CRM or ledger.</p>
+</div>
+<div class="mt-3 text-[11px] font-mono text-outline truncate">record.status == 'sent'</div>
+</div>
+<!-- Step 2 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col justify-between relative group hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-label-sm text-primary font-bold">STEP 02</span>
+<span class="material-symbols-outlined text-[16px] text-outline">event</span>
+</div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Follow-up Offset</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Due threshold computed (e.g. Day +3).</p>
+</div>
+<div class="mt-3 text-[11px] font-mono text-outline truncate">offset = date_sent + 3d</div>
+</div>
+<!-- Step 3 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col justify-between relative group hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-label-sm text-primary font-bold">STEP 03</span>
+<span class="material-symbols-outlined text-[16px] text-outline">search_check</span>
+</div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Scheduled Check</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Routine check discovers all due quotations.</p>
+</div>
+<div class="mt-3 text-[11px] font-mono text-outline truncate">query: due &lt;= now()</div>
+</div>
+<!-- Step 4: Decision Node -->
+<div class="p-3.5 rounded-xl bg-secondary-container/60 flex flex-col justify-between relative ring-1 ring-primary/20">
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-label-sm text-primary font-bold">STEP 04</span>
+<span class="material-symbols-outlined text-[16px] text-primary">alt_route</span>
+</div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Status Evaluation</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Is quotation still pending customer reply?</p>
+</div>
+<div class="mt-3 text-[11px] font-mono text-primary font-semibold">decision: pending == true</div>
+</div>
+</div>
+<!-- Decision Branches (YES vs NO) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-stretch mt-1">
+<!-- YES Branch (Eligible) -->
+<div class="md:col-span-8 p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm border-l-4 border-primary">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-primary font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-[18px]">subdirectory_arrow_right</span>
+<span>Branch YES: Eligible for Follow-up</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary bg-surface-container-lowest px-2 py-0.5 rounded">Action Triggered</span>
+</div>
+<div class="grid grid-cols-3 gap-2 mt-1">
+<!-- Step 5 -->
+<div class="p-2.5 rounded-lg bg-surface-container-lowest">
+<span class="font-label-sm text-label-sm text-primary font-semibold">Step 05</span>
+<div class="font-label-md text-label-md font-medium text-on-surface mt-0.5">Task List</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-1 leading-snug">Create 1 internal task in ClickUp/Asana.</p>
+</div>
+<!-- Step 6 -->
+<div class="p-2.5 rounded-lg bg-surface-container-lowest">
+<span class="font-label-sm text-label-sm text-primary font-semibold">Step 06</span>
+<div class="font-label-md text-label-md font-medium text-on-surface mt-0.5">Notify Rep</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-1 leading-snug">Direct message assigned account owner.</p>
+</div>
+<!-- Step 7 -->
+<div class="p-2.5 rounded-lg bg-surface-container-lowest">
+<span class="font-label-sm text-label-sm text-primary font-semibold">Step 07</span>
+<div class="font-label-md text-label-md font-medium text-on-surface mt-0.5">Audit Log</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-1 leading-snug">Timestamp record to prevent duplicates.</p>
+</div>
+</div>
+</div>
+<!-- NO Branch (Not Eligible) -->
+<div class="md:col-span-4 p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between border-l-4 border-outline-variant">
+<div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md font-bold mb-2">
+<span class="material-symbols-outlined text-[18px]">close</span>
+<span>Branch NO: Resolved</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Replied, Accepted, Declined, or Closed. Skip task creation and write schedule completion stamp to audit table.
+                  </p>
+</div>
+<div class="mt-3 flex items-center gap-1.5 text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">done_all</span>
+<span>Exit loop safely</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Duplicate Prevention Safeguard Note -->
+<div class="p-space-md rounded-xl bg-surface-container flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">verified_user</span>
+<div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Duplicate Prevention Architecture</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                Use the unique quotation identifier combined with the follow-up event trigger to avoid creating redundant tasks if the scheduler runs multiple times or experiences network timeouts.
+              </p>
+</div>
+</div>
+<!-- Illustrative Output Mockup Card -->
+<div class="p-space-md rounded-xl bg-surface-container-high/60 flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-xs">
+<span class="material-symbols-outlined text-[20px]">task_alt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Example Output Task Generated</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Review quotation follow-up #QT-842 — Sarah K.</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="px-2.5 py-1 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">Due Today 17:00</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm">CRM Linked</span>
+</div>
+</div>
+</div>
+<!-- Workflow Requirements (Prerequisites Grid) -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Workflow Requirements</span>
+<span class="font-label-sm text-label-sm text-outline">Prerequisites Checklist</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-space-md">
+<!-- Req 1 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center gap-2 text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">database</span>
+<span>Requirement 01</span>
+</div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Quotation Source</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Agreed source of quotation records (CRM, spreadsheet, or invoicing tool).</p>
+</div>
+<!-- Req 2 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center gap-2 text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">pin</span>
+<span>Requirement 02</span>
+</div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Stable Identifier</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Unique quotation ID number (#QT-XXXX) persistent across updates.</p>
+</div>
+<!-- Req 3 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center gap-2 text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">flag</span>
+<span>Requirement 03</span>
+</div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Reliable Status Field</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Clear discrete states: Sent, Pending, Accepted, or Closed.</p>
+</div>
+<!-- Req 4 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center gap-2 text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">person</span>
+<span>Requirement 04</span>
+</div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Assigned Employee</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Assigned responsible owner identifier (email address or user ID).</p>
+</div>
+<!-- Req 5 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center gap-2 text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Requirement 05</span>
+</div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Agreed Follow-up Rule</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Fixed cadence agreed with client (e.g. 3 business days post-quote).</p>
+</div>
+<!-- Req 6 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center gap-2 text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">key</span>
+<span>Requirement 06</span>
+</div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Authorised Access</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">OAuth or scoped API token permissions for designated team workspace.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: ACTION PLAN -->
+<section class="scroll-mt-20 flex flex-col gap-space-md" id="action-plan">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Implementation Stages</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Section 03</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Configure, test, and hand over</h2>
+<!-- Accordion Implementation Stages -->
+<div class="flex flex-col gap-3">
+<!-- Stage 1 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-xs">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-1', 'acc-icon-1')">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">1</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Map the customer’s current quotation workflow</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-outline transition-transform" id="acc-icon-1">expand_more</span>
+</div>
+<div class="hidden mt-space-sm pt-space-sm border-t border-outline-variant/30 text-on-surface-variant font-body-sm text-body-sm" id="acc-1">
+              Document where new quotes originate, who sends them, how follow-up is currently scheduled, and identify whether a unified deal table already exists.
+            </div>
+</div>
+<!-- Stage 2 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-xs">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-2', 'acc-icon-2')">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">2</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Choose the record source and define reminder intervals</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-outline transition-transform" id="acc-icon-2">expand_more</span>
+</div>
+<div class="hidden mt-space-sm pt-space-sm border-t border-outline-variant/30 text-on-surface-variant font-body-sm text-body-sm" id="acc-2">
+              Select the source of truth (e.g. HubSpot, QuickBooks, Google Sheet) and codify the business logic: day offsets, holiday skip rules, and team exclusions.
+            </div>
+</div>
+<!-- Stage 3 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-xs">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-3', 'acc-icon-3')">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">3</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Configure the workflow logic and destination mapping</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-outline transition-transform" id="acc-icon-3">expand_more</span>
+</div>
+<div class="hidden mt-space-sm pt-space-sm border-t border-outline-variant/30 text-on-surface-variant font-body-sm text-body-sm" id="acc-3">
+              Build the evaluator nodes in Make, Zapier, or n8n. Connect destination task endpoints (ClickUp/Asana) and internal notification webhooks (Slack/Teams).
+            </div>
+</div>
+<!-- Stage 4: Expanded by default for Test Cases -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-4', 'acc-icon-4')">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold">4</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Test normal and failure scenarios</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-[11px]">Not started — verify in sandbox</span>
+<span class="material-symbols-outlined text-[20px] text-outline transition-transform rotate-180" id="acc-icon-4">expand_more</span>
+</div>
+</div>
+<!-- Detailed Test Cases Checkbox Matrix -->
+<div class="mt-space-md pt-space-md border-t border-outline-variant/30 flex flex-col gap-2.5" id="acc-4">
+<div class="font-label-sm text-label-sm text-outline uppercase font-semibold">Standard Verification Matrix</div>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer select-none">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">A due quotation creates the expected internal task</span>
+</label>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer select-none">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">A quotation with a recorded reply is skipped</span>
+</label>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer select-none">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Running the check twice does not duplicate the task</span>
+</label>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer select-none">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Missing information produces a visible error in the audit log</span>
+</label>
+<label class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer select-none">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">A failed connection can be identified and retried safely</span>
+</label>
+</div>
+</div>
+<!-- Stage 5 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-xs">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-5', 'acc-icon-5')">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">5</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Run an agreed pilot with 1 team member</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-outline transition-transform" id="acc-icon-5">expand_more</span>
+</div>
+<div class="hidden mt-space-sm pt-space-sm border-t border-outline-variant/30 text-on-surface-variant font-body-sm text-body-sm" id="acc-5">
+              Scope the live trial to a single sales representative or project manager for 5 business days before expanding company-wide.
+            </div>
+</div>
+<!-- Stage 6 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-xs">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-6', 'acc-icon-6')">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">6</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Document ownership, failover, and maintenance</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-outline transition-transform" id="acc-icon-6">expand_more</span>
+</div>
+<div class="hidden mt-space-sm pt-space-sm border-t border-outline-variant/30 text-on-surface-variant font-body-sm text-body-sm" id="acc-6">
+              Deliver the handover matrix: credential ownership, alert webhook endpoints, step-by-step troubleshooting, and monthly check-in dates.
+            </div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">assignment</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Start this idea to track your custom tasks and implementation progress in My Projects.</span>
+</div>
+<button class="text-primary hover:underline font-label-md text-label-md font-semibold shrink-0" onclick="toggleStartIdea()">
+            Open Project Tracker →
+          </button>
+</div>
+</section>
+<!-- SECTION 4: WORKFLOW RESOURCES -->
+<section class="scroll-mt-20 flex flex-col gap-space-md" id="resources">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Blueprints &amp; Toolkits</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Section 04</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Workflow resources</h2>
+<!-- 6 Modular Resource Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Card 1 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:-translate-y-0.5 transition-transform">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm font-semibold">Workflow Blueprint</span>
+<span class="font-label-sm text-[11px] text-outline">JSON / YAML</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Make / n8n / Zapier Blueprint</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Pre-configured orchestration scheme for quotation polling, status condition gating, and error handling.
+              </p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Sample resource — not connected</span>
+<span class="material-symbols-outlined text-outline text-[18px]">download</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:-translate-y-0.5 transition-transform">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">Field-mapping Worksheet</span>
+<span class="font-label-sm text-[11px] text-outline">DOCX / Sheet</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Field-Mapping Worksheet</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                System-to-system field alignment checklist for mapping deal IDs, quote amounts, client contacts, and team members.
+              </p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Sample resource — not connected</span>
+<span class="material-symbols-outlined text-outline text-[18px]">table_chart</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:-translate-y-0.5 transition-transform">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm font-semibold">Setup Guide</span>
+<span class="font-label-sm text-[11px] text-outline">Interactive Markdown</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Connection &amp; Setup Guide</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Step-by-step walkthrough covering OAuth permission grants, webhook scopes, and rate-limit guardrails.
+              </p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Sample resource — not connected</span>
+<span class="material-symbols-outlined text-outline text-[18px]">menu_book</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:-translate-y-0.5 transition-transform">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">Verification</span>
+<span class="font-label-sm text-[11px] text-outline">PDF Checklist</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Test-Case Checklist</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Verification matrix for edge cases, null value responses, expired tokens, and race condition duplicate protection.
+              </p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Sample resource — not connected</span>
+<span class="material-symbols-outlined text-outline text-[18px]">fact_check</span>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:-translate-y-0.5 transition-transform">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm font-semibold">Interview Script</span>
+<span class="font-label-sm text-[11px] text-outline">Playbook</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Discovery &amp; Demo Guide</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Structured inquiry script for discovery calls to uncover operational friction without overselling automation complexity.
+              </p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Sample resource — not connected</span>
+<span class="material-symbols-outlined text-outline text-[18px]">record_voice_over</span>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:-translate-y-0.5 transition-transform">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">Governance</span>
+<span class="font-label-sm text-[11px] text-outline">Legal / SLA</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Handover &amp; Maintenance Template</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Standard client agreement delineating workflow ownership, credential segregation, and hourly scope limits.
+              </p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Sample resource — not connected</span>
+<span class="material-symbols-outlined text-outline text-[18px]">handshake</span>
+</div>
+</div>
+</div>
+<div class="text-on-surface-variant font-body-sm text-body-sm p-3 rounded-lg bg-surface-container-low text-center">
+          IncomeNow workflow assets are instructional patterns. Tool compatibility and API access must be verified in the customer's actual environment.
+        </div>
+</section>
+<!-- SECTION 5: FINDING CUSTOMERS -->
+<section class="scroll-mt-20 flex flex-col gap-space-md" id="customers">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Outreach &amp; Discovery Playbook</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Section 05</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Find a workflow worth improving</h2>
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Target Buyer Profiles</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1">
+              Service businesses that send regular quotations
+            </div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+              Digital agencies, consulting practices, architectural studios, specialty trades, and bespoke fabrication shops where deals require tailored estimates and manual follow-ups.
+            </p>
+</div>
+<!-- Discovery Questions -->
+<div class="mt-space-xs flex flex-col gap-2.5">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Concise Discovery Questions to Ask</span>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">help_outline</span>
+<span class="font-body-sm text-body-sm text-on-surface">"Where do you record quotations when they leave your desk?"</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">help_outline</span>
+<span class="font-body-sm text-body-sm text-on-surface">"How do you currently know a quotation is ready for follow-up?"</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">help_outline</span>
+<span class="font-body-sm text-body-sm text-on-surface">"Who owns the next action when a quote goes cold?"</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">help_outline</span>
+<span class="font-body-sm text-body-sm text-on-surface">"How are customer replies recorded and reconciled?"</span>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">help_outline</span>
+<span class="font-body-sm text-body-sm text-on-surface">"Which existing tools must remain in use, and which are open for process tweaks?"</span>
+</div>
+</div>
+<!-- Example Offer Outline -->
+<div class="p-space-md rounded-xl bg-secondary-container/40 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase">Example Offer Outline</span>
+<p class="font-body-md text-body-md text-on-surface">
+              "A scoped setup project for one agreed follow-up process, including sandbox testing, team handover, and 30 days of defined operational monitoring."
+            </p>
+</div>
+<!-- Scope Note Callout -->
+<div class="p-space-md rounded-xl bg-surface-container flex items-start gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 mt-0.5">info</span>
+<div>
+<strong>Scope Notice:</strong> Confirm responsibilities, third-party tool subscription costs, access rights, and maintenance schedules in writing before starting a customer implementation.
+            </div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: UPDATES & IMPORTANT NOTES -->
+<section class="scroll-mt-20 flex flex-col gap-space-md mb-space-xl" id="notes">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Advisory &amp; Changelog</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Section 06</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Updates and Important Notes</h2>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md">
+<!-- Release history empty state (5 cols) -->
+<div class="md:col-span-5 p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-space-sm text-outline">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span class="font-label-sm text-label-sm font-semibold uppercase">Release History</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">v1.0.0-sample</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                No published releases yet. Initial preview blueprint architecture published for platform review.
+              </p>
+</div>
+<div class="mt-space-lg pt-space-sm border-t border-outline-variant/30 flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>Status: Conceptual</span>
+<span>Updated: Today</span>
+</div>
+</div>
+<!-- Important Operational Notes (7 cols) -->
+<div class="md:col-span-7 p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+<span class="font-label-sm text-label-sm font-semibold uppercase">Operational Ground Rules</span>
+</div>
+<ul class="flex flex-col gap-2.5 mt-1">
+<li class="flex items-start gap-2.5 font-body-sm text-body-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-outline shrink-0 mt-2"></span>
+<span>This is a workflow concept and operating pattern, not an auto-executing production system.</span>
+</li>
+<li class="flex items-start gap-2.5 font-body-sm text-body-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-outline shrink-0 mt-2"></span>
+<span>Tool compatibility, authentication protocols, and schema support must be audited during each customer implementation.</span>
+</li>
+<li class="flex items-start gap-2.5 font-body-sm text-body-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-outline shrink-0 mt-2"></span>
+<span>Always execute tests using anonymised or fictional data before handling live customer quotation records.</span>
+</li>
+<li class="flex items-start gap-2.5 font-body-sm text-body-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-outline shrink-0 mt-2"></span>
+<span>Maintain client credentials in their own vault; keep workflow access and ownership distinctly segregated.</span>
+</li>
+<li class="flex items-start gap-2.5 font-body-sm text-body-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-outline shrink-0 mt-2"></span>
+<span>Do not guarantee additional sales or conversion gains from internal reminders; focus strictly on operational discipline.</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<!-- RIGHT STICKY FACTS PANEL (4 cols) -->
+<div class="col-span-12 xl:col-span-4 sticky top-16 flex flex-col gap-space-md">
+<!-- Quick Facts Main Card -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">dataset</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Quick Facts</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">Summary</span>
+</div>
+<!-- Facts List -->
+<div class="flex flex-col gap-space-sm">
+<!-- Item 1 -->
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline font-medium">Potential customer</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold mt-0.5">Service businesses that send quotations</span>
+</div>
+<div class="h-px bg-outline-variant/20"></div>
+<!-- Item 2 -->
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline font-medium">Proposed offer</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold mt-0.5">A configured follow-up task and reminder workflow</span>
+</div>
+<div class="h-px bg-outline-variant/20"></div>
+<!-- Item 3 -->
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline font-medium">Skills needed</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold mt-0.5">Low-code configuration and workflow testing</span>
+</div>
+<div class="h-px bg-outline-variant/20"></div>
+<!-- Item 4 -->
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline font-medium">Operating requirements</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold mt-0.5">Client-authorised tool access &amp; agreed maintenance</span>
+</div>
+<div class="h-px bg-outline-variant/20"></div>
+<!-- Item 5 -->
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline font-medium">Market evidence</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Not yet validated in this sample</span>
+</div>
+</div>
+</div>
+<!-- Important Clarification Banner -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">notifications_active</span>
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+<strong>Important Clarification:</strong> The starter example creates internal tasks and notifications. It does not automatically message customers.
+          </p>
+</div>
+<!-- Sticky Side CTAs -->
+<div class="flex flex-col gap-2 pt-space-xs">
+<button class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-all duration-200 active:scale-[0.99] font-label-md text-label-md font-semibold shadow-sm" id="start-idea-side-btn" onclick="toggleStartIdea()">
+<span class="material-symbols-outlined text-[18px]" id="start-side-icon">play_arrow</span>
+<span id="start-side-text">Start this idea</span>
+</button>
+<button class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md" id="bookmark-side-btn" onclick="toggleBookmark()">
+<span class="material-symbols-outlined text-[18px]" id="bookmark-side-icon">bookmark_border</span>
+<span id="bookmark-side-text">Save idea</span>
+</button>
+</div>
+<!-- Explanatory Footnote -->
+<p class="font-label-sm text-label-sm text-outline leading-relaxed text-center pt-space-xs">
+          IncomeNow provides operational blueprints and workflow starters. Members configure tools and handle their own client implementations.
+        </p>
+</div>
+<!-- Quick Metrics Preview Pill Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px]">speed</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline font-semibold">Setup Estimate</span>
+<span class="font-label-md text-label-md text-on-surface font-medium">8–14 configuration hours</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">lock</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  let isSaved = false;
+  let isStarted = false;
+
+  function toggleBookmark() {
+    isSaved = !isSaved;
+    const heroIcon = document.getElementById('bookmark-icon');
+    const heroText = document.getElementById('bookmark-text');
+    const sideIcon = document.getElementById('bookmark-side-icon');
+    const sideText = document.getElementById('bookmark-side-text');
+    
+    if (isSaved) {
+      heroIcon.textContent = 'bookmark';
+      heroIcon.style.fontVariationSettings = "'FILL' 1";
+      heroText.textContent = 'Saved to library';
+      sideIcon.textContent = 'bookmark';
+      sideIcon.style.fontVariationSettings = "'FILL' 1";
+      sideText.textContent = 'Saved to library';
+    } else {
+      heroIcon.textContent = 'bookmark_border';
+      heroIcon.style.fontVariationSettings = "'FILL' 0";
+      heroText.textContent = 'Save idea';
+      sideIcon.textContent = 'bookmark_border';
+      sideIcon.style.fontVariationSettings = "'FILL' 0";
+      sideText.textContent = 'Save idea';
+    }
+  }
+
+  function toggleStartIdea() {
+    isStarted = !isStarted;
+    const heroBtn = document.getElementById('start-idea-hero-btn');
+    const heroIcon = document.getElementById('start-hero-icon');
+    const heroText = document.getElementById('start-hero-text');
+    
+    const sideBtn = document.getElementById('start-idea-side-btn');
+    const sideIcon = document.getElementById('start-side-icon');
+    const sideText = document.getElementById('start-side-text');
+
+    if (isStarted) {
+      // Swapped to added state
+      heroBtn.classList.remove('bg-primary-container', 'hover:bg-primary');
+      heroBtn.classList.add('bg-secondary-container', 'text-primary');
+      heroIcon.textContent = 'check';
+      heroText.textContent = '✓ Added to My Projects';
+
+      sideBtn.classList.remove('bg-primary-container', 'hover:bg-primary');
+      sideBtn.classList.add('bg-secondary-container', 'text-primary');
+      sideIcon.textContent = 'check';
+      sideText.textContent = '✓ Added to My Projects';
+    } else {
+      // Reverted to default
+      heroBtn.classList.add('bg-primary-container', 'hover:bg-primary');
+      heroBtn.classList.remove('bg-secondary-container', 'text-primary');
+      heroIcon.textContent = 'play_arrow';
+      heroText.textContent = 'Start this idea';
+
+      sideBtn.classList.add('bg-primary-container', 'hover:bg-primary');
+      sideBtn.classList.remove('bg-secondary-container', 'text-primary');
+      sideIcon.textContent = 'play_arrow';
+      sideText.textContent = 'Start this idea';
+    }
+  }
+
+  function toggleAccordion(id, iconId) {
+    const el = document.getElementById(id);
+    const icon = document.getElementById(iconId);
+    if (!el || !icon) return;
+
+    if (el.classList.contains('hidden')) {
+      el.classList.remove('hidden');
+      icon.classList.add('rotate-180');
+    } else {
+      el.classList.add('hidden');
+      icon.classList.remove('rotate-180');
+    }
+  }
+</script></main></div></body></html>

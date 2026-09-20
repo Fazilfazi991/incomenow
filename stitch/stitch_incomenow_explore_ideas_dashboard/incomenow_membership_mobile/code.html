@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100vh;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline":"#6f7a72","on-secondary-container":"#4d6a60","secondary-fixed-dim":"#aecdc1","tertiary":"#4f5552","on-secondary":"#ffffff","secondary-container":"#c9eadd","on-primary":"#ffffff","surface":"#eefdf3","surface-container-high":"#ddece2","on-tertiary-container":"#eaefeb","surface-container":"#e2f2e8","on-tertiary-fixed-variant":"#424845","on-secondary-fixed-variant":"#304c43","surface-bright":"#eefdf3","secondary":"#47645a","on-surface":"#111e18","surface-variant":"#d7e6dc","on-background":"#111e18","inverse-surface":"#26332d","on-primary-fixed":"#002114","on-primary-fixed-variant":"#005237","on-surface-variant":"#3f4943","inverse-primary":"#80d8ad","primary-fixed":"#9bf5c8","tertiary-fixed-dim":"#c2c8c4","inverse-on-surface":"#e5f4eb","surface-tint":"#006c4a","outline-variant":"#bec9c1","surface-dim":"#ceded4","tertiary-container":"#676d6a","on-error-container":"#93000a","on-error":"#ffffff","surface-container-highest":"#d7e6dc","on-secondary-fixed":"#022019","background":"#eefdf3","on-primary-container":"#acffd4","secondary-fixed":"#c9eadd","primary":"#006041","tertiary-fixed":"#dfe4e0","surface-container-lowest":"#ffffff","on-tertiary-fixed":"#171d1b","on-tertiary":"#ffffff","error-container":"#ffdad6","primary-container":"#197a56","error":"#ba1a1a","surface-container-low":"#e8f7ed","primary-fixed-dim":"#80d8ad"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-md":"1rem","space-lg":"1.5rem","space-xl":"2.5rem","margin":"2.5rem","space-xs":"0.25rem","margin-mobile":"1rem","gutter":"1.5rem","gutter-mobile":"1rem","space-sm":"0.5rem"},fontFamily:{"headline-md":["Manrope"],"display-hero":["Manrope"],"headline-sm":["Manrope"],"headline-lg":["Manrope"],"headline-lg-mobile":["Manrope"],"label-md":["Inter"],"body-lg":["Inter"],"body-md":["Inter"],"label-sm":["Inter"],"display-hero-mobile":["Manrope"],"body-sm":["Inter"]},fontSize:{"headline-md":["1.5rem",{"lineHeight":"1.35","letterSpacing":"-0.015em","fontWeight":"600"}],"display-hero":["3.25rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"800"}],"headline-sm":["1.125rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["2.25rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-lg-mobile":["1.75rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"700"}],"label-md":["0.875rem",{"lineHeight":"1.25","letterSpacing":"0.01em","fontWeight":"500"}],"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.005em","fontWeight":"400"}],"body-md":["0.9375rem",{"lineHeight":"1.55","letterSpacing":"0em","fontWeight":"400"}],"label-sm":["0.75rem",{"lineHeight":"1.2","letterSpacing":"0.02em","fontWeight":"600"}],"display-hero-mobile":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.025em","fontWeight":"800"}],"body-sm":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"0.005em","fontWeight":"400"}]}}}}</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-surface-container-high/80 px-margin-mobile py-1 flex items-center justify-center"><div class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span><p class="font-label-sm text-label-sm text-on-surface-variant text-center">Design preview — pricing and terms not final</p></div></div><div class="h-14 px-margin-mobile flex items-center justify-between"><a class="flex items-center gap-space-sm" data-path="explore-ideas" href="#"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">IncomeNow<span class="text-secondary">.in</span></span><span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Design preview</span></a><button aria-label="Toggle navigation menu" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-container active:scale-95 transition-all" id="mobile-nav-toggle" onclick="document.getElementById('mobile-drawer').classList.toggle('hidden')"><span class="material-symbols-outlined text-[24px]">menu</span></button></div><div class="hidden bg-surface-container-lowest/95 backdrop-blur-xl px-margin-mobile py-space-md shadow-[0_12px_24px_rgba(0,0,0,0.08)] flex flex-col gap-space-sm" id="mobile-drawer"><nav class="flex flex-col gap-1" data-active-classes="bg-secondary-container text-on-secondary-container font-semibold"><a class="px-3 py-2.5 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors flex items-center justify-between" data-path="how-it-works" href="#">How it works<span class="material-symbols-outlined text-[18px]">arrow_forward</span></a><a class="px-3 py-2.5 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors flex items-center justify-between" data-path="example-ideas" href="#">Example ideas<span class="material-symbols-outlined text-[18px]">arrow_forward</span></a><a aria-current="page" class="px-3 py-2.5 rounded-lg flex items-center justify-between bg-secondary-container text-on-secondary-container font-semibold" data-path="membership" href="#">Membership<span class="material-symbols-outlined text-[18px]">check_circle</span></a><a class="px-3 py-2.5 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-colors flex items-center justify-between" data-path="faq" href="#">FAQ<span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></nav><div class="pt-space-sm flex flex-col gap-space-sm"><a class="w-full h-10 flex items-center justify-center rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container transition-colors" data-path="login" href="#">Log in</a><a class="w-full h-10 flex items-center justify-center rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-sm active:scale-[0.99] transition-all" data-path="explore-ideas" href="#">Explore ideas</a></div></div></header><main class="flex-1 flex flex-col relative w-full pt-20 bg-surface"><div class="flex flex-col w-full text-on-surface">
+<!-- Toast Notification Overlay -->
+<div class="fixed top-20 left-4 right-4 z-50 transform -translate-y-6 opacity-0 pointer-events-none transition-all duration-300 ease-out flex items-center gap-space-sm p-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface shadow-xl" id="preview-toast">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed">info</span>
+<p class="font-body-sm text-body-sm flex-1 text-inverse-on-surface" id="toast-message">Account screens will be connected in the next batch.</p>
+</div>
+<!-- Breadcrumb Bar -->
+<div class="px-margin-mobile py-2.5 flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px] text-tertiary">chevron_right</span>
+<span class="text-on-surface font-semibold">Membership</span>
+</div>
+<!-- Section 1: Mobile Hero & Plan Overview -->
+<section class="px-margin-mobile pt-3 pb-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">IncomeNow Membership</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-extrabold tracking-tight leading-tight">
+        One membership.<br/>Practical ideas to build on.
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+        Explore business opportunities, work with the resources included in each kit, and follow a clear implementation process inside your own project workspace.
+      </p>
+</div>
+<!-- Soft Clarification Callout -->
+<div class="p-3.5 rounded-xl bg-surface-container flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-secondary mt-0.5 shrink-0">tips_and_updates</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Choose an opportunity that fits your skills. Validate it with potential customers before investing heavily.
+      </p>
+</div>
+<!-- Featured Membership Card -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-md flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Standard Plan</span>
+<span class="font-label-sm text-label-sm text-tertiary">Monthly subscription</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">IncomeNow Membership</h2>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-md text-headline-md text-primary font-extrabold">Price to be confirmed</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">
+          Prototype placeholder — final price and currency are not set.
+        </p>
+</div>
+<!-- Inclusions -->
+<div class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2.5">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Member idea library</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Resources included with each idea</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Saved ideas and project checklists</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">New releases and updates as published</span>
+</div>
+</div>
+<!-- Action Stack -->
+<div class="flex flex-col gap-2 pt-1">
+<button class="w-full min-h-[48px] px-4 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold active:scale-[0.99] transition-transform flex items-center justify-center gap-2 shadow-sm" onclick="showPrototypeToast('Account registration will be connected in the next batch.')" type="button">
+<span>Create account</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<p class="font-label-sm text-label-sm text-center text-on-surface-variant">
+          Creating an account does not activate a paid membership.
+        </p>
+<button class="min-h-[44px] text-center font-label-md text-label-md text-primary hover:underline flex items-center justify-center" onclick="showPrototypeToast('Log in flow will be connected in the next batch.')" type="button">
+          Already have an account? Log in
+        </button>
+</div>
+</div>
+</section>
+<!-- Section 2: What Membership Includes -->
+<section class="px-margin-mobile py-space-md flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider font-semibold">Core Benefits</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+        Everything organised around the idea you choose.
+      </h2>
+</div>
+<!-- Qualification note -->
+<div class="p-3.5 rounded-xl bg-surface-container-high flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-tertiary shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Resources vary by idea. Check the idea’s contents, availability, and requirements before starting.
+      </p>
+</div>
+<!-- 4 Stacked Cards -->
+<div class="flex flex-col gap-space-sm">
+<!-- Card 1 -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">1. Explore the opportunity library</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Curated collection of micro-services, niche SaaS templates, and operational toolsets broken down with real revenue logic.
+        </p>
+</div>
+<!-- Card 2 -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">folder_zip</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">2. Work with relevant resources</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Access architectural schematics, interactive code sandboxes, deployment scripts, and onboarding docs when bundled.
+        </p>
+</div>
+<!-- Card 3 -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">task_alt</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">3. Keep your own project workspace</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Bookmark candidate blueprints, check off verification stages, and track development milestones at your own pace.
+        </p>
+</div>
+<!-- Card 4 -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">update</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">4. Follow new releases and improvements</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Receive continuous additions to the catalog, revised workflows, and tooling updates adapted to evolving market demands.
+        </p>
+</div>
+</div>
+</section>
+<!-- Section 3: Understand The Boundaries -->
+<section class="px-margin-mobile py-space-md flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider font-semibold">Scope of Service</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+        What is included—and what you arrange separately.
+      </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+        IncomeNow membership is separate from hosting or operating the applications you deliver to customers.
+      </p>
+</div>
+<!-- Stacked Section A: Inside the membership -->
+<div class="p-space-md rounded-2xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">Inside the membership</h3>
+</div>
+<div class="flex flex-col gap-2 pt-1">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">done</span>
+<span class="font-body-sm text-body-sm text-on-surface">Comprehensive catalog of actionable idea briefs</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">done</span>
+<span class="font-body-sm text-body-sm text-on-surface">Included kit resources, templates, and setup workflows</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">done</span>
+<span class="font-body-sm text-body-sm text-on-surface">Structured written guidance and technical blueprints</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">done</span>
+<span class="font-body-sm text-body-sm text-on-surface">Personal project tracking and progress milestones</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">done</span>
+<span class="font-body-sm text-body-sm text-on-surface">Regularly published updates and community releases</span>
+</div>
+</div>
+</div>
+<!-- Stacked Section B: For your implementation -->
+<div class="p-space-md rounded-2xl bg-surface-container-high flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-tertiary">handyman</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">For your implementation</h3>
+</div>
+<div class="flex flex-col gap-2 pt-1">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-outline shrink-0 mt-0.5">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Customer domain registration and cloud server hosting</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-outline shrink-0 mt-0.5">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Third-party API keys, SaaS subscriptions, or database fees</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-outline shrink-0 mt-0.5">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Client-specific branding and tailored bespoke design</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-outline shrink-0 mt-0.5">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">End-to-end user verification and live production data testing</span>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-outline shrink-0 mt-0.5">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ongoing client support and maintenance contracts</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: How Getting Started Works -->
+<section class="px-margin-mobile py-space-md flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider font-semibold">Onboarding</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+        A clear path from account to access.
+      </h2>
+</div>
+<!-- 3 Numbered Steps -->
+<div class="flex flex-col gap-space-sm">
+<!-- Step 1 -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex items-start gap-3.5">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm flex items-center justify-center shrink-0 font-bold text-sm">
+          1
+        </div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">Create your account</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Set up your credentials to initiate your builder profile. No payment required at this initial stage.
+          </p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex items-start gap-3.5">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm flex items-center justify-center shrink-0 font-bold text-sm">
+          2
+        </div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">Review the membership</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Examine sample kit structures, preview available templates, and understand platform terms before committing.
+          </p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex items-start gap-3.5">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm flex items-center justify-center shrink-0 font-bold text-sm">
+          3
+        </div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">Activate access</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Select standard monthly access once payment processing opens and unlock immediate access to all active releases.
+          </p>
+</div>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-center text-tertiary">
+      Registration and payment will be connected in later stages.
+    </p>
+</section>
+<!-- Section 5: Resource Licences -->
+<section class="px-margin-mobile py-space-md">
+<div class="p-space-md rounded-2xl bg-surface-container flex flex-col gap-2.5 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">policy</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">Resource licences</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Check the permissions attached to each resource. Source-code access grants operational usage for client delivery, but does not mean unrestricted resale rights or public redistribution of our core catalog.
+      </p>
+<div class="pt-1">
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-tertiary">
+<span>Resource licence information (available at launch)</span>
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</span>
+</div>
+</div>
+</section>
+<!-- Section 6: FAQ Accordion -->
+<section class="px-margin-mobile py-space-md flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider font-semibold">Common Questions</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+        Membership questions
+      </h2>
+</div>
+<div class="flex flex-col gap-2" id="faq-accordion">
+<!-- Item 1 -->
+<div class="rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<button aria-expanded="false" class="faq-btn w-full min-h-[48px] px-4 py-3.5 flex items-center justify-between text-left gap-3" type="button">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Am I buying courses?</span>
+<span class="material-symbols-outlined text-[20px] text-tertiary transform transition-transform duration-200 shrink-0">expand_more</span>
+</button>
+<div class="faq-content hidden px-4 pb-4 pt-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            No. IncomeNow is not an educational academy or video lecture course. It is an operational repository containing blueprints, implementation checklists, downloadable source kits, and commercial viability briefs designed for builders who want to launch without handholding.
+          </p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<button aria-expanded="false" class="faq-btn w-full min-h-[48px] px-4 py-3.5 flex items-center justify-between text-left gap-3" type="button">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Does creating an account start a paid subscription?</span>
+<span class="material-symbols-outlined text-[20px] text-tertiary transform transition-transform duration-200 shrink-0">expand_more</span>
+</button>
+<div class="faq-content hidden px-4 pb-4 pt-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            No. Account creation is free and gives you access to public previews and profile settings. You will only enter payment credentials when you explicitly choose to subscribe after launch.
+          </p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<button aria-expanded="false" class="faq-btn w-full min-h-[48px] px-4 py-3.5 flex items-center justify-between text-left gap-3" type="button">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Does every idea include source code?</span>
+<span class="material-symbols-outlined text-[20px] text-tertiary transform transition-transform duration-200 shrink-0">expand_more</span>
+</button>
+<div class="faq-content hidden px-4 pb-4 pt-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Not all ideas require or include custom software repositories. Some opportunities center on automation workflows, agency retainers, or low-code tool configurations. Each blueprint explicitly lists the specific assets included.
+          </p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<button aria-expanded="false" class="faq-btn w-full min-h-[48px] px-4 py-3.5 flex items-center justify-between text-left gap-3" type="button">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Do I need coding experience?</span>
+<span class="material-symbols-outlined text-[20px] text-tertiary transform transition-transform duration-200 shrink-0">expand_more</span>
+</button>
+<div class="faq-content hidden px-4 pb-4 pt-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            While some software blueprints benefit from basic technical literacy (handling Git, configuring environment variables), many templates use no-code platforms and standard cloud services. Each idea indicates technical complexity upfront.
+          </p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<button aria-expanded="false" class="faq-btn w-full min-h-[48px] px-4 py-3.5 flex items-center justify-between text-left gap-3" type="button">
+<span class="font-body-md text-body-md text-on-surface font-semibold">How does hosting customer projects work?</span>
+<span class="material-symbols-outlined text-[20px] text-tertiary transform transition-transform duration-200 shrink-0">expand_more</span>
+</button>
+<div class="faq-content hidden px-4 pb-4 pt-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            You host customer applications directly on your own infrastructure (such as Vercel, Supabase, Render, or AWS) or within your client's accounts. IncomeNow does not host live client installations or manage domain routing.
+          </p>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<button aria-expanded="false" class="faq-btn w-full min-h-[48px] px-4 py-3.5 flex items-center justify-between text-left gap-3" type="button">
+<span class="font-body-md text-body-md text-on-surface font-semibold">What is the release frequency for new ideas?</span>
+<span class="material-symbols-outlined text-[20px] text-tertiary transform transition-transform duration-200 shrink-0">expand_more</span>
+</button>
+<div class="faq-content hidden px-4 pb-4 pt-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            We target regular monthly drops of fully documented blueprints alongside ongoing revisions to existing project resources as software dependencies and API terms evolve.
+          </p>
+</div>
+</div>
+<!-- Item 7 -->
+<div class="rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<button aria-expanded="false" class="faq-btn w-full min-h-[48px] px-4 py-3.5 flex items-center justify-between text-left gap-3" type="button">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Are there earnings guarantees?</span>
+<span class="material-symbols-outlined text-[20px] text-tertiary transform transition-transform duration-200 shrink-0">expand_more</span>
+</button>
+<div class="faq-content hidden px-4 pb-4 pt-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            No. We do not make speculative income promises. Business success depends entirely on local execution, market validation, positioning, and direct sales diligence with real prospects.
+          </p>
+</div>
+</div>
+<!-- Item 8 -->
+<div class="rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<button aria-expanded="false" class="faq-btn w-full min-h-[48px] px-4 py-3.5 flex items-center justify-between text-left gap-3" type="button">
+<span class="font-body-md text-body-md text-on-surface font-semibold">What are the cancellation rules?</span>
+<span class="material-symbols-outlined text-[20px] text-tertiary transform transition-transform duration-200 shrink-0">expand_more</span>
+</button>
+<div class="faq-content hidden px-4 pb-4 pt-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            You will be able to cancel your monthly subscription at any point directly within your workspace settings. Access remains active through the end of your prepaid billing period.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: Closing CTA Banner -->
+<section class="px-margin-mobile pt-space-md pb-space-sm">
+<div class="p-space-lg rounded-2xl bg-inverse-surface text-inverse-on-surface flex flex-col gap-space-md shadow-lg">
+<div class="flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider font-semibold">Get Started</span>
+<h2 class="font-headline-sm text-headline-sm text-inverse-on-surface font-bold">
+          Choose a practical starting point.
+        </h2>
+<p class="font-body-sm text-body-sm text-inverse-on-surface/80">
+          Explore the example ideas or create an account when you are ready for the next step.
+        </p>
+</div>
+<div class="flex flex-col gap-2.5 pt-1">
+<button class="w-full min-h-[48px] px-4 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold active:scale-[0.99] transition-transform flex items-center justify-center gap-2 shadow-sm" onclick="showPrototypeToast('Account screens will be connected in the next batch.')" type="button">
+<span>Create account</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<a class="w-full min-h-[44px] px-4 rounded-xl bg-surface-container/20 text-inverse-on-surface hover:bg-surface-container/30 font-label-md text-label-md font-medium transition-colors flex items-center justify-center text-center" data-path="example-ideas" href="#">
+          Explore example ideas
+        </a>
+</div>
+<p class="font-label-sm text-label-sm text-center text-inverse-on-surface/60 pt-1">
+        Creating an account does not activate a paid subscription.
+      </p>
+</div>
+</section>
+</div>
+<script>
+  // Prototype Toast Notification Helper
+  let toastTimer = null;
+  function showPrototypeToast(message) {
+    const toast = document.getElementById('preview-toast');
+    const label = document.getElementById('toast-message');
+    if (!toast || !label) return;
+
+    if (message) label.textContent = message;
+
+    clearTimeout(toastTimer);
+    toast.classList.remove('opacity-0', '-translate-y-6', 'pointer-events-none');
+    toast.classList.add('opacity-100', 'translate-y-0');
+
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', '-translate-y-6', 'pointer-events-none');
+    }, 3200);
+  }
+
+  // Accessible FAQ Accordion Toggle
+  document.querySelectorAll('#faq-accordion .faq-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('.material-symbols-outlined');
+
+      // Close all other accordions
+      document.querySelectorAll('#faq-accordion .faq-btn').forEach(otherBtn => {
+        if (otherBtn !== button) {
+          otherBtn.setAttribute('aria-expanded', 'false');
+          if (otherBtn.nextElementSibling) otherBtn.nextElementSibling.classList.add('hidden');
+          const otherIcon = otherBtn.querySelector('.material-symbols-outlined');
+          if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+        }
+      });
+
+      // Toggle current accordion
+      if (isExpanded) {
+        button.setAttribute('aria-expanded', 'false');
+        if (content) content.classList.add('hidden');
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      } else {
+        button.setAttribute('aria-expanded', 'true');
+        if (content) content.classList.remove('hidden');
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+</script></main><footer class="bg-surface-container-low px-margin-mobile pt-space-xl pb-safe mt-space-xl"><div class="flex flex-col gap-space-md mb-space-lg"><div class="flex flex-col gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">IncomeNow<span class="text-secondary">.in</span></span><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">A curated catalog of actionable internet business blueprints, micro-SaaS opportunities, and cash-flow templates designed for independent operators.</p></div><div class="grid grid-cols-2 gap-space-md pt-space-xs"><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider font-semibold">Platform</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors py-1" data-path="how-it-works" href="#">How it works</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors py-1" data-path="example-ideas" href="#">Example ideas</a><a class="font-body-sm text-body-sm text-primary font-medium hover:text-primary transition-colors py-1" data-path="membership" href="#">Membership</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors py-1" data-path="faq" href="#">FAQ</a></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider font-semibold">Legal &amp; Info</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors py-1" data-path="terms-of-service" href="#">Terms of Service</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors py-1" data-path="privacy-policy" href="#">Privacy Policy</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors py-1" data-path="contact" href="#">Contact Support</a></div></div></div><div class="py-space-md flex flex-col items-center justify-center gap-space-xs"><p class="font-label-sm text-label-sm text-tertiary text-center">© 2025 IncomeNow.in. All rights reserved.</p><p class="font-label-sm text-label-sm text-on-surface-variant/70 text-center">Institutional clarity and execution blueprints for independent builders.</p></div></footer></body></html>

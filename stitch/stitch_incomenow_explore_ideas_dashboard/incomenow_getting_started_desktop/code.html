@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'primary': '#006041', 'on-secondary-container': '#4d6a60', 'surface-container-lowest': '#ffffff', 'primary-fixed': '#9bf5c8', 'tertiary-container': '#676d6a', 'outline': '#6f7a72', 'tertiary': '#4f5552', 'on-primary-container': '#acffd4', 'surface-container': '#e2f2e8', 'inverse-on-surface': '#e5f4eb', 'secondary-fixed': '#c9eadd', 'on-tertiary': '#ffffff', 'on-surface': '#111e18', 'tertiary-fixed-dim': '#c2c8c4', 'error-container': '#ffdad6', 'secondary-fixed-dim': '#aecdc1', 'on-primary-fixed-variant': '#005237', 'surface-container-low': '#e8f7ed', 'inverse-primary': '#80d8ad', 'on-background': '#111e18', 'on-secondary-fixed-variant': '#304c43', 'on-tertiary-fixed': '#171d1b', 'on-error': '#ffffff', 'surface-container-high': '#ddece2', 'primary-fixed-dim': '#80d8ad', 'on-error-container': '#93000a', 'on-tertiary-fixed-variant': '#424845', 'tertiary-fixed': '#dfe4e0', 'inverse-surface': '#26332d', 'on-tertiary-container': '#eaefeb', 'secondary': '#47645a', 'primary-container': '#197a56', 'surface-variant': '#d7e6dc', 'surface-tint': '#006c4a', 'surface-bright': '#eefdf3', 'on-secondary-fixed': '#022019', 'on-secondary': '#ffffff', 'on-primary-fixed': '#002114', 'on-surface-variant': '#3f4943', 'surface': '#eefdf3', 'background': '#eefdf3', 'on-primary': '#ffffff', 'error': '#ba1a1a', 'secondary-container': '#c9eadd', 'outline-variant': '#bec9c1', 'surface-container-highest': '#d7e6dc', 'surface-dim': '#ceded4' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'space-md': '1rem', 'margin': '2.5rem', 'space-lg': '1.5rem', 'space-sm': '0.5rem', 'gutter': '1.5rem', 'space-xs': '0.25rem', 'margin-mobile': '1rem', 'space-xl': '2.5rem', 'gutter-mobile': '1rem' }, 'fontFamily': { 'headline-lg': ['Manrope'], 'headline-md': ['Manrope'], 'body-sm': ['Inter'], 'display-hero': ['Manrope'], 'body-lg': ['Inter'], 'headline-lg-mobile': ['Manrope'], 'body-md': ['Inter'], 'headline-sm': ['Manrope'], 'label-md': ['Inter'], 'display-hero-mobile': ['Manrope'], 'label-sm': ['Inter'] }, 'fontSize': { 'headline-lg': ['2.25rem', { 'lineHeight': '1.25', 'letterSpacing': '-0.02em', 'fontWeight': '700' }], 'headline-md': ['1.5rem', { 'lineHeight': '1.35', 'letterSpacing': '-0.015em', 'fontWeight': '600' }], 'body-sm': ['0.8125rem', { 'lineHeight': '1.5', 'letterSpacing': '0.005em', 'fontWeight': '400' }], 'display-hero': ['3.25rem', { 'lineHeight': '1.15', 'letterSpacing': '-0.03em', 'fontWeight': '800' }], 'body-lg': ['1.125rem', { 'lineHeight': '1.6', 'letterSpacing': '-0.005em', 'fontWeight': '400' }], 'headline-lg-mobile': ['1.75rem', { 'lineHeight': '1.3', 'letterSpacing': '-0.015em', 'fontWeight': '700' }], 'body-md': ['0.9375rem', { 'lineHeight': '1.55', 'letterSpacing': '0em', 'fontWeight': '400' }], 'headline-sm': ['1.125rem', { 'lineHeight': '1.4', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'label-md': ['0.875rem', { 'lineHeight': '1.25', 'letterSpacing': '0.01em', 'fontWeight': '500' }], 'display-hero-mobile': ['2.25rem', { 'lineHeight': '1.2', 'letterSpacing': '-0.025em', 'fontWeight': '800' }], 'label-sm': ['0.75rem', { 'lineHeight': '1.2', 'letterSpacing': '0.02em', 'fontWeight': '600' }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen flex flex-col justify-between"><div class="w-full"><div class="w-full bg-surface-container-low text-on-surface-variant py-space-xs px-margin flex items-center justify-center text-center"><div class="flex items-center gap-space-sm font-label-sm text-label-sm"><span class="material-symbols-outlined text-outline text-[16px]">info</span><span>Design preview — preferences use sample state</span></div></div><header class="w-full bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-[820px] mx-auto px-gutter flex items-center justify-between"><a class="flex items-center gap-space-xs" data-path="welcome-setup" href="#"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">IncomeNow<span class="text-secondary font-headline-sm text-headline-sm">.in</span></span></a><nav data-active-classes="text-primary font-semibold"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs px-space-sm rounded-lg hover:bg-surface-container-low" data-path="dashboard-preview" href="#">Skip for now</a></nav></div></header><main class="w-full max-w-[820px] mx-auto px-gutter py-space-xl bg-transparent"><div class="flex flex-col w-full">
+<!-- Interactive Toast Notification Overlay -->
+<div class="fixed top-6 right-6 z-50 transform transition-all duration-300 translate-y-[-120%] opacity-0 pointer-events-none flex items-center gap-space-sm py-space-sm px-space-md rounded-lg shadow-xl max-w-md" id="toast-banner">
+<span class="material-symbols-outlined text-[20px]" id="toast-icon"></span>
+<span class="font-label-md text-label-md" id="toast-message"></span>
+</div>
+<div class="max-w-[760px] mx-auto w-full flex flex-col gap-space-xl">
+<!-- Hero / Orientation Header -->
+<header class="flex flex-col items-center text-center gap-space-xs">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+        Make IncomeNow yours
+      </div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-space-xs">
+        What would you like to explore?
+      </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[620px]">
+        A few optional choices help us suggest a starting point. You can browse every category and change these choices later.
+      </p>
+<!-- Soft architectural stamp -->
+<div class="flex items-center gap-space-xs mt-space-xs text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">verified_user</span>
+<span>Design preview — preferences use sample state</span>
+</div>
+</header>
+<!-- Question 1: Interests (Multi-select) -->
+<section aria-labelledby="q1-title" class="flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-space-xs pb-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">01 / Scope</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-secondary">Optional multi-select</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-0.5" id="q1-title">
+            What interests you?
+          </h2>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Choose any that appeal to you.</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md" id="interests-group">
+<!-- Card 1 -->
+<div class="interest-card group cursor-pointer bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-200 flex flex-col justify-between h-[152px] select-none hover:shadow-md hover:bg-surface-container-low/40" data-value="crms">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">dataset</span>
+</div>
+<div class="check-box w-5 h-5 rounded flex items-center justify-center bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[16px] text-white opacity-0 transition-opacity">check</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Custom CRMs</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-0.5">Business systems for specific industries.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="interest-card group cursor-pointer bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-200 flex flex-col justify-between h-[152px] select-none hover:shadow-md hover:bg-surface-container-low/40" data-value="leadgen">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">travel_explore</span>
+</div>
+<div class="check-box w-5 h-5 rounded flex items-center justify-center bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[16px] text-white opacity-0 transition-opacity">check</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Lead-generation websites</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-0.5">Websites that connect enquiries with providers.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="interest-card group cursor-pointer bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-200 flex flex-col justify-between h-[152px] select-none hover:shadow-md hover:bg-surface-container-low/40" data-value="automations">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+</div>
+<div class="check-box w-5 h-5 rounded flex items-center justify-center bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[16px] text-white opacity-0 transition-opacity">check</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Automations</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-0.5">Workflows that connect tools and reduce manual tasks.</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="interest-card group cursor-pointer bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-200 flex flex-col justify-between h-[152px] select-none hover:shadow-md hover:bg-surface-container-low/40" data-value="webtools">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">widgets</span>
+</div>
+<div class="check-box w-5 h-5 rounded flex items-center justify-center bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[16px] text-white opacity-0 transition-opacity">check</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Web tools</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-0.5">Useful online products built around a focused problem.</p>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="interest-card group cursor-pointer bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-200 flex flex-col justify-between h-[152px] select-none hover:shadow-md hover:bg-surface-container-low/40 md:col-span-2 lg:col-span-1" data-value="digital_services">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+</div>
+<div class="check-box w-5 h-5 rounded flex items-center justify-center bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[16px] text-white opacity-0 transition-opacity">check</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Digital services</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-0.5">Research, setup, or other work delivered to clients.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Question 2: Experience (Single-select radio) -->
+<section aria-labelledby="q2-title" class="flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-space-xs pb-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">02 / Technical Depth</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-secondary">Optional single-select</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-0.5" id="q2-title">
+            How comfortable are you with digital tools?
+          </h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Choose the closest fit.</span>
+<button class="text-secondary hover:text-primary font-label-sm text-label-sm transition-colors cursor-pointer underline underline-offset-4 hidden" id="clear-q2" type="button">
+            Clear choice
+          </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md" id="experience-group">
+<!-- Experience Option 1 -->
+<div class="radio-card group cursor-pointer bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-200 flex flex-col justify-between h-[168px] select-none hover:shadow-md hover:bg-surface-container-low/40" data-value="starter">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[24px]">flag</span>
+<div class="radio-indicator w-5 h-5 rounded-full bg-surface-container flex items-center justify-center transition-all">
+<div class="inner-dot w-2 h-2 rounded-full bg-white opacity-0 transition-opacity"></div>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Just starting</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">I prefer step-by-step guidance.</p>
+</div>
+</div>
+<!-- Experience Option 2 -->
+<div class="radio-card group cursor-pointer bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-200 flex flex-col justify-between h-[168px] select-none hover:shadow-md hover:bg-surface-container-low/40" data-value="adapting">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[24px]">tune</span>
+<div class="radio-indicator w-5 h-5 rounded-full bg-surface-container flex items-center justify-center transition-all">
+<div class="inner-dot w-2 h-2 rounded-full bg-white opacity-0 transition-opacity"></div>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Comfortable adapting tools</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">I can configure tools and follow setup instructions.</p>
+</div>
+</div>
+<!-- Experience Option 3 -->
+<div class="radio-card group cursor-pointer bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-200 flex flex-col justify-between h-[168px] select-none hover:shadow-md hover:bg-surface-container-low/40" data-value="coding">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[24px]">terminal</span>
+<div class="radio-indicator w-5 h-5 rounded-full bg-surface-container flex items-center justify-center transition-all">
+<div class="inner-dot w-2 h-2 rounded-full bg-white opacity-0 transition-opacity"></div>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Comfortable with code</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">I can customise and troubleshoot applications.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Question 3: Preferred Approach (Single-select radio) -->
+<section aria-labelledby="q3-title" class="flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-space-xs pb-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">03 / Delivery Method</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-secondary">Optional single-select</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-0.5" id="q3-title">
+            What would you prefer to offer?
+          </h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Starting preference, not permanent.</span>
+<button class="text-secondary hover:text-primary font-label-sm text-label-sm transition-colors cursor-pointer underline underline-offset-4 hidden" id="clear-q3" type="button">
+            Clear choice
+          </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md" id="approach-group">
+<!-- Approach Option 1 -->
+<div class="radio-card group cursor-pointer bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-200 flex flex-col justify-between h-[168px] select-none hover:shadow-md hover:bg-surface-container-low/40" data-value="service">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[24px]">supervised_user_circle</span>
+<div class="radio-indicator w-5 h-5 rounded-full bg-surface-container flex items-center justify-center transition-all">
+<div class="inner-dot w-2 h-2 rounded-full bg-white opacity-0 transition-opacity"></div>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">A service for clients</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Deliver or customise something for a business.</p>
+</div>
+</div>
+<!-- Approach Option 2 -->
+<div class="radio-card group cursor-pointer bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-200 flex flex-col justify-between h-[168px] select-none hover:shadow-md hover:bg-surface-container-low/40" data-value="product">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[24px]">inventory_2</span>
+<div class="radio-indicator w-5 h-5 rounded-full bg-surface-container flex items-center justify-center transition-all">
+<div class="inner-dot w-2 h-2 rounded-full bg-white opacity-0 transition-opacity"></div>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">A reusable product</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Build something that more than one customer can use.</p>
+</div>
+</div>
+<!-- Approach Option 3 -->
+<div class="radio-card group cursor-pointer bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-200 flex flex-col justify-between h-[168px] select-none hover:shadow-md hover:bg-surface-container-low/40" data-value="exploring">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[24px]">explore</span>
+<div class="radio-indicator w-5 h-5 rounded-full bg-surface-container flex items-center justify-center transition-all">
+<div class="inner-dot w-2 h-2 rounded-full bg-white opacity-0 transition-opacity"></div>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Still exploring</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Show me different approaches.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contextual Suggestion Preview Pill (Dynamic state feedback) -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">lightbulb</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold" id="preview-headline">Neutral catalog mode</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="preview-detail">No filters applied. You'll see all foundational pathways.</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-surface-container-highest text-secondary uppercase font-semibold tracking-wider">
+        Live preview
+      </span>
+</div>
+<!-- Actions & Submission -->
+<div class="flex flex-col items-center gap-space-md pt-space-xs">
+<div class="flex flex-col sm:flex-row items-center gap-space-md w-full sm:w-auto">
+<button class="w-full sm:w-auto px-8 h-11 bg-primary-container hover:bg-primary text-on-primary rounded-md font-label-md text-label-md font-medium transition-all shadow-sm active:scale-[0.99] flex items-center justify-center gap-space-xs" id="submit-button" type="button">
+<span class="material-symbols-outlined animate-spin text-[18px] hidden" id="submit-spinner">progress_activity</span>
+<span id="submit-label">Save preferences and continue</span>
+<span class="material-symbols-outlined text-[18px]" id="submit-arrow">arrow_forward</span>
+</button>
+<a class="w-full sm:w-auto text-center px-4 h-11 flex items-center justify-center font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-md transition-colors" data-path="dashboard-preview" href="#">
+          Skip for now
+        </a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center">
+        You can update these preferences in account settings anytime.
+      </p>
+</div>
+<!-- Visual Divider & Test Simulator Deck -->
+<div class="mt-space-lg pt-space-md bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm pb-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-outline text-[18px]">bug_report</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Interactive UX State Simulator</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Switch preview states dynamically</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="px-space-sm py-1.5 bg-surface-container hover:bg-surface-container-high rounded font-label-sm text-label-sm text-on-surface transition-colors" id="sim-reset" type="button">
+          Default (Unanswered)
+        </button>
+<button class="px-space-sm py-1.5 bg-secondary-container hover:bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm rounded transition-colors font-medium" id="sim-populate" type="button">
+          Sample Populated (CRMs + Automations / Adapting / Service)
+        </button>
+<button class="px-space-sm py-1.5 bg-surface-container hover:bg-surface-container-high rounded font-label-sm text-label-sm text-on-surface transition-colors" id="sim-saving" type="button">
+          Simulate Saving...
+        </button>
+<button class="px-space-sm py-1.5 bg-error-container text-on-error-container hover:opacity-90 rounded font-label-sm text-label-sm transition-colors font-medium" id="sim-error" type="button">
+          Simulate Save Error
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // State Store
+    const state = {
+      interests: new Set(),
+      experience: null,
+      approach: null,
+      isSaving: false
+    };
+
+    const interestCards = document.querySelectorAll('.interest-card');
+    const q2Cards = document.querySelectorAll('#experience-group .radio-card');
+    const q3Cards = document.querySelectorAll('#approach-group .radio-card');
+    const clearQ2Btn = document.getElementById('clear-q2');
+    const clearQ3Btn = document.getElementById('clear-q3');
+    const submitBtn = document.getElementById('submit-button');
+    const submitLabel = document.getElementById('submit-label');
+    const submitSpinner = document.getElementById('submit-spinner');
+    const submitArrow = document.getElementById('submit-arrow');
+    const toast = document.getElementById('toast-banner');
+    const toastIcon = document.getElementById('toast-icon');
+    const toastMsg = document.getElementById('toast-message');
+    const previewHeadline = document.getElementById('preview-headline');
+    const previewDetail = document.getElementById('preview-detail');
+
+    // UI Feedback Helpers
+    function showToast(message, type = 'success') {
+      toast.className = 'fixed top-6 right-6 z-50 transform transition-all duration-300 pointer-events-auto flex items-center gap-space-sm py-space-sm px-space-md rounded-lg shadow-xl max-w-md translate-y-0 opacity-100';
+      if (type === 'success') {
+        toast.classList.add('bg-primary-container', 'text-on-primary');
+        toastIcon.textContent = 'check_circle';
+      } else {
+        toast.classList.add('bg-error-container', 'text-on-error-container');
+        toastIcon.textContent = 'error';
+      }
+      toastMsg.textContent = message;
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-[-120%]', 'opacity-0');
+      }, 4000);
+    }
+
+    function updatePreviewHeadline() {
+      const count = state.interests.size;
+      const exp = state.experience;
+      const app = state.approach;
+
+      if (count === 0 && !exp && !app) {
+        previewHeadline.textContent = "Neutral catalog mode";
+        previewDetail.textContent = "No filters applied. You'll see all foundational pathways.";
+        return;
+      }
+
+      let summary = [];
+      if (count > 0) summary.push(`${count} interest${count > 1 ? 's' : ''}`);
+      if (exp) summary.push(exp === 'starter' ? 'Guided' : exp === 'adapting' ? 'Applied Setup' : 'Custom Code');
+      if (app) summary.push(app === 'service' ? 'Client Service' : app === 'product' ? 'Reusable Tool' : 'Exploration');
+
+      previewHeadline.textContent = "Tailoring suggestions for: " + summary.join(' · ');
+      previewDetail.textContent = "Starting feed will balance relevant playbooks with complementary blueprints.";
+    }
+
+    // Toggle multi-select interest card
+    interestCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const val = card.getAttribute('data-value');
+        const isSelected = state.interests.has(val);
+        const checkbox = card.querySelector('.check-box');
+        const checkIcon = checkbox.querySelector('.material-symbols-outlined');
+
+        if (isSelected) {
+          state.interests.delete(val);
+          card.classList.remove('bg-surface-container-low', 'shadow-sm');
+          card.classList.add('bg-surface-container-lowest');
+          checkbox.classList.remove('bg-primary');
+          checkbox.classList.add('bg-surface-container');
+          checkIcon.classList.add('opacity-0');
+        } else {
+          state.interests.add(val);
+          card.classList.add('bg-surface-container-low');
+          card.classList.remove('bg-surface-container-lowest');
+          checkbox.classList.add('bg-primary');
+          checkbox.classList.remove('bg-surface-container');
+          checkIcon.classList.remove('opacity-0');
+        }
+        updatePreviewHeadline();
+      });
+    });
+
+    // Single select Experience
+    q2Cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const val = card.getAttribute('data-value');
+        state.experience = val;
+        renderRadioGroup(q2Cards, val);
+        clearQ2Btn.classList.remove('hidden');
+        updatePreviewHeadline();
+      });
+    });
+
+    clearQ2Btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      state.experience = null;
+      renderRadioGroup(q2Cards, null);
+      clearQ2Btn.classList.add('hidden');
+      updatePreviewHeadline();
+    });
+
+    // Single select Approach
+    q3Cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const val = card.getAttribute('data-value');
+        state.approach = val;
+        renderRadioGroup(q3Cards, val);
+        clearQ3Btn.classList.remove('hidden');
+        updatePreviewHeadline();
+      });
+    });
+
+    clearQ3Btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      state.approach = null;
+      renderRadioGroup(q3Cards, null);
+      clearQ3Btn.classList.add('hidden');
+      updatePreviewHeadline();
+    });
+
+    function renderRadioGroup(cards, activeVal) {
+      cards.forEach(c => {
+        const val = c.getAttribute('data-value');
+        const indicator = c.querySelector('.radio-indicator');
+        const dot = indicator.querySelector('.inner-dot');
+        if (val === activeVal) {
+          c.classList.add('bg-surface-container-low');
+          c.classList.remove('bg-surface-container-lowest');
+          indicator.classList.add('bg-primary');
+          indicator.classList.remove('bg-surface-container');
+          dot.classList.remove('opacity-0');
+        } else {
+          c.classList.remove('bg-surface-container-low');
+          c.classList.add('bg-surface-container-lowest');
+          indicator.classList.remove('bg-primary');
+          indicator.classList.add('bg-surface-container');
+          dot.classList.add('opacity-0');
+        }
+      });
+    }
+
+    // Submission handler
+    function runSubmit(forceError = false) {
+      if (state.isSaving) return;
+      state.isSaving = true;
+
+      submitSpinner.classList.remove('hidden');
+      submitArrow.classList.add('hidden');
+      submitLabel.textContent = "Saving preferences...";
+      submitBtn.classList.add('opacity-80', 'pointer-events-none');
+
+      setTimeout(() => {
+        state.isSaving = false;
+        submitSpinner.classList.add('hidden');
+        submitArrow.classList.remove('hidden');
+        submitLabel.textContent = "Save preferences and continue";
+        submitBtn.classList.remove('opacity-80', 'pointer-events-none');
+
+        if (forceError) {
+          showToast("We couldn’t save your preferences. Try again or skip for now.", "error");
+        } else {
+          showToast("Preferences saved in this preview", "success");
+        }
+      }, 700);
+    }
+
+    submitBtn.addEventListener('click', () => runSubmit(false));
+
+    // Simulator controls
+    document.getElementById('sim-reset').addEventListener('click', () => {
+      state.interests.clear();
+      interestCards.forEach(card => {
+        card.classList.remove('bg-surface-container-low');
+        card.classList.add('bg-surface-container-lowest');
+        const box = card.querySelector('.check-box');
+        box.classList.remove('bg-primary');
+        box.classList.add('bg-surface-container');
+        box.querySelector('.material-symbols-outlined').classList.add('opacity-0');
+      });
+
+      state.experience = null;
+      renderRadioGroup(q2Cards, null);
+      clearQ2Btn.classList.add('hidden');
+
+      state.approach = null;
+      renderRadioGroup(q3Cards, null);
+      clearQ3Btn.classList.add('hidden');
+
+      updatePreviewHeadline();
+      showToast("Reset to default unanswered state", "success");
+    });
+
+    document.getElementById('sim-populate').addEventListener('click', () => {
+      // 1. Set interests
+      state.interests = new Set(['crms', 'automations']);
+      interestCards.forEach(card => {
+        const val = card.getAttribute('data-value');
+        const box = card.querySelector('.check-box');
+        const icon = box.querySelector('.material-symbols-outlined');
+        if (state.interests.has(val)) {
+          card.classList.add('bg-surface-container-low');
+          card.classList.remove('bg-surface-container-lowest');
+          box.classList.add('bg-primary');
+          box.classList.remove('bg-surface-container');
+          icon.classList.remove('opacity-0');
+        } else {
+          card.classList.remove('bg-surface-container-low');
+          card.classList.add('bg-surface-container-lowest');
+          box.classList.remove('bg-primary');
+          box.classList.add('bg-surface-container');
+          icon.classList.add('opacity-0');
+        }
+      });
+
+      // 2. Set experience
+      state.experience = 'adapting';
+      renderRadioGroup(q2Cards, 'adapting');
+      clearQ2Btn.classList.remove('hidden');
+
+      // 3. Set approach
+      state.approach = 'service';
+      renderRadioGroup(q3Cards, 'service');
+      clearQ3Btn.classList.remove('hidden');
+
+      updatePreviewHeadline();
+      showToast("Sample populated state loaded", "success");
+    });
+
+    document.getElementById('sim-saving').addEventListener('click', () => {
+      runSubmit(false);
+    });
+
+    document.getElementById('sim-error').addEventListener('click', () => {
+      runSubmit(true);
+    });
+
+  })();
+</script></main></div><footer class="w-full bg-transparent py-space-lg"><div class="max-w-[820px] mx-auto px-gutter flex flex-col sm:flex-row items-center justify-between gap-space-md text-center sm:text-left"><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 IncomeNow.in. Structured modern execution workspace.</p><div class="flex items-center gap-space-lg font-label-sm text-label-sm text-on-surface-variant"><a class="hover:text-primary transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-primary transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><a class="hover:text-primary transition-colors" data-path="support-desk" href="#">Help Desk</a></div></div></footer></body></html>

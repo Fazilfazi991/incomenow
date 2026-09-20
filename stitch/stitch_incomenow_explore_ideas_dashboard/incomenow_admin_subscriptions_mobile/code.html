@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-container": "#676d6a", "on-primary-container": "#acffd4", "surface-container-high": "#ddece2", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#aecdc1", "tertiary": "#4f5552", "surface-bright": "#eefdf3", "surface-dim": "#ceded4", "primary-fixed": "#9bf5c8", "inverse-on-surface": "#e5f4eb", "secondary-container": "#c9eadd", "on-error-container": "#93000a", "surface-container": "#e2f2e8", "on-primary-fixed-variant": "#005237", "surface-container-low": "#e8f7ed", "on-tertiary-container": "#eaefeb", "on-tertiary-fixed": "#171d1b", "primary-fixed-dim": "#80d8ad", "secondary": "#47645a", "on-secondary-container": "#4d6a60", "on-primary-fixed": "#002114", "on-surface": "#111e18", "on-primary": "#ffffff", "surface": "#eefdf3", "on-background": "#111e18", "on-tertiary-fixed-variant": "#424845", "on-secondary-fixed-variant": "#304c43", "outline-variant": "#bec9c1", "surface-container-highest": "#d7e6dc", "surface-tint": "#006c4a", "primary": "#006041", "outline": "#6f7a72", "on-secondary-fixed": "#022019", "tertiary-fixed-dim": "#c2c8c4", "on-tertiary": "#ffffff", "error": "#ba1a1a", "primary-container": "#197a56", "secondary-fixed": "#c9eadd", "inverse-surface": "#26332d", "background": "#eefdf3", "surface-variant": "#d7e6dc", "tertiary-fixed": "#dfe4e0", "on-error": "#ffffff", "on-secondary": "#ffffff", "error-container": "#ffdad6", "inverse-primary": "#80d8ad", "on-surface-variant": "#3f4943" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "2.5rem", "gutter-mobile": "1rem", "space-md": "1rem", "margin-mobile": "1rem", "margin": "2.5rem", "space-lg": "1.5rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-lg-mobile": ["Manrope"], "body-sm": ["Inter"], "headline-sm": ["Manrope"], "display-hero-mobile": ["Manrope"], "body-lg": ["Inter"], "label-sm": ["Inter"], "headline-md": ["Manrope"], "headline-lg": ["Manrope"], "display-hero": ["Manrope"], "label-md": ["Inter"], "body-md": ["Inter"] }, "fontSize": { "headline-lg-mobile": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.015em", "fontWeight": "700" }], "body-sm": ["0.8125rem", { "lineHeight": "1.5", "letterSpacing": "0.005em", "fontWeight": "400" }], "headline-sm": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-hero-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.025em", "fontWeight": "800" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "-0.005em", "fontWeight": "400" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }], "headline-md": ["1.5rem", { "lineHeight": "1.35", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-lg": ["2.25rem", { "lineHeight": "1.25", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-hero": ["3.25rem", { "lineHeight": "1.15", "letterSpacing": "-0.03em", "fontWeight": "800" }], "label-md": ["0.875rem", { "lineHeight": "1.25", "letterSpacing": "0.01em", "fontWeight": "500" }], "body-md": ["0.9375rem", { "lineHeight": "1.55", "letterSpacing": "0em", "fontWeight": "400" }] } } } };</script><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; background-color: #eefdf3; } body { overscroll-behavior-y: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-gutter-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Open admin menu" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[24px]">menu</span></button><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">IncomeNow</span><span class="px-1.5 py-0.5 rounded bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase tracking-wider font-semibold">ADMIN</span></div><span class="font-label-sm text-label-sm text-on-surface-variant line-clamp-1">Overview Dashboard</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Refresh workspace" class="w-11 h-11 flex items-center justify-center rounded-lg text-secondary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">refresh</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive Toast Notification -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 pointer-events-none opacity-0 translate-y-[-10px]" id="toastNotification">
+<div class="bg-inverse-surface text-inverse-on-surface px-4 py-2 rounded-full shadow-lg flex items-center gap-2 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-primary-fixed">check_circle</span>
+<span id="toastMessage">Identifier copied to clipboard</span>
+</div>
+</div>
+<!-- Read-Only Environment Notice Strip -->
+<div class="px-gutter-mobile pt-space-sm">
+<div class="bg-surface-container-high text-on-surface-variant p-3 rounded-lg flex items-center gap-2.5 shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-secondary shrink-0">lock</span>
+<p class="font-body-sm text-body-sm leading-snug">
+<strong class="font-medium text-on-surface">Preview Mode</strong> — Illustrative sample data. Live billing gateway not connected.
+      </p>
+</div>
+</div>
+<!-- Main Administrative Header Context -->
+<section class="px-gutter-mobile pt-space-md pb-space-sm">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold tracking-tight">Subscriptions</h1>
+<p class="font-body-md text-body-md text-secondary mt-1">Review membership access, billing status, and subscription activity.</p>
+</section>
+<!-- SECTION 1: Status Snapshot Summary (2x2 Grid) -->
+<section class="px-gutter-mobile py-space-xs">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Current Snapshot</span>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span> Synchronized
+      </span>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Metric 1 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm">Active Paid</span>
+<span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">56</span>
+<span class="font-label-sm text-label-sm text-secondary">accounts</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm">Awaiting Conf.</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">hourglass_top</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">2</span>
+<span class="font-label-sm text-label-sm text-secondary">pending</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm">Payment Issues</span>
+<span class="material-symbols-outlined text-[18px] text-error">error_outline</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-bold text-error">3</span>
+<span class="font-label-sm text-label-sm text-secondary">alerts</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm">Sched. Cancel</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">event_busy</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">4</span>
+<span class="font-label-sm text-label-sm text-secondary">retiring</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Search & Filter Controls -->
+<section class="px-gutter-mobile pt-space-md pb-space-xs">
+<!-- Search Bar -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-outline">search</span>
+<input class="w-full h-11 pl-10 pr-10 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder-secondary focus:outline-none shadow-sm" id="subSearchInput" placeholder="Search users, emails or sub IDs..." type="search"/>
+<button class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface p-1" id="clearSearchBtn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Filter Pills (Scrollable) -->
+<div class="flex items-center gap-1.5 overflow-x-auto py-3 no-scrollbar -mx-gutter-mobile px-gutter-mobile">
+<button class="filter-pill h-8 px-3.5 rounded-full font-label-sm text-label-sm whitespace-nowrap transition-colors bg-primary text-on-primary" data-filter="all">
+        All (6)
+      </button>
+<button class="filter-pill h-8 px-3.5 rounded-full font-label-sm text-label-sm whitespace-nowrap transition-colors bg-surface-container-high text-on-surface-variant" data-filter="awaiting">
+        Awaiting (1)
+      </button>
+<button class="filter-pill h-8 px-3.5 rounded-full font-label-sm text-label-sm whitespace-nowrap transition-colors bg-surface-container-high text-on-surface-variant" data-filter="active">
+        Active (3)
+      </button>
+<button class="filter-pill h-8 px-3.5 rounded-full font-label-sm text-label-sm whitespace-nowrap transition-colors bg-surface-container-high text-on-surface-variant" data-filter="issues">
+        Issues (1)
+      </button>
+<button class="filter-pill h-8 px-3.5 rounded-full font-label-sm text-label-sm whitespace-nowrap transition-colors bg-surface-container-high text-on-surface-variant" data-filter="cancellations">
+        Cancellations (1)
+      </button>
+<button class="filter-pill h-8 px-3.5 rounded-full font-label-sm text-label-sm whitespace-nowrap transition-colors bg-surface-container-high text-on-surface-variant" data-filter="ended">
+        Ended (1)
+      </button>
+</div>
+<div class="flex items-center justify-between pt-0.5">
+<span class="font-label-sm text-label-sm text-secondary" id="filteredCountText">Showing 6 subscription records</span>
+<button class="font-label-sm text-label-sm text-primary font-medium hover:underline" id="resetFiltersLink">Reset filters</button>
+</div>
+</section>
+<!-- SECTION 3: MOBILE SUBSCRIPTION LIST (Stacked Account Cards) -->
+<section class="px-gutter-mobile py-space-sm flex flex-col gap-3" id="subscriptionsContainer">
+<!-- CARD 1: Morgan Chen -->
+<article class="sub-card bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col gap-3 transition-transform active:scale-[0.99]" data-query="morgan chen sub-2025-0104 monthly" data-status="active">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-label-md">
+            MC
+          </div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface leading-tight">Morgan Chen</h2>
+<p class="font-body-sm text-body-sm text-secondary">Next billing: Apr 19, 2025</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-medium">
+            Billing: Active
+          </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container text-primary font-medium">
+            Paid Access: Active
+          </span>
+</div>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex items-center justify-between font-body-sm text-body-sm">
+<span class="font-medium text-on-surface tracking-tight">SUB-2025-0104</span>
+<span class="text-secondary font-medium">Monthly cycle</span>
+</div>
+<button class="w-full h-11 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary flex items-center justify-center gap-1.5 font-label-md text-label-md font-semibold transition-colors" onclick="openDetailsSheet('Morgan Chen', 'mchen@example.com', 'USR-0284', 'SUB-2025-0104', 'Active', 'Active', 'Apr 19, 2025', 'None scheduled', false)">
+<span>View details</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</article>
+<!-- CARD 2: Samira Patel -->
+<article class="sub-card bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col gap-3 transition-transform active:scale-[0.99]" data-query="samira patel sub-2025-0188 monthly" data-status="active">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-label-md">
+            SP
+          </div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface leading-tight">Samira Patel</h2>
+<p class="font-body-sm text-body-sm text-secondary">Next billing: Apr 18, 2025</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-medium">
+            Billing: Active
+          </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container text-primary font-medium">
+            Paid Access: Active
+          </span>
+</div>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex items-center justify-between font-body-sm text-body-sm">
+<span class="font-medium text-on-surface tracking-tight">SUB-2025-0188</span>
+<span class="text-secondary font-medium">Monthly cycle</span>
+</div>
+<button class="w-full h-11 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary flex items-center justify-center gap-1.5 font-label-md text-label-md font-semibold transition-colors" onclick="openDetailsSheet('Samira Patel', 'spatel@workmail.io', 'USR-0419', 'SUB-2025-0188', 'Active', 'Active', 'Apr 18, 2025', 'None scheduled', false)">
+<span>View details</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</article>
+<!-- CARD 3: David Kim (With Scheduled Cancellation) -->
+<article class="sub-card bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col gap-3 transition-transform active:scale-[0.99]" data-query="david kim sub-2025-0142 monthly cancellation" data-status="cancellations">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-label-md">
+            DK
+          </div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface leading-tight">David Kim</h2>
+<p class="font-body-sm text-body-sm text-secondary">No further billing</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-medium">
+            Billing: Active
+          </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant font-medium">
+            Cancellation Sched.
+          </span>
+</div>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col gap-1 text-body-sm">
+<div class="flex items-center justify-between font-body-sm">
+<span class="font-medium text-on-surface tracking-tight">SUB-2025-0142</span>
+<span class="text-secondary font-medium">Monthly cycle</span>
+</div>
+<div class="flex items-center gap-1.5 text-secondary font-label-sm text-label-sm pt-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">schedule</span>
+<span>Access retained until <strong>Apr 16, 2025</strong></span>
+</div>
+</div>
+<button class="w-full h-11 rounded-lg bg-primary text-on-primary flex items-center justify-center gap-1.5 font-label-md text-label-md font-semibold transition-colors" onclick="openDetailsSheet('David Kim', 'dkim@example.com', 'USR-0312', 'SUB-2025-0142', 'Active (Cancelling)', 'Active', 'Apr 16, 2025', 'Cancellation requested by user', true)">
+<span>View details</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</article>
+<!-- CARD 4: Elena Rostova (Payment Issue) -->
+<article class="sub-card bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col gap-3 transition-transform active:scale-[0.99]" data-query="elena rostova sub-2025-0310 issue payment" data-status="issues">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-error-container text-on-error-container flex items-center justify-center font-bold text-label-md">
+            ER
+          </div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface leading-tight">Elena Rostova</h2>
+<p class="font-body-sm text-body-sm text-error font-medium">Payment needs attention</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container font-medium">
+            Payment issue
+          </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-high text-tertiary font-medium">
+            Access: Unknown
+          </span>
+</div>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex items-center justify-between font-body-sm text-body-sm">
+<span class="font-medium text-on-surface tracking-tight">SUB-2025-0310</span>
+<span class="text-secondary font-medium">Charge failure: Card declined</span>
+</div>
+<button class="w-full h-11 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary flex items-center justify-center gap-1.5 font-label-md text-label-md font-semibold transition-colors" onclick="openDetailsSheet('Elena Rostova', 'elena.rostova@designco.net', 'USR-0881', 'SUB-2025-0310', 'Failed / Retrying', 'Grace Period / Unknown', 'Pending resolution', 'Retry scheduled in 24h', false)">
+<span>View details</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</article>
+<!-- CARD 5: Jordan Lee (Awaiting Confirmation) -->
+<article class="sub-card bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col gap-3 transition-transform active:scale-[0.99]" data-query="jordan lee sub-2025-0391 confirming" data-status="awaiting">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-bold text-label-md">
+            JL
+          </div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface leading-tight">Jordan Lee</h2>
+<p class="font-body-sm text-body-sm text-secondary">Awaiting bank verification</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-high text-tertiary font-medium">
+            Confirming
+          </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-high text-tertiary font-medium">
+            Access: Unknown
+          </span>
+</div>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex items-center justify-between font-body-sm text-body-sm">
+<span class="font-medium text-on-surface tracking-tight">SUB-2025-0391</span>
+<span class="text-secondary font-medium">UPI mandate processing</span>
+</div>
+<button class="w-full h-11 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary flex items-center justify-center gap-1.5 font-label-md text-label-md font-semibold transition-colors" onclick="openDetailsSheet('Jordan Lee', 'jordan.lee@startup.io', 'USR-0943', 'SUB-2025-0391', 'Pending Confirmation', 'Provisioning', 'TBD', 'Awaiting Webhook', false)">
+<span>View details</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</article>
+<!-- CARD 6: Carlos Mendez (Ended / Inactive) -->
+<article class="sub-card bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col gap-3 transition-transform active:scale-[0.99]" data-query="carlos mendez sub-2024-0982 ended inactive" data-status="ended">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container text-tertiary flex items-center justify-center font-bold text-label-md">
+            CM
+          </div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface-variant leading-tight">Carlos Mendez</h2>
+<p class="font-body-sm text-body-sm text-secondary">Concluded Dec 12, 2024</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container text-secondary font-medium">
+            Ended
+          </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container text-secondary font-medium">
+            Access: Inactive
+          </span>
+</div>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex items-center justify-between font-body-sm text-body-sm">
+<span class="font-medium text-on-surface tracking-tight">SUB-2024-0982</span>
+<span class="text-secondary font-medium">Terminated (Expired)</span>
+</div>
+<button class="w-full h-11 rounded-lg bg-surface-container hover:bg-surface-container-high text-secondary flex items-center justify-center gap-1.5 font-label-md text-label-md font-semibold transition-colors" onclick="openDetailsSheet('Carlos Mendez', 'carlos.m@buildlab.org', 'USR-0115', 'SUB-2024-0982', 'Ended', 'Inactive', 'Dec 12, 2024', 'Natural expiration', false)">
+<span>View details</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</article>
+<!-- Empty State Representation -->
+<div class="hidden bg-surface-container-lowest p-8 rounded-lg shadow-sm text-center flex-col items-center justify-center gap-3 my-4" id="emptyState">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">search_off</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">No subscriptions found</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Try adjusting your search criteria or switching filter categories.</p>
+</div>
+<button class="mt-2 h-10 px-4 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-medium" onclick="resetAllFilters()">
+        Show all subscriptions
+      </button>
+</div>
+<!-- Loading Skeleton Simulation -->
+<div class="hidden flex-col gap-3" id="loadingSkeleton">
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm animate-pulse flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container"></div>
+<div class="space-y-1.5">
+<div class="w-24 h-3 bg-surface-container rounded"></div>
+<div class="w-32 h-2.5 bg-surface-container-high rounded"></div>
+</div>
+</div>
+<div class="w-16 h-4 bg-surface-container rounded-full"></div>
+</div>
+<div class="w-full h-8 bg-surface-container rounded"></div>
+<div class="w-full h-10 bg-surface-container-high rounded"></div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm animate-pulse flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container"></div>
+<div class="space-y-1.5">
+<div class="w-28 h-3 bg-surface-container rounded"></div>
+<div class="w-36 h-2.5 bg-surface-container-high rounded"></div>
+</div>
+</div>
+<div class="w-16 h-4 bg-surface-container rounded-full"></div>
+</div>
+<div class="w-full h-8 bg-surface-container rounded"></div>
+<div class="w-full h-10 bg-surface-container-high rounded"></div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: MOBILE QA & DEMO CONTROLS TOOLBAR -->
+<section class="px-gutter-mobile py-space-md mt-4">
+<div class="bg-surface-container p-4 rounded-lg shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">tune</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">QA Simulator</h2>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 rounded text-secondary font-medium">Mobile Tests</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-10 px-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-medium text-left flex items-center justify-between shadow-xs" onclick="qaResetList()">
+<span class="truncate">Reset List (6)</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">refresh</span>
+</button>
+<button class="h-10 px-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-medium text-left flex items-center justify-between shadow-xs" onclick="qaOpenDavidKim()">
+<span class="truncate">Sheet: David Kim</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</button>
+<button class="h-10 px-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-medium text-left flex items-center justify-between shadow-xs" onclick="qaFilterAttention()">
+<span class="truncate">Filter: Issues</span>
+<span class="material-symbols-outlined text-[16px] text-error">priority_high</span>
+</button>
+<button class="h-10 px-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-medium text-left flex items-center justify-between shadow-xs" onclick="qaFilterCancel()">
+<span class="truncate">Filter: Cancelling</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">cancel</span>
+</button>
+<button class="h-10 px-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-medium text-left flex items-center justify-between shadow-xs" onclick="qaSimulateEmpty()">
+<span class="truncate">Simulate Empty</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">block</span>
+</button>
+<button class="h-10 px-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-medium text-left flex items-center justify-between shadow-xs" onclick="qaSimulateLoading()">
+<span class="truncate">Simulate Skeleton</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">hourglass_bottom</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 5: ACCESSIBLE SUBSCRIPTION DETAILS FULL-HEIGHT SHEET (MODAL OVERLAY) -->
+<div class="fixed inset-0 bg-inverse-surface/40 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none flex flex-col justify-end" id="detailsBackdrop">
+<!-- Sliding Sheet Drawer -->
+<div aria-labelledby="detailsSheetTitle" aria-modal="true" class="w-full max-h-[92vh] bg-surface-container-lowest rounded-t-2xl shadow-2xl flex flex-col overflow-hidden transform translate-y-full transition-transform duration-300 ease-out" id="detailsDrawer" role="dialog">
+<!-- Top Handle Bar -->
+<div class="w-full flex flex-col items-center pt-3 pb-1 cursor-grab" onclick="closeDetailsSheet()">
+<div class="w-12 h-1.5 rounded-full bg-outline-variant"></div>
+</div>
+<!-- Sheet Header Bar -->
+<div class="px-gutter-mobile py-2.5 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Audit Record</span>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface" id="detailsSheetTitle">Subscription Details</h2>
+</div>
+<button aria-label="Close subscription details drawer" class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface" onclick="closeDetailsSheet()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Scrollable Sheet Content -->
+<div class="overflow-y-auto px-gutter-mobile py-space-sm flex flex-col gap-4">
+<!-- SECTION A: Account & IDs -->
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Account Identity</span>
+<button class="flex items-center gap-1 font-label-sm text-label-sm text-primary font-medium" onclick="copyToClipboard('drawerUserId', 'User ID copied')">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span>Copy ID</span>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container font-bold text-headline-sm flex items-center justify-center" id="drawerAvatar">
+              DK
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface truncate" id="drawerUserName">David Kim</span>
+<span class="font-body-sm text-body-sm text-secondary truncate" id="drawerUserEmail">dkim@example.com</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2">
+<div class="bg-surface-container-lowest p-2.5 rounded-lg">
+<span class="font-label-sm text-label-sm text-secondary block">Internal User ID</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface" id="drawerUserId">USR-0312</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-lg">
+<span class="font-label-sm text-label-sm text-secondary block">Subscription ID</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface" id="drawerSubId">SUB-2025-0142</span>
+</div>
+</div>
+<div class="pt-1">
+<a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold hover:underline" href="javascript:void(0)" onclick="notifyUserContext();">
+<span>Inspect complete user profile</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- SECTION B: Billing & Access Status -->
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col gap-3">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Access &amp; Entitlements</span>
+<div class="flex items-center justify-between py-1">
+<span class="font-body-md text-body-md text-secondary">Status</span>
+<span class="font-label-md text-label-md font-semibold bg-secondary-container text-on-secondary-container px-2.5 py-0.5 rounded-full" id="drawerBillingStatus">
+              Active with Cancellation
+            </span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="font-body-md text-body-md text-secondary">Access Validity</span>
+<span class="font-body-md text-body-md font-medium text-on-surface text-right" id="drawerAccessDate">
+              Retained until Apr 16, 2025
+            </span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="font-body-md text-body-md text-secondary">Catalog Pricing</span>
+<span class="font-body-md text-body-md text-outline italic">
+              Not configured in this preview
+            </span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="font-body-md text-body-md text-secondary">Scheduled Changes</span>
+<span class="font-body-md text-body-md font-medium text-on-surface text-right" id="drawerChangeNotes">
+              No further renewals
+            </span>
+</div>
+</div>
+<!-- SECTION C: Payment Records -->
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Payment Records</span>
+<span class="font-label-sm text-label-sm text-tertiary">Mock Ledger</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+            Payment records not connected in preview environment.
+          </p>
+<!-- Mock Ledger Entry -->
+<div class="bg-surface-container-lowest p-3 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-primary">receipt_long</span>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Invoice #INV-2025-081</p>
+<p class="font-body-sm text-body-sm text-secondary">Mar 16, 2025 • Auto-debit</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-medium">
+              Settled
+            </span>
+</div>
+</div>
+<!-- SECTION D: Subscription Activity Timeline -->
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col gap-3">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Audit Trail</span>
+<div class="relative pl-6 space-y-4 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-outline-variant">
+<!-- Event 1 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-surface"></div>
+</div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Subscription Created</p>
+<p class="font-body-sm text-body-sm text-secondary">Mar 16, 2025 • 09:30 AM via Web Checkout</p>
+</div>
+<!-- Event 2 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-surface"></div>
+</div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Initial Payment Captured</p>
+<p class="font-body-sm text-body-sm text-secondary">Mar 16, 2025 • 09:32 AM via Mandate</p>
+</div>
+<!-- Event 3 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-tertiary flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-surface"></div>
+</div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Cancellation Scheduled</p>
+<p class="font-body-sm text-body-sm text-secondary">Mar 19, 2025 • 04:12 PM by User Portal</p>
+</div>
+</div>
+</div>
+<!-- Guard Notice: Zero Mutation Boundary -->
+<div class="bg-surface-container-highest p-3 rounded-lg flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-tertiary shrink-0 mt-0.5">shield</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+<strong>Zero mutation boundary:</strong> Administrative oversight dashboard only. Modification, refund triggers, or forced cancellations must be performed directly in merchant billing gateways.
+          </p>
+</div>
+<div class="pt-2 pb-6">
+<button class="w-full h-12 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-bold transition-colors" onclick="closeDetailsSheet()">
+            Dismiss Details
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Client-Side Logic -->
+<script>
+    // Search & Filter state
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    const searchInput = document.getElementById('subSearchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.sub-card');
+    const countDisplay = document.getElementById('filteredCountText');
+    const emptyState = document.getElementById('emptyState');
+    const loadingSkeleton = document.getElementById('loadingSkeleton');
+
+    function updateCardVisibility() {
+      let visibleCount = 0;
+      const normalizedQuery = searchQuery.trim().toLowerCase();
+
+      cards.forEach(card => {
+        const cardStatus = card.getAttribute('data-status');
+        const cardText = card.getAttribute('data-query') || '';
+
+        const matchesFilter = (activeFilter === 'all') || (cardStatus === activeFilter);
+        const matchesSearch = normalizedQuery === '' || cardText.toLowerCase().includes(normalizedQuery);
+
+        if (matchesFilter && matchesSearch) {
+          card.classList.remove('hidden');
+          card.classList.add('flex');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('flex');
+        }
+      });
+
+      if (visibleCount === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+      }
+
+      countDisplay.textContent = `Showing ${visibleCount} subscription record${visibleCount === 1 ? '' : 's'}`;
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      if (searchQuery.length > 0) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+      updateCardVisibility();
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      updateCardVisibility();
+      searchInput.focus();
+    });
+
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const target = pill.getAttribute('data-filter');
+        activeFilter = target;
+
+        filterPills.forEach(p => {
+          p.classList.remove('bg-primary', 'text-on-primary');
+          p.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+        });
+
+        pill.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+        pill.classList.add('bg-primary', 'text-on-primary');
+
+        updateCardVisibility();
+      });
+    });
+
+    function resetAllFilters() {
+      activeFilter = 'all';
+      searchQuery = '';
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+
+      filterPills.forEach(p => {
+        if (p.getAttribute('data-filter') === 'all') {
+          p.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+          p.classList.add('bg-primary', 'text-on-primary');
+        } else {
+          p.classList.remove('bg-primary', 'text-on-primary');
+          p.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+        }
+      });
+
+      emptyState.classList.add('hidden');
+      emptyState.classList.remove('flex');
+      loadingSkeleton.classList.add('hidden');
+      loadingSkeleton.classList.remove('flex');
+
+      updateCardVisibility();
+    }
+
+    document.getElementById('resetFiltersLink').addEventListener('click', resetAllFilters);
+
+    // Modal Sheet Handlers
+    const backdrop = document.getElementById('detailsBackdrop');
+    const drawer = document.getElementById('detailsDrawer');
+
+    function openDetailsSheet(name, email, uid, subId, billStatus, accessStatus, accessDate, changes, isCancellation) {
+      document.getElementById('drawerUserName').textContent = name;
+      document.getElementById('drawerUserEmail').textContent = email;
+      document.getElementById('drawerUserId').textContent = uid;
+      document.getElementById('drawerSubId').textContent = subId;
+      document.getElementById('drawerBillingStatus').textContent = billStatus;
+      document.getElementById('drawerAccessDate').textContent = accessDate;
+      document.getElementById('drawerChangeNotes').textContent = changes;
+
+      // Initials avatar
+      const initials = name.split(' ').map(n => n[0]).join('');
+      document.getElementById('drawerAvatar').textContent = initials;
+
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop.classList.add('opacity-100', 'pointer-events-auto');
+      drawer.classList.remove('translate-y-full');
+      drawer.classList.add('translate-y-0');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDetailsSheet() {
+      drawer.classList.remove('translate-y-0');
+      drawer.classList.add('translate-y-full');
+      backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    // QA Simulator Controls
+    function qaResetList() {
+      resetAllFilters();
+      showToast('Restored default list with 6 items');
+    }
+
+    function qaOpenDavidKim() {
+      openDetailsSheet(
+        'David Kim', 
+        'dkim@example.com', 
+        'USR-0312', 
+        'SUB-2025-0142', 
+        'Active (Cancelling)', 
+        'Active', 
+        'Apr 16, 2025', 
+        'Cancellation requested by user', 
+        true
+      );
+    }
+
+    function qaFilterAttention() {
+      searchInput.value = '';
+      searchQuery = '';
+      const targetPill = document.querySelector('[data-filter="issues"]');
+      if (targetPill) targetPill.click();
+      showToast('Filtered by: Payment Issues');
+    }
+
+    function qaFilterCancel() {
+      searchInput.value = '';
+      searchQuery = '';
+      const targetPill = document.querySelector('[data-filter="cancellations"]');
+      if (targetPill) targetPill.click();
+      showToast('Filtered by: Scheduled Cancellations');
+    }
+
+    function qaSimulateEmpty() {
+      cards.forEach(c => {
+        c.classList.add('hidden');
+        c.classList.remove('flex');
+      });
+      loadingSkeleton.classList.add('hidden');
+      loadingSkeleton.classList.remove('flex');
+      emptyState.classList.remove('hidden');
+      emptyState.classList.add('flex');
+      countDisplay.textContent = 'Showing 0 subscription records';
+      showToast('Simulated empty results');
+    }
+
+    function qaSimulateLoading() {
+      cards.forEach(c => {
+        c.classList.add('hidden');
+        c.classList.remove('flex');
+      });
+      emptyState.classList.add('hidden');
+      emptyState.classList.remove('flex');
+      loadingSkeleton.classList.remove('hidden');
+      loadingSkeleton.classList.add('flex');
+      countDisplay.textContent = 'Loading subscription records...';
+      showToast('Simulating skeleton loader');
+
+      setTimeout(() => {
+        resetAllFilters();
+      }, 1400);
+    }
+
+    // Toast and Micro-interaction helpers
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const msg = document.getElementById('toastMessage');
+      msg.textContent = message;
+      toast.classList.remove('opacity-0', 'translate-y-[-10px]');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-[-10px]');
+      }, 2000);
+    }
+
+    function copyToClipboard(elementId, successMsg) {
+      const text = document.getElementById(elementId).innerText;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(successMsg);
+        });
+      } else {
+        showToast(successMsg);
+      }
+    }
+
+    function notifyUserContext() {
+      showToast('Read-only: Navigating to User Profile is disabled in demo');
+    }
+  </script>
+</div></main></body></html>

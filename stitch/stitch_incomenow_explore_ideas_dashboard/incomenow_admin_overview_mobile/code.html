@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container": "#e2f2e8", "surface-tint": "#006c4a", "tertiary-container": "#676d6a", "on-primary-fixed-variant": "#005237", "surface": "#eefdf3", "on-primary-fixed": "#002114", "on-primary": "#ffffff", "on-primary-container": "#acffd4", "on-tertiary-container": "#eaefeb", "inverse-on-surface": "#e5f4eb", "error": "#ba1a1a", "on-error": "#ffffff", "background": "#eefdf3", "on-tertiary-fixed-variant": "#424845", "outline-variant": "#bec9c1", "on-error-container": "#93000a", "on-surface-variant": "#3f4943", "secondary-fixed-dim": "#aecdc1", "outline": "#6f7a72", "surface-dim": "#ceded4", "on-secondary-fixed-variant": "#304c43", "on-tertiary": "#ffffff", "tertiary-fixed-dim": "#c2c8c4", "secondary-container": "#c9eadd", "surface-container-high": "#ddece2", "on-secondary-container": "#4d6a60", "surface-container-highest": "#d7e6dc", "primary": "#006041", "primary-container": "#197a56", "primary-fixed": "#9bf5c8", "on-tertiary-fixed": "#171d1b", "surface-container-lowest": "#ffffff", "error-container": "#ffdad6", "surface-container-low": "#e8f7ed", "on-background": "#111e18", "surface-variant": "#d7e6dc", "tertiary": "#4f5552", "surface-bright": "#eefdf3", "inverse-primary": "#80d8ad", "primary-fixed-dim": "#80d8ad", "on-surface": "#111e18", "secondary-fixed": "#c9eadd", "tertiary-fixed": "#dfe4e0", "inverse-surface": "#26332d", "on-secondary": "#ffffff", "on-secondary-fixed": "#022019", "secondary": "#47645a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter": "1.5rem", "space-sm": "0.5rem", "space-md": "1rem", "margin": "2.5rem", "space-xl": "2.5rem", "gutter-mobile": "1rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "margin-mobile": "1rem" }, fontFamily: { "headline-lg": ["Manrope"], "label-md": ["Inter"], "display-hero-mobile": ["Manrope"], "headline-md": ["Manrope"], "headline-sm": ["Manrope"], "body-md": ["Inter"], "body-lg": ["Inter"], "display-hero": ["Manrope"], "body-sm": ["Inter"], "headline-lg-mobile": ["Manrope"], "label-sm": ["Inter"] }, fontSize: { "headline-lg": ["2.25rem", { "lineHeight": "1.25", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["0.875rem", { "lineHeight": "1.25", "letterSpacing": "0.01em", "fontWeight": "500" }], "display-hero-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.025em", "fontWeight": "800" }], "headline-md": ["1.5rem", { "lineHeight": "1.35", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-sm": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["0.9375rem", { "lineHeight": "1.55", "letterSpacing": "0em", "fontWeight": "400" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "-0.005em", "fontWeight": "400" }], "display-hero": ["3.25rem", { "lineHeight": "1.15", "letterSpacing": "-0.03em", "fontWeight": "800" }], "body-sm": ["0.8125rem", { "lineHeight": "1.5", "letterSpacing": "0.005em", "fontWeight": "400" }], "headline-lg-mobile": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.015em", "fontWeight": "700" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#eefdf3;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}#admin-drawer-toggle:checked ~ #admin-drawer-scrim{opacity:1;pointer-events:auto;}#admin-drawer-toggle:checked ~ #admin-drawer-panel{transform:translateX(0);}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen relative selection:bg-secondary-container selection:text-on-secondary-container"><input class="hidden peer" id="admin-drawer-toggle" type="checkbox"/><div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" id="admin-drawer-scrim" onclick="document.getElementById('admin-drawer-toggle').checked=false;"></div><aside class="fixed top-0 left-0 bottom-0 z-50 w-[290px] max-w-[82vw] bg-surface-container-lowest shadow-[0_12px_32px_-4px_rgba(16,45,37,0.12)] -translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between pt-safe pb-safe" id="admin-drawer-panel"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface">IncomeNow</span><span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Admin</span></div><label class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer" for="admin-drawer-toggle"><span class="material-symbols-outlined text-[20px]">close</span></label></div><nav class="px-space-sm pt-space-sm flex flex-col gap-1" data-active-classes="bg-secondary-container text-on-secondary-container font-semibold"><a aria-current="page" class="flex items-center gap-space-md px-space-md h-11 rounded-lg transition-colors bg-secondary-container text-on-secondary-container font-semibold" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-label-md text-label-md">Overview</span></a><a class="flex items-center gap-space-md px-space-md h-11 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="users" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-label-md text-label-md">Users</span></a><a class="flex items-center gap-space-md px-space-md h-11 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="subscriptions" href="#"><span class="material-symbols-outlined text-[20px]">credit_card</span><span class="font-label-md text-label-md">Subscriptions</span></a><a class="flex items-center gap-space-md px-space-md h-11 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="view-website" href="#"><span class="material-symbols-outlined text-[20px]">open_in_new</span><span class="font-label-md text-label-md">View website</span></a><a class="flex items-center gap-space-md px-space-md h-11 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="help-&amp;-support" href="#"><span class="material-symbols-outlined text-[20px]">contact_support</span><span class="font-label-md text-label-md">Help &amp; Support</span></a></nav></div><div class="p-space-md"><div class="p-space-sm bg-surface-container-low rounded-lg flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-label-sm text-label-sm text-on-surface truncate">Admin Console</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">v2.4.0 • Live</span></div></div></div></aside><header class="fixed top-0 w-full z-40 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center justify-between"><div class="flex items-center gap-space-sm"><label aria-label="Open navigation menu" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-container transition-colors cursor-pointer" for="admin-drawer-toggle"><span class="material-symbols-outlined text-[22px]">menu</span></label><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">IncomeNow</span><span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm">Admin</span></div></div><div class="flex items-center gap-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface px-space-md pb-space-xl flex-1"><div class="flex flex-col w-full gap-space-lg pb-space-xl">
+<!-- Sub-Header Status & Notice Bar -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm">Preview mode — illustrative sample data</span>
+</div>
+<button class="flex items-center gap-1 px-2 py-1 rounded-md text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all text-label-sm font-label-sm" id="refreshBtn" title="Live reporting not connected" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">sync</span>
+<span>Refresh</span>
+</button>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+        Sample period: <strong class="text-on-surface font-medium">Feb 20 – Mar 21, 2025</strong>
+</span>
+<span class="font-label-sm text-label-sm text-tertiary">Read-only oversight</span>
+</div>
+<!-- Date Range Selector Pills -->
+<div class="flex items-center gap-2 pt-1 overflow-x-auto no-scrollbar" id="dateFilterContainer">
+<button class="date-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-inverse-surface text-inverse-on-surface shadow-sm" data-range="30d" type="button">
+        Last 30d
+      </button>
+<button class="date-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container text-on-surface-variant hover:text-on-surface" data-range="7d" type="button">
+        Last 7d
+      </button>
+<button class="date-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center gap-1" data-range="custom" type="button">
+<span>Custom</span>
+<span class="material-symbols-outlined text-[14px]">tune</span>
+</button>
+</div>
+</div>
+<!-- Real-time Banner Notice -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">info</span>
+<div class="flex flex-col gap-0.5">
+<p class="font-label-md text-label-md text-on-surface font-semibold">Live reporting queue active</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Production database snapshot loaded. Synthetic telemetry attached for Batch 8A operational evaluation.</p>
+</div>
+</div>
+<!-- SECTION 1: KEY METRICS GRID -->
+<section class="flex flex-col gap-space-sm" id="keyMetricsSection">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Key Metrics</h2>
+<span class="font-label-sm text-label-sm text-tertiary">30-day window</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5" id="metricsGrid">
+<!-- Card 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between min-h-[110px]">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm truncate">Reg. Accounts</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">group</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight metric-val">428</span>
+<span class="font-body-sm text-body-sm text-tertiary text-[11px] truncate">As of period end</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between min-h-[110px]">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm truncate">New Registrations</span>
+<span class="material-symbols-outlined text-[18px] text-primary">person_add</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight metric-val">74</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">+18%</span>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary text-[11px] truncate">During 30d</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between min-h-[110px]">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm truncate">Active Users</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">how_to_reg</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight metric-val">182</span>
+<span class="font-body-sm text-body-sm text-tertiary text-[11px] truncate">Deduplicated</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between min-h-[110px]">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm truncate">Paid Members</span>
+<span class="material-symbols-outlined text-[18px] text-primary">verified</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight metric-val">56</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">13.1% cvr</span>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary text-[11px] truncate">As of period end</span>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between min-h-[110px]">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm truncate">Projects Started</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">rocket_launch</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight metric-val">89</span>
+<span class="font-body-sm text-body-sm text-tertiary text-[11px] truncate">During 30d</span>
+</div>
+</div>
+<!-- Card 6: Pending Tracking -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between min-h-[110px]">
+<div class="flex items-center justify-between text-tertiary">
+<span class="font-label-sm text-label-sm truncate">Deliveries</span>
+<span class="material-symbols-outlined text-[18px]">pending</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant leading-tight">Tracking pending</span>
+<span class="font-body-sm text-body-sm text-tertiary text-[11px] truncate">Worker queue v2</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: ACTIVITY OVER TIME (CHART) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Platform activity</h2>
+<span class="font-label-sm text-label-sm text-tertiary">Trend analysis</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<!-- Activity Metric Pill Tabs -->
+<div class="flex items-center gap-1.5 p-1 bg-surface-container rounded-lg" id="activityTypeToggle">
+<button class="flex-1 py-1 px-2 rounded-md font-label-sm text-label-sm text-center transition-all bg-surface-container-lowest text-on-surface font-semibold shadow-xs" data-type="reg" type="button">
+          Registrations
+        </button>
+<button class="flex-1 py-1 px-2 rounded-md font-label-sm text-label-sm text-center transition-all text-on-surface-variant hover:text-on-surface" data-type="users" type="button">
+          Active users
+        </button>
+<button class="flex-1 py-1 px-2 rounded-md font-label-sm text-label-sm text-center transition-all text-on-surface-variant hover:text-on-surface" data-type="proj" type="button">
+          Projects
+        </button>
+</div>
+<!-- SVG Chart Canvas -->
+<div class="w-full flex flex-col gap-2 pt-1">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span id="chartPeakText">Peak: 6 reg / day</span>
+<span class="text-tertiary">Avg: 2.5 / day</span>
+</div>
+<div class="w-full h-36 relative flex items-end">
+<svg class="w-full h-full overflow-visible" id="activitySvgChart" preserveaspectratio="none" viewbox="0 0 340 120">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#197a56" stop-opacity="0.32"></stop>
+<stop offset="100%" stop-color="#197a56" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Guidelines -->
+<line stroke="#d7e6dc" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="340" y1="20" y2="20"></line>
+<line stroke="#d7e6dc" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="340" y1="65" y2="65"></line>
+<line stroke="#d7e6dc" stroke-width="1" x1="0" x2="340" y1="110" y2="110"></line>
+<!-- Dynamic Fill Area -->
+<path d="M 0 100 Q 40 85 80 90 T 160 55 T 230 40 T 290 25 T 340 50 L 340 110 L 0 110 Z" fill="url(#chartGradient)" id="chartArea"></path>
+<!-- Dynamic Stroke Curve -->
+<path d="M 0 100 Q 40 85 80 90 T 160 55 T 230 40 T 290 25 T 340 50" fill="none" id="chartPath" stroke="#006041" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<!-- Highlight Anchor Dots -->
+<circle cx="290" cy="25" fill="#006041" id="peakDot" r="4.5" stroke="#ffffff" stroke-width="2"></circle>
+</svg>
+</div>
+<!-- Axis Labels -->
+<div class="flex justify-between text-tertiary font-label-sm text-label-sm pt-1">
+<span>Feb 20</span>
+<span>Mar 03</span>
+<span>Mar 12</span>
+<span>Mar 21</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: MEMBERSHIP ATTENTION (OPERATIONAL SNAPSHOT) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Membership attention</h2>
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">9 alerts</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3">
+<div class="flex flex-col divide-y divide-surface-container">
+<!-- Item 1 -->
+<div class="flex items-center justify-between py-2.5">
+<div class="flex items-center gap-2.5">
+<span class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">hourglass_top</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Awaiting confirmation</span>
+<span class="font-body-sm text-body-sm text-tertiary">Payment gateway webhook pending</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">2</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between py-2.5">
+<div class="flex items-center gap-2.5">
+<span class="w-8 h-8 rounded-lg bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-[18px]">error</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Payment issues</span>
+<span class="font-body-sm text-body-sm text-error">Requires manual review</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-error">3</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between py-2.5">
+<div class="flex items-center gap-2.5">
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">event_busy</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Scheduled cancellations</span>
+<span class="font-body-sm text-body-sm text-tertiary">Ending at billing cycle conclusion</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">4</span>
+</div>
+</div>
+<a class="w-full h-11 rounded-lg bg-surface-container flex items-center justify-center gap-2 text-on-surface font-label-md text-label-md font-semibold hover:bg-secondary-container transition-colors active:scale-98" href="#">
+<span>View subscriptions</span>
+<span class="font-label-sm text-label-sm text-tertiary">(Batch 8C handoff)</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- SECTION 3: IDEA PERFORMANCE (READ-ONLY STACKED CARDS) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Idea performance</h2>
+<span class="font-body-sm text-body-sm text-tertiary">Read-only oversight • Sorted by projects started</span>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[20px]">leaderboard</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Idea 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider">Idea #001</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Pergola Quotation CRM</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm shrink-0">B2B SaaS</span>
+</div>
+<div class="grid grid-cols-3 gap-2 py-2 px-3 rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary">Viewers</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">312</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary">Started</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">41</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary">Conversion</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">13.1%</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-body-sm text-body-sm text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sensors_off</span>
+            Tracking not connected
+          </span>
+<a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold hover:underline" href="#">
+<span>View idea</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+</div>
+</div>
+<!-- Idea 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider">Idea #003</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Quotation Follow-up Automation</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm shrink-0">Automation</span>
+</div>
+<div class="grid grid-cols-3 gap-2 py-2 px-3 rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary">Viewers</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">248</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary">Started</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">29</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary">Conversion</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">11.7%</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-body-sm text-body-sm text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sensors_off</span>
+            Tracking not connected
+          </span>
+<a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold hover:underline" href="#">
+<span>View idea</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+</div>
+</div>
+<!-- Idea 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider">Idea #004</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Local-Service Lead Website</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm shrink-0">Web Agency</span>
+</div>
+<div class="grid grid-cols-3 gap-2 py-2 px-3 rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary">Viewers</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">194</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary">Started</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">19</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary">Conversion</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">9.8%</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-body-sm text-body-sm text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sensors_off</span>
+            Tracking not connected
+          </span>
+<a class="inline-flex items-center gap-1 text-primary font-label-md text-label-md font-semibold hover:underline" href="#">
+<span>View idea</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: RECENT REGISTRATIONS -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Recent Registrations</h2>
+<span class="font-label-sm text-label-sm text-tertiary">5 of 74 new</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3">
+<div class="flex flex-col divide-y divide-surface-container">
+<!-- Account 1 -->
+<div class="flex items-center justify-between py-3">
+<div class="flex items-center gap-3 min-w-0 pr-2">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0 font-semibold text-label-md">
+              AR
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Alex Rivera</span>
+<span class="font-body-sm text-body-sm text-tertiary truncate">alex@example.com</span>
+<div class="flex items-center gap-1.5 pt-0.5">
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-tertiary font-label-sm text-[11px]">Google</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-[11px]">No active sub</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold hover:bg-secondary-container transition-colors shrink-0" type="button">
+            View user
+          </button>
+</div>
+<!-- Account 2 -->
+<div class="flex items-center justify-between py-3">
+<div class="flex items-center gap-3 min-w-0 pr-2">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 font-semibold text-label-md">
+              MC
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Morgan Chen</span>
+<span class="font-body-sm text-body-sm text-tertiary truncate">morgan.c@example.com</span>
+<div class="flex items-center gap-1.5 pt-0.5">
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-tertiary font-label-sm text-[11px]">Email/pw</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-container font-label-sm text-[11px]">Active membership</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold hover:bg-secondary-container transition-colors shrink-0" type="button">
+            View user
+          </button>
+</div>
+<!-- Account 3 -->
+<div class="flex items-center justify-between py-3">
+<div class="flex items-center gap-3 min-w-0 pr-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center shrink-0 font-semibold text-label-md">
+              SP
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Samira Patel</span>
+<span class="font-body-sm text-body-sm text-tertiary truncate">s.patel@example.com</span>
+<div class="flex items-center gap-1.5 pt-0.5">
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-tertiary font-label-sm text-[11px]">Google</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-container font-label-sm text-[11px]">Active membership</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold hover:bg-secondary-container transition-colors shrink-0" type="button">
+            View user
+          </button>
+</div>
+<!-- Account 4 -->
+<div class="flex items-center justify-between py-3">
+<div class="flex items-center gap-3 min-w-0 pr-2">
+<div class="w-10 h-10 rounded-full bg-surface-container text-tertiary flex items-center justify-center shrink-0 font-semibold text-label-md">
+              DK
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">David Kim</span>
+<span class="font-body-sm text-body-sm text-tertiary truncate">dkim@example.com</span>
+<div class="flex items-center gap-1.5 pt-0.5">
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-tertiary font-label-sm text-[11px]">Both</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-variant text-on-surface-variant font-label-sm text-[11px]">Sched. cancellation</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold hover:bg-secondary-container transition-colors shrink-0" type="button">
+            View user
+          </button>
+</div>
+<!-- Account 5 -->
+<div class="flex items-center justify-between py-3">
+<div class="flex items-center gap-3 min-w-0 pr-2">
+<div class="w-10 h-10 rounded-full bg-error-container text-on-error-container flex items-center justify-center shrink-0 font-semibold text-label-md">
+              ER
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Elena Rostova</span>
+<span class="font-body-sm text-body-sm text-tertiary truncate">elena.r@example.com</span>
+<div class="flex items-center gap-1.5 pt-0.5">
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-tertiary font-label-sm text-[11px]">Email/pw</span>
+<span class="px-1.5 py-0.2 rounded bg-error-container text-on-error-container font-label-sm text-[11px]">Payment issue</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold hover:bg-secondary-container transition-colors shrink-0" type="button">
+            View user
+          </button>
+</div>
+</div>
+<a class="w-full h-11 rounded-lg bg-surface-container flex items-center justify-center gap-2 text-on-surface font-label-md text-label-md font-semibold hover:bg-secondary-container transition-colors active:scale-98" href="#">
+<span>View all users</span>
+<span class="font-label-sm text-label-sm text-tertiary">(Batch 8B handoff)</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- SECTION 6: WEBSITE TRAFFIC -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Website Traffic</h2>
+<span class="material-symbols-outlined text-tertiary text-[20px]">insights</span>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col items-center text-center gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[24px]">cloud_off</span>
+</div>
+<div class="flex flex-col gap-1 max-w-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Website analytics not connected</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Privacy-friendly web analytics integration (Plausible/PostHog edge proxy) is queued for batch launch. Server request events are disabled to maintain low overhead.
+        </p>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span>
+<span>Planned for instrumentation release</span>
+</div>
+</div>
+</section>
+<!-- MOBILE QA SIMULATOR CONTROLS (TESTBENCH) -->
+<section class="mt-space-md p-space-md rounded-xl bg-surface-container border-dashed border-2 border-outline-variant flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary">developer_mode</span>
+<span class="font-label-md text-label-md font-bold uppercase tracking-wider">Mobile QA Simulator</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">Batch 8A validation</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+      Toggle operational states to verify responsive layouts, edge data handling, and skeleton loaders.
+    </p>
+<div class="grid grid-cols-2 gap-2">
+<button class="px-3 py-2 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold active:scale-95 transition-all text-left" id="qaBtnDefault" type="button">
+        1. Default (30d)
+      </button>
+<button class="px-3 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold active:scale-95 transition-all text-left shadow-xs" id="qaBtn7d" type="button">
+        2. 7-Day Range
+      </button>
+<button class="px-3 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold active:scale-95 transition-all text-left shadow-xs" id="qaBtnEmpty" type="button">
+        3. Empty State
+      </button>
+<button class="px-3 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold active:scale-95 transition-all text-left shadow-xs" id="qaBtnLoading" type="button">
+        4. Loading Skeletons
+      </button>
+</div>
+<button class="w-full px-3 py-2 rounded-lg bg-surface-container-lowest text-error font-label-sm text-label-sm font-semibold active:scale-95 transition-all text-center shadow-xs" id="qaBtnError" type="button">
+      5. Simulate Partial Data Error
+    </button>
+</section>
+</div>
+<script>
+  (function() {
+    // Quick QA Interactive Simulator state toggles
+    const metricsGrid = document.getElementById('metricsGrid');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const chartPath = document.getElementById('chartPath');
+    const chartArea = document.getElementById('chartArea');
+    const peakDot = document.getElementById('peakDot');
+    const chartPeakText = document.getElementById('chartPeakText');
+    const datePills = document.querySelectorAll('.date-pill');
+    const metricVals = document.querySelectorAll('.metric-val');
+
+    // Refresh micro-interaction
+    if (refreshBtn) {
+      refreshBtn.addEventListener('click', () => {
+        const icon = refreshBtn.querySelector('.material-symbols-outlined');
+        icon.classList.add('animate-spin');
+        setTimeout(() => {
+          icon.classList.remove('animate-spin');
+        }, 600);
+      });
+    }
+
+    // Date range toggles
+    datePills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        datePills.forEach(p => {
+          p.classList.remove('bg-inverse-surface', 'text-inverse-on-surface', 'shadow-sm');
+          p.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        pill.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        pill.classList.add('bg-inverse-surface', 'text-inverse-on-surface', 'shadow-sm');
+      });
+    });
+
+    // Chart metric tab toggles
+    const activityTabs = document.querySelectorAll('#activityTypeToggle button');
+    activityTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        activityTabs.forEach(t => {
+          t.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'font-semibold', 'shadow-xs');
+          t.classList.add('text-on-surface-variant');
+        });
+        tab.classList.add('bg-surface-container-lowest', 'text-on-surface', 'font-semibold', 'shadow-xs');
+        tab.classList.remove('text-on-surface-variant');
+
+        const type = tab.getAttribute('data-type');
+        if (type === 'reg') {
+          chartPath.setAttribute('d', 'M 0 100 Q 40 85 80 90 T 160 55 T 230 40 T 290 25 T 340 50');
+          chartArea.setAttribute('d', 'M 0 100 Q 40 85 80 90 T 160 55 T 230 40 T 290 25 T 340 50 L 340 110 L 0 110 Z');
+          peakDot.setAttribute('cx', '290');
+          peakDot.setAttribute('cy', '25');
+          chartPeakText.textContent = 'Peak: 6 reg / day';
+        } else if (type === 'users') {
+          chartPath.setAttribute('d', 'M 0 80 Q 50 60 100 65 T 180 30 T 260 45 T 340 20');
+          chartArea.setAttribute('d', 'M 0 80 Q 50 60 100 65 T 180 30 T 260 45 T 340 20 L 340 110 L 0 110 Z');
+          peakDot.setAttribute('cx', '340');
+          peakDot.setAttribute('cy', '20');
+          chartPeakText.textContent = 'Peak: 24 active / day';
+        } else {
+          chartPath.setAttribute('d', 'M 0 105 Q 60 95 120 70 T 200 60 T 280 35 T 340 40');
+          chartArea.setAttribute('d', 'M 0 105 Q 60 95 120 70 T 200 60 T 280 35 T 340 40 L 340 110 L 0 110 Z');
+          peakDot.setAttribute('cx', '280');
+          peakDot.setAttribute('cy', '35');
+          chartPeakText.textContent = 'Peak: 8 started / day';
+        }
+      });
+    });
+
+    // QA Simulator Controls
+    const qaBtnDefault = document.getElementById('qaBtnDefault');
+    const qaBtn7d = document.getElementById('qaBtn7d');
+    const qaBtnEmpty = document.getElementById('qaBtnEmpty');
+    const qaBtnLoading = document.getElementById('qaBtnLoading');
+    const qaBtnError = document.getElementById('qaBtnError');
+
+    qaBtnDefault.addEventListener('click', () => {
+      metricVals[0].textContent = '428';
+      metricVals[1].textContent = '74';
+      metricVals[2].textContent = '182';
+      metricVals[3].textContent = '56';
+      metricVals[4].textContent = '89';
+      document.querySelector('[data-range="30d"]').click();
+    });
+
+    qaBtn7d.addEventListener('click', () => {
+      metricVals[0].textContent = '428';
+      metricVals[1].textContent = '19';
+      metricVals[2].textContent = '94';
+      metricVals[3].textContent = '14';
+      metricVals[4].textContent = '22';
+      document.querySelector('[data-range="7d"]').click();
+    });
+
+    qaBtnEmpty.addEventListener('click', () => {
+      metricVals.forEach(m => m.textContent = '0');
+    });
+
+    qaBtnLoading.addEventListener('click', () => {
+      metricVals.forEach(m => {
+        m.innerHTML = '<span class="inline-block w-12 h-6 bg-surface-container-high rounded animate-pulse"></span>';
+      });
+    });
+
+    qaBtnError.addEventListener('click', () => {
+      metricVals[0].textContent = '428';
+      metricVals[1].innerHTML = '<span class="text-error text-label-md">Sync Err</span>';
+      metricVals[2].textContent = '182';
+      metricVals[3].innerHTML = '<span class="text-error text-label-md">Timeout</span>';
+      metricVals[4].textContent = '89';
+    });
+  })();
+</script></main></body></html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#eefdf3;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary-container":"#eaefeb","tertiary":"#4f5552","inverse-on-surface":"#e5f4eb","surface-container-low":"#e8f7ed","on-error-container":"#93000a","inverse-primary":"#80d8ad","secondary-container":"#c9eadd","on-tertiary-fixed-variant":"#424845","error-container":"#ffdad6","secondary-fixed":"#c9eadd","tertiary-container":"#676d6a","on-primary":"#ffffff","surface-dim":"#ceded4","secondary":"#47645a","on-secondary":"#ffffff","surface-variant":"#d7e6dc","on-surface":"#111e18","inverse-surface":"#26332d","secondary-fixed-dim":"#aecdc1","error":"#ba1a1a","outline":"#6f7a72","surface-tint":"#006c4a","primary":"#006041","tertiary-fixed":"#dfe4e0","on-secondary-fixed-variant":"#304c43","primary-container":"#197a56","outline-variant":"#bec9c1","background":"#eefdf3","on-primary-fixed-variant":"#005237","surface":"#eefdf3","on-secondary-fixed":"#022019","on-primary-fixed":"#002114","on-primary-container":"#acffd4","primary-fixed":"#9bf5c8","surface-bright":"#eefdf3","tertiary-fixed-dim":"#c2c8c4","on-secondary-container":"#4d6a60","on-tertiary":"#ffffff","on-background":"#111e18","on-tertiary-fixed":"#171d1b","primary-fixed-dim":"#80d8ad","surface-container-high":"#ddece2","surface-container-lowest":"#ffffff","on-surface-variant":"#3f4943","surface-container":"#e2f2e8","surface-container-highest":"#d7e6dc","on-error":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"margin":"2.5rem","space-xl":"2.5rem","margin-mobile":"1rem","gutter":"1.5rem","gutter-mobile":"1rem","space-md":"1rem","space-lg":"1.5rem","space-sm":"0.5rem","space-xs":"0.25rem"},"fontFamily":{"display-hero":["Manrope"],"display-hero-mobile":["Manrope"],"body-md":["Inter"],"label-md":["Inter"],"headline-lg-mobile":["Manrope"],"headline-lg":["Manrope"],"headline-md":["Manrope"],"label-sm":["Inter"],"body-lg":["Inter"],"headline-sm":["Manrope"],"body-sm":["Inter"]},"fontSize":{"display-hero":["3.25rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"800"}],"display-hero-mobile":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.025em","fontWeight":"800"}],"body-md":["0.9375rem",{"lineHeight":"1.55","letterSpacing":"0em","fontWeight":"400"}],"label-md":["0.875rem",{"lineHeight":"1.25","letterSpacing":"0.01em","fontWeight":"500"}],"headline-lg-mobile":["1.75rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"700"}],"headline-lg":["2.25rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-md":["1.5rem",{"lineHeight":"1.35","letterSpacing":"-0.015em","fontWeight":"600"}],"label-sm":["0.75rem",{"lineHeight":"1.2","letterSpacing":"0.02em","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-sm":["1.125rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"600"}],"body-sm":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"0.005em","fontWeight":"400"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(16,45,37,0.04)]"><div class="h-24 px-space-md flex flex-col justify-center gap-space-xs"><div class="flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface font-bold">IncomeNow<span class="text-primary-container">.in</span></span></div><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wider font-semibold">Member</span></div><div class="flex items-center gap-space-sm"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="flex items-center"><a class="inline-flex items-center gap-1 py-1 text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors" data-path="account" href="#"><span class="material-symbols-outlined text-[16px]">arrow_back</span><span>Back to account</span></a></div></div></header><main class="flex flex-col relative w-full pt-24 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-space-md gap-space-lg">
+<!-- Subtle Prototype Preview Notice Banner -->
+<div class="bg-surface-container-high rounded-xl p-space-md flex items-start gap-space-sm shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">info</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Design preview</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Billing is not connected</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+        Live payment rails and billing integrations are in staging sandbox.
+      </p>
+</div>
+</div>
+<!-- Editorial Page Title -->
+<div class="flex flex-col gap-space-xs">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold tracking-tight">
+      Membership &amp; billing
+    </h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+      Review your access tier, active subscription parameters, and external payment provider synchronization.
+    </p>
+</div>
+<!-- SECTION 1: MEMBERSHIP OVERVIEW -->
+<section class="flex flex-col gap-space-sm">
+<!-- State Switcher Bar (Interactive testing harness) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Simulate Account State</span>
+<span class="font-label-sm text-label-sm text-primary font-medium" id="current-state-label">State: Inactive</span>
+</div>
+<div class="flex items-center gap-space-xs overflow-x-auto py-1 no-scrollbar -mx-space-md px-space-md">
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm whitespace-nowrap bg-primary text-on-primary transition-all shadow-sm" data-state="none" onclick="setState('none')" type="button">
+          No Membership
+        </button>
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm whitespace-nowrap bg-surface-container-high text-on-surface-variant hover:bg-secondary-container transition-all" data-state="confirming" onclick="setState('confirming')" type="button">
+          Confirming
+        </button>
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm whitespace-nowrap bg-surface-container-high text-on-surface-variant hover:bg-secondary-container transition-all" data-state="active" onclick="setState('active')" type="button">
+          Active
+        </button>
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm whitespace-nowrap bg-surface-container-high text-on-surface-variant hover:bg-secondary-container transition-all" data-state="attention" onclick="setState('attention')" type="button">
+          Needs Attention
+        </button>
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm whitespace-nowrap bg-surface-container-high text-on-surface-variant hover:bg-secondary-container transition-all" data-state="canceling" onclick="setState('canceling')" type="button">
+          Canceling
+        </button>
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm whitespace-nowrap bg-surface-container-high text-on-surface-variant hover:bg-secondary-container transition-all" data-state="ended" onclick="setState('ended')" type="button">
+          Ended
+        </button>
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm whitespace-nowrap bg-surface-container-high text-on-surface-variant hover:bg-secondary-container transition-all" data-state="offline" onclick="setState('offline')" type="button">
+          Unavailable
+        </button>
+</div>
+</div>
+<!-- Main Tier Overview Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Tier Specification</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">IncomeNow Membership</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Monthly recurring subscription</span>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold inline-flex items-center gap-1 shrink-0" id="status-badge">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span>No active membership</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-xs">
+<div class="flex items-baseline justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Calculated rate</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold" id="price-display">Price to be confirmed</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="state-explanation">
+          Your account is set up. Paid membership is separate from account registration.
+        </p>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] shrink-0 text-primary">verified_user</span>
+<span class="font-body-sm text-body-sm" id="billing-helper">Final price and billing currency are not configured in this preview.</span>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<button class="w-full h-11 px-space-md rounded-lg bg-primary-container/30 text-on-surface-variant font-label-md text-label-md font-semibold flex items-center justify-center gap-space-xs cursor-not-allowed transition-all" id="btn-start" onclick="showToast('Checkout will be available after pricing and billing are configured.')" type="button">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span>Start membership</span>
+</button>
+<p class="font-label-sm text-label-sm text-center text-on-surface-variant">
+          Checkout will be available after pricing and billing are configured.
+        </p>
+<button class="w-full h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-space-xs hover:bg-surface-container-high transition-all" onclick="showToast('Navigating to full public tier breakdown &amp; deliverables.')" type="button">
+<span>View membership details</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 2: PAYMENT DETAILS -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Payment details</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Manage payment methods through our external PCI-compliant gateway.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined text-[22px]">credit_card</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Stripe / LemonSqueezy</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Encrypted Checkout Portal</span>
+</div>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-tertiary">tune</span>
+<span class="font-label-md text-label-md font-semibold">External synchronization</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Payment management is not connected in this preview. Payment methods are securely handled through the external billing provider. No raw payment credentials or card details are ever stored on IncomeNow servers.
+        </p>
+</div>
+<button class="w-full h-11 px-space-md rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-space-xs hover:bg-surface-container-high transition-all" onclick="showToast('Billing actions will be connected during development.')" type="button">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+<span>Manage payment details</span>
+</button>
+<span class="font-label-sm text-label-sm text-center text-on-surface-variant -mt-2">
+        Billing actions will be connected during production rollout.
+      </span>
+</div>
+</section>
+<!-- SECTION 3: BILLING HISTORY -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Billing history</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Archived receipts and tax statements.</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Offline</span>
+</div>
+<!-- Mobile Stacked Card Record Container -->
+<div class="flex flex-col gap-space-xs" id="billing-history-container">
+<!-- Empty State Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col items-center justify-center text-center gap-space-sm py-8">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">No invoices yet</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1">
+            Invoices and receipts will appear here once your subscription starts and automated billing runs.
+          </p>
+</div>
+</div>
+<!-- Simulated Historical Preview Item -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm opacity-60">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface font-bold uppercase tracking-wider">Example Ledger Record</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Mock</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs border-t-0 bg-surface-container-low rounded-lg p-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Date</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Pending setup</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Amount</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">— . —</span>
+</div>
+<div class="flex flex-col col-span-2 pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Description</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">IncomeNow Professional Builders Access</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: SUBSCRIPTION ACTIONS & CANCELLATION -->
+<section class="flex flex-col gap-space-xs mb-space-md">
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Subscription management</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pause, review retention terms, or disengage recurring renewals.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Cancel or alter subscription</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          You can inspect terms, retained privileges, and workspace accessibility prior to confirming any change.
+        </p>
+</div>
+<button class="w-full h-11 px-space-md rounded-lg bg-error-container text-on-error-container font-label-md text-label-md font-semibold flex items-center justify-center gap-space-xs hover:opacity-90 transition-all" onclick="openCancellationDrawer()" type="button">
+<span class="material-symbols-outlined text-[18px]">free_cancellation</span>
+<span>Review cancellation</span>
+</button>
+</div>
+</section>
+<!-- REUSABLE FLOATING FEEDBACK TOAST -->
+<div class="fixed bottom-20 left-4 right-4 z-50 bg-inverse-surface text-inverse-on-surface p-space-md rounded-xl shadow-xl flex items-center gap-space-sm transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toast">
+<span class="material-symbols-outlined text-inverse-primary text-[20px] shrink-0">info</span>
+<span class="font-body-sm text-body-sm font-medium" id="toast-message">Notification prompt</span>
+</div>
+<!-- CANCELLATION DRAWER / MODAL OVERLAY -->
+<div class="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-end" id="cancellation-overlay">
+<div class="w-full bg-surface-container-lowest rounded-t-2xl p-space-lg shadow-2xl flex flex-col gap-space-md transform translate-y-full transition-transform duration-300 max-h-[751px] overflow-y-auto" id="cancellation-panel">
+<!-- Drawer Grab Handle -->
+<div class="w-10 h-1 rounded-full bg-surface-variant mx-auto mb-1"></div>
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-xs text-error">
+<span class="material-symbols-outlined text-[24px]">warning</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Review cancellation</h3>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface" onclick="closeCancellationDrawer()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="bg-surface-container-high rounded-xl p-space-md flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Terms specification</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+          Cancellation timing and access terms are not configured in this design sandbox.
+        </p>
+</div>
+<div class="flex flex-col gap-space-sm">
+<span class="font-label-md text-label-md text-on-surface font-bold">When cancellation is live:</span>
+<div class="flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Billing stops immediately</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">No unexpected recurring invoice charges or hidden reactivation penalty fees.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">lock_clock</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Retain access until period ends</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Explore premium modules, downloads, and briefs through your already paid-for cycle.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">folder_special</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Project data &amp; notes preserved</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Saved ideas, personal workspace folders, and custom notes remain intact indefinitely.</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<button class="w-full h-11 px-space-md rounded-lg bg-surface-container-high text-outline font-label-md text-label-md font-semibold cursor-not-allowed flex items-center justify-center gap-space-xs" onclick="showToast('Cancellation actions are disabled in this prototype.')" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+<span>Confirm cancellation (Preview)</span>
+</button>
+<button class="w-full h-11 px-space-md rounded-lg bg-surface text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center" onclick="closeCancellationDrawer()" type="button">
+          Go back
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Prototype State Controller for Live Interactive Testing
+  const states = {
+    none: {
+      badge: '<span class="w-2 h-2 rounded-full bg-outline"></span><span>No active membership</span>',
+      badgeClass: 'bg-surface-container-high text-on-surface-variant',
+      price: 'Price to be confirmed',
+      explanation: 'Your account is set up. Paid membership is separate from account registration.',
+      helper: 'Final price and billing currency are not configured in this preview.',
+      btnText: 'Start membership',
+      btnDisabled: true
+    },
+    confirming: {
+      badge: '<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span>Confirming payment</span>',
+      badgeClass: 'bg-secondary-container text-on-secondary-container',
+      price: '$29.00 / month',
+      explanation: 'External checkout completed. Awaiting authorization confirmation from webhook.',
+      helper: 'Synchronizing with payment network. Refreshing authorization tokens.',
+      btnText: 'Confirming processing...',
+      btnDisabled: true
+    },
+    active: {
+      badge: '<span class="w-2 h-2 rounded-full bg-primary"></span><span>Active</span>',
+      badgeClass: 'bg-primary-container text-on-primary-container',
+      price: '$29.00 / month',
+      explanation: 'Your account has full unrestricted access to all venture breakdowns and resources.',
+      helper: 'Renews automatically on the 1st of next month via connected payment gateway.',
+      btnText: 'Membership Active',
+      btnDisabled: true
+    },
+    attention: {
+      badge: '<span class="w-2 h-2 rounded-full bg-error"></span><span>Needs attention</span>',
+      badgeClass: 'bg-error-container text-on-error-container',
+      price: '$29.00 / month',
+      explanation: 'Recurring charge declined. Please update card details to prevent tier downgrade.',
+      helper: 'Grace period remaining: 4 days before workspace access switches to archive mode.',
+      btnText: 'Update billing method',
+      btnDisabled: false
+    },
+    canceling: {
+      badge: '<span class="w-2 h-2 rounded-full bg-tertiary"></span><span>Canceling</span>',
+      badgeClass: 'bg-surface-container-high text-tertiary',
+      price: '$29.00 / month',
+      explanation: 'Auto-renew disabled. Full membership benefits remain accessible until period end.',
+      helper: 'Subscription will terminate at the end of the current monthly billing cycle.',
+      btnText: 'Resume subscription',
+      btnDisabled: false
+    },
+    ended: {
+      badge: '<span class="w-2 h-2 rounded-full bg-outline"></span><span>Ended</span>',
+      badgeClass: 'bg-surface-container-high text-on-surface-variant',
+      price: 'Inactive tier',
+      explanation: 'Subscription has expired. Your workspace items remain securely archived.',
+      helper: 'Rejoin anytime to regain instantaneous access to deep-dive reports.',
+      btnText: 'Renew membership',
+      btnDisabled: false
+    },
+    offline: {
+      badge: '<span class="w-2 h-2 rounded-full bg-outline"></span><span>Unavailable</span>',
+      badgeClass: 'bg-surface-container-high text-on-surface-variant',
+      price: 'Sync pending',
+      explanation: 'Payment gateway API unreachable. Local cached session active.',
+      helper: 'Billing synchronization will retry automatically once servers respond.',
+      btnText: 'Retry synchronization',
+      btnDisabled: false
+    }
+  };
+
+  function setState(key) {
+    const s = states[key];
+    if (!s) return;
+
+    // Update Pills Visual
+    document.querySelectorAll('.state-pill').forEach(el => {
+      if (el.dataset.state === key) {
+        el.className = 'state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm whitespace-nowrap bg-primary text-on-primary transition-all shadow-sm';
+      } else {
+        el.className = 'state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm whitespace-nowrap bg-surface-container-high text-on-surface-variant hover:bg-secondary-container transition-all';
+      }
+    });
+
+    // Update Status Label
+    document.getElementById('current-state-label').innerText = 'State: ' + key.charAt(0).toUpperCase() + key.slice(1);
+
+    // Update Badge
+    const b = document.getElementById('status-badge');
+    b.innerHTML = s.badge;
+    b.className = 'px-2.5 py-1 rounded-full font-label-sm text-label-sm font-semibold inline-flex items-center gap-1 shrink-0 ' + s.badgeClass;
+
+    // Update Text Content
+    document.getElementById('price-display').innerText = s.price;
+    document.getElementById('state-explanation').innerText = s.explanation;
+    document.getElementById('billing-helper').innerText = s.helper;
+
+    // Update Button State
+    const btn = document.getElementById('btn-start');
+    btn.innerHTML = `<span class="material-symbols-outlined text-[18px]">${s.btnDisabled ? 'lock' : 'arrow_forward'}</span><span>${s.btnText}</span>`;
+    if (s.btnDisabled) {
+      btn.className = 'w-full h-11 px-space-md rounded-lg bg-surface-container-high text-on-surface-variant font-label-md text-label-md font-semibold flex items-center justify-center gap-space-xs cursor-not-allowed transition-all';
+    } else {
+      btn.className = 'w-full h-11 px-space-md rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center gap-space-xs hover:bg-primary-container transition-all shadow-sm';
+    }
+  }
+
+  // Toast Notification Trigger
+  let toastTimer = null;
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    const label = document.getElementById('toast-message');
+    label.innerText = msg;
+    toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 3200);
+  }
+
+  // Drawer Trigger Logic
+  function openCancellationDrawer() {
+    const overlay = document.getElementById('cancellation-overlay');
+    const panel = document.getElementById('cancellation-panel');
+    overlay.classList.remove('opacity-0', 'pointer-events-none');
+    overlay.classList.add('opacity-100');
+    panel.classList.remove('translate-y-full');
+    panel.classList.add('translate-y-0');
+  }
+
+  function closeCancellationDrawer() {
+    const overlay = document.getElementById('cancellation-overlay');
+    const panel = document.getElementById('cancellation-panel');
+    overlay.classList.add('opacity-0', 'pointer-events-none');
+    overlay.classList.remove('opacity-100');
+    panel.classList.add('translate-y-full');
+    panel.classList.remove('translate-y-0');
+  }
+
+  // Bind Overlay Backdrop Click
+  document.getElementById('cancellation-overlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeCancellationDrawer();
+    }
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/80 backdrop-blur-xl shadow-[0_-1px_8px_rgba(16,45,37,0.04)]" data-active-classes="text-primary font-semibold"><div class="h-16 px-space-sm flex items-center justify-around"><a class="flex flex-col items-center justify-center w-16 h-11 text-on-surface-variant transition-colors" data-path="explore" href="#"><span class="material-symbols-outlined text-[20px]">explore</span><span class="font-label-sm text-label-sm">Explore</span></a><a class="flex flex-col items-center justify-center w-16 h-11 text-on-surface-variant transition-colors" data-path="saved" href="#"><span class="material-symbols-outlined text-[20px]">bookmark</span><span class="font-label-sm text-label-sm">Saved</span></a><a class="flex flex-col items-center justify-center w-16 h-11 text-on-surface-variant transition-colors" data-path="projects" href="#"><span class="material-symbols-outlined text-[20px]">folder</span><span class="font-label-sm text-label-sm">Projects</span></a><a class="flex flex-col items-center justify-center w-16 h-11 text-on-surface-variant transition-colors" data-path="updates" href="#"><span class="material-symbols-outlined text-[20px]">notifications_active</span><span class="font-label-sm text-label-sm">Updates</span></a></div></nav></body></html>

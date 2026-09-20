@@ -1,0 +1,210 @@
+import { z } from "zod";
+
+export const solutionTypeSchema = z.enum([
+  "Custom CRM",
+  "Lead-generation website",
+  "Automation",
+  "Web tool",
+  "Digital service",
+]);
+
+export const readinessSchema = z.enum([
+  "Concept ready",
+  "Sample blueprint",
+  "Setup ready",
+]);
+
+export const marketEvidenceSchema = z.enum([
+  "Not yet validated",
+  "Discovery in progress",
+]);
+
+const resourceSchema = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  type: z.enum([
+    "demo",
+    "source",
+    "guide",
+    "workflow",
+    "template",
+    "worksheet",
+    "checklist",
+    "script",
+  ]),
+  availability: z.enum(["sample", "not-connected"]),
+  description: z.string().min(1),
+});
+
+export const implementationTaskSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  required: z.boolean(),
+});
+
+export const implementationStageSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  summary: z.string().min(1),
+  tasks: z.array(implementationTaskSchema).min(1),
+  condition: z.string().optional(),
+  resourceIds: z.array(z.string().min(1)).default([]),
+});
+
+const overviewSectionSchema = z.object({
+  type: z.literal("overview"),
+  title: z.string(),
+  body: z.array(z.string()).min(1),
+  friction: z.string(),
+  validation: z.string(),
+  businessModel: z.string(),
+});
+
+const workflowSectionSchema = z.object({
+  type: z.literal("workflow"),
+  title: z.string(),
+  description: z.string(),
+  steps: z.array(
+    z.object({
+      id: z.string(),
+      title: z.string(),
+      detail: z.string(),
+      condition: z.string().optional(),
+    }),
+  ).min(2),
+  safeguard: z.string().optional(),
+});
+
+const demoSectionSchema = z.object({
+  type: z.literal("demo-preview"),
+  title: z.string(),
+  description: z.string(),
+  variant: z.enum(["crm", "website"]),
+  metrics: z.array(z.object({ label: z.string(), value: z.string() })).min(2),
+});
+
+const actionPlanSectionSchema = z.object({
+  type: z.literal("action-plan"),
+  title: z.string(),
+  stages: z.array(implementationStageSchema).min(1),
+});
+
+const resourcesSectionSchema = z.object({
+  type: z.literal("resources"),
+  title: z.string(),
+  intro: z.string(),
+  resourceIds: z.array(z.string()).min(1),
+});
+
+const discoverySectionSchema = z.object({
+  type: z.literal("customer-discovery"),
+  title: z.string(),
+  audiences: z.array(z.string()).min(1),
+  questions: z.array(z.string()).min(1),
+  guidance: z.string(),
+});
+
+const updatesSectionSchema = z.object({
+  type: z.literal("updates-limitations"),
+  title: z.string(),
+  notes: z.array(z.string()).min(1),
+});
+
+export const ideaSectionSchema = z.discriminatedUnion("type", [
+  overviewSectionSchema,
+  workflowSectionSchema,
+  demoSectionSchema,
+  actionPlanSectionSchema,
+  resourcesSectionSchema,
+  discoverySectionSchema,
+  updatesSectionSchema,
+]);
+
+export const ideaSchema = z.object({
+  id: z.string().regex(/^idea-\d{3}$/),
+  displayNumber: z.string().regex(/^\d{3}$/),
+  slug: z.string().regex(/^[a-z0-9-]+$/),
+  title: z.string().min(1),
+  summary: z.string().min(1),
+  solutionType: solutionTypeSchema,
+  industries: z.array(z.string().min(1)).min(1),
+  technicalRequirements: z.array(z.string().min(1)),
+  intendedCustomer: z.string().min(1),
+  proposedBusinessModel: z.string().min(1),
+  readiness: readinessSchema,
+  marketEvidence: marketEvidenceSchema,
+  addedOrder: z.number().int().nonnegative(),
+  detailAvailable: z.boolean(),
+  implementationPlanVersion: z.string().regex(/^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/).optional(),
+  fixtureLabel: z.string().optional(),
+  previewVariant: z.enum(["pipeline", "dispatch", "automation", "website", "scorecard", "property"]),
+  cardNote: z.string().min(1),
+  resources: z.array(resourceSchema),
+  sections: z.array(ideaSectionSchema),
+});
+
+export const ideasSchema = z.array(ideaSchema).superRefine((ideas, context) => {
+  const ids = new Set<string>();
+  const slugs = new Set<string>();
+
+  for (const idea of ideas) {
+    if (ids.has(idea.id)) {
+      context.addIssue({ code: "custom", message: `Duplicate idea id: ${idea.id}` });
+    }
+    if (slugs.has(idea.slug)) {
+      context.addIssue({ code: "custom", message: `Duplicate idea slug: ${idea.slug}` });
+    }
+    ids.add(idea.id);
+    slugs.add(idea.slug);
+
+    const resourceIds = new Set(idea.resources.map((resource) => resource.id));
+    const actionPlan = idea.sections.find((section) => section.type === "action-plan");
+    if (idea.detailAvailable && (!idea.implementationPlanVersion || !actionPlan)) {
+      context.addIssue({
+        code: "custom",
+        message: `${idea.id} requires a versioned implementation plan`,
+      });
+    }
+    for (const section of idea.sections) {
+      if (section.type === "resources") {
+        for (const resourceId of section.resourceIds) {
+          if (!resourceIds.has(resourceId)) {
+            context.addIssue({
+              code: "custom",
+              message: `${idea.id} links to unknown resource ${resourceId}`,
+            });
+          }
+        }
+      }
+      if (section.type === "action-plan") {
+        const stageIds = new Set<string>();
+        const taskIds = new Set<string>();
+        for (const stage of section.stages) {
+          if (stageIds.has(stage.id)) {
+            context.addIssue({ code: "custom", message: `${idea.id} has duplicate stage ${stage.id}` });
+          }
+          stageIds.add(stage.id);
+          for (const resourceId of stage.resourceIds) {
+            if (!resourceIds.has(resourceId)) {
+              context.addIssue({ code: "custom", message: `${idea.id} stage ${stage.id} links to unknown resource ${resourceId}` });
+            }
+          }
+          for (const task of stage.tasks) {
+            if (taskIds.has(task.id)) {
+              context.addIssue({ code: "custom", message: `${idea.id} has duplicate task ${task.id}` });
+            }
+            taskIds.add(task.id);
+          }
+        }
+      }
+    }
+  }
+});
+
+export type Idea = z.infer<typeof ideaSchema>;
+export type IdeaSection = z.infer<typeof ideaSectionSchema>;
+export type ImplementationStage = z.infer<typeof implementationStageSchema>;
+export type ImplementationTask = z.infer<typeof implementationTaskSchema>;
+export type SolutionType = z.infer<typeof solutionTypeSchema>;
+export type Readiness = z.infer<typeof readinessSchema>;

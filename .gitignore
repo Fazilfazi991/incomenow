@@ -1,0 +1,49 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+*.tsbuildinfo
+
+# testing and coverage
+/coverage/
+/test-results/
+/playwright-report/
+/blob-report/
+*.trace
+trace.zip
+
+# browser sessions and private test captures
+/.auth/
+/playwright/.auth/
+**/storage-state*.json
+**/*auth-state*.json
+/artifacts/auth/
+/artifacts/private/
+/artifacts/traces/
+/artifacts/screenshots/
+
+# local research and outreach working files
+/research/
+
+# local database exports
+*.dump
+*.backup
+*.sqlite
+*.sqlite3
+
+# local files
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# local review/runtime output
+/.sites-runtime/
+/.impeccable/review/
+/supabase/.branches/
+/supabase/.temp/
+
+# extracted Stitch sources are canonical; avoid committing the duplicate archive
+/stitch_incomenow_explore_ideas_dashboard (1).zip

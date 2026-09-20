@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {"darkMode":"class","theme":{"extend":{"colors":{"on-tertiary":"#ffffff","outline":"#6f7a72","on-tertiary-container":"#eaefeb","background":"#eefdf3","on-primary-fixed-variant":"#005237","on-surface-variant":"#3f4943","on-tertiary-fixed-variant":"#424845","surface-container-high":"#ddece2","secondary":"#47645a","on-error-container":"#93000a","surface-container":"#e2f2e8","surface-tint":"#006c4a","inverse-primary":"#80d8ad","on-secondary-fixed":"#022019","secondary-fixed":"#c9eadd","primary-fixed":"#9bf5c8","on-primary-fixed":"#002114","on-tertiary-fixed":"#171d1b","tertiary-fixed-dim":"#c2c8c4","on-primary":"#ffffff","on-background":"#111e18","on-secondary-container":"#4d6a60","on-secondary-fixed-variant":"#304c43","on-surface":"#111e18","tertiary-fixed":"#dfe4e0","surface-container-lowest":"#ffffff","inverse-surface":"#26332d","primary-fixed-dim":"#80d8ad","on-secondary":"#ffffff","surface-bright":"#eefdf3","surface":"#eefdf3","surface-container-highest":"#d7e6dc","error":"#ba1a1a","inverse-on-surface":"#e5f4eb","on-primary-container":"#acffd4","tertiary-container":"#676d6a","surface-dim":"#ceded4","primary-container":"#197a56","surface-variant":"#d7e6dc","outline-variant":"#bec9c1","surface-container-low":"#e8f7ed","tertiary":"#4f5552","on-error":"#ffffff","error-container":"#ffdad6","secondary-container":"#c9eadd","primary":"#006041","secondary-fixed-dim":"#aecdc1"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter-mobile":"1rem","margin":"2.5rem","space-md":"1rem","space-xs":"0.25rem","space-xl":"2.5rem","margin-mobile":"1rem","gutter":"1.5rem","space-sm":"0.5rem","space-lg":"1.5rem"},"fontFamily":{"label-sm":["Inter"],"body-md":["Inter"],"body-sm":["Inter"],"label-md":["Inter"],"headline-lg":["Manrope"],"headline-lg-mobile":["Manrope"],"body-lg":["Inter"],"headline-sm":["Manrope"],"display-hero-mobile":["Manrope"],"headline-md":["Manrope"],"display-hero":["Manrope"]},"fontSize":{"label-sm":["0.75rem",{"lineHeight":"1.2","letterSpacing":"0.02em","fontWeight":"600"}],"body-md":["0.9375rem",{"lineHeight":"1.55","letterSpacing":"0em","fontWeight":"400"}],"body-sm":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"0.005em","fontWeight":"400"}],"label-md":["0.875rem",{"lineHeight":"1.25","letterSpacing":"0.01em","fontWeight":"500"}],"headline-lg":["2.25rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-lg-mobile":["1.75rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"700"}],"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-sm":["1.125rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"600"}],"display-hero-mobile":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.025em","fontWeight":"800"}],"headline-md":["1.5rem",{"lineHeight":"1.35","letterSpacing":"-0.015em","fontWeight":"600"}],"display-hero":["3.25rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"800"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-fixed"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(16,45,37,0.04)]"><div class="w-full bg-surface-container-low py-1.5 px-4 text-center"><div class="max-w-7xl mx-auto flex items-center justify-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Design preview — sample ideas and resources</span></div></div><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6"><div class="flex items-center gap-10"><a class="flex items-center gap-1.5 group" data-path="homepage" href="#"><span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">IncomeNow<span class="text-primary text-2xl leading-none inline-block">.</span><span class="font-headline-sm text-headline-sm font-medium text-on-surface-variant">in</span></span></a><nav class="hidden md:flex items-center gap-1 p-1 bg-surface-container-lowest/60 rounded-lg shadow-[0_1px_2px_rgba(16,45,37,0.02)]" data-active-classes="bg-surface-container text-on-surface font-semibold"><a class="px-3.5 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="how-it-works" href="#">How it works</a><a class="px-3.5 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="example-ideas" href="#">Example ideas</a><a class="px-3.5 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="membership" href="#">Membership</a><a class="px-3.5 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="faq" href="#">FAQ</a></nav></div><div class="flex items-center gap-4"><a class="hidden sm:inline-flex px-3.5 py-2 font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="login" href="#">Log in</a><a class="inline-flex items-center justify-center px-4 py-2.5 rounded-lg bg-primary font-label-md text-label-md text-on-primary hover:bg-primary-container active:scale-[0.99] transition-all shadow-[0_1px_3px_rgba(16,45,37,0.08)]" data-path="example-ideas" href="#">Explore ideas</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-[6.75rem] min-h-screen bg-surface"><div class="flex flex-col w-full">
+<!-- ==================== HERO SECTION ==================== -->
+<section class="relative w-full overflow-hidden px-6 lg:px-12 py-12 lg:py-20">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+<!-- Left Column: Copy & Actions -->
+<div class="lg:col-span-6 flex flex-col items-start">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm mb-6 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Business ideas. Practical starting points.
+        </div>
+<h1 class="font-display-hero text-headline-lg lg:text-display-hero text-on-surface tracking-tight mb-6">
+          Find an idea. <br/>
+<span class="text-primary">Build something you can sell.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-8 leading-relaxed">
+          Explore niche business opportunities with practical guides, example tools, and a clear process for finding customers.
+        </p>
+<div class="flex flex-wrap items-center gap-4 mb-8 w-full sm:w-auto">
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container active:scale-[0.99] transition-all shadow-md" href="#example-ideas">
+            Explore ideas
+            <span class="material-symbols-outlined ml-2 text-[18px]">arrow_downward</span>
+</a>
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all shadow-sm" href="#how-it-works">
+            How it works
+          </a>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">verified</span>
+<span class="font-body-sm text-body-sm font-medium">One membership. A growing idea library.</span>
+</div>
+</div>
+<!-- Right Column: Product Workspace Preview -->
+<div class="lg:col-span-6 w-full">
+<div class="relative bg-surface-container-lowest rounded-xl shadow-xl p-5 lg:p-6 transition-all">
+<!-- Mock Browser Shell Chrome -->
+<div class="flex items-center justify-between pb-4 mb-5 bg-surface-container-low -mx-5 -mt-5 px-5 py-3 rounded-t-xl">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-2 font-medium tracking-wide">IncomeNow Library / Active Kits</span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-lowest text-secondary font-label-sm text-label-sm shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Online Workspace</span>
+</div>
+</div>
+<!-- Mini Card 1: Idea #001 Snippet -->
+<div class="bg-surface-container-low p-4 rounded-lg mb-4 hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between gap-2 mb-2">
+<span class="font-label-sm text-label-sm font-bold text-primary">IDEA #001</span>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-2 py-0.5 rounded">Custom CRM</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Pergola Quotation &amp; Follow-up CRM</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">Structured pipeline for residential outdoor structures.</p>
+<!-- Pipeline Preview Schema -->
+<div class="grid grid-cols-4 gap-1.5 py-2 px-2 bg-surface-container-lowest rounded text-center">
+<div class="py-1 px-1 rounded bg-secondary-container text-on-secondary-container font-label-sm text-[10px]">1. Enquiry</div>
+<div class="py-1 px-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-[10px]">2. Site Visit</div>
+<div class="py-1 px-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-[10px]">3. Quotation</div>
+<div class="py-1 px-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-[10px]">4. Follow-up</div>
+</div>
+</div>
+<!-- Mini Card 2: Idea #003 Snippet -->
+<div class="bg-surface-container-low p-4 rounded-lg mb-4 hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm font-bold text-primary">IDEA #003</span>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-2 py-0.5 rounded">Automation</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Setup Guide included</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface font-semibold text-[0.95rem]">Quotation Follow-up Automation Kit</p>
+</div>
+<!-- Implementation Checklist Component -->
+<div class="bg-surface-container-lowest p-3.5 rounded-lg shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Stage 3: Define offer &amp; scope</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">0 of 4 tasks</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-1/4"></div>
+</div>
+</div>
+<!-- Caption Footnote -->
+<div class="mt-4 pt-3 flex items-center justify-between text-on-surface-variant text-body-sm font-body-sm">
+<span class="italic text-[13px]">Discover an opportunity → understand the kit → follow the process.</span>
+<span class="material-symbols-outlined text-[18px] text-primary">dataset</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== HOW IT WORKS SECTION ==================== -->
+<section class="w-full px-6 lg:px-12 py-20 bg-surface-container-low scroll-mt-20" id="how-it-works">
+<div class="max-w-7xl mx-auto">
+<!-- Section Header -->
+<div class="mb-14 max-w-2xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold block mb-2">The Process</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-4">From an interesting idea to a practical project.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">A structured methodology for turning unvalidated ideas into tailored customer offerings.</p>
+</div>
+<!-- 4 Horizontal Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm font-bold text-primary mb-5">
+              01
+            </div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-2">Find an opportunity</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Browse by industry, solution type, and the skills involved to identify practical gaps.
+            </p>
+</div>
+<div class="pt-6 mt-6 flex items-center text-primary font-label-sm text-label-sm">
+<span>Explore catalog</span>
+<span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm font-bold text-primary mb-5">
+              02
+            </div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-2">Understand the kit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Review the customer problem, example deliverables, included resources, and setup work.
+            </p>
+</div>
+<div class="pt-6 mt-6 flex items-center text-primary font-label-sm text-label-sm">
+<span>Inspect kits</span>
+<span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm font-bold text-primary mb-5">
+              03
+            </div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-2">Build your version</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Follow the implementation steps and adapt the resources to your chosen local client.
+            </p>
+</div>
+<div class="pt-6 mt-6 flex items-center text-primary font-label-sm text-label-sm">
+<span>Execute roadmap</span>
+<span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm font-bold text-primary mb-5">
+              04
+            </div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-2">Test your offer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Speak to potential buyers, present your solution, and improve it using real operational feedback.
+            </p>
+</div>
+<div class="pt-6 mt-6 flex items-center text-primary font-label-sm text-label-sm">
+<span>Validate demand</span>
+<span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== EXAMPLE IDEAS CATALOG ==================== -->
+<section class="w-full px-6 lg:px-12 py-20 bg-surface scroll-mt-20" id="example-ideas">
+<div class="max-w-7xl mx-auto">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold block mb-2">Explore The Catalog</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-2">One library. Different ways to build.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+            Explore examples of the opportunities and resources you could work with inside IncomeNow.
+          </p>
+</div>
+<div class="mt-4 md:mt-0 flex items-center gap-2">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm">
+            3 curated previews available
+          </span>
+</div>
+</div>
+<!-- 3-Column Card Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+<!-- CARD 1: IDEA #001 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 lg:p-7 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+<div>
+<!-- Top Metadata -->
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm text-label-sm font-bold text-primary px-2.5 py-1 rounded bg-secondary-container">IDEA #001</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">code</span>
+                Code customisation
+              </span>
+</div>
+<!-- Title & Summary -->
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold mb-3">Pergola Quotation &amp; Follow-up CRM</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3 leading-relaxed">
+              Organise enquiries, site visits, quotations, and installation follow-ups for pergola businesses.
+            </p>
+<!-- Tags -->
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2.5 py-1 rounded-md bg-surface-container-low text-secondary font-label-sm text-label-sm">Custom CRM</span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container-low text-secondary font-label-sm text-label-sm">Home Services</span>
+</div>
+<!-- Resource Badges -->
+<div class="bg-surface-container-low p-3.5 rounded-lg mb-6">
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-2 font-medium">Included Resources:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Demo
+                </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Source code
+                </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Setup guide
+                </span>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2" onclick="openQuickPreview('001')">
+<span>Quick preview</span>
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<!-- CARD 2: IDEA #003 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 lg:p-7 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+<div>
+<!-- Top Metadata -->
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm text-label-sm font-bold text-primary px-2.5 py-1 rounded bg-secondary-container">IDEA #003</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+                Low-code setup
+              </span>
+</div>
+<!-- Title & Summary -->
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold mb-3">Quotation Follow-up Automation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3 leading-relaxed">
+              Help service businesses organise follow-up tasks after sending a quotation to prevent unclosed revenue.
+            </p>
+<!-- Tags -->
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2.5 py-1 rounded-md bg-surface-container-low text-secondary font-label-sm text-label-sm">Automation</span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container-low text-secondary font-label-sm text-label-sm">Professional Services</span>
+</div>
+<!-- Resource Badges -->
+<div class="bg-surface-container-low p-3.5 rounded-lg mb-6">
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-2 font-medium">Included Resources:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Workflow example
+                </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Setup guide
+                </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Testing checklist
+                </span>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2" onclick="openQuickPreview('003')">
+<span>Quick preview</span>
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<!-- CARD 3: IDEA #004 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 lg:p-7 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+<div>
+<!-- Top Metadata -->
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm text-label-sm font-bold text-primary px-2.5 py-1 rounded bg-secondary-container">IDEA #004</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">web</span>
+                Website setup
+              </span>
+</div>
+<!-- Title & Summary -->
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold mb-3">Local-Service Lead Website</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3 leading-relaxed">
+              Explore a website model that connects service enquiries with suitable vetted local trade providers.
+            </p>
+<!-- Tags -->
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2.5 py-1 rounded-md bg-surface-container-low text-secondary font-label-sm text-label-sm">Lead-generation website</span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container-low text-secondary font-label-sm text-label-sm">Home Services</span>
+</div>
+<!-- Resource Badges -->
+<div class="bg-surface-container-low p-3.5 rounded-lg mb-6">
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-2 font-medium">Included Resources:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Site template
+                </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Research worksheet
+                </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Partner guide
+                </span>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2" onclick="openQuickPreview('004')">
+<span>Quick preview</span>
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<p class="text-center font-body-sm text-body-sm text-on-surface-variant">
+        Illustrative kit previews; resources are not connected in this design prototype.
+      </p>
+</div>
+</section>
+<!-- ==================== WHAT AN IDEA INCLUDES ==================== -->
+<section class="w-full px-6 lg:px-12 py-20 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="max-w-3xl mb-14">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold block mb-2">Comprehensive Kits</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-4">More than a list of ideas.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Each opportunity brings the explanation and the relevant implementation resources together.
+        </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left Column: Visual Mockup of Idea Detail View -->
+<div class="lg:col-span-6 bg-surface-container-lowest p-6 rounded-xl shadow-md">
+<div class="flex items-center justify-between pb-3 mb-4 bg-surface-container-low -mx-6 -mt-6 p-4 rounded-t-xl">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">IncomeNow Opportunity Breakdown</span>
+<span class="font-label-sm text-label-sm text-primary font-medium">Standard Kit Spec</span>
+</div>
+<!-- Section 1 of preview: Lifecycle steps -->
+<div class="mb-5">
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-2 uppercase tracking-wide">5-Stage Implementation Path</span>
+<div class="grid grid-cols-5 gap-1 text-center font-label-sm text-[11px] font-medium text-secondary">
+<div class="bg-surface-container py-1.5 rounded">1. Validate</div>
+<div class="bg-surface-container py-1.5 rounded">2. Prep</div>
+<div class="bg-secondary-container text-on-secondary-container py-1.5 rounded font-bold">3. Scope</div>
+<div class="bg-surface-container py-1.5 rounded">4. Offer</div>
+<div class="bg-surface-container py-1.5 rounded">5. Deliver</div>
+</div>
+</div>
+<!-- Section 2 of preview: Resource drawer -->
+<div class="space-y-2 mb-5">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wide">Included Asset Modules</span>
+<div class="flex items-center justify-between p-2.5 bg-surface-container-low rounded">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">terminal</span>
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Source Code Repository</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Ready to fork</span>
+</div>
+<div class="flex items-center justify-between p-2.5 bg-surface-container-low rounded">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">description</span>
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Client Discovery Worksheet</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">PDF &amp; Doc</span>
+</div>
+</div>
+<div class="p-3 bg-surface-container rounded font-body-sm text-body-sm text-on-surface-variant italic text-center">
+            Resources and technical requirements vary by idea.
+          </div>
+</div>
+<!-- Right Column: 4 Feature Points -->
+<div class="lg:col-span-6 flex flex-col gap-6">
+<!-- Item 1 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">target</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">1. The opportunity</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Who the potential customer is and what specific operational problem to investigate.</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">folder_zip</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">2. The relevant resources</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Functional examples, deployment guides, templates, and source code where included.</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">checklist_rtl</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">3. The implementation plan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Practical steps for validation, customisation, customer conversations, and successful delivery.</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">space_dashboard</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">4. Your project workspace</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">A dedicated place to track execution tasks and record your decisions as you proceed.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== MEMBERSHIP INTRODUCTION ==================== -->
+<section class="w-full px-6 lg:px-12 py-20 bg-surface scroll-mt-20" id="membership">
+<div class="max-w-4xl mx-auto text-center">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold block mb-3">Structured Access</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-4">One membership. A library you can keep exploring.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+        Access the idea library, work with the resources included in each kit, and return for new opportunities and updates.
+      </p>
+<!-- Elegant Container -->
+<div class="bg-surface-container-lowest rounded-2xl p-8 lg:p-12 shadow-lg text-left">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+<div class="space-y-4">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Everything in the library</h3>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">Access to the complete member idea library</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">Included implementation resources &amp; assets</span>
+</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Continuous updates</h3>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">Saved ideas and personal project checklists</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">New releases and updates as they are published</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low mb-8">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<span class="font-bold text-on-surface">Clear boundary:</span> Customer hosting, third-party tools, and custom development are not automatically included.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 bg-surface-container-low -mx-8 -mb-8 lg:-mx-12 lg:-mb-12 p-6 lg:p-8 rounded-b-2xl">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface block">Founding Tiers</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Subscription structures rolling out next.</span>
+</div>
+<button class="w-full sm:w-auto px-6 py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-all shadow-md" onclick="showNoticeModal('Membership details and subscription tiers will be introduced in Batch 5B.')">
+            View membership details
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== FAQ SECTION ==================== -->
+<section class="w-full px-6 lg:px-12 py-20 bg-surface-container-low scroll-mt-20" id="faq">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-14">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold block mb-2">Clear Answers</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-3">Frequently Asked Questions</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Common questions about the IncomeNow library and implementation resources.</p>
+</div>
+<!-- 6 Accordion Items -->
+<div class="space-y-4">
+<!-- Accordion 1 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all">
+<button class="w-full p-5 text-left flex items-center justify-between gap-4 focus:outline-none" onclick="toggleFaq(1)">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Is IncomeNow a collection of video courses?</span>
+<span class="material-symbols-outlined text-primary text-[22px] transition-transform duration-200" id="faq-icon-1">expand_more</span>
+</button>
+<div class="hidden px-5 pb-5 pt-1 text-on-surface-variant font-body-md text-body-md" id="faq-answer-1">
+            No. It is an idea-and-implementation library. You explore an opportunity and follow written guidance, examples, resources, and practical tasks.
+          </div>
+</div>
+<!-- Accordion 2 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all">
+<button class="w-full p-5 text-left flex items-center justify-between gap-4 focus:outline-none" onclick="toggleFaq(2)">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Do I need to know how to code?</span>
+<span class="material-symbols-outlined text-primary text-[22px] transition-transform duration-200" id="faq-icon-2">expand_more</span>
+</button>
+<div class="hidden px-5 pb-5 pt-1 text-on-surface-variant font-body-md text-body-md" id="faq-answer-2">
+            Requirements vary. Some ideas involve adapting code, while others focus on research, website setup, or digital services. Check the requirements shown on each idea.
+          </div>
+</div>
+<!-- Accordion 3 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all">
+<button class="w-full p-5 text-left flex items-center justify-between gap-4 focus:outline-none" onclick="toggleFaq(3)">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Does every idea include source code?</span>
+<span class="material-symbols-outlined text-primary text-[22px] transition-transform duration-200" id="faq-icon-3">expand_more</span>
+</button>
+<div class="hidden px-5 pb-5 pt-1 text-on-surface-variant font-body-md text-body-md" id="faq-answer-3">
+            No. Resources match the opportunity. A software kit may include source code, while another idea may provide templates, workflow examples, or research materials.
+          </div>
+</div>
+<!-- Accordion 4 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all">
+<button class="w-full p-5 text-left flex items-center justify-between gap-4 focus:outline-none" onclick="toggleFaq(4)">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Will joining guarantee that I make money?</span>
+<span class="material-symbols-outlined text-primary text-[22px] transition-transform duration-200" id="faq-icon-4">expand_more</span>
+</button>
+<div class="hidden px-5 pb-5 pt-1 text-on-surface-variant font-body-md text-body-md" id="faq-answer-4">
+            No. Results depend on the opportunity, your work, customer demand, costs, and delivery. Validate an offer with potential buyers before committing heavily.
+          </div>
+</div>
+<!-- Accordion 5 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all">
+<button class="w-full p-5 text-left flex items-center justify-between gap-4 focus:outline-none" onclick="toggleFaq(5)">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Can I use a kit for a customer project?</span>
+<span class="material-symbols-outlined text-primary text-[22px] transition-transform duration-200" id="faq-icon-5">expand_more</span>
+</button>
+<div class="hidden px-5 pb-5 pt-1 text-on-surface-variant font-body-md text-body-md" id="faq-answer-5">
+            Check the licence and permitted uses attached to the relevant resource before adapting it or delivering it to a customer.
+          </div>
+</div>
+<!-- Accordion 6 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all">
+<button class="w-full p-5 text-left flex items-center justify-between gap-4 focus:outline-none" onclick="toggleFaq(6)">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Will new ideas be added?</span>
+<span class="material-symbols-outlined text-primary text-[22px] transition-transform duration-200" id="faq-icon-6">expand_more</span>
+</button>
+<div class="hidden px-5 pb-5 pt-1 text-on-surface-variant font-body-md text-body-md" id="faq-answer-6">
+            The membership is designed to grow through new ideas and updates to existing resources. Published releases will appear in Latest Updates.
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== FINAL CALL TO ACTION ==================== -->
+<section class="w-full px-6 lg:px-12 py-20 bg-surface">
+<div class="max-w-7xl mx-auto">
+<div class="bg-inverse-surface text-inverse-on-surface rounded-2xl p-10 lg:p-16 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg font-bold mb-4 tracking-tight text-on-primary">
+            Start with an idea worth investigating.
+          </h2>
+<p class="font-body-lg text-body-lg text-secondary-fixed-dim leading-relaxed">
+            Explore the examples and find a path that fits the skills you want to use.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-all shadow-md" href="#example-ideas">
+            Explore ideas
+          </a>
+<button class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-surface-container-highest/20 text-on-primary font-label-md text-label-md hover:bg-surface-container-highest/30 transition-all" onclick="showNoticeModal('Membership details and subscription tiers will be introduced in Batch 5B.')">
+            View membership details
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== QUICK PREVIEW MODAL ==================== -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-inverse-surface/60 backdrop-blur-sm p-4" id="preview-modal">
+<div class="bg-surface-container-lowest rounded-2xl shadow-2xl max-w-xl w-full p-6 lg:p-8 max-h-[921px] overflow-y-auto">
+<!-- Modal Header -->
+<div class="flex items-center justify-between pb-4 mb-4 bg-surface-container-low -mx-6 -mt-6 lg:-mx-8 lg:-mt-8 p-6 rounded-t-2xl">
+<div>
+<span class="font-label-sm text-label-sm font-bold text-primary px-2.5 py-1 rounded bg-secondary-container" id="modal-id-badge">IDEA #000</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface mt-2" id="modal-title">Idea Title</h3>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface" onclick="closeQuickPreview()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Body Specs -->
+<div class="space-y-4 mb-6">
+<div>
+<span class="font-label-sm text-label-sm uppercase font-bold text-primary block mb-1">Intended Customer</span>
+<p class="font-body-md text-body-md text-on-surface bg-surface-container-low p-3 rounded-lg" id="modal-customer"></p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase font-bold text-primary block mb-1">Customer Problem To Investigate</span>
+<p class="font-body-md text-body-md text-on-surface-variant bg-surface-container-low p-3 rounded-lg" id="modal-problem"></p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase font-bold text-primary block mb-1">Technical Requirement</span>
+<p class="font-body-md text-body-md text-on-surface-variant bg-surface-container-low p-3 rounded-lg" id="modal-technical"></p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase font-bold text-primary block mb-1">Example Resource Types</span>
+<div class="flex flex-wrap gap-2 pt-1" id="modal-resources"></div>
+</div>
+</div>
+<!-- Modal Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-end gap-3 pt-4 bg-surface-container-low -mx-6 -mb-6 lg:-mx-8 lg:-mb-8 p-4 rounded-b-2xl">
+<button class="w-full sm:w-auto px-4 py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" onclick="closeQuickPreview()">
+          Close preview
+        </button>
+<a class="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-all" href="#membership" onclick="closeQuickPreview()">
+          View membership
+        </a>
+</div>
+</div>
+</div>
+<!-- ==================== GENERIC NOTICE TOAST/MODAL ==================== -->
+<div class="fixed inset-0 z-[110] hidden items-center justify-center bg-inverse-surface/60 backdrop-blur-sm p-4" id="notice-modal">
+<div class="bg-surface-container-lowest rounded-xl shadow-2xl max-w-md w-full p-6 text-center">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-primary flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-[24px]">info</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-2">Notice</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6" id="notice-modal-message"></p>
+<button class="w-full py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-all" onclick="closeNoticeModal()">
+        Acknowledge
+      </button>
+</div>
+</div>
+<!-- ==================== SCRIPT LOGIC ==================== -->
+<script>
+    // Quick Preview Data Store
+    const ideaData = {
+      '001': {
+        id: 'IDEA #001',
+        title: 'Pergola Quotation & Follow-up CRM',
+        customer: 'Independent pergola builders, patio contractors, and residential outdoor structure installers.',
+        problem: 'Leads get lost between initial enquiries, measurement site visits, and quote delivery, causing missed jobs.',
+        technical: 'Code customisation (React / Tailwind UI template with Supabase/PostgreSQL backend data layer).',
+        resources: ['Functional Live Demo', 'Clean Source Code', 'Step-by-step Setup Guide', 'Pricing Matrix Spreadsheet']
+      },
+      '003': {
+        id: 'IDEA #003',
+        title: 'Quotation Follow-up Automation',
+        customer: 'Small home service professionals and independent trade estimators.',
+        problem: 'Quotes are emailed as PDFs with zero automated follow-up, losing up to 40% of potential conversions.',
+        technical: 'Low-code setup (Make / Zapier webhook orchestrations, Gmail/Twilio connectors).',
+        resources: ['Workflow Blueprint (.json)', 'Visual Setup Guide', 'Testing Checklist', 'Email Copy Templates']
+      },
+      '004': {
+        id: 'IDEA #004',
+        title: 'Local-Service Lead Website',
+        customer: 'Homeowners seeking verified tree lopping, driveway concreting, or pergola installations.',
+        problem: 'Difficulty comparing local trades quickly; trade providers lack simple, focused inbound lead streams.',
+        technical: 'Website setup (Static site generator or Astro/Webflow directory framework with form capture).',
+        resources: ['Site Starter Template', 'Competitor Research Worksheet', 'Trade Partner Outreach Guide']
+      }
+    };
+
+    function openQuickPreview(id) {
+      const data = ideaData[id];
+      if (!data) return;
+
+      document.getElementById('modal-id-badge').innerText = data.id;
+      document.getElementById('modal-title').innerText = data.title;
+      document.getElementById('modal-customer').innerText = data.customer;
+      document.getElementById('modal-problem').innerText = data.problem;
+      document.getElementById('modal-technical').innerText = data.technical;
+
+      const resContainer = document.getElementById('modal-resources');
+      resContainer.innerHTML = '';
+      data.resources.forEach(res => {
+        const span = document.createElement('span');
+        span.className = 'px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm';
+        span.innerText = res;
+        resContainer.appendChild(span);
+      });
+
+      const modal = document.getElementById('preview-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeQuickPreview() {
+      const modal = document.getElementById('preview-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function showNoticeModal(msg) {
+      document.getElementById('notice-modal-message').innerText = msg;
+      const modal = document.getElementById('notice-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeNoticeModal() {
+      const modal = document.getElementById('notice-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // FAQ Accordion Toggle
+    function toggleFaq(index) {
+      const ans = document.getElementById('faq-answer-' + index);
+      const icon = document.getElementById('faq-icon-' + index);
+      const isHidden = ans.classList.contains('hidden');
+
+      if (isHidden) {
+        ans.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        ans.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+
+    // Intercept Header actions specified by requirement
+    document.addEventListener('DOMContentLoaded', () => {
+      // Find Log In links
+      const logInLinks = document.querySelectorAll('a[data-path="login"]');
+      logInLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          showNoticeModal('Reserved destination for the upcoming authentication batch.');
+        });
+      });
+
+      // Find Explore Ideas header button
+      const exploreLinks = document.querySelectorAll('header a[data-path="example-ideas"]');
+      exploreLinks.forEach(link => {
+        link.setAttribute('href', '#example-ideas');
+      });
+
+      // Find Nav Anchors
+      const howItWorks = document.querySelector('header a[data-path="how-it-works"]');
+      if (howItWorks) howItWorks.setAttribute('href', '#how-it-works');
+
+      const membership = document.querySelector('header a[data-path="membership"]');
+      if (membership) membership.setAttribute('href', '#membership');
+
+      const faq = document.querySelector('header a[data-path="faq"]');
+      if (faq) faq.setAttribute('href', '#faq');
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low text-on-surface-variant py-16"><div class="max-w-7xl mx-auto px-6 lg:px-12"><div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12"><div class="md:col-span-5 space-y-4"><div class="flex items-center gap-1"><span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">IncomeNow<span class="text-primary text-2xl leading-none inline-block">.</span><span class="font-headline-sm text-headline-sm font-medium text-on-surface-variant">in</span></span></div><p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Practical business opportunities and implementation resources for independent founders, builders, and operators.</p><div class="pt-2"><span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-secondary">IncomeNow.in</span></div></div><div class="md:col-span-4 space-y-3"><h3 class="font-label-md text-label-md font-semibold text-on-surface uppercase tracking-wider">Platform</h3><ul class="space-y-2.5"><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#">How it works</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="example-ideas" href="#">Example ideas</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="membership" href="#">Membership</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="faq" href="#">FAQ</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="login" href="#">Log in</a></li></ul></div><div class="md:col-span-3 space-y-3"><h3 class="font-label-md text-label-md font-semibold text-on-surface uppercase tracking-wider">Legal &amp; Trust</h3><ul class="space-y-2.5"><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy" href="#">Privacy</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terms" href="#">Terms</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="resource-licences" href="#">Resource licences</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Contact</a></li></ul></div></div><div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"><p class="font-body-sm text-body-sm text-tertiary">© 2024 IncomeNow.in. Structured execution frameworks. All rights reserved.</p><div class="flex items-center gap-6"><a class="font-body-sm text-body-sm text-tertiary hover:text-on-surface transition-colors" data-path="privacy" href="#">Privacy Policy</a><a class="font-body-sm text-body-sm text-tertiary hover:text-on-surface transition-colors" data-path="terms" href="#">Terms of Service</a></div></div></div></footer></body></html>

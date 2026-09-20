@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-dim":"#ceded4","surface-bright":"#eefdf3","surface-container-low":"#e8f7ed","outline-variant":"#bec9c1","surface-container":"#e2f2e8","tertiary-container":"#676d6a","tertiary-fixed-dim":"#c2c8c4","on-primary-fixed":"#002114","inverse-on-surface":"#e5f4eb","surface-tint":"#006c4a","on-tertiary-fixed":"#171d1b","error":"#ba1a1a","surface-container-highest":"#d7e6dc","tertiary":"#4f5552","on-primary":"#ffffff","inverse-surface":"#26332d","on-error-container":"#93000a","on-surface-variant":"#3f4943","secondary-fixed-dim":"#aecdc1","on-error":"#ffffff","primary-fixed-dim":"#80d8ad","surface-container-lowest":"#ffffff","on-surface":"#111e18","surface-variant":"#d7e6dc","secondary":"#47645a","on-secondary-fixed-variant":"#304c43","surface":"#eefdf3","inverse-primary":"#80d8ad","background":"#eefdf3","secondary-fixed":"#c9eadd","surface-container-high":"#ddece2","on-background":"#111e18","outline":"#6f7a72","on-secondary-container":"#4d6a60","on-secondary":"#ffffff","tertiary-fixed":"#dfe4e0","error-container":"#ffdad6","on-tertiary-fixed-variant":"#424845","on-primary-container":"#acffd4","primary":"#006041","on-secondary-fixed":"#022019","primary-fixed":"#9bf5c8","primary-container":"#197a56","secondary-container":"#c9eadd","on-primary-fixed-variant":"#005237","on-tertiary":"#ffffff","on-tertiary-container":"#eaefeb"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","space-lg":"1.5rem","margin":"2.5rem","gutter-mobile":"1rem","space-md":"1rem","space-sm":"0.5rem","margin-mobile":"1rem","space-xl":"2.5rem","gutter":"1.5rem"},"fontFamily":{"label-sm":["Inter"],"label-md":["Inter"],"body-md":["Inter"],"headline-lg":["Manrope"],"body-lg":["Inter"],"headline-sm":["Manrope"],"display-hero-mobile":["Manrope"],"body-sm":["Inter"],"headline-md":["Manrope"],"display-hero":["Manrope"],"headline-lg-mobile":["Manrope"]},"fontSize":{"label-sm":["0.75rem",{"lineHeight":"1.2","letterSpacing":"0.02em","fontWeight":"600"}],"label-md":["0.875rem",{"lineHeight":"1.25","letterSpacing":"0.01em","fontWeight":"500"}],"body-md":["0.9375rem",{"lineHeight":"1.55","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["2.25rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"700"}],"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-sm":["1.125rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"600"}],"display-hero-mobile":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.025em","fontWeight":"800"}],"body-sm":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"0.005em","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"1.35","letterSpacing":"-0.015em","fontWeight":"600"}],"display-hero":["3.25rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"800"}],"headline-lg-mobile":["1.75rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-[236px] bg-surface-container-lowest flex flex-col justify-between z-50 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="p-space-md pb-space-sm"><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">IncomeNow.in</span><span class="w-2 h-2 rounded-full bg-primary inline-block"></span></div><div class="mt-2"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Design preview — sample content</span></div></div><nav class="flex flex-col gap-1 px-space-xs mt-space-sm" data-active-classes="bg-primary text-on-primary font-semibold relative before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary-fixed"><a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" data-path="explore-ideas" href="#"><span class="material-symbols-outlined text-[20px]">explore</span>Explore Ideas</a><a aria-current="page" class="flex items-center gap-3 px-3 py-2 rounded transition-colors bg-primary text-on-primary font-semibold relative before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary-fixed" data-path="saved-ideas" href="#"><span class="material-symbols-outlined text-[20px]">bookmark</span>Saved Ideas</a><a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" data-path="my-projects" href="#"><span class="material-symbols-outlined text-[20px]">folder</span>My Projects</a><a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" data-path="latest-updates" href="#"><span class="material-symbols-outlined text-[20px]">campaign</span>Latest Updates</a></nav><div class="mt-space-md pt-space-md px-space-xs"><span class="px-3 font-label-sm text-label-sm uppercase tracking-wider text-outline">Preferences</span><nav class="flex flex-col gap-1 mt-space-xs" data-active-classes="bg-primary text-on-primary font-semibold relative before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary-fixed"><a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" data-path="help-and-support" href="#"><span class="material-symbols-outlined text-[20px]">help_outline</span>Help &amp; Support</a><a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" data-path="account" href="#"><span class="material-symbols-outlined text-[20px]">manage_accounts</span>Account</a></nav></div></div><div class="p-space-sm m-space-xs rounded bg-surface-container-low"><div class="flex items-center justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col overflow-hidden"><span class="font-label-md text-label-md font-semibold text-on-surface truncate">Alex Mercer</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">alex@incomenow.in</span></div></div><span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-medium">Member</span></div></div></aside><div class="pl-[236px]"><header class="fixed top-0 left-[236px] right-0 h-14 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md"><span class="material-symbols-outlined text-[18px] text-outline">domain</span><span class="hover:text-on-surface cursor-pointer">Workspace</span><span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span><span class="text-on-surface font-medium">Dashboard</span></div><div class="flex items-center gap-space-sm"><div class="relative hidden sm:block"><span class="material-symbols-outlined text-outline absolute left-2.5 top-1/2 -translate-y-1/2 text-[18px]">search</span><input class="h-8 pl-8 pr-3 bg-surface rounded text-on-surface placeholder:text-outline text-body-sm focus:outline-none focus:bg-surface-container-lowest" placeholder="Search ideas, blueprints..." type="text"/></div><button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface"><span class="material-symbols-outlined text-[20px]">notifications</span></button><button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface"><span class="material-symbols-outlined text-[20px]">tune</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-14 w-full bg-surface min-h-screen px-space-lg py-space-md"><div class="flex flex-col w-full">
+<!-- Top Utility Breadcrumb Bar -->
+<div class="flex flex-wrap items-center justify-between gap-3 pb-space-sm">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="hover:text-on-surface transition-colors cursor-pointer">Discovery Workspace</span>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface font-semibold">Saved Ideas</span>
+<span class="mx-1.5 inline-block w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="text-outline font-normal">Design preview — sample content</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm tracking-wide" id="header-shortlist-badge">
+        3 SHORTLISTED OPPORTUNITIES
+      </span>
+<button class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm transition-colors" id="toggle-empty-demo-btn" title="Toggle simulated empty state">
+<span class="material-symbols-outlined text-[14px]">preview</span>
+<span id="preview-toggle-text">Simulate Empty</span>
+</button>
+</div>
+</div>
+<!-- Page Header Title Block -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pt-space-xs pb-space-lg">
+<div class="space-y-1">
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">Saved ideas</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+        Keep a shortlist of opportunities you want to explore further, evaluate implementation scope, or begin building.
+      </p>
+</div>
+<div class="flex items-center gap-2.5 flex-shrink-0">
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container-low font-label-md text-label-md transition-all shadow-sm" data-path="explore-ideas" href="#">
+<span class="material-symbols-outlined text-[18px]">explore</span>
+<span>Browse ideas</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Search and Controls Surface -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm mb-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Search Input -->
+<div class="relative flex-1 max-w-xl">
+<span class="material-symbols-outlined text-outline absolute left-3.5 top-1/2 -translate-y-1/2 text-[20px] pointer-events-none">search</span>
+<input class="w-full h-10 pl-11 pr-9 bg-surface rounded-lg text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest transition-colors" id="saved-search-input" placeholder="Search your saved ideas by title, tag, or vertical..." type="text"/>
+<button class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" id="search-clear-btn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Sort & Workspace Status -->
+<div class="flex items-center justify-between sm:justify-end gap-space-md">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider hidden sm:inline">Sort:</span>
+<div class="relative">
+<select class="h-10 pl-3 pr-8 bg-surface-container-low rounded-lg text-on-surface font-label-md text-label-md appearance-none focus:outline-none cursor-pointer" id="sort-select">
+<option value="recent">Recently saved</option>
+<option value="alpha">Title A–Z</option>
+<option value="number">Idea #</option>
+</select>
+<span class="material-symbols-outlined text-outline absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Solution-type Pill Filters Row -->
+<div class="flex flex-wrap items-center justify-between gap-y-3 pt-space-xs">
+<div class="flex flex-wrap items-center gap-1.5" id="filter-pills-group">
+<button class="filter-pill active-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-primary text-on-primary font-semibold shadow-xs" data-filter="all">
+          All types
+        </button>
+<button class="filter-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium" data-filter="custom-crms">
+          Custom CRMs
+        </button>
+<button class="filter-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium" data-filter="lead-gen">
+          Lead-generation websites
+        </button>
+<button class="filter-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium" data-filter="automations">
+          Automations
+        </button>
+<button class="filter-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium" data-filter="web-tools">
+          Web tools
+        </button>
+<button class="filter-pill px-3.5 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium" data-filter="digital-services">
+          Digital services
+        </button>
+</div>
+<!-- Dynamic Counter -->
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="results-count-label">
+        Showing <span class="font-semibold text-on-surface">3</span> saved opportunities
+      </span>
+</div>
+</div>
+<!-- SAVED IDEA CARDS GRID -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg" id="cards-grid">
+<!-- Card 1: IDEA #001 -->
+<article class="saved-card group flex flex-col justify-between bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all duration-200" data-category="custom-crms" data-id="idea-001" data-number="001" data-tags="Custom CRM, Code customisation, Home Services, pergola" data-title="Pergola Quotation &amp; Follow-up CRM" id="card-idea-001">
+<div class="flex flex-col">
+<!-- Card Header: Badges & Bookmark -->
+<div class="flex items-center justify-between gap-2 mb-space-md">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-label-sm text-label-sm font-semibold tracking-wide">
+              IDEA #001
+            </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+              Home Services
+            </span>
+</div>
+<button aria-label="Remove Pergola Quotation &amp; Follow-up CRM from saved ideas" class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container-low text-primary hover:bg-error-container hover:text-error transition-colors" onclick="removeIdea('idea-001')" title="Remove Pergola Quotation &amp; Follow-up CRM from saved ideas" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+<!-- Schematic Preview Illustration: Mini Kanban -->
+<div class="w-full bg-surface-container-low rounded-lg p-3 mb-space-md overflow-hidden select-none">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface tracking-tight">Pipeline Workflow v2.4 Ready</span>
+</div>
+<span class="font-label-sm text-[10px] text-outline font-mono">KANBAN BLUEPRINT</span>
+</div>
+<div class="grid grid-cols-3 gap-1.5">
+<div class="bg-surface-container-lowest p-1.5 rounded flex flex-col gap-1 shadow-xs">
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-outline font-bold">New Enquiries</span>
+<div class="h-3 w-full bg-surface-container rounded-xs"></div>
+<div class="h-3 w-3/4 bg-surface-container rounded-xs"></div>
+</div>
+<div class="bg-surface-container-lowest p-1.5 rounded flex flex-col gap-1 shadow-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-primary font-bold">Site Visits</span>
+<span class="font-label-sm text-[9px] px-1 rounded-full bg-primary/10 text-primary font-bold">3</span>
+</div>
+<div class="h-3 w-full bg-primary-fixed-dim/40 rounded-xs"></div>
+<div class="h-3 w-5/6 bg-surface-container rounded-xs"></div>
+</div>
+<div class="bg-surface-container-lowest p-1.5 rounded flex flex-col gap-1 shadow-xs">
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-outline font-bold">Closed Won</span>
+<div class="h-3 w-4/5 bg-surface-container rounded-xs"></div>
+</div>
+</div>
+</div>
+<!-- Title & Description -->
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight mb-2 group-hover:text-primary transition-colors">
+          Pergola Quotation &amp; Follow-up CRM
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md line-clamp-2">
+          Organise enquiries, site visits, quotations, and installation follow-ups for pergola businesses.
+        </p>
+<!-- Solution Tags -->
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+            Custom CRM
+          </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+            Code customisation
+          </span>
+</div>
+</div>
+<!-- Bottom Resources & Action -->
+<div class="pt-space-md mt-auto">
+<div class="mb-space-md">
+<span class="block font-label-sm text-[11px] uppercase tracking-wider text-outline font-semibold mb-2">
+            Resources included
+          </span>
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">play_circle</span> Demo
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">code</span> Source code
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">menu_book</span> Setup guide
+            </span>
+</div>
+</div>
+<a class="w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-xs" href="#">
+<span>View idea</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Card 2: IDEA #003 -->
+<article class="saved-card group flex flex-col justify-between bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all duration-200" data-category="automations" data-id="idea-003" data-number="003" data-tags="Automation, Low-code setup, Professional Services, quotation, sequence" data-title="Quotation Follow-up Automation" id="card-idea-003">
+<div class="flex flex-col">
+<!-- Card Header: Badges & Bookmark -->
+<div class="flex items-center justify-between gap-2 mb-space-md">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-label-sm text-label-sm font-semibold tracking-wide">
+              IDEA #003
+            </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+              Professional Services
+            </span>
+</div>
+<button aria-label="Remove Quotation Follow-up Automation from saved ideas" class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container-low text-primary hover:bg-error-container hover:text-error transition-colors" onclick="removeIdea('idea-003')" title="Remove Quotation Follow-up Automation from saved ideas" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+<!-- Schematic Preview Illustration: Mini Automation Map -->
+<div class="w-full bg-surface-container-low rounded-lg p-3 mb-space-md overflow-hidden select-none">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface tracking-tight">Webhook &amp; Sequence Map</span>
+</div>
+<span class="font-label-sm text-[10px] text-outline font-mono">FLOW TRIGGER</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-lowest p-2 rounded shadow-xs overflow-x-auto">
+<span class="px-1.5 py-1 rounded bg-surface-container text-on-surface font-mono text-[9px] font-medium whitespace-nowrap">Day +2 SMS Check</span>
+<span class="material-symbols-outlined text-[12px] text-outline flex-shrink-0">arrow_forward</span>
+<span class="px-1.5 py-1 rounded bg-primary/10 text-primary font-mono text-[9px] font-medium whitespace-nowrap">Day +5 Cal Booking</span>
+<span class="material-symbols-outlined text-[12px] text-outline flex-shrink-0">arrow_forward</span>
+<span class="px-1.5 py-1 rounded bg-surface-container text-on-surface font-mono text-[9px] font-medium whitespace-nowrap">Day +9 Owner Alert</span>
+</div>
+</div>
+<!-- Title & Description -->
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight mb-2 group-hover:text-primary transition-colors">
+          Quotation Follow-up Automation
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md line-clamp-2">
+          Help service businesses organise follow-up tasks after sending a quotation.
+        </p>
+<!-- Solution Tags -->
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+            Automation
+          </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+            Low-code setup
+          </span>
+</div>
+</div>
+<!-- Bottom Resources & Action -->
+<div class="pt-space-md mt-auto">
+<div class="mb-space-md">
+<span class="block font-label-sm text-[11px] uppercase tracking-wider text-outline font-semibold mb-2">
+            Resources included
+          </span>
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">account_tree</span> Workflow example
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">menu_book</span> Setup guide
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">checklist</span> Testing checklist
+            </span>
+</div>
+</div>
+<a class="w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-xs" href="#">
+<span>View idea</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Card 3: IDEA #004 -->
+<article class="saved-card group flex flex-col justify-between bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all duration-200" data-category="lead-gen" data-id="idea-004" data-number="004" data-tags="Lead-generation website, Website setup, Home Services, lead, seo" data-title="Local-Service Lead Website" id="card-idea-004">
+<div class="flex flex-col">
+<!-- Card Header: Badges & Bookmark -->
+<div class="flex items-center justify-between gap-2 mb-space-md">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-label-sm text-label-sm font-semibold tracking-wide">
+              IDEA #004
+            </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+              Home Services
+            </span>
+</div>
+<button aria-label="Remove Local-Service Lead Website from saved ideas" class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container-low text-primary hover:bg-error-container hover:text-error transition-colors" onclick="removeIdea('idea-004')" title="Remove Local-Service Lead Website from saved ideas" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+<!-- Schematic Preview Illustration: Miniature Landing Blueprint -->
+<div class="w-full bg-surface-container-low rounded-lg p-3 mb-space-md overflow-hidden select-none">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface tracking-tight">Wireframe Blueprint — SEO Optimized</span>
+</div>
+<span class="font-label-sm text-[10px] text-outline font-mono">HERO TEMPLATE</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded shadow-xs flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="h-2 w-16 bg-outline-variant rounded-xs"></div>
+<div class="flex gap-1">
+<div class="h-2 w-4 bg-outline-variant/60 rounded-xs"></div>
+<div class="h-2 w-4 bg-outline-variant/60 rounded-xs"></div>
+</div>
+</div>
+<div class="flex gap-2 items-center pt-0.5">
+<div class="flex-1 space-y-1">
+<div class="h-2 w-full bg-surface-container-highest rounded-xs"></div>
+<div class="h-1.5 w-4/5 bg-surface-container rounded-xs"></div>
+</div>
+<div class="w-12 h-6 bg-primary/10 rounded flex items-center justify-center">
+<span class="font-label-sm text-[8px] text-primary font-bold">CTA Form</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Title & Description -->
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight mb-2 group-hover:text-primary transition-colors">
+          Local-Service Lead Website
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md line-clamp-2">
+          Explore a website model that connects service enquiries with suitable local providers.
+        </p>
+<!-- Solution Tags -->
+<div class="flex flex-wrap gap-1.5 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+            Lead-generation website
+          </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+            Website setup
+          </span>
+</div>
+</div>
+<!-- Bottom Resources & Action -->
+<div class="pt-space-md mt-auto">
+<div class="mb-space-md">
+<span class="block font-label-sm text-[11px] uppercase tracking-wider text-outline font-semibold mb-2">
+            Resources included
+          </span>
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">web</span> Site template
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">description</span> Research worksheet
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">partner_exchange</span> Partner guide
+            </span>
+</div>
+</div>
+<a class="w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-xs" href="#">
+<span>View idea</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</article>
+</div>
+<!-- STATE B: NO SEARCH / FILTER MATCHES (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center text-center p-space-xl bg-surface-container-lowest rounded-xl shadow-sm my-space-sm" id="no-matches-state">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-outline mb-space-md">
+<span class="material-symbols-outlined text-[28px]">search_off</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-1">No saved ideas match</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-lg">
+      Try another search or clear your solution-type filters to view all shortlisted opportunities.
+    </p>
+<button class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-colors flex items-center gap-2" id="reset-filters-btn">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+      Clear search and filters
+    </button>
+</div>
+<!-- STATE A: ZERO SAVED IDEAS EMPTY STATE (Simulated / Toggled) -->
+<div class="hidden flex-col items-center justify-center text-center p-space-xl bg-surface-container-lowest rounded-xl shadow-sm my-space-sm" id="empty-ideas-state">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-space-md">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 0;">bookmark_border</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight mb-2">Your shortlist starts here</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-lg">
+      Bookmark promising niche digital solutions from the exploration library to evaluate workflows, templates, and setup requirements in one place.
+    </p>
+<div class="flex items-center gap-3">
+<a class="px-5 py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold transition-colors flex items-center gap-2 shadow-xs" data-path="explore-ideas" href="#">
+<span class="material-symbols-outlined text-[18px]">explore</span>
+        Explore ideas
+      </a>
+<button class="px-4 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-colors" id="restore-sample-btn">
+        Restore sample ideas
+      </button>
+</div>
+</div>
+<!-- UNDO TOAST NOTIFICATION -->
+<aside aria-live="polite" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 ease-out flex items-center gap-3 px-4 py-3 bg-inverse-surface text-inverse-on-surface rounded-lg shadow-xl" id="undo-toast">
+<span class="material-symbols-outlined text-primary-fixed text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md text-inverse-on-surface font-medium" id="toast-message">Idea removed from saved.</span>
+<button class="ml-2 px-2.5 py-1 rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary-container transition-colors" id="undo-btn">
+      Undo
+    </button>
+<button aria-label="Dismiss toast" class="text-tertiary-fixed-dim hover:text-inverse-on-surface transition-colors ml-1" id="close-toast-btn">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</aside>
+<!-- Bottom Institutional Guidance Workspace Card -->
+<div class="mt-space-xl p-space-lg rounded-xl bg-surface-container-low flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary flex-shrink-0 mt-0.5 shadow-xs">
+<span class="material-symbols-outlined text-[20px]">task_alt</span>
+</div>
+<div class="space-y-0.5">
+<h4 class="font-headline-sm text-headline-sm font-bold text-on-surface">Ready to begin prototyping?</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
+          Each saved blueprint contains verified target ICP definitions, architecture diagrams, and ready-to-fork starter assets.
+        </p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<a class="px-3.5 py-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-colors flex items-center gap-1.5 shadow-xs" data-path="my-projects" href="#">
+<span class="material-symbols-outlined text-[16px]">folder_open</span>
+<span>Open Projects workspace</span>
+</a>
+</div>
+</div>
+</div>
+<script>
+  // Saved Ideas Workspace Interactive State Manager
+  (function() {
+    let savedCards = [
+      { id: 'idea-001', number: '001', title: 'Pergola Quotation & Follow-up CRM', category: 'custom-crms', tags: 'Custom CRM, Code customisation, Home Services, pergola' },
+      { id: 'idea-003', number: '003', title: 'Quotation Follow-up Automation', category: 'automations', tags: 'Automation, Low-code setup, Professional Services, quotation, sequence' },
+      { id: 'idea-004', number: '004', title: 'Local-Service Lead Website', category: 'lead-gen', tags: 'Lead-generation website, Website setup, Home Services, lead, seo' }
+    ];
+
+    let removedStack = [];
+    let currentFilter = 'all';
+    let searchQuery = '';
+    let sortMode = 'recent';
+    let toastTimeout = null;
+
+    const cardsGrid = document.getElementById('cards-grid');
+    const noMatchesState = document.getElementById('no-matches-state');
+    const emptyIdeasState = document.getElementById('empty-ideas-state');
+    const searchInput = document.getElementById('saved-search-input');
+    const searchClearBtn = document.getElementById('search-clear-btn');
+    const sortSelect = document.getElementById('sort-select');
+    const resultsCountLabel = document.getElementById('results-count-label');
+    const headerShortlistBadge = document.getElementById('header-shortlist-badge');
+    const undoToast = document.getElementById('undo-toast');
+    const toastMessage = document.getElementById('toast-message');
+    const undoBtn = document.getElementById('undo-btn');
+    const closeToastBtn = document.getElementById('close-toast-btn');
+    const resetFiltersBtn = document.getElementById('reset-filters-btn');
+    const toggleEmptyDemoBtn = document.getElementById('toggle-empty-demo-btn');
+    const previewToggleText = document.getElementById('preview-toggle-text');
+    const restoreSampleBtn = document.getElementById('restore-sample-btn');
+    const filterPills = document.querySelectorAll('.filter-pill');
+
+    function updateCounts() {
+      const activeSavedCount = savedCards.length;
+      headerShortlistBadge.textContent = `${activeSavedCount} SHORTLISTED ${activeSavedCount === 1 ? 'OPPORTUNITY' : 'OPPORTUNITIES'}`;
+      
+      const visibleCount = getFilteredCards().length;
+      resultsCountLabel.innerHTML = `Showing <span class="font-semibold text-on-surface">${visibleCount}</span> saved ${visibleCount === 1 ? 'opportunity' : 'opportunities'}`;
+    }
+
+    function getFilteredCards() {
+      return savedCards.filter(item => {
+        const matchesCategory = (currentFilter === 'all' || item.category === currentFilter);
+        const query = searchQuery.trim().toLowerCase();
+        const matchesSearch = !query || 
+          item.title.toLowerCase().includes(query) || 
+          item.tags.toLowerCase().includes(query) ||
+          item.number.includes(query);
+        return matchesCategory && matchesSearch;
+      });
+    }
+
+    function renderView() {
+      // Check total saved count first (State A)
+      if (savedCards.length === 0) {
+        cardsGrid.classList.add('hidden');
+        noMatchesState.classList.add('hidden');
+        emptyIdeasState.classList.remove('hidden');
+        previewToggleText.textContent = 'Restore Grid';
+        updateCounts();
+        return;
+      } else {
+        emptyIdeasState.classList.add('hidden');
+        previewToggleText.textContent = 'Simulate Empty';
+      }
+
+      const filtered = getFilteredCards();
+
+      // Sort logic
+      let sortedCards = [...savedCards];
+      if (sortMode === 'alpha') {
+        sortedCards.sort((a, b) => a.title.localeCompare(b.title));
+      } else if (sortMode === 'number') {
+        sortedCards.sort((a, b) => a.number.localeCompare(b.number));
+      }
+
+      // Reorder DOM cards
+      sortedCards.forEach(item => {
+        const el = document.getElementById(`card-${item.id}`);
+        if (el) {
+          cardsGrid.appendChild(el);
+        }
+      });
+
+      // Toggle card visibility based on filter/search
+      savedCards.forEach(item => {
+        const el = document.getElementById(`card-${item.id}`);
+        if (el) {
+          const isVisible = filtered.some(f => f.id === item.id);
+          el.style.display = isVisible ? 'flex' : 'none';
+        }
+      });
+
+      if (filtered.length === 0) {
+        cardsGrid.classList.add('hidden');
+        noMatchesState.classList.remove('hidden');
+      } else {
+        cardsGrid.classList.remove('hidden');
+        noMatchesState.classList.add('hidden');
+      }
+
+      updateCounts();
+    }
+
+    // Global remove function exposed to bookmark click
+    window.removeIdea = function(ideaId) {
+      const index = savedCards.findIndex(c => c.id === ideaId);
+      if (index > -1) {
+        const removed = savedCards.splice(index, 1)[0];
+        removedStack.push({ card: removed, index: index });
+        
+        const cardEl = document.getElementById(`card-${ideaId}`);
+        if (cardEl) {
+          cardEl.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+          cardEl.style.opacity = '0';
+          cardEl.style.transform = 'scale(0.96)';
+          setTimeout(() => {
+            renderView();
+            showToast(`“${removed.title}” removed.`);
+          }, 180);
+        } else {
+          renderView();
+          showToast(`Idea removed from saved.`);
+        }
+      }
+    };
+
+    function showToast(msg) {
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastMessage.textContent = msg;
+      undoToast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      undoToast.classList.add('translate-y-0', 'opacity-100');
+
+      toastTimeout = setTimeout(() => {
+        hideToast();
+      }, 5000);
+    }
+
+    function hideToast() {
+      undoToast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      undoToast.classList.remove('translate-y-0', 'opacity-100');
+    }
+
+    undoBtn.addEventListener('click', () => {
+      if (removedStack.length > 0) {
+        const { card, index } = removedStack.pop();
+        savedCards.splice(index, 0, card);
+        const cardEl = document.getElementById(`card-${card.id}`);
+        if (cardEl) {
+          cardEl.style.opacity = '1';
+          cardEl.style.transform = 'scale(1)';
+        }
+        hideToast();
+        renderView();
+      }
+    });
+
+    closeToastBtn.addEventListener('click', hideToast);
+
+    // Search events
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      if (searchQuery.length > 0) {
+        searchClearBtn.classList.remove('hidden');
+      } else {
+        searchClearBtn.classList.add('hidden');
+      }
+      renderView();
+    });
+
+    searchClearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      searchClearBtn.classList.add('hidden');
+      renderView();
+      searchInput.focus();
+    });
+
+    // Pill filter click handlers
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => {
+          p.classList.remove('bg-primary', 'text-on-primary', 'font-semibold', 'shadow-xs');
+          p.classList.add('bg-surface-container-low', 'hover:bg-surface-container', 'text-on-surface-variant', 'font-medium');
+        });
+
+        pill.classList.add('bg-primary', 'text-on-primary', 'font-semibold', 'shadow-xs');
+        pill.classList.remove('bg-surface-container-low', 'hover:bg-surface-container', 'text-on-surface-variant', 'font-medium');
+
+        currentFilter = pill.getAttribute('data-filter');
+        renderView();
+      });
+    });
+
+    // Sort select handler
+    sortSelect.addEventListener('change', (e) => {
+      sortMode = e.target.value;
+      renderView();
+    });
+
+    // Reset filters button in State B
+    resetFiltersBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      searchClearBtn.classList.add('hidden');
+      
+      filterPills.forEach(p => {
+        if (p.getAttribute('data-filter') === 'all') {
+          p.click();
+        }
+      });
+    });
+
+    // State A toggle for testing/demonstration
+    toggleEmptyDemoBtn.addEventListener('click', () => {
+      if (savedCards.length > 0) {
+        removedStack = removedStack.concat(savedCards.map((c, i) => ({ card: c, index: i })));
+        savedCards = [];
+      } else {
+        restoreSampleData();
+      }
+      renderView();
+    });
+
+    restoreSampleBtn.addEventListener('click', () => {
+      restoreSampleData();
+      renderView();
+    });
+
+    function restoreSampleData() {
+      savedCards = [
+        { id: 'idea-001', number: '001', title: 'Pergola Quotation & Follow-up CRM', category: 'custom-crms', tags: 'Custom CRM, Code customisation, Home Services, pergola' },
+        { id: 'idea-003', number: '003', title: 'Quotation Follow-up Automation', category: 'automations', tags: 'Automation, Low-code setup, Professional Services, quotation, sequence' },
+        { id: 'idea-004', number: '004', title: 'Local-Service Lead Website', category: 'lead-gen', tags: 'Lead-generation website, Website setup, Home Services, lead, seo' }
+      ];
+      removedStack = [];
+      savedCards.forEach(c => {
+        const el = document.getElementById(`card-${c.id}`);
+        if (el) {
+          el.style.opacity = '1';
+          el.style.transform = 'scale(1)';
+        }
+      });
+    }
+
+    // Initial render
+    renderView();
+  })();
+</script></main></div></body></html>

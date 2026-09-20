@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-20T14:48:02.8490846Z",
+  "title": "Design System: IncomeNow",
+  "extensions": {
+    "colorMeta": {
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Sage Canvas",
+        "canonical": "#eefdf3",
+        "tonalRamp": ["#111e18", "#24352e", "#40574d", "#789989", "#a7b8ae", "#d5dfd9", "#e8f7ed", "#eefdf3"]
+      },
+      "canvas-paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#f6f7f4",
+        "tonalRamp": ["#18251f", "#344a3f", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#e4e7e1", "#f6f7f4"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Structural White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#18251f", "#344a3f", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#f6f7f4", "#ffffff"]
+      },
+      "surface-low": {
+        "role": "neutral",
+        "displayName": "Low Sage Surface",
+        "canonical": "#e8f7ed",
+        "tonalRamp": ["#102d25", "#315248", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#e8f7ed", "#f7fff9"]
+      },
+      "surface-mid": {
+        "role": "neutral",
+        "displayName": "Mid Sage Surface",
+        "canonical": "#e2f2e8",
+        "tonalRamp": ["#102d25", "#315248", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#e2f2e8", "#f6fff9"]
+      },
+      "surface-high": {
+        "role": "neutral",
+        "displayName": "High Sage Surface",
+        "canonical": "#ddece2",
+        "tonalRamp": ["#102d25", "#315248", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#ddece2", "#f3fbf5"]
+      },
+      "forest": {
+        "role": "secondary",
+        "displayName": "Blueprint Forest",
+        "canonical": "#102d25",
+        "tonalRamp": ["#061b15", "#102d25", "#174835", "#197a56", "#52a981", "#80d8ad", "#c9eadd", "#eefdf3"]
+      },
+      "action": {
+        "role": "primary",
+        "displayName": "Focused Emerald",
+        "canonical": "#197a56",
+        "tonalRamp": ["#062119", "#0b3d2d", "#0f5d40", "#197a56", "#52a981", "#80d8ad", "#c9eadd", "#eefdf3"]
+      },
+      "action-hover": {
+        "role": "primary",
+        "displayName": "Deep Emerald",
+        "canonical": "#136043",
+        "tonalRamp": ["#051b14", "#0a3326", "#104c37", "#136043", "#438f6c", "#72bd99", "#bce5d1", "#effaf4"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Editorial Ink",
+        "canonical": "#18251f",
+        "tonalRamp": ["#101814", "#18251f", "#344a3f", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#f6f7f4"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Quiet Slate Sage",
+        "canonical": "#5b6b63",
+        "tonalRamp": ["#15211b", "#2a3a32", "#40574d", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#f3f7f4"]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Botanical Line",
+        "canonical": "#d5dfd9",
+        "tonalRamp": ["#18251f", "#344a3f", "#5b6b63", "#789989", "#a7b8ae", "#bec9c1", "#d5dfd9", "#f4f8f5"]
+      },
+      "line-soft": {
+        "role": "neutral",
+        "displayName": "Soft Line",
+        "canonical": "#e4e7e1",
+        "tonalRamp": ["#18251f", "#344a3f", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#e4e7e1", "#f8faf7"]
+      },
+      "navigation-active": {
+        "role": "secondary",
+        "displayName": "Navigation Sage",
+        "canonical": "#caeadc",
+        "tonalRamp": ["#08241b", "#123a2c", "#1d5842", "#34765a", "#659e83", "#98c5ae", "#caeadc", "#f0fbf5"]
+      },
+      "selection-mint": {
+        "role": "tertiary",
+        "displayName": "Selection Mint",
+        "canonical": "#9bf5c8",
+        "tonalRamp": ["#062419", "#0d3e2b", "#155b40", "#237b58", "#4ca77d", "#76d3a3", "#9bf5c8", "#eefff6"]
+      },
+      "warning-bg": {
+        "role": "tertiary",
+        "displayName": "Caution Paper",
+        "canonical": "#fff4d6",
+        "tonalRamp": ["#2b1d00", "#4a3300", "#684b00", "#8a670d", "#b38f38", "#d9bb70", "#f1dda4", "#fff4d6"]
+      },
+      "warning-ink": {
+        "role": "tertiary",
+        "displayName": "Caution Ink",
+        "canonical": "#684b00",
+        "tonalRamp": ["#211600", "#3d2900", "#684b00", "#8a670d", "#b38f38", "#d9bb70", "#f1dda4", "#fff4d6"]
+      },
+      "error": {
+        "role": "tertiary",
+        "displayName": "Error Brick",
+        "canonical": "#9a221b",
+        "tonalRamp": ["#310505", "#5c0c0b", "#7b1713", "#9a221b", "#bf5049", "#df857e", "#f2b9b4", "#fff1ef"]
+      },
+      "error-bg": {
+        "role": "tertiary",
+        "displayName": "Error Wash",
+        "canonical": "#ffdad6",
+        "tonalRamp": ["#310505", "#5c0c0b", "#7b1713", "#9a221b", "#bf5049", "#df857e", "#ffdad6", "#fff5f4"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Idea-detail titles and the most consequential route headings."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Library and shortlist page titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Idea and project card names, stage headings, and strong module headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default reading copy and longer operational explanations."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Card descriptions, notices, and supporting interface copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Compact context, resource, and section metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient-rest",
+        "value": "0 1px 2px rgba(16, 45, 37, 0.05)",
+        "purpose": "Default cards, panels, boards, and the trust strip."
+      },
+      {
+        "name": "card-lift",
+        "value": "0 6px 18px rgba(16, 45, 37, 0.08), 0 1px 3px rgba(16, 45, 37, 0.05)",
+        "purpose": "Hovered idea cards after a 2px upward translation."
+      },
+      {
+        "name": "popover-float",
+        "value": "0 12px 32px -4px rgba(16, 45, 37, 0.16)",
+        "purpose": "Advanced filters and anchored disclosure panels."
+      },
+      {
+        "name": "toast-float",
+        "value": "0 12px 32px rgba(16, 45, 37, 0.22)",
+        "purpose": "Reversible feedback displayed above navigation."
+      },
+      {
+        "name": "authentication-focus",
+        "value": "0 8px 30px rgba(16, 45, 37, 0.07)",
+        "purpose": "The bounded desktop credential card; mobile tightens to a 6px by 20px diffusion."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-fast",
+        "value": "150ms ease-out",
+        "purpose": "Input focus and filter-chip state changes."
+      },
+      {
+        "name": "navigation",
+        "value": "160ms ease-out",
+        "purpose": "Navigation background and text-color changes."
+      },
+      {
+        "name": "card-lift",
+        "value": "180ms ease-out",
+        "purpose": "Idea-card transform, border, and shadow changes."
+      },
+      {
+        "name": "workspace-enter",
+        "value": "380ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "A restrained opacity and vertical entrance when the selected workspace stage changes."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "Effective transition and animation duration when reduced motion is requested."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-grid",
+        "value": "1120px"
+      },
+      {
+        "name": "detail-collapse",
+        "value": "900px"
+      },
+      {
+        "name": "workspace-stack",
+        "value": "899px"
+      },
+      {
+        "name": "mobile-shell",
+        "value": "767px"
+      },
+      {
+        "name": "narrow-mobile",
+        "value": "360px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The committed action for opening an idea or starting a workflow.",
+      "html": "<button class=\"ds-btn-primary\">View idea <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m13 6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-btn-primary { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 16px; border: 1px solid transparent; border-radius: 9px; background: var(--action, #197a56); color: var(--surface, #ffffff); box-shadow: 0 2px 4px rgba(16,45,37,.09); font: 700 14px/1.2 Inter, ui-sans-serif, system-ui, sans-serif; cursor: pointer; transition: background 150ms ease-out, transform 150ms ease-out; } .ds-btn-primary:hover { background: var(--action-hover, #136043); } .ds-btn-primary:active { transform: scale(.99); } .ds-btn-primary:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A bordered action for browsing, clearing, or secondary navigation.",
+      "html": "<button class=\"ds-btn-secondary\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M3 6h18M7 12h10M10 18h4\"/></svg> Clear filters</button>",
+      "css": ".ds-btn-secondary { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 16px; border: 1px solid var(--line, #d5dfd9); border-radius: 9px; background: var(--surface, #ffffff); color: #174835; font: 700 14px/1.2 Inter, ui-sans-serif, system-ui, sans-serif; cursor: pointer; transition: background 150ms ease-out, border-color 150ms ease-out; } .ds-btn-secondary:hover { background: var(--surface-low, #e8f7ed); } .ds-btn-secondary:active { border-color: var(--action, #197a56); } .ds-btn-secondary:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; }"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "A quiet full-width search control for ideas, industries, types, and numbers.",
+      "html": "<label class=\"ds-search-field\"><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input type=\"search\" placeholder=\"Search ideas, industries, types, or IDEA #...\" aria-label=\"Search ideas\"></label>",
+      "css": ".ds-search-field { min-height: 43px; display: flex; align-items: center; gap: 10px; padding: 0 13px; border: 1px solid transparent; border-radius: 10px; background: var(--surface-low, #e8f7ed); color: var(--muted, #5b6b63); transition: border 150ms ease-out, box-shadow 150ms ease-out; } .ds-search-field input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink, #18251f); font: 400 14px/1.55 Inter, ui-sans-serif, system-ui, sans-serif; } .ds-search-field input::placeholder { color: #697a72; opacity: 1; } .ds-search-field:focus-within { border-color: var(--action, #197a56); box-shadow: 0 0 0 3px rgba(25,122,86,.12); }"
+    },
+    {
+      "name": "Credential Field",
+      "kind": "input",
+      "refersTo": "credential-field",
+      "description": "A persistent-outline email or password field with compact metadata, embedded affordances, and explicit focus and error states.",
+      "html": "<label class=\"ds-credential\"><span class=\"ds-credential-label\"><span>Password <small>Required</small></span><a href=\"#\">Forgot password?</a></span><span class=\"ds-credential-wrap\"><input type=\"password\" autocomplete=\"current-password\" aria-label=\"Password\"><button type=\"button\" aria-label=\"Show password\"><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg></button></span></label>",
+      "css": ".ds-credential { display: grid; gap: 7px; color: #263b32; font: 700 12px/1.2 Inter, ui-sans-serif, system-ui, sans-serif; } .ds-credential-label { display: flex; align-items: center; justify-content: space-between; gap: 10px; } .ds-credential-label small { margin-left: 7px; color: #718078; font-size: 10px; font-weight: 500; } .ds-credential-label a { color: var(--action, #197a56); font-size: 11px; text-decoration: none; } .ds-credential-wrap { width: 100%; min-height: 47px; display: flex; align-items: center; gap: 8px; padding: 0 10px 0 13px; border: 1px solid #ccd8d1; border-radius: 9px; background: #fbfdfb; color: #6a7b72; transition: border-color 150ms ease-out, box-shadow 150ms ease-out; } .ds-credential-wrap input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink, #18251f); font: 400 14px/1.55 Inter, ui-sans-serif, system-ui, sans-serif; } .ds-credential-wrap button { display: grid; place-items: center; padding: 6px; border: 0; border-radius: 7px; background: transparent; color: #62756b; cursor: pointer; } .ds-credential-wrap button:hover { background: var(--surface-low, #e8f7ed); } .ds-credential-wrap:focus-within { border-color: var(--action, #197a56); box-shadow: 0 0 0 3px rgba(25,122,86,.11); } .ds-credential-wrap:has(input[aria-invalid=\"true\"]) { border-color: #c2574e; } .ds-credential-wrap button:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 1px; }"
+    },
+    {
+      "name": "Authentication Card",
+      "kind": "card",
+      "refersTo": "authentication-card",
+      "description": "The bounded paper surface for account creation, login, verification, and recovery tasks.",
+      "html": "<section class=\"ds-auth-card\"><h2>Welcome back</h2><p>Log in to continue with your IncomeNow account.</p><div class=\"ds-auth-separation\"><svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3v8Z\"/><path d=\"m9 12 2 2 4-4\"/></svg><span>Account identity comes first. Membership access is checked separately.</span></div></section>",
+      "css": ".ds-auth-card { width: min(520px, 100%); padding: 38px; border: 1px solid rgba(16,45,37,.1); border-radius: 16px; background: var(--surface, #ffffff); color: var(--ink, #18251f); box-shadow: 0 8px 30px rgba(16,45,37,.07); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-auth-card h2 { margin: 0; font: 760 clamp(2rem, 3vw, 2.8rem)/1.08 Manrope, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.025em; } .ds-auth-card > p { margin: 10px 0 0; color: var(--muted, #5b6b63); font-size: 14px; line-height: 1.6; } .ds-auth-separation { display: none; } @media (max-width: 767px) { .ds-auth-card { padding: 24px 20px; border-radius: 14px; box-shadow: 0 6px 20px rgba(16,45,37,.06); } .ds-auth-card h2 { font-size: 31px; } .ds-auth-separation { display: flex; align-items: center; gap: 7px; margin-top: 12px; padding: 9px 10px; border-radius: 8px; background: var(--surface-low, #e8f7ed); color: #315447; font-size: 11px; line-height: 1.4; } .ds-auth-separation svg { flex: 0 0 auto; color: var(--action, #197a56); } }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter-chip",
+      "description": "An inactive solution-type filter in the horizontal discovery row.",
+      "html": "<button class=\"ds-filter-chip\" aria-pressed=\"false\">Custom CRMs</button>",
+      "css": ".ds-filter-chip { min-height: 33px; display: inline-flex; align-items: center; padding: 6px 15px; border: 1px solid transparent; border-radius: 999px; background: var(--surface-low, #e8f7ed); color: var(--forest, #102d25); font: 500 13px/1.2 Inter, ui-sans-serif, system-ui, sans-serif; white-space: nowrap; cursor: pointer; transition: background 150ms ease-out, color 150ms ease-out, border-color 150ms ease-out; } .ds-filter-chip:hover { border-color: #b8cfc3; } .ds-filter-chip:active { background: var(--surface-mid, #e2f2e8); } .ds-filter-chip:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; }"
+    },
+    {
+      "name": "Active Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter-chip-active",
+      "description": "The selected solution-type filter using the system's one action voice.",
+      "html": "<button class=\"ds-filter-chip-active\" aria-pressed=\"true\">All ideas</button>",
+      "css": ".ds-filter-chip-active { min-height: 33px; display: inline-flex; align-items: center; padding: 6px 15px; border: 1px solid var(--action, #197a56); border-radius: 999px; background: var(--action, #197a56); color: var(--surface, #ffffff); font: 600 13px/1.2 Inter, ui-sans-serif, system-ui, sans-serif; white-space: nowrap; cursor: pointer; transition: background 150ms ease-out, transform 150ms ease-out; } .ds-filter-chip-active:hover { background: var(--action-hover, #136043); } .ds-filter-chip-active:active { transform: scale(.98); } .ds-filter-chip-active:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; }"
+    },
+    {
+      "name": "Idea Card",
+      "kind": "card",
+      "refersTo": "idea-card",
+      "description": "The core comparison unit: metadata, schematic preview, concise evidence, resources, and one action.",
+      "html": "<article class=\"ds-idea-card\"><div class=\"ds-card-meta\"><div><span class=\"ds-tag ds-tag-strong\">IDEA #001</span><span class=\"ds-tag\">Home Services</span></div><button class=\"ds-bookmark\" aria-label=\"Save idea\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z\"/></svg></button></div><div class=\"ds-preview\"><div class=\"ds-preview-label\"><span><i></i> Pipeline workflow</span><small>V1.2</small></div><div class=\"ds-preview-grid\"><div>New enquiries<b></b><b class=\"ds-short\"></b></div><div>Site visits<b></b><b class=\"ds-short\"></b></div><div>Won<b class=\"ds-accent\"></b></div></div></div><h3>Pergola Quotation &amp; Follow-up CRM</h3><p class=\"ds-summary\">Organise enquiries, site visits, quotations, and installation follow-ups for high-margin outdoor construction work.</p><div class=\"ds-card-tags\"><span class=\"ds-tag\">Custom CRM</span><span class=\"ds-tag\">Sample blueprint</span></div><p class=\"ds-resource-label\">Resources included</p><div class=\"ds-resources\"><span>Demo</span><span>Source code</span><span>Setup guide</span></div><a class=\"ds-card-action\" href=\"#\">View idea <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m13 6 6 6-6 6\"/></svg></a></article>",
+      "css": ".ds-idea-card { width: min(100%, 372px); display: flex; flex-direction: column; padding: 20px; border: 1px solid var(--line-soft, #e4e7e1); border-radius: 16px; background: var(--surface, #ffffff); color: var(--ink, #18251f); box-shadow: 0 1px 2px rgba(16,45,37,.05); font-family: Inter, ui-sans-serif, system-ui, sans-serif; transition: transform 180ms ease-out, box-shadow 180ms ease-out, border-color 180ms ease-out; } .ds-idea-card:hover { transform: translateY(-2px); border-color: var(--line, #d5dfd9); box-shadow: 0 6px 18px rgba(16,45,37,.08), 0 1px 3px rgba(16,45,37,.05); } .ds-card-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; } .ds-card-meta > div, .ds-card-tags, .ds-resources { display: flex; flex-wrap: wrap; gap: 7px; } .ds-tag { display: inline-flex; align-items: center; min-height: 24px; padding: 3px 10px; border-radius: 7px; background: #e2f1e8; color: #40554b; font-size: 11px; line-height: 1.2; } .ds-tag-strong { color: #075d3f; font-weight: 750; } .ds-bookmark { width: 36px; min-height: 36px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 9px; background: transparent; color: #315a49; cursor: pointer; } .ds-bookmark:hover { background: var(--surface-low, #e8f7ed); } .ds-bookmark:focus-visible, .ds-card-action:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; } .ds-preview { min-height: 122px; margin-top: 16px; padding: 13px; border-radius: 13px; background: #e4f5eb; color: #173d2f; } .ds-preview-label { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; font-size: 10px; letter-spacing: .055em; text-transform: uppercase; } .ds-preview-label span { display: flex; align-items: center; gap: 6px; } .ds-preview-label i { width: 7px; height: 7px; border-radius: 50%; background: var(--action, #197a56); } .ds-preview-label small { color: #567067; font-size: 9px; } .ds-preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; } .ds-preview-grid > div { min-height: 65px; padding: 8px; border-radius: 8px; background: rgba(255,255,255,.9); color: #456057; font-size: 9px; text-transform: uppercase; } .ds-preview-grid b { height: 6px; display: block; margin-top: 14px; border-radius: 999px; background: #cfe4d8; } .ds-preview-grid b + b { margin-top: 6px; } .ds-preview-grid .ds-short { width: 62%; } .ds-preview-grid .ds-accent { width: 75%; background: #74b79c; } .ds-idea-card h3 { margin: 16px 0 0; font: 700 18px/1.32 Manrope, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.025em; } .ds-summary { margin: 7px 0 0; color: #46584f; font-size: 13px; line-height: 1.55; } .ds-card-tags { margin-top: 12px; } .ds-resource-label { margin: 18px 0 0; color: var(--muted, #5b6b63); font-size: 10px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; } .ds-resources { margin-top: 7px; gap: 6px; } .ds-resources span { padding: 3px 8px; border: 1px solid #d6eadf; border-radius: 999px; background: #e8f6ee; color: #2f5143; font-size: 10px; } .ds-card-action { min-height: 42px; align-self: flex-end; display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 22px; padding: 9px 16px; border-radius: 9px; background: var(--action, #197a56); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; } .ds-card-action:hover { background: var(--action-hover, #136043); }"
+    },
+    {
+      "name": "Metadata Tag",
+      "kind": "chip",
+      "refersTo": "metadata-tag",
+      "description": "A compact square-rounded label for idea numbers, industries, types, and readiness.",
+      "html": "<span class=\"ds-metadata-tag\">IDEA #003</span>",
+      "css": ".ds-metadata-tag { min-height: 24px; display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 7px; background: var(--surface-mid, #e2f2e8); color: #075d3f; font: 750 11px/1.2 Inter, ui-sans-serif, system-ui, sans-serif; }"
+    },
+    {
+      "name": "Active Desktop Navigation Item",
+      "kind": "nav",
+      "refersTo": "navigation-active",
+      "description": "The selected row in the fixed member rail, including the recoverable saved count.",
+      "html": "<a class=\"ds-side-link\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"m16 8-3 6-5 2 3-6z\"/></svg><span>Explore Ideas</span><span class=\"ds-nav-count\">3</span></a>",
+      "css": ".ds-side-link { min-height: 42px; display: flex; align-items: center; gap: 13px; padding: 9px 14px; border-radius: 8px; background: var(--navigation-active, #caeadc); color: #075e3f; font: 650 14px/1.2 Inter, ui-sans-serif, system-ui, sans-serif; text-decoration: none; transition: background 160ms ease-out, color 160ms ease-out; } .ds-side-link:hover { background: var(--surface-low, #e8f7ed); } .ds-side-link:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; } .ds-nav-count { min-width: 22px; margin-left: auto; padding: 1px 7px; border-radius: 999px; background: var(--surface, #ffffff); color: var(--forest, #102d25); text-align: center; font-size: 12px; }"
+    },
+    {
+      "name": "Mobile Bottom Navigation",
+      "kind": "nav",
+      "refersTo": "navigation-active",
+      "description": "The four-item mobile destination bar with a text-weight active state and compact saved count.",
+      "html": "<nav class=\"ds-mobile-nav\" aria-label=\"Mobile navigation\"><a class=\"ds-mobile-link ds-active\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"m16 8-3 6-5 2 3-6z\"/></svg><span>Explore</span></a><a class=\"ds-mobile-link\" href=\"#\"><span class=\"ds-icon-count\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M6 3h12v18l-6-4-6 4z\"/></svg><b>3</b></span><span>Saved</span></a><a class=\"ds-mobile-link\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M3 7h6l2 2h10v10H3z\"/></svg><span>Projects</span></a><a class=\"ds-mobile-link\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9\"/></svg><span>Updates</span></a></nav>",
+      "css": ".ds-mobile-nav { width: min(100%, 390px); min-height: 62px; display: grid; grid-template-columns: repeat(4, 1fr); padding: 7px 4px; border-top: 1px solid var(--line-soft, #e4e7e1); background: rgba(255,255,255,.97); backdrop-filter: blur(12px); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-mobile-link { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-radius: 8px; color: #4d5f56; font-size: 9px; text-decoration: none; } .ds-mobile-link:hover { background: var(--surface-low, #e8f7ed); color: var(--forest, #102d25); } .ds-mobile-link:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: -1px; } .ds-mobile-link.ds-active { color: #006c4a; font-weight: 700; } .ds-icon-count { position: relative; display: inline-flex; } .ds-icon-count b { position: absolute; top: -6px; right: -9px; min-width: 15px; padding: 0 4px; border-radius: 999px; background: var(--action, #197a56); color: #fff; font-size: 8px; text-align: center; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "project-card",
+      "description": "An account-owned project summary that leads with labeled status, current focus, next action, required-stage progress, and one continuation action.",
+      "html": "<article class=\"ds-project-card\"><div class=\"ds-project-top\"><span class=\"ds-project-status ds-active\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"m8 5 11 7-11 7z\"/></svg>Active</span><span>IDEA #001</span></div><div><h3>Pergola Quotation &amp; Follow-up CRM</h3><p>Current focus: Validate the workflow</p><small><strong>Next action:</strong> Interview two installers</small></div><div class=\"ds-project-progress\"><div><span>1 of 5 stages complete</span><strong>20%</strong></div><div class=\"ds-progress-track\"><i></i></div></div><a href=\"#\">Continue project <svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m13 6 6 6-6 6\"/></svg></a></article>",
+      "css": ".ds-project-card { width: min(100%, 540px); display: grid; gap: 20px; padding: 22px; border-radius: 16px; background: var(--surface, #fff); color: var(--ink, #18251f); box-shadow: 0 1px 2px rgba(16,45,37,.05); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-project-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted, #5b6b63); font-size: 11px; font-weight: 700; letter-spacing: .04em; } .ds-project-status { display: inline-flex; align-items: center; gap: 6px; padding: 4px 9px; border-radius: 999px; font-size: 11px; font-weight: 750; letter-spacing: 0; } .ds-project-status.ds-active { background: #e3f4ea; color: #176044; } .ds-project-status.ds-paused { background: #fff1cf; color: #765000; } .ds-project-status.ds-complete { background: #dcefe6; color: #0c5c3d; } .ds-project-card h3 { margin: 0; font: 700 21px/1.25 Manrope, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.025em; } .ds-project-card h3 + p { margin: 6px 0 0; color: var(--muted, #5b6b63); font-size: 13px; } .ds-project-card small { display: block; margin-top: 5px; color: #40564c; font-size: 12px; } .ds-project-card small strong { color: var(--forest, #102d25); } .ds-project-progress > div:first-child { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 7px; color: #496056; font-size: 11px; } .ds-project-progress strong { color: var(--forest, #102d25); font-variant-numeric: tabular-nums; } .ds-progress-track { height: 7px; overflow: hidden; border-radius: 999px; background: #dfe9e3; } .ds-progress-track i { width: 20%; height: 100%; display: block; border-radius: inherit; background: var(--action, #197a56); } .ds-project-card > a { width: fit-content; min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 16px; border-radius: 9px; background: var(--action, #197a56); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; } .ds-project-card > a:hover { background: var(--action-hover, #136043); } .ds-project-card > a:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; } @media (max-width: 767px) { .ds-project-card { gap: 15px; padding: 15px; border-radius: 13px; } .ds-project-card h3 { font-size: 17px; } .ds-project-card > a { width: 100%; } }"
+    },
+    {
+      "name": "Stage Navigator",
+      "kind": "nav",
+      "refersTo": "stage-selector-active",
+      "description": "The desktop right-rail stage sequence; selection indicates what is being viewed while check markers independently indicate completion.",
+      "html": "<nav class=\"ds-stage-rail\" aria-label=\"Project stages\"><h3>Implementation stages</h3><ol><li><button type=\"button\"><span><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg></span><b>Understand the customer<small>3/3 tasks</small></b></button></li><li><button class=\"ds-selected\" type=\"button\"><span>2</span><b>Validate the workflow<small>1/3 tasks</small></b></button></li><li><button type=\"button\"><span>3</span><b>Build the first version<small>0/4 tasks</small></b></button></li></ol></nav>",
+      "css": ".ds-stage-rail { width: 280px; padding: 16px 10px 10px; border-radius: 14px; background: var(--surface, #fff); box-shadow: 0 1px 2px rgba(16,45,37,.05); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-stage-rail h3 { margin: 0; padding: 0 8px 12px; color: #51675c; font-size: 10px; letter-spacing: .075em; text-transform: uppercase; } .ds-stage-rail ol { display: grid; gap: 3px; margin: 0; padding: 0; list-style: none; } .ds-stage-rail button { width: 100%; min-height: 52px; display: grid; grid-template-columns: 28px 1fr; gap: 9px; align-items: start; padding: 9px; border: 0; border-radius: 9px; background: transparent; color: #40564c; text-align: left; cursor: pointer; } .ds-stage-rail button:hover { background: #f1f8f4; } .ds-stage-rail button:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 1px; } .ds-stage-rail button.ds-selected { background: #dff1e7; color: var(--forest, #102d25); } .ds-stage-rail button > span { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; background: #edf5f0; color: #287354; font-size: 10px; font-weight: 800; } .ds-stage-rail button.ds-selected > span { background: var(--action, #197a56); color: #fff; } .ds-stage-rail b { display: grid; gap: 2px; font-size: 11px; line-height: 1.35; } .ds-stage-rail small { color: #66786f; font-size: 9px; font-weight: 400; } @media (max-width: 899px) { .ds-stage-rail { width: 100%; padding: 10px; overflow: hidden; } .ds-stage-rail h3 { padding-bottom: 8px; } .ds-stage-rail ol { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 3px; } .ds-stage-rail li { flex: 0 0 180px; } .ds-stage-rail button { min-height: 58px; } }"
+    },
+    {
+      "name": "Checklist and Stage Notes Panel",
+      "kind": "custom",
+      "refersTo": "workspace-panel",
+      "description": "The primary work surface: required-versus-optional checklist rows remain separate from private notes and explicit saved state.",
+      "html": "<section class=\"ds-work-panel\"><header><div><h3>Checklist</h3><p>Progress is calculated from required tasks only.</p></div><span>1/2</span></header><label class=\"ds-task ds-checked\"><input type=\"checkbox\" checked><i><svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg></i><span><strong>Interview two installers</strong><small>Confirm the handoff from enquiry to site visit.</small></span><em>Required</em></label><label class=\"ds-task\"><input type=\"checkbox\"><i></i><span><strong>Collect a sample quote</strong><small>Keep evidence close to the decision it supports.</small></span><em>Optional</em></label><div class=\"ds-note\"><header><div><h3>Stage notes</h3><p>Private plain text saved to this account.</p></div><b><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg>Saved</b></header><textarea aria-label=\"Stage notes\" placeholder=\"Record evidence, decisions, questions, or the next follow-up…\"></textarea><div><small>0/4,000</small><button type=\"button\">Save note</button></div></div></section>",
+      "css": ".ds-work-panel { width: min(100%, 760px); padding: 18px; border-radius: 14px; background: var(--surface, #fff); color: var(--ink, #18251f); box-shadow: 0 1px 2px rgba(16,45,37,.05); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-work-panel header { display: flex; align-items: start; justify-content: space-between; gap: 18px; } .ds-work-panel h3 { margin: 0; font: 700 17px/1.32 Manrope, ui-sans-serif, system-ui, sans-serif; } .ds-work-panel header p { margin: 3px 0 0; color: var(--muted, #5b6b63); font-size: 11px; } .ds-work-panel header > span { color: #4d6258; font-size: 11px; font-variant-numeric: tabular-nums; } .ds-task { display: grid; grid-template-columns: 22px minmax(0,1fr) auto; gap: 11px; align-items: start; margin-top: 8px; padding: 13px; border-radius: 10px; background: #f5f8f5; cursor: pointer; } .ds-task:first-of-type { margin-top: 14px; } .ds-task:hover { background: #edf6f1; } .ds-task input { position: absolute; opacity: 0; pointer-events: none; } .ds-task > i { width: 20px; height: 20px; display: grid; place-items: center; border: 1px solid #9cb4a8; border-radius: 6px; background: #fff; color: #fff; } .ds-task.ds-checked > i { border-color: var(--action, #197a56); background: var(--action, #197a56); } .ds-task strong { display: block; font-size: 13px; } .ds-task small { display: block; max-width: 72ch; margin-top: 3px; color: var(--muted, #5b6b63); font-size: 11px; line-height: 1.45; } .ds-task.ds-checked strong { color: #56675e; text-decoration: line-through; text-decoration-color: #9cb0a5; } .ds-task em { color: #60736a; font-size: 9px; font-style: normal; font-weight: 700; text-transform: uppercase; } .ds-note { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line-soft, #e4e7e1); } .ds-note header b { display: inline-flex; align-items: center; gap: 5px; color: #256549; font-size: 11px; } .ds-note textarea { width: 100%; min-height: 130px; margin-top: 14px; padding: 13px; resize: vertical; border: 1px solid var(--line, #d5dfd9); border-radius: 10px; outline: 0; background: #fbfdfb; color: var(--ink, #18251f); font: 400 13px/1.55 Inter, ui-sans-serif, system-ui, sans-serif; } .ds-note textarea:focus { border-color: var(--action, #197a56); box-shadow: 0 0 0 3px rgba(25,122,86,.11); } .ds-note > div:last-child { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 9px; } .ds-note > div small { color: var(--muted, #5b6b63); font-size: 10px; font-variant-numeric: tabular-nums; } .ds-note button { min-height: 42px; padding: 9px 16px; border: 0; border-radius: 9px; background: var(--action, #197a56); color: #fff; font-size: 14px; font-weight: 700; } .ds-note button:hover { background: var(--action-hover, #136043); } .ds-note button:focus-visible, .ds-task:has(input:focus-visible) { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; } @media (max-width: 767px) { .ds-work-panel { padding: 13px; border-radius: 12px; } .ds-task { grid-template-columns: 22px minmax(0,1fr); padding: 11px; } .ds-task em { grid-column: 2; } .ds-note button { flex: 1; } }"
+    },
+    {
+      "name": "Stage Resource Row",
+      "kind": "custom",
+      "refersTo": "stage-resource-row",
+      "description": "A supporting stage resource with an honest availability label; it remains separate from checklist work.",
+      "html": "<article class=\"ds-stage-resource\"><span><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/><path d=\"M14 2v6h6\"/></svg></span><div><strong>Interview guide</strong><p>Repository-backed questions for customer discovery.</p></div><em>Sample</em></article>",
+      "css": ".ds-stage-resource { width: min(100%, 360px); display: grid; grid-template-columns: 34px minmax(0,1fr) auto; gap: 11px; align-items: center; padding: 11px; border-radius: 10px; background: #f4f8f5; color: var(--ink, #18251f); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-stage-resource > span { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 8px; background: #e0f0e7; color: var(--action, #197a56); } .ds-stage-resource strong { font-size: 12px; } .ds-stage-resource p { margin: 2px 0 0; color: var(--muted, #5b6b63); font-size: 10px; } .ds-stage-resource em { padding: 3px 7px; border-radius: 999px; background: #e3f2e9; color: #3e6554; font-size: 9px; font-style: normal; } @media (max-width: 767px) { .ds-stage-resource { grid-template-columns: 32px 1fr; } .ds-stage-resource em { grid-column: 2; width: fit-content; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Calm Blueprint Library",
+    "overview": "IncomeNow feels like a practical working library: orderly enough for fast comparison, warm enough for sustained reading, and confident without behaving like a sales dashboard. Pale sage working planes, white paper-like cards, forest anchors, and compact schematic previews make each opportunity feel like a blueprint to examine rather than a promise to chase.\n\nThe system is editorial and operational at once. Manrope gives headings and milestones architectural weight; Inter keeps filters, metadata, resources, and evidence easy to scan. Information density is managed with disciplined grouping, botanical micro-borders, restrained elevation, and one emerald action voice. Promotional gradients, neon urgency, speculative earnings theater, and generic analytics-dashboard chrome are outside this visual world.\n\nAccount-synced work extends the same library metaphor into a project desk. Saved Ideas keeps the comparison language intact, while My Projects and the workspace add durable status, required-task progress, stage notes, and explicit save feedback without shifting into generic productivity-software chrome.",
+    "keyCharacteristics": [
+      "Calm botanical palette with high-contrast forest anchors.",
+      "White structural cards on a pale sage working canvas.",
+      "Manrope headings paired with neutral, legible Inter utility copy.",
+      "Compact metadata, resource pills, and schematic previews for fast comparison.",
+      "Responsive navigation that becomes a persistent bottom bar on mobile.",
+      "Account-owned state is made visible through honest status, progress, save, and recovery feedback."
+    ],
+    "rules": [
+      {
+        "name": "The One Action Voice Rule",
+        "body": "Focused Emerald carries primary interaction; do not introduce a second saturated CTA color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Paper-and-Sage Rule",
+        "body": "Separate information with white and tonal sage planes before reaching for stronger borders or shadows.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Voice Rule",
+        "body": "Use Manrope only for headings, numbers, and branded milestones; all operational text remains Inter.",
+        "section": "typography"
+      },
+      {
+        "name": "The Compact Metadata Rule",
+        "body": "Uppercase and tracking belong to short labels, never to paragraphs or primary actions.",
+        "section": "typography"
+      },
+      {
+        "name": "The Whole-Card Mobile Rule",
+        "body": "Mobile prioritizes one complete decision unit at a time: one card column, full-width action, and persistent navigation.",
+        "section": "layout"
+      },
+      {
+        "name": "The Work-First Workspace Rule",
+        "body": "On desktop, the active work surface owns the wide left column; navigation and reference material support it from the right rail. Below 900px, navigation precedes work and resources follow it.",
+        "section": "layout"
+      },
+      {
+        "name": "The Selected-Is-Not-Current Rule",
+        "body": "Never relabel a reviewed stage as the project’s current focus unless it is actually the next unfinished required stage.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-by-Default Rule",
+        "body": "A shadow must communicate hierarchy, hover, or transient UI; it is not decoration.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Nested Radius Rule",
+        "body": "Child surfaces are always tighter than the container around them, preserving a clear physical hierarchy.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do preserve the Sage Canvas → Structural White → tonal-sage inset hierarchy.",
+      "Do reserve Focused Emerald for primary actions, active filters, functional icons, and clear progress states.",
+      "Do pair Manrope headings with Inter utility copy and keep metadata compact.",
+      "Do use schematic previews and explicit evidence labels to make ideas comparable.",
+      "Do keep mobile navigation persistent and safe-area-aware while presenting one complete card per row.",
+      "Do keep authentication forms inside a bounded white card over the sage field, including on mobile.",
+      "Do keep the derived current focus visible even when another stage is selected for review.",
+      "Do derive progress and completion from required work, while labeling optional tasks honestly.",
+      "Do keep checklist, notes, and resources as distinct paper planes with explicit saved, unsaved, paused, empty, and unavailable states.",
+      "Do stack workspace navigation, work, and resources in that order below 900px and make the primary mobile action full width."
+    ],
+    "donts": [
+      "Don't introduce hustle-culture styling, speculative earnings graphics, neon tickers, or unsupported urgency.",
+      "Don't turn the member library into a generic analytics dashboard of charts and KPI tiles.",
+      "Don't add decorative gradients, glass panels, or heavy shadows that weaken the paper-and-sage material system.",
+      "Don't use saturated color on passive surfaces when tonal sage or a botanical line can provide the hierarchy.",
+      "Don't hide sample, unavailable, readiness, or evidence states behind aspirational copy.",
+      "Don't treat selecting a stage as advancing the project or changing its current focus.",
+      "Don't turn progress into dashboard theater, count optional tasks toward completion, or merge notes and resources into the checklist."
+    ]
+  }
+}

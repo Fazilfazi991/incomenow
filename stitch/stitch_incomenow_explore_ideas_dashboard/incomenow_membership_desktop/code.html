@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>IncomeNow.in</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline": "#6f7a72", "on-secondary-container": "#4d6a60", "secondary-fixed-dim": "#aecdc1", "tertiary": "#4f5552", "on-secondary": "#ffffff", "secondary-container": "#c9eadd", "on-primary": "#ffffff", "surface": "#eefdf3", "surface-container-high": "#ddece2", "on-tertiary-container": "#eaefeb", "surface-container": "#e2f2e8", "on-tertiary-fixed-variant": "#424845", "on-secondary-fixed-variant": "#304c43", "surface-bright": "#eefdf3", "secondary": "#47645a", "on-surface": "#111e18", "surface-variant": "#d7e6dc", "on-background": "#111e18", "inverse-surface": "#26332d", "on-primary-fixed": "#002114", "on-primary-fixed-variant": "#005237", "on-surface-variant": "#3f4943", "inverse-primary": "#80d8ad", "primary-fixed": "#9bf5c8", "tertiary-fixed-dim": "#c2c8c4", "inverse-on-surface": "#e5f4eb", "surface-tint": "#006c4a", "outline-variant": "#bec9c1", "surface-dim": "#ceded4", "tertiary-container": "#676d6a", "on-error-container": "#93000a", "on-error": "#ffffff", "surface-container-highest": "#d7e6dc", "on-secondary-fixed": "#022019", "background": "#eefdf3", "on-primary-container": "#acffd4", "secondary-fixed": "#c9eadd", "primary": "#006041", "tertiary-fixed": "#dfe4e0", "surface-container-lowest": "#ffffff", "on-tertiary-fixed": "#171d1b", "on-tertiary": "#ffffff", "error-container": "#ffdad6", "primary-container": "#197a56", "error": "#ba1a1a", "surface-container-low": "#e8f7ed", "primary-fixed-dim": "#80d8ad" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "margin": "2.5rem", "space-xs": "0.25rem", "margin-mobile": "1rem", "gutter": "1.5rem", "gutter-mobile": "1rem", "space-sm": "0.5rem" }, "fontFamily": { "headline-md": ["Manrope"], "display-hero": ["Manrope"], "headline-sm": ["Manrope"], "headline-lg": ["Manrope"], "headline-lg-mobile": ["Manrope"], "label-md": ["Inter"], "body-lg": ["Inter"], "body-md": ["Inter"], "label-sm": ["Inter"], "display-hero-mobile": ["Manrope"], "body-sm": ["Inter"] }, "fontSize": { "headline-md": ["1.5rem", { "lineHeight": "1.35", "letterSpacing": "-0.015em", "fontWeight": "600" }], "display-hero": ["3.25rem", { "lineHeight": "1.15", "letterSpacing": "-0.03em", "fontWeight": "800" }], "headline-sm": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["2.25rem", { "lineHeight": "1.25", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg-mobile": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.015em", "fontWeight": "700" }], "label-md": ["0.875rem", { "lineHeight": "1.25", "letterSpacing": "0.01em", "fontWeight": "500" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "-0.005em", "fontWeight": "400" }], "body-md": ["0.9375rem", { "lineHeight": "1.55", "letterSpacing": "0em", "fontWeight": "400" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }], "display-hero-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.025em", "fontWeight": "800" }], "body-sm": ["0.8125rem", { "lineHeight": "1.5", "letterSpacing": "0.005em", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-surface-container-high py-1 px-4 text-center font-label-sm text-label-sm text-on-surface-variant flex items-center justify-center gap-2"><span class="material-symbols-outlined text-[14px] text-primary">info</span><span>Design preview — pricing and terms not final</span></div><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between"><a class="flex items-center gap-1.5 focus:outline-none" data-path="membership" href="#"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">IncomeNow<span class="text-primary">.in</span></span></a><nav class="hidden md:flex items-center gap-8" data-active-classes="text-primary font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#">How it works</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="example-ideas" href="#">Example ideas</a><a aria-current="page" class="transition-colors text-primary font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full" data-path="membership" href="#">Membership</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="faq" href="#">FAQ</a></nav><div class="flex items-center gap-5"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="login" href="#">Log in</a><a class="inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-[0_1px_2px_rgba(16,45,37,0.04)] hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-[0.99]" data-path="example-ideas" href="#">Explore ideas</a></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Interactive Toast Feedback Element -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 ease-out max-w-sm bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-lg shadow-xl flex items-start gap-3" id="toast-element">
+<span class="material-symbols-outlined text-primary-fixed text-[20px] shrink-0 mt-0.5">info</span>
+<div class="flex flex-col gap-0.5">
+<p class="font-label-md text-label-md font-semibold text-inverse-on-surface" id="toast-title">Prototype Sandbox</p>
+<p class="font-body-sm text-body-sm text-inverse-on-surface/80" id="toast-msg">Account registration and checkout flows are pending final stage release.</p>
+</div>
+</div>
+<!-- Main Content Container -->
+<div class="max-w-7xl mx-auto px-6 lg:px-12 w-full py-10 md:py-14 flex flex-col gap-16 md:gap-24">
+<!-- BREADCRUMB & CONTEXT BANNER -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant">
+<a class="hover:text-primary transition-colors flex items-center gap-1" data-path="how-it-works" href="#">
+<span class="material-symbols-outlined text-[16px]">home</span>
+<span>Home</span>
+</a>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span>
+<span class="text-on-surface font-semibold">Membership</span>
+</nav>
+<div class="inline-flex items-center gap-2 self-start sm:self-auto bg-surface-container-high px-3 py-1 rounded-full text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>Design preview — pricing and terms not final</span>
+</div>
+</div>
+<!-- SECTION 1: MEMBERSHIP INTRODUCTION & SINGLE MEMBERSHIP CARD -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+<!-- Left Column: Editorial Presentation -->
+<div class="lg:col-span-7 flex flex-col gap-6 lg:pr-6">
+<div class="flex flex-col gap-3">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">IncomeNow Membership</span>
+<h1 class="font-headline-lg text-headline-lg lg:text-display-hero text-on-surface tracking-tight font-extrabold">
+            One membership.<br/>
+<span class="text-secondary">Practical ideas</span> to build on.
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+            Explore business opportunities, work with the resources included in each kit, and follow a clear implementation process inside your own project workspace.
+          </p>
+</div>
+<!-- Clarification Callout Box -->
+<div class="p-5 rounded-xl bg-surface-container-low shadow-sm flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 mt-0.5">verified_user</span>
+<div class="flex flex-col gap-1.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Objective and deliberate execution</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Choose an opportunity that fits your skills. Validate it with potential customers before investing heavily. IncomeNow does not promise automated revenue, guaranteed customers, or turnkey passive income.
+            </p>
+</div>
+</div>
+<!-- Clean Preview Snippet: Architectural Blueprint Excerpt -->
+<div class="rounded-xl bg-surface-container-lowest p-6 shadow-sm flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">layers</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Blueprint Toolkit Excerpt</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2.5 py-0.5 rounded-full">v2.4 Specification</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+<!-- Item A: Idea 001 -->
+<div class="p-4 rounded-lg bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="font-semibold text-on-surface">Idea #001 • Micro-SaaS</span>
+<span class="text-primary font-medium">B2B Workflow</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium line-clamp-1">Multi-tenant Client Intake Portal</p>
+<div class="flex items-center gap-2 pt-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-primary">check_circle</span>
+<span>Stage 3 Checklist Attached</span>
+</div>
+</div>
+<!-- Item B: Idea 003 -->
+<div class="p-4 rounded-lg bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="font-semibold text-on-surface">Idea #003 • Digital Ops</span>
+<span class="text-secondary font-medium">Data Pipe</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium line-clamp-1">Compliance Audit Generator</p>
+<div class="flex items-center gap-2 pt-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-primary">terminal</span>
+<span>Source Skeleton Included</span>
+</div>
+</div>
+</div>
+<!-- Project Checklist Snippet -->
+<div class="pt-1 flex flex-col gap-2.5">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="uppercase tracking-wider font-semibold text-on-surface">Sample Workspace Milestone</span>
+<span class="text-primary font-medium">Stage 3 of 5</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-3/5"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">
+              “Step 3.2: Conduct customer validation interviews using the pre-formatted 12-question diagnostic script.”
+            </p>
+</div>
+</div>
+</div>
+<!-- Right Column: Single Membership Card -->
+<div class="lg:col-span-5 w-full">
+<div class="w-full rounded-2xl bg-surface-container-lowest p-8 shadow-md flex flex-col gap-7 relative">
+<!-- Plan Header -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-bold text-primary">Complete Access Plan</span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Single Tier</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">IncomeNow Membership</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Structured operational blueprints, source scaffolds, and execution roadmaps.</p>
+</div>
+<!-- Stylized Price Slot (Honest Prototype) -->
+<div class="p-5 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-baseline justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Subscription term</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Monthly subscription</span>
+</div>
+<div class="pt-1 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Price to be confirmed</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5 pt-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">lock_clock</span>
+<span>Prototype placeholder — final price and currency are not set.</span>
+</p>
+</div>
+<!-- Inclusions List -->
+<div class="flex flex-col gap-4">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-on-surface">What this includes</span>
+<ul class="flex flex-col gap-3.5">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Member idea library</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Browse by solution type, target industry, and technical skills</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Resources included with each idea</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Guides, examples, templates, and starter code where applicable</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Personal project checklists</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Save candidate ideas and record decisions inside your own workspace</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">New releases and updates</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ongoing rollouts of newly researched business kits as published</span>
+</div>
+</li>
+</ul>
+</div>
+<!-- Actions and Disclaimers -->
+<div class="flex flex-col gap-3 pt-2">
+<button class="w-full h-12 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.99] cursor-pointer" onclick="triggerPrototypeToast('Account Creation', 'Account registration is currently gated in this prototype view.')" type="button">
+<span>Create account</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<p class="font-body-sm text-body-sm text-center text-on-surface-variant">
+              Creating an account does not activate a paid membership.
+            </p>
+</div>
+<!-- Secondary Links & Stage Status -->
+<div class="p-4 rounded-xl bg-surface-container flex flex-col items-center gap-2 text-center">
+<p class="font-body-sm text-body-sm text-on-surface">
+              Already have an account? 
+              <a class="text-primary font-semibold hover:underline" href="#" onclick="triggerPrototypeToast('Login Flow', 'Sign-in integration is part of the next scheduled release.'); return false;">Log in</a>
+</p>
+<div class="flex items-center justify-center gap-1.5 text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">info</span>
+<span>Registration and payment checkout will be connected in later stages.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: WHAT MEMBERSHIP INCLUDES -->
+<section class="flex flex-col gap-8">
+<div class="flex flex-col gap-3 max-w-3xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Deep Work Engine</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">
+          Everything organised around the idea you choose.
+        </h2>
+<div class="p-4 rounded-lg bg-surface-container-high text-on-surface-variant font-body-sm text-body-sm flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">announcement</span>
+<span>Resources vary by idea. Always check the idea’s contents, availability, and specific requirements before initiating setup.</span>
+</div>
+</div>
+<!-- 4 Concise Feature Blocks -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Feature 1 -->
+<div class="rounded-xl bg-surface-container-lowest p-6 shadow-sm flex flex-col justify-between gap-6 hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Explore the opportunity library</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Browse by solution type, industry, technical requirements, and the resources included.</p>
+</div>
+<div class="pt-2 font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+<span>Filter by capability</span>
+<span class="material-symbols-outlined text-[14px]">east</span>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="rounded-xl bg-surface-container-lowest p-6 shadow-sm flex flex-col justify-between gap-6 hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">source</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Work with relevant resources</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Use the guides, examples, templates, and source code provided with the selected idea.</p>
+</div>
+<div class="pt-2 font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+<span>Scaffolds &amp; scripts</span>
+<span class="material-symbols-outlined text-[14px]">east</span>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="rounded-xl bg-surface-container-lowest p-6 shadow-sm flex flex-col justify-between gap-6 hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">dashboard_customize</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Keep your own project workspace</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Save opportunities, follow implementation tasks, and record your business decisions.</p>
+</div>
+<div class="pt-2 font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+<span>Personal audit log</span>
+<span class="material-symbols-outlined text-[14px]">east</span>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="rounded-xl bg-surface-container-lowest p-6 shadow-sm flex flex-col justify-between gap-6 hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">update</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Follow new releases &amp; improvements</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">See newly published ideas and continuous architectural updates to existing resources.</p>
+</div>
+<div class="pt-2 font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+<span>Structured changelog</span>
+<span class="material-symbols-outlined text-[14px]">east</span>
+</div>
+</div>
+</div>
+<!-- Restrained Product Breakdown Preview -->
+<div class="rounded-2xl bg-surface-container-lowest p-6 md:p-8 shadow-sm flex flex-col gap-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[24px]">folder_special</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Standard Kit Structure Breakdown</h3>
+</div>
+<!-- Fake Tabs for Preview -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
+<span class="px-3 py-1.5 rounded-md bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">1. Guides &amp; Briefs</span>
+<span class="px-3 py-1.5 rounded-md bg-surface-container text-on-surface-variant font-label-sm text-label-sm">2. Architecture Blueprints</span>
+<span class="px-3 py-1.5 rounded-md bg-surface-container text-on-surface-variant font-label-sm text-label-sm">3. Action Templates</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span>Guidance System</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Step-by-step documentation detailing customer segments, technical debt considerations, and risk matrices.</p>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">architecture</span>
+<span>Technical Blueprints</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Database schemas, API endpoints, webhook topologies, and dependency manifests ready for customization.</p>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+<span>Implementation Checklists</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sequenced milestones to keep validation, prototype iteration, and launch phases on a disciplined track.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: UNDERSTAND THE BOUNDARIES -->
+<section class="flex flex-col gap-8">
+<div class="flex flex-col gap-2 max-w-3xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Scope &amp; Ownership</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">
+          What is included—and what you arrange separately.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          IncomeNow membership is strictly separate from hosting, tooling, or operating the commercial applications you deliver to your end customers.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Column A: Inside the Membership -->
+<div class="rounded-2xl bg-surface-container-lowest p-8 shadow-sm flex flex-col gap-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">check</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Inside the membership</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Assets provided by IncomeNow platform</p>
+</div>
+</div>
+<ul class="flex flex-col gap-4">
+<li class="flex items-start gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-md text-body-md">Access to complete member idea content and catalog</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-md text-body-md">The resources included with each kit (codebases, sheets, templates)</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-md text-body-md">Written implementation guidance and step-by-step roadmaps</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-md text-body-md">Saved idea registry and personal progress tracking dashboards</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-md text-body-md">Published updates, enhancements, and corrections to libraries</span>
+</li>
+</ul>
+</div>
+<!-- Column B: Arranged Separately -->
+<div class="rounded-2xl bg-surface-container-high p-8 shadow-sm flex flex-col gap-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">build</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">For your implementation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your independent commercial responsibilities</p>
+</div>
+</div>
+<ul class="flex flex-col gap-4">
+<li class="flex items-start gap-3 text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">arrow_forward</span>
+<span class="font-body-md text-body-md">Your domain registration and hosting servers, where required</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">arrow_forward</span>
+<span class="font-body-md text-body-md">Third-party tools, paid APIs, and cloud usage charges</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">arrow_forward</span>
+<span class="font-body-md text-body-md">Tailored customisation and branding for the actual end client</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">arrow_forward</span>
+<span class="font-body-md text-body-md">Security auditing and QA testing before using real customer data</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">arrow_forward</span>
+<span class="font-body-md text-body-md">Customer communication, SLA delivery, and ongoing site maintenance</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Transparent Operational Footnote -->
+<div class="p-4 rounded-lg bg-surface-container text-on-surface-variant font-body-sm text-body-sm flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">gavel</span>
+<p>
+<strong class="text-on-surface font-medium">Independent Operator Note:</strong> IncomeNow provides structured frameworks and technical blueprints. We are not a done-for-you software agency, do not bundle multi-tenant cloud hosting, and cannot guarantee client acquisition or commercial contracts.
+        </p>
+</div>
+</section>
+<!-- SECTION 4: HOW GETTING STARTED WORKS -->
+<section class="flex flex-col gap-8">
+<div class="flex flex-col gap-2 max-w-3xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Process Architecture</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">
+          A clear path from account to access.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Transparency at each step. No hidden enrollments or automatic billing triggers.
+        </p>
+</div>
+<!-- 3 Sequential Process Steps -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+<!-- Step 1 -->
+<div class="rounded-2xl bg-surface-container-lowest p-7 shadow-sm flex flex-col gap-4 relative">
+<div class="flex items-center justify-between">
+<span class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm font-bold flex items-center justify-center">01</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Step 1</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Create your account</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Set up your IncomeNow login credentials with standard authentication.
+          </p>
+<span class="text-primary font-label-sm text-label-sm mt-auto pt-2 font-medium">• Zero payment details required</span>
+</div>
+<!-- Step 2 -->
+<div class="rounded-2xl bg-surface-container-lowest p-7 shadow-sm flex flex-col gap-4 relative">
+<div class="flex items-center justify-between">
+<span class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm font-bold flex items-center justify-center">02</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Step 2</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Review the membership</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Check the final price, billing information, currency, and subscription terms before paying.
+          </p>
+<span class="text-primary font-label-sm text-label-sm mt-auto pt-2 font-medium">• Explicit checkout overview</span>
+</div>
+<!-- Step 3 -->
+<div class="rounded-2xl bg-surface-container-lowest p-7 shadow-sm flex flex-col gap-4 relative">
+<div class="flex items-center justify-between">
+<span class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm font-bold flex items-center justify-center">03</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Step 3</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Activate access</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Paid features, resource download files, and personal tracking become available after confirmation.
+          </p>
+<span class="text-primary font-label-sm text-label-sm mt-auto pt-2 font-medium">• Immediate workspace release</span>
+</div>
+</div>
+<!-- Prototype Notice Badge -->
+<div class="flex items-center justify-center py-2">
+<div class="inline-flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full font-label-md text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-primary">pending_actions</span>
+<span>Registration and payment will be connected in later stages.</span>
+</div>
+</div>
+</section>
+<!-- SECTION 5: RESOURCE LICENCES -->
+<section class="rounded-2xl bg-surface-container-low p-8 lg:p-10 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+<div class="flex flex-col gap-3 max-w-2xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">policy</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Licence Transparency</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">
+          Check the permissions attached to each resource.
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Source-code access does not automatically mean unrestricted ownership or resale rights. Review the licence attached to a kit before adapting, distributing, or delivering it to an external customer.
+        </p>
+</div>
+<div class="flex flex-col sm:items-end gap-2 shrink-0">
+<button class="inline-flex items-center justify-center h-11 px-5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md font-semibold shadow-sm hover:bg-surface-variant transition-colors cursor-pointer" onclick="triggerPrototypeToast('Licence Information', 'Detailed licence registry will be published alongside resource releases.')" type="button">
+<span>Resource licence information</span>
+<span class="material-symbols-outlined text-[16px] ml-2 text-on-surface-variant">open_in_new</span>
+</button>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Available at launch • Licences vary per kit</span>
+</div>
+</section>
+<!-- SECTION 6: FAQ (MEMBERSHIP QUESTIONS) -->
+<section class="flex flex-col gap-8">
+<div class="flex flex-col gap-2 max-w-2xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Questions &amp; Clarity</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">
+          Membership questions
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Direct, unembellished answers regarding our model, access boundaries, and development requirements.
+        </p>
+</div>
+<!-- Accessible Accordion Component -->
+<div class="flex flex-col gap-3 w-full" id="faq-accordion-group">
+<!-- Q1 -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all faq-card">
+<button aria-expanded="false" class="w-full p-6 text-left flex items-center justify-between gap-4 font-headline-sm text-headline-sm font-semibold text-on-surface focus:outline-none cursor-pointer faq-toggle" type="button">
+<span>Am I buying individual courses?</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant transition-transform duration-200 faq-icon">expand_more</span>
+</button>
+<div class="px-6 pb-6 pt-0 text-on-surface-variant font-body-md text-body-md hidden faq-content">
+<p>No. The proposed membership gives access to an idea library. Each opportunity brings its explanation, implementation process, and relevant resources together.</p>
+</div>
+</div>
+<!-- Q2 -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all faq-card">
+<button aria-expanded="false" class="w-full p-6 text-left flex items-center justify-between gap-4 font-headline-sm text-headline-sm font-semibold text-on-surface focus:outline-none cursor-pointer faq-toggle" type="button">
+<span>Does creating an account start a paid subscription?</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant transition-transform duration-200 faq-icon">expand_more</span>
+</button>
+<div class="px-6 pb-6 pt-0 text-on-surface-variant font-body-md text-body-md hidden faq-content">
+<p>No. Account creation and paid membership are separate. The intended flow asks you to review the offer and complete payment before activating paid access.</p>
+</div>
+</div>
+<!-- Q3 -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all faq-card">
+<button aria-expanded="false" class="w-full p-6 text-left flex items-center justify-between gap-4 font-headline-sm text-headline-sm font-semibold text-on-surface focus:outline-none cursor-pointer faq-toggle" type="button">
+<span>Does every idea include source code?</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant transition-transform duration-200 faq-icon">expand_more</span>
+</button>
+<div class="px-6 pb-6 pt-0 text-on-surface-variant font-body-md text-body-md hidden faq-content">
+<p>No. Resources depend on the opportunity. A software kit may include source code, while another idea may provide workflow files, research templates, examples, or written guides.</p>
+</div>
+</div>
+<!-- Q4 -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all faq-card">
+<button aria-expanded="false" class="w-full p-6 text-left flex items-center justify-between gap-4 font-headline-sm text-headline-sm font-semibold text-on-surface focus:outline-none cursor-pointer faq-toggle" type="button">
+<span>Do I need development experience?</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant transition-transform duration-200 faq-icon">expand_more</span>
+</button>
+<div class="px-6 pb-6 pt-0 text-on-surface-variant font-body-md text-body-md hidden faq-content">
+<p>Requirements vary. Some ideas involve code customisation and deployment, while others focus on research or digital services. Check the requirements on the idea page.</p>
+</div>
+</div>
+<!-- Q5 -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all faq-card">
+<button aria-expanded="false" class="w-full p-6 text-left flex items-center justify-between gap-4 font-headline-sm text-headline-sm font-semibold text-on-surface focus:outline-none cursor-pointer faq-toggle" type="button">
+<span>Does membership include hosting my customer projects?</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant transition-transform duration-200 faq-icon">expand_more</span>
+</button>
+<div class="px-6 pb-6 pt-0 text-on-surface-variant font-body-md text-body-md hidden faq-content">
+<p>No. Hosting, third-party tools, customer configuration, and operating responsibilities must be considered separately.</p>
+</div>
+</div>
+<!-- Q6 -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all faq-card">
+<button aria-expanded="false" class="w-full p-6 text-left flex items-center justify-between gap-4 font-headline-sm text-headline-sm font-semibold text-on-surface focus:outline-none cursor-pointer faq-toggle" type="button">
+<span>How often are ideas added?</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant transition-transform duration-200 faq-icon">expand_more</span>
+</button>
+<div class="px-6 pb-6 pt-0 text-on-surface-variant font-body-md text-body-md hidden faq-content">
+<p>The library is designed to grow through new ideas and improvements to existing resources. Published changes will appear in Latest Updates.</p>
+</div>
+</div>
+<!-- Q7 -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all faq-card">
+<button aria-expanded="false" class="w-full p-6 text-left flex items-center justify-between gap-4 font-headline-sm text-headline-sm font-semibold text-on-surface focus:outline-none cursor-pointer faq-toggle" type="button">
+<span>Does membership guarantee earnings?</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant transition-transform duration-200 faq-icon">expand_more</span>
+</button>
+<div class="px-6 pb-6 pt-0 text-on-surface-variant font-body-md text-body-md hidden faq-content">
+<p>No. Results depend on customer demand, your work, delivery quality, costs, and other factors. Treat each idea as an opportunity to investigate and test.</p>
+</div>
+</div>
+<!-- Q8 -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all faq-card">
+<button aria-expanded="false" class="w-full p-6 text-left flex items-center justify-between gap-4 font-headline-sm text-headline-sm font-semibold text-on-surface focus:outline-none cursor-pointer faq-toggle" type="button">
+<span>What are the cancellation and resource-access rules?</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant transition-transform duration-200 faq-icon">expand_more</span>
+</button>
+<div class="px-6 pb-6 pt-0 text-on-surface-variant font-body-md text-body-md hidden faq-content">
+<p>The final billing, cancellation, and resource-licence terms are still being defined for this prototype. Review the published terms before subscribing.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 7: CLOSING ACTION -->
+<section class="rounded-3xl bg-inverse-surface text-inverse-on-surface p-8 md:p-14 shadow-xl flex flex-col items-center text-center gap-7 relative overflow-hidden">
+<!-- Visual Subtle Decorative Accent -->
+<div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-secondary/10 blur-3xl pointer-events-none"></div>
+<div class="flex flex-col items-center gap-3 max-w-2xl relative z-10">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed font-bold">Ready to evaluate</span>
+<h2 class="font-headline-lg text-headline-lg md:text-display-hero text-inverse-on-surface font-extrabold tracking-tight">
+          Choose a practical starting point.
+        </h2>
+<p class="font-body-lg text-body-lg text-inverse-on-surface/80">
+          Explore the example ideas or create an account when you are ready for the next step.
+        </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4 relative z-10 w-full sm:w-auto">
+<button class="w-full sm:w-auto h-12 px-7 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold shadow-sm transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer" onclick="triggerPrototypeToast('Account Creation', 'Account onboarding is currently inactive in preview mode.')" type="button">
+<span>Create account</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<a class="w-full sm:w-auto h-12 px-7 rounded-lg bg-surface-container-highest/20 hover:bg-surface-container-highest/30 text-inverse-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-2 transition-colors" data-path="example-ideas" href="#">
+<span>Explore example ideas</span>
+</a>
+</div>
+<p class="font-body-sm text-body-sm text-inverse-on-surface/60 relative z-10">
+        Creating an account does not activate a paid subscription.
+      </p>
+</section>
+</div>
+<!-- Interactive Client-side Script -->
+<script>
+    // Accordion interaction
+    document.querySelectorAll('.faq-toggle').forEach(function(button) {
+      button.addEventListener('click', function() {
+        var card = button.closest('.faq-card');
+        var content = card.querySelector('.faq-content');
+        var icon = button.querySelector('.faq-icon');
+        var isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        if (isExpanded) {
+          button.setAttribute('aria-expanded', 'false');
+          content.classList.add('hidden');
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          button.setAttribute('aria-expanded', 'true');
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // Prototype Toast Notification
+    var toastTimeout;
+    function triggerPrototypeToast(title, msg) {
+      var toast = document.getElementById('toast-element');
+      var titleEl = document.getElementById('toast-title');
+      var msgEl = document.getElementById('toast-msg');
+
+      if (!toast) return;
+
+      if (title && titleEl) titleEl.innerText = title;
+      if (msg && msgEl) msgEl.innerText = msg;
+
+      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(function() {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }, 4000);
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="max-w-7xl mx-auto px-6 lg:px-12 py-12"><div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-12"><div class="md:col-span-6 flex flex-col items-start gap-4 pr-0 md:pr-12"><a class="flex items-center gap-1.5 focus:outline-none" data-path="membership" href="#"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">IncomeNow<span class="text-primary">.in</span></span></a><p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Practical business opportunities and implementation resources for independent founders, builders, and operators.</p></div><div class="md:col-span-3 flex flex-col gap-3"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Product</span><nav class="flex flex-col gap-2.5" data-active-classes="text-primary font-medium"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#">How it works</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="example-ideas" href="#">Example ideas</a><a aria-current="page" class="transition-colors text-primary font-medium" data-path="membership" href="#">Membership</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="faq" href="#">FAQ</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="login" href="#">Log in</a></nav></div><div class="md:col-span-3 flex flex-col gap-3"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Legal &amp; Trust</span><nav class="flex flex-col gap-2.5" data-active-classes="text-primary font-medium"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy" href="#">Privacy</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terms" href="#">Terms</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="resource-licences" href="#">Resource licences</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Contact</a></nav></div></div><div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-on-surface-variant font-body-sm text-body-sm"><p>© 2024 IncomeNow.in. Structured execution frameworks. All rights reserved.</p><div class="flex items-center gap-6"><a class="hover:text-on-surface transition-colors" data-path="privacy" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="terms" href="#">Terms of Service</a><a class="hover:text-on-surface transition-colors" data-path="contact" href="#">Support</a></div></div></div></footer></body></html>

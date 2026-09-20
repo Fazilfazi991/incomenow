@@ -1,0 +1,203 @@
+{
+  "idea-001": {
+    "currentVersion": "1",
+    "versions": {
+      "1": {
+        "stages": [
+      {
+        "id": "crm-validate",
+        "title": "Validate the customer problem",
+        "summary": "Confirm the proposal bottleneck before choosing software.",
+        "resourceIds": ["crm-discovery"],
+        "tasks": [
+          { "id": "region-segment", "title": "Choose a region and contractor segment", "description": "Name the geography and contractor type you will investigate first.", "required": true },
+          { "id": "operator-interviews", "title": "Interview five operators", "description": "Use the discovery script and record evidence without inventing demand.", "required": true },
+          { "id": "process-map", "title": "Record the current quotation and follow-up process", "description": "Map the hand-offs, delays, owners, and tools used today.", "required": true }
+        ]
+      },
+      {
+        "id": "crm-adapt",
+        "title": "Explore and adapt the demonstration",
+        "summary": "Map required fields and calculations to an approved scope.",
+        "resourceIds": ["crm-demo", "crm-guide"],
+        "tasks": [
+          { "id": "field-inventory", "title": "List materials and labour inputs", "description": "Capture only the inputs needed for an initial quotation workflow.", "required": true },
+          { "id": "quotation-states", "title": "Define quotation states", "description": "Agree the states, owners, and next actions used in the pipeline.", "required": true },
+          { "id": "scope-trim", "title": "Remove features the customer does not need", "description": "Keep the pilot bounded by documenting excluded features explicitly.", "required": true }
+        ]
+      },
+      {
+        "id": "crm-offer",
+        "title": "Define the offer and project scope",
+        "summary": "Bound the setup, migration, training, and support commitments.",
+        "resourceIds": ["crm-guide"],
+        "tasks": [
+          { "id": "scope-sheet", "title": "Write a scope sheet", "description": "List the configuration, migration, training, and handover work included.", "required": true },
+          { "id": "ownership-support", "title": "Define ownership and support limits", "description": "Record responsibilities, revision limits, hosting, and ongoing support boundaries.", "required": true }
+        ]
+      },
+      {
+        "id": "crm-research",
+        "title": "Research suitable potential customers",
+        "summary": "Build a small, relevant outreach list.",
+        "resourceIds": ["crm-discovery"],
+        "tasks": [
+          { "id": "prospect-list", "title": "Identify 20 local contractors", "description": "Create a focused list using public business information.", "required": true },
+          { "id": "bespoke-quote-priority", "title": "Prioritise teams with bespoke quotations", "description": "Rank prospects whose work appears to require complex proposal follow-up.", "required": true }
+        ]
+      },
+      {
+        "id": "crm-pilot",
+        "title": "Demonstrate the solution and agree a pilot",
+        "summary": "Use fictional or authorised sample data in a focused walkthrough.",
+        "resourceIds": ["crm-demo", "crm-discovery"],
+        "tasks": [
+          { "id": "focused-demo", "title": "Prepare a 15-minute demo", "description": "Show the agreed workflow using fictional or authorised sample records.", "required": true },
+          { "id": "success-exit", "title": "Agree success and exit criteria", "description": "Document what the pilot will test and how either party can stop it.", "required": true }
+        ]
+      },
+      {
+        "id": "crm-launch",
+        "title": "Test, launch, and support",
+        "summary": "Verify access, backups, and communication before handover.",
+        "resourceIds": ["crm-guide"],
+        "tasks": [
+          { "id": "permission-tests", "title": "Run permission tests", "description": "Verify each role can access only the records and actions it needs.", "required": true },
+          { "id": "recovery-ownership", "title": "Document recovery and ownership", "description": "Record backup, recovery, credential, and support responsibilities.", "required": true }
+        ]
+      }
+        ]
+      }
+    }
+  },
+  "idea-003": {
+    "currentVersion": "1",
+    "versions": {
+      "1": {
+        "stages": [
+      {
+        "id": "auto-map",
+        "title": "Map the current quotation workflow",
+        "summary": "Record systems, owners, states, and exceptions.",
+        "resourceIds": ["automation-map"],
+        "tasks": [
+          { "id": "source-of-truth", "title": "Identify the source of truth", "description": "Name the authorised system that owns quotation status.", "required": true },
+          { "id": "reply-recording", "title": "Document how replies are recorded", "description": "Map how customer replies stop or change follow-up work.", "required": true }
+        ]
+      },
+      {
+        "id": "auto-rules",
+        "title": "Choose reminder intervals",
+        "summary": "Agree cadence, business-day rules, and exclusions.",
+        "resourceIds": ["automation-map"],
+        "tasks": [
+          { "id": "offsets", "title": "Define offsets", "description": "Agree when internal follow-up should become due.", "required": true },
+          { "id": "calendar-exclusions", "title": "List holidays and excluded states", "description": "Prevent reminders on unsuitable days or completed records.", "required": true }
+        ]
+      },
+      {
+        "id": "auto-configure",
+        "title": "Configure logic and destinations",
+        "summary": "Use the customer’s authorised tools and scoped access.",
+        "resourceIds": ["automation-flow", "automation-guide"],
+        "tasks": [
+          { "id": "field-map", "title": "Map fields", "description": "Map stable quotation IDs, dates, owners, and statuses between systems.", "required": true },
+          { "id": "task-destinations", "title": "Configure task and notification destinations", "description": "Send internal work only to the agreed responsible people.", "required": true }
+        ]
+      },
+      {
+        "id": "auto-test",
+        "title": "Test normal and failure scenarios",
+        "summary": "Prove duplicate prevention and visible failures in a sandbox.",
+        "condition": "Required before any pilot",
+        "resourceIds": ["automation-tests"],
+        "tasks": [
+          { "id": "duplicate-run", "title": "Run the same check twice", "description": "Confirm a retry does not create a duplicate internal task.", "required": true },
+          { "id": "missing-data", "title": "Test missing data", "description": "Confirm incomplete records fail visibly and safely.", "required": true },
+          { "id": "expired-connection", "title": "Test an expired connection", "description": "Confirm an expired authorisation creates an actionable failure.", "required": true }
+        ]
+      },
+      {
+        "id": "auto-pilot",
+        "title": "Run a one-person pilot",
+        "summary": "Limit the first live trial to one responsible team member.",
+        "resourceIds": ["automation-tests"],
+        "tasks": [
+          { "id": "five-day-trial", "title": "Agree a five-day trial", "description": "Keep the first live window short and owned by one person.", "required": true },
+          { "id": "daily-audit", "title": "Review the audit log daily", "description": "Check executions, skips, duplicates, and failures every day.", "required": true }
+        ]
+      },
+      {
+        "id": "auto-handover",
+        "title": "Document ownership and maintenance",
+        "summary": "Make credentials, alerts, and support boundaries explicit.",
+        "resourceIds": ["automation-guide"],
+        "tasks": [
+          { "id": "handover-matrix", "title": "Write the handover matrix", "description": "Record who owns credentials, alerts, data, and support.", "required": true },
+          { "id": "maintenance-review", "title": "Schedule a maintenance review", "description": "Choose when schemas, permissions, and connections will be reviewed.", "required": true }
+        ]
+      }
+        ]
+      }
+    }
+  },
+  "idea-004": {
+    "currentVersion": "1",
+    "versions": {
+      "1": {
+        "stages": [
+      {
+        "id": "lead-niche",
+        "title": "Choose one service and area",
+        "summary": "Keep the initial research narrow enough to validate.",
+        "resourceIds": ["lead-research"],
+        "tasks": [
+          { "id": "service-category", "title": "Define the service category", "description": "Choose one specific service with a clear buyer need.", "required": true },
+          { "id": "postcode-cluster", "title": "Choose a postcode cluster", "description": "Bound the initial demand and provider research geographically.", "required": true }
+        ]
+      },
+      {
+        "id": "lead-buyers",
+        "title": "Interview recent buyers",
+        "summary": "Understand how people search, compare, and decide.",
+        "resourceIds": ["lead-research"],
+        "tasks": [
+          { "id": "urgency-signals", "title": "Ask about urgency", "description": "Record when and why a buyer needed a provider quickly.", "required": true },
+          { "id": "trust-questions", "title": "Record trust and qualification questions", "description": "Capture the evidence buyers use to compare providers.", "required": true }
+        ]
+      },
+      {
+        "id": "lead-partners",
+        "title": "Discover provider partners",
+        "summary": "Confirm capacity, coverage, and response expectations.",
+        "resourceIds": ["lead-partner"],
+        "tasks": [
+          { "id": "provider-interviews", "title": "Interview five providers", "description": "Confirm coverage, availability, fit, and response expectations.", "required": true },
+          { "id": "manual-handoff", "title": "Agree a manual pilot handoff", "description": "Define who receives, qualifies, and follows up each enquiry.", "required": true }
+        ]
+      },
+      {
+        "id": "lead-prototype",
+        "title": "Prototype the enquiry journey",
+        "summary": "Use fictional submissions and clear consent language.",
+        "resourceIds": ["lead-template", "lead-enquiry"],
+        "tasks": [
+          { "id": "landing-page", "title": "Draft the landing page", "description": "Explain the service, area, handoff, and limitations clearly.", "required": true },
+          { "id": "qualification-fields", "title": "Prototype qualification fields", "description": "Collect only the information needed for the agreed handoff.", "required": true }
+        ]
+      },
+      {
+        "id": "lead-pilot",
+        "title": "Run a bounded pilot",
+        "summary": "Track response quality without promising lead volume.",
+        "resourceIds": ["lead-enquiry", "lead-partner"],
+        "tasks": [
+          { "id": "manual-routing", "title": "Route enquiries manually", "description": "Use the documented consent and partner handoff process.", "required": true },
+          { "id": "response-review", "title": "Review response times and fit", "description": "Record whether enquiries were suitable and handled promptly.", "required": true }
+        ]
+      }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-container": "#eaefeb", "tertiary": "#4f5552", "inverse-on-surface": "#e5f4eb", "surface-container-low": "#e8f7ed", "on-error-container": "#93000a", "inverse-primary": "#80d8ad", "secondary-container": "#c9eadd", "on-tertiary-fixed-variant": "#424845", "error-container": "#ffdad6", "secondary-fixed": "#c9eadd", "tertiary-container": "#676d6a", "on-primary": "#ffffff", "surface-dim": "#ceded4", "secondary": "#47645a", "on-secondary": "#ffffff", "surface-variant": "#d7e6dc", "on-surface": "#111e18", "inverse-surface": "#26332d", "secondary-fixed-dim": "#aecdc1", "error": "#ba1a1a", "outline": "#6f7a72", "surface-tint": "#006c4a", "primary": "#006041", "tertiary-fixed": "#dfe4e0", "on-secondary-fixed-variant": "#304c43", "primary-container": "#197a56", "outline-variant": "#bec9c1", "background": "#eefdf3", "on-primary-fixed-variant": "#005237", "surface": "#eefdf3", "on-secondary-fixed": "#022019", "on-primary-fixed": "#002114", "on-primary-container": "#acffd4", "primary-fixed": "#9bf5c8", "surface-bright": "#eefdf3", "tertiary-fixed-dim": "#c2c8c4", "on-secondary-container": "#4d6a60", "on-tertiary": "#ffffff", "on-background": "#111e18", "on-tertiary-fixed": "#171d1b", "primary-fixed-dim": "#80d8ad", "surface-container-high": "#ddece2", "surface-container-lowest": "#ffffff", "on-surface-variant": "#3f4943", "surface-container": "#e2f2e8", "surface-container-highest": "#d7e6dc", "on-error": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "2.5rem", "space-xl": "2.5rem", "margin-mobile": "1rem", "gutter": "1.5rem", "gutter-mobile": "1rem", "space-md": "1rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "space-xs": "0.25rem" }, "fontFamily": { "display-hero": [ "Manrope" ], "display-hero-mobile": [ "Manrope" ], "body-md": [ "Inter" ], "label-md": [ "Inter" ], "headline-lg-mobile": [ "Manrope" ], "headline-lg": [ "Manrope" ], "headline-md": [ "Manrope" ], "label-sm": [ "Inter" ], "body-lg": [ "Inter" ], "headline-sm": [ "Manrope" ], "body-sm": [ "Inter" ] }, "fontSize": { "display-hero": [ "3.25rem", { "lineHeight": "1.15", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "display-hero-mobile": [ "2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.025em", "fontWeight": "800" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.55", "letterSpacing": "0em", "fontWeight": "400" } ], "label-md": [ "0.875rem", { "lineHeight": "1.25", "letterSpacing": "0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "headline-lg": [ "2.25rem", { "lineHeight": "1.25", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-md": [ "1.5rem", { "lineHeight": "1.35", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-sm": [ "0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.6", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-sm": [ "1.125rem", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.5", "letterSpacing": "0.005em", "fontWeight": "400" } ] } } } }</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between pt-space-lg pb-space-md"><div class="flex flex-col"><div class="px-space-lg mb-space-lg flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">trending_up</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">IncomeNow<span class="text-primary">.in</span></span><span class="font-label-sm text-label-sm text-on-surface-variant font-normal">Venture Discovery</span></div></div><div class="px-space-md mb-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary px-space-sm font-semibold">Discovery</span></div><nav class="px-space-sm flex flex-col gap-space-xs mb-space-lg" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="explore-ideas" href="#"><span class="material-symbols-outlined text-[20px]">explore</span><span>Explore Ideas</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="saved-ideas" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">bookmark</span><span>Saved Ideas</span></div><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">2</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="my-projects" href="#"><span class="material-symbols-outlined text-[20px]">folder_open</span><span>My Projects</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="latest-updates" href="#"><span class="material-symbols-outlined text-[20px]">update</span><span>Latest Updates</span></a></nav><div class="px-space-md mb-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary px-space-sm font-semibold">Support &amp; Account</span></div><nav class="px-space-sm flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="help-support" href="#"><span class="material-symbols-outlined text-[20px]">help</span><span>Help &amp; Support</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg transition-all bg-primary-container text-on-primary font-semibold" data-path="account" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Account</span></a></nav></div><div class="px-space-sm pt-space-md"><div class="p-space-sm rounded-xl bg-surface-container flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-bold">A</div><div class="flex flex-col"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Alex Mercer</span><span class="font-label-sm text-label-sm text-secondary leading-tight">Member</span></div></div><a class="text-on-surface-variant hover:text-on-surface" data-path="account" href="#"><span class="material-symbols-outlined text-[18px]">more_vert</span></a></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><a class="flex items-center gap-1 font-label-md text-label-md text-secondary hover:text-primary transition-colors" data-path="account" href="#"><span class="material-symbols-outlined text-[18px]">arrow_back</span><span>Back to account</span></a><div class="h-4 w-px bg-surface-container-highest"></div><nav aria-label="Breadcrumb" class="flex items-center gap-2"><span class="font-label-md text-label-md text-on-surface-variant">Account</span><span class="text-outline-variant">/</span><span class="font-label-md text-label-md font-semibold text-on-surface">Membership &amp; Billing</span></nav></div><div class="flex items-center gap-space-md"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-surface px-space-lg"><div class="max-w-7xl mx-auto py-space-lg"><div class="flex flex-col w-full">
+<!-- Page Context & Architecture Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mr-1.5"></span>
+          Design preview — billing is not connected
+        </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Membership &amp; billing</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Review your access, subscription tier, and connected ledger details.</p>
+</div>
+<!-- Quick Ledger Status Pill -->
+<div class="flex items-center gap-space-sm bg-surface-container-lowest p-2 px-space-md rounded-xl shadow-sm self-start md:self-auto">
+<span class="material-symbols-outlined text-secondary text-[20px]">shield</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Zero Credential Retention</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Handled strictly by external gateway</span>
+</div>
+</div>
+</div>
+<!-- SECTION 1: MEMBERSHIP OVERVIEW (Dynamic State Switcher Integrated) -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg md:p-space-xl shadow-sm mb-space-lg relative overflow-hidden">
+<!-- QA / State Switcher Toolbar -->
+<div class="mb-space-lg pb-space-md bg-surface-container-low -mx-space-lg -mt-space-lg md:-mx-space-xl md:-mt-space-xl px-space-lg md:px-space-xl pt-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">tune</span>
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-surface-variant">QA State Simulator: Subscription Permutations</span>
+</div>
+<div class="flex flex-wrap items-center gap-1.5" id="variant-btn-group">
+<button class="state-btn active-state px-2.5 py-1 rounded-md font-label-sm text-label-sm transition-all bg-primary text-on-primary font-medium" data-variant="A" onclick="setVariant('A')" type="button">A: No Membership</button>
+<button class="state-btn px-2.5 py-1 rounded-md font-label-sm text-label-sm transition-all bg-surface-container text-on-surface hover:bg-surface-container-high font-medium" data-variant="B" onclick="setVariant('B')" type="button">B: Confirming</button>
+<button class="state-btn px-2.5 py-1 rounded-md font-label-sm text-label-sm transition-all bg-surface-container text-on-surface hover:bg-surface-container-high font-medium" data-variant="C" onclick="setVariant('C')" type="button">C: Active</button>
+<button class="state-btn px-2.5 py-1 rounded-md font-label-sm text-label-sm transition-all bg-surface-container text-on-surface hover:bg-surface-container-high font-medium" data-variant="D" onclick="setVariant('D')" type="button">D: Attention</button>
+<button class="state-btn px-2.5 py-1 rounded-md font-label-sm text-label-sm transition-all bg-surface-container text-on-surface hover:bg-surface-container-high font-medium" data-variant="E" onclick="setVariant('E')" type="button">E: Canceling</button>
+<button class="state-btn px-2.5 py-1 rounded-md font-label-sm text-label-sm transition-all bg-surface-container text-on-surface hover:bg-surface-container-high font-medium" data-variant="F" onclick="setVariant('F')" type="button">F: Ended</button>
+<button class="state-btn px-2.5 py-1 rounded-md font-label-sm text-label-sm transition-all bg-surface-container text-on-surface hover:bg-surface-container-high font-medium" data-variant="G" onclick="setVariant('G')" type="button">G: Offline</button>
+</div>
+</div>
+</div>
+<!-- Tier Head -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">Tier Architecture</span>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">IncomeNow Membership</h2>
+</div>
+<div class="self-start sm:self-auto">
+<span class="inline-flex items-center px-3 py-1 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-semibold">
+          Monthly subscription
+        </span>
+</div>
+</div>
+<!-- DYNAMIC VARIANT DISPLAY CONTAINERS -->
+<!-- VARIANT A: Default / No Active Membership -->
+<div class="variant-panel block" id="variant-content-A">
+<div class="p-space-lg rounded-xl bg-surface-container-low mb-space-md">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant font-semibold">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+            No active membership
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-space-sm">Your account is fully set up. Paid venture discovery membership is independent from basic account access.</p>
+<div class="mt-space-md pt-space-sm">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Price to be confirmed</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Final price and billing currency are not configured in this preview environment.</p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="relative group">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-high text-outline cursor-not-allowed font-label-md text-label-md font-semibold flex items-center gap-space-xs" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span>Start membership</span>
+</button>
+<div class="absolute bottom-full left-0 mb-2 hidden group-hover:block w-64 p-2 bg-inverse-surface text-inverse-on-surface font-body-sm text-body-sm rounded-md shadow-lg z-20 pointer-events-none">
+            Checkout will be available after pricing and billing are configured.
+          </div>
+</div>
+<a class="px-space-md py-2.5 rounded-lg bg-transparent text-primary hover:bg-surface-container font-label-md text-label-md font-semibold transition-colors flex items-center gap-space-xs" data-path="explore-ideas" href="#">
+<span>View membership details</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- VARIANT B: Confirming Payment -->
+<div class="variant-panel hidden" id="variant-content-B">
+<div class="p-space-lg rounded-xl bg-surface-container-low mb-space-md">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed font-semibold">
+<svg class="animate-spin h-3 w-3 text-secondary" fill="none" viewbox="0 0 24 24">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+            Confirming payment
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium mt-space-sm">We are confirming your payment settlement and verifying workspace credentials.</p>
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">schedule</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Confirmation is taking slightly longer than standard gateway windows. Please refresh or verify authorization prior to submitting duplicate transactions.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-primary transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+<span>Check status</span>
+</button>
+</div>
+</div>
+<!-- VARIANT C: Active Membership -->
+<div class="variant-panel hidden" id="variant-content-C">
+<div class="p-space-lg rounded-xl bg-surface-container-low mb-space-md">
+<div class="flex items-center gap-space-sm mb-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+            Active
+          </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">— Tier verification verified via gateway</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Your membership access is active. Full venture discovery blueprints and implementation briefs are unlocked.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mt-space-md pt-space-md bg-surface-container-lowest p-space-md rounded-lg">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Plan Tier</span>
+<p class="font-headline-sm text-headline-sm font-semibold text-on-surface">Founders Edition</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Billing Cadence</span>
+<p class="font-headline-sm text-headline-sm font-semibold text-on-surface">Monthly ($39.00/mo)</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Active Price</span>
+<p class="font-headline-sm text-headline-sm font-semibold text-on-surface">Connected via Stripe</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Next Renewal</span>
+<p class="font-headline-sm text-headline-sm font-semibold text-on-surface">Nov 14, 2025</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<a class="px-space-md py-2.5 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md font-semibold transition-all flex items-center gap-space-xs" data-path="explore-ideas" href="#">
+<span class="material-symbols-outlined text-[18px]">explore</span>
+<span>Explore ideas</span>
+</a>
+</div>
+</div>
+<!-- VARIANT D: Payment Needs Attention -->
+<div class="variant-panel hidden" id="variant-content-D">
+<div class="p-space-lg rounded-xl bg-surface-container-low mb-space-md">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container font-semibold">
+<span class="material-symbols-outlined text-[16px]">error</span>
+            Payment needs attention
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-space-sm font-medium">There is a billing issue that requires review. Access will remain open during the 7-day grace period.</p>
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container-lowest flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[20px] mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Last recurring attempt encountered an authorization hold from the issuing institution. Please check your stored mandate.
+          </p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-primary transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">credit_card</span>
+<span>Manage payment details</span>
+</button>
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md font-semibold transition-all" type="button">
+<span>Check status</span>
+</button>
+</div>
+</div>
+<!-- VARIANT E: Cancellation Scheduled -->
+<div class="variant-panel hidden" id="variant-content-E">
+<div class="p-space-lg rounded-xl bg-surface-container-low mb-space-md">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-semibold">
+<span class="material-symbols-outlined text-[16px]">event_busy</span>
+            Cancellation scheduled
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-space-sm">Cancellation is confirmed and scheduled. You will maintain full unrestricted workspace access through the end of the billing period.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md mt-space-md bg-surface-container-lowest p-space-md rounded-lg">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Effective Cancellation Date</span>
+<p class="font-headline-sm text-headline-sm font-semibold text-on-surface">End of current cycle</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Access Valid Until</span>
+<p class="font-headline-sm text-headline-sm font-semibold text-on-surface">Oct 31, 2025</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">undo</span>
+<span>Keep membership</span>
+</button>
+</div>
+</div>
+<!-- VARIANT F: Membership Ended -->
+<div class="variant-panel hidden" id="variant-content-F">
+<div class="p-space-lg rounded-xl bg-surface-container-low mb-space-md">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant font-semibold">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+            Membership ended
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-space-sm">Your paid subscription cycle has ended. Saved drafts, bookmarks, and private blueprints are safe and remain archived in your account.</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container transition-all" type="button">
+          Review membership
+        </button>
+</div>
+</div>
+<!-- VARIANT G: Status Unavailable -->
+<div class="variant-panel hidden" id="variant-content-G">
+<div class="p-space-lg rounded-xl bg-surface-container-low mb-space-md">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-highest text-on-surface-variant font-semibold">
+<span class="material-symbols-outlined text-[16px]">cloud_off</span>
+            Membership status unavailable
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-space-sm">We could not sync your current entitlement status with the billing registry right now. No action is required on your card.</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container-high transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+<span>Try again</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 2: PAYMENT DETAILS -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg md:p-space-xl shadow-sm mb-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-md mb-space-lg">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Payment details</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage payment methods, primary settlement instruments, and tax identification.</p>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">lock_outline</span>
+<span>PCI-DSS Delegated</span>
+</div>
+</div>
+<!-- Restrained Status Notice Block -->
+<div class="p-space-lg rounded-xl bg-surface-container-low mb-space-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[24px]">credit_card_off</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Payment management is not connected in this preview</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+            Payment methods are securely handled through the external billing provider. No card numbers, CVVs, or bank credentials are ever collected, processed, or stored on IncomeNow infrastructure.
+          </p>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="relative group">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-high text-outline cursor-not-allowed font-label-md text-label-md font-semibold flex items-center gap-space-xs" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">credit_card</span>
+<span>Manage payment details</span>
+</button>
+<div class="absolute bottom-full left-0 mb-2 hidden group-hover:block w-72 p-2.5 bg-inverse-surface text-inverse-on-surface font-body-sm text-body-sm rounded-md shadow-lg z-20 pointer-events-none">
+          Billing actions will be securely connected during infrastructure initialization.
+        </div>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">verified_user</span>
+<span>All transactions protected via end-to-end tokenized vaulting</span>
+</div>
+</div>
+</section>
+<!-- SECTION 3: BILLING HISTORY -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg md:p-space-xl shadow-sm mb-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-md mb-space-lg">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Billing history</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Review past receipts, subscription renewal records, and downloadable tax invoices.</p>
+</div>
+<!-- Preview State Switcher for History -->
+<div class="flex items-center gap-2 self-start sm:self-auto bg-surface-container p-1 rounded-lg">
+<button class="px-3 py-1 rounded font-label-sm text-label-sm font-semibold bg-surface-container-lowest text-on-surface shadow-xs transition-all" id="tab-btn-unconnected" onclick="setHistoryView('unconnected')" type="button">Unconnected Preview</button>
+<button class="px-3 py-1 rounded font-label-sm text-label-sm font-medium text-on-surface-variant hover:text-on-surface transition-all" id="tab-btn-empty" onclick="setHistoryView('empty')" type="button">Confirmed Empty</button>
+</div>
+</div>
+<!-- Unconnected Ledger State -->
+<div class="block" id="history-unconnected-view">
+<div class="rounded-xl overflow-hidden bg-surface-container-low p-space-lg mb-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[22px]">receipt_long</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Billing history is not connected in this preview</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+              Historical ledger synchronization and automated reconciliation links will initialize when your subscription commences.
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Confirmed Empty State -->
+<div class="hidden" id="history-empty-view">
+<div class="text-center py-space-xl px-space-md bg-surface-container-low rounded-xl mb-space-md">
+<div class="w-12 h-12 rounded-full bg-surface-container mx-auto flex items-center justify-center text-outline mb-space-sm">
+<span class="material-symbols-outlined text-[24px]">folder_open</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">No invoices yet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 max-w-md mx-auto">
+          Invoices, value-added receipts, and GST/VAT tax breakdowns will populate right here once subscription disbursements initiate.
+        </p>
+</div>
+</div>
+<!-- Structured Mock / Layout Representation (Compact Format) -->
+<div class="overflow-x-auto rounded-xl bg-surface-container-low">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<tr>
+<th class="py-3 px-space-md font-semibold">Date</th>
+<th class="py-3 px-space-md font-semibold">Description</th>
+<th class="py-3 px-space-md font-semibold">Amount</th>
+<th class="py-3 px-space-md font-semibold">Status</th>
+<th class="py-3 px-space-md font-semibold text-right">Document</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-on-surface opacity-60">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-3.5 px-space-md text-on-surface-variant">—</td>
+<td class="py-3.5 px-space-md font-medium">IncomeNow Founders Tier (Monthly)</td>
+<td class="py-3.5 px-space-md">—</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container-high text-on-surface-variant">Pending Configuration</span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<span class="text-outline text-label-sm">PDF Unavailable</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Invoice downloads and secure receipts are delivered exclusively via cryptographically signed provider links.
+      </p>
+</div>
+</section>
+<!-- SECTION 4: SUBSCRIPTION MANAGEMENT & CANCELLATION -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg md:p-space-xl shadow-sm mb-space-xl">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-md mb-space-md">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Subscription management</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Review cancellation policies, license terms, or pause account preferences.</p>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-low mb-space-lg">
+<div class="flex items-start justify-between flex-col md:flex-row gap-space-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Cancellation Policy &amp; Workspaces Retainment</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5 max-w-2xl">
+            You can review the exit terms at any time. When a subscription ends, all your saved projects, architectural notes, and custom discovery folders are preserved indefinitely on your free account tier.
+          </p>
+</div>
+<!-- Trigger Modal -->
+<button class="shrink-0 px-space-md py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-colors flex items-center gap-space-xs" onclick="openCancellationModal()" type="button">
+<span>Review cancellation</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Editorial Assurance Badges -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">timer_off</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">No Hidden Timers</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Immediate stop of recurring bills at cycle conclusion.</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">folder_shared</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Permanent Retention</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Never lose private workspaces, templates, or notes.</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">gavel</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Perpetual Build Rights</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ideas launched while active remain 100% royalty-free.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- MODAL DIALOG: CANCELLATION REVIEW -->
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-50 hidden" id="cancellation-modal" role="dialog">
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 bg-inverse-surface/40 backdrop-blur-sm transition-opacity" onclick="closeCancellationModal()"></div>
+<div class="fixed inset-0 z-10 overflow-y-auto flex items-center justify-center p-4 sm:p-6">
+<div class="relative bg-surface-container-lowest rounded-2xl max-w-xl w-full p-space-lg md:p-space-xl shadow-xl overflow-hidden transform transition-all">
+<!-- Close button -->
+<button aria-label="Close dialog" class="absolute top-space-md right-space-md w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" onclick="closeCancellationModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<div class="flex items-center gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">contract_delete</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface" id="modal-title">Review cancellation</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Transparent exit &amp; data terms</span>
+</div>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low my-space-md">
+<p class="font-body-md text-body-md text-on-surface font-medium">Cancellation timing and access terms are not configured in this preview.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Review the standard policies below for production deployments:</p>
+</div>
+<!-- Clarification points -->
+<div class="space-y-space-md mb-space-lg text-on-surface font-body-md text-body-md">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px] mt-1 shrink-0">check_circle</span>
+<div>
+<span class="font-semibold">When billing stops:</span>
+<p class="text-on-surface-variant font-body-sm text-body-sm mt-0.5">Recurring billing will cease instantly. You will never receive an unnotified charge post-request.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px] mt-1 shrink-0">check_circle</span>
+<div>
+<span class="font-semibold">Access changes:</span>
+<p class="text-on-surface-variant font-body-sm text-body-sm mt-0.5">You retain complete entitlement privileges to premium brief downloads until the final day of your prepaid cycle.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px] mt-1 shrink-0">check_circle</span>
+<div>
+<span class="font-semibold">Workspace preservation:</span>
+<p class="text-on-surface-variant font-body-sm text-body-sm mt-0.5">All customized blueprints, saved filters, and venture notes remain preserved in read/edit mode on your registered account.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px] mt-1 shrink-0">check_circle</span>
+<div>
+<span class="font-semibold">Resource licensing:</span>
+<p class="text-on-surface-variant font-body-sm text-body-sm mt-0.5">Source files, wireframe kits, and financial models downloaded remain licensed for unlimited commercial launch.</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row-reverse items-center gap-space-sm pt-space-sm">
+<div class="relative group w-full sm:w-auto">
+<button class="w-full sm:w-auto px-space-md py-2.5 rounded-lg bg-surface-container-high text-outline cursor-not-allowed font-label-md text-label-md font-semibold text-center" disabled="" type="button">
+              Confirm cancellation
+            </button>
+<div class="absolute bottom-full right-0 mb-2 hidden group-hover:block w-64 p-2 bg-inverse-surface text-inverse-on-surface font-body-sm text-body-sm rounded-md shadow-lg z-30 pointer-events-none text-left">
+              Unavailable until live policy and billing are configured.
+            </div>
+</div>
+<button class="w-full sm:w-auto px-space-md py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-colors" onclick="closeCancellationModal()" type="button">
+            Go back
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function setVariant(variantId) {
+    // Hide all variant panels
+    const panels = document.querySelectorAll('.variant-panel');
+    panels.forEach(panel => {
+      panel.classList.add('hidden');
+      panel.classList.remove('block');
+    });
+
+    // Show target panel
+    const target = document.getElementById('variant-content-' + variantId);
+    if (target) {
+      target.classList.remove('hidden');
+      target.classList.add('block');
+    }
+
+    // Update active toolbar styles
+    const buttons = document.querySelectorAll('#variant-btn-group .state-btn');
+    buttons.forEach(btn => {
+      if (btn.getAttribute('data-variant') === variantId) {
+        btn.classList.add('bg-primary', 'text-on-primary');
+        btn.classList.remove('bg-surface-container', 'text-on-surface');
+      } else {
+        btn.classList.remove('bg-primary', 'text-on-primary');
+        btn.classList.add('bg-surface-container', 'text-on-surface');
+      }
+    });
+  }
+
+  function setHistoryView(viewType) {
+    const unconnectedEl = document.getElementById('history-unconnected-view');
+    const emptyEl = document.getElementById('history-empty-view');
+    const btnUnconnected = document.getElementById('tab-btn-unconnected');
+    const btnEmpty = document.getElementById('tab-btn-empty');
+
+    if (viewType === 'empty') {
+      unconnectedEl.classList.add('hidden');
+      emptyEl.classList.remove('hidden');
+      btnEmpty.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs');
+      btnEmpty.classList.remove('text-on-surface-variant');
+      btnUnconnected.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs');
+      btnUnconnected.classList.add('text-on-surface-variant');
+    } else {
+      unconnectedEl.classList.remove('hidden');
+      emptyEl.classList.add('hidden');
+      btnUnconnected.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs');
+      btnUnconnected.classList.remove('text-on-surface-variant');
+      btnEmpty.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs');
+      btnEmpty.classList.add('text-on-surface-variant');
+    }
+  }
+
+  function openCancellationModal() {
+    const modal = document.getElementById('cancellation-modal');
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCancellationModal() {
+    const modal = document.getElementById('cancellation-modal');
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  // Handle ESC key for modal accessibility
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeCancellationModal();
+    }
+  });
+</script></div></main></div></body></html>

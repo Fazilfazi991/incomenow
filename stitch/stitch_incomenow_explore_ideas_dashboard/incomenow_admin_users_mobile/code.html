@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-fixed-dim": "#c2c8c4", "outline": "#6f7a72", "secondary-fixed-dim": "#aecdc1", "on-surface": "#111e18", "surface-variant": "#d7e6dc", "on-secondary-fixed-variant": "#304c43", "error": "#ba1a1a", "error-container": "#ffdad6", "on-tertiary": "#ffffff", "tertiary-fixed": "#dfe4e0", "surface-container-lowest": "#ffffff", "secondary": "#47645a", "inverse-on-surface": "#e5f4eb", "inverse-primary": "#80d8ad", "on-tertiary-container": "#eaefeb", "on-primary-fixed": "#002114", "on-secondary-fixed": "#022019", "on-primary-container": "#acffd4", "surface-tint": "#006c4a", "on-tertiary-fixed-variant": "#424845", "primary-fixed": "#9bf5c8", "surface-dim": "#ceded4", "background": "#eefdf3", "outline-variant": "#bec9c1", "surface": "#eefdf3", "on-error": "#ffffff", "on-primary-fixed-variant": "#005237", "on-error-container": "#93000a", "primary": "#006041", "on-tertiary-fixed": "#171d1b", "on-secondary-container": "#4d6a60", "primary-container": "#197a56", "inverse-surface": "#26332d", "on-background": "#111e18", "surface-container-low": "#e8f7ed", "surface-container": "#e2f2e8", "on-surface-variant": "#3f4943", "secondary-container": "#c9eadd", "tertiary-container": "#676d6a", "surface-container-highest": "#d7e6dc", "primary-fixed-dim": "#80d8ad", "on-secondary": "#ffffff", "secondary-fixed": "#c9eadd", "tertiary": "#4f5552", "on-primary": "#ffffff", "surface-container-high": "#ddece2", "surface-bright": "#eefdf3" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "space-xl": "2.5rem", "margin": "2.5rem", "gutter": "1.5rem", "space-md": "1rem", "space-sm": "0.5rem", "margin-mobile": "1rem", "space-lg": "1.5rem", "gutter-mobile": "1rem" }, "fontFamily": { "body-lg": ["Inter"], "headline-lg": ["Manrope"], "headline-lg-mobile": ["Manrope"], "headline-md": ["Manrope"], "headline-sm": ["Manrope"], "display-hero-mobile": ["Manrope"], "label-sm": ["Inter"], "body-sm": ["Inter"], "label-md": ["Inter"], "display-hero": ["Manrope"], "body-md": ["Inter"] }, "fontSize": { "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "-0.005em", "fontWeight": "400" }], "headline-lg": ["2.25rem", { "lineHeight": "1.25", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg-mobile": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.015em", "fontWeight": "700" }], "headline-md": ["1.5rem", { "lineHeight": "1.35", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-sm": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-hero-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.025em", "fontWeight": "800" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-sm": ["0.8125rem", { "lineHeight": "1.5", "letterSpacing": "0.005em", "fontWeight": "400" }], "label-md": ["0.875rem", { "lineHeight": "1.25", "letterSpacing": "0.01em", "fontWeight": "500" }], "display-hero": ["3.25rem", { "lineHeight": "1.15", "letterSpacing": "-0.03em", "fontWeight": "800" }], "body-md": ["0.9375rem", { "lineHeight": "1.55", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;min-height:100%;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><button aria-label="Toggle Navigation Drawer" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-variant/40 active:scale-95 transition-all"><span class="material-symbols-outlined text-[24px]">menu</span></button><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">IncomeNow</span><span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm uppercase tracking-wider font-semibold">Admin</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Refresh Dashboard Data" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/40 active:scale-95 transition-all"><span class="material-symbols-outlined text-[22px]">refresh</span></button><div class="w-11 h-11 flex items-center justify-center"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface min-h-screen px-margin-mobile"><div class="flex flex-col w-full pb-10 space-y-4">
+<!-- Operational Notice Banner -->
+<div class="bg-surface-container px-space-md py-space-sm rounded-xl shadow-sm flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0" style="font-variation-settings: 'FILL' 1;">info</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">
+        Preview mode — illustrative sample data • <span class="font-semibold text-on-surface">Batch 8B.1</span>
+</span>
+</div>
+<span class="shrink-0 w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+</div>
+<!-- Heading & Overview Stat -->
+<div class="flex flex-col gap-1 pt-1">
+<div class="flex items-center justify-between">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-extrabold tracking-tight">Users</h1>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold tracking-wide">
+        428 total
+      </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Find accounts and review their access and activity.</p>
+</div>
+<!-- Filter & Search Controls -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-3">
+<!-- Search Field -->
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input autocomplete="off" class="w-full h-11 pl-10 pr-10 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md placeholder:text-outline focus:bg-surface-container-lowest focus:outline-none transition-colors" id="userSearchInput" placeholder="Search by name or email…" type="text"/>
+<button aria-label="Clear search" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-outline hover:text-on-surface" id="clearSearchBtn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Filter Pills (Horizontal Scroll) -->
+<div class="space-y-2">
+<!-- Sign-In Type Filters -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-nowrap scrollbar-none">
+<span class="font-label-sm text-label-sm text-on-surface-variant pr-1">Sign-in:</span>
+<button class="filter-pill h-7 px-2.5 rounded-md font-label-sm text-label-sm bg-inverse-surface text-inverse-on-surface font-semibold transition-all" data-filter-type="signin" data-filter-val="all">All</button>
+<button class="filter-pill h-7 px-2.5 rounded-md font-label-sm text-label-sm bg-surface-container text-on-surface hover:bg-surface-variant/70 transition-all" data-filter-type="signin" data-filter-val="google">Google</button>
+<button class="filter-pill h-7 px-2.5 rounded-md font-label-sm text-label-sm bg-surface-container text-on-surface hover:bg-surface-variant/70 transition-all" data-filter-type="signin" data-filter-val="email">Email</button>
+<button class="filter-pill h-7 px-2.5 rounded-md font-label-sm text-label-sm bg-surface-container text-on-surface hover:bg-surface-variant/70 transition-all" data-filter-type="signin" data-filter-val="both">Both</button>
+</div>
+<!-- Access Status Filters -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-nowrap scrollbar-none">
+<span class="font-label-sm text-label-sm text-on-surface-variant pr-1">Access:</span>
+<button class="filter-pill h-7 px-2.5 rounded-md font-label-sm text-label-sm bg-inverse-surface text-inverse-on-surface font-semibold transition-all" data-filter-type="access" data-filter-val="all">All</button>
+<button class="filter-pill h-7 px-2.5 rounded-md font-label-sm text-label-sm bg-surface-container text-on-surface hover:bg-surface-variant/70 transition-all" data-filter-type="access" data-filter-val="active">Active</button>
+<button class="filter-pill h-7 px-2.5 rounded-md font-label-sm text-label-sm bg-surface-container text-on-surface hover:bg-surface-variant/70 transition-all" data-filter-type="access" data-filter-val="inactive">Inactive</button>
+<button class="filter-pill h-7 px-2.5 rounded-md font-label-sm text-label-sm bg-surface-container text-on-surface hover:bg-surface-variant/70 transition-all" data-filter-type="access" data-filter-val="unknown">Unknown</button>
+</div>
+</div>
+<!-- Active Filter Counter & Reset Action -->
+<div class="flex items-center justify-between pt-1 border-none">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">filter_list</span>
+<span id="resultsCount">Showing 8 of 8 sample users</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-semibold hover:underline" id="resetAllFilters">
+        Clear filters
+      </button>
+</div>
+</div>
+<!-- Live User Cards Stack Container -->
+<div class="flex flex-col gap-3" id="usersContainer">
+<!-- User Card 1 -->
+<div class="user-card bg-surface-container-lowest p-space-md rounded-xl shadow-sm transition-all hover:shadow-md" data-access="inactive" data-email="alex@example.com" data-name="Alex Rivera" data-signin="google">
+<div class="flex items-start justify-between gap-2 pb-3">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm text-secondary font-bold shrink-0">
+            AR
+          </div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">Alex Rivera</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">alex@example.com</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm shrink-0 font-medium">
+          Inactive access
+        </span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg space-y-1.5 mb-3">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">key</span> Sign-in
+          </span>
+<span class="font-medium text-on-surface">Google</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span> Registered
+          </span>
+<span>Mar 20, 2025, 14:22 UTC</span>
+</div>
+<div class="flex items-start justify-between text-on-surface-variant font-body-sm text-body-sm pt-0.5">
+<span class="flex items-center gap-1.5 text-outline shrink-0">
+<span class="material-symbols-outlined text-[15px]">schedule</span> Activity
+          </span>
+<span class="text-right truncate ml-2 font-medium text-on-surface">Mar 21, 09:15 UTC (Viewed Idea #004)</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all hover:bg-surface-variant/80">
+<span>View user profile</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- User Card 2 -->
+<div class="user-card bg-surface-container-lowest p-space-md rounded-xl shadow-sm transition-all hover:shadow-md" data-access="active" data-email="morgan.c@example.com" data-name="Morgan Chen" data-signin="email">
+<div class="flex items-start justify-between gap-2 pb-3">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-headline-sm text-headline-sm text-on-secondary-fixed-variant font-bold shrink-0">
+            MC
+          </div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">Morgan Chen</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">morgan.c@example.com</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm shrink-0 font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Active access
+        </span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg space-y-1.5 mb-3">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">key</span> Sign-in
+          </span>
+<span class="font-medium text-on-surface">Email / pw</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span> Registered
+          </span>
+<span>Mar 19, 2025, 10:04 UTC</span>
+</div>
+<div class="flex items-start justify-between text-on-surface-variant font-body-sm text-body-sm pt-0.5">
+<span class="flex items-center gap-1.5 text-outline shrink-0">
+<span class="material-symbols-outlined text-[15px]">schedule</span> Activity
+          </span>
+<span class="text-right truncate ml-2 font-medium text-on-surface">Mar 21, 08:30 UTC (Checklist)</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all hover:bg-surface-variant/80">
+<span>View user profile</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- User Card 3 -->
+<div class="user-card bg-surface-container-lowest p-space-md rounded-xl shadow-sm transition-all hover:shadow-md" data-access="active" data-email="s.patel@example.com" data-name="Samira Patel" data-signin="google">
+<div class="flex items-start justify-between gap-2 pb-3">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center font-headline-sm text-headline-sm text-on-primary-fixed font-bold shrink-0">
+            SP
+          </div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">Samira Patel</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">s.patel@example.com</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm shrink-0 font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Active access
+        </span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg space-y-1.5 mb-3">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">key</span> Sign-in
+          </span>
+<span class="font-medium text-on-surface">Google</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span> Registered
+          </span>
+<span>Mar 18, 2025, 16:45 UTC</span>
+</div>
+<div class="flex items-start justify-between text-on-surface-variant font-body-sm text-body-sm pt-0.5">
+<span class="flex items-center gap-1.5 text-outline shrink-0">
+<span class="material-symbols-outlined text-[15px]">schedule</span> Activity
+          </span>
+<span class="text-right truncate ml-2 font-medium text-on-surface">Mar 20, 18:10 UTC (CRM Template)</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all hover:bg-surface-variant/80">
+<span>View user profile</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- User Card 4 -->
+<div class="user-card bg-surface-container-lowest p-space-md rounded-xl shadow-sm transition-all hover:shadow-md" data-access="active" data-email="dkim@example.com" data-name="David Kim" data-signin="both">
+<div class="flex items-start justify-between gap-2 pb-3">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-headline-sm text-headline-sm text-on-secondary-fixed font-bold shrink-0">
+            DK
+          </div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">David Kim</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">dkim@example.com</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm shrink-0 font-medium">
+          Sched. cancellation
+        </span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg space-y-1.5 mb-3">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">key</span> Sign-in
+          </span>
+<span class="font-medium text-on-surface">Both</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span> Registered
+          </span>
+<span>Mar 16, 2025, 11:12 UTC</span>
+</div>
+<div class="flex items-start justify-between text-on-surface-variant font-body-sm text-body-sm pt-0.5">
+<span class="flex items-center gap-1.5 text-outline shrink-0">
+<span class="material-symbols-outlined text-[15px]">schedule</span> Activity
+          </span>
+<span class="text-right truncate ml-2 font-medium text-on-surface">Mar 19, 12:40 UTC (Billing settings)</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all hover:bg-surface-variant/80">
+<span>View user profile</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- User Card 5 -->
+<div class="user-card bg-surface-container-lowest p-space-md rounded-xl shadow-sm transition-all hover:shadow-md" data-access="unknown" data-email="elena.r@example.com" data-name="Elena Rostova" data-signin="email">
+<div class="flex items-start justify-between gap-2 pb-3">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center font-headline-sm text-headline-sm text-secondary font-bold shrink-0">
+            ER
+          </div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">Elena Rostova</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">elena.r@example.com</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm shrink-0 font-medium">
+          Payment review
+        </span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg space-y-1.5 mb-3">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">key</span> Sign-in
+          </span>
+<span class="font-medium text-on-surface">Email / pw</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span> Registered
+          </span>
+<span>Mar 15, 2025, 09:30 UTC</span>
+</div>
+<div class="flex items-start justify-between text-on-surface-variant font-body-sm text-body-sm pt-0.5">
+<span class="flex items-center gap-1.5 text-outline shrink-0">
+<span class="material-symbols-outlined text-[15px]">schedule</span> Activity
+          </span>
+<span class="text-right truncate ml-2 font-medium text-on-surface">Mar 18, 15:02 UTC (Session ping)</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all hover:bg-surface-variant/80">
+<span>View user profile</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- User Card 6 -->
+<div class="user-card bg-surface-container-lowest p-space-md rounded-xl shadow-sm transition-all hover:shadow-md" data-access="inactive" data-email="m.vance@example.com" data-name="Marcus Vance" data-signin="google">
+<div class="flex items-start justify-between gap-2 pb-3">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm text-outline font-bold shrink-0">
+            MV
+          </div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">Marcus Vance</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">m.vance@example.com</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm shrink-0 font-medium">
+          Inactive access
+        </span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg space-y-1.5 mb-3">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">key</span> Sign-in
+          </span>
+<span class="font-medium text-on-surface">Google</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span> Registered
+          </span>
+<span>Mar 12, 2025, 08:14 UTC</span>
+</div>
+<div class="flex items-start justify-between text-on-surface-variant font-body-sm text-body-sm pt-0.5">
+<span class="flex items-center gap-1.5 text-outline shrink-0">
+<span class="material-symbols-outlined text-[15px]">schedule</span> Activity
+          </span>
+<span class="text-right truncate ml-2 italic text-outline">No activity recorded</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all hover:bg-surface-variant/80">
+<span>View user profile</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- User Card 7 -->
+<div class="user-card bg-surface-container-lowest p-space-md rounded-xl shadow-sm transition-all hover:shadow-md" data-access="active" data-email="priya.sharma@example.com" data-name="Priya Sharma" data-signin="email">
+<div class="flex items-start justify-between gap-2 pb-3">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-headline-sm text-headline-sm text-on-primary-fixed-variant font-bold shrink-0">
+            PS
+          </div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">Priya Sharma</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">priya.sharma@example.com</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm shrink-0 font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Active access
+        </span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg space-y-1.5 mb-3">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">key</span> Sign-in
+          </span>
+<span class="font-medium text-on-surface">Email / pw</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span> Registered
+          </span>
+<span>Mar 08, 2025, 18:20 UTC</span>
+</div>
+<div class="flex items-start justify-between text-on-surface-variant font-body-sm text-body-sm pt-0.5">
+<span class="flex items-center gap-1.5 text-outline shrink-0">
+<span class="material-symbols-outlined text-[15px]">schedule</span> Activity
+          </span>
+<span class="text-right truncate ml-2 font-medium text-on-surface">Mar 17, 11:25 UTC</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all hover:bg-surface-variant/80">
+<span>View user profile</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- User Card 8 -->
+<div class="user-card bg-surface-container-lowest p-space-md rounded-xl shadow-sm transition-all hover:shadow-md" data-access="inactive" data-email="guest.user428@example.com" data-name="User #428" data-signin="google">
+<div class="flex items-start justify-between gap-2 pb-3">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center font-headline-sm text-headline-sm text-on-surface-variant font-bold shrink-0">
+            ?
+          </div>
+<div class="min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">User #428</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">guest.user428@example.com</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm shrink-0 font-medium">
+          Inactive access
+        </span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg space-y-1.5 mb-3">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">key</span> Sign-in
+          </span>
+<span class="font-medium text-on-surface">Google</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span> Registered
+          </span>
+<span>Mar 02, 2025, 04:10 UTC</span>
+</div>
+<div class="flex items-start justify-between text-on-surface-variant font-body-sm text-body-sm pt-0.5">
+<span class="flex items-center gap-1.5 text-outline shrink-0">
+<span class="material-symbols-outlined text-[15px]">schedule</span> Activity
+          </span>
+<span class="text-right truncate ml-2 italic text-outline">Tracking unavailable</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all hover:bg-surface-variant/80">
+<span>View user profile</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- State View Containers (Dynamic QA switches) -->
+<div class="hidden bg-surface-container-lowest p-space-lg rounded-xl shadow-sm text-center flex-col items-center justify-center space-y-3 py-10" id="emptyStateView">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[28px]">search_off</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">No users found</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mx-auto">No accounts match your active filters or search terms. Try loosening criteria.</p>
+</div>
+<button class="h-10 px-4 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold transition-all" id="emptyStateResetBtn">
+      Reset all filters
+    </button>
+</div>
+<!-- Skeleton Loader View -->
+<div class="hidden flex-col gap-3" id="skeletonStateView">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-3 animate-pulse">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container"></div>
+<div class="space-y-1.5">
+<div class="w-28 h-4 bg-surface-container rounded"></div>
+<div class="w-36 h-3 bg-surface-container rounded"></div>
+</div>
+</div>
+<div class="w-20 h-5 bg-surface-container rounded-full"></div>
+</div>
+<div class="h-20 bg-surface-container-low rounded-lg"></div>
+<div class="h-12 bg-surface-container rounded-lg"></div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-3 animate-pulse">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container"></div>
+<div class="space-y-1.5">
+<div class="w-24 h-4 bg-surface-container rounded"></div>
+<div class="w-32 h-3 bg-surface-container rounded"></div>
+</div>
+</div>
+<div class="w-20 h-5 bg-surface-container rounded-full"></div>
+</div>
+<div class="h-20 bg-surface-container-low rounded-lg"></div>
+<div class="h-12 bg-surface-container rounded-lg"></div>
+</div>
+</div>
+<!-- Error State View -->
+<div class="hidden bg-error-container p-space-lg rounded-xl shadow-sm flex-col items-center text-center space-y-3 py-8" id="errorStateView">
+<div class="w-12 h-12 rounded-full bg-on-error flex items-center justify-center text-error shadow-sm">
+<span class="material-symbols-outlined text-[28px]">cloud_off</span>
+</div>
+<div class="space-y-1 text-on-error-container">
+<h3 class="font-headline-sm text-headline-sm font-bold">Failed to load admin directory</h3>
+<p class="font-body-sm text-body-sm">Network error or authorization timeout on Batch 8B.1 node.</p>
+</div>
+<button class="h-10 px-4 rounded-lg bg-error text-on-error font-label-md text-label-md font-semibold" onclick="switchSimulation('default')">
+      Retry connection
+    </button>
+</div>
+<!-- Access Denied State View -->
+<div class="hidden bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex-col items-center text-center space-y-3 py-8" id="deniedStateView">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[28px]">lock</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Privilege Escalation Required</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mx-auto">Your account does not possess <span class="font-semibold text-on-surface">ROLE_ADMIN_DIRECTORY</span> permission.</p>
+</div>
+<button class="h-10 px-4 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold" onclick="switchSimulation('default')">
+      Return to safety
+    </button>
+</div>
+<!-- Mobile Pagination Indicator -->
+<div class="bg-surface-container-lowest px-space-md py-3 rounded-xl shadow-sm flex items-center justify-between" id="paginationBar">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium" id="paginationLabel">Page 1 of 1 (8 users)</span>
+<div class="flex items-center gap-1">
+<button aria-label="Previous Page" class="w-9 h-9 rounded-lg bg-surface-container text-outline flex items-center justify-center disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button aria-label="Next Page" class="w-9 h-9 rounded-lg bg-surface-container text-outline flex items-center justify-center disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- QA Simulation Bar (Inspectable states for authorized administrators) -->
+<div class="pt-4 space-y-2">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Mobile QA Simulator</span>
+<span class="font-label-sm text-label-sm text-primary font-medium">Batch 8B.1</span>
+</div>
+<div class="p-2 bg-surface-container rounded-xl flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+<button class="qa-btn px-2.5 py-1.5 rounded-lg bg-surface-container-lowest font-label-sm text-label-sm text-on-surface font-semibold shadow-xs whitespace-nowrap" onclick="switchSimulation('default')">Default (8)</button>
+<button class="qa-btn px-2.5 py-1.5 rounded-lg bg-surface-variant/40 font-label-sm text-label-sm text-on-surface-variant whitespace-nowrap" onclick="switchSimulation('active-only')">Active only</button>
+<button class="qa-btn px-2.5 py-1.5 rounded-lg bg-surface-variant/40 font-label-sm text-label-sm text-on-surface-variant whitespace-nowrap" onclick="switchSimulation('no-matches')">No matches</button>
+<button class="qa-btn px-2.5 py-1.5 rounded-lg bg-surface-variant/40 font-label-sm text-label-sm text-on-surface-variant whitespace-nowrap" onclick="switchSimulation('loading')">Loading</button>
+<button class="qa-btn px-2.5 py-1.5 rounded-lg bg-surface-variant/40 font-label-sm text-label-sm text-on-surface-variant whitespace-nowrap" onclick="switchSimulation('error')">Error state</button>
+<button class="qa-btn px-2.5 py-1.5 rounded-lg bg-surface-variant/40 font-label-sm text-label-sm text-on-surface-variant whitespace-nowrap" onclick="switchSimulation('denied')">Access Denied</button>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    let currentSignInFilter = 'all';
+    let currentAccessFilter = 'all';
+    let searchQuery = '';
+
+    const searchInput = document.getElementById('userSearchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const userCards = document.querySelectorAll('.user-card');
+    const resultsCount = document.getElementById('resultsCount');
+    const paginationLabel = document.getElementById('paginationLabel');
+    const emptyState = document.getElementById('emptyStateView');
+    const usersContainer = document.getElementById('usersContainer');
+    const skeletonState = document.getElementById('skeletonStateView');
+    const errorState = document.getElementById('errorStateView');
+    const deniedState = document.getElementById('deniedStateView');
+    const paginationBar = document.getElementById('paginationBar');
+    const resetAllFiltersBtn = document.getElementById('resetAllFilters');
+    const emptyStateResetBtn = document.getElementById('emptyStateResetBtn');
+
+    function applyFilters() {
+      let visibleCount = 0;
+      const normalizedQuery = searchQuery.trim().toLowerCase();
+
+      userCards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        const email = card.getAttribute('data-email').toLowerCase();
+        const access = card.getAttribute('data-access');
+        const signin = card.getAttribute('data-signin');
+
+        const matchesSearch = !normalizedQuery || name.includes(normalizedQuery) || email.includes(normalizedQuery);
+        const matchesSignIn = (currentSignInFilter === 'all') || (signin === currentSignInFilter);
+        const matchesAccess = (currentAccessFilter === 'all') || (access === currentAccessFilter);
+
+        if (matchesSearch && matchesSignIn && matchesAccess) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      resultsCount.textContent = `Showing ${visibleCount} of 8 sample users`;
+      paginationLabel.textContent = `Page 1 of 1 (${visibleCount} user${visibleCount === 1 ? '' : 's'})`;
+
+      if (visibleCount === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+        paginationBar.classList.add('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+        paginationBar.classList.remove('hidden');
+      }
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      if (searchQuery.length > 0) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+      applyFilters();
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      applyFilters();
+    });
+
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const filterType = pill.getAttribute('data-filter-type');
+        const filterVal = pill.getAttribute('data-filter-val');
+
+        // Toggle styling in button group
+        document.querySelectorAll(`[data-filter-type="${filterType}"]`).forEach(btn => {
+          btn.classList.remove('bg-inverse-surface', 'text-inverse-on-surface', 'font-semibold');
+          btn.classList.add('bg-surface-container', 'text-on-surface');
+        });
+
+        pill.classList.remove('bg-surface-container', 'text-on-surface');
+        pill.classList.add('bg-inverse-surface', 'text-inverse-on-surface', 'font-semibold');
+
+        if (filterType === 'signin') {
+          currentSignInFilter = filterVal;
+        } else if (filterType === 'access') {
+          currentAccessFilter = filterVal;
+        }
+
+        applyFilters();
+      });
+    });
+
+    function resetAll() {
+      searchQuery = '';
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+      currentSignInFilter = 'all';
+      currentAccessFilter = 'all';
+
+      filterPills.forEach(btn => {
+        const val = btn.getAttribute('data-filter-val');
+        if (val === 'all') {
+          btn.classList.remove('bg-surface-container', 'text-on-surface');
+          btn.classList.add('bg-inverse-surface', 'text-inverse-on-surface', 'font-semibold');
+        } else {
+          btn.classList.remove('bg-inverse-surface', 'text-inverse-on-surface', 'font-semibold');
+          btn.classList.add('bg-surface-container', 'text-on-surface');
+        }
+      });
+
+      applyFilters();
+    }
+
+    resetAllFiltersBtn.addEventListener('click', resetAll);
+    emptyStateResetBtn.addEventListener('click', resetAll);
+
+    // Global QA Switcher
+    window.switchSimulation = function(state) {
+      // Reset view visibility
+      usersContainer.classList.add('hidden');
+      emptyState.classList.add('hidden');
+      emptyState.classList.remove('flex');
+      skeletonState.classList.add('hidden');
+      skeletonState.classList.remove('flex');
+      errorState.classList.add('hidden');
+      errorState.classList.remove('flex');
+      deniedState.classList.add('hidden');
+      deniedState.classList.remove('flex');
+      paginationBar.classList.remove('hidden');
+
+      // QA Pill highlights
+      document.querySelectorAll('.qa-btn').forEach(btn => {
+        btn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'font-semibold', 'shadow-xs');
+        btn.classList.add('bg-surface-variant/40', 'text-on-surface-variant');
+      });
+      if (event && event.currentTarget) {
+        event.currentTarget.classList.add('bg-surface-container-lowest', 'text-on-surface', 'font-semibold', 'shadow-xs');
+        event.currentTarget.classList.remove('bg-surface-variant/40', 'text-on-surface-variant');
+      }
+
+      if (state === 'default') {
+        usersContainer.classList.remove('hidden');
+        resetAll();
+      } else if (state === 'active-only') {
+        usersContainer.classList.remove('hidden');
+        resetAll();
+        // Trigger active access
+        const activeBtn = document.querySelector('[data-filter-type="access"][data-filter-val="active"]');
+        if (activeBtn) activeBtn.click();
+      } else if (state === 'no-matches') {
+        usersContainer.classList.remove('hidden');
+        searchInput.value = "xyz_unknown_query_404";
+        searchQuery = searchInput.value;
+        clearSearchBtn.classList.remove('hidden');
+        applyFilters();
+      } else if (state === 'loading') {
+        skeletonState.classList.remove('hidden');
+        skeletonState.classList.add('flex');
+        paginationBar.classList.add('hidden');
+      } else if (state === 'error') {
+        errorState.classList.remove('hidden');
+        errorState.classList.add('flex');
+        paginationBar.classList.add('hidden');
+      } else if (state === 'denied') {
+        deniedState.classList.remove('hidden');
+        deniedState.classList.add('flex');
+        paginationBar.classList.add('hidden');
+      }
+    };
+  })();
+</script></main></body></html>

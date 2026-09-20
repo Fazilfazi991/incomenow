@@ -1,0 +1,285 @@
+import { ideasSchema, type Idea } from "./idea-schema";
+import { getCurrentProjectPlan } from "./project-plans";
+
+const crmPlan = getCurrentProjectPlan("idea-001");
+const automationPlan = getCurrentProjectPlan("idea-003");
+const leadPlan = getCurrentProjectPlan("idea-004");
+
+if (!crmPlan || !automationPlan || !leadPlan) {
+  throw new Error("Detailed ideas require trusted implementation plans.");
+}
+
+const rawIdeas: Idea[] = [
+  {
+    id: "idea-001",
+    displayNumber: "001",
+    slug: "pergola-quotation-follow-up-crm",
+    title: "Pergola Quotation & Follow-up CRM",
+    summary: "Organise enquiries, site visits, quotations, and installation follow-ups for high-margin outdoor construction work.",
+    solutionType: "Custom CRM",
+    industries: ["Home Services", "Outdoor Construction"],
+    technicalRequirements: ["TypeScript", "React", "Database configuration", "Email or SMS integration"],
+    intendedCustomer: "Pergola installers, timber framing shops, and outdoor-living contractors",
+    proposedBusinessModel: "One-off implementation with optional managed support",
+    readiness: "Sample blueprint",
+    marketEvidence: "Not yet validated",
+    addedOrder: 6,
+    detailAvailable: true,
+    implementationPlanVersion: crmPlan.version,
+    previewVariant: "pipeline",
+    cardNote: "Estimated launch: 2 weeks",
+    resources: [
+      { id: "crm-demo", label: "Demo", type: "demo", availability: "not-connected", description: "Illustrative CRM preview using fictional records." },
+      { id: "crm-source", label: "Source code", type: "source", availability: "sample", description: "Sample application architecture; no package is downloadable in this build." },
+      { id: "crm-guide", label: "Setup guide", type: "guide", availability: "sample", description: "Branding, workflow, and deployment checklist outline." },
+      { id: "crm-discovery", label: "Discovery script", type: "script", availability: "sample", description: "Questions for structured contractor interviews." },
+    ],
+    sections: [
+      {
+        type: "overview",
+        title: "The opportunity",
+        body: [
+          "This sample explores a tailored CRM for pergola and timber-shelter contractors managing complex site enquiries, multi-option proposals, and follow-up tasks.",
+          "Members should confirm the workflow with regional contractors before adapting or deploying any software.",
+        ],
+        friction: "Bespoke material quoting can take days, while inconsistent follow-up lets warm homeowner enquiries cool off.",
+        validation: "Interview at least five local builders or awning installers about their current tools, proposal cycle, and willingness to pay before writing custom code.",
+        businessModel: "A scoped setup project with optional ongoing hosting and workflow support; exact pricing must be validated locally.",
+      },
+      {
+        type: "demo-preview",
+        title: "Explore the example system",
+        description: "Fictional CRM data shows the proposed pipeline and quotation hand-offs. No live customer records or connected services are used.",
+        variant: "crm",
+        metrics: [
+          { label: "Enquiries", value: "14" },
+          { label: "Quotes due", value: "8" },
+          { label: "Site visits", value: "5" },
+        ],
+      },
+      {
+        type: "action-plan",
+        title: "Turn this idea into a project",
+        stages: crmPlan.stages,
+      },
+      { type: "resources", title: "Implementation resources", intro: "Sample labels describe the intended kit. Downloads and external demo environments are not connected.", resourceIds: ["crm-demo", "crm-source", "crm-guide", "crm-discovery"] },
+      {
+        type: "customer-discovery",
+        title: "Who to approach and what to discuss",
+        audiences: ["Pergola manufacturers and installers", "Outdoor carpentry contractors", "Veranda and awning specialists"],
+        questions: ["How do you track quotes awaiting a reply?", "Which details must move from site survey to workshop?", "Where does the current follow-up process break down?"],
+        guidance: "Confirm the contractor’s existing closing process before pitching software. A system can support a working sales process; it cannot create one.",
+      },
+      { type: "updates-limitations", title: "Updates and important notes", notes: ["This is a sample blueprint with no published client deployments.", "Authentication, database rules, backups, and message delivery must be tested before handling customer data."] },
+    ],
+  },
+  {
+    id: "idea-002",
+    displayNumber: "002",
+    slug: "washing-machine-repair-crm",
+    title: "Washing-Machine Repair CRM",
+    summary: "Track technician routes, diagnostic reports, spare-part inventory, and post-service warranty milestones.",
+    solutionType: "Custom CRM",
+    industries: ["Repair Services"],
+    technicalRequirements: ["Web application configuration"],
+    intendedCustomer: "Independent appliance-repair teams",
+    proposedBusinessModel: "Implementation service",
+    readiness: "Concept ready",
+    marketEvidence: "Not yet validated",
+    addedOrder: 5,
+    detailAvailable: false,
+    fixtureLabel: "Library fixture — detail not included in Phase 1",
+    previewVariant: "dispatch",
+    cardNote: "Requires workflow discovery",
+    resources: [
+      { id: "repair-demo", label: "Demo", type: "demo", availability: "not-connected", description: "Fixture label only." },
+      { id: "repair-source", label: "Source code", type: "source", availability: "not-connected", description: "Fixture label only." },
+      { id: "repair-guide", label: "Sales guide", type: "guide", availability: "not-connected", description: "Fixture label only." },
+    ],
+    sections: [],
+  },
+  {
+    id: "idea-003",
+    displayNumber: "003",
+    slug: "quotation-follow-up-automation",
+    title: "Quotation Follow-up Automation",
+    summary: "Create internal follow-up tasks after quotations are sent, without sending unreviewed messages to customers.",
+    solutionType: "Automation",
+    industries: ["Professional Services", "Home Services"],
+    technicalRequirements: ["Make, Zapier, or n8n", "Authorised API access", "Workflow testing"],
+    intendedCustomer: "Service businesses that send tailored quotations",
+    proposedBusinessModel: "Fixed-scope workflow setup with optional maintenance",
+    readiness: "Setup ready",
+    marketEvidence: "Not yet validated",
+    addedOrder: 4,
+    detailAvailable: true,
+    implementationPlanVersion: automationPlan.version,
+    previewVariant: "automation",
+    cardNote: "Make / n8n compatible",
+    resources: [
+      { id: "automation-flow", label: "Workflow example", type: "workflow", availability: "sample", description: "Illustrative orchestration pattern; no tools are connected." },
+      { id: "automation-guide", label: "Setup guide", type: "guide", availability: "sample", description: "Connection, permission, and rate-limit guidance." },
+      { id: "automation-tests", label: "Testing checklist", type: "checklist", availability: "sample", description: "Normal, failure, and duplicate-prevention cases." },
+      { id: "automation-map", label: "Field-mapping worksheet", type: "worksheet", availability: "sample", description: "Map quotation IDs, statuses, owners, and dates." },
+    ],
+    sections: [
+      {
+        type: "overview",
+        title: "The opportunity",
+        body: ["This idea connects quotation records with an internal follow-up process using tools the customer has authorised.", "The sample creates staff tasks and audit entries; it does not automatically message customers."],
+        friction: "Teams manually scan accounting software or spreadsheets, causing delayed or duplicate follow-up and poor pipeline visibility.",
+        validation: "Document where quotations are recorded, how replies are tracked, and who owns the next action before configuring any integration.",
+        businessModel: "A fixed-scope configuration project followed by an optional maintenance agreement for schema and connection changes.",
+      },
+      {
+        type: "workflow",
+        title: "See how the workflow could work",
+        description: "An illustrative weekday check evaluates quotation state and creates one internal task when the agreed conditions are met.",
+        steps: [
+          { id: "flow-source", title: "Quotation record", detail: "A stable quote ID is marked Sent in the agreed source." },
+          { id: "flow-offset", title: "Follow-up offset", detail: "The due threshold is calculated from the sent date." },
+          { id: "flow-check", title: "Scheduled check", detail: "The workflow queries due quotations on weekdays." },
+          { id: "flow-condition", title: "Status evaluation", detail: "Only quotations still awaiting a recorded reply continue.", condition: "Continue when status remains pending" },
+          { id: "flow-task", title: "Internal task", detail: "Create one task for the assigned employee and write an audit entry." },
+        ],
+        safeguard: "A unique quotation ID plus follow-up event key prevents duplicate tasks when a scheduler retries.",
+      },
+      {
+        type: "action-plan",
+        title: "Configure, test, and hand over",
+        stages: automationPlan.stages,
+      },
+      { type: "resources", title: "Workflow resources", intro: "Every resource is a sample record in this preview and has no connected download.", resourceIds: ["automation-flow", "automation-map", "automation-guide", "automation-tests"] },
+      {
+        type: "customer-discovery",
+        title: "Find a workflow worth improving",
+        audiences: ["Consultancies", "Specialty trades", "Digital agencies", "Fabrication shops"],
+        questions: ["Where do quotations live after they are sent?", "Who owns the next action when a quote goes cold?", "Which existing tools must remain in use?"],
+        guidance: "Confirm access rights, third-party subscription costs, and maintenance responsibilities in writing before implementation.",
+      },
+      { type: "updates-limitations", title: "Updates and important notes", notes: ["No production workflow or customer messaging is connected.", "Compatibility, authentication, rate limits, and field schemas must be verified in each customer environment."] },
+    ],
+  },
+  {
+    id: "idea-004",
+    displayNumber: "004",
+    slug: "local-service-lead-generation",
+    title: "Local-Service Lead Website",
+    summary: "Explore a local website model that connects visitor enquiries with suitable service providers.",
+    solutionType: "Lead-generation website",
+    industries: ["Home Services", "Local Services"],
+    technicalRequirements: ["Responsive website", "Form handling", "Provider routing", "Privacy review"],
+    intendedCustomer: "Visitors seeking a local service and providers seeking suitable enquiries",
+    proposedBusinessModel: "Website setup and provider-partnership service",
+    readiness: "Concept ready",
+    marketEvidence: "Discovery in progress",
+    addedOrder: 3,
+    detailAvailable: true,
+    implementationPlanVersion: leadPlan.version,
+    previewVariant: "website",
+    cardNote: "Research before building",
+    resources: [
+      { id: "lead-template", label: "Site template", type: "template", availability: "sample", description: "Sample page and enquiry-flow structure; no downloadable template is connected." },
+      { id: "lead-research", label: "Research worksheet", type: "worksheet", availability: "sample", description: "Service-area and search-intent research prompts." },
+      { id: "lead-partner", label: "Partner guide", type: "guide", availability: "sample", description: "Provider interview and handoff checklist." },
+      { id: "lead-enquiry", label: "Enquiry checklist", type: "checklist", availability: "sample", description: "Consent, routing, and response-time checks." },
+    ],
+    sections: [
+      {
+        type: "overview",
+        title: "The opportunity",
+        body: ["The sample separates two audiences: visitors who need a service and providers who may accept relevant enquiries.", "The idea should begin with local demand and partner discovery, not a generic directory build."],
+        friction: "Visitors struggle to compare local providers while small operators often rely on inconsistent referrals and slow enquiry handling.",
+        validation: "Research one service category and postcode cluster, then interview both recent buyers and at least five potential provider partners.",
+        businessModel: "A scoped website and enquiry-handling service. Partner terms and any commercial model remain to be validated.",
+      },
+      {
+        type: "demo-preview",
+        title: "Preview the visitor and provider journey",
+        description: "The wireframe demonstrates service-area entry, a focused enquiry form, and a provider handoff. It does not submit or route real enquiries.",
+        variant: "website",
+        metrics: [
+          { label: "Visitor steps", value: "3" },
+          { label: "Provider handoff", value: "Manual" },
+          { label: "Live forms", value: "0" },
+        ],
+      },
+      {
+        type: "action-plan",
+        title: "Research and prepare the service",
+        stages: leadPlan.stages,
+      },
+      { type: "resources", title: "Website and enquiry resources", intro: "These sample resources describe the intended kit. Nothing is downloadable or connected in Phase 1.", resourceIds: ["lead-template", "lead-research", "lead-partner", "lead-enquiry"] },
+      {
+        type: "customer-discovery",
+        title: "Research both sides of the marketplace",
+        audiences: ["Visitors who recently hired a local provider", "Independent local service businesses", "Trade associations and referral partners"],
+        questions: ["What made a provider feel trustworthy?", "Which details determine whether an enquiry is worth accepting?", "How quickly must a provider respond?"],
+        guidance: "Do not collect real enquiries until consent, retention, partner routing, and response ownership are documented.",
+      },
+      { type: "updates-limitations", title: "Updates and important notes", notes: ["The site preview uses fictional records and no real form endpoint.", "Demand, partner appetite, commercial terms, and data handling remain unvalidated."] },
+    ],
+  },
+  {
+    id: "idea-005",
+    displayNumber: "005",
+    slug: "supplier-research-service",
+    title: "Supplier Research Service",
+    summary: "Package structured supplier discovery and research for small manufacturing businesses.",
+    solutionType: "Digital service",
+    industries: ["Business Services", "Manufacturing"],
+    technicalRequirements: ["Research workflow", "Spreadsheet templates"],
+    intendedCustomer: "Small manufacturing and product businesses",
+    proposedBusinessModel: "Scoped research engagement",
+    readiness: "Concept ready",
+    marketEvidence: "Not yet validated",
+    addedOrder: 2,
+    detailAvailable: false,
+    fixtureLabel: "Library fixture — detail not included in Phase 1",
+    previewVariant: "scorecard",
+    cardNote: "No-code service concept",
+    resources: [
+      { id: "supplier-brief", label: "Sample brief", type: "template", availability: "not-connected", description: "Fixture label only." },
+      { id: "supplier-check", label: "Research checklist", type: "checklist", availability: "not-connected", description: "Fixture label only." },
+      { id: "supplier-proposal", label: "Proposal template", type: "template", availability: "not-connected", description: "Fixture label only." },
+    ],
+    sections: [],
+  },
+  {
+    id: "idea-034",
+    displayNumber: "034",
+    slug: "rental-property-management-tool",
+    title: "Rental Property Management Tool",
+    summary: "A lightweight multi-unit portal concept for independent landlords managing repairs and reminders.",
+    solutionType: "Web tool",
+    industries: ["Real Estate"],
+    technicalRequirements: ["Next.js", "Database", "Role-based access"],
+    intendedCustomer: "Independent multi-unit landlords",
+    proposedBusinessModel: "Configured web application",
+    readiness: "Concept ready",
+    marketEvidence: "Not yet validated",
+    addedOrder: 1,
+    detailAvailable: false,
+    fixtureLabel: "Library fixture — detail not included in Phase 1",
+    previewVariant: "property",
+    cardNote: "Requires tenancy workflow review",
+    resources: [
+      { id: "property-demo", label: "Demo", type: "demo", availability: "not-connected", description: "Fixture label only." },
+      { id: "property-source", label: "Source code", type: "source", availability: "not-connected", description: "Fixture label only." },
+      { id: "property-guide", label: "Setup guide", type: "guide", availability: "not-connected", description: "Fixture label only." },
+    ],
+    sections: [],
+  },
+];
+
+export const ideas = ideasSchema.parse(rawIdeas);
+
+export const detailedIdeas = ideas.filter((idea) => idea.detailAvailable);
+
+export function getIdeaBySlug(slug: string) {
+  return ideas.find((idea) => idea.slug === slug);
+}
+
+export function getIdeaById(id: string) {
+  return ideas.find((idea) => idea.id === id);
+}

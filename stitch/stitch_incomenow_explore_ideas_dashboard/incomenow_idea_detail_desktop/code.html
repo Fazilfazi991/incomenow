@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-highest":"#d7e6dc","inverse-on-surface":"#e5f4eb","on-tertiary":"#ffffff","tertiary-fixed-dim":"#c2c8c4","surface-tint":"#006c4a","surface-variant":"#d7e6dc","surface-dim":"#ceded4","primary-fixed-dim":"#80d8ad","on-primary":"#ffffff","on-error-container":"#93000a","on-tertiary-fixed":"#171d1b","surface-container":"#e2f2e8","error":"#ba1a1a","surface":"#eefdf3","on-tertiary-container":"#eaefeb","on-background":"#111e18","on-secondary-container":"#4d6a60","on-secondary-fixed":"#022019","surface-container-high":"#ddece2","on-secondary":"#ffffff","surface-container-lowest":"#ffffff","primary":"#006041","on-primary-fixed":"#002114","on-surface-variant":"#3f4943","primary-container":"#197a56","inverse-surface":"#26332d","on-primary-container":"#acffd4","on-primary-fixed-variant":"#005237","outline-variant":"#bec9c1","secondary":"#47645a","surface-bright":"#eefdf3","on-secondary-fixed-variant":"#304c43","tertiary-container":"#676d6a","background":"#eefdf3","secondary-fixed-dim":"#aecdc1","error-container":"#ffdad6","secondary-fixed":"#c9eadd","on-surface":"#111e18","on-tertiary-fixed-variant":"#424845","inverse-primary":"#80d8ad","surface-container-low":"#e8f7ed","on-error":"#ffffff","tertiary":"#4f5552","primary-fixed":"#9bf5c8","tertiary-fixed":"#dfe4e0","secondary-container":"#c9eadd","outline":"#6f7a72"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","margin":"2.5rem","space-sm":"0.5rem","space-md":"1rem","gutter-mobile":"1rem","space-lg":"1.5rem","space-xl":"2.5rem","margin-mobile":"1rem","gutter":"1.5rem"},"fontFamily":{"headline-lg-mobile":["Manrope"],"display-hero-mobile":["Manrope"],"headline-sm":["Manrope"],"headline-md":["Manrope"],"body-sm":["Inter"],"body-md":["Inter"],"headline-lg":["Manrope"],"label-md":["Inter"],"display-hero":["Manrope"],"label-sm":["Inter"],"body-lg":["Inter"]},"fontSize":{"headline-lg-mobile":["1.75rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"700"}],"display-hero-mobile":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.025em","fontWeight":"800"}],"headline-sm":["1.125rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["1.5rem",{"lineHeight":"1.35","letterSpacing":"-0.015em","fontWeight":"600"}],"body-sm":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"0.005em","fontWeight":"400"}],"body-md":["0.9375rem",{"lineHeight":"1.55","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["2.25rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"700"}],"label-md":["0.875rem",{"lineHeight":"1.25","letterSpacing":"0.01em","fontWeight":"500"}],"display-hero":["3.25rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"800"}],"label-sm":["0.75rem",{"lineHeight":"1.2","letterSpacing":"0.02em","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.005em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-[236px] bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="px-space-md pt-space-lg pb-space-md"><div class="flex items-baseline gap-0.5"><span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">IncomeNow</span><span class="font-label-sm text-label-sm text-primary font-semibold">.in</span></div><div class="mt-space-xs inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-[11px]">Design preview — sample content</div></div><nav class="px-space-sm mt-space-sm flex flex-col gap-1" data-active-classes="bg-secondary-container text-primary font-semibold"><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="explore-ideas" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">explore</span><span class="font-label-md text-label-md">Explore Ideas</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="saved-ideas" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">bookmark</span><span class="font-label-md text-label-md">Saved Ideas</span></div><span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant">2</span></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="my-projects" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">work</span><span class="font-label-md text-label-md">My Projects</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="latest-updates" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">update</span><span class="font-label-md text-label-md">Latest Updates</span></div></a></nav><div class="px-space-md pt-space-lg pb-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline text-[11px]">Support &amp; Account</span></div><nav class="px-space-sm flex flex-col gap-1" data-active-classes="bg-secondary-container text-primary font-semibold"><a class="flex items-center gap-3 px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="help-support" href="#"><span class="material-symbols-outlined text-[20px]">help</span><span class="font-label-md text-label-md">Help &amp; Support</span></a><a class="flex items-center gap-3 px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="account" href="#"><span class="material-symbols-outlined text-[20px]">manage_accounts</span><span class="font-label-md text-label-md">Account</span></a></nav></div><div class="p-space-sm m-space-sm rounded-lg bg-surface-container-low shadow-[0_1px_4px_rgba(0,0,0,0.03)] flex items-center justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md font-semibold text-on-surface truncate">Alex Mercer</span><span class="font-label-sm text-label-sm text-on-surface-variant">Member</span></div></div><span class="material-symbols-outlined text-[18px] text-outline">unfold_more</span></div></aside><div class="pl-[236px]"><header class="fixed top-0 left-[236px] right-0 h-14 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm"><span class="hover:text-on-surface transition-colors">Discovery Workspace</span><span class="text-outline text-xs">/</span><span class="text-on-surface font-medium">Overview</span></div><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-14 bg-surface min-h-screen px-space-lg pb-space-xl"><div class="flex flex-col w-full">
+<!-- Breadcrumb & Top Bar Utility -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-6 pt-2">
+<div class="flex items-center gap-3">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md shadow-sm hover:bg-surface-container hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span>Back to ideas</span>
+</a>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span>Explore Ideas</span>
+<span class="text-outline">/</span>
+<span class="text-on-surface font-semibold">Idea #001</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm self-start md:self-auto">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>Design preview — sample opportunity</span>
+</div>
+</div>
+<!-- Page Header Title Area -->
+<header class="bg-surface-container-lowest rounded-2xl p-6 md:p-8 shadow-sm mb-8 relative overflow-hidden">
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<span class="px-2.5 py-1 rounded-md bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm font-semibold tracking-wide">IDEA #001</span>
+<span class="px-2.5 py-1 rounded-md bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Custom CRM</span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Home Services</span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">terminal</span>
+        Code customisation
+      </span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+<div class="max-w-3xl">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-extrabold mb-3">
+          Pergola Quotation &amp; Follow-up CRM
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          A bespoke pipeline and estimation workspace designed for timber and aluminium pergola contractors managing rapid multi-material quotation, site survey logs, and automated customer follow-ups.
+        </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="inline-flex items-center justify-center gap-2 h-11 px-4 rounded-xl bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all" id="bookmark-btn" onclick="toggleBookmark()">
+<span class="material-symbols-outlined text-[18px]" id="bookmark-icon">bookmark</span>
+<span id="bookmark-label">Save idea</span>
+</button>
+<button class="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold shadow-sm hover:bg-primary-container transition-all active:scale-[0.99]" id="primary-cta-btn" onclick="toggleProjectAdd()">
+<span class="material-symbols-outlined text-[20px]" id="cta-icon">rocket_launch</span>
+<span id="cta-label">Start this idea</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Sticky In-Page Navigation Bar -->
+<nav class="sticky top-14 z-30 bg-surface/90 backdrop-blur-md pb-4 pt-1 mb-4 flex items-center gap-2 overflow-x-auto no-scrollbar">
+<a class="in-page-nav-link active px-4 py-2 rounded-lg font-label-md text-label-md transition-all bg-inverse-surface text-inverse-on-surface whitespace-nowrap shadow-sm" href="#overview">Overview</a>
+<a class="in-page-nav-link px-4 py-2 rounded-lg font-label-md text-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container whitespace-nowrap shadow-sm" href="#demo">Demo Preview</a>
+<a class="in-page-nav-link px-4 py-2 rounded-lg font-label-md text-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container whitespace-nowrap shadow-sm" href="#action-plan">Action Plan</a>
+<a class="in-page-nav-link px-4 py-2 rounded-lg font-label-md text-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container whitespace-nowrap shadow-sm" href="#resources">Resources</a>
+<a class="in-page-nav-link px-4 py-2 rounded-lg font-label-md text-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container whitespace-nowrap shadow-sm" href="#finding-customers">Finding Customers</a>
+<a class="in-page-nav-link px-4 py-2 rounded-lg font-label-md text-label-md transition-all bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container whitespace-nowrap shadow-sm" href="#updates">Updates &amp; Notes</a>
+</nav>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column (approx 68% / 8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-12 min-w-0">
+<!-- SECTION 1: OVERVIEW -->
+<section class="scroll-mt-32 flex flex-col gap-6" id="overview">
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">The Opportunity</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Analysis &amp; Model</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 md:p-8 shadow-sm flex flex-col gap-6">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            This example explores a tailored CRM for pergola and timber shelter contractors seeking an authoritative, frictionless method to manage complex site inquiries, calculate multi-option proposals, and automate subsequent follow-up touches. Members should confirm this specific workflow with regional contractors prior to deploying bespoke instances.
+          </p>
+<!-- Workflow Visual Schematic -->
+<div class="bg-surface-container-low rounded-xl p-5">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface uppercase tracking-wider">Standard Project Pipeline Schematic</span>
+<span class="font-label-sm text-label-sm text-primary font-medium">5 Sequential Steps</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-5 gap-2 relative">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm flex flex-col gap-1 relative z-10">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm">01</span>
+<span class="material-symbols-outlined text-[16px] text-primary">inbox</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Enquiry</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Dimensions &amp; aesthetic type captured</span>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm flex flex-col gap-1 relative z-10">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm">02</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">explore</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Site Survey</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Wall fixings, ground slope &amp; drainage check</span>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm flex flex-col gap-1 relative z-10">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm">03</span>
+<span class="material-symbols-outlined text-[16px] text-primary">request_quote</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Quotation</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Multi-tier bill of materials &amp; 3D renders</span>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm flex flex-col gap-1 relative z-10">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm">04</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">forward_to_inbox</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Follow-up</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Automated SMS/Email nudge series</span>
+</div>
+<!-- Step 5 -->
+<div class="bg-surface-container-lowest p-3 rounded-lg shadow-sm flex flex-col gap-1 relative z-10">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary text-on-primary font-label-sm">05</span>
+<span class="material-symbols-outlined text-[16px] text-primary">construction</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Installation</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Delivery schedule &amp; sign-off verification</span>
+</div>
+</div>
+</div>
+<!-- Problem Identification -->
+<div class="p-5 rounded-xl bg-surface-container-low flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 mt-0.5">report_problem</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-1">Identified Operational Friction</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Outdoor carpentry and pergola contractors lose lucrative contracts because manual, bespoke material quoting takes days. Unsystematic follow-ups allow warm homeowner leads to cool off or default to general contractors.
+              </p>
+</div>
+</div>
+<!-- "Validate First" Callout -->
+<div class="p-5 rounded-xl bg-surface-container flex items-start gap-4 border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0">verified_user</span>
+<div>
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-primary block mb-0.5">Validation Requirement</span>
+<p class="font-body-md text-body-md text-on-surface">
+                Conduct structured discovery calls with at least 5 local builders or awning installers before writing custom code. Verify their current toolset, average proposal cycle time, and willingness to pay an implementation fee.
+              </p>
+</div>
+</div>
+<!-- Business Model Card -->
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Recommended Engagement Model</span>
+<h4 class="font-headline-sm text-headline-sm font-bold text-on-surface">One-Off Setup Fee + Monthly Managed Retainer</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Typical packaging: £1,200 – £2,500 initial system adaptation and onboarding + £120/month for hosting, updates, and SMS transactional balance.</p>
+</div>
+<div class="shrink-0">
+<span class="px-3 py-1.5 rounded-lg bg-secondary-container text-on-secondary-container font-label-md text-label-md font-semibold">High Margin Setup</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: DEMO -->
+<section class="scroll-mt-32 flex flex-col gap-6" id="demo">
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Explore the Example System</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Interactive Architecture</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 md:p-8 shadow-sm flex flex-col gap-6">
+<div>
+<span class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider">Illustrative Mockup Preview</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Fictional demonstration interface showing the core pipeline tracker and rapid margin calculator.</p>
+</div>
+<!-- Mockup Frame -->
+<div class="rounded-xl overflow-hidden shadow-md bg-surface-container-lowest">
+<!-- Mini CRM App Bar -->
+<div class="bg-inverse-surface text-inverse-on-surface px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-fixed"></span>
+<span class="font-label-sm text-label-sm font-medium ml-2 text-surface-container-high">Pergola Quoter Pro v1.2 — St. Jude Outdoor Living</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-0.5 rounded bg-inverse-surface text-inverse-on-surface text-[11px] font-label-sm">Live Sandbox</span>
+<span class="material-symbols-outlined text-[18px] text-surface-variant">account_circle</span>
+</div>
+</div>
+<!-- Mini Summary Metrics Bar -->
+<div class="bg-surface-container-low p-4 flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Active Enquiries:</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">14</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Quotes Pending:</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">8</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Site Surveys (This Week):</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">5</span>
+</div>
+</div>
+<!-- Kanban Pipeline View Inside Preview -->
+<div class="p-4 overflow-x-auto bg-surface-container-lowest">
+<div class="grid grid-cols-5 gap-3 min-w-[760px]">
+<!-- Column 1: Enquiries -->
+<div class="flex flex-col gap-2.5 bg-surface-container-low p-2.5 rounded-lg">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Enquiries</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[10px] font-bold">2</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-md shadow-sm flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Oak Bioclimatic Pergola</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Bristol • Est. £8,400</span>
+<span class="text-[10px] text-primary font-medium">Recvd 2h ago</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-md shadow-sm flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Louvered Roof Deluxe</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Bath • Est. £12,200</span>
+<span class="text-[10px] text-primary font-medium">Recvd 5h ago</span>
+</div>
+</div>
+<!-- Column 2: Site Survey -->
+<div class="flex flex-col gap-2.5 bg-surface-container-low p-2.5 rounded-lg">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Site Survey</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[10px] font-bold">1</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-md shadow-sm flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Cedar Freestanding 4x3m</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Clifton • Masonry wall</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container self-start font-medium">Booked Thu 10:00</span>
+</div>
+</div>
+<!-- Column 3: Quotation Sent -->
+<div class="flex flex-col gap-2.5 bg-surface-container-low p-2.5 rounded-lg">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Quote Sent</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[10px] font-bold">1</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-md shadow-sm flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Aluminium Motorised 6x4m</span>
+<span class="font-body-sm text-body-sm text-primary font-bold text-[11px]">£16,900 incl. VAT</span>
+<span class="text-[10px] text-on-surface-variant">Awaiting client decision</span>
+</div>
+</div>
+<!-- Column 4: Follow-up Required -->
+<div class="flex flex-col gap-2.5 bg-surface-container-low p-2.5 rounded-lg">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Follow-up</span>
+<span class="px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold">1</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-md shadow-sm flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Garden Pavilion 5x3m</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Redland • £11,400</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-error-container text-on-error-container self-start font-medium">Day +3 SMS Dispatched</span>
+</div>
+</div>
+<!-- Column 5: Installation Ready -->
+<div class="flex flex-col gap-2.5 bg-surface-container-low p-2.5 rounded-lg">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Installation</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[10px] font-bold">1</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-md shadow-sm flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Hardwood Lean-To</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Deposit Paid 50%</span>
+<span class="text-[10px] text-primary font-bold">Scheduled 24th Oct</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action and Preview Disclaimer -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-[20px]">lock</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Live demo sandbox is locked to IncomeNow Member verification.</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container text-on-surface-variant opacity-75 cursor-not-allowed font-label-md text-label-md" disabled="">
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+<span>Open demo sandbox</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: ACTION PLAN -->
+<section class="scroll-mt-32 flex flex-col gap-6" id="action-plan">
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Turn This Idea Into a Project</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Implementation Stages</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 md:p-8 shadow-sm flex flex-col gap-6">
+<div class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]">assignment_turned_in</span>
+<div>
+<span class="font-label-md text-label-md font-bold text-on-surface block">6 Interactive Implementation Steps</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Status: Not started in your workspace</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">0 of 6 active</span>
+</div>
+<!-- Interactive Accordions -->
+<div class="flex flex-col gap-3" id="accordion-group">
+<!-- Stage 1 (EXPANDED by default) -->
+<div class="accordion-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden" data-state="open">
+<button class="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-surface-container-low transition-colors" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center">1</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Validate the customer problem</span>
+</div>
+<span class="material-symbols-outlined accordion-chevron text-on-surface-variant transition-transform rotate-180">expand_more</span>
+</button>
+<div class="accordion-content px-5 pb-5 pt-1">
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                  Conduct field outreach to confirm that pergola and outdoor carpentry specialists encounter proposal bottlenecks and deal drop-offs.
+                </p>
+<div class="space-y-2.5 bg-surface-container-low p-4 rounded-xl">
+<label class="flex items-center gap-3 select-none cursor-pointer">
+<input class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Choose a target geographic region and customer segment (e.g. bespoke timber contractors)</span>
+</label>
+<label class="flex items-center gap-3 select-none cursor-pointer">
+<input class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Compile a short contact roster of 10–15 regional contractors</span>
+</label>
+<label class="flex items-center gap-3 select-none cursor-pointer">
+<input class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Ask how they calculate complex multi-tier pergola estimates and follow up on quotes</span>
+</label>
+<label class="flex items-center gap-3 select-none cursor-pointer">
+<input class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Document their current spreadsheets, paper notes, or incumbent software friction</span>
+</label>
+<label class="flex items-center gap-3 select-none cursor-pointer">
+<input class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Decide whether verified demand justifies building a customised deployment</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Stage 2 -->
+<div class="accordion-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden" data-state="closed">
+<button class="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-surface-container-low transition-colors" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-bold flex items-center justify-center">2</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Explore and adapt the demonstration</span>
+</div>
+<span class="material-symbols-outlined accordion-chevron text-on-surface-variant transition-transform">expand_more</span>
+</button>
+<div class="accordion-content px-5 pb-5 pt-1 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant mb-3">
+                  Clone the starter repository locally. Populate formulas for aluminium vs cedar lumber, bracket hardware, foundation footings, and labour margins.
+                </p>
+<div class="bg-surface-container-low p-4 rounded-xl font-body-sm text-body-sm text-on-surface-variant">
+                  Includes: Next.js frontend, Supabase schema, automated Resend email workflows, and pre-baked PDF quotation generator.
+                </div>
+</div>
+</div>
+<!-- Stage 3 -->
+<div class="accordion-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden" data-state="closed">
+<button class="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-surface-container-low transition-colors" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-bold flex items-center justify-center">3</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Define the offer and project scope</span>
+</div>
+<span class="material-symbols-outlined accordion-chevron text-on-surface-variant transition-transform">expand_more</span>
+</button>
+<div class="accordion-content px-5 pb-5 pt-1 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant mb-3">
+                  Package your service as a fixed-scope turnkey transition: data import of active quotes, company logo branding, SMS gateway setup, and 1-on-1 team training.
+                </p>
+<div class="bg-surface-container-low p-4 rounded-xl font-body-sm text-body-sm text-on-surface-variant">
+                  Deliverable: Written scope sheet bounding implementation to 14 days and defining monthly support boundaries.
+                </div>
+</div>
+</div>
+<!-- Stage 4 -->
+<div class="accordion-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden" data-state="closed">
+<button class="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-surface-container-low transition-colors" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-bold flex items-center justify-center">4</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Research suitable potential customers</span>
+</div>
+<span class="material-symbols-outlined accordion-chevron text-on-surface-variant transition-transform">expand_more</span>
+</button>
+<div class="accordion-content px-5 pb-5 pt-1 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Identify 20 active outdoor living contractors, high-end deck installers, and louvered roof specialists in your target metro or county.
+                </p>
+</div>
+</div>
+<!-- Stage 5 -->
+<div class="accordion-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden" data-state="closed">
+<button class="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-surface-container-low transition-colors" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-bold flex items-center justify-center">5</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Demonstrate the solution and agree a pilot</span>
+</div>
+<span class="material-symbols-outlined accordion-chevron text-on-surface-variant transition-transform">expand_more</span>
+</button>
+<div class="accordion-content px-5 pb-5 pt-1 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Walk the owner through a 15-minute tailored demo using their actual pricing tiers. Offer a 30-day pilot on their next 10 incoming quotation leads.
+                </p>
+</div>
+</div>
+<!-- Stage 6 -->
+<div class="accordion-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden" data-state="closed">
+<button class="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-surface-container-low transition-colors" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-bold flex items-center justify-center">6</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Test, launch, and support the implementation</span>
+</div>
+<span class="material-symbols-outlined accordion-chevron text-on-surface-variant transition-transform">expand_more</span>
+</button>
+<div class="accordion-content px-5 pb-5 pt-1 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Verify DNS and custom domain SSL, execute live SMS test runs, onboard site foremen, and transition account to monthly retainer status.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: RESOURCES -->
+<section class="scroll-mt-32 flex flex-col gap-6" id="resources">
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Implementation Resources</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Blueprints &amp; Toolkits</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 md:p-8 shadow-sm flex flex-col gap-6">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Standard architectural files, seed data schemas, and walkthrough frameworks ready to branch for client adaptation.
+          </p>
+<div class="grid grid-cols-1 gap-4">
+<!-- Resource 1 -->
+<div class="p-5 rounded-xl bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">code</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md font-bold text-on-surface">Next.js &amp; Supabase Pergola Starter Repo</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[11px]">Code Repository</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Full repository with quotation logic, lead state machine, and customer client portal.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sample asset</span>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all">
+                  View repo
+                </button>
+</div>
+</div>
+<!-- Resource 2 -->
+<div class="p-5 rounded-xl bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">description</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md font-bold text-on-surface">Setup &amp; Customisation Guide</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-[11px]">Documentation</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Step-by-step documentation for branding, email setup, and quotation rules.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sample asset</span>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all">
+                  Read guide
+                </button>
+</div>
+</div>
+<!-- Resource 3 -->
+<div class="p-5 rounded-xl bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">database</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md font-bold text-on-surface">Database &amp; Sample Data Files</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-[11px]">Postgres / SQL</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Seed SQL scripts and 30 fictional customer and quotation records.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sample asset</span>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all">
+                  View SQL
+                </button>
+</div>
+</div>
+<!-- Resource 4 -->
+<div class="p-5 rounded-xl bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">record_voice_over</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md font-bold text-on-surface">Demonstration &amp; Discovery Guide</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-[11px]">Sales Script</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Discovery interview questions and structured walkthrough script for pergola business owners.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sample asset</span>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all">
+                  Open script
+                </button>
+</div>
+</div>
+<!-- Resource 5 -->
+<div class="p-5 rounded-xl bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">checklist</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md font-bold text-on-surface">Client Production Launch Checklist</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-[11px]">Operations</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Production deployment verification: backups, domain mapping, email delivery, and user roles.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sample asset</span>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all">
+                  Open checklist
+                </button>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Standard IncomeNow Member Blueprint License terms apply to all included codebases.</span>
+</div>
+</div>
+</section>
+<!-- SECTION 5: FINDING CUSTOMERS -->
+<section class="scroll-mt-32 flex flex-col gap-6" id="finding-customers">
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Who to Approach and What to Discuss</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Outreach Playbook</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 md:p-8 shadow-sm flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Buyers Target Box -->
+<div class="p-6 rounded-xl bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-center gap-2 text-primary font-headline-sm text-headline-sm font-bold">
+<span class="material-symbols-outlined text-[20px]">target</span>
+<span>Target Buyers to Investigate</span>
+</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Pergola manufacturers and local timber framers</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Bespoke outdoor carpentry contractors</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Veranda, canopy, &amp; motorized awning installers</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>High-end residential landscape design &amp; build studios</span>
+</li>
+</ul>
+</div>
+<!-- Demo Focus Box -->
+<div class="p-6 rounded-xl bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-center gap-2 text-primary font-headline-sm text-headline-sm font-bold">
+<span class="material-symbols-outlined text-[20px]">co_present</span>
+<span>Suggested Demonstration Focus</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Walk through the speed of generating a multi-option pergola quote on-site via tablet. Highlight how automated SMS follow-ups on Day 3 and Day 7 prevent high-value (£8k–£20k) inquiries from slipping through the cracks.
+              </p>
+</div>
+</div>
+<!-- Discovery Questions -->
+<div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-4">
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-surface">Example Discovery Questions</span>
+<div class="space-y-3 font-body-md text-body-md text-on-surface">
+<div class="p-3.5 rounded-lg bg-surface-container-low flex items-start gap-3">
+<span class="font-label-sm text-label-sm font-bold text-primary shrink-0 mt-0.5">Q1</span>
+<span>“How do you currently track quotes that haven’t received a response after the initial site survey?”</span>
+</div>
+<div class="p-3.5 rounded-lg bg-surface-container-low flex items-start gap-3">
+<span class="font-label-sm text-label-sm font-bold text-primary shrink-0 mt-0.5">Q2</span>
+<span>“How does your team know which customer needs a follow-up or confirmation today?”</span>
+</div>
+<div class="p-3.5 rounded-lg bg-surface-container-low flex items-start gap-3">
+<span class="font-label-sm text-label-sm font-bold text-primary shrink-0 mt-0.5">Q3</span>
+<span>“What exact dimensional and material information must move from the site surveyor to your carpentry workshop?”</span>
+</div>
+</div>
+</div>
+<!-- Critical Principle Callout -->
+<div class="p-4 rounded-xl bg-surface-container flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0">lightbulb</span>
+<span class="font-body-sm text-body-sm text-on-surface">
+<strong>Core Rule:</strong> Confirm the contractor’s existing closing process before pitching software. A system can streamline a functioning sales cycle, but cannot rescue an undefined offer.
+            </span>
+</div>
+</div>
+</section>
+<!-- SECTION 6: UPDATES & NOTES -->
+<section class="scroll-mt-32 flex flex-col gap-6" id="updates">
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Updates &amp; Important Notes</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Advisory &amp; Changelog</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 md:p-8 shadow-sm flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-5 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center gap-2 font-label-md text-label-md font-bold text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">history</span>
+<span>Blueprint Release Status</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                No published client modifications yet. Currently operating under <strong>v1.0 Blueprint Preview</strong>.
+              </p>
+</div>
+<div class="p-5 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center gap-2 font-label-md text-label-md font-bold text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]">security</span>
+<span>Safety &amp; Compliance Advisory</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Thoroughly test authentication and database row-level security before handling customer records. IncomeNow provides architectural starters, not turnkey multi-tenant SaaS.
+              </p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Sticky Column (Quick Facts - approx 32% / 4 cols) -->
+<aside class="lg:col-span-4 sticky top-20 flex flex-col gap-6">
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col gap-6">
+<div class="flex items-center justify-between pb-4 bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">info</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Quick Facts</h3>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-[11px] font-semibold">Summary</span>
+</div>
+<!-- Facts Detail List -->
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-[11px]">Potential Customer</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Pergola installers, timber framing shops, &amp; outdoor living contractors</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-[11px]">Proposed Offer</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Turnkey quotation workspace with automated follow-up dispatching</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-[11px]">Skills Needed</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Code customisation (TypeScript/React) and cloud database deployment</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-[11px]">Operating Requirements</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Client hosting setup, domain routing, and ongoing SLA maintenance</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-[11px]">Proposed Business Model</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Initial setup fee (£1.2k–£2.5k) + optional monthly managed support (£120/mo)</span>
+</div>
+<div class="flex flex-col gap-1.5 pt-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-[11px]">Market Evidence</span>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container-high text-on-surface self-start font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span>Not yet validated in this sample</span>
+</div>
+</div>
+</div>
+<!-- Sidebar Action CTAs -->
+<div class="flex flex-col gap-2.5 pt-4 bg-surface-container-lowest">
+<button class="w-full h-11 px-4 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold shadow-sm hover:bg-primary-container transition-all flex items-center justify-center gap-2" id="sidebar-cta-btn" onclick="toggleProjectAdd()">
+<span class="material-symbols-outlined text-[18px]" id="sidebar-cta-icon">rocket_launch</span>
+<span id="sidebar-cta-label">Start this idea</span>
+</button>
+<button class="w-full h-11 px-4 rounded-xl bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all flex items-center justify-center gap-2" id="sidebar-bookmark-btn" onclick="toggleBookmark()">
+<span class="material-symbols-outlined text-[18px]" id="sidebar-bookmark-icon">bookmark</span>
+<span id="sidebar-bookmark-label">Save idea</span>
+</button>
+</div>
+<!-- Footnote / Member Notice -->
+<div class="p-3.5 rounded-xl bg-surface-container-low text-on-surface-variant font-body-sm text-body-sm leading-relaxed">
+<p class="text-[12px]">
+            IncomeNow provides architectural blueprints and starter resources. Members host and manage their own client deployments.
+          </p>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<!-- Inline JavaScript for client-side interactivity -->
+<script>
+  // Accordion Toggle Behavior
+  function toggleAccordion(btn) {
+    const item = btn.closest('.accordion-item');
+    const content = item.querySelector('.accordion-content');
+    const chevron = btn.querySelector('.accordion-chevron');
+    const isOpen = item.dataset.state === 'open';
+
+    if (isOpen) {
+      item.dataset.state = 'closed';
+      content.classList.add('hidden');
+      chevron.classList.remove('rotate-180');
+    } else {
+      item.dataset.state = 'open';
+      content.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+    }
+  }
+
+  // Bookmark Toggle
+  let isSaved = false;
+  function toggleBookmark() {
+    isSaved = !isSaved;
+    const headerIcon = document.getElementById('bookmark-icon');
+    const headerLabel = document.getElementById('bookmark-label');
+    const sideIcon = document.getElementById('sidebar-bookmark-icon');
+    const sideLabel = document.getElementById('sidebar-bookmark-label');
+
+    if (isSaved) {
+      headerIcon.setAttribute('style', "font-variation-settings: 'FILL' 1;");
+      headerIcon.classList.add('text-primary');
+      headerLabel.textContent = 'Saved to Workspace';
+      
+      sideIcon.setAttribute('style', "font-variation-settings: 'FILL' 1;");
+      sideIcon.classList.add('text-primary');
+      sideLabel.textContent = 'Saved to Workspace';
+    } else {
+      headerIcon.removeAttribute('style');
+      headerIcon.classList.remove('text-primary');
+      headerLabel.textContent = 'Save idea';
+
+      sideIcon.removeAttribute('style');
+      sideIcon.classList.remove('text-primary');
+      sideLabel.textContent = 'Save idea';
+    }
+  }
+
+  // Primary Start CTA Toggle
+  let isStarted = false;
+  function toggleProjectAdd() {
+    isStarted = !isStarted;
+    const ctaBtn = document.getElementById('primary-cta-btn');
+    const ctaIcon = document.getElementById('cta-icon');
+    const ctaLabel = document.getElementById('cta-label');
+
+    const sideBtn = document.getElementById('sidebar-cta-btn');
+    const sideIcon = document.getElementById('sidebar-cta-icon');
+    const sideLabel = document.getElementById('sidebar-cta-label');
+
+    if (isStarted) {
+      ctaBtn.classList.remove('bg-primary', 'hover:bg-primary-container');
+      ctaBtn.classList.add('bg-secondary-container', 'text-primary');
+      ctaIcon.textContent = 'check_circle';
+      ctaLabel.textContent = '✓ Added to My Projects';
+
+      sideBtn.classList.remove('bg-primary', 'hover:bg-primary-container');
+      sideBtn.classList.add('bg-secondary-container', 'text-primary');
+      sideIcon.textContent = 'check_circle';
+      sideLabel.textContent = '✓ Added to My Projects';
+    } else {
+      ctaBtn.classList.remove('bg-secondary-container', 'text-primary');
+      ctaBtn.classList.add('bg-primary', 'text-on-primary', 'hover:bg-primary-container');
+      ctaIcon.textContent = 'rocket_launch';
+      ctaLabel.textContent = 'Start this idea';
+
+      sideBtn.classList.remove('bg-secondary-container', 'text-primary');
+      sideBtn.classList.add('bg-primary', 'text-on-primary', 'hover:bg-primary-container');
+      sideIcon.textContent = 'rocket_launch';
+      sideLabel.textContent = 'Start this idea';
+    }
+  }
+
+  // ScrollSpy for In-Page Sticky Nav
+  window.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.in-page-nav-link');
+    const sections = Array.from(navLinks).map(link => {
+      const id = link.getAttribute('href').substring(1);
+      return document.getElementById(id);
+    }).filter(Boolean);
+
+    window.addEventListener('scroll', () => {
+      let currentSectionId = '';
+      const scrollY = window.pageYOffset + 180;
+
+      sections.forEach(sec => {
+        if (sec.offsetTop <= scrollY) {
+          currentSectionId = sec.id;
+        }
+      });
+
+      navLinks.forEach(link => {
+        const linkTarget = link.getAttribute('href').substring(1);
+        if (linkTarget === currentSectionId) {
+          link.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+          link.classList.add('bg-inverse-surface', 'text-inverse-on-surface');
+        } else {
+          link.classList.remove('bg-inverse-surface', 'text-inverse-on-surface');
+          link.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+        }
+      });
+    });
+  });
+</script></main></div></body></html>

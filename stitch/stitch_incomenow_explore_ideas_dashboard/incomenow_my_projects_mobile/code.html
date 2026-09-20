@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-highest": "#d7e6dc", "inverse-on-surface": "#e5f4eb", "on-tertiary": "#ffffff", "tertiary-fixed-dim": "#c2c8c4", "surface-tint": "#006c4a", "surface-variant": "#d7e6dc", "surface-dim": "#ceded4", "primary-fixed-dim": "#80d8ad", "on-primary": "#ffffff", "on-error-container": "#93000a", "on-tertiary-fixed": "#171d1b", "surface-container": "#e2f2e8", "error": "#ba1a1a", "surface": "#eefdf3", "on-tertiary-container": "#eaefeb", "on-background": "#111e18", "on-secondary-container": "#4d6a60", "on-secondary-fixed": "#022019", "surface-container-high": "#ddece2", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff", "primary": "#006041", "on-primary-fixed": "#002114", "on-surface-variant": "#3f4943", "primary-container": "#197a56", "inverse-surface": "#26332d", "on-primary-container": "#acffd4", "on-primary-fixed-variant": "#005237", "outline-variant": "#bec9c1", "secondary": "#47645a", "surface-bright": "#eefdf3", "on-secondary-fixed-variant": "#304c43", "tertiary-container": "#676d6a", "background": "#eefdf3", "secondary-fixed-dim": "#aecdc1", "error-container": "#ffdad6", "secondary-fixed": "#c9eadd", "on-surface": "#111e18", "on-tertiary-fixed-variant": "#424845", "inverse-primary": "#80d8ad", "surface-container-low": "#e8f7ed", "on-error": "#ffffff", "tertiary": "#4f5552", "primary-fixed": "#9bf5c8", "tertiary-fixed": "#dfe4e0", "secondary-container": "#c9eadd", "outline": "#6f7a72" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xs": "0.25rem", "margin": "2.5rem", "space-sm": "0.5rem", "space-md": "1rem", "gutter-mobile": "1rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "margin-mobile": "1rem", "gutter": "1.5rem" }, fontFamily: { "headline-lg-mobile": ["Manrope"], "display-hero-mobile": ["Manrope"], "headline-sm": ["Manrope"], "headline-md": ["Manrope"], "body-sm": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Manrope"], "label-md": ["Inter"], "display-hero": ["Manrope"], "label-sm": ["Inter"], "body-lg": ["Inter"] }, fontSize: { "headline-lg-mobile": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.015em", "fontWeight": "700" }], "display-hero-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.025em", "fontWeight": "800" }], "headline-sm": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-md": ["1.5rem", { "lineHeight": "1.35", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-sm": ["0.8125rem", { "lineHeight": "1.5", "letterSpacing": "0.005em", "fontWeight": "400" }], "body-md": ["0.9375rem", { "lineHeight": "1.55", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg": ["2.25rem", { "lineHeight": "1.25", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["0.875rem", { "lineHeight": "1.25", "letterSpacing": "0.01em", "fontWeight": "500" }], "display-hero": ["3.25rem", { "lineHeight": "1.15", "letterSpacing": "-0.03em", "fontWeight": "800" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "-0.005em", "fontWeight": "400" }] } } } };</script><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; } body { overscroll-behavior: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-14 px-gutter-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="flex items-baseline"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">IncomeNow</span><span class="font-label-sm text-label-sm text-secondary font-semibold">.in</span></div><span class="inline-flex items-center px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Member</span></div><div class="flex items-center gap-space-xs"><button aria-label="Notifications" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors relative text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error"></span></button><button aria-label="Profile" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors"><div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[16px]">person</span></div></button></div></div></header><main class="flex-1 flex flex-col relative w-full pt-14 pb-28 bg-surface"><div class="flex flex-col w-full px-gutter-mobile pt-3 pb-8">
+<!-- TOP HEADER / BANNER -->
+<div class="flex flex-col gap-2.5 mb-5">
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span>Design preview — sample projects</span>
+</div>
+<a class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-highest transition-colors text-primary font-label-sm text-label-sm" href="#">
+<span>Explore ideas</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">My projects</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Pick up where you left off and keep your next step clear.</p>
+</div>
+</div>
+<!-- SEARCH & QUICK SORT -->
+<div class="flex flex-col gap-3 mb-4">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-10 pr-4 bg-surface-container-lowest text-on-surface rounded-lg shadow-sm placeholder:text-outline font-body-sm text-body-sm outline-none focus:bg-surface-container-low transition-all" id="projectSearchInput" placeholder="Search your projects..." type="text"/>
+</div>
+<!-- FILTER CHIPS & SORT BAR -->
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5" id="filterBar">
+<button class="filter-tab active-filter min-h-[34px] px-3 rounded-full text-on-primary bg-primary font-label-sm text-label-sm transition-all shadow-xs flex items-center gap-1 shrink-0" data-filter="all">
+<span>All</span>
+<span class="text-[10px] px-1.5 py-0.2 bg-on-primary/20 rounded-full font-semibold" id="count-all">3</span>
+</button>
+<button class="filter-tab min-h-[34px] px-3 rounded-full text-on-surface-variant bg-surface-container-high hover:bg-surface-container-highest transition-all font-label-sm text-label-sm flex items-center gap-1 shrink-0" data-filter="active">
+<span>Active</span>
+<span class="text-[10px] px-1.5 py-0.2 bg-on-surface-variant/15 rounded-full font-semibold" id="count-active">2</span>
+</button>
+<button class="filter-tab min-h-[34px] px-3 rounded-full text-on-surface-variant bg-surface-container-high hover:bg-surface-container-highest transition-all font-label-sm text-label-sm flex items-center gap-1 shrink-0" data-filter="paused">
+<span>Paused</span>
+<span class="text-[10px] px-1.5 py-0.2 bg-on-surface-variant/15 rounded-full font-semibold" id="count-paused">1</span>
+</button>
+<button class="filter-tab min-h-[34px] px-3 rounded-full text-on-surface-variant bg-surface-container-high hover:bg-surface-container-highest transition-all font-label-sm text-label-sm flex items-center gap-1 shrink-0" data-filter="completed">
+<span>Completed</span>
+<span class="text-[10px] px-1.5 py-0.2 bg-on-surface-variant/15 rounded-full font-semibold" id="count-completed">0</span>
+</button>
+</div>
+<div class="relative shrink-0">
+<button class="flex items-center gap-1 h-8 px-2.5 rounded-lg bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-colors" id="sortToggleBtn">
+<span class="material-symbols-outlined text-[16px]">swap_vert</span>
+<span class="hidden xs:inline">Sort:</span>
+<span class="font-medium text-on-surface" id="currentSortLabel">Recent</span>
+</button>
+</div>
+</div>
+</div>
+<!-- PROJECT CARDS LIST -->
+<div class="flex flex-col gap-3.5" id="projectsContainer">
+<!-- CARD 1 -->
+<div class="project-card flex flex-col p-4 rounded-xl bg-surface-container-lowest shadow-sm transition-all duration-200" data-project-id="p1" data-status="active">
+<div class="flex items-center justify-between gap-2 mb-2.5">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-sm text-label-sm font-semibold tracking-wider text-primary bg-secondary-container px-2 py-0.5 rounded-md">IDEA #001</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant px-2 py-0.5 rounded-md bg-surface-container">Custom CRM</span>
+</div>
+<div class="status-indicator flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm font-medium">
+<span class="status-dot w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="status-text">Active</span>
+</div>
+</div>
+<h2 class="project-title font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Pergola Quotation &amp; Follow-up CRM</h2>
+<!-- Progress Segments -->
+<div class="mt-3 mb-3">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1.5">
+<span class="progress-label font-medium text-primary">2 of 6 stages completed</span>
+<span class="text-on-surface-variant font-mono text-[11px]">33%</span>
+</div>
+<div class="grid grid-cols-6 gap-1 w-full h-1.5">
+<div class="stage-bar bg-primary rounded-full"></div>
+<div class="stage-bar bg-primary rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+</div>
+</div>
+<!-- Stage & Action Callout -->
+<div class="p-3 rounded-lg bg-surface-container-low mb-3.5">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5 shrink-0">flag</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Current Stage</span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Define the offer and project scope</span>
+<div class="mt-2 pt-2 bg-surface-container/60 p-2 rounded">
+<span class="font-label-sm text-label-sm text-primary font-medium flex items-center gap-1 mb-0.5">
+<span class="material-symbols-outlined text-[14px]">task_alt</span> Next action:
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface">Write what is included in your first customer package.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-2 pt-1">
+<button class="continue-btn w-full min-h-[44px] h-11 px-4 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold rounded-lg flex items-center justify-center gap-2 transition-transform active:scale-[0.99] shadow-xs">
+<span>Continue project</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<div class="flex items-center justify-between px-1">
+<button class="view-idea-btn min-h-[36px] px-2 text-on-surface-variant hover:text-primary font-label-sm text-label-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>View idea brief</span>
+</button>
+<button class="toggle-status-btn min-h-[36px] px-2 text-on-surface-variant hover:text-error font-label-sm text-label-sm flex items-center gap-1 transition-colors" data-action="toggle-status">
+<span class="material-symbols-outlined text-[16px]">pause_circle</span>
+<span class="toggle-action-label">Pause project</span>
+</button>
+</div>
+</div>
+</div>
+<!-- CARD 2 -->
+<div class="project-card flex flex-col p-4 rounded-xl bg-surface-container-lowest shadow-sm transition-all duration-200" data-project-id="p2" data-status="paused">
+<div class="flex items-center justify-between gap-2 mb-2.5">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-sm text-label-sm font-semibold tracking-wider text-secondary bg-surface-container-high px-2 py-0.5 rounded-md">IDEA #003</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant px-2 py-0.5 rounded-md bg-surface-container">Automation</span>
+</div>
+<div class="status-indicator flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-medium">
+<span class="status-dot w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="status-text">Paused</span>
+</div>
+</div>
+<h2 class="project-title font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Quotation Follow-up Automation</h2>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm mt-1">
+<span class="material-symbols-outlined text-[14px]">save</span>
+<span>Your progress is saved in this preview.</span>
+</div>
+<!-- Progress Segments -->
+<div class="mt-3 mb-3">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1.5">
+<span class="progress-label font-medium text-secondary">1 of 6 stages completed</span>
+<span class="text-on-surface-variant font-mono text-[11px]">16%</span>
+</div>
+<div class="grid grid-cols-6 gap-1 w-full h-1.5">
+<div class="stage-bar bg-secondary rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+</div>
+</div>
+<!-- Stage & Action Callout -->
+<div class="p-3 rounded-lg bg-surface-container-low mb-3.5">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5 shrink-0">tune</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Current Stage</span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Choose the record source and follow-up rules</span>
+<div class="mt-2 pt-2 bg-surface-container/60 p-2 rounded">
+<span class="font-label-sm text-label-sm text-secondary font-medium flex items-center gap-1 mb-0.5">
+<span class="material-symbols-outlined text-[14px]">task_alt</span> Next action:
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface">Define when a quotation should trigger a follow-up task.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-2 pt-1">
+<button class="continue-btn w-full min-h-[44px] h-11 px-4 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold rounded-lg flex items-center justify-center gap-2 transition-transform active:scale-[0.99] shadow-xs">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+<span>Resume project</span>
+</button>
+<div class="flex items-center justify-between px-1">
+<button class="view-idea-btn min-h-[36px] px-2 text-on-surface-variant hover:text-primary font-label-sm text-label-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>View idea brief</span>
+</button>
+<button class="toggle-status-btn min-h-[36px] px-2 text-primary hover:text-primary-container font-label-sm text-label-sm flex items-center gap-1 transition-colors" data-action="toggle-status">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+<span class="toggle-action-label">Resume project</span>
+</button>
+</div>
+</div>
+</div>
+<!-- CARD 3 -->
+<div class="project-card flex flex-col p-4 rounded-xl bg-surface-container-lowest shadow-sm transition-all duration-200" data-project-id="p3" data-status="active">
+<div class="flex items-center justify-between gap-2 mb-2.5">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-sm text-label-sm font-semibold tracking-wider text-primary bg-secondary-container px-2 py-0.5 rounded-md">IDEA #004</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant px-2 py-0.5 rounded-md bg-surface-container">Lead-generation website</span>
+</div>
+<div class="status-indicator flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm font-medium">
+<span class="status-dot w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="status-text">Active</span>
+</div>
+</div>
+<h2 class="project-title font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Local-Service Lead Website</h2>
+<!-- Progress Segments -->
+<div class="mt-3 mb-3">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1.5">
+<span class="progress-label font-medium text-outline">Not started · 0 of 6 stages completed</span>
+<span class="text-on-surface-variant font-mono text-[11px]">0%</span>
+</div>
+<div class="grid grid-cols-6 gap-1 w-full h-1.5">
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+<div class="stage-bar bg-surface-container-highest rounded-full"></div>
+</div>
+</div>
+<!-- Stage & Action Callout -->
+<div class="p-3 rounded-lg bg-surface-container-low mb-3.5">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5 shrink-0">explore</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Current Stage</span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Select a service and location</span>
+<div class="mt-2 pt-2 bg-surface-container/60 p-2 rounded">
+<span class="font-label-sm text-label-sm text-primary font-medium flex items-center gap-1 mb-0.5">
+<span class="material-symbols-outlined text-[14px]">task_alt</span> Next action:
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface">Choose one service and one location to research.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-2 pt-1">
+<button class="continue-btn w-full min-h-[44px] h-11 px-4 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold rounded-lg flex items-center justify-center gap-2 transition-transform active:scale-[0.99] shadow-xs">
+<span>Continue project</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<div class="flex items-center justify-between px-1">
+<button class="view-idea-btn min-h-[36px] px-2 text-on-surface-variant hover:text-primary font-label-sm text-label-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>View idea brief</span>
+</button>
+<button class="toggle-status-btn min-h-[36px] px-2 text-on-surface-variant hover:text-error font-label-sm text-label-sm flex items-center gap-1 transition-colors" data-action="toggle-status">
+<span class="material-symbols-outlined text-[16px]">pause_circle</span>
+<span class="toggle-action-label">Pause project</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- CONTEXT-SPECIFIC EMPTY STATES -->
+<div class="hidden flex-col items-center justify-center text-center p-8 my-6 bg-surface-container-lowest rounded-2xl shadow-xs" id="emptyCompletedState">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center text-secondary mb-3">
+<span class="material-symbols-outlined text-[28px]">verified</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">No completed projects yet</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1 mb-5">Completed implementation checklists will appear here as you launch each venture.</p>
+<button class="min-h-[40px] px-5 py-2 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md font-semibold rounded-lg transition-colors" id="viewAllProjectsBtn">
+      View all projects
+    </button>
+</div>
+<div class="hidden flex-col items-center justify-center text-center p-8 my-6 bg-surface-container-lowest rounded-2xl shadow-xs" id="emptySearchState">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center text-outline mb-3">
+<span class="material-symbols-outlined text-[28px]">search_off</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">No matches found</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1 mb-4">Try checking your spelling or clear your search term.</p>
+<button class="min-h-[36px] px-4 py-1.5 bg-surface-container text-primary font-label-sm text-label-sm font-semibold rounded-lg" id="clearSearchBtn">
+      Clear search
+    </button>
+</div>
+<!-- FLOATING TOAST / NOTIFICATION (Safely placed above fixed navigation) -->
+<div class="fixed left-4 right-4 bottom-20 z-50 transform translate-y-32 opacity-0 pointer-events-none transition-all duration-300 ease-out flex justify-center" id="actionToast">
+<div class="w-full max-w-sm bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-xl shadow-lg flex items-center justify-between gap-3">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed shrink-0" id="toastIcon">check_circle</span>
+<span class="font-body-sm text-body-sm text-inverse-on-surface truncate" id="toastMessage">Update applied</span>
+</div>
+<button class="hidden font-label-sm text-label-sm font-bold text-primary-fixed uppercase tracking-wider hover:underline shrink-0" id="toastUndoBtn">
+        Undo
+      </button>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    let currentFilter = 'all';
+    let searchQuery = '';
+    let lastToggledCard = null;
+    let lastPreviousStatus = null;
+    let toastTimeout = null;
+
+    const filterButtons = document.querySelectorAll('.filter-tab');
+    const projectCards = document.querySelectorAll('.project-card');
+    const searchInput = document.getElementById('projectSearchInput');
+    const emptyCompleted = document.getElementById('emptyCompletedState');
+    const emptySearch = document.getElementById('emptySearchState');
+    const viewAllBtn = document.getElementById('viewAllProjectsBtn');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    
+    const toast = document.getElementById('actionToast');
+    const toastMsg = document.getElementById('toastMessage');
+    const toastIcon = document.getElementById('toastIcon');
+    const toastUndoBtn = document.getElementById('toastUndoBtn');
+
+    function showToast(msg, iconName = 'info', allowUndo = false) {
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastMsg.textContent = msg;
+      toastIcon.textContent = iconName;
+      if (allowUndo) {
+        toastUndoBtn.classList.remove('hidden');
+      } else {
+        toastUndoBtn.classList.add('hidden');
+      }
+      toast.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 4000);
+    }
+
+    toastUndoBtn.addEventListener('click', () => {
+      if (lastToggledCard && lastPreviousStatus) {
+        toggleCardStatus(lastToggledCard, true);
+        showToast("Action reverted", "undo", false);
+      }
+    });
+
+    function updateCounts() {
+      let activeCount = 0;
+      let pausedCount = 0;
+      let completedCount = 0;
+
+      projectCards.forEach(card => {
+        const s = card.getAttribute('data-status');
+        if (s === 'active') activeCount++;
+        else if (s === 'paused') pausedCount++;
+        else if (s === 'completed') completedCount++;
+      });
+
+      const total = activeCount + pausedCount + completedCount;
+      document.getElementById('count-all').textContent = total;
+      document.getElementById('count-active').textContent = activeCount;
+      document.getElementById('count-paused').textContent = pausedCount;
+      document.getElementById('count-completed').textContent = completedCount;
+    }
+
+    function applyFilterAndSearch() {
+      let visibleCount = 0;
+
+      projectCards.forEach(card => {
+        const status = card.getAttribute('data-status');
+        const title = card.querySelector('.project-title').textContent.toLowerCase();
+        
+        const matchesFilter = (currentFilter === 'all') || (status === currentFilter);
+        const matchesSearch = title.includes(searchQuery);
+
+        if (matchesFilter && matchesSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (currentFilter === 'completed' && visibleCount === 0 && searchQuery === '') {
+        emptyCompleted.classList.remove('hidden');
+        emptyCompleted.classList.add('flex');
+        emptySearch.classList.add('hidden');
+        emptySearch.classList.remove('flex');
+      } else if (visibleCount === 0 && searchQuery !== '') {
+        emptySearch.classList.remove('hidden');
+        emptySearch.classList.add('flex');
+        emptyCompleted.classList.add('hidden');
+        emptyCompleted.classList.remove('flex');
+      } else {
+        emptyCompleted.classList.add('hidden');
+        emptyCompleted.classList.remove('flex');
+        emptySearch.classList.add('hidden');
+        emptySearch.classList.remove('flex');
+      }
+    }
+
+    function setFilter(filter) {
+      currentFilter = filter;
+      filterButtons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === filter) {
+          btn.className = 'filter-tab active-filter min-h-[34px] px-3 rounded-full text-on-primary bg-primary font-label-sm text-label-sm transition-all shadow-xs flex items-center gap-1 shrink-0';
+          const countBadge = btn.querySelector('span:last-child');
+          if (countBadge) {
+            countBadge.className = 'text-[10px] px-1.5 py-0.2 bg-on-primary/20 rounded-full font-semibold';
+          }
+        } else {
+          btn.className = 'filter-tab min-h-[34px] px-3 rounded-full text-on-surface-variant bg-surface-container-high hover:bg-surface-container-highest transition-all font-label-sm text-label-sm flex items-center gap-1 shrink-0';
+          const countBadge = btn.querySelector('span:last-child');
+          if (countBadge) {
+            countBadge.className = 'text-[10px] px-1.5 py-0.2 bg-on-surface-variant/15 rounded-full font-semibold';
+          }
+        }
+      });
+      applyFilterAndSearch();
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        setFilter(btn.getAttribute('data-filter'));
+      });
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      applyFilterAndSearch();
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      applyFilterAndSearch();
+    });
+
+    viewAllBtn.addEventListener('click', () => {
+      setFilter('all');
+    });
+
+    function toggleCardStatus(card, isRevert = false) {
+      const currentStatus = card.getAttribute('data-status');
+      const title = card.querySelector('.project-title').textContent;
+      const statusIndicator = card.querySelector('.status-indicator');
+      const statusDot = card.querySelector('.status-dot');
+      const statusText = card.querySelector('.status-text');
+      const toggleActionLabel = card.querySelector('.toggle-action-label');
+      const continueBtn = card.querySelector('.continue-btn');
+      const toggleBtn = card.querySelector('.toggle-status-btn');
+
+      if (!isRevert) {
+        lastToggledCard = card;
+        lastPreviousStatus = currentStatus;
+      }
+
+      if (currentStatus === 'active') {
+        card.setAttribute('data-status', 'paused');
+        statusIndicator.className = 'status-indicator flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-medium';
+        statusDot.className = 'status-dot w-2 h-2 rounded-full bg-tertiary';
+        statusText.textContent = 'Paused';
+        toggleActionLabel.textContent = 'Resume project';
+        toggleBtn.classList.remove('hover:text-error');
+        toggleBtn.classList.add('hover:text-primary');
+        toggleBtn.querySelector('.material-symbols-outlined').textContent = 'play_circle';
+        continueBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">play_arrow</span><span>Resume project</span>';
+
+        if (!isRevert) {
+          showToast(`"${title}" is paused`, 'pause_circle', true);
+        }
+      } else {
+        card.setAttribute('data-status', 'active');
+        statusIndicator.className = 'status-indicator flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm font-medium';
+        statusDot.className = 'status-dot w-2 h-2 rounded-full bg-primary-container animate-pulse';
+        statusText.textContent = 'Active';
+        toggleActionLabel.textContent = 'Pause project';
+        toggleBtn.classList.add('hover:text-error');
+        toggleBtn.classList.remove('hover:text-primary');
+        toggleBtn.querySelector('.material-symbols-outlined').textContent = 'pause_circle';
+        continueBtn.innerHTML = '<span>Continue project</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span>';
+
+        if (!isRevert) {
+          showToast(`"${title}" is now active`, 'check_circle', true);
+        }
+      }
+
+      updateCounts();
+      applyFilterAndSearch();
+    }
+
+    document.querySelectorAll('[data-action="toggle-status"]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = e.target.closest('.project-card');
+        toggleCardStatus(card);
+      });
+    });
+
+    document.querySelectorAll('.continue-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showToast("The project workspace will be connected in the next batch.", "hourglass_top", false);
+      });
+    });
+
+    document.querySelectorAll('.view-idea-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showToast("Opening project idea overview...", "description", false);
+      });
+    });
+
+    // Simple Sort Selector interaction
+    const sortBtn = document.getElementById('sortToggleBtn');
+    const sortLabel = document.getElementById('currentSortLabel');
+    const sorts = ['Recent', 'Progress', 'Name'];
+    let currentSortIndex = 0;
+
+    sortBtn.addEventListener('click', () => {
+      currentSortIndex = (currentSortIndex + 1) % sorts.length;
+      sortLabel.textContent = sorts[currentSortIndex];
+      showToast(`Sorted by ${sorts[currentSortIndex]}`, 'swap_vert', false);
+    });
+
+    updateCounts();
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-semibold"><div class="h-16 px-space-xs flex items-center justify-around"><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors gap-0.5" data-path="explore" href="#"><span class="material-symbols-outlined text-[22px]">explore</span><span class="font-label-sm text-label-sm">Explore</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors gap-0.5" data-path="saved" href="#"><span class="material-symbols-outlined text-[22px]">bookmark</span><span class="font-label-sm text-label-sm">Saved</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-primary font-semibold gap-0.5" data-path="projects" href="#"><span class="material-symbols-outlined text-[22px] [font-variation-settings:'FILL'_1]">work</span><span class="font-label-sm text-label-sm">Projects</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors gap-0.5" data-path="updates" href="#"><span class="material-symbols-outlined text-[22px]">update</span><span class="font-label-sm text-label-sm">Updates</span></a></div></nav></body></html>

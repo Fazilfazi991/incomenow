@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab_subpage" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#eefdf3;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'secondary-fixed-dim': '#aecdc1', 'on-tertiary-fixed': '#171d1b', 'tertiary-container': '#676d6a', 'primary-fixed-dim': '#80d8ad', 'on-error-container': '#93000a', 'inverse-surface': '#26332d', 'on-background': '#111e18', 'error': '#ba1a1a', 'primary': '#006041', 'surface-container-high': '#ddece2', 'surface-bright': '#eefdf3', 'outline': '#6f7a72', 'surface-variant': '#d7e6dc', 'secondary-container': '#c9eadd', 'on-tertiary': '#ffffff', 'primary-fixed': '#9bf5c8', 'surface-container-low': '#e8f7ed', 'tertiary': '#4f5552', 'surface': '#eefdf3', 'on-primary-fixed-variant': '#005237', 'on-primary-fixed': '#002114', 'surface-container-lowest': '#ffffff', 'on-primary-container': '#acffd4', 'tertiary-fixed': '#dfe4e0', 'background': '#eefdf3', 'on-surface': '#111e18', 'inverse-on-surface': '#e5f4eb', 'on-secondary-fixed': '#022019', 'on-tertiary-fixed-variant': '#424845', 'tertiary-fixed-dim': '#c2c8c4', 'on-secondary-fixed-variant': '#304c43', 'outline-variant': '#bec9c1', 'error-container': '#ffdad6', 'on-secondary': '#ffffff', 'secondary-fixed': '#c9eadd', 'on-surface-variant': '#3f4943', 'surface-tint': '#006c4a', 'on-primary': '#ffffff', 'on-tertiary-container': '#eaefeb', 'surface-container': '#e2f2e8', 'surface-container-highest': '#d7e6dc', 'surface-dim': '#ceded4', 'on-secondary-container': '#4d6a60', 'secondary': '#47645a', 'primary-container': '#197a56', 'inverse-primary': '#80d8ad', 'on-error': '#ffffff' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'gutter': '1.5rem', 'space-xl': '2.5rem', 'gutter-mobile': '1rem', 'space-md': '1rem', 'margin-mobile': '1rem', 'space-sm': '0.5rem', 'space-xs': '0.25rem', 'space-lg': '1.5rem', 'margin': '2.5rem' }, fontFamily: { 'label-sm': ['Inter'], 'display-hero-mobile': ['Manrope'], 'label-md': ['Inter'], 'body-md': ['Inter'], 'display-hero': ['Manrope'], 'body-sm': ['Inter'], 'headline-lg': ['Manrope'], 'headline-sm': ['Manrope'], 'body-lg': ['Inter'], 'headline-md': ['Manrope'], 'headline-lg-mobile': ['Manrope'] }, fontSize: { 'label-sm': ['0.75rem', { lineHeight: '1.2', letterSpacing: '0.02em', fontWeight: '600' }], 'display-hero-mobile': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.025em', fontWeight: '800' }], 'label-md': ['0.875rem', { lineHeight: '1.25', letterSpacing: '0.01em', fontWeight: '500' }], 'body-md': ['0.9375rem', { lineHeight: '1.55', letterSpacing: '0em', fontWeight: '400' }], 'display-hero': ['3.25rem', { lineHeight: '1.15', letterSpacing: '-0.03em', fontWeight: '800' }], 'body-sm': ['0.8125rem', { lineHeight: '1.5', letterSpacing: '0.005em', fontWeight: '400' }], 'headline-lg': ['2.25rem', { lineHeight: '1.25', letterSpacing: '-0.02em', fontWeight: '700' }], 'headline-sm': ['1.125rem', { lineHeight: '1.4', letterSpacing: '-0.01em', fontWeight: '600' }], 'body-lg': ['1.125rem', { lineHeight: '1.6', letterSpacing: '-0.005em', fontWeight: '400' }], 'headline-md': ['1.5rem', { lineHeight: '1.35', letterSpacing: '-0.015em', fontWeight: '600' }], 'headline-lg-mobile': ['1.75rem', { lineHeight: '1.3', letterSpacing: '-0.015em', fontWeight: '700' }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface text-on-surface flex flex-col min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] pt-safe"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs min-w-0"><a class="w-10 h-10 -ml-2 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface active:scale-95 transition-all" data-path="back" href="#"><span class="material-symbols-outlined text-[24px]">arrow_back</span></a><div class="flex items-center gap-1.5 min-w-0"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface truncate">IncomeNow<span class="text-primary">.in</span></span><span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wider hidden sm:inline-flex">MEMBER</span></div></div><div class="flex items-center gap-space-xs"><a class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span></a><a class="w-11 h-11 flex items-center justify-center rounded-full pl-1" data-path="profile-settings" href="#"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="font-headline-sm text-label-md text-on-primary font-bold">A</span></div></a></div></div></header><main class="flex flex-col flex-1 relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-gutter-mobile space-y-space-lg pb-12">
+<!-- Top Context Header -->
+<section class="flex flex-col gap-space-sm pt-2">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container w-fit">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">info</span>
+<span class="font-label-sm text-label-sm">Design preview — support requests are not connected</span>
+</div>
+<div class="space-y-1">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-on-surface">Help &amp; support</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Find an answer or tell us where you're getting stuck.</p>
+</div>
+<button class="mt-2 w-full h-12 rounded-lg bg-surface-container-high hover:bg-surface-container-highest active:scale-[0.99] text-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition-all" id="btn-scroll-contact" type="button">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+<span>Contact support</span>
+</button>
+</section>
+<!-- Search & Topic Filter Chips -->
+<section class="space-y-space-sm">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full h-12 pl-11 pr-10 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-md text-body-md shadow-sm outline-none focus:bg-surface-container-low transition-all" id="faq-search" placeholder="Search help topics…" type="text"/>
+<button class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container" id="clear-search-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Scrollable Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1.5 -mx-gutter-mobile px-gutter-mobile no-scrollbar" id="topic-chips">
+<button class="topic-chip active flex-shrink-0 h-8 px-3.5 rounded-full bg-primary text-on-primary font-label-md text-label-md font-semibold transition-all" data-topic="all" type="button">All topics</button>
+<button class="topic-chip flex-shrink-0 h-8 px-3.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-all" data-topic="account" type="button">Account &amp; sign-in</button>
+<button class="topic-chip flex-shrink-0 h-8 px-3.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-all" data-topic="billing" type="button">Membership &amp; billing</button>
+<button class="topic-chip flex-shrink-0 h-8 px-3.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-all" data-topic="ideas" type="button">Ideas &amp; resources</button>
+<button class="topic-chip flex-shrink-0 h-8 px-3.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-all" data-topic="projects" type="button">Projects &amp; preferences</button>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-surface-variant" id="topic-count">Showing 9 help topics</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+        Curated playbook
+      </span>
+</div>
+</section>
+<!-- Helpful Answers Accordion List -->
+<section class="space-y-3" id="faq-list">
+<!-- Item 1 (Expanded) -->
+<div class="faq-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all duration-200" data-keywords="google signin email login password authentication" data-topic="account">
+<button aria-expanded="true" class="faq-toggle w-full min-h-[52px] p-4 text-left flex items-start justify-between gap-3" type="button">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface pt-0.5">How do Google sign-in and email login work?</span>
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 transition-transform duration-200 rotate-180">expand_more</span>
+</button>
+<div class="faq-content px-4 pb-4 space-y-3 block">
+<p class="font-body-md text-body-md text-on-surface-variant">IncomeNow connects your identity to your verified primary address. If you authenticate with Google, no separate password is created; you can log in instantly on any device with one tap. If you use standard email, magic links or standard authentication tokens are utilized securely.</p>
+<div class="pt-1">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md font-semibold" href="#">
+<span>View sign-in settings</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="faq-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all duration-200" data-keywords="forgot password reset recovery credential" data-topic="account">
+<button aria-expanded="false" class="faq-toggle w-full min-h-[52px] p-4 text-left flex items-start justify-between gap-3" type="button">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface pt-0.5">I forgot my IncomeNow password. What should I do?</span>
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content px-4 pb-4 space-y-3 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant">Use our verified password recovery flow to receive an encrypted 6-digit reset code via your registered inbox. Reset requests expire after fifteen minutes to maintain institutional workspace security.</p>
+<div class="pt-1">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md font-semibold" href="#">
+<span>Open password recovery</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="faq-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all duration-200" data-keywords="activate membership subscription plan payment tier free" data-topic="billing">
+<button aria-expanded="false" class="faq-toggle w-full min-h-[52px] p-4 text-left flex items-start justify-between gap-3" type="button">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface pt-0.5">Does creating an account activate membership?</span>
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content px-4 pb-4 space-y-3 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant">Registering an account grants free explorer tier access, letting you bookmark briefs and browse overview blueprints. Full membership unlocks execution kits, production code, automation workflows, and supplier contacts.</p>
+<div class="pt-1">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md font-semibold" href="#">
+<span>View membership &amp; billing</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="faq-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all duration-200" data-keywords="payment access problem receipt invoice transaction declined" data-topic="billing">
+<button aria-expanded="false" class="faq-toggle w-full min-h-[52px] p-4 text-left flex items-start justify-between gap-3" type="button">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface pt-0.5">I made a payment, but my access does not look right.</span>
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content px-4 pb-4 space-y-3 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant">Banking settlements typically resolve in under two minutes. If you received a bank debit receipt but your dashboard still displays Explorer status, simply force a refresh or ping our automated clearance webhook.</p>
+<div class="flex flex-wrap gap-2 pt-1">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md font-semibold" href="#">
+<span>Check membership status</span>
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+</a>
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold" href="#contact-support-form">
+<span>Report an access problem</span>
+<span class="material-symbols-outlined text-[16px]">report</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="faq-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all duration-200" data-keywords="source code github repository kit software stack ideas" data-topic="ideas">
+<button aria-expanded="false" class="faq-toggle w-full min-h-[52px] p-4 text-left flex items-start justify-between gap-3" type="button">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface pt-0.5">Does every idea include source code?</span>
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content px-4 pb-4 space-y-3 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant">Each brief specifies its exact resource breakdown. Software-based blueprints feature clean Next.js/Tailwind GitHub repositories, while service models include validated cold-pitch templates, pricing frameworks, and client contracts.</p>
+<div class="pt-1">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md font-semibold" href="#">
+<span>Explore ideas</span>
+<span class="material-symbols-outlined text-[16px]">lightbulb</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="faq-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all duration-200" data-keywords="demo broken unavailable resource 404 mirror offline" data-topic="ideas">
+<button aria-expanded="false" class="faq-toggle w-full min-h-[52px] p-4 text-left flex items-start justify-between gap-3" type="button">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface pt-0.5">A demo or resource is unavailable. What should I check?</span>
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content px-4 pb-4 space-y-3 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant">Interactive demo instances reboot during weekly infrastructure patches. Verify whether a mirror link is highlighted under the resources pill row, or trigger our automated live-check monitor.</p>
+<div class="pt-1">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md font-semibold" href="#contact-support-form">
+<span>Report a resource problem</span>
+<span class="material-symbols-outlined text-[16px]">build</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Item 7 -->
+<div class="faq-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all duration-200" data-keywords="saving starting bookmark project workspace differences" data-topic="projects">
+<button aria-expanded="false" class="faq-toggle w-full min-h-[52px] p-4 text-left flex items-start justify-between gap-3" type="button">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface pt-0.5">What is the difference between saving and starting an idea?</span>
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content px-4 pb-4 space-y-3 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant">Saving an opportunity adds it to your reading shortlist. Starting an idea initializes a private Project Workspace with an execution kanban, budget calculator, checklist tasks, and change tracking.</p>
+<div class="flex flex-wrap gap-2 pt-1">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md font-semibold" href="#">
+<span>View saved ideas</span>
+<span class="material-symbols-outlined text-[16px]">bookmark</span>
+</a>
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold" href="#">
+<span>View my projects</span>
+<span class="material-symbols-outlined text-[16px]">folder_open</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Item 8 -->
+<div class="faq-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all duration-200" data-keywords="preferences tags industries capital filters feed" data-topic="projects">
+<button aria-expanded="false" class="faq-toggle w-full min-h-[52px] p-4 text-left flex items-start justify-between gap-3" type="button">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface pt-0.5">Can I change my discovery preferences?</span>
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content px-4 pb-4 space-y-3 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant">Yes, at any moment. Customize your capital threshold, technical comfort, and preferred business models (B2B SaaS, Micro-Agencies, Productized Newsletters) to re-index your personalized feed.</p>
+<div class="pt-1">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md font-semibold" href="#">
+<span>Edit preferences</span>
+<span class="material-symbols-outlined text-[16px]">tune</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Item 9 -->
+<div class="faq-item rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all duration-200" data-keywords="kit updates versioning changes sync project code" data-topic="projects">
+<button aria-expanded="false" class="faq-toggle w-full min-h-[52px] p-4 text-left flex items-start justify-between gap-3" type="button">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface pt-0.5">Do kit updates automatically change my project or software?</span>
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content px-4 pb-4 space-y-3 hidden">
+<p class="font-body-md text-body-md text-on-surface-variant">Never without explicit approval. When a blueprint creator issues a v2 update or security patch, you will see a badge in your Updates tab with a visual diff comparison before you adopt any changes.</p>
+<div class="pt-1">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md font-semibold" href="#">
+<span>View latest updates</span>
+<span class="material-symbols-outlined text-[16px]">update</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- No Results State -->
+<div class="hidden rounded-xl bg-surface-container-lowest p-6 text-center space-y-3 shadow-sm" id="no-results-card">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-[26px]">search_off</span>
+</div>
+<div class="space-y-1">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">No answers match your search</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[260px] mx-auto">Try refining your terms or reach out directly to the venture advisory team.</p>
+</div>
+<button class="inline-flex items-center gap-1 px-4 py-2 rounded-lg bg-surface-container text-primary font-label-md text-label-md font-semibold active:scale-95 transition-all" id="btn-reset-filters" type="button">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+<span>Clear search and filters</span>
+</button>
+</div>
+<!-- Contact Support Form Card -->
+<section class="scroll-mt-20 rounded-2xl bg-surface-container-lowest p-5 space-y-5 shadow-md" id="contact-support-form">
+<div class="space-y-1.5">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">support_agent</span>
+        Direct Advisory
+      </div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Tell us what you need help with</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Describe the issue and include the relevant idea or page when useful.</p>
+</div>
+<!-- Account Email Badge -->
+<div class="flex items-center gap-2.5 p-3 rounded-lg bg-surface-container-low text-on-surface">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-label-sm">
+        A
+      </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant leading-none">Account email</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate">alex@example.com</span>
+</div>
+<span class="ml-auto px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Sample</span>
+</div>
+<!-- Inline Validation Alert (Hidden by default) -->
+<div class="hidden p-3 rounded-lg bg-error-container text-on-error-container space-y-1" id="form-validation-banner">
+<div class="flex items-center gap-1.5 font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-[18px]">error</span>
+<span>Please complete all required fields</span>
+</div>
+<p class="font-body-sm text-body-sm" id="form-error-detail">Topic, subject, and an explanation are required before submitting.</p>
+</div>
+<!-- Form Checked Preview Confirmation (Hidden by default) -->
+<div class="hidden p-3.5 rounded-lg bg-surface-container-high text-on-surface space-y-1" id="form-success-banner">
+<div class="flex items-center gap-1.5 text-primary font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Form checked in this preview</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your message structure and metadata are valid. No live support ticket was sent.</p>
+</div>
+<form class="space-y-4" id="support-request-form" novalidate="">
+<!-- Topic select -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md font-semibold text-on-surface flex items-center justify-between" for="support-topic">
+<span>Topic</span>
+<span class="font-label-sm text-label-sm text-primary">Required</span>
+</label>
+<div class="relative">
+<select class="w-full h-11 px-3 pr-9 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-lowest transition-all appearance-none cursor-pointer" id="support-topic">
+<option value="">Select a category…</option>
+<option value="account">Account &amp; sign-in</option>
+<option value="billing">Membership &amp; billing</option>
+<option value="resource">Kit resource / Broken link</option>
+<option value="project">Project workspace</option>
+<option value="other">General question</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Related Idea select -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md font-semibold text-on-surface flex items-center justify-between" for="related-idea">
+<span>Related idea</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">Optional</span>
+</label>
+<div class="relative">
+<select class="w-full h-11 px-3 pr-9 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-lowest transition-all appearance-none cursor-pointer" id="related-idea">
+<option value="none">None / Account-level question</option>
+<option value="crm">Idea #001: Micro-SaaS Support Hub</option>
+<option value="automation">Idea #003: WhatsApp Booking Engine</option>
+<option value="lead-site">Idea #004: Local Solar Lead Portal</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Subject text input -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md font-semibold text-on-surface flex items-center justify-between" for="support-subject">
+<span>Subject</span>
+<span class="font-label-sm text-label-sm text-primary">Required</span>
+</label>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md outline-none focus:bg-surface-container-lowest transition-all" id="support-subject" placeholder="Brief summary of your question" type="text"/>
+</div>
+<!-- Message textarea -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md font-semibold text-on-surface flex items-center justify-between" for="support-message">
+<span>Message</span>
+<span class="font-label-sm text-label-sm text-primary">Required</span>
+</label>
+<textarea class="w-full p-3 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md outline-none focus:bg-surface-container-lowest transition-all resize-none" id="support-message" placeholder="What happened, and what did you expect to happen?" rows="4"></textarea>
+</div>
+<!-- Security Helper Note -->
+<div class="flex items-start gap-2 p-2.5 rounded-lg bg-surface-container-low text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">lock</span>
+<span>Do not include passwords, API keys, payment-card details, or confidential customer information.</span>
+</div>
+<!-- Actions & Honest preview -->
+<div class="pt-2 space-y-2">
+<button class="w-full h-12 rounded-lg bg-primary hover:bg-primary-container active:scale-[0.99] text-on-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition-all" id="btn-submit-support" type="submit">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span>Send request</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant">Preview only — requests are not sent.</p>
+</div>
+</form>
+</section>
+<!-- Prototype QA Controls (Tester Bar) -->
+<section class="rounded-xl bg-surface-container-high p-3.5 space-y-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">tune</span>
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-on-surface">Mobile Prototype QA</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Batch 7D Testbench</span>
+</div>
+<div class="grid grid-cols-3 gap-1.5 text-center">
+<button class="px-2 py-1.5 rounded-md bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold hover:bg-surface-bright active:scale-95 transition-all" id="qa-default" type="button">Default</button>
+<button class="px-2 py-1.5 rounded-md bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold hover:bg-surface-bright active:scale-95 transition-all" id="qa-filter-billing" type="button">Filter: Billing</button>
+<button class="px-2 py-1.5 rounded-md bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold hover:bg-surface-bright active:scale-95 transition-all" id="qa-no-matches" type="button">No Matches</button>
+<button class="col-span-1 px-2 py-1.5 rounded-md bg-surface-container-lowest text-error font-label-sm text-label-sm font-semibold hover:bg-surface-bright active:scale-95 transition-all" id="qa-validation-err" type="button">Validation Errors</button>
+<button class="col-span-2 px-2 py-1.5 rounded-md bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-surface-bright active:scale-95 transition-all" id="qa-form-checked" type="button">Form Checked</button>
+</div>
+</section>
+</div>
+<script>
+  (function() {
+    // DOM Elements
+    var scrollBtn = document.getElementById('btn-scroll-contact');
+    var contactFormSection = document.getElementById('contact-support-form');
+    var searchInput = document.getElementById('faq-search');
+    var clearSearchBtn = document.getElementById('clear-search-btn');
+    var topicChips = document.querySelectorAll('.topic-chip');
+    var topicCountSpan = document.getElementById('topic-count');
+    var faqItems = document.querySelectorAll('.faq-item');
+    var noResultsCard = document.getElementById('no-results-card');
+    var resetFiltersBtn = document.getElementById('btn-reset-filters');
+    
+    var supportForm = document.getElementById('support-request-form');
+    var topicSelect = document.getElementById('support-topic');
+    var subjectInput = document.getElementById('support-subject');
+    var messageInput = document.getElementById('support-message');
+    var validationBanner = document.getElementById('form-validation-banner');
+    var successBanner = document.getElementById('form-success-banner');
+    var errorDetail = document.getElementById('form-error-detail');
+
+    // QA Buttons
+    var qaDefault = document.getElementById('qa-default');
+    var qaFilterBilling = document.getElementById('qa-filter-billing');
+    var qaNoMatches = document.getElementById('qa-no-matches');
+    var qaValidationErr = document.getElementById('qa-validation-err');
+    var qaFormChecked = document.getElementById('qa-form-checked');
+
+    var currentTopic = 'all';
+
+    // Smooth scroll to form
+    if (scrollBtn && contactFormSection) {
+      scrollBtn.addEventListener('click', function() {
+        contactFormSection.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(function() {
+          topicSelect.focus();
+        }, 400);
+      });
+    }
+
+    // Accordion expand/collapse
+    faqItems.forEach(function(item) {
+      var btn = item.querySelector('.faq-toggle');
+      var content = item.querySelector('.faq-content');
+      var icon = btn.querySelector('.material-symbols-outlined');
+
+      btn.addEventListener('click', function() {
+        var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          btn.setAttribute('aria-expanded', 'false');
+          content.classList.add('hidden');
+          content.classList.remove('block');
+          icon.classList.remove('rotate-180');
+        } else {
+          btn.setAttribute('aria-expanded', 'true');
+          content.classList.remove('hidden');
+          content.classList.add('block');
+          icon.classList.add('rotate-180');
+        }
+      });
+    });
+
+    // Filter Logic
+    function applyFiltering() {
+      var query = (searchInput.value || '').trim().toLowerCase();
+      var visibleCount = 0;
+
+      if (query.length > 0) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+
+      faqItems.forEach(function(item) {
+        var itemTopic = item.getAttribute('data-topic');
+        var questionText = item.querySelector('.faq-toggle').innerText.toLowerCase();
+        var keywords = (item.getAttribute('data-keywords') || '').toLowerCase();
+        var bodyText = item.querySelector('.faq-content').innerText.toLowerCase();
+
+        var matchesTopic = (currentTopic === 'all' || itemTopic === currentTopic);
+        var matchesSearch = !query || questionText.includes(query) || keywords.includes(query) || bodyText.includes(query);
+
+        if (matchesTopic && matchesSearch) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      topicCountSpan.innerText = 'Showing ' + visibleCount + ' help ' + (visibleCount === 1 ? 'topic' : 'topics');
+
+      if (visibleCount === 0) {
+        noResultsCard.classList.remove('hidden');
+      } else {
+        noResultsCard.classList.add('hidden');
+      }
+    }
+
+    // Topic Pill Click
+    topicChips.forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        topicChips.forEach(function(c) {
+          c.classList.remove('active', 'bg-primary', 'text-on-primary', 'font-semibold');
+          c.classList.add('bg-surface-container-high', 'text-on-surface-variant', 'font-medium');
+        });
+
+        chip.classList.add('active', 'bg-primary', 'text-on-primary', 'font-semibold');
+        chip.classList.remove('bg-surface-container-high', 'text-on-surface-variant', 'font-medium');
+
+        currentTopic = chip.getAttribute('data-topic');
+        applyFiltering();
+      });
+    });
+
+    // Search input typing
+    searchInput.addEventListener('input', applyFiltering);
+
+    // Clear search
+    clearSearchBtn.addEventListener('click', function() {
+      searchInput.value = '';
+      applyFiltering();
+      searchInput.focus();
+    });
+
+    // Reset filters card button
+    if (resetFiltersBtn) {
+      resetFiltersBtn.addEventListener('click', function() {
+        resetToDefaultFilters();
+      });
+    }
+
+    function resetToDefaultFilters() {
+      searchInput.value = '';
+      currentTopic = 'all';
+      topicChips.forEach(function(c) {
+        if (c.getAttribute('data-topic') === 'all') {
+          c.classList.add('active', 'bg-primary', 'text-on-primary', 'font-semibold');
+          c.classList.remove('bg-surface-container-high', 'text-on-surface-variant', 'font-medium');
+        } else {
+          c.classList.remove('active', 'bg-primary', 'text-on-primary', 'font-semibold');
+          c.classList.add('bg-surface-container-high', 'text-on-surface-variant', 'font-medium');
+        }
+      });
+      applyFiltering();
+    }
+
+    // Form Submission & Validation Preview
+    if (supportForm) {
+      supportForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        validationBanner.classList.add('hidden');
+        successBanner.classList.add('hidden');
+
+        var topicVal = topicSelect.value.trim();
+        var subjectVal = subjectInput.value.trim();
+        var msgVal = messageInput.value.trim();
+
+        var missing = [];
+        if (!topicVal) missing.push('Topic category');
+        if (!subjectVal) missing.push('Subject');
+        if (!msgVal) missing.push('Message description');
+
+        if (missing.length > 0) {
+          errorDetail.innerText = 'Missing: ' + missing.join(', ') + '.';
+          validationBanner.classList.remove('hidden');
+          validationBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          successBanner.classList.remove('hidden');
+          successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    }
+
+    // QA Preset Actions
+    if (qaDefault) {
+      qaDefault.addEventListener('click', function() {
+        resetToDefaultFilters();
+        validationBanner.classList.add('hidden');
+        successBanner.classList.add('hidden');
+      });
+    }
+
+    if (qaFilterBilling) {
+      qaFilterBilling.addEventListener('click', function() {
+        searchInput.value = '';
+        var billingChip = document.querySelector('[data-topic="billing"]');
+        if (billingChip) billingChip.click();
+      });
+    }
+
+    if (qaNoMatches) {
+      qaNoMatches.addEventListener('click', function() {
+        searchInput.value = 'xyznonexistent999';
+        applyFiltering();
+      });
+    }
+
+    if (qaValidationErr) {
+      qaValidationErr.addEventListener('click', function() {
+        contactFormSection.scrollIntoView({ behavior: 'smooth' });
+        topicSelect.value = '';
+        subjectInput.value = '';
+        messageInput.value = '';
+        successBanner.classList.add('hidden');
+        errorDetail.innerText = 'Missing: Topic category, Subject, Message description.';
+        validationBanner.classList.remove('hidden');
+      });
+    }
+
+    if (qaFormChecked) {
+      qaFormChecked.addEventListener('click', function() {
+        contactFormSection.scrollIntoView({ behavior: 'smooth' });
+        topicSelect.value = 'billing';
+        subjectInput.value = 'Test question regarding activation webhook';
+        messageInput.value = 'Checking our workspace tier status after confirming receipt TXN-98402.';
+        validationBanner.classList.add('hidden');
+        successBanner.classList.remove('hidden');
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(17,30,24,0.04)]" data-active-classes="text-primary font-bold"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[64px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-all active:scale-95" data-path="explore" href="#"><span class="material-symbols-outlined text-[22px]">explore</span><span class="font-label-sm text-label-sm tracking-normal">Explore</span></a><a class="flex flex-col items-center justify-center min-w-[64px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-all active:scale-95" data-path="saved-opportunities" href="#"><span class="material-symbols-outlined text-[22px]">bookmark</span><span class="font-label-sm text-label-sm tracking-normal">Saved</span></a><a class="flex flex-col items-center justify-center min-w-[64px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-all active:scale-95" data-path="active-projects" href="#"><span class="material-symbols-outlined text-[22px]">folder_open</span><span class="font-label-sm text-label-sm tracking-normal">Projects</span></a><a class="flex flex-col items-center justify-center min-w-[64px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-all active:scale-95" data-path="updates-feed" href="#"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">update</span><span class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-primary"></span></div><span class="font-label-sm text-label-sm tracking-normal">Updates</span></a></div></nav></body></html>

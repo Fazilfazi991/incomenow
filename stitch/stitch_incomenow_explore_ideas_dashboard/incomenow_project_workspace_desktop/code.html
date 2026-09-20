@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-highest":"#d7e6dc","inverse-on-surface":"#e5f4eb","on-tertiary":"#ffffff","tertiary-fixed-dim":"#c2c8c4","surface-tint":"#006c4a","surface-variant":"#d7e6dc","surface-dim":"#ceded4","primary-fixed-dim":"#80d8ad","on-primary":"#ffffff","on-error-container":"#93000a","on-tertiary-fixed":"#171d1b","surface-container":"#e2f2e8","error":"#ba1a1a","surface":"#eefdf3","on-tertiary-container":"#eaefeb","on-background":"#111e18","on-secondary-container":"#4d6a60","on-secondary-fixed":"#022019","surface-container-high":"#ddece2","on-secondary":"#ffffff","surface-container-lowest":"#ffffff","primary":"#006041","on-primary-fixed":"#002114","on-surface-variant":"#3f4943","primary-container":"#197a56","inverse-surface":"#26332d","on-primary-container":"#acffd4","on-primary-fixed-variant":"#005237","outline-variant":"#bec9c1","secondary":"#47645a","surface-bright":"#eefdf3","on-secondary-fixed-variant":"#304c43","tertiary-container":"#676d6a","background":"#eefdf3","secondary-fixed-dim":"#aecdc1","error-container":"#ffdad6","secondary-fixed":"#c9eadd","on-surface":"#111e18","on-tertiary-fixed-variant":"#424845","inverse-primary":"#80d8ad","surface-container-low":"#e8f7ed","on-error":"#ffffff","tertiary":"#4f5552","primary-fixed":"#9bf5c8","tertiary-fixed":"#dfe4e0","secondary-container":"#c9eadd","outline":"#6f7a72"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","margin":"2.5rem","space-sm":"0.5rem","space-md":"1rem","gutter-mobile":"1rem","space-lg":"1.5rem","space-xl":"2.5rem","margin-mobile":"1rem","gutter":"1.5rem"},"fontFamily":{"headline-lg-mobile":["Manrope"],"display-hero-mobile":["Manrope"],"headline-sm":["Manrope"],"headline-md":["Manrope"],"body-sm":["Inter"],"body-md":["Inter"],"headline-lg":["Manrope"],"label-md":["Inter"],"display-hero":["Manrope"],"label-sm":["Inter"],"body-lg":["Inter"]},"fontSize":{"headline-lg-mobile":["1.75rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"700"}],"display-hero-mobile":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.025em","fontWeight":"800"}],"headline-sm":["1.125rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["1.5rem",{"lineHeight":"1.35","letterSpacing":"-0.015em","fontWeight":"600"}],"body-sm":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"0.005em","fontWeight":"400"}],"body-md":["0.9375rem",{"lineHeight":"1.55","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["2.25rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"700"}],"label-md":["0.875rem",{"lineHeight":"1.25","letterSpacing":"0.01em","fontWeight":"500"}],"display-hero":["3.25rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"800"}],"label-sm":["0.75rem",{"lineHeight":"1.2","letterSpacing":"0.02em","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.005em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-[236px] bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="px-space-md pt-space-lg pb-space-md"><div class="flex items-baseline gap-0.5"><span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">IncomeNow</span><span class="font-label-sm text-label-sm text-primary font-semibold">.in</span></div><div class="mt-space-xs inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-[11px]">Design preview — sample content</div></div><nav class="px-space-sm mt-space-sm flex flex-col gap-1" data-active-classes="bg-secondary-container text-primary font-semibold"><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="explore-ideas" href="#"><span class="font-label-md text-label-md">Explore Ideas</span></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="saved-ideas" href="#"><span class="font-label-md text-label-md">Saved Ideas</span><span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant">2</span></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg bg-secondary-container text-primary font-semibold hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="my-projects" href="#"><span class="font-label-md text-label-md">My Projects</span></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="latest-updates" href="#"><span class="font-label-md text-label-md">Latest Updates</span></a></nav><div class="px-space-md pt-space-lg pb-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline text-[11px]">Support &amp; Account</span></div><nav class="px-space-sm flex flex-col gap-1" data-active-classes="bg-secondary-container text-primary font-semibold"><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="help-support" href="#"><span class="font-label-md text-label-md">Help &amp; Support</span></a><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="account" href="#"><span class="font-label-md text-label-md">Account</span></a></nav></div><div class="p-space-sm m-space-sm rounded-lg bg-surface-container-low shadow-[0_1px_4px_rgba(0,0,0,0.03)] flex items-center justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md font-semibold text-on-surface truncate">Alex Mercer</span><span class="font-label-sm text-label-sm text-on-surface-variant">Member</span></div></div><span class="material-symbols-outlined text-[18px] text-outline">unfold_more</span></div></aside><div class="pl-[236px]"><header class="fixed top-0 left-[236px] right-0 h-14 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><nav aria-label="Breadcrumb" class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm"><a class="hover:text-on-surface transition-colors" data-path="explore-ideas" href="#">Discovery Workspace</a><span class="text-outline text-xs">/</span><a class="hover:text-on-surface transition-colors" data-path="my-projects" href="#">My Projects</a><span class="text-outline text-xs">/</span><span class="text-on-surface font-semibold">Idea #001</span></nav><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-14 bg-surface min-h-screen px-space-lg pb-space-xl"><div class="flex flex-col w-full">
+<!-- Interactive Project State Banner (Hidden by default, shown when Paused) -->
+<div class="hidden mb-space-md p-space-md rounded-xl bg-surface-container-high text-on-surface flex items-center justify-between shadow-sm transition-all" id="paused-banner">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">pause_circle</span>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface">This project is paused.</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Checklist and note editing are temporarily disabled.</span>
+</div>
+</div>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-surface-bright shadow-sm transition-all flex items-center gap-1.5" id="resume-project-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+      Resume project
+    </button>
+</div>
+<!-- Top Utilities Bar -->
+<div class="flex items-center justify-between mb-space-md pb-space-xs">
+<a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:-translate-x-0.5">arrow_back</span>
+<span>Back to projects</span>
+</a>
+<div class="flex items-center gap-4">
+<span class="font-label-sm text-label-sm text-outline px-2.5 py-1 rounded-full bg-surface-container-low">
+        Design preview — sample project
+      </span>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>View original idea</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+</div>
+</div>
+<!-- Project Header Card -->
+<section class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm mb-space-lg">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-2 min-w-0">
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider px-2.5 py-0.5 rounded bg-surface-container font-semibold text-primary">IDEA #001</span>
+<span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant">Custom CRM</span>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm font-semibold" id="status-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span id="status-badge-text">Active</span>
+</div>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Pergola Quotation &amp; Follow-up CRM</h1>
+</div>
+<!-- Header Controls: Status cycle & Pause trigger -->
+<div class="flex items-center gap-3 self-start lg:self-center">
+<!-- Preview Mode State Switcher -->
+<div class="flex items-center p-1 rounded-lg bg-surface-container">
+<button class="px-3 py-1 rounded-md text-primary font-label-sm text-label-sm font-semibold bg-surface-container-lowest shadow-sm transition-all" id="state-btn-active" type="button">Active</button>
+<button class="px-3 py-1 rounded-md text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface transition-all" id="state-btn-pause" type="button">Paused</button>
+<button class="px-3 py-1 rounded-md text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface transition-all" id="state-btn-complete" type="button">Completed</button>
+</div>
+<button class="h-10 px-4 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md font-medium transition-all flex items-center gap-2" id="pause-toggle-btn" type="button">
+<span class="material-symbols-outlined text-[18px]" id="pause-icon">pause</span>
+<span id="pause-label">Pause project</span>
+</button>
+</div>
+</div>
+<!-- Overall Progress Segmented Bar -->
+<div class="mt-space-lg pt-space-md">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<div class="flex items-center gap-2 font-label-md text-label-md">
+<span class="font-semibold text-on-surface" id="overall-progress-text">2 of 6 stages completed</span>
+<span class="text-outline">·</span>
+<span class="font-body-sm text-body-sm text-outline" id="overall-percent-text">33% total completion</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Target implementation timeline: 14 business days</span>
+</div>
+<!-- 6-Segment Progress Meter -->
+<div class="grid grid-cols-6 gap-2 h-2.5 w-full">
+<div class="rounded-full bg-primary-container h-full transition-colors duration-300" id="segment-1"></div>
+<div class="rounded-full bg-primary-container h-full transition-colors duration-300" id="segment-2"></div>
+<div class="rounded-full bg-surface-container-highest h-full transition-colors duration-300" id="segment-3"></div>
+<div class="rounded-full bg-surface-container-highest h-full transition-colors duration-300" id="segment-4"></div>
+<div class="rounded-full bg-surface-container-highest h-full transition-colors duration-300" id="segment-5"></div>
+<div class="rounded-full bg-surface-container-highest h-full transition-colors duration-300" id="segment-6"></div>
+</div>
+</div>
+</section>
+<!-- Workspace Completion Banner (Restrained, elegant celebration) -->
+<div class="hidden mb-space-lg p-space-lg rounded-2xl bg-secondary-container text-on-secondary-container shadow-sm flex items-start gap-4 transition-all" id="all-complete-banner">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary text-[22px]">check_circle</span>
+</div>
+<div class="flex flex-col gap-1 min-w-0 flex-1">
+<h3 class="font-headline-sm text-headline-sm font-bold text-primary">Implementation checklist complete</h3>
+<p class="font-body-md text-body-md text-on-secondary-container">
+        All 6 phases have been outlined and executed. You can revisit your archived stage notes, re-test configuration endpoints, or reference the source templates at any time.
+      </p>
+</div>
+</div>
+<!-- Main 2-Column Responsive Workspace Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- MAIN COLUMN: Tasks, Scope & Stage Notes (68% width on 12 cols: 8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Stage Details & Checklist Card -->
+<section class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-lg">
+<!-- Stage Headline & Meta -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold" id="active-stage-label">Stage 3 of 6</span>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-medium" id="task-counter-pill">0 of 4 tasks completed</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight" id="active-stage-heading">Define the offer and project scope</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed" id="active-stage-desc">
+            Turn the example system into a clearly defined customer offer. Decide what you will deliver, what is excluded, and what ongoing responsibilities need to be agreed.
+          </p>
+</div>
+<!-- Task Checklist Container -->
+<div class="flex flex-col gap-3" id="tasks-container">
+<!-- Task 1 -->
+<div class="task-row group flex items-start gap-4 p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer select-none">
+<label class="relative flex items-center justify-center mt-0.5 cursor-pointer">
+<input class="task-checkbox peer sr-only" data-index="0" type="checkbox"/>
+<div class="w-5 h-5 rounded-md bg-surface-container-lowest peer-checked:bg-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 transition-opacity font-bold">check</span>
+</div>
+</label>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="task-title font-label-md text-label-md font-semibold text-on-surface group-hover:text-primary transition-colors">Write what is included in your first customer package.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">List the features, configuration work, and handover items you intend to provide.</p>
+</div>
+</div>
+<!-- Task 2 -->
+<div class="task-row group flex items-start gap-4 p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer select-none">
+<label class="relative flex items-center justify-center mt-0.5 cursor-pointer">
+<input class="task-checkbox peer sr-only" data-index="1" type="checkbox"/>
+<div class="w-5 h-5 rounded-md bg-surface-container-lowest peer-checked:bg-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 transition-opacity font-bold">check</span>
+</div>
+</label>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="task-title font-label-md text-label-md font-semibold text-on-surface group-hover:text-primary transition-colors">Define the limits of customisation and revisions.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Record what is included and what would require a separately agreed scope.</p>
+</div>
+</div>
+<!-- Task 3 -->
+<div class="task-row group flex items-start gap-4 p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer select-none">
+<label class="relative flex items-center justify-center mt-0.5 cursor-pointer">
+<input class="task-checkbox peer sr-only" data-index="2" type="checkbox"/>
+<div class="w-5 h-5 rounded-md bg-surface-container-lowest peer-checked:bg-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 transition-opacity font-bold">check</span>
+</div>
+</label>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="task-title font-label-md text-label-md font-semibold text-on-surface group-hover:text-primary transition-colors">Identify hosting, maintenance, and support responsibilities.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Clarify which costs and ongoing tasks belong to you and which belong to the customer.</p>
+</div>
+</div>
+<!-- Task 4 -->
+<div class="task-row group flex items-start gap-4 p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer select-none">
+<label class="relative flex items-center justify-center mt-0.5 cursor-pointer">
+<input class="task-checkbox peer sr-only" data-index="3" type="checkbox"/>
+<div class="w-5 h-5 rounded-md bg-surface-container-lowest peer-checked:bg-primary flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 transition-opacity font-bold">check</span>
+</div>
+</label>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="task-title font-label-md text-label-md font-semibold text-on-surface group-hover:text-primary transition-colors">Draft a pricing approach based on scope and delivery costs.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Separate confirmed costs from assumptions. Do not treat an example price as guaranteed market demand.</p>
+</div>
+</div>
+</div>
+<!-- Stage Notes Area -->
+<div class="pt-space-md flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Notes for this stage</h3>
+<span class="font-label-sm text-label-sm text-outline bg-surface-container px-2 py-0.5 rounded">Saved in this preview</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline" id="char-counter">184 characters</span>
+</div>
+<div class="relative">
+<textarea class="w-full p-3.5 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md placeholder-outline focus:outline-none focus:bg-surface-container-lowest focus:shadow-md transition-all resize-y" id="stage-notes-input" placeholder="Record decisions, research findings, questions, or changes you need to make." rows="5">Initial package will include 3 standard Pergola CAD calculator templates, automatic email dispatch via Postmark, and a 1-hour screen share staff training call. Maintenance retainer capped at 2 hours/mo.</textarea>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">info</span>
+              Preview only — account storage not connected.
+            </span>
+<button class="font-label-sm text-label-sm text-outline hover:text-on-surface transition-colors underline" id="clear-notes-btn" type="button">Reset sample notes</button>
+</div>
+</div>
+<!-- Stage Navigation Buttons (Bottom of Left Card) -->
+<div class="pt-space-md flex items-center justify-between">
+<button class="h-10 px-4 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md font-medium transition-all flex items-center gap-1.5" id="nav-prev-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Previous stage</span>
+</button>
+<button class="h-10 px-4 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md font-semibold transition-all flex items-center gap-1.5 shadow-sm" id="nav-next-btn" type="button">
+<span>Next stage</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Pragmatic Blueprint Tips Callout -->
+<section class="p-space-md rounded-xl bg-surface-container flex items-start gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary mt-0.5 text-[20px]">architecture</span>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md font-bold text-on-surface">Scope containment discipline</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Pergola builders often ask for direct ERP syncing early on. Resist adding third-party API dependencies during your pilot deployment until the base quote calculator has processed at least 15 live leads.
+          </p>
+</div>
+</section>
+</div>
+<!-- SIDE COLUMN: Navigator & Relevant Resources (32% width on 12 cols: 4 cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Card 1: Implementation Stage Navigator -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Implementation Stages</h3>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container font-semibold text-primary">6 Phases</span>
+</div>
+<div class="flex flex-col gap-1.5" id="stage-nav-list">
+<!-- Stage 1 -->
+<div class="stage-nav-item flex items-center justify-between p-2.5 rounded-xl cursor-pointer hover:bg-surface-container-low transition-all" data-stage="1">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-medium truncate">1. Validate the customer problem</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold shrink-0">Done</span>
+</div>
+<!-- Stage 2 -->
+<div class="stage-nav-item flex items-center justify-between p-2.5 rounded-xl cursor-pointer hover:bg-surface-container-low transition-all" data-stage="2">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-medium truncate">2. Explore and adapt the demo</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold shrink-0">Done</span>
+</div>
+<!-- Stage 3 (Active Default) -->
+<div class="stage-nav-item flex items-center justify-between p-2.5 rounded-xl cursor-pointer bg-surface-container font-semibold transition-all shadow-sm" data-stage="3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold truncate">3. Define the offer and scope</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary text-on-primary text-[11px] uppercase tracking-wider font-semibold">Focus</span>
+</div>
+<!-- Stage 4 -->
+<div class="stage-nav-item flex items-center justify-between p-2.5 rounded-xl cursor-pointer hover:bg-surface-container-low transition-all" data-stage="4">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-6 h-6 rounded-full bg-surface-container text-outline flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[14px]">radio_button_unchecked</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant truncate">4. Research potential customers</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline shrink-0">Pending</span>
+</div>
+<!-- Stage 5 -->
+<div class="stage-nav-item flex items-center justify-between p-2.5 rounded-xl cursor-pointer hover:bg-surface-container-low transition-all" data-stage="5">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-6 h-6 rounded-full bg-surface-container text-outline flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[14px]">radio_button_unchecked</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant truncate">5. Demo solution &amp; agree pilot</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline shrink-0">Pending</span>
+</div>
+<!-- Stage 6 -->
+<div class="stage-nav-item flex items-center justify-between p-2.5 rounded-xl cursor-pointer hover:bg-surface-container-low transition-all" data-stage="6">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-6 h-6 rounded-full bg-surface-container text-outline flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[14px]">radio_button_unchecked</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant truncate">6. Test, launch, and support</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline shrink-0">Pending</span>
+</div>
+</div>
+<div class="pt-space-xs">
+<p class="font-body-sm text-body-sm text-outline">Click any stage above to inspect prompts, check completed items, or refine local stage documentation.</p>
+</div>
+</div>
+<!-- Card 2: Relevant Resources (Tailored for Stage 3) -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Resources for this stage</h3>
+<span class="material-symbols-outlined text-outline text-[18px]">folder_open</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Reference guides from the Idea #001 blueprint kit.</p>
+</div>
+<div class="flex flex-col gap-2.5" id="stage-resources-list">
+<!-- Resource 1 -->
+<div class="p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">script</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface group-hover:text-primary transition-colors truncate">Demonstration and Discovery Guide</span>
+<span class="font-label-sm text-label-sm text-outline truncate">Sales &amp; Discovery Script · Sample asset</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-[18px] transition-colors">download</span>
+</div>
+<!-- Resource 2 -->
+<div class="p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface group-hover:text-primary transition-colors truncate">Setup and Customisation Guide</span>
+<span class="font-label-sm text-label-sm text-outline truncate">Documentation · Sample asset</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-[18px] transition-colors">download</span>
+</div>
+</div>
+<div class="pt-space-xs">
+<a class="inline-flex items-center gap-1.5 text-primary hover:text-primary-container font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>View all idea resources</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Quick Operational Metric Summary -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-bold">Estimated Delivery Cost</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">£320 – £480</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Includes starter domain verification, form builder webhooks, and initial database deployment provision.</p>
+</div>
+</aside>
+</div>
+</div>
+<!-- Client-side Interactive Behaviors -->
+<script>
+  (function() {
+    // Stage Database representation for dynamic switching
+    const stagesData = {
+      1: {
+        number: 1,
+        title: "Validate the customer problem",
+        description: "Verify that local outdoor construction and pergola specialists actively lose prospective buyers during quotes due to slow turnaround or unstructured email PDFs.",
+        tasks: [
+          { title: "Review 5 local pergola installers' inquiry response times.", helper: "Submit a mock dimension query and track response cadence." },
+          { title: "Map the common quotation friction points.", helper: "Document why customers abandon standard paper-based outdoor living quotes." },
+          { title: "Validate CRM demand via 3 informational interviews.", helper: "Ask if pricing uncertainty or follow-up neglect causes drop-off." }
+        ],
+        notes: "Confirmed that 2 out of 3 regional installers currently use manual pen-and-paper or Excel sheets, causing 48-72h delays on customer estimates."
+      },
+      2: {
+        number: 2,
+        title: "Explore and adapt the demonstration",
+        description: "Walk through the pre-configured pergola quote generator. Adjust input parameters (louvers, LED lighting, automated heating) to match standard British patio dimensions.",
+        tasks: [
+          { title: "Fork the reference quotation prototype repository.", helper: "Verify local server boot and webhook testing routes." },
+          { title: "Adjust default dimensions and material cost matrices.", helper: "Enter realistic per-meter pricing for bioclimatic aluminium structures." },
+          { title: "Test automated PDF and SMS quotation generation.", helper: "Ensure lead data correctly appends to the lightweight SQLite/Sheets database." }
+        ],
+        notes: "Adjusted standard height variables from 2.2m to 2.4m default. Added motorized screen add-on variable."
+      },
+      3: {
+        number: 3,
+        title: "Define the offer and project scope",
+        description: "Turn the example system into a clearly defined customer offer. Decide what you will deliver, what is excluded, and what ongoing responsibilities need to be agreed.",
+        tasks: [
+          { title: "Write what is included in your first customer package.", helper: "List the features, configuration work, and handover items you intend to provide." },
+          { title: "Define the limits of customisation and revisions.", helper: "Record what is included and what would require a separately agreed scope." },
+          { title: "Identify hosting, maintenance, and support responsibilities.", helper: "Clarify which costs and ongoing tasks belong to you and which belong to the customer." },
+          { title: "Draft a pricing approach based on scope and delivery costs.", helper: "Separate confirmed costs from assumptions. Do not treat an example price as guaranteed market demand." }
+        ],
+        notes: "Initial package will include 3 standard Pergola CAD calculator templates, automatic email dispatch via Postmark, and a 1-hour screen share staff training call. Maintenance retainer capped at 2 hours/mo."
+      },
+      4: {
+        number: 4,
+        title: "Research suitable potential customers",
+        description: "Compile an initial target registry of high-end landscape gardeners, verandas installers, and bespoke shading contractors within 40 miles.",
+        tasks: [
+          { title: "Assemble a list of 20 regional timber/aluminium pergola suppliers.", helper: "Filter for operators running active Google Ads or Instagram promotions." },
+          { title: "Identify the primary decision maker's direct contact.", helper: "Target the founder, lead surveyor, or head of sales." },
+          { title: "Audit their current online estimation experience.", helper: "Note if they have an instant price estimator or just a generic 'Contact Us' form." }
+        ],
+        notes: ""
+      },
+      5: {
+        number: 5,
+        title: "Demonstrate the solution and agree a pilot",
+        description: "Conduct 15-minute screen-recorded or live walkthroughs demonstrating how the instant quote calculator increases customer deposit conversion.",
+        tasks: [
+          { title: "Record a personalized 3-minute video using their company branding.", helper: "Mock up their logo and typical product palette on the demonstration canvas." },
+          { title: "Reach out via warm email and LinkedIn message.", helper: "Propose an unpaid 14-day customer pilot to test lead conversion." },
+          { title: "Review pilot feedback and secure formal sign-off.", helper: "Establish baseline response rate metrics before handing over admin credentials." }
+        ],
+        notes: ""
+      },
+      6: {
+        number: 6,
+        title: "Test, launch, and support the implementation",
+        description: "Connect production domains, hook up email SMTP services, conduct end-to-end user checkout tests, and monitor initial pipeline submissions.",
+        tasks: [
+          { title: "Configure client DNS and SSL certificates.", helper: "Embed the quote widget into their existing Squarespace/WordPress domain." },
+          { title: "Conduct 5 live test calculations with edge-case measurements.", helper: "Verify non-standard angles and extreme weather wind resistance warnings." },
+          { title: "Complete handover walkthrough with customer staff.", helper: "Supply documentation and record the 30-minute training session." }
+        ],
+        notes: ""
+      }
+    };
+
+    let currentStage = 3;
+    let projectState = 'active'; // 'active' | 'paused' | 'completed'
+
+    // DOM Elements
+    const statusBadge = document.getElementById('status-badge');
+    const statusBadgeText = document.getElementById('status-badge-text');
+    const pausedBanner = document.getElementById('paused-banner');
+    const resumeBtn = document.getElementById('resume-project-btn');
+    const pauseToggleBtn = document.getElementById('pause-toggle-btn');
+    const pauseLabel = document.getElementById('pause-label');
+    const pauseIcon = document.getElementById('pause-icon');
+    
+    const stateBtnActive = document.getElementById('state-btn-active');
+    const stateBtnPause = document.getElementById('state-btn-pause');
+    const stateBtnComplete = document.getElementById('state-btn-complete');
+    
+    const allCompleteBanner = document.getElementById('all-complete-banner');
+
+    const stageLabel = document.getElementById('active-stage-label');
+    const stageHeading = document.getElementById('active-stage-heading');
+    const stageDesc = document.getElementById('active-stage-desc');
+    const taskCounterPill = document.getElementById('task-counter-pill');
+    const tasksContainer = document.getElementById('tasks-container');
+    const notesTextarea = document.getElementById('stage-notes-input');
+    const charCounter = document.getElementById('char-counter');
+    const clearNotesBtn = document.getElementById('clear-notes-btn');
+
+    const navPrevBtn = document.getElementById('nav-prev-btn');
+    const navNextBtn = document.getElementById('nav-next-btn');
+    const stageNavList = document.getElementById('stage-nav-list');
+
+    // Update Progress Header Segments
+    function updateProgressUI() {
+      // Completed stages are 1 and 2 by default, plus 3 if all stage 3 tasks done
+      let completedStagesCount = currentStage > 3 ? 3 : 2;
+      if (projectState === 'completed') completedStagesCount = 6;
+
+      document.getElementById('overall-progress-text').textContent = completedStagesCount + ' of 6 stages completed';
+      document.getElementById('overall-percent-text').textContent = Math.round((completedStagesCount / 6) * 100) + '% total completion';
+
+      for (let i = 1; i <= 6; i++) {
+        const seg = document.getElementById('segment-' + i);
+        if (seg) {
+          if (i <= completedStagesCount) {
+            seg.className = 'rounded-full bg-primary-container h-full transition-colors duration-300';
+          } else {
+            seg.className = 'rounded-full bg-surface-container-highest h-full transition-colors duration-300';
+          }
+        }
+      }
+    }
+
+    // Render a given stage's tasks & content
+    function loadStage(stageNum) {
+      currentStage = stageNum;
+      const data = stagesData[stageNum];
+      if (!data) return;
+
+      stageLabel.textContent = `Stage ${data.number} of 6`;
+      stageHeading.textContent = data.title;
+      stageDesc.textContent = data.description;
+      notesTextarea.value = data.notes;
+      charCounter.textContent = `${data.notes.length} characters`;
+
+      // Render tasks
+      tasksContainer.innerHTML = '';
+      data.tasks.forEach((task, idx) => {
+        const isInitiallyChecked = (stageNum < 3); // Stages 1 & 2 are completed in default state
+        const taskRow = document.createElement('div');
+        taskRow.className = 'task-row group flex items-start gap-4 p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer select-none';
+        taskRow.innerHTML = `
+          <label class="relative flex items-center justify-center mt-0.5 cursor-pointer">
+            <input type="checkbox" class="task-checkbox peer sr-only" data-index="${idx}" ${isInitiallyChecked ? 'checked' : ''} ${projectState === 'paused' ? 'disabled' : ''} />
+            <div class="w-5 h-5 rounded-md bg-surface-container-lowest peer-checked:bg-primary flex items-center justify-center transition-colors shadow-sm">
+              <span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 peer-checked:opacity-100 transition-opacity font-bold">check</span>
+            </div>
+          </label>
+          <div class="flex flex-col min-w-0 flex-1">
+            <span class="task-title font-label-md text-label-md font-semibold text-on-surface group-hover:text-primary transition-colors ${isInitiallyChecked ? 'line-through text-on-surface-variant' : ''}">${task.title}</span>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">${task.helper}</p>
+          </div>
+        `;
+
+        // Checkbox click toggle
+        const checkbox = taskRow.querySelector('.task-checkbox');
+        const titleSpan = taskRow.querySelector('.task-title');
+
+        taskRow.addEventListener('click', (e) => {
+          if (projectState === 'paused') return;
+          if (e.target !== checkbox) {
+            checkbox.checked = !checkbox.checked;
+          }
+          if (checkbox.checked) {
+            titleSpan.classList.add('line-through', 'text-on-surface-variant');
+          } else {
+            titleSpan.classList.remove('line-through', 'text-on-surface-variant');
+          }
+          updateTaskCount();
+        });
+
+        tasksContainer.appendChild(taskRow);
+      });
+
+      updateTaskCount();
+      updateSideNavActive(stageNum);
+
+      // Previous / Next button visibility
+      navPrevBtn.style.visibility = stageNum === 1 ? 'hidden' : 'visible';
+      navNextBtn.textContent = stageNum === 6 ? 'View All Ideas →' : 'Next stage →';
+    }
+
+    function updateTaskCount() {
+      const allCheckboxes = tasksContainer.querySelectorAll('.task-checkbox');
+      const checked = tasksContainer.querySelectorAll('.task-checkbox:checked');
+      taskCounterPill.textContent = `${checked.length} of ${allCheckboxes.length} tasks completed`;
+    }
+
+    function updateSideNavActive(activeNum) {
+      const items = stageNavList.querySelectorAll('.stage-nav-item');
+      items.forEach(item => {
+        const stageId = parseInt(item.dataset.stage, 10);
+        if (stageId === activeNum) {
+          item.className = 'stage-nav-item flex items-center justify-between p-2.5 rounded-xl cursor-pointer bg-surface-container font-semibold transition-all shadow-sm';
+          const title = item.querySelector('.truncate');
+          if (title) title.className = 'font-label-md text-label-md text-primary font-bold truncate';
+        } else {
+          item.className = 'stage-nav-item flex items-center justify-between p-2.5 rounded-xl cursor-pointer hover:bg-surface-container-low transition-all';
+          const title = item.querySelector('.truncate');
+          if (title) title.className = 'font-label-md text-label-md text-on-surface-variant truncate';
+        }
+      });
+    }
+
+    // Set Project State (active, paused, completed)
+    function setProjectState(newState) {
+      projectState = newState;
+      
+      // Update Button styles
+      [stateBtnActive, stateBtnPause, stateBtnComplete].forEach(btn => {
+        btn.className = 'px-3 py-1 rounded-md text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface transition-all';
+      });
+
+      if (newState === 'active') {
+        stateBtnActive.className = 'px-3 py-1 rounded-md text-primary font-label-sm text-label-sm font-semibold bg-surface-container-lowest shadow-sm transition-all';
+        statusBadge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm font-semibold';
+        statusBadgeText.textContent = 'Active';
+        pausedBanner.classList.add('hidden');
+        allCompleteBanner.classList.add('hidden');
+        notesTextarea.disabled = false;
+        pauseLabel.textContent = 'Pause project';
+        pauseIcon.textContent = 'pause';
+      } else if (newState === 'paused') {
+        stateBtnPause.className = 'px-3 py-1 rounded-md text-outline font-label-sm text-label-sm font-semibold bg-surface-container-lowest shadow-sm transition-all';
+        statusBadge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-medium';
+        statusBadgeText.textContent = 'Paused';
+        pausedBanner.classList.remove('hidden');
+        allCompleteBanner.classList.add('hidden');
+        notesTextarea.disabled = true;
+        pauseLabel.textContent = 'Resume project';
+        pauseIcon.textContent = 'play_arrow';
+      } else if (newState === 'completed') {
+        stateBtnComplete.className = 'px-3 py-1 rounded-md text-primary font-label-sm text-label-sm font-semibold bg-surface-container-lowest shadow-sm transition-all';
+        statusBadge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm font-semibold';
+        statusBadgeText.textContent = 'Completed';
+        pausedBanner.classList.add('hidden');
+        allCompleteBanner.classList.remove('hidden');
+        notesTextarea.disabled = false;
+        pauseLabel.textContent = 'Pause project';
+        pauseIcon.textContent = 'pause';
+      }
+
+      // Refresh task disabled states
+      const checkboxes = document.querySelectorAll('.task-checkbox');
+      checkboxes.forEach(cb => {
+        cb.disabled = (newState === 'paused');
+      });
+
+      updateProgressUI();
+    }
+
+    // Event Listeners
+    stateBtnActive.addEventListener('click', () => setProjectState('active'));
+    stateBtnPause.addEventListener('click', () => setProjectState('paused'));
+    stateBtnComplete.addEventListener('click', () => setProjectState('completed'));
+
+    pauseToggleBtn.addEventListener('click', () => {
+      setProjectState(projectState === 'paused' ? 'active' : 'paused');
+    });
+
+    resumeBtn.addEventListener('click', () => setProjectState('active'));
+
+    // Side Stage Nav clicks
+    stageNavList.addEventListener('click', (e) => {
+      const item = e.target.closest('.stage-nav-item');
+      if (item && item.dataset.stage) {
+        loadStage(parseInt(item.dataset.stage, 10));
+      }
+    });
+
+    // Prev / Next Stage Buttons
+    navPrevBtn.addEventListener('click', () => {
+      if (currentStage > 1) loadStage(currentStage - 1);
+    });
+
+    navNextBtn.addEventListener('click', () => {
+      if (currentStage < 6) {
+        loadStage(currentStage + 1);
+      } else {
+        setProjectState('completed');
+      }
+    });
+
+    // Notes typing
+    notesTextarea.addEventListener('input', () => {
+      charCounter.textContent = `${notesTextarea.value.length} characters`;
+      stagesData[currentStage].notes = notesTextarea.value;
+    });
+
+    clearNotesBtn.addEventListener('click', () => {
+      notesTextarea.value = '';
+      charCounter.textContent = '0 characters';
+      stagesData[currentStage].notes = '';
+    });
+
+    // Initialize Stage 3
+    loadStage(3);
+    updateProgressUI();
+  })();
+</script></main></div></body></html>

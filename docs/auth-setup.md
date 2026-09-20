@@ -1,0 +1,112 @@
+# Authentication and membership setup
+
+Phase 2A uses Supabase Auth for identity and public Postgres tables with RLS for profile and membership state. Account creation never creates an entitlement.
+
+## Local setup
+
+1. Start Docker Desktop.
+2. Run `npm run supabase:start`.
+3. Copy `.env.example` to `.env.local`.
+4. Copy the local API URL and publishable key from the Supabase CLI output into `.env.local`. Never add a service-role or secret key to a `NEXT_PUBLIC_` variable, and never paste `.env.example` over an existing environment file.
+5. Run `npm run supabase:reset` to apply the migration and `npm run test:db` to execute the transactional pgTAP RLS suite.
+6. Run `npm run dev` and use `http://localhost:3000/register`.
+
+The local configuration requires email confirmation, a 12-character minimum for new passwords, and custom confirmation/recovery templates in `supabase/templates/`. Supabase CLI 2.117.0 reports the development email viewer as **Mailpit** at `http://127.0.0.1:54324`. This captures local messages only; it does not prove production inbox delivery. The local email limit is 20 messages per hour so the complete confirmation and recovery suite can run while preserving rate limiting.
+
+The CLI warns that local services bind to `0.0.0.0` and use shared development credentials. Keep the stack on a trusted development machine/network and never expose it as a production service.
+
+## Callback and email URLs
+
+- Application origin: `APP_ORIGIN`, with no path (local example: `http://localhost:3000`).
+- Email confirmation handler: `${APP_ORIGIN}/auth/confirm`.
+- Google application callback: `${APP_ORIGIN}/auth/callback`.
+- Recovery verification handler: `${APP_ORIGIN}/auth/recovery`; successful verification continues to `/reset-password`.
+- Google OAuth provider callback registered with Google: `https://<project-ref>.supabase.co/auth/v1/callback` for a hosted Supabase project. Use the local callback reported by the CLI when testing a local provider configuration.
+
+Allowed redirect URLs must be exact and environment-specific. Do not add wildcard production redirects. The app accepts only `/account/access`, `/app/explore`, `/app/saved`, `/app/projects`, validated UUID project routes, and `/app/ideas/*` as post-auth destinations.
+
+For hosted environments, configure the Google client ID/secret and SMTP/email templates in Supabase project settings. Those are operator changes and are not performed by this repository or by Phase 2A without explicit approval.
+
+## Local Google OAuth setup (currently blocked)
+
+No approved development Google client ID or secret was available during Phase 2A.1, so Google was not enabled or tested. An authorized owner can prepare it as follows:
+
+1. In Google Auth Platform, configure `http://localhost:3000` as an authorized JavaScript origin.
+2. Configure `http://127.0.0.1:54321/auth/v1/callback` as the authorized Google redirect URI. This is Google → local Supabase Auth, not the application's callback.
+3. Put the credentials in a root `.env` file used by the Supabase CLI, not in the app's `.env.local`:
+
+   ```dotenv
+   SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID=replace-with-development-client-id
+   SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_SECRET=replace-with-development-client-secret
+   ```
+
+4. Add the following provider block to `supabase/config.toml`, then restart the local Supabase stack:
+
+   ```toml
+   [auth.external.google]
+   enabled = true
+   client_id = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID)"
+   secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_SECRET)"
+   skip_nonce_check = false
+   ```
+
+5. The application then sends Supabase Auth back to `http://localhost:3000/auth/callback`; only the application's allowlisted final destinations are accepted.
+
+Do not commit the root `.env` file or create/alter a Google Cloud application without owner approval.
+
+## Entitlement fixture strategy
+
+The migration intentionally creates no active memberships. For local testing, first register and verify a user, then insert a fixture only through local Studio or the local SQL editor:
+
+```sql
+insert into public.membership_entitlements (user_id, enabled, source, source_reference)
+select id, true, 'complimentary', 'local-phase-2a'
+from auth.users
+where email = 'replace-with-local-test-email@example.com'
+on conflict (user_id) do update
+set enabled = excluded.enabled,
+    source = excluded.source,
+    source_reference = excluded.source_reference,
+    starts_at = null,
+    revoked_at = null,
+    expires_at = null;
+```
+
+Use only disposable local users. Do not put this statement in `seed.sql`, because automatic seeding could blur the boundary between account creation and membership access. The pgTAP test creates isolated users and entitlements inside a transaction and rolls everything back.
+
+## Local integration verifier
+
+After creating and confirming two disposable local users, the direct Auth/RLS/API verifier can be run with temporary process-only values:
+
+```powershell
+$env:PHASE2A_EMAIL_A = "first-disposable-user@example.test"
+$env:PHASE2A_EMAIL_B = "second-disposable-user@example.test"
+$env:PHASE2A_PASSWORD = "their-shared-temporary-password"
+$env:PHASE2A_EXPECTED_ACCESS = "inactive" # active, inactive, or unavailable
+npm run test:integration:local
+```
+
+The verifier checks invalid login, both user sessions, `getUser`, real Auth refresh, RLS isolation, forbidden ownership and entitlement writes, anonymous denial, `/api/member/access`, protected-content boundaries, and post-sign-out denial. Supply fixtures only in the disposable local database and remove the environment variables afterward.
+
+## Security model
+
+- The browser receives only the Supabase publishable key.
+- Server Components, actions, route handlers, and the root proxy use cookie-aware Supabase SSR clients.
+- Authentication is verified with `getUser`/`getClaims`; authorization never trusts user metadata.
+- `profiles` can be read by their owner; only `display_name` is user-updatable.
+- `membership_entitlements` can be read only by their owner and cannot be created or changed by authenticated or anonymous users.
+- Protected content calls the membership guard at its server data boundary and denies access when the entitlement lookup is unavailable.
+- The access API is dynamic and returns `Cache-Control: private, no-store`.
+- Workspace rows are owned by `auth.uid()`, visible only to active members, and hidden rather than deleted when membership becomes inactive.
+- Project creation and pause/task/note transitions use narrow authenticated functions; structural plan tables stay in the private schema.
+- Stage notes are plain text, limited to 4,000 characters, and use optimistic revision checks to prevent silent overwrites.
+
+## Phase 2B local verifier
+
+Create two disposable confirmed local accounts with active test entitlements, then provide their process-only values as `PHASE2B_EMAIL_A`, `PHASE2B_EMAIL_B`, and `PHASE2B_PASSWORD`. Also expose the local CLI values as `API_URL` and `ANON_KEY`, set `APP_ORIGIN=http://localhost:3000`, and run `npm run test:integration:phase2b`.
+
+The verifier checks account isolation, bookmark persistence, idempotent atomic project creation, pinned plan versions, task progress, stale-note rejection, pause locks, direct-write denial, protected route rendering, and a fresh-session read. `scripts/manage-phase-2b-test-users.mjs` is local-only support for explicitly creating or deleting the two named disposable accounts; it requires the local `SERVICE_ROLE_KEY` in process memory and never writes credentials to disk.
+
+## Hosted rollout checklist
+
+No hosted project has been mutated by this implementation. Before rollout, an authorized operator must review the migration, link the intended Supabase project, apply the migration, configure exact site/redirect URLs, configure SMTP and email templates, configure Google OAuth, and run the hosted smoke tests with dedicated test accounts.
