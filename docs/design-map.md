@@ -18,8 +18,8 @@ The design-system source is `editorial_venture_discovery/DESIGN.md`. It defines 
 | Help & Support | `incomenow_help_support_desktop`, `incomenow_help_support_mobile` | Desktop/mobile | `/app/support` | Deferred |
 | Account settings | `incomenow_account_settings_desktop`, `incomenow_account_settings_mobile` | Desktop/mobile | `/app/account` | Deferred |
 | Membership & billing | `incomenow_membership_billing_desktop`, `incomenow_membership_billing_mobile` | Desktop/mobile | `/app/account/membership` | Deferred |
-| Public homepage | `incomenow_public_homepage_desktop`, `incomenow_public_homepage_mobile` | Desktop/mobile | `/` | Deferred |
-| Membership page | `incomenow_membership_desktop`, `incomenow_membership_mobile` | Desktop/mobile | `/membership` | Deferred |
+| Public homepage | `incomenow_public_homepage_desktop`, `incomenow_public_homepage_mobile` | Desktop/mobile | `/` | Implemented in Phase 3A with public-safe example previews and account-aware actions |
+| Membership page | `incomenow_membership_desktop`, `incomenow_membership_mobile` | Desktop/mobile | `/membership` | Implemented in Phase 3A with one unpriced monthly offer and no checkout |
 | Log in | `incomenow_log_in_desktop_2`, `incomenow_log_in_mobile_2` | Variant 2 selected for its split editorial/form composition and clearer service-backed states | `/login` | Implemented in Phase 2A |
 | Create account | `incomenow_create_account_desktop_2`, `incomenow_create_account_mobile_2` | Variant 2 selected to match login composition and membership-separation copy | `/register` | Implemented in Phase 2A |
 | Verify email | `incomenow_verify_email_desktop`, `incomenow_verify_email_mobile` | Desktop/mobile | `/verify-email` | Implemented in Phase 2A |
@@ -36,3 +36,5 @@ The design-system source is `editorial_venture_discovery/DESIGN.md`. It defines 
 - Login and create-account variant 2 references were selected for Phase 2A; variant 1 exports remain preserved as alternates.
 - No standalone icons, photographs, font files, or downloadable resource assets were exported. UI schematics are rebuilt semantically; whole-page screenshots are never embedded.
 - Several screenshot PNGs are unusually narrow while retaining 1600px height. Their paired HTML uses conventional responsive breakpoints, so screenshot proportions are treated as scaled captures rather than literal CSS viewport widths.
+- Phase 3A keeps its public header/footer separate from the authentication shell and persistent member navigation. At 767px and below, the public header uses its approved disclosure menu; it never renders member-only navigation or a fabricated avatar.
+- The reusable public quick preview becomes a bottom sheet on mobile. It is driven only by the explicit public projection and does not link to preview-mode routes.

@@ -2,7 +2,7 @@
 
 ## Phase and stack
 
-Phase 2B is code-complete and locally integration-verified in the workspace, building on the Phase 2A.1 authentication/access baseline. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
+Phase 3A is code-complete and locally verified in the workspace, building on the Phase 2B account-synced member workspace and the Phase 2A.1 authentication/access baseline. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
 
 This status deliberately distinguishes local verification from launch verification. Docker's Linux engine and the `IncomeNow` local Supabase stack were available during Phase 2A.1, but Google OAuth, a hosted Supabase project, external SMTP delivery, and production configuration were not exercised. No hosted Supabase project was contacted or changed.
 
@@ -42,7 +42,24 @@ This status deliberately distinguishes local verification from launch verificati
 - `/app/projects/[projectId]` provides versioned stage navigation, completed-stage overall progress, required-task progress within each stage, a clear distinction between selected stage and derived current focus, pause/resume, one revisioned plain-text note per stage, unsaved-navigation decisions, and repository-backed stage resources.
 - Inactive membership hides account workspace rows and blocks writes without deleting data; restored membership reveals the same rows.
 
+## Phase 3A public entry
+
+- `/` is a public homepage with the approved hero, four-step explanation, three stable example ideas, public quick previews, capability explanation, membership introduction, FAQ, and real account-entry links.
+- `/membership` presents one monthly IncomeNow membership with `Price to be confirmed`, explicit checkout unavailability, implemented inclusions, separate member responsibilities, a four-step future access journey, licence caution, and FAQ.
+- A shared public header/footer remains distinct from authentication and protected-member shells. The mobile header uses a disclosure menu instead of member navigation.
+- The public example client receives an explicit allowlisted `PublicIdea` projection for ideas 001, 003, and 004. Full idea objects, plan stages/tasks, resource IDs/locations, bookmarks, and notes remain outside the client payload.
+- Public account actions reuse the server membership context and distinguish signed-out, active, inactive, and unavailable states. Both routes are dynamic and the optional lookup fails to a neutral unavailable state.
+- No migration, checkout integration, billing SDK, hosted setting, or production data change was introduced.
+
 ## Verification completed
+
+- Phase 3A application checks: TypeScript and ESLint passed; Vitest/Testing Library passed 42 tests across 13 files.
+- Phase 3A database regression: 72 pgTAP assertions passed across the existing Phase 2A and Phase 2B suites.
+- Phase 3A production build: passed on Next.js 16.3.5; `/` and `/membership` compile as dynamic server-rendered routes.
+- Phase 3A route probes: `/`, `/membership`, `/login`, `/register`, and `/account/access` returned 200; signed-out protected routes retained 307 redirects to the whitelisted login destination.
+- Public HTML probes found no preview-route links, protected plan/resource identifiers, or invented free/trial/checkout claims.
+- Project-plan regression: the repository and migration definitions remain synchronized at 17 stages and 37 tasks.
+- Phase 3A browser verification at 1440, 768, 390, and 320 widths covered both public routes, mobile menu, FAQ, quick preview selection, Escape close, and focus restoration. All eight route/width combinations returned 200 with no horizontal overflow, framework overlay, console error, or page error.
 
 - TypeScript: passed.
 - ESLint: passed.
@@ -68,15 +85,17 @@ This status deliberately distinguishes local verification from launch verificati
 
 ## Remaining launch blockers
 
-The local database, email-account, and access-control foundation is ready for Phase 2B workspace development, but the platform is not production-ready. The following remain unexecuted:
+The public entry, local database, email-account, and access-controlled member workspace are implemented, but the platform is not production-ready. The following remain unexecuted:
 
 - Google provider consent, cancellation, callback failure, and returning-user behavior; no approved development OAuth credentials were present.
 - Hosted Supabase migration/configuration and hosted smoke tests.
 - External SMTP/inbox delivery and production email-template configuration.
 - Production security, domain, and operational readiness review.
+- Approved membership price, currency, tax/refund/cancellation terms, payment provider, checkout, and subscription webhooks.
+- Final resource licence, real downloadable kits, production demos, and an operational publishing/admin workflow.
 
 Exact local Google setup values and credential locations are documented in `docs/auth-setup.md`. Hosted rollout remains a separately approved operator action.
 
 ## Visual evidence
 
-The selected Stitch variant-2 authentication references are recorded in `docs/design-map.md`. Validated final login captures are in `.impeccable/review/desktop.png` and `.impeccable/review/mobile.png`; forgot/reset screens inherit the same system because no dedicated exports were supplied. The durable authentication, account-synced Saved Ideas, project-card, stage-navigation, checklist/note/resource, and responsive workspace patterns are synchronized in `DESIGN.md` and `.impeccable/design.json`.
+The selected Stitch references are recorded in `docs/design-map.md`. Phase 3A captures are in `artifacts/screenshots/phase-3a/` for both public routes at 1440, 768, 390, and 320 widths; the directory is intentionally ignored because it is local review output. Authentication captures remain in `.impeccable/review/`. Durable public, authentication, saved-idea, project, and workspace patterns are synchronized in `DESIGN.md` and `.impeccable/design.json`.

@@ -28,11 +28,13 @@ Members move from discovery to evaluation to implementation. Ideas can describe 
 
 ## Capabilities and Constraints
 
-- Phase 1 implements the member shell, Explore Ideas, reusable details for IDEA #001, #003, and #004, and Saved Ideas.
+- Phase 1 implements the preview member shell, Explore Ideas, reusable details for IDEA #001, #003, and #004, and device-local Saved Ideas.
 - Phase 2A adds Supabase email/password and Google authentication, email verification and recovery, a minimal profile, and provider-independent membership entitlements.
+- Phase 2B adds account-synced bookmarks and personal project workspaces with version-pinned plans, required-task progress, pause state, and revisioned notes.
+- Phase 3A adds the public homepage, membership explanation, safe example previews, and account-aware entry actions.
 - Preview routes use fictional sample data and device-local bookmark persistence.
 - Protected member routes require a verified server session and a separately active membership entitlement; access is denied closed when verification is unavailable.
-- Projects, checkout/payment, account-synced bookmarks, billing UI, admin, analytics, and real resource delivery remain disconnected.
+- Checkout/payment, billing UI, admin, analytics, hosted rollout, and real resource delivery remain disconnected.
 - The commercial price, currency, payment provider, and final licence/refund/cancellation terms are undecided.
 - Idea content is maintained through Codex and the backend; no CMS or content-editor admin is required.
 

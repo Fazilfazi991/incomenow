@@ -21,7 +21,10 @@ async function loadAccountAccessContext(): Promise<AccountAccessContext> {
 
   const supabase = await createClient();
   const { data: userData, error: userError } = await supabase.auth.getUser();
-  if (userError || !userData.user) {
+  if (userError) {
+    return { configuration: "ready", user: null, displayName: null, access: "unavailable" };
+  }
+  if (!userData.user) {
     return { configuration: "ready", user: null, displayName: null, access: "inactive" };
   }
 

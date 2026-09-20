@@ -7,7 +7,7 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", displa
 
 export const metadata: Metadata = {
   title: { default: "IncomeNow", template: "%s · IncomeNow" },
-  description: "Secure account and membership access for the IncomeNow opportunity library.",
+  description: "Practical digital business ideas, implementation guidance, and a personal workspace for testing an offer.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

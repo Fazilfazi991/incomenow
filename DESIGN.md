@@ -190,6 +190,20 @@ components:
     rounded: "8px"
     padding: "9px 14px"
     height: "42px"
+  public-idea-card:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    padding: "22px"
+  membership-offer-card:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "20px"
+    padding: "34px"
+  inverse-final-cta:
+    backgroundColor: "{colors.forest}"
+    textColor: "{colors.surface}"
+    padding: "68px 0"
 ---
 
 # Design System: IncomeNow
@@ -204,6 +218,8 @@ The system is editorial and operational at once. Manrope gives headings and mile
 
 Account-synced work extends the same library metaphor into a project desk. Saved Ideas keeps the comparison language intact, while My Projects and the workspace add durable status, required-task progress, stage notes, and explicit save feedback without shifting into generic productivity-software chrome.
 
+The public website is a separate reading-room shell, not a disguised member dashboard. Its horizontal desktop header, disclosure-based mobile navigation, split editorial hero, semantic library preview, public idea cards, and dark closing invitation help visitors understand the product before entering the account flow. Public copy and previews stay literal: undecided prices, unavailable checkout, unapproved licence terms, sample resources, and the absence of income guarantees are shown as constraints rather than polished away.
+
 **Key Characteristics:**
 
 - Calm botanical palette with high-contrast forest anchors.
@@ -212,6 +228,8 @@ Account-synced work extends the same library metaphor into a project desk. Saved
 - Compact metadata, resource pills, and schematic previews for fast comparison.
 - Responsive navigation that becomes a persistent bottom bar on mobile.
 - Account-owned state is made visible through honest status, progress, save, and recovery feedback.
+- A dedicated public header and footer that lead into account-aware entry actions without borrowing the protected member shell.
+- Public explanation patterns pair editorial persuasion with explicit limits, sample-only previews, and no unapproved commercial claims.
 
 ## Colors
 
@@ -274,6 +292,10 @@ The palette uses paper whites and mineral sages as the working field, then reser
 
 ## Layout
 
+The public website uses its own shell. A sticky, lightly translucent desktop header spans a centered 1240px inner row, while public sections and the footer use a centered 1180px container with 48px total viewport gutters. The homepage first viewport is a two-column split: the editorial promise leads on the left and a slightly rotated, semantic library preview provides product evidence on the right. The membership first viewport uses the same split logic with explanatory copy on the left and one bounded offer card on the right.
+
+At 980px and below, public navigation and hero spacing compress, four-column process and benefit groups become two columns, and the public idea gallery holds two columns. At 767px and below, the desktop public navigation is replaced by a disclosure menu in the header; heroes, idea grids, membership scope, FAQ, and footer stack into one column; actions expand to the available width; and the quick-preview dialog becomes a bottom sheet. The 360px guard breakpoint tightens public gutters to 10px per side and removes nonessential preview chrome before shrinking decision-critical copy. Public mobile navigation is intentionally different from the signed-in member bottom bar.
+
 The desktop shell uses a fixed 228px navigation rail and a centered content region capped at 1320px. Page content begins with 20px/24px/56px block-and-inline padding, while the Explore grid presents three equal columns with 22px gutters above 1120px, two columns from 768–1120px, and one column below 768px. Detail pages pair flexible content with a 278px quick-facts rail, collapsing to one column below 900px.
 
 At 767px and below, the sidebar becomes a 58px safe-area-aware top bar plus a persistent four-item bottom navigation. Page padding tightens to 16px/12px/28px, filters reflow into a full-width search row and paired controls, horizontal chip rows remain scrollable, and cards compact without hiding the primary action. A 360px guard breakpoint stacks the narrowest action and metric layouts.
@@ -290,6 +312,10 @@ The selected stage and the current focus are separate concepts. Selection answer
 
 **The Whole-Card Mobile Rule.** Mobile prioritizes one complete decision unit at a time: one card column, full-width action, and persistent navigation.
 
+**The Separate-Shell Rule.** Public pages use the public header, footer, section rhythm, and disclosure menu; protected member routes keep the rail and persistent mobile bottom navigation.
+
+**The Evidence-Before-Entry Rule.** The public first viewport pairs the product promise with a visible product-shaped preview before asking visitors to create an account.
+
 **The Work-First Workspace Rule.** On desktop, the active work surface owns the wide left column; navigation and reference material support it from the right rail. Below 900px, navigation precedes work and resources follow it.
 
 **The Selected-Is-Not-Current Rule.** Never relabel a reviewed stage as the project’s current focus unless it is actually the next unfinished required stage.
@@ -305,6 +331,9 @@ The system is flat by default and uses tonal layering before shadow. Resting car
 - **Popover Float** (`0 12px 32px -4px rgba(16, 45, 37, 0.16)`): Advanced filters and anchored disclosure panels.
 - **Toast Float** (`0 12px 32px rgba(16, 45, 37, 0.22)`): High-priority reversible feedback above navigation.
 - **Authentication Focus** (`0 8px 30px rgba(16, 45, 37, 0.07)`): The bounded desktop credential card; mobile tightens this to a smaller 6px/20px diffusion.
+- **Public Preview Lift** (`0 24px 55px rgba(16, 45, 37, 0.12)`): The tilted semantic library preview in the homepage hero.
+- **Membership Offer Lift** (`0 24px 50px rgba(16, 45, 37, 0.11)`): The single membership offer card in its split hero.
+- **Quick Preview Focus** (`0 30px 80px rgba(0, 0, 0, 0.28)`): The public idea dialog or mobile sheet above its dimmed backdrop.
 
 ### Named Rules
 
@@ -312,7 +341,7 @@ The system is flat by default and uses tonal layering before shadow. Resting car
 
 ## Shapes
 
-The form language balances modular discipline with approachable softness. Large cards, authentication cards, and filter panels use 16px corners, while authentication cards tighten to 14px on mobile; inset panels and standard containers use 13–14px corners, controls use 8–10px corners, and compact metadata tags use 7px corners. Counts, filter chips, resource pills, and avatars use circular or pill geometry. Borders stay at 1px and use botanical neutral lines; clipping is reserved for previews, cards, and layered containers.
+The form language balances modular discipline with approachable softness. Large cards, authentication cards, and filter panels use 16px corners, while authentication cards tighten to 14px on mobile; inset panels and standard containers use 13–14px corners, controls use 8–10px corners, and compact metadata tags use 7px corners. Public hero previews use 22px corners, the membership offer card uses 20px, and the quick-preview dialog uses 18px before becoming an 18px top-corner sheet on mobile. Counts, filter chips, resource pills, and avatars use circular or pill geometry. Borders stay at 1px and use botanical neutral lines; clipping is reserved for previews, cards, dialogs, and layered containers.
 
 **The Nested Radius Rule.** Child surfaces are always tighter than the container around them, preserving a clear physical hierarchy.
 
@@ -356,6 +385,32 @@ Components feel tactile and confident: quiet at rest, exact in hierarchy, and vi
 - **Desktop:** A fixed white 228px rail with 42px rows, 8px corners, 19px outline icons, and a sage selected field. Support and account links are visually separated by an uppercase micro-label.
 - **Mobile:** A translucent white top bar and four-column bottom navigation stay fixed, safe-area-aware, and lightly blurred. Active state uses emerald text and weight rather than a filled tab.
 
+### Public Shell and Navigation
+
+- **Desktop:** A sticky translucent header keeps the IncomeNow wordmark, centered section links, and one account-aware action visible without adopting member-rail chrome. The footer uses the darkest forest field, a short product statement, only implemented routes, and the explicit “No income guarantees” note.
+- **Mobile:** A 40px disclosure control opens a bounded white menu below the wordmark. Navigation links and the correct account state stack as full-width actions; this menu closes when a destination is chosen.
+- **Account awareness:** Signed-out, active, inactive, and temporarily unavailable states route visitors to the existing account, access, or protected-library destination without implying that checkout or entitlement activation is available.
+
+### Public Hero and Library Preview
+
+The homepage hero pairs a concise two-line promise with a fictional but semantically structured library preview: toolbar, search field, navigation labels, and idea rows. The preview behaves as product evidence, not decorative imagery. On narrow screens it keeps the idea rows and removes the miniature sidebar before sacrificing the headline or actions.
+
+### Public Idea Cards and Quick Preview
+
+Public idea cards keep the protected library’s schematic visual language but expose only a deliberately safe summary projection. Each card combines the schematic, solution type, idea number, title, summary, and one “Quick preview” action. The desktop quick preview is a centered two-column dialog; below 768px it becomes a full-width bottom sheet. It traps keyboard focus, closes with Escape or the close control, restores focus to its trigger, and always labels the content as a public summary with protected implementation material omitted.
+
+### Public FAQ
+
+FAQ rows use native disclosure semantics, one botanical divider per row, a Manrope question, and an emerald chevron that rotates when open. Answers stay inline beneath their question; do not replace the list with tabs, a carousel, or a custom accordion state machine.
+
+### Membership Offer, Scope, and Access Steps
+
+The membership page presents one offer card only. The price slot states “Price to be confirmed,” the billing interval remains monthly, included capabilities are listed plainly, and the action reflects the current account state. A paired scope panel makes the boundary between what membership covers and what remains the member’s responsibility visually explicit. The four access steps separate account creation, offer review, future payment, and active entitlement; on mobile their horizontal connector becomes a vertical sequence. The licence note remains a distinct sage callout whenever permissions are not approved.
+
+### Inverse Final CTA
+
+Public pages close with a deep-forest band, white heading, muted mint supporting copy, and account-aware actions. It is an invitation to inspect or enter the existing flow, never a countdown, earnings promise, or simulated checkout.
+
 ### Idea Preview
 
 Each card contains a pale-sage schematic rather than decorative photography. Pipeline columns, dispatch rows, workflow nodes, wireframes, scores, or metrics visualize the opportunity type with white inset modules, botanical strokes, and compact uppercase annotations.
@@ -396,6 +451,11 @@ Account-synced Saved Ideas preserves the idea-card comparison unit, filter contr
 - **Do** derive progress and completion from required work, while labeling optional tasks honestly.
 - **Do** keep checklist, notes, and resources as distinct paper planes with explicit saved, unsaved, paused, empty, and unavailable states.
 - **Do** stack workspace navigation, work, and resources in that order below 900px and make the primary mobile action full width.
+- **Do** use the separate public shell for homepage and membership routes, including the horizontal desktop navigation and disclosure-based mobile menu.
+- **Do** keep public idea cards and quick previews on the explicit safe projection; label them as summaries and keep implementation plans and protected resources out.
+- **Do** keep the membership offer singular and honest: monthly interval, “Price to be confirmed,” unavailable checkout, and entitlement activation shown as separate steps.
+- **Do** pair persuasive public sections with concrete product-shaped evidence, responsibility boundaries, and native FAQ disclosures.
+- **Do** use the inverse forest CTA only as a calm closing invitation with account-aware destinations.
 
 ### Don't:
 
@@ -406,3 +466,7 @@ Account-synced Saved Ideas preserves the idea-card comparison unit, filter contr
 - **Don't** hide sample, unavailable, readiness, or evidence states behind aspirational copy.
 - **Don't** treat selecting a stage as advancing the project or changing its current focus.
 - **Don't** turn progress into dashboard theater, count optional tasks toward completion, or merge notes and resources into the checklist.
+- **Don't** reuse the signed-in sidebar or mobile bottom navigation on public pages.
+- **Don't** expose protected plan details, resource identifiers, private customer data, or member-only implementation material in public cards, dialogs, or client bundles.
+- **Don't** invent prices, checkout availability, testimonials, customer counts, demand validation, licence permissions, release cadence, or income outcomes.
+- **Don't** let account creation read as payment confirmation or active membership; authentication and entitlement remain separate truths.

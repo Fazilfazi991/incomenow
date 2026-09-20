@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-20T14:48:02.8490846Z",
+  "generatedAt": "2026-09-20T15:49:52.1294267Z",
   "title": "Design System: IncomeNow",
   "extensions": {
     "colorMeta": {
@@ -170,6 +170,21 @@
         "name": "authentication-focus",
         "value": "0 8px 30px rgba(16, 45, 37, 0.07)",
         "purpose": "The bounded desktop credential card; mobile tightens to a 6px by 20px diffusion."
+      },
+      {
+        "name": "public-preview-lift",
+        "value": "0 24px 55px rgba(16, 45, 37, 0.12)",
+        "purpose": "The tilted semantic library preview in the public homepage hero."
+      },
+      {
+        "name": "membership-offer-lift",
+        "value": "0 24px 50px rgba(16, 45, 37, 0.11)",
+        "purpose": "The single membership offer card in its split hero."
+      },
+      {
+        "name": "quick-preview-focus",
+        "value": "0 30px 80px rgba(0, 0, 0, 0.28)",
+        "purpose": "The public idea dialog or mobile sheet above its dimmed backdrop."
       }
     ],
     "motion": [
@@ -203,6 +218,10 @@
       {
         "name": "wide-grid",
         "value": "1120px"
+      },
+      {
+        "name": "public-compact",
+        "value": "980px"
       },
       {
         "name": "detail-collapse",
@@ -342,18 +361,72 @@
       "description": "A supporting stage resource with an honest availability label; it remains separate from checklist work.",
       "html": "<article class=\"ds-stage-resource\"><span><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/><path d=\"M14 2v6h6\"/></svg></span><div><strong>Interview guide</strong><p>Repository-backed questions for customer discovery.</p></div><em>Sample</em></article>",
       "css": ".ds-stage-resource { width: min(100%, 360px); display: grid; grid-template-columns: 34px minmax(0,1fr) auto; gap: 11px; align-items: center; padding: 11px; border-radius: 10px; background: #f4f8f5; color: var(--ink, #18251f); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-stage-resource > span { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 8px; background: #e0f0e7; color: var(--action, #197a56); } .ds-stage-resource strong { font-size: 12px; } .ds-stage-resource p { margin: 2px 0 0; color: var(--muted, #5b6b63); font-size: 10px; } .ds-stage-resource em { padding: 3px 7px; border-radius: 999px; background: #e3f2e9; color: #3e6554; font-size: 9px; font-style: normal; } @media (max-width: 767px) { .ds-stage-resource { grid-template-columns: 32px 1fr; } .ds-stage-resource em { grid-column: 2; width: fit-content; } }"
+    },
+    {
+      "name": "Public Header and Mobile Menu",
+      "kind": "nav",
+      "description": "The public-only sticky header: horizontal desktop navigation and a bounded disclosure menu on mobile, with an account-aware entry action.",
+      "html": "<header class=\"ds-public-header\"><a class=\"ds-public-mark\" href=\"#\">IncomeNow<span>.in</span></a><nav aria-label=\"Main navigation\"><a href=\"#\">How it works</a><a href=\"#\">Example ideas</a><a href=\"#\">Membership</a><a href=\"#\">FAQ</a></nav><a class=\"ds-public-entry\" href=\"#\">Create account <svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m13 6 6 6-6 6\"/></svg></a><details><summary aria-label=\"Open navigation\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M4 6h16M4 12h16M4 18h16\"/></svg></summary><div><a href=\"#\">How it works</a><a href=\"#\">Example ideas</a><a href=\"#\">Membership</a><a href=\"#\">FAQ</a><a class=\"ds-public-entry\" href=\"#\">Create account</a></div></details></header>",
+      "css": ".ds-public-header { width: min(100%, 1240px); min-height: 72px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 32px; padding: 0 24px; background: rgba(248,251,248,.94); color: var(--forest, #102d25); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-public-mark { color: inherit; font: 800 21px/1 Manrope, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.055em; text-decoration: none; } .ds-public-mark span { color: var(--action, #197a56); font-size: 14px; } .ds-public-header > nav { display: flex; justify-content: center; gap: 30px; } .ds-public-header > nav a { color: #3d5148; font-size: 13px; font-weight: 600; text-decoration: none; } .ds-public-header > nav a:hover { color: var(--action, #197a56); } .ds-public-entry { min-height: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 15px; border-radius: 8px; background: var(--action, #197a56); color: #fff; font-size: 13px; font-weight: 720; text-decoration: none; } .ds-public-entry:hover { background: var(--action-hover, #136043); } .ds-public-entry:focus-visible, .ds-public-header summary:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; } .ds-public-header details { display: none; } @media (max-width: 767px) { .ds-public-header { min-height: 62px; grid-template-columns: 1fr auto; padding: 0 14px; } .ds-public-header > nav, .ds-public-header > .ds-public-entry { display: none; } .ds-public-header details { position: relative; display: block; } .ds-public-header summary { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid #d4dfd8; border-radius: 8px; background: #fff; list-style: none; cursor: pointer; } .ds-public-header details > div { position: absolute; top: 48px; right: 0; width: min(310px, calc(100vw - 28px)); display: grid; padding: 16px; border: 1px solid #d7e1db; border-radius: 12px; background: #fff; box-shadow: 0 16px 38px rgba(16,45,37,.16); } .ds-public-header details > div > a:not(.ds-public-entry) { padding: 11px 4px; border-bottom: 1px solid #edf1ee; color: var(--forest, #102d25); font-size: 13px; font-weight: 650; text-decoration: none; } .ds-public-header details .ds-public-entry { margin-top: 14px; } }"
+    },
+    {
+      "name": "Public Idea Card",
+      "kind": "custom",
+      "refersTo": "public-idea-card",
+      "description": "A safe public summary card that opens a focused preview; protected plans and member-only resource details never appear.",
+      "html": "<article class=\"ds-public-idea\"><div class=\"ds-public-art\"><div>Semantic schematic preview</div></div><div class=\"ds-public-copy\"><small>Custom CRM <b>Idea #001</b></small><h3>Pergola Quotation &amp; Follow-up CRM</h3><p>A concise public summary of the customer problem and proposed solution.</p><button type=\"button\">Quick preview <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m13 6 6 6-6 6\"/></svg></button></div></article>",
+      "css": ".ds-public-idea { width: min(100%, 372px); overflow: hidden; border: 1px solid #dce5df; border-radius: 16px; background: var(--surface, #fff); color: var(--ink, #18251f); box-shadow: 0 1px 2px rgba(16,45,37,.05); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-public-art { padding: 18px; background: #e6f2e9; } .ds-public-art > div { min-height: 160px; display: grid; place-items: center; border-radius: 10px; background: #fff; color: #587066; font-size: 11px; } .ds-public-copy { padding: 22px; } .ds-public-copy small { display: flex; justify-content: space-between; gap: 12px; color: var(--action, #197a56); font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; } .ds-public-copy small b { color: #52675e; font-size: 11px; letter-spacing: 0; text-transform: none; } .ds-public-copy h3 { margin: 13px 0 0; font: 700 20px/1.2 Manrope, ui-sans-serif, system-ui, sans-serif; } .ds-public-copy p { margin: 9px 0 0; color: #607168; font-size: 13px; line-height: 1.65; } .ds-public-copy button { display: inline-flex; align-items: center; gap: 7px; margin-top: 17px; padding: 0; border: 0; background: none; color: var(--action, #197a56); font-size: 12px; font-weight: 750; cursor: pointer; } .ds-public-copy button:hover { color: var(--action-hover, #136043); } .ds-public-copy button:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 3px; } @media (max-width: 360px) { .ds-public-art, .ds-public-copy { padding: 14px; } }"
+    },
+    {
+      "name": "Public Quick Preview Dialog",
+      "kind": "custom",
+      "description": "The keyboard-focused two-column public summary dialog that becomes a full-width bottom sheet on mobile and explicitly omits protected implementation material.",
+      "html": "<div class=\"ds-preview-backdrop\"><section class=\"ds-preview-dialog\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"ds-preview-title\"><button class=\"ds-preview-close\" type=\"button\" aria-label=\"Close preview\">×</button><div class=\"ds-preview-art\">Semantic schematic preview</div><div class=\"ds-preview-copy\"><small>Custom CRM · Idea #001</small><h2 id=\"ds-preview-title\">Pergola Quotation &amp; Follow-up CRM</h2><p>A concise public summary of the customer problem and proposed solution.</p><dl><dt>Problem this explores</dt><dd>A specific operational friction.</dd><dt>Intended customer</dt><dd>A clearly named customer group.</dd></dl><aside>This is a public summary only. Implementation plans and member resources stay inside the protected library.</aside><a href=\"#\">View membership information</a></div></section></div>",
+      "css": ".ds-preview-backdrop { min-height: 560px; display: grid; place-items: center; padding: 24px; background: rgba(5,25,19,.68); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-preview-dialog { position: relative; width: min(850px, 100%); max-height: min(780px, calc(100vh - 48px)); display: grid; grid-template-columns: .9fr 1.1fr; overflow: auto; border-radius: 18px; background: #fff; color: var(--ink, #18251f); box-shadow: 0 30px 80px rgba(0,0,0,.28); } .ds-preview-close { position: absolute; top: 14px; right: 14px; width: 39px; height: 39px; display: grid; place-items: center; border: 1px solid #dce5df; border-radius: 50%; background: rgba(255,255,255,.94); color: var(--forest, #102d25); font-size: 24px; cursor: pointer; } .ds-preview-art { min-height: 220px; display: grid; place-items: center; padding: 38px; background: #dfeee4; color: #587066; font-size: 11px; } .ds-preview-copy { padding: 51px 42px 40px; } .ds-preview-copy > small { color: var(--action, #197a56); font-size: 10px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; } .ds-preview-copy h2 { margin: 13px 0 0; padding-right: 18px; font: 760 30px/1.12 Manrope, ui-sans-serif, system-ui, sans-serif; } .ds-preview-copy > p, .ds-preview-copy dd { color: #5d7066; font-size: 13px; line-height: 1.5; } .ds-preview-copy dl { display: grid; gap: 8px; margin-top: 24px; } .ds-preview-copy dt { color: #4f655b; font-size: 11px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; } .ds-preview-copy dd { margin: 0 0 8px; } .ds-preview-copy aside { margin-top: 19px; padding: 11px; border: 1px solid #d8e8de; border-radius: 7px; background: #f1f7f3; color: #50675c; font-size: 10px; } .ds-preview-copy > a { min-height: 40px; display: flex; align-items: center; justify-content: center; margin-top: 14px; padding: 8px 15px; border-radius: 8px; background: var(--action, #197a56); color: #fff; font-size: 13px; font-weight: 720; text-decoration: none; } .ds-preview-close:focus-visible, .ds-preview-copy > a:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; } @media (max-width: 767px) { .ds-preview-backdrop { min-height: 640px; align-items: end; padding: 0; } .ds-preview-dialog { width: 100%; max-height: 90vh; grid-template-columns: 1fr; border-radius: 18px 18px 0 0; } .ds-preview-art { min-height: 150px; padding: 23px 23px 16px; } .ds-preview-copy { padding: 28px 22px 32px; } .ds-preview-copy h2 { font-size: 25px; } }"
+    },
+    {
+      "name": "Public FAQ Disclosure",
+      "kind": "custom",
+      "description": "A native disclosure row for public product and membership questions.",
+      "html": "<details class=\"ds-public-faq\"><summary><span>Is checkout available now?</span><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><p>No. The final price and payment flow have not been configured.</p></details>",
+      "css": ".ds-public-faq { width: min(100%, 690px); border-top: 1px solid #cfdad4; border-bottom: 1px solid #cfdad4; color: var(--forest, #102d25); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-public-faq summary { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 3px; font: 700 15px/1.4 Manrope, ui-sans-serif, system-ui, sans-serif; list-style: none; cursor: pointer; } .ds-public-faq summary svg { flex: 0 0 auto; color: var(--action, #197a56); transition: transform 160ms ease-out; } .ds-public-faq[open] summary svg { transform: rotate(180deg); } .ds-public-faq p { max-width: 690px; margin: 0; padding: 0 42px 21px 3px; color: #5f7168; font-size: 13px; line-height: 1.65; } .ds-public-faq summary:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; }"
+    },
+    {
+      "name": "Membership Offer Card",
+      "kind": "card",
+      "refersTo": "membership-offer-card",
+      "description": "The single honest monthly offer: price unconfirmed, checkout unavailable, and membership activation separate from account creation.",
+      "html": "<aside class=\"ds-membership-offer\"><span>IncomeNow membership</span><strong>Price to be confirmed</strong><small>Monthly subscription</small><ul><li>Member idea library</li><li>Idea-specific resources</li><li>Saved ideas and projects</li></ul><a href=\"#\">Create account</a><p>Paid checkout is not available in this build.</p></aside>",
+      "css": ".ds-membership-offer { width: min(100%, 430px); padding: 34px; border: 1px solid #d4e1d9; border-radius: 20px; background: var(--surface, #fff); color: var(--ink, #18251f); box-shadow: 0 24px 50px rgba(16,45,37,.11); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-membership-offer > span { display: block; color: var(--action, #197a56); font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; } .ds-membership-offer > strong { display: block; margin-top: 16px; font: 760 35px/1.05 Manrope, ui-sans-serif, system-ui, sans-serif; } .ds-membership-offer > small { display: block; margin-top: 6px; color: #6c7e74; font-size: 12px; } .ds-membership-offer ul { display: grid; gap: 12px; margin: 27px 0; padding: 23px 0 23px 20px; border-block: 1px solid #e2e9e5; color: #354b42; font-size: 12px; } .ds-membership-offer > a { min-height: 40px; display: flex; align-items: center; justify-content: center; padding: 8px 15px; border-radius: 8px; background: var(--action, #197a56); color: #fff; font-size: 13px; font-weight: 720; text-decoration: none; } .ds-membership-offer > a:hover { background: var(--action-hover, #136043); } .ds-membership-offer > a:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; } .ds-membership-offer > p { margin: 13px 0 0; color: #52675e; font-size: 11px; text-align: center; } @media (max-width: 767px) { .ds-membership-offer { padding: 25px; } } @media (max-width: 360px) { .ds-membership-offer { padding: 20px; } .ds-membership-offer > strong { font-size: 30px; } }"
+    },
+    {
+      "name": "Membership Scope and Access Steps",
+      "kind": "custom",
+      "description": "A paired responsibility boundary followed by four separate access steps: account, offer review, future payment, and active entitlement.",
+      "html": "<section class=\"ds-membership-boundary\"><div><h2>What membership covers</h2><p>Library content, published resources, and the account-backed workspace.</p><ul><li>Opportunity and customer context</li><li>Implementation stages and checklists</li></ul></div><div><h2>What stays your responsibility</h2><p>Building and operating the customer-facing business remains separate.</p><ul><li>Hosting and third-party charges</li><li>Custom development and operation</li></ul></div></section><ol class=\"ds-access-steps\"><li><span>1</span><div><b>Create your account</b><small>Use the registration journey.</small></div></li><li><span>2</span><div><b>Review the final offer</b><small>Confirm approved terms.</small></div></li><li><span>3</span><div><b>Complete payment when available</b><small>Checkout is not connected yet.</small></div></li><li><span>4</span><div><b>Open the member library</b><small>Access requires active entitlement.</small></div></li></ol>",
+      "css": ".ds-membership-boundary { width: min(100%, 980px); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border: 1px solid #d6e1da; border-radius: 17px; background: #fff; color: var(--ink, #18251f); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-membership-boundary > div { padding: 32px; } .ds-membership-boundary > div + div { border-left: 1px solid #dce5df; background: #f7faf7; } .ds-membership-boundary h2 { margin: 0; font: 760 26px/1.08 Manrope, ui-sans-serif, system-ui, sans-serif; } .ds-membership-boundary p { color: #63756c; font-size: 13px; } .ds-membership-boundary ul { display: grid; gap: 10px; padding-left: 18px; color: #354b42; font-size: 12px; } .ds-access-steps { width: min(100%, 980px); display: grid; grid-template-columns: repeat(4,1fr); margin: 28px 0 0; padding: 0; color: var(--ink, #18251f); font-family: Inter, ui-sans-serif, system-ui, sans-serif; list-style: none; } .ds-access-steps li { position: relative; display: grid; grid-template-columns: 42px 1fr; gap: 12px; padding-right: 20px; } .ds-access-steps li::after { content: ''; position: absolute; top: 20px; right: 0; left: 42px; height: 1px; background: #c9d7cf; } .ds-access-steps li:last-child::after { display: none; } .ds-access-steps li > span { z-index: 1; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: var(--action, #197a56); color: #fff; font-size: 12px; font-weight: 800; } .ds-access-steps b, .ds-access-steps small { display: block; } .ds-access-steps b { margin-top: 8px; font-size: 12px; } .ds-access-steps small { margin-top: 5px; color: #687970; font-size: 10px; } @media (max-width: 767px) { .ds-membership-boundary { grid-template-columns: 1fr; } .ds-membership-boundary > div { padding: 28px 24px; } .ds-membership-boundary > div + div { border-top: 1px solid #dce5df; border-left: 0; } .ds-access-steps { grid-template-columns: 1fr; gap: 24px; } .ds-access-steps li::after { top: 42px; bottom: -24px; left: 20px; width: 1px; height: auto; } }"
+    },
+    {
+      "name": "Inverse Public Final CTA",
+      "kind": "custom",
+      "refersTo": "inverse-final-cta",
+      "description": "A calm deep-forest closing invitation with account-aware destinations and no urgency or unsupported claims.",
+      "html": "<section class=\"ds-public-final\"><div><h2>Choose an idea worth validating</h2><p>Review the public examples, then use the existing account journey when you are ready.</p></div><a href=\"#\">Explore example ideas</a></section>",
+      "css": ".ds-public-final { width: min(100%, 1180px); display: flex; align-items: center; justify-content: space-between; gap: 45px; padding: 68px 32px; background: var(--forest, #102d25); color: #fff; font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-public-final h2 { margin: 0; font: 760 34px/1.08 Manrope, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.045em; } .ds-public-final p { margin: 8px 0 0; color: #c8ddd4; font-size: 14px; } .ds-public-final > a { min-height: 40px; display: inline-flex; align-items: center; justify-content: center; padding: 8px 15px; border-radius: 8px; background: #f4fff7; color: #084c36; font-size: 13px; font-weight: 720; text-decoration: none; } .ds-public-final > a:hover { background: #fff; } .ds-public-final > a:focus-visible { outline: 3px solid rgba(155,245,200,.45); outline-offset: 2px; } @media (max-width: 767px) { .ds-public-final { align-items: stretch; flex-direction: column; padding: 54px 22px; } .ds-public-final > a { width: 100%; } }"
     }
   ],
   "narrative": {
     "northStar": "The Calm Blueprint Library",
-    "overview": "IncomeNow feels like a practical working library: orderly enough for fast comparison, warm enough for sustained reading, and confident without behaving like a sales dashboard. Pale sage working planes, white paper-like cards, forest anchors, and compact schematic previews make each opportunity feel like a blueprint to examine rather than a promise to chase.\n\nThe system is editorial and operational at once. Manrope gives headings and milestones architectural weight; Inter keeps filters, metadata, resources, and evidence easy to scan. Information density is managed with disciplined grouping, botanical micro-borders, restrained elevation, and one emerald action voice. Promotional gradients, neon urgency, speculative earnings theater, and generic analytics-dashboard chrome are outside this visual world.\n\nAccount-synced work extends the same library metaphor into a project desk. Saved Ideas keeps the comparison language intact, while My Projects and the workspace add durable status, required-task progress, stage notes, and explicit save feedback without shifting into generic productivity-software chrome.",
+    "overview": "IncomeNow feels like a practical working library: orderly enough for fast comparison, warm enough for sustained reading, and confident without behaving like a sales dashboard. Pale sage working planes, white paper-like cards, forest anchors, and compact schematic previews make each opportunity feel like a blueprint to examine rather than a promise to chase.\n\nThe system is editorial and operational at once. Manrope gives headings and milestones architectural weight; Inter keeps filters, metadata, resources, and evidence easy to scan. Information density is managed with disciplined grouping, botanical micro-borders, restrained elevation, and one emerald action voice. Promotional gradients, neon urgency, speculative earnings theater, and generic analytics-dashboard chrome are outside this visual world.\n\nAccount-synced work extends the same library metaphor into a project desk. Saved Ideas keeps the comparison language intact, while My Projects and the workspace add durable status, required-task progress, stage notes, and explicit save feedback without shifting into generic productivity-software chrome.\n\nThe public website is a separate reading-room shell, not a disguised member dashboard. Its horizontal desktop header, disclosure-based mobile navigation, split editorial hero, semantic library preview, public idea cards, and dark closing invitation help visitors understand the product before entering the account flow. Public copy and previews stay literal: undecided prices, unavailable checkout, unapproved licence terms, sample resources, and the absence of income guarantees are shown as constraints rather than polished away.",
     "keyCharacteristics": [
       "Calm botanical palette with high-contrast forest anchors.",
       "White structural cards on a pale sage working canvas.",
       "Manrope headings paired with neutral, legible Inter utility copy.",
       "Compact metadata, resource pills, and schematic previews for fast comparison.",
       "Responsive navigation that becomes a persistent bottom bar on mobile.",
-      "Account-owned state is made visible through honest status, progress, save, and recovery feedback."
+      "Account-owned state is made visible through honest status, progress, save, and recovery feedback.",
+      "A dedicated public header and footer that lead into account-aware entry actions without borrowing the protected member shell.",
+      "Public explanation patterns pair editorial persuasion with explicit limits, sample-only previews, and no unapproved commercial claims."
     ],
     "rules": [
       {
@@ -379,6 +452,16 @@
       {
         "name": "The Whole-Card Mobile Rule",
         "body": "Mobile prioritizes one complete decision unit at a time: one card column, full-width action, and persistent navigation.",
+        "section": "layout"
+      },
+      {
+        "name": "The Separate-Shell Rule",
+        "body": "Public pages use the public header, footer, section rhythm, and disclosure menu; protected member routes keep the rail and persistent mobile bottom navigation.",
+        "section": "layout"
+      },
+      {
+        "name": "The Evidence-Before-Entry Rule",
+        "body": "The public first viewport pairs the product promise with a visible product-shaped preview before asking visitors to create an account.",
         "section": "layout"
       },
       {
@@ -412,7 +495,12 @@
       "Do keep the derived current focus visible even when another stage is selected for review.",
       "Do derive progress and completion from required work, while labeling optional tasks honestly.",
       "Do keep checklist, notes, and resources as distinct paper planes with explicit saved, unsaved, paused, empty, and unavailable states.",
-      "Do stack workspace navigation, work, and resources in that order below 900px and make the primary mobile action full width."
+      "Do stack workspace navigation, work, and resources in that order below 900px and make the primary mobile action full width.",
+      "Do use the separate public shell for homepage and membership routes, including the horizontal desktop navigation and disclosure-based mobile menu.",
+      "Do keep public idea cards and quick previews on the explicit safe projection; label them as summaries and keep implementation plans and protected resources out.",
+      "Do keep the membership offer singular and honest: monthly interval, “Price to be confirmed,” unavailable checkout, and entitlement activation shown as separate steps.",
+      "Do pair persuasive public sections with concrete product-shaped evidence, responsibility boundaries, and native FAQ disclosures.",
+      "Do use the inverse forest CTA only as a calm closing invitation with account-aware destinations."
     ],
     "donts": [
       "Don't introduce hustle-culture styling, speculative earnings graphics, neon tickers, or unsupported urgency.",
@@ -421,7 +509,11 @@
       "Don't use saturated color on passive surfaces when tonal sage or a botanical line can provide the hierarchy.",
       "Don't hide sample, unavailable, readiness, or evidence states behind aspirational copy.",
       "Don't treat selecting a stage as advancing the project or changing its current focus.",
-      "Don't turn progress into dashboard theater, count optional tasks toward completion, or merge notes and resources into the checklist."
+      "Don't turn progress into dashboard theater, count optional tasks toward completion, or merge notes and resources into the checklist.",
+      "Don't reuse the signed-in sidebar or mobile bottom navigation on public pages.",
+      "Don't expose protected plan details, resource identifiers, private customer data, or member-only implementation material in public cards, dialogs, or client bundles.",
+      "Don't invent prices, checkout availability, testimonials, customer counts, demand validation, licence permissions, release cadence, or income outcomes.",
+      "Don't let account creation read as payment confirmation or active membership; authentication and entitlement remain separate truths."
     ]
   }
 }
