@@ -6,7 +6,8 @@
 - Keep prototype fixtures and device-local preview state separate from future production behavior.
 - Google sign-in and email/password are implemented through Supabase SSR; provider credentials and hosted configuration must remain environment-managed and require explicit approval before mutation.
 - Paid entitlement and account authentication are separate concerns.
-- Protected content must perform a fresh server-side membership check at the data boundary; never infer authorization from profile metadata or client state.
+- Safe catalogue previews and bookmarks are available to verified accounts without a purchase. Full idea content and project operations must perform a fresh server-side check for either full membership or an active grant for the requested idea; never infer authorization from profile metadata, onboarding state, URLs, or client state.
+- The `starter-pergola-v1` offer is a US$1 one-time proposal bound to IDEA #001 and at most one account-owned project for that idea. It is not full membership, has no configured duration or renewal, and must not be granted by signup or ordinary-user writes.
 - The future admin is operational (analytics, users, subscriptions), not a content editor or CMS.
 - Keep paid resources, credentials, and private customer data out of public assets and client bundles.
 - Run the relevant type, lint, test, build, and responsive checks before reporting completion.

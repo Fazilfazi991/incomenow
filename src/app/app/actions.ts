@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { getIdeaById } from "@/content/ideas";
-import { requireActiveMembership } from "@/lib/membership.server";
+import { getIdeaAccessDecision, requireVerifiedAccount } from "@/lib/membership.server";
 import { createClient } from "@/lib/supabase/server";
 
 const ideaIdSchema = z.string().regex(/^idea-\d{3}$/);
@@ -23,7 +23,7 @@ function validIdeaId(value: unknown) {
 export async function setBookmarkAction(ideaIdValue: string, saved: boolean): Promise<WorkspaceActionResult> {
   const ideaId = validIdeaId(ideaIdValue);
   if (!ideaId || typeof saved !== "boolean") return { ok: false, error: "That idea is unavailable.", code: "invalid" };
-  await requireActiveMembership("/app/explore");
+  await requireVerifiedAccount("/app/explore");
   const supabase = await createClient();
   const result = saved
     ? await supabase.from("bookmarks").insert({ idea_id: ideaId })
@@ -39,10 +39,13 @@ export async function setBookmarkAction(ideaIdValue: string, saved: boolean): Pr
 export async function startProjectAction(ideaIdValue: string): Promise<WorkspaceActionResult> {
   const ideaId = validIdeaId(ideaIdValue);
   if (!ideaId) return { ok: false, error: "This idea does not have an available project plan.", code: "invalid" };
-  await requireActiveMembership(`/app/ideas/${getIdeaById(ideaId)?.slug ?? ""}`);
+  const context = await requireVerifiedAccount(`/app/ideas/${getIdeaById(ideaId)?.slug ?? ""}`);
+  const access = getIdeaAccessDecision(context, ideaId);
+  if (access.status === "unavailable") return { ok: false, error: "We couldn’t verify access to this idea. Try again before starting a project.", code: "unavailable" };
+  if (access.status !== "active") return { ok: false, error: "This idea is available as a safe preview, but your account cannot start its project.", code: "unavailable" };
   const supabase = await createClient();
   const { data, error } = await supabase.rpc("start_member_project", { p_idea_id: ideaId });
-  if (error || !data) return { ok: false, error: "We couldn’t start this project. Please try again." };
+  if (error || !data) return { ok: false, error: error?.code === "42501" ? "Your account no longer has access to start this idea." : "We couldn’t start this project. Please try again." };
   revalidatePath("/app/projects");
   redirect(`/app/projects/${data}`);
 }
@@ -50,7 +53,7 @@ export async function startProjectAction(ideaIdValue: string): Promise<Workspace
 export async function setProjectPausedAction(projectIdValue: string, paused: boolean): Promise<WorkspaceActionResult> {
   const projectId = uuidSchema.safeParse(projectIdValue);
   if (!projectId.success || typeof paused !== "boolean") return { ok: false, error: "That project is unavailable.", code: "invalid" };
-  await requireActiveMembership(`/app/projects/${projectId.data}`);
+  await requireVerifiedAccount(`/app/projects/${projectId.data}`);
   const supabase = await createClient();
   const { error } = await supabase.rpc("set_member_project_paused", { p_project_id: projectId.data, p_paused: paused });
   if (error) return { ok: false, error: error.code === "22023" ? "Completed projects can’t be paused." : "We couldn’t update this project." };
@@ -72,7 +75,7 @@ export async function setTaskCompletedAction(
     completed,
   });
   if (!parsed.success) return { ok: false, error: "That task is unavailable.", code: "invalid" };
-  await requireActiveMembership(`/app/projects/${parsed.data.projectId}`);
+  await requireVerifiedAccount(`/app/projects/${parsed.data.projectId}`);
   const supabase = await createClient();
   const { data, error } = await supabase.rpc("set_member_project_task_completed", {
     p_project_id: parsed.data.projectId,
@@ -99,7 +102,7 @@ export async function saveStageNoteAction(
     revision: z.number().int().nonnegative(),
   }).safeParse({ projectId: projectIdValue, stageId: stageIdValue, content: contentValue, revision: revisionValue });
   if (!parsed.success) return { ok: false, error: "Notes must be plain text and no longer than 4,000 characters.", code: "invalid" };
-  await requireActiveMembership(`/app/projects/${parsed.data.projectId}`);
+  await requireVerifiedAccount(`/app/projects/${parsed.data.projectId}`);
   const supabase = await createClient();
   const { data, error } = await supabase.rpc("save_member_project_stage_note", {
     p_project_id: parsed.data.projectId,
@@ -124,7 +127,7 @@ export async function loadStageNoteAction(
 ): Promise<WorkspaceActionResult<{ content: string; revision: number; updatedAt: string }>> {
   const parsed = z.object({ projectId: uuidSchema, stageId: structuralIdSchema }).safeParse({ projectId: projectIdValue, stageId: stageIdValue });
   if (!parsed.success) return { ok: false, error: "That stage note is unavailable.", code: "invalid" };
-  await requireActiveMembership(`/app/projects/${parsed.data.projectId}`);
+  await requireVerifiedAccount(`/app/projects/${parsed.data.projectId}`);
   const supabase = await createClient();
   const { data, error } = await supabase.from("project_stage_notes").select("content, revision, updated_at").eq("project_id", parsed.data.projectId).eq("stage_id", parsed.data.stageId).maybeSingle();
   if (error || !data) return { ok: false, error: "We couldn’t load the latest saved note.", code: "unavailable" };

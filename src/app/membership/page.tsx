@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BookOpen, Check, CircleDollarSign, Cloud, Code2, CreditCard, ExternalLink, FolderKanban, Handshake, Library, Settings2, UserRoundPlus, Wrench } from "lucide-react";
 import { PublicFaq } from "@/components/public-faq";
-import { PublicAccountActions, PublicShell } from "@/components/public-site";
-import { membershipOffer } from "@/content/membership-offer";
+import { PublicAccountActions, PublicShell, StarterOfferAction } from "@/components/public-site";
+import { fullMembershipOffer, starterOffer } from "@/content/membership-offer";
 import { getPublicAccountState } from "@/lib/public-account.server";
 
 export const dynamic = "force-dynamic";
@@ -14,8 +14,9 @@ export const metadata: Metadata = {
 };
 
 const faq = [
-  { question: "What is available after membership is confirmed?", answer: "Active members can use the protected idea library, save ideas, and work through personal project checklists with private notes." },
-  { question: "Is checkout available now?", answer: "No. The final price and payment flow have not been configured. Creating an account does not activate membership." },
+  { question: "What does the US$1 starter unlock?", answer: "The proposed one-time Starter Pass unlocks the Pergola Quotation & Follow-up CRM idea and one personal project for that idea. It does not unlock the rest of the library." },
+  { question: "Is checkout available now?", answer: "No. Checkout is not connected in this local build. Creating an account, following an offer link, or completing onboarding does not activate paid access." },
+  { question: "How long does starter access last?", answer: "The access duration is not configured. That unresolved field must not be interpreted as advertised lifetime access." },
   { question: "Are hosting and third-party tools included?", answer: "No. Hosting, external subscriptions, custom development, and customer-specific configuration remain the member’s responsibility." },
   { question: "Does every idea contain the same resources?", answer: "No. Resources vary by idea and may include guides, examples, worksheets, workflows, templates, or checklists." },
   { question: "What licence applies to the resources?", answer: "Final permissions remain to be approved. Review the applicable resource rights before reuse or distribution." },
@@ -28,23 +29,32 @@ export default async function MembershipPage() {
       <section className="membership-hero public-container">
         <div className="membership-hero-copy">
           <nav aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><span>Membership</span></nav>
-          <h1>One membership.<br />Practical ideas to build on.</h1>
-          <p>Get the organised idea library, supporting resources, and a personal workspace for moving from research to a testable offer.</p>
+          <h1>Start with one idea.<br />Upgrade when the wider library fits.</h1>
+          <p>Browse safe catalogue previews, begin with the Pergola Business Kit through the proposed US$1 Starter Pass, or use full monthly membership for all included published ideas.</p>
           <div className="membership-proof">
             <div><Library size={20} /><span><strong>Focused idea library</strong><small>Opportunities organised by customer and solution.</small></span></div>
             <div><FolderKanban size={20} /><span><strong>Personal project tools</strong><small>Save progress, checklists, decisions, and notes.</small></span></div>
           </div>
         </div>
-        <aside className="membership-price-card" aria-label="Membership offer">
-          <div><span>{membershipOffer.name}</span><strong>{membershipOffer.priceLabel}</strong><small>{membershipOffer.billingInterval} subscription</small></div>
-          <ul><li><Check size={16} /> Member idea library</li><li><Check size={16} /> Idea-specific resources</li><li><Check size={16} /> Saved ideas and projects</li><li><Check size={16} /> Published additions and improvements</li></ul>
-          <PublicAccountActions state={accountState} />
-          <p><CreditCard size={15} /> Paid checkout is not available in this build.</p>
-        </aside>
+        <div className="membership-offer-grid" aria-label="IncomeNow offers">
+          <article id="starter-offer" className="membership-price-card starter-offer-card">
+            <div><span>{starterOffer.name}</span><strong>{starterOffer.priceLabel}</strong><small>Proposed one-time purchase · {starterOffer.currency}</small></div>
+            <ul><li><Check size={16} /> Pergola Business Kit only</li><li><Check size={16} /> One personal Pergola project</li><li><Check size={16} /> Account bookmarks and progress</li><li><Check size={16} /> No automatic monthly renewal</li></ul>
+            <StarterOfferAction state={accountState} />
+            <p><CreditCard size={15} /> Checkout is not connected in this local build.</p>
+            <small>Access duration, refund terms, taxes, and final resource rights remain unconfigured.</small>
+          </article>
+          <article id="full-membership" className="membership-price-card full-membership-card">
+            <div><span>{fullMembershipOffer.name}</span><strong>{fullMembershipOffer.priceLabel}</strong><small>{fullMembershipOffer.billingInterval} subscription · currency unconfigured</small></div>
+            <ul><li><Check size={16} /> All included published ideas</li><li><Check size={16} /> One project per account and idea</li><li><Check size={16} /> Idea-specific published resources</li><li><Check size={16} /> Separate voluntary upgrade</li></ul>
+            <PublicAccountActions state={accountState} />
+            <p><CreditCard size={15} /> Monthly checkout is not connected.</p>
+          </article>
+        </div>
       </section>
 
       <section className="public-section public-container membership-benefits">
-        <div className="public-section-heading"><div><h2>A practical workspace, not an income promise</h2><p>Membership organises the information and your next actions while keeping commercial decisions in your hands.</p></div></div>
+        <div className="public-section-heading"><div><h2>A practical workspace, not an income promise</h2><p>Both access options organise information and next actions while keeping commercial decisions in your hands. The starter does not unlock the entire library.</p></div></div>
         <div className="membership-benefit-grid">
           <article><Library size={22} /><h3>Member idea library</h3><p>Review focused opportunities and compare what each would require.</p></article>
           <article><BookOpen size={22} /><h3>Resources by idea</h3><p>Access the examples, guides, and working aids published for that specific opportunity.</p></article>
@@ -59,12 +69,12 @@ export default async function MembershipPage() {
       </div></section>
 
       <section className="public-section public-container membership-steps">
-        <div className="public-section-heading"><div><h2>How access will work</h2><p>A clear handoff from account creation to confirmed membership—without treating sign-up as payment.</p></div></div>
+        <div className="public-section-heading"><div><h2>How access will work</h2><p>A clear handoff from account creation to a verified grant—without treating sign-up, an offer URL, or onboarding as payment.</p></div></div>
         <ol>
           <li><span>1</span><UserRoundPlus /><div><h3>Create your account</h3><p>Use the existing registration and verification journey.</p></div></li>
-          <li><span>2</span><Handshake /><div><h3>Review the final offer</h3><p>Confirm the approved price, terms, and resource permissions when published.</p></div></li>
-          <li><span>3</span><CreditCard /><div><h3>Complete payment when available</h3><p>Checkout is not connected yet, so account creation alone does not activate access.</p></div></li>
-          <li><span>4</span><Library /><div><h3>Open the member library</h3><p>Access begins only after the account has a confirmed active entitlement.</p></div></li>
+          <li><span>2</span><Handshake /><div><h3>Review starter or full membership</h3><p>The Starter Pass is fixed to Pergola. Full membership is the separate broader option.</p></div></li>
+          <li><span>3</span><CreditCard /><div><h3>Complete payment when available</h3><p>Checkout is not connected, so no marketing action grants access in this build.</p></div></li>
+          <li><span>4</span><Library /><div><h3>Open verified access</h3><p>A trusted grant unlocks the specific idea or full membership independently.</p></div></li>
         </ol>
       </section>
 
@@ -75,7 +85,7 @@ export default async function MembershipPage() {
         <PublicFaq items={faq} />
       </section>
 
-      <section className="public-final-cta"><div className="public-container"><div><h2>See the ideas before you decide</h2><p>Browse the public examples, then use the existing account journey when you are ready.</p></div><div className="public-account-actions"><Link className="public-button public-button-light" href="/#example-ideas">Explore example ideas</Link><PublicAccountActions state={accountState} /></div></div></section>
+      <section className="public-final-cta"><div className="public-container"><div><h2>Try IncomeNow for US$1</h2><p>Start with the Pergola Business Kit and one personal project. Browse examples first if you are still comparing.</p></div><div className="public-account-actions"><Link className="public-button public-button-light" href="/#example-ideas">Browse examples</Link><StarterOfferAction state={accountState} light /></div></div></section>
     </PublicShell>
   );
 }

@@ -4,9 +4,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, Check, X } from "lucide-react";
 import Link from "next/link";
 import type { PublicIdea } from "@/content/public-idea";
+import { STARTER_IDEA_ID } from "@/content/membership-offer";
+import type { PublicAccountState } from "@/lib/public-account";
 import { IdeaPreview } from "./idea-preview";
 
-export function PublicIdeaGallery({ ideas }: { ideas: readonly PublicIdea[] }) {
+export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly PublicIdea[]; accountState: PublicAccountState }) {
   const [selected, setSelected] = useState<PublicIdea | null>(null);
   const lastTrigger = useRef<HTMLButtonElement | null>(null);
   const dialog = useRef<HTMLDivElement | null>(null);
@@ -16,6 +18,16 @@ export function PublicIdeaGallery({ ideas }: { ideas: readonly PublicIdea[] }) {
     setSelected(null);
     window.requestAnimationFrame(() => lastTrigger.current?.focus());
   }, []);
+
+  const offerDestination = accountState === "signed-out"
+    ? `/register?next=${encodeURIComponent("/membership?offer=starter")}`
+    : accountState === "starter"
+      ? "/app/ideas/pergola-quotation-follow-up-crm"
+      : accountState === "full"
+        ? "/app/explore"
+        : accountState === "unavailable"
+          ? "/account/access"
+          : "/membership?offer=starter#starter-offer";
 
   useEffect(() => {
     if (!selected) return;
@@ -88,7 +100,18 @@ export function PublicIdeaGallery({ ideas }: { ideas: readonly PublicIdea[] }) {
                 <ul>{selected.resourceTypes.map((resource) => <li key={`${resource.type}-${resource.label}`}><Check size={14} /> {resource.label}</li>)}</ul>
               </div>
               <p className="public-dialog-note">This is a public summary only. Implementation plans and member resources stay inside the protected library.</p>
-              <Link className="public-button public-button-primary public-dialog-membership" href="/membership">View membership information <ArrowRight size={15} /></Link>
+              <Link className="public-button public-button-primary public-dialog-membership" href={offerDestination}>
+                {accountState === "full"
+                  ? "Open idea library"
+                  : accountState === "starter"
+                    ? "Open your starter idea"
+                    : accountState === "unavailable"
+                      ? "Check account access"
+                      : selected.id === STARTER_IDEA_ID
+                        ? "Start with the Pergola kit for US$1"
+                        : "Try IncomeNow for US$1 — the starter includes the Pergola kit"}
+                <ArrowRight size={15} />
+              </Link>
             </div>
           </div>
         </div>

@@ -65,13 +65,14 @@ function GoogleButton({ next }: { next?: string }) {
   );
 }
 
-export function RegisterForm() {
+export function RegisterForm({ next }: { next?: string }) {
   const [state, action] = useActionState(registerAction, initialAuthState);
   return (
     <div className="auth-form-stack">
-      <GoogleButton />
+      <GoogleButton next={next} />
       <div className="auth-divider"><span>or sign up with email</span></div>
       <form action={action} className="auth-form">
+        <input type="hidden" name="next" value={next ?? "/account/access"} />
         <label className="auth-field"><span>Display name <small>Optional</small></span><input name="displayName" autoComplete="name" maxLength={100} /></label>
         <label className="auth-field"><span>Work or personal email <small>Required</small></span><input name="email" type="email" autoComplete="email" required aria-invalid={Boolean(state.fieldErrors?.email)} /><FieldError messages={state.fieldErrors?.email} /></label>
         <PasswordField label="Create password" autoComplete="new-password" errors={state.fieldErrors?.password} />
@@ -79,7 +80,7 @@ export function RegisterForm() {
         <SubmitButton>Create account</SubmitButton>
       </form>
       <p className="auth-separation-note">Account creation does not start a paid membership.</p>
-      <p className="auth-switch">Already have an account? <Link href="/login">Log in</Link></p>
+      <p className="auth-switch">Already have an account? <Link href={next ? `/login?next=${encodeURIComponent(next)}` : "/login"}>Log in</Link></p>
     </div>
   );
 }

@@ -15,11 +15,16 @@ export type IdeaCatalogEntry = Pick<
   | "fixtureLabel"
   | "previewVariant"
   | "cardNote"
+  | "intendedCustomer"
+  | "technicalRequirements"
+  | "marketEvidence"
 > & {
-  resources: Array<Pick<Idea["resources"][number], "id" | "label" | "type">>;
+  problemStatement: string;
+  resources: Array<Pick<Idea["resources"][number], "label" | "type">>;
 };
 
 export function toIdeaCatalogEntry(idea: Idea): IdeaCatalogEntry {
+  const overview = idea.sections.find((section) => section.type === "overview");
   return {
     id: idea.id,
     displayNumber: idea.displayNumber,
@@ -34,6 +39,10 @@ export function toIdeaCatalogEntry(idea: Idea): IdeaCatalogEntry {
     fixtureLabel: idea.fixtureLabel,
     previewVariant: idea.previewVariant,
     cardNote: idea.cardNote,
-    resources: idea.resources.map(({ id, label, type }) => ({ id, label, type })),
+    intendedCustomer: idea.intendedCustomer,
+    technicalRequirements: [...idea.technicalRequirements],
+    marketEvidence: idea.marketEvidence,
+    problemStatement: overview?.friction ?? idea.summary,
+    resources: idea.resources.map(({ label, type }) => ({ label, type })),
   };
 }

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpenCheck, Boxes, ClipboardCheck, Compass, FolderKanban, Lightbulb, Search, ShieldCheck, Sparkles, Target } from "lucide-react";
 import { PublicFaq } from "@/components/public-faq";
 import { PublicIdeaGallery } from "@/components/public-idea-gallery";
-import { PublicAccountActions, PublicShell } from "@/components/public-site";
+import { PublicShell, StarterOfferAction } from "@/components/public-site";
 import { getPublicIdeas } from "@/content/public-content.server";
 import { getPublicAccountState } from "@/lib/public-account.server";
 
@@ -42,8 +42,8 @@ export default async function HomePage() {
           <h1>Find an idea.<br />Build something you can sell.</h1>
           <p>Explore niche business opportunities with practical guides, example tools, and a clear process for finding customers.</p>
           <div className="public-hero-actions">
-            <Link className="public-button public-button-primary public-button-large" href="#example-ideas">Explore ideas <ArrowRight size={17} /></Link>
-            <Link className="public-button public-button-secondary public-button-large" href="#how-it-works">How it works</Link>
+            <StarterOfferAction state={accountState} />
+            <Link className="public-button public-button-secondary public-button-large" href="#example-ideas">Browse examples</Link>
           </div>
           <div className="public-hero-facts"><span><span>03</span> public examples</span><span><span>04</span> clear steps</span><span><span>01</span> member workspace</span></div>
         </div>
@@ -71,8 +71,30 @@ export default async function HomePage() {
       <section id="example-ideas" className="public-section public-section-tinted">
         <div className="public-container">
           <div className="public-section-heading public-section-heading-split"><div><h2>Explore a few example ideas</h2><p>Public summaries from the same stable records used by the member library.</p></div><Link href="/membership">See what membership includes <ArrowRight size={16} /></Link></div>
-          <PublicIdeaGallery ideas={ideas} />
+          <PublicIdeaGallery ideas={ideas} accountState={accountState} />
           <p className="public-honesty-note"><ShieldCheck size={16} /> These are sample opportunities. Live demos and downloadable files are not connected yet.</p>
+        </div>
+      </section>
+
+      <section id="starter-offer" className="public-section public-container public-starter-feature">
+        <div className="public-starter-copy">
+          <span className="public-eyebrow">IncomeNow Starter Pass · US$1</span>
+          <h2>Start with the Pergola Business Kit</h2>
+          <p>Browse the idea library and start with the Pergola Business Kit. The starter unlocks one idea and one personal project.</p>
+          <ul>
+            <li><ClipboardCheck size={18} /> Full written guidance for the canonical Pergola idea</li>
+            <li><FolderKanban size={18} /> One account-owned project with checklists and private notes</li>
+            <li><ShieldCheck size={18} /> Other ideas remain safe previews until full membership is active</li>
+          </ul>
+          <StarterOfferAction state={accountState} />
+          <small>Proposed one-time purchase. Checkout, access duration, refund terms, taxes, and final resource rights are not configured.</small>
+        </div>
+        <div className="public-starter-preview" aria-label="Pergola starter kit preview">
+          <span>IDEA #001</span>
+          <h3>Pergola Quotation & Follow-up CRM</h3>
+          <p>Investigate the buyer workflow, prepare a relevant demonstration, define scope, and manage a single implementation checklist.</p>
+          <div><i /> Problem validation</div><div><i /> Illustrative CRM walkthrough</div><div><i /> Offer and handover planning</div>
+          <strong>Starter project not started</strong>
         </div>
       </section>
 
@@ -93,14 +115,14 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="public-membership-band"><div className="public-container"><div><h2>One monthly membership for the full idea library</h2><p>Browse member content, save ideas, and turn the strongest fit into a structured personal project.</p></div><Link className="public-button public-button-light public-button-large" href="/membership">View membership details <ArrowRight size={17} /></Link></div></section>
+      <section className="public-membership-band"><div className="public-container"><div><h2>Start with one focused idea for US$1</h2><p>Browse the idea library and start with the Pergola Business Kit. The starter unlocks one idea and one personal project. Full monthly membership remains the broader option.</p></div><StarterOfferAction state={accountState} light /></div></section>
 
       <section id="faq" className="public-section public-container public-faq-section">
         <div className="public-section-heading"><div><h2>Questions worth asking first</h2><p>Clear answers about what IncomeNow is—and what it is not.</p></div></div>
         <PublicFaq items={faq} />
       </section>
 
-      <section className="public-final-cta"><div className="public-container"><div><Compass size={27} /><h2>Ready to explore with a clearer process?</h2><p>Start with the public examples, or create an account for the existing access journey.</p></div><PublicAccountActions state={accountState} /></div></section>
+      <section className="public-final-cta"><div className="public-container"><div><Compass size={27} /><h2>Try IncomeNow for US$1</h2><p>Browse the idea library and start with the Pergola Business Kit. The starter unlocks one idea and one personal project.</p></div><StarterOfferAction state={accountState} light /></div></section>
     </PublicShell>
   );
 }

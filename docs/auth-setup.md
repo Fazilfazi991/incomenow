@@ -83,7 +83,7 @@ $env:PHASE2A_EMAIL_A = "first-disposable-user@example.test"
 $env:PHASE2A_EMAIL_B = "second-disposable-user@example.test"
 $env:PHASE2A_PASSWORD = "their-shared-temporary-password"
 $env:PHASE2A_EXPECTED_ACCESS = "inactive" # active, inactive, or unavailable
-npm run test:integration:local
+pnpm run test:integration:local
 ```
 
 The verifier checks invalid login, both user sessions, `getUser`, real Auth refresh, RLS isolation, forbidden ownership and entitlement writes, anonymous denial, `/api/member/access`, protected-content boundaries, and post-sign-out denial. Supply fixtures only in the disposable local database and remove the environment variables afterward.
@@ -95,25 +95,32 @@ The verifier checks invalid login, both user sessions, `getUser`, real Auth refr
 - Authentication is verified with `getUser`/`getClaims`; authorization never trusts user metadata.
 - `profiles` can be read by their owner; only `display_name` is user-updatable.
 - `membership_entitlements` can be read only by their owner and cannot be created or changed by authenticated or anonymous users.
+- `idea_access_grants` exposes only non-privileged fields to its owner and cannot be created, updated, or deleted by authenticated or anonymous users. The current constraint permits only `starter-pergola-v1` for IDEA #001.
 - `account_preferences` can be read only by its owner. Validated security-definer functions perform revision-checked save/skip transitions; authenticated users receive no direct insert, update, or delete grant.
 - Profile, preferences, authentication-method display, and `/account/*` routes require a verified account but never require or create membership. Onboarding state is convenience state, not authorization state.
-- Protected content calls the membership guard at its server data boundary and denies access when the entitlement lookup is unavailable.
+- Safe catalogue previews and bookmarks require a verified account. Full idea records and project operations call a fresh full-membership-or-specific-idea access check at their server data boundary and deny paid data when the relevant lookup is unavailable.
 - The access API is dynamic and returns `Cache-Control: private, no-store`.
-- Workspace rows are owned by `auth.uid()`, visible only to active members, and hidden rather than deleted when membership becomes inactive.
+- Workspace rows are owned by `auth.uid()`, visible only while the owner has full or matching idea access, and hidden rather than deleted when relevant access becomes inactive.
 - Project creation and pause/task/note transitions use narrow authenticated functions; structural plan tables stay in the private schema.
 - Stage notes are plain text, limited to 4,000 characters, and use optimistic revision checks to prevent silent overwrites.
 
 ## Phase 2B local verifier
 
-Create two disposable confirmed local accounts with active test entitlements, then provide their process-only values as `PHASE2B_EMAIL_A`, `PHASE2B_EMAIL_B`, and `PHASE2B_PASSWORD`. Also expose the local CLI values as `API_URL` and `ANON_KEY`, set `APP_ORIGIN=http://localhost:3000`, and run `npm run test:integration:phase2b`.
+Create two disposable confirmed local accounts with active test entitlements, then provide their process-only values as `PHASE2B_EMAIL_A`, `PHASE2B_EMAIL_B`, and `PHASE2B_PASSWORD`. Also expose the local CLI values as `API_URL` and `ANON_KEY`, set `APP_ORIGIN=http://localhost:3000`, and run `pnpm run test:integration:phase2b`.
 
 The verifier checks account isolation, bookmark persistence, idempotent atomic project creation, pinned plan versions, task progress, stale-note rejection, pause locks, direct-write denial, protected route rendering, and a fresh-session read. `scripts/manage-phase-2b-test-users.mjs` is local-only support for explicitly creating or deleting the two named disposable accounts; it requires the local `SERVICE_ROLE_KEY` in process memory and never writes credentials to disk.
 
 ## Phase 3B local verifier
 
-Create one disposable confirmed account without an entitlement and one with a local active entitlement. Provide process-only `PHASE3B_EMAIL_INACTIVE`, `PHASE3B_EMAIL_ACTIVE`, and `PHASE3B_PASSWORD` values, plus local `API_URL`, `ANON_KEY`, `SERVICE_ROLE_KEY`, and `APP_ORIGIN`, then run `npm run test:integration:phase3b`.
+Create one disposable confirmed account without an entitlement and one with a local active entitlement. Provide process-only `PHASE3B_EMAIL_INACTIVE`, `PHASE3B_EMAIL_ACTIVE`, and `PHASE3B_PASSWORD` values, plus local `API_URL`, `ANON_KEY`, `SERVICE_ROLE_KEY`, and `APP_ORIGIN`, then run `pnpm run test:integration:phase3b`.
 
-`scripts/manage-phase-3b-test-users.mjs` creates or removes only the two explicitly named disposable accounts. The verifier covers both account routes, the unchanged membership boundary, optional empty/selected preference transitions, owner isolation, revision conflicts, forbidden direct writes and self-entitlement, independent profile edits, and fresh-session persistence. Delete the disposable accounts after the run; account-owned rows cascade with them.
+`scripts/manage-phase-3b-test-users.mjs` creates or removes only the two explicitly named disposable accounts. The verifier covers both account routes, registered safe-catalogue access versus full content, optional empty/selected preference transitions, owner isolation, revision conflicts, forbidden direct writes and self-entitlement, independent profile edits, and fresh-session persistence. Delete the disposable accounts after the run; account-owned rows cascade with them.
+
+## Phase 3C local verifier
+
+With the built app and local Supabase running, expose the local CLI values as `API_URL`, `ANON_KEY`, and `SERVICE_ROLE_KEY`, set `APP_ORIGIN=http://localhost:3000`, and run `pnpm run test:integration:phase3c`.
+
+The verifier provisions its own disposable registered, starter, full, expired, and revoked accounts using the local service role. It checks safe previews/bookmarks, locked-payload minimisation, Pergola-only access, idempotent concurrent project creation, task/note/pause persistence, cross-user denial, starter/full transitions, access windows, and onboarding deep links. It removes every temporary account in `finally` cleanup and does not seed default registration access.
 
 ## Hosted rollout checklist
 

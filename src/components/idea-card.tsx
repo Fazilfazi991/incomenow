@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, FileText, FlaskConical, Route, Wrench } from "lucide-react";
 import { LockKeyhole } from "lucide-react";
 import type { IdeaCatalogEntry } from "@/content/idea-catalog";
+import type { CatalogueAccess } from "@/lib/member-content.server";
 import { BookmarkButton } from "./bookmark-button";
 import { MemberBookmarkButton } from "./member-bookmark-button";
 import { IdeaPreview } from "./idea-preview";
@@ -17,19 +18,49 @@ const resourceIcon = {
   script: FileText,
 };
 
+type IdeaCardData = Pick<IdeaCatalogEntry,
+  "id" | "displayNumber" | "slug" | "title" | "summary" | "solutionType" | "industries" |
+  "readiness" | "detailAvailable" | "fixtureLabel" | "previewVariant" | "cardNote" | "resources"
+>;
+
 export function IdeaCard({
   idea,
   savedView = false,
   onRemove,
   basePath = "/preview/ideas",
   bookmarkMode = "preview",
+  access,
+  projectId = null,
 }: {
-  idea: IdeaCatalogEntry;
+  idea: IdeaCardData;
   savedView?: boolean;
   onRemove?: () => void;
   basePath?: string;
   bookmarkMode?: "preview" | "member" | "disabled";
+  access?: CatalogueAccess;
+  projectId?: string | null;
 }) {
+  const accessLabel = access === "full"
+    ? "Included with full membership"
+    : access === "starter"
+      ? projectId ? "Starter project started" : "Starter project not started"
+      : access === "starter-available"
+        ? "Available with the US$1 starter"
+        : access === "locked"
+          ? "Full membership required"
+          : access === "not-published"
+            ? "Full guide not published"
+            : access === "unavailable"
+              ? "Access check unavailable"
+              : null;
+  const actionLabel = projectId
+    ? "Continue project"
+    : access === "full" || access === "starter"
+      ? "Open full idea"
+      : access
+        ? "View safe preview"
+        : "View idea";
+
   return (
     <article className={savedView ? "idea-card saved-card" : "idea-card"}>
       <div className="card-meta-row">
@@ -45,6 +76,7 @@ export function IdeaCard({
       <div className="card-copy">
         <h2>{idea.title}</h2>
         <p>{idea.summary}</p>
+        {accessLabel ? <span className={`catalogue-access ${access}`}>{accessLabel}</span> : null}
       </div>
 
       <div className="tag-row card-types">
@@ -57,16 +89,16 @@ export function IdeaCard({
         <div className="resource-pills">
           {idea.resources.slice(0, 3).map((resource) => {
             const Icon = resourceIcon[resource.type];
-            return <span className="resource-pill" key={resource.id}><Icon aria-hidden="true" size={13} />{resource.label}</span>;
+            return <span className="resource-pill" key={`${resource.type}-${resource.label}`}><Icon aria-hidden="true" size={13} />{resource.label}</span>;
           })}
         </div>
       </div>
 
       <div className="card-footer">
         <span>{idea.fixtureLabel ?? idea.cardNote}</span>
-        {idea.detailAvailable ? (
+        {bookmarkMode === "member" || idea.detailAvailable ? (
           <Link className="primary-button card-action" href={`${basePath}/${idea.slug}`}>
-            View idea <ArrowRight aria-hidden="true" size={16} />
+            {actionLabel} <ArrowRight aria-hidden="true" size={16} />
           </Link>
         ) : (
           <span className="unavailable-action">Detail not in Phase 1</span>

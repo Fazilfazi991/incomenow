@@ -1,7 +1,6 @@
-import { ideas } from "@/content/ideas";
-
 export const PREVIEW_STORAGE_KEY = "incomenow.preview.v1";
 export const DEFAULT_SAVED_IDS = ["idea-001", "idea-003", "idea-004"];
+export const KNOWN_PREVIEW_IDEA_IDS = ["idea-001", "idea-002", "idea-003", "idea-004", "idea-005", "idea-034"] as const;
 
 export type PreviewState = {
   version: 1;
@@ -10,7 +9,10 @@ export type PreviewState = {
 
 export type StorageLike = Pick<Storage, "getItem" | "setItem">;
 
-const knownIdeaIds = new Set(ideas.map((idea) => idea.id));
+// Keep the device-local preview store on an explicit public identifier allowlist.
+// Importing the detailed idea records here would place protected plans and resource
+// identifiers in every browser chunk that mounts the preview bookmark provider.
+const knownIdeaIds = new Set<string>(KNOWN_PREVIEW_IDEA_IDS);
 
 export function sanitiseSavedIds(ids: unknown): string[] {
   if (!Array.isArray(ids)) return [...DEFAULT_SAVED_IDS];
@@ -49,4 +51,3 @@ export function addSavedId(savedIdeaIds: string[], ideaId: string) {
 export function removeSavedId(savedIdeaIds: string[], ideaId: string) {
   return savedIdeaIds.filter((id) => id !== ideaId);
 }
-

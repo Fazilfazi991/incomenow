@@ -10,9 +10,10 @@ type MemberShellProps = {
   mode: "preview" | "member";
   savedCount?: number;
   identity?: { name: string; email: string };
+  accessLabel?: string;
 };
 
-export function MemberShell({ children, mode, savedCount = 0, identity }: MemberShellProps) {
+export function MemberShell({ children, mode, savedCount = 0, identity, accessLabel = "Member access" }: MemberShellProps) {
   const pathname = usePathname();
   const memberBookmarks = useOptionalMemberBookmarks();
   const isPreview = mode === "preview";
@@ -39,7 +40,7 @@ export function MemberShell({ children, mode, savedCount = 0, identity }: Member
       <aside className="desktop-sidebar" aria-label="Member navigation">
         <div>
           <Link className="brand" href={homeHref} aria-label="IncomeNow home">IncomeNow<span>.in</span></Link>
-          <div className="preview-pill">{isPreview ? "Local preview — sample data" : "Membership access verified"}</div>
+          <div className="preview-pill">{isPreview ? "Local preview — sample data" : accessLabel}</div>
         </div>
 
         <nav className="side-nav" aria-label="Main navigation">
@@ -63,14 +64,14 @@ export function MemberShell({ children, mode, savedCount = 0, identity }: Member
 
         <div className="member-chip" title={identity?.email}>
           <span className="avatar"><UserRound aria-hidden="true" size={17} /></span>
-          <span><strong>{isPreview ? "Alex Mercer" : displayName}</strong><small>{isPreview ? "Preview member" : "Member"}</small></span>
+          <span><strong>{isPreview ? "Alex Mercer" : displayName}</strong><small>{isPreview ? "Preview member" : accessLabel}</small></span>
         </div>
       </aside>
 
       <header className="mobile-header">
         <Link className="brand" href={homeHref}>IncomeNow<span>.in</span></Link>
         <Link className="mobile-header-actions" href={accountHref} aria-label="Open account settings">
-          <span className="member-label">{isPreview ? "Preview" : "Member"}</span>
+          <span className="member-label">{isPreview ? "Preview" : accessLabel}</span>
           <span className="avatar"><UserRound aria-hidden="true" size={16} /></span>
         </Link>
       </header>

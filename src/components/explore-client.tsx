@@ -4,6 +4,7 @@ import { startTransition, useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Filter, RotateCcw, Search, ShieldCheck, X } from "lucide-react";
 import type { IdeaCatalogEntry } from "@/content/idea-catalog";
+import type { BrowseableIdea } from "@/lib/member-content.server";
 import type { Readiness, SolutionType } from "@/content/idea-schema";
 import { filterIdeas, hasActiveFilters, type IdeaFilters, type IdeaSort } from "@/lib/idea-filter";
 import { IdeaCard } from "./idea-card";
@@ -17,7 +18,7 @@ const solutionOptions: Array<SolutionType | "all"> = [
   "Digital service",
 ];
 
-export function ExploreClient({ source, mode = "preview" }: { source: IdeaCatalogEntry[]; mode?: "preview" | "member" }) {
+export function ExploreClient({ source, mode = "preview" }: { source: Array<IdeaCatalogEntry | BrowseableIdea>; mode?: "preview" | "member" }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -59,9 +60,9 @@ export function ExploreClient({ source, mode = "preview" }: { source: IdeaCatalo
     <div className="page-stack">
       <header className="page-heading explore-heading">
         <div>
-          <div className="context-row"><span className="preview-dot" /> {mode === "member" ? "Member library — access verified" : "Local preview — sample data"} <span aria-hidden="true">•</span> Curated opportunity blueprints</div>
+          <div className="context-row"><span className="preview-dot" /> {mode === "member" ? "Account library — previews stay browseable" : "Local preview — sample data"} <span aria-hidden="true">•</span> Curated opportunity blueprints</div>
           <h1>Explore ideas</h1>
-          <p>Discover practical business opportunities, review the required resources, and choose what to investigate next.</p>
+          <p>Discover practical business opportunities, review safe summaries, and see which ideas your account can open in full.</p>
         </div>
         <div className="trust-strip" role="group" aria-label="Preview content status">
           <span><ShieldCheck aria-hidden="true" size={18} /> Structured patterns</span>
@@ -126,7 +127,7 @@ export function ExploreClient({ source, mode = "preview" }: { source: IdeaCatalo
 
       {results.length ? (
         <section className="idea-grid" aria-label="Idea results">
-          {results.map((idea) => <IdeaCard idea={idea} key={idea.id} basePath={mode === "member" ? "/app/ideas" : "/preview/ideas"} bookmarkMode={mode} />)}
+          {results.map((idea) => <IdeaCard idea={idea} key={idea.id} basePath={mode === "member" ? "/app/ideas" : "/preview/ideas"} bookmarkMode={mode} access={"access" in idea ? idea.access : undefined} projectId={"projectId" in idea ? idea.projectId : null} />)}
         </section>
       ) : (
         <section className="empty-state">

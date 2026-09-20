@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Next.js App Router, TypeScript, Tailwind CSS, and npm, explicitly selected in the Phase 1 brief for an empty project.
+Next.js App Router, TypeScript, Tailwind CSS, pnpm commands in the current local workflow, Supabase SSR/Auth, and PostgreSQL RLS.
 
 ## Users
 
@@ -16,7 +16,7 @@ Members evaluating practical digital-service and software opportunities, then de
 
 ## Product Purpose
 
-IncomeNow is a monthly-subscription library of numbered business opportunities and implementation kits. Members browse and compare ideas, understand the customer problem and proposed business model, inspect demonstrations and resources, save promising ideas, and later work through personal implementation projects.
+IncomeNow is an idea-and-implementation library with numbered business opportunities, safe catalogue previews, and access-controlled implementation kits. Verified accounts can compare and save ideas; a US$1 one-time Starter Pass opens the canonical Pergola kit and one project, while the separate monthly membership opens all included published ideas.
 
 ## Positioning
 
@@ -32,10 +32,12 @@ Members move from discovery to evaluation to implementation. Ideas can describe 
 - Phase 2A adds Supabase email/password and Google authentication, email verification and recovery, a minimal profile, and provider-independent membership entitlements.
 - Phase 2B adds account-synced bookmarks and personal project workspaces with version-pinned plans, required-task progress, pause state, and revisioned notes.
 - Phase 3A adds the public homepage, membership explanation, safe example previews, and account-aware entry actions.
+- Phase 3B adds optional onboarding and owner-scoped account settings without making either a paid-access gate.
+- Phase 3C adds registered catalogue browsing, the US$1 Pergola Starter Pass, per-idea grants, and project authorization tied to the relevant idea.
 - Preview routes use fictional sample data and device-local bookmark persistence.
-- Protected member routes require a verified server session and a separately active membership entitlement; access is denied closed when verification is unavailable.
+- Verified accounts may browse safe catalogue metadata, search, filter, and manage bookmarks without a purchase. Full idea records and project operations require a fresh server-side full-membership or matching per-idea grant check; unknown access fails closed for paid data while the safe preview remains available.
 - Checkout/payment, billing UI, admin, analytics, hosted rollout, and real resource delivery remain disconnected.
-- The commercial price, currency, payment provider, and final licence/refund/cancellation terms are undecided.
+- The Starter Pass is proposed at US$1/USD as a one-time purchase with no automatic renewal. Its access duration, taxes, refund terms, payment provider, checkout, and final resource licence remain unconfigured; full-membership price and currency also remain unconfigured.
 - Idea content is maintained through Codex and the backend; no CMS or content-editor admin is required.
 
 ## Brand Commitments
@@ -55,4 +57,4 @@ The approved visual authority is the Stitch export in `stitch/stitch_incomenow_e
 - Make unknowns and sample-only resources explicit.
 - Let each idea use the sections and resources appropriate to its business model.
 - Keep discovery fast, structured, and recoverable across navigation.
-- Treat access control, authentication, and payment entitlement as distinct backend responsibilities.
+- Treat authentication, onboarding, full membership, per-idea grants, and future payment processing as distinct backend responsibilities.

@@ -36,14 +36,14 @@ describe("public idea quick preview", () => {
 
   it("opens the selected idea, closes with Escape, and restores focus", async () => {
     const user = userEvent.setup();
-    render(<PublicIdeaGallery ideas={ideas} />);
+    render(<PublicIdeaGallery ideas={ideas} accountState="signed-out" />);
     const triggers = screen.getAllByRole("button", { name: "Quick preview" });
 
     await user.click(triggers[1]);
     const dialog = screen.getByRole("dialog", { name: "Quotation Follow-up Automation" });
     expect(dialog).toHaveTextContent("Service businesses");
     expect(dialog).not.toHaveTextContent("Pergola installers");
-    expect(screen.getByRole("link", { name: "View membership information" })).toHaveAttribute("href", "/membership");
+    expect(screen.getByRole("link", { name: "Try IncomeNow for US$1 — the starter includes the Pergola kit" })).toHaveAttribute("href", expect.stringContaining("/register?next="));
     expect(screen.getByRole("button", { name: "Close preview" })).toHaveFocus();
 
     await user.keyboard("{Escape}");
@@ -53,7 +53,7 @@ describe("public idea quick preview", () => {
 
   it("closes from the visible close control", async () => {
     const user = userEvent.setup();
-    render(<PublicIdeaGallery ideas={ideas} />);
+    render(<PublicIdeaGallery ideas={ideas} accountState="registered" />);
     await user.click(screen.getAllByRole("button", { name: "Quick preview" })[0]);
     await user.click(screen.getByRole("button", { name: "Close preview" }));
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();

@@ -4,7 +4,7 @@ import type { PublicAccountState } from "@/lib/public-account";
 import { PublicMobileMenu } from "./public-mobile-menu";
 
 export function PublicAccountActions({ state, compact = false }: { state: PublicAccountState; compact?: boolean }) {
-  if (state === "active") {
+  if (state === "full") {
     return (
       <div className="public-account-actions">
         {!compact && <Link className="public-text-link" href="/account/access"><UserRound size={15} /> Account</Link>}
@@ -13,11 +13,20 @@ export function PublicAccountActions({ state, compact = false }: { state: Public
     );
   }
 
-  if (state === "inactive") {
+  if (state === "starter") {
     return (
       <div className="public-account-actions">
-        {!compact && <span className="public-access-note">Membership access is inactive; checkout is not available yet</span>}
-        <Link className="public-button public-button-primary" href="/account/access">View account access <ArrowRight size={15} /></Link>
+        {!compact && <span className="public-access-note">Starter access includes the Pergola idea and one project</span>}
+        <Link className="public-button public-button-primary" href="/app/ideas/pergola-quotation-follow-up-crm">Open starter idea <ArrowRight size={15} /></Link>
+      </div>
+    );
+  }
+
+  if (state === "registered") {
+    return (
+      <div className="public-account-actions">
+        {!compact && <Link className="public-text-link" href="/account/access"><UserRound size={15} /> Account</Link>}
+        <Link className="public-button public-button-primary" href="/app/explore">Browse idea library <ArrowRight size={15} /></Link>
       </div>
     );
   }
@@ -37,6 +46,16 @@ export function PublicAccountActions({ state, compact = false }: { state: Public
       <Link className="public-button public-button-primary" href="/register">Create account <ArrowRight size={15} /></Link>
     </div>
   );
+}
+
+export function StarterOfferAction({ state, light = false }: { state: PublicAccountState; light?: boolean }) {
+  const className = `public-button ${light ? "public-button-light" : "public-button-primary"} public-button-large`;
+  if (state === "full") return <Link className={className} href="/app/explore">Open idea library <ArrowRight size={17} /></Link>;
+  if (state === "starter") return <Link className={className} href="/app/ideas/pergola-quotation-follow-up-crm">Open your starter idea <ArrowRight size={17} /></Link>;
+  if (state === "unavailable") return <Link className={className} href="/account/access">Check account access <ArrowRight size={17} /></Link>;
+  if (state === "registered") return <Link className={className} href="/membership?offer=starter#starter-offer">Try IncomeNow for US$1 <ArrowRight size={17} /></Link>;
+  const next = encodeURIComponent("/membership?offer=starter");
+  return <Link className={className} href={`/register?next=${next}`}>Try IncomeNow for US$1 <ArrowRight size={17} /></Link>;
 }
 
 function PublicHeader({ state, page }: { state: PublicAccountState; page: "home" | "membership" }) {

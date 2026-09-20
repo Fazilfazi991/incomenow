@@ -4,7 +4,7 @@ import Link from "next/link";
 import { startTransition, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, Bookmark, Filter, RotateCcw, Search, X } from "lucide-react";
-import { getIdeaById } from "@/content/ideas";
+import type { IdeaCatalogEntry } from "@/content/idea-catalog";
 import type { SolutionType } from "@/content/idea-schema";
 import { filterIdeas, type IdeaSort } from "@/lib/idea-filter";
 import { IdeaCard } from "./idea-card";
@@ -12,7 +12,7 @@ import { useBookmarks } from "./bookmark-provider";
 
 const solutionOptions: Array<SolutionType | "all"> = ["all", "Custom CRM", "Lead-generation website", "Automation", "Web tool", "Digital service"];
 
-export function SavedClient() {
+export function SavedClient({ catalog }: { catalog: IdeaCatalogEntry[] }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -22,7 +22,8 @@ export function SavedClient() {
 
   const type = (searchParams.get("type") as SolutionType | "all" | null) ?? "all";
   const sort = (searchParams.get("sort") as IdeaSort | null) ?? "recent";
-  const savedIdeas = useMemo(() => savedIds.map(getIdeaById).filter((idea): idea is NonNullable<typeof idea> => Boolean(idea)), [savedIds]);
+  const ideaById = useMemo(() => new Map(catalog.map((idea) => [idea.id, idea])), [catalog]);
+  const savedIdeas = useMemo(() => savedIds.map((ideaId) => ideaById.get(ideaId)).filter((idea): idea is IdeaCatalogEntry => Boolean(idea)), [ideaById, savedIds]);
   const results = filterIdeas(savedIdeas, { query: searchParams.get("q") ?? "", solutionType: type, sort });
 
   const updateParams = (updates: Record<string, string>) => {

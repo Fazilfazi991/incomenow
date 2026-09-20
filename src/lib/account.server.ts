@@ -80,9 +80,10 @@ export async function getAccountEntryDestination(destination: string, client?: S
 
 export async function getPostOnboardingDestination(intendedDestination: string) {
   const context = await getAccountAccessContext();
-  if (context.authentication !== "verified" || context.access !== "active") return "/account/access";
+  if (context.authentication !== "verified") return "/account/access";
   const pathname = new URL(intendedDestination, "https://incomenow.invalid").pathname;
-  return pathname.startsWith("/app/") ? intendedDestination : "/app/explore";
+  if (pathname.startsWith("/app/") || pathname === "/membership") return intendedDestination;
+  return "/app/explore";
 }
 
 export { mapPreferenceRow };

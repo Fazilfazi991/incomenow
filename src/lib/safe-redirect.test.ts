@@ -5,6 +5,7 @@ describe("safe internal redirects", () => {
   it("accepts only the protected application destinations", () => {
     expect(safeInternalDestination("/account/access?confirmed=true")).toBe("/account/access?confirmed=true");
     expect(safeInternalDestination("/account/settings")).toBe("/account/settings");
+    expect(safeInternalDestination("/membership?offer=starter")).toBe("/membership?offer=starter");
     expect(safeInternalDestination("/account/getting-started?next=%2Fapp%2Fexplore")).toBe("/account/getting-started?next=%2Fapp%2Fexplore");
     expect(safeInternalDestination("/app/explore?q=crm")).toBe("/app/explore?q=crm");
     expect(safeInternalDestination("/app/ideas/quotation-follow-up")).toBe("/app/ideas/quotation-follow-up");

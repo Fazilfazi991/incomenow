@@ -218,7 +218,7 @@ The system is editorial and operational at once. Manrope gives headings and mile
 
 Account-synced work extends the same library metaphor into a project desk. Saved Ideas keeps the comparison language intact, while My Projects and the workspace add durable status, required-task progress, stage notes, and explicit save feedback without shifting into generic productivity-software chrome.
 
-The public website is a separate reading-room shell, not a disguised member dashboard. Its horizontal desktop header, disclosure-based mobile navigation, split editorial hero, semantic library preview, public idea cards, and dark closing invitation help visitors understand the product before entering the account flow. Public copy and previews stay literal: undecided prices, unavailable checkout, unapproved licence terms, sample resources, and the absence of income guarantees are shown as constraints rather than polished away.
+The public website is a separate reading-room shell, not a disguised member dashboard. Its horizontal desktop header, disclosure-based mobile navigation, split editorial hero, semantic library preview, public idea cards, and dark closing invitation help visitors understand the product before entering the account flow. Phase 3C adds one prominent US$1 Starter Pass for the Pergola Business Kit beside a separately unpriced monthly membership. Public copy and previews stay literal: unavailable checkout, unconfigured starter duration and refund/licence terms, sample resources, and the absence of income guarantees are shown as constraints rather than polished away.
 
 **Key Characteristics:**
 
@@ -292,7 +292,7 @@ The palette uses paper whites and mineral sages as the working field, then reser
 
 ## Layout
 
-The public website uses its own shell. A sticky, lightly translucent desktop header spans a centered 1240px inner row, while public sections and the footer use a centered 1180px container with 48px total viewport gutters. The homepage first viewport is a two-column split: the editorial promise leads on the left and a slightly rotated, semantic library preview provides product evidence on the right. The membership first viewport uses the same split logic with explanatory copy on the left and one bounded offer card on the right.
+The public website uses its own shell. A sticky, lightly translucent desktop header spans a centered 1240px inner row, while public sections and the footer use a centered 1180px container with 48px total viewport gutters. The homepage first viewport is a two-column split: the editorial promise leads on the left and a slightly rotated, semantic library preview provides product evidence on the right. The membership first viewport uses the same split logic with explanatory copy on the left and a bounded two-card offer grid on the right; the cards stack before copy becomes cramped.
 
 At 980px and below, public navigation and hero spacing compress, four-column process and benefit groups become two columns, and the public idea gallery holds two columns. At 767px and below, the desktop public navigation is replaced by a disclosure menu in the header; heroes, idea grids, membership scope, FAQ, and footer stack into one column; actions expand to the available width; and the quick-preview dialog becomes a bottom sheet. The 360px guard breakpoint tightens public gutters to 10px per side and removes nonessential preview chrome before shrinking decision-critical copy. Public mobile navigation is intentionally different from the signed-in member bottom bar.
 
@@ -332,7 +332,7 @@ The system is flat by default and uses tonal layering before shadow. Resting car
 - **Toast Float** (`0 12px 32px rgba(16, 45, 37, 0.22)`): High-priority reversible feedback above navigation.
 - **Authentication Focus** (`0 8px 30px rgba(16, 45, 37, 0.07)`): The bounded desktop credential card; mobile tightens this to a smaller 6px/20px diffusion.
 - **Public Preview Lift** (`0 24px 55px rgba(16, 45, 37, 0.12)`): The tilted semantic library preview in the homepage hero.
-- **Membership Offer Lift** (`0 24px 50px rgba(16, 45, 37, 0.11)`): The single membership offer card in its split hero.
+- **Membership Offer Lift** (`0 24px 50px rgba(16, 45, 37, 0.11)`): The paired starter and full-membership offer cards in the membership split hero.
 - **Quick Preview Focus** (`0 30px 80px rgba(0, 0, 0, 0.28)`): The public idea dialog or mobile sheet above its dimmed backdrop.
 
 ### Named Rules
@@ -389,7 +389,7 @@ Components feel tactile and confident: quiet at rest, exact in hierarchy, and vi
 
 - **Desktop:** A sticky translucent header keeps the IncomeNow wordmark, centered section links, and one account-aware action visible without adopting member-rail chrome. The footer uses the darkest forest field, a short product statement, only implemented routes, and the explicit “No income guarantees” note.
 - **Mobile:** A 40px disclosure control opens a bounded white menu below the wordmark. Navigation links and the correct account state stack as full-width actions; this menu closes when a destination is chosen.
-- **Account awareness:** Signed-out, active, inactive, and temporarily unavailable states route visitors to the existing account, access, or protected-library destination without implying that checkout or entitlement activation is available.
+- **Account awareness:** Signed-out, registered-preview, starter, full-membership, and temporarily unavailable states route visitors to registration, access review, the canonical starter idea/project, or the broader library without implying that checkout or entitlement activation is available.
 
 ### Public Hero and Library Preview
 
@@ -405,7 +405,7 @@ FAQ rows use native disclosure semantics, one botanical divider per row, a Manro
 
 ### Membership Offer, Scope, and Access Steps
 
-The membership page presents one offer card only. The price slot states “Price to be confirmed,” the billing interval remains monthly, included capabilities are listed plainly, and the action reflects the current account state. A paired scope panel makes the boundary between what membership covers and what remains the member’s responsibility visually explicit. The four access steps separate account creation, offer review, future payment, and active entitlement; on mobile their horizontal connector becomes a vertical sequence. The licence note remains a distinct sage callout whenever permissions are not approved.
+The membership page presents two explicit offers without simulating checkout. The primary Starter Pass shows US$1/USD, one-time, the canonical Pergola kit, and one personal project; it does not claim renewal, lifetime access, or a configured duration. The separate monthly membership keeps price and currency unconfigured and covers all included published ideas. Account-aware actions never ask starter or full members to buy redundant access. A paired scope panel keeps the boundary between product access and member responsibility explicit, while the access steps separate signup, offer review, future payment, and server-recorded entitlement. On mobile the offer cards and steps become one readable vertical sequence.
 
 ### Inverse Final CTA
 
@@ -453,7 +453,7 @@ Account-synced Saved Ideas preserves the idea-card comparison unit, filter contr
 - **Do** stack workspace navigation, work, and resources in that order below 900px and make the primary mobile action full width.
 - **Do** use the separate public shell for homepage and membership routes, including the horizontal desktop navigation and disclosure-based mobile menu.
 - **Do** keep public idea cards and quick previews on the explicit safe projection; label them as summaries and keep implementation plans and protected resources out.
-- **Do** keep the membership offer singular and honest: monthly interval, “Price to be confirmed,” unavailable checkout, and entitlement activation shown as separate steps.
+- **Do** keep the two offers distinct and honest: US$1/USD one-time Pergola starter with unconfigured duration, separately unpriced monthly full membership, unavailable checkout, and entitlement activation shown as a server-recorded step.
 - **Do** pair persuasive public sections with concrete product-shaped evidence, responsibility boundaries, and native FAQ disclosures.
 - **Do** use the inverse forest CTA only as a calm closing invitation with account-aware destinations.
 
@@ -468,5 +468,5 @@ Account-synced Saved Ideas preserves the idea-card comparison unit, filter contr
 - **Don't** turn progress into dashboard theater, count optional tasks toward completion, or merge notes and resources into the checklist.
 - **Don't** reuse the signed-in sidebar or mobile bottom navigation on public pages.
 - **Don't** expose protected plan details, resource identifiers, private customer data, or member-only implementation material in public cards, dialogs, or client bundles.
-- **Don't** invent prices, checkout availability, testimonials, customer counts, demand validation, licence permissions, release cadence, or income outcomes.
+- **Don't** invent full-membership prices, starter duration, renewal, lifetime access, checkout availability, refund rights, testimonials, customer counts, demand validation, licence permissions, release cadence, or income outcomes.
 - **Don't** let account creation read as payment confirmation or active membership; authentication and entitlement remain separate truths.

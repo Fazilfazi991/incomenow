@@ -1,15 +1,31 @@
 import { NextResponse } from "next/server";
-import { getAccountAccessContext } from "@/lib/membership.server";
+import { STARTER_IDEA_ID } from "@/content/membership-offer";
+import { getAccountAccessContext, getIdeaAccessDecision } from "@/lib/membership.server";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
   const context = await getAccountAccessContext();
   const headers = { "Cache-Control": "private, no-store, max-age=0" };
-  if (context.configuration === "missing" || context.authentication === "unavailable" || context.access === "unavailable") {
-    return NextResponse.json({ access: "unavailable" }, { status: 503, headers });
+  if (context.configuration === "missing" || context.authentication === "unavailable") {
+    return NextResponse.json({ authentication: "unavailable", browseCatalogue: false }, { status: 503, headers });
   }
-  if (context.authentication === "signed-out") return NextResponse.json({ access: "unauthenticated" }, { status: 401, headers });
-  if (context.access !== "active") return NextResponse.json({ access: "inactive" }, { status: 403, headers });
-  return NextResponse.json({ access: "active" }, { status: 200, headers });
+  if (context.authentication === "signed-out") return NextResponse.json({ authentication: "unauthenticated", browseCatalogue: false }, { status: 401, headers });
+
+  const starter = getIdeaAccessDecision(context, STARTER_IDEA_ID);
+  const tier = context.fullMembership === "active"
+    ? "full"
+    : starter.status === "active" && starter.source === "starter"
+      ? "starter"
+      : context.fullMembership === "unavailable" || context.ideaGrantLookup === "unavailable"
+        ? "unavailable"
+        : "registered";
+
+  return NextResponse.json({
+    authentication: "verified",
+    browseCatalogue: true,
+    tier,
+    fullMembership: context.fullMembership,
+    starterIdea: starter.status,
+  }, { status: 200, headers });
 }

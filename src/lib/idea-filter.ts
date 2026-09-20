@@ -1,4 +1,3 @@
-import type { IdeaCatalogEntry } from "@/content/idea-catalog";
 import type { Readiness, SolutionType } from "@/content/idea-schema";
 
 export type IdeaSort = "recent" | "number" | "title";
@@ -11,7 +10,17 @@ export type IdeaFilters = {
   sort?: IdeaSort;
 };
 
-export function filterIdeas<T extends IdeaCatalogEntry>(source: T[], filters: IdeaFilters): T[] {
+type FilterableIdea = {
+  id: string;
+  displayNumber: string;
+  title: string;
+  solutionType: SolutionType;
+  industries: string[];
+  readiness: Readiness;
+  addedOrder: number;
+};
+
+export function filterIdeas<T extends FilterableIdea>(source: T[], filters: IdeaFilters): T[] {
   const query = filters.query?.trim().toLocaleLowerCase() ?? "";
   const type = filters.solutionType ?? "all";
   const industry = filters.industry?.trim() ?? "";

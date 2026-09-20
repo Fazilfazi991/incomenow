@@ -12,21 +12,24 @@ describe("public account actions", () => {
     expect(screen.getByRole("link", { name: "Log in" })).toHaveAttribute("href", "/login");
   });
 
-  it("sends active members to the protected library", () => {
-    render(<PublicAccountActions state="active" />);
+  it("sends full members to the protected library", () => {
+    render(<PublicAccountActions state="full" />);
     expect(screen.getByRole("link", { name: "Open idea library" })).toHaveAttribute("href", "/app/explore");
     expect(screen.queryByRole("link", { name: "Create account" })).not.toBeInTheDocument();
   });
 
-  it("keeps inactive and unavailable states distinct", () => {
-    const { rerender } = render(<PublicAccountActions state="inactive" />);
-    expect(screen.getByText(/Membership access is inactive/)).toHaveTextContent("checkout is not available yet");
-    expect(screen.getByRole("link", { name: "View account access" })).toHaveAttribute("href", "/account/access");
+  it("keeps registered, starter, and unavailable states distinct", () => {
+    const { rerender } = render(<PublicAccountActions state="registered" />);
+    expect(screen.getByRole("link", { name: "Browse idea library" })).toHaveAttribute("href", "/app/explore");
+
+    rerender(<PublicAccountActions state="starter" />);
+    expect(screen.getByText(/Starter access includes/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Open starter idea" })).toHaveAttribute("href", "/app/ideas/pergola-quotation-follow-up-crm");
 
     rerender(<PublicAccountActions state="unavailable" />);
     expect(screen.getByText("Account status is temporarily unavailable")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Check account access" })).toHaveAttribute("href", "/account/access");
-    expect(screen.queryByText(/inactive/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/payment failed/i)).not.toBeInTheDocument();
   });
 
   it("links every public navigation item and opens the mobile menu", async () => {

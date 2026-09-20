@@ -2,7 +2,7 @@
 
 ## Phase and stack
 
-Phase 3B is code-complete and locally verified in the workspace, building on the Phase 3A public entry, Phase 2B account-synced member workspace, and Phase 2A.1 authentication/access baseline. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
+Phase 3C is code-complete and locally verified in the workspace, building on the completed Phase 3B onboarding/settings commit `82644aa`, Phase 3A public entry, Phase 2B account-synced workspace, and Phase 2A.1 authentication baseline. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
 
 This status deliberately distinguishes local verification from launch verification. Docker's Linux engine and the `IncomeNow` local Supabase stack were available during Phase 2A.1, but Google OAuth, a hosted Supabase project, external SMTP delivery, and production configuration were not exercised. No hosted Supabase project was contacted or changed.
 
@@ -16,16 +16,17 @@ This status deliberately distinguishes local verification from launch verificati
 - Explicit service-unavailable feedback when required public configuration is absent.
 - Sign-out from the account-access page.
 
-## Membership and protected content
+## Access and protected content
 
-- `profiles` and provider-independent `membership_entitlements` tables with RLS and minimal grants.
+- `profiles`, provider-independent `membership_entitlements`, and account-bound `idea_access_grants` tables with RLS and minimal grants.
 - Idempotent profile creation from `auth.users` with safe display metadata only.
-- Separate authentication and membership checks; signup and email verification never create an entitlement.
-- Active-window evaluation for enabled, future, expired, and revoked grants.
-- Server-side membership guard in the protected layout and again at each protected content data boundary.
-- Protected `/app/explore` and `/app/ideas/[slug]` routes receive only server-approved data. The client exploration bundle receives the reduced catalog shape, not the full detail records.
-- Dynamic `/api/member/access` endpoint with private, no-store responses and fail-closed 401/403/503 states.
-- `/account/access` renders active, inactive, and unavailable states without inventing checkout behavior.
+- Separate authentication, full-membership, and per-idea grant checks; signup, email verification, offer URLs, and onboarding never create paid access.
+- Registered accounts can browse, search, filter, and bookmark the safe catalogue. Full records require active full membership or a matching active idea grant.
+- The `starter-pergola-v1` grant is constrained to IDEA #001, ordinary users cannot write it, and active-window evaluation covers future, expired, disabled, and revoked rows.
+- Server-side idea authorization runs at each paid data boundary and is repeated by database policies/functions for project, task, stage, and note operations.
+- `/app/explore` and locked `/app/ideas/[slug]` routes receive only reduced, server-approved DTOs. Full plan/resource markers are absent from production browser chunks.
+- Dynamic `/api/member/access` responses are private/no-store and distinguish signed-out, registered-preview, starter, full, and unavailable states.
+- `/account/access` renders registered, starter, full, and unavailable states without inventing checkout behavior.
 
 ## Preserved Phase 1 behavior
 
@@ -40,7 +41,7 @@ This status deliberately distinguishes local verification from launch verificati
 - Projects are created atomically through a narrow authenticated function and pinned to an immutable structural plan version.
 - `/app/projects` derives Active, Paused, and Complete state from persisted rows, reports completed-stage progress, identifies the current focus and next incomplete action, and links back to the original idea.
 - `/app/projects/[projectId]` provides versioned stage navigation, completed-stage overall progress, required-task progress within each stage, a clear distinction between selected stage and derived current focus, pause/resume, one revisioned plain-text note per stage, unsaved-navigation decisions, and repository-backed stage resources.
-- Inactive membership hides account workspace rows and blocks writes without deleting data; restored membership reveals the same rows.
+- Removing full membership hides projects that no longer have relevant idea access without deleting them. An independent starter grant keeps the canonical Pergola project visible and editable; restoring full membership reveals the same other rows.
 
 ## Phase 3A public entry
 
@@ -59,7 +60,25 @@ This status deliberately distinguishes local verification from launch verificati
 - Owner-scoped preferences use stable typed IDs, RLS, explicit grants, narrow validated RPCs, server timestamps, and optimistic revision conflicts. Direct table writes are denied.
 - Authentication failure, signed-out state, missing preference rows, preference lookup failure, and membership lookup failure remain distinct. Account settings do not depend on a successful entitlement lookup.
 
+## Phase 3C US$1 Starter Pass
+
+- `/` and `/membership` now make “Try IncomeNow for US$1” prominent while keeping the approved Stitch public system and honest limitations. The starter is US$1/USD, one-time, Pergola only, and one project; automatic renewal, lifetime access, duration, taxes, refunds, final resource rights, and live checkout are not claimed.
+- Non-Pergola quick previews state that the US$1 starter includes the Pergola kit. Starter users open or continue that kit, and full members are sent to the broader library rather than prompted to repurchase.
+- The authenticated catalogue is available to every verified account through a safe metadata projection. Locked details omit paid sections, action plans, resource IDs, and start controls; unknown access remains preview-only.
+- Pergola guidance now includes the proposed buyer workflow, discovery questions, demonstration scope, offer/handover guidance, and an explicit readiness checklist. No live demo, source package, download, customer evidence, or commercial result is claimed.
+- Project creation remains atomic and idempotent, with one owner/idea project and immutable plan version. Project reads and mutations require ownership plus access to that project’s idea.
+- Optional onboarding preserves safe return destinations for registered, starter, and full accounts. Saving or skipping preferences never changes access.
+- Additive migration `20260920175336_starter_offer_per_idea_access.sql` was applied to the existing local database without reset. Hosted Supabase was not contacted.
+
 ## Verification completed
+
+- Phase 3C application checks: TypeScript and ESLint passed; Vitest/Testing Library passed 62 tests across 19 files.
+- Phase 3C database regression: 164 pgTAP assertions passed across four suites; database lint reported no schema errors.
+- Phase 3C project-plan sync remained exact at 17 stages and 37 tasks.
+- Phase 3C real local integration passed ten disposable-user checks: registered preview/bookmarks, locked-payload minimisation, starter Pergola-only access, concurrent idempotent project start, task/note/pause persistence, cross-user denial, starter-to-full reuse, full-removal preservation, expired/revoked grants, and optional-onboarding deep links. Disposable users were removed by the verifier.
+- Phase 3C optimized production build passed. A post-build scan found no protected plan/resource markers in static browser chunks.
+- Phase 3C browser checks covered `/` and `/membership` at 1440, 768, 390, and 320 pixels with no horizontal overflow, framework overlay, or browser-console error. The mobile offer stack, navigation disclosure, starter copy, and explicit checkout-disabled copy rendered correctly.
+- Payment tests remain intentionally unexecuted because no checkout or payment processor is connected.
 
 - Phase 3B application checks: TypeScript and ESLint passed; Vitest/Testing Library passed 54 tests across 17 files.
 - Phase 3B database regression: 116 pgTAP assertions passed across all three suites.
@@ -108,11 +127,11 @@ The public entry, local database, email-account, and access-controlled member wo
 - Hosted Supabase migration/configuration and hosted smoke tests.
 - External SMTP/inbox delivery and production email-template configuration.
 - Production security, domain, and operational readiness review.
-- Approved membership price, currency, tax/refund/cancellation terms, payment provider, checkout, and subscription webhooks.
+- Full-membership price/currency; starter access duration; tax/refund/cancellation terms; payment provider; checkout; and subscription/webhook processing.
 - Final resource licence, real downloadable kits, production demos, and an operational publishing/admin workflow.
 
 Exact local Google setup values and credential locations are documented in `docs/auth-setup.md`. Hosted rollout remains a separately approved operator action.
 
 ## Visual evidence
 
-The selected Stitch references are recorded in `docs/design-map.md`. Phase 3A captures are in `artifacts/screenshots/phase-3a/` for both public routes at 1440, 768, 390, and 320 widths; the directory is intentionally ignored because it is local review output. Authentication captures remain in `.impeccable/review/`. Durable public, authentication, saved-idea, project, and workspace patterns are synchronized in `DESIGN.md` and `.impeccable/design.json`.
+The selected Stitch references are recorded in `docs/design-map.md`. Phase 3C homepage and membership captures are in `.impeccable/review/phase-3c-{home,membership}-{1440,768,390,320}.png`; the review directory is intentionally ignored local evidence. Earlier Phase 3A captures remain in `artifacts/screenshots/phase-3a/`, and authentication captures remain in `.impeccable/review/`. Durable public, authentication, saved-idea, project, workspace, starter, and per-idea-access patterns are synchronized in `DESIGN.md` and `.impeccable/design.json`.

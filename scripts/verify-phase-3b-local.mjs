@@ -42,8 +42,10 @@ for (const account of [inactive, active]) {
 }
 
 const inactiveApp = await appRequest("/app/explore", inactive);
-assert.equal(inactiveApp.status, 307);
-assert.equal(inactiveApp.headers.get("location"), "/account/access");
+assert.equal(inactiveApp.status, 200);
+const inactiveCatalogue = await inactiveApp.text();
+assert.match(inactiveCatalogue, /Explore ideas/);
+assert.doesNotMatch(inactiveCatalogue, /crm-validate|region-segment|crm-source/);
 const activeApp = await appRequest("/app/explore", active);
 assert.equal(activeApp.status, 200);
 assert.match(await activeApp.text(), /Explore ideas/);
@@ -98,7 +100,7 @@ console.log(JSON.stringify({
   result: "pass",
   checks: [
     "inactive-and-active-account-routes",
-    "membership-boundary-unchanged",
+    "registered-catalogue-preview-and-full-content-boundary",
     "optional-empty-skip-and-selected-save",
     "owner-read-isolation",
     "stale-write-conflict",

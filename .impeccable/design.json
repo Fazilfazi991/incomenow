@@ -179,7 +179,7 @@
       {
         "name": "membership-offer-lift",
         "value": "0 24px 50px rgba(16, 45, 37, 0.11)",
-        "purpose": "The single membership offer card in its split hero."
+        "purpose": "The paired starter and full-membership offer cards in the membership split hero."
       },
       {
         "name": "quick-preview-focus",
@@ -392,12 +392,12 @@
       "css": ".ds-public-faq { width: min(100%, 690px); border-top: 1px solid #cfdad4; border-bottom: 1px solid #cfdad4; color: var(--forest, #102d25); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-public-faq summary { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 3px; font: 700 15px/1.4 Manrope, ui-sans-serif, system-ui, sans-serif; list-style: none; cursor: pointer; } .ds-public-faq summary svg { flex: 0 0 auto; color: var(--action, #197a56); transition: transform 160ms ease-out; } .ds-public-faq[open] summary svg { transform: rotate(180deg); } .ds-public-faq p { max-width: 690px; margin: 0; padding: 0 42px 21px 3px; color: #5f7168; font-size: 13px; line-height: 1.65; } .ds-public-faq summary:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; }"
     },
     {
-      "name": "Membership Offer Card",
+      "name": "Starter Offer Card",
       "kind": "card",
       "refersTo": "membership-offer-card",
-      "description": "The single honest monthly offer: price unconfirmed, checkout unavailable, and membership activation separate from account creation.",
-      "html": "<aside class=\"ds-membership-offer\"><span>IncomeNow membership</span><strong>Price to be confirmed</strong><small>Monthly subscription</small><ul><li>Member idea library</li><li>Idea-specific resources</li><li>Saved ideas and projects</li></ul><a href=\"#\">Create account</a><p>Paid checkout is not available in this build.</p></aside>",
-      "css": ".ds-membership-offer { width: min(100%, 430px); padding: 34px; border: 1px solid #d4e1d9; border-radius: 20px; background: var(--surface, #fff); color: var(--ink, #18251f); box-shadow: 0 24px 50px rgba(16,45,37,.11); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-membership-offer > span { display: block; color: var(--action, #197a56); font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; } .ds-membership-offer > strong { display: block; margin-top: 16px; font: 760 35px/1.05 Manrope, ui-sans-serif, system-ui, sans-serif; } .ds-membership-offer > small { display: block; margin-top: 6px; color: #6c7e74; font-size: 12px; } .ds-membership-offer ul { display: grid; gap: 12px; margin: 27px 0; padding: 23px 0 23px 20px; border-block: 1px solid #e2e9e5; color: #354b42; font-size: 12px; } .ds-membership-offer > a { min-height: 40px; display: flex; align-items: center; justify-content: center; padding: 8px 15px; border-radius: 8px; background: var(--action, #197a56); color: #fff; font-size: 13px; font-weight: 720; text-decoration: none; } .ds-membership-offer > a:hover { background: var(--action-hover, #136043); } .ds-membership-offer > a:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; } .ds-membership-offer > p { margin: 13px 0 0; color: #52675e; font-size: 11px; text-align: center; } @media (max-width: 767px) { .ds-membership-offer { padding: 25px; } } @media (max-width: 360px) { .ds-membership-offer { padding: 20px; } .ds-membership-offer > strong { font-size: 30px; } }"
+      "description": "The primary one-time starter variant: US$1/USD, Pergola only, one project, unconfigured duration, unavailable checkout, and activation separate from account creation.",
+      "html": "<aside class=\"ds-membership-offer\"><span>IncomeNow Starter Pass</span><strong>US$1</strong><small>One-time proposed purchase · Pergola kit</small><ul><li>One published idea</li><li>One personal project</li><li>Other ideas stay safe previews</li></ul><a href=\"#\">Review starter access</a><p>Checkout is not connected in this local build.</p></aside>",
+      "css": ".ds-membership-offer { width: min(100%, 430px); padding: 34px; border: 1px solid #d4e1d9; border-radius: 20px; background: var(--surface, #fff); color: var(--ink, #18251f); box-shadow: 0 24px 50px rgba(16,45,37,.11); font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-membership-offer > span { display: block; color: var(--action, #197a56); font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; } .ds-membership-offer > strong { display: block; margin-top: 16px; font: 760 35px/1.05 Manrope, ui-sans-serif, system-ui, sans-serif; } .ds-membership-offer > small { display: block; margin-top: 6px; color: #6c7e74; font-size: 12px; } .ds-membership-offer ul { display: grid; gap: 12px; margin: 27px 0; padding: 23px 0 23px 20px; border-block: 1px solid #e2e9e5; color: #354b42; font-size: 12px; } .ds-membership-offer > a { min-height: 44px; display: flex; align-items: center; justify-content: center; padding: 8px 15px; border-radius: 8px; background: var(--action, #197a56); color: #fff; font-size: 13px; font-weight: 720; text-decoration: none; } .ds-membership-offer > a:hover { background: var(--action-hover, #136043); } .ds-membership-offer > a:focus-visible { outline: 3px solid rgba(25,122,86,.28); outline-offset: 2px; } .ds-membership-offer > p { margin: 13px 0 0; color: #52675e; font-size: 11px; text-align: center; } @media (max-width: 767px) { .ds-membership-offer { padding: 25px; } } @media (max-width: 360px) { .ds-membership-offer { padding: 20px; } .ds-membership-offer > strong { font-size: 30px; } }"
     },
     {
       "name": "Membership Scope and Access Steps",
@@ -498,7 +498,7 @@
       "Do stack workspace navigation, work, and resources in that order below 900px and make the primary mobile action full width.",
       "Do use the separate public shell for homepage and membership routes, including the horizontal desktop navigation and disclosure-based mobile menu.",
       "Do keep public idea cards and quick previews on the explicit safe projection; label them as summaries and keep implementation plans and protected resources out.",
-      "Do keep the membership offer singular and honest: monthly interval, “Price to be confirmed,” unavailable checkout, and entitlement activation shown as separate steps.",
+      "Do keep the two offers distinct and honest: US$1/USD one-time Pergola starter with unconfigured duration, separately unpriced monthly full membership, unavailable checkout, and server-recorded activation.",
       "Do pair persuasive public sections with concrete product-shaped evidence, responsibility boundaries, and native FAQ disclosures.",
       "Do use the inverse forest CTA only as a calm closing invitation with account-aware destinations."
     ],
@@ -512,7 +512,7 @@
       "Don't turn progress into dashboard theater, count optional tasks toward completion, or merge notes and resources into the checklist.",
       "Don't reuse the signed-in sidebar or mobile bottom navigation on public pages.",
       "Don't expose protected plan details, resource identifiers, private customer data, or member-only implementation material in public cards, dialogs, or client bundles.",
-      "Don't invent prices, checkout availability, testimonials, customer counts, demand validation, licence permissions, release cadence, or income outcomes.",
+      "Don't invent full-membership prices, starter duration, renewal, lifetime access, checkout availability, refund rights, testimonials, customer counts, demand validation, licence permissions, release cadence, or income outcomes.",
       "Don't let account creation read as payment confirmation or active membership; authentication and entitlement remain separate truths."
     ]
   }

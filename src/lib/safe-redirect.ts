@@ -8,7 +8,7 @@ export function safeInternalDestination(value: string | null | undefined, fallba
     const url = new URL(value, "https://incomenow.invalid");
     if (url.origin !== "https://incomenow.invalid") return fallback;
     const destination = `${url.pathname}${url.search}`;
-    const allowed = ["/account/access", "/account/settings", "/account/getting-started", "/app/explore", "/app/saved", "/app/projects"].includes(url.pathname)
+    const allowed = ["/membership", "/account/access", "/account/settings", "/account/getting-started", "/app/explore", "/app/saved", "/app/projects"].includes(url.pathname)
       || ideaPath.test(url.pathname)
       || projectPath.test(url.pathname);
     return allowed ? destination : fallback;

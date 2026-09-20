@@ -35,7 +35,7 @@ describe("idea routes and optional sections", () => {
     const crm = getIdeaBySlug("pergola-quotation-follow-up-crm");
     const automation = getIdeaBySlug("quotation-follow-up-automation");
     expect(crm?.sections.some((section) => section.type === "demo-preview")).toBe(true);
-    expect(crm?.sections.some((section) => section.type === "workflow")).toBe(false);
+    expect(crm?.sections.some((section) => section.type === "workflow")).toBe(true);
     expect(automation?.sections.some((section) => section.type === "workflow")).toBe(true);
     expect(automation?.sections.some((section) => section.type === "demo-preview")).toBe(false);
   });
@@ -51,4 +51,3 @@ describe("idea routes and optional sections", () => {
     }
   });
 });
-

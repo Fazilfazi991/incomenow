@@ -157,19 +157,21 @@ where user_id = '00000000-0000-0000-0000-0000000002a1';
 
 set local role authenticated;
 set local "request.jwt.claim.sub" = '00000000-0000-0000-0000-0000000002a1';
-select is_empty('select idea_id from public.bookmarks', 'inactive membership hides saved records without deleting them');
+select results_eq(
+  'select idea_id from public.bookmarks order by idea_id',
+  array['idea-001'::text],
+  'registered accounts retain their own bookmarks without paid access'
+);
 select is_empty('select id from public.projects', 'inactive membership hides projects without deleting them');
-select throws_ok(
+select lives_ok(
   $$insert into public.bookmarks (idea_id) values ('idea-003')$$,
-  '42501',
-  null,
-  'inactive membership blocks new bookmark operations'
+  'registered accounts can bookmark another published catalogue idea'
 );
 select throws_ok(
   $$select public.start_member_project('idea-004')$$,
   '42501',
-  'Active membership required',
-  'inactive membership blocks project operations'
+  'Idea access required',
+  'no-grant accounts cannot start protected projects'
 );
 
 reset role;
@@ -179,7 +181,11 @@ where user_id = '00000000-0000-0000-0000-0000000002a1';
 
 set local role authenticated;
 set local "request.jwt.claim.sub" = '00000000-0000-0000-0000-0000000002a1';
-select results_eq('select idea_id from public.bookmarks', array['idea-001'::text], 'restored membership reveals the same bookmark');
+select results_eq(
+  'select idea_id from public.bookmarks order by idea_id',
+  array['idea-001'::text, 'idea-003'::text],
+  'restored membership keeps the same account bookmarks'
+);
 select is((select count(*) from public.projects), 1::bigint, 'restored membership reveals the same project');
 select is(
   (select content from public.project_stage_notes where stage_id = 'crm-validate'),
@@ -237,7 +243,11 @@ reset role;
 set local role authenticated;
 set local "request.jwt.claim.sub" = '00000000-0000-0000-0000-0000000002a1';
 select lives_ok($$delete from public.bookmarks where idea_id = 'idea-001'$$, 'A can remove its own bookmark');
-select is_empty('select idea_id from public.bookmarks', 'removed bookmark is no longer returned');
+select results_eq(
+  'select idea_id from public.bookmarks',
+  array['idea-003'::text],
+  'removed bookmark is gone while the other account bookmark remains'
+);
 
 reset role;
 select * from finish();

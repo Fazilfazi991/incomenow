@@ -64,6 +64,38 @@ export type Database = {
         Update: never;
         Relationships: [];
       };
+      idea_access_grants: {
+        Row: {
+          id: string;
+          user_id: string;
+          offer_code: "starter-pergola-v1";
+          idea_id: "idea-001";
+          enabled: boolean;
+          starts_at: string | null;
+          expires_at: string | null;
+          revoked_at: string | null;
+          source: "manual" | "complimentary" | "billing_provider" | "migration" | "local_test";
+          source_reference: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          offer_code: "starter-pergola-v1";
+          idea_id: "idea-001";
+          enabled?: boolean;
+          starts_at?: string | null;
+          expires_at?: string | null;
+          revoked_at?: string | null;
+          source: "manual" | "complimentary" | "billing_provider" | "migration" | "local_test";
+          source_reference?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: never;
+        Relationships: [];
+      };
       bookmarks: {
         Row: { user_id: string; idea_id: string; saved_at: string };
         Insert: { user_id?: string; idea_id: string; saved_at?: string };

@@ -36,6 +36,7 @@ export async function registerAction(_previous: AuthActionState, formData: FormD
 
   const origin = getTrustedAppOrigin();
   if (!origin) return unavailableState();
+  const next = safeInternalDestination(text(formData, "next"));
   let destination = "/verify-email?state=sent";
 
   try {
@@ -45,12 +46,12 @@ export async function registerAction(_previous: AuthActionState, formData: FormD
       password: parsed.data.password,
       options: {
         data: parsed.data.displayName ? { display_name: parsed.data.displayName } : undefined,
-        emailRedirectTo: `${origin}/auth/confirm?next=/account/access`,
+        emailRedirectTo: `${origin}/auth/confirm?next=${encodeURIComponent(next)}`,
       },
     });
 
     if (error) return { status: "error", message: "Unable to create the account. Check the details or try again later." };
-    if (data.session) destination = await getAccountEntryDestination("/account/access", supabase);
+    if (data.session) destination = await getAccountEntryDestination(next, supabase);
   } catch (error) {
     if (error instanceof SupabaseConfigurationError) return unavailableState();
     throw error;

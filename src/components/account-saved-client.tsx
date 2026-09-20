@@ -4,22 +4,23 @@ import Link from "next/link";
 import { startTransition, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, Bookmark, Filter, RotateCcw, Search, X } from "lucide-react";
-import { getIdeaById } from "@/content/ideas";
 import type { SolutionType } from "@/content/idea-schema";
+import type { BrowseableIdea } from "@/lib/member-content.server";
 import { filterIdeas, type IdeaSort } from "@/lib/idea-filter";
 import { IdeaCard } from "./idea-card";
 import { useMemberBookmarks } from "./member-bookmark-provider";
 
 const solutionOptions: Array<SolutionType | "all"> = ["all", "Custom CRM", "Lead-generation website", "Automation", "Web tool", "Digital service"];
 
-export function AccountSavedClient({ initialIdeaIds }: { initialIdeaIds: string[] }) {
+export function AccountSavedClient({ initialIdeaIds, catalog }: { initialIdeaIds: string[]; catalog: BrowseableIdea[] }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { savedIds, setSaved, feedback, clearFeedback } = useMemberBookmarks();
   const [lastRemoved, setLastRemoved] = useState<string | null>(null);
   const orderedIds = useMemo(() => [...savedIds].sort((a, b) => initialIdeaIds.indexOf(a) - initialIdeaIds.indexOf(b)), [initialIdeaIds, savedIds]);
-  const savedIdeas = useMemo(() => orderedIds.map(getIdeaById).filter((idea): idea is NonNullable<typeof idea> => Boolean(idea)), [orderedIds]);
+  const ideaById = useMemo(() => new Map(catalog.map((idea) => [idea.id, idea])), [catalog]);
+  const savedIdeas = useMemo(() => orderedIds.map((ideaId) => ideaById.get(ideaId)).filter((idea): idea is BrowseableIdea => Boolean(idea)), [ideaById, orderedIds]);
   const query = searchParams.get("q") ?? "";
   const type = (searchParams.get("type") as SolutionType | "all" | null) ?? "all";
   const sort = (searchParams.get("sort") as IdeaSort | null) ?? "recent";
@@ -63,7 +64,7 @@ export function AccountSavedClient({ initialIdeaIds }: { initialIdeaIds: string[
         <section className="empty-state saved-empty"><Bookmark aria-hidden="true" size={28} /><h2>Your shortlist starts here</h2><p>Save promising ideas from the exploration library. Your shortlist follows this account across sessions.</p><Link className="primary-button" href="/app/explore">Explore ideas <ArrowRight size={16} /></Link></section>
       ) : results.length ? (
         <section className="idea-grid saved-grid" aria-label="Saved idea results">
-          {results.map((idea) => <div className="saved-card-wrap" key={idea.id}><IdeaCard idea={idea} savedView bookmarkMode="member" basePath="/app/ideas" onRemove={() => setLastRemoved(idea.id)} /><button type="button" className="remove-link" onClick={async () => { if (await setSaved(idea.id, false)) setLastRemoved(idea.id); }}>Remove from saved</button></div>)}
+          {results.map((idea) => <div className="saved-card-wrap" key={idea.id}><IdeaCard idea={idea} savedView bookmarkMode="member" basePath="/app/ideas" access={idea.access} projectId={idea.projectId} onRemove={() => setLastRemoved(idea.id)} /><button type="button" className="remove-link" onClick={async () => { if (await setSaved(idea.id, false)) setLastRemoved(idea.id); }}>Remove from saved</button></div>)}
         </section>
       ) : (
         <section className="empty-state"><Filter aria-hidden="true" size={26} /><h2>No saved ideas match</h2><p>Try another search or clear the filters to see your full shortlist.</p><button type="button" className="secondary-button" onClick={() => startTransition(() => router.replace(pathname, { scroll: false }))}><RotateCcw size={16} /> Clear search & filters</button></section>

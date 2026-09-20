@@ -1,6 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
+import { ideas } from "@/content/ideas";
 import {
   DEFAULT_SAVED_IDS,
+  KNOWN_PREVIEW_IDEA_IDS,
   PREVIEW_STORAGE_KEY,
   addSavedId,
   readPreviewState,
@@ -9,6 +11,10 @@ import {
 } from "./preview-storage";
 
 describe("preview bookmark persistence", () => {
+  it("keeps the browser-safe identifier allowlist aligned with the catalogue", () => {
+    expect([...KNOWN_PREVIEW_IDEA_IDS].sort()).toEqual(ideas.map((idea) => idea.id).sort());
+  });
+
   it("falls back safely for malformed values", () => {
     const storage = { getItem: vi.fn(() => "{bad"), setItem: vi.fn() };
     expect(readPreviewState(storage).savedIdeaIds).toEqual(DEFAULT_SAVED_IDS);

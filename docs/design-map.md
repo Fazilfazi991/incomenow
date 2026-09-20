@@ -6,9 +6,9 @@ The design-system source is `editorial_venture_discovery/DESIGN.md`. It defines 
 
 | Screen | Reference folders | Variants | Planned route | Phase status |
 | --- | --- | --- | --- | --- |
-| Explore Ideas | `incomenow_explore_ideas_desktop`, `incomenow_explore_ideas_mobile` | Desktop/mobile | `/preview/explore`, `/app/explore` | Preview implemented in Phase 1; protected member route added in Phase 2A |
+| Explore Ideas | `incomenow_explore_ideas_desktop`, `incomenow_explore_ideas_mobile` | Desktop/mobile | `/preview/explore`, `/app/explore` | Preview implemented in Phase 1; authenticated safe catalogue and per-idea access states added in Phase 3C |
 | Saved Ideas | `incomenow_saved_ideas_desktop`, `incomenow_saved_ideas_mobile` | Desktop/mobile | `/preview/saved`, `/app/saved` | Preview implemented in Phase 1; account-synced member route added in Phase 2B |
-| Idea #001 detail | `incomenow_idea_detail_desktop`, `incomenow_idea_detail_mobile` | Desktop/mobile | `/preview/ideas/pergola-quotation-follow-up-crm` | Implemented in Phase 1 |
+| Idea #001 detail | `incomenow_idea_detail_desktop`, `incomenow_idea_detail_mobile` | Desktop/mobile | `/preview/ideas/pergola-quotation-follow-up-crm`, `/app/ideas/pergola-quotation-follow-up-crm` | Phase 3C makes Pergola the starter idea, with safe locked preview and full server-authorized detail states |
 | Idea #003 detail | `incomenow_idea_003_automation_desktop`, `incomenow_idea_003_automation_mobile` | Desktop/mobile | `/preview/ideas/quotation-follow-up-automation` | Implemented in Phase 1 |
 | Idea #004 detail | No dedicated export; inherits approved idea-detail system | Missing dedicated reference | `/preview/ideas/local-service-lead-generation` | Implemented in Phase 1 with brief-authorized content |
 | My Projects | `incomenow_my_projects_desktop`, `incomenow_my_projects_mobile` | Desktop/mobile | `/app/projects` | Implemented with real member-owned project state in Phase 2B |
@@ -18,13 +18,13 @@ The design-system source is `editorial_venture_discovery/DESIGN.md`. It defines 
 | Help & Support | `incomenow_help_support_desktop`, `incomenow_help_support_mobile` | Desktop/mobile | `/app/support` | Deferred |
 | Account settings | `incomenow_account_settings_desktop`, `incomenow_account_settings_mobile` | Desktop/mobile | `/account/settings` | Implemented for every verified account in Phase 3B |
 | Membership & billing | `incomenow_membership_billing_desktop`, `incomenow_membership_billing_mobile` | Desktop/mobile | `/app/account/membership` | Deferred |
-| Public homepage | `incomenow_public_homepage_desktop`, `incomenow_public_homepage_mobile` | Desktop/mobile | `/` | Implemented in Phase 3A with public-safe example previews and account-aware actions |
-| Membership page | `incomenow_membership_desktop`, `incomenow_membership_mobile` | Desktop/mobile | `/membership` | Implemented in Phase 3A with one unpriced monthly offer and no checkout |
+| Public homepage | `incomenow_public_homepage_desktop`, `incomenow_public_homepage_mobile` | Desktop/mobile | `/` | Phase 3C adds the prominent US$1 starter path while preserving public-safe previews |
+| Membership page | `incomenow_membership_desktop`, `incomenow_membership_mobile` | Desktop/mobile | `/membership` | Phase 3C presents the US$1 one-time Pergola starter beside the separately unpriced monthly offer; checkout remains disabled |
 | Log in | `incomenow_log_in_desktop_2`, `incomenow_log_in_mobile_2` | Variant 2 selected for its split editorial/form composition and clearer service-backed states | `/login` | Implemented in Phase 2A |
 | Create account | `incomenow_create_account_desktop_2`, `incomenow_create_account_mobile_2` | Variant 2 selected to match login composition and membership-separation copy | `/register` | Implemented in Phase 2A |
 | Verify email | `incomenow_verify_email_desktop`, `incomenow_verify_email_mobile` | Desktop/mobile | `/verify-email` | Implemented in Phase 2A |
 | Forgot/reset password | No dedicated export; inherits selected authentication composition | Missing dedicated reference | `/forgot-password`, `/reset-password` | Implemented in Phase 2A using approved auth visual language |
-| Account access | No dedicated export; inherits account/auth visual system | Missing dedicated reference | `/account/access` | Implemented in Phase 2A with explicit active, inactive, and unavailable states |
+| Account access | No dedicated export; inherits account/auth visual system | Missing dedicated reference | `/account/access` | Phase 3C distinguishes registered preview, starter, full-membership, and unavailable states |
 | Admin overview | `incomenow_admin_overview_desktop`, `incomenow_admin_overview_mobile` | Desktop/mobile | `/admin` | Deferred |
 | Admin users | `incomenow_admin_users_desktop`, `incomenow_admin_users_mobile` | Desktop/mobile | `/admin/users` | Deferred |
 | Admin subscriptions | `incomenow_admin_subscriptions_desktop`, `incomenow_admin_subscriptions_mobile` | Desktop/mobile | `/admin/subscriptions` | Deferred |
@@ -37,5 +37,6 @@ The design-system source is `editorial_venture_discovery/DESIGN.md`. It defines 
 - No standalone icons, photographs, font files, or downloadable resource assets were exported. UI schematics are rebuilt semantically; whole-page screenshots are never embedded.
 - Several screenshot PNGs are unusually narrow while retaining 1600px height. Their paired HTML uses conventional responsive breakpoints, so screenshot proportions are treated as scaled captures rather than literal CSS viewport widths.
 - Phase 3A keeps its public header/footer separate from the authentication shell and persistent member navigation. At 767px and below, the public header uses its approved disclosure menu; it never renders member-only navigation or a fabricated avatar.
-- Phase 3B removes Stitch fixture controls and sample identity/billing claims. Its account shell is available without membership, while the existing member shell links to `/account/settings` and remains reserved for active members.
+- Phase 3B removes Stitch fixture controls and sample identity/billing claims. Its account shell remains available without paid access.
+- Phase 3C opens the member shell and safe catalogue to every verified account, labels starter and full access separately, and keeps locked idea pages within the same editorial detail grammar without rendering paid sections or start controls.
 - The reusable public quick preview becomes a bottom sheet on mobile. It is driven only by the explicit public projection and does not link to preview-mode routes.

@@ -1,10 +1,11 @@
 import "server-only";
 
 import { getIdeaById } from "@/content/ideas";
+import { toIdeaCatalogEntry, type IdeaCatalogEntry } from "@/content/idea-catalog";
 import { getProjectPlanDefinition } from "@/content/project-plans";
 import type { Idea, ImplementationStage } from "@/content/idea-schema";
 import type { Database } from "@/types/database";
-import { requireActiveMembership } from "./membership.server";
+import { requireVerifiedAccount } from "./membership.server";
 import { createClient } from "./supabase/server";
 import { deriveProgress, deriveStageProgress, type ProjectProgress } from "./workspace-progress";
 
@@ -13,7 +14,7 @@ type TaskRow = Database["public"]["Tables"]["project_tasks"]["Row"];
 type NoteRow = Database["public"]["Tables"]["project_stage_notes"]["Row"];
 
 export type MemberBookmark = {
-  idea: Idea;
+  ideaId: string;
   savedAt: string;
 };
 
@@ -21,7 +22,7 @@ export type { ProjectProgress } from "./workspace-progress";
 
 export type MemberProjectSummary = {
   id: string;
-  idea: Idea;
+  idea: IdeaCatalogEntry;
   planVersion: string;
   pausedAt: string | null;
   createdAt: string;
@@ -42,23 +43,21 @@ export type WorkspaceStage = Omit<ImplementationStage, "tasks"> & {
   progress: ProjectProgress;
 };
 
-export type MemberProjectWorkspace = MemberProjectSummary & {
+export type MemberProjectWorkspace = Omit<MemberProjectSummary, "idea"> & {
+  idea: Idea;
   stages: WorkspaceStage[];
 };
 
 export async function getMemberBookmarks(destination = "/app/saved") {
-  await requireActiveMembership(destination);
+  await requireVerifiedAccount(destination);
   const supabase = await createClient();
   const { data, error } = await supabase.from("bookmarks").select("idea_id, saved_at").order("saved_at", { ascending: false });
   if (error) throw new Error("Unable to load saved ideas.", { cause: error });
-  return (data ?? []).flatMap<MemberBookmark>((bookmark) => {
-    const idea = getIdeaById(bookmark.idea_id);
-    return idea ? [{ idea, savedAt: bookmark.saved_at }] : [];
-  });
+  return (data ?? []).map<MemberBookmark>((bookmark) => ({ ideaId: bookmark.idea_id, savedAt: bookmark.saved_at }));
 }
 
 export async function getMemberSavedIdeaIds(destination = "/app/explore") {
-  return (await getMemberBookmarks(destination)).map((bookmark) => bookmark.idea.id);
+  return (await getMemberBookmarks(destination)).map((bookmark) => bookmark.ideaId);
 }
 
 function buildSummary(project: ProjectRow, tasks: TaskRow[]): MemberProjectSummary | null {
@@ -75,7 +74,7 @@ function buildSummary(project: ProjectRow, tasks: TaskRow[]): MemberProjectSumma
   const nextAction = currentStage?.stage.tasks.find((task) => task.required && !taskById.get(task.id)?.completed_at);
   return {
     id: project.id,
-    idea,
+    idea: toIdeaCatalogEntry(idea),
     planVersion: project.plan_version,
     pausedAt: project.paused_at,
     createdAt: project.created_at,
@@ -87,7 +86,7 @@ function buildSummary(project: ProjectRow, tasks: TaskRow[]): MemberProjectSumma
 }
 
 export async function getMemberProjects(destination = "/app/projects") {
-  await requireActiveMembership(destination);
+  await requireVerifiedAccount(destination);
   const supabase = await createClient();
   const [{ data: projects, error: projectError }, { data: tasks, error: taskError }] = await Promise.all([
     supabase.from("projects").select("*").order("updated_at", { ascending: false }),
@@ -101,7 +100,7 @@ export async function getMemberProjects(destination = "/app/projects") {
 }
 
 export async function getMemberProject(projectId: string): Promise<MemberProjectWorkspace | null> {
-  await requireActiveMembership(`/app/projects/${encodeURIComponent(projectId)}`);
+  await requireVerifiedAccount(`/app/projects/${encodeURIComponent(projectId)}`);
   const supabase = await createClient();
   const { data: project, error: projectError } = await supabase.from("projects").select("*").eq("id", projectId).maybeSingle();
   if (projectError) throw new Error("Unable to load this project.", { cause: projectError });
@@ -131,11 +130,11 @@ export async function getMemberProject(projectId: string): Promise<MemberProject
       progress: deriveProgress(stageTasks.map((task) => ({ required: task.required, completed_at: task.completedAt }))),
     };
   });
-  return { ...summary, stages };
+  return { ...summary, idea: getIdeaById(project.idea_id)!, stages };
 }
 
 export async function getMemberProjectIdForIdea(ideaId: string) {
-  await requireActiveMembership("/app/explore");
+  await requireVerifiedAccount("/app/explore");
   const supabase = await createClient();
   const { data, error } = await supabase.from("projects").select("id").eq("idea_id", ideaId).maybeSingle();
   if (error) throw new Error("Unable to check project status.", { cause: error });
