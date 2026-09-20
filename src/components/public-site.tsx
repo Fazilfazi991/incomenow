@@ -58,6 +58,50 @@ export function StarterOfferAction({ state, light = false }: { state: PublicAcco
   return <Link className={className} href={`/register?next=${next}`}>Try IncomeNow for US$1 <ArrowRight size={17} /></Link>;
 }
 
+export function StarterOfferCopy({
+  state,
+  defaultHeading,
+  defaultBody,
+}: {
+  state: PublicAccountState;
+  defaultHeading: string;
+  defaultBody: string;
+}) {
+  if (state === "starter") {
+    return (
+      <>
+        <h2>Open your Pergola starter</h2>
+        <p>Your Starter Pass already includes the Pergola Business Kit and one personal project. Open the idea to start or continue your work.</p>
+      </>
+    );
+  }
+
+  if (state === "full") {
+    return (
+      <>
+        <h2>Explore your full idea library</h2>
+        <p>Your membership already includes the Pergola Business Kit and all other included published ideas. Open the library to keep exploring or continue a project.</p>
+      </>
+    );
+  }
+
+  if (state === "unavailable") {
+    return (
+      <>
+        <h2>Check your account access</h2>
+        <p>We could not confirm your current access. Review your account status before choosing an offer.</p>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <h2>{defaultHeading}</h2>
+      <p>{defaultBody}</p>
+    </>
+  );
+}
+
 function PublicHeader({ state, page }: { state: PublicAccountState; page: "home" | "membership" }) {
   const root = page === "home" ? "" : "/";
   return (

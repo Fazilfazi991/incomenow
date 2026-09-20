@@ -1,7 +1,7 @@
 import { cleanup, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it } from "vitest";
-import { PublicAccountActions } from "./public-site";
+import { PublicAccountActions, StarterOfferCopy } from "./public-site";
 
 describe("public account actions", () => {
   afterEach(cleanup);
@@ -46,5 +46,29 @@ describe("public account actions", () => {
     expect(screen.getByLabelText("Close navigation")).toBeInTheDocument();
     await user.click(within(screen.getByRole("navigation", { name: "Mobile navigation" })).getByRole("link", { name: "How it works" }));
     expect(menu).not.toHaveAttribute("open");
+  });
+});
+
+describe("starter offer copy", () => {
+  afterEach(cleanup);
+
+  it("invites signed-out and registered visitors to consider the starter offer", () => {
+    const { rerender } = render(<StarterOfferCopy state="signed-out" defaultHeading="Try IncomeNow for US$1" defaultBody="Starter details" />);
+    expect(screen.getByRole("heading", { name: "Try IncomeNow for US$1" })).toBeInTheDocument();
+
+    rerender(<StarterOfferCopy state="registered" defaultHeading="Try IncomeNow for US$1" defaultBody="Starter details" />);
+    expect(screen.getByRole("heading", { name: "Try IncomeNow for US$1" })).toBeInTheDocument();
+  });
+
+  it("gives starter accounts a continue message without another purchase prompt", () => {
+    render(<StarterOfferCopy state="starter" defaultHeading="Try IncomeNow for US$1" defaultBody="Starter details" />);
+    expect(screen.getByRole("heading", { name: "Open your Pergola starter" })).toBeInTheDocument();
+    expect(screen.queryByText(/US\$1/)).not.toBeInTheDocument();
+  });
+
+  it("gives full members a library message without a redundant starter offer", () => {
+    render(<StarterOfferCopy state="full" defaultHeading="Try IncomeNow for US$1" defaultBody="Starter details" />);
+    expect(screen.getByRole("heading", { name: "Explore your full idea library" })).toBeInTheDocument();
+    expect(screen.queryByText(/US\$1/)).not.toBeInTheDocument();
   });
 });

@@ -63,6 +63,7 @@ This status deliberately distinguishes local verification from launch verificati
 ## Phase 3C US$1 Starter Pass
 
 - `/` and `/membership` now make “Try IncomeNow for US$1” prominent while keeping the approved Stitch public system and honest limitations. The starter is US$1/USD, one-time, Pergola only, and one project; automatic renewal, lifetime access, duration, taxes, refunds, final resource rights, and live checkout are not claimed.
+- Public offer headings and supporting copy are account-aware: starter accounts receive an open/continue message, full members receive a full-library message, and neither is prompted to buy redundant starter access.
 - Non-Pergola quick previews state that the US$1 starter includes the Pergola kit. Starter users open or continue that kit, and full members are sent to the broader library rather than prompted to repurchase.
 - The authenticated catalogue is available to every verified account through a safe metadata projection. Locked details omit paid sections, action plans, resource IDs, and start controls; unknown access remains preview-only.
 - Pergola guidance now includes the proposed buyer workflow, discovery questions, demonstration scope, offer/handover guidance, and an explicit readiness checklist. No live demo, source package, download, customer evidence, or commercial result is claimed.
@@ -72,12 +73,13 @@ This status deliberately distinguishes local verification from launch verificati
 
 ## Verification completed
 
-- Phase 3C application checks: TypeScript and ESLint passed; Vitest/Testing Library passed 62 tests across 19 files.
+- Phase 3C post-review application checks: TypeScript, the exact repository ESLint command, and the optimized build passed; Vitest/Testing Library passed 70 tests across 21 files. ESLint narrowly excludes ignored `.impeccable/review/**` browser artifacts while continuing to scan application source.
 - Phase 3C database regression: 164 pgTAP assertions passed across four suites; database lint reported no schema errors.
 - Phase 3C project-plan sync remained exact at 17 stages and 37 tasks.
 - Phase 3C real local integration passed ten disposable-user checks: registered preview/bookmarks, locked-payload minimisation, starter Pergola-only access, concurrent idempotent project start, task/note/pause persistence, cross-user denial, starter-to-full reuse, full-removal preservation, expired/revoked grants, and optional-onboarding deep links. Disposable users were removed by the verifier.
 - Phase 3C optimized production build passed. A post-build scan found no protected plan/resource markers in static browser chunks.
 - Phase 3C browser checks covered `/` and `/membership` at 1440, 768, 390, and 320 pixels with no horizontal overflow, framework overlay, or browser-console error. The mobile offer stack, navigation disclosure, starter copy, and explicit checkout-disabled copy rendered correctly.
+- The post-review Pergola detail regression passed at 320×900: root scroll width remained within the viewport, and the section navigation retained contained internal horizontal scrolling.
 - Payment tests remain intentionally unexecuted because no checkout or payment processor is connected.
 
 - Phase 3B application checks: TypeScript and ESLint passed; Vitest/Testing Library passed 54 tests across 17 files.

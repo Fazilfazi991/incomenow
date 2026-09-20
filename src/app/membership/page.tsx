@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BookOpen, Check, CircleDollarSign, Cloud, Code2, CreditCard, ExternalLink, FolderKanban, Handshake, Library, Settings2, UserRoundPlus, Wrench } from "lucide-react";
 import { PublicFaq } from "@/components/public-faq";
-import { PublicAccountActions, PublicShell, StarterOfferAction } from "@/components/public-site";
+import { PublicAccountActions, PublicShell, StarterOfferAction, StarterOfferCopy } from "@/components/public-site";
 import { fullMembershipOffer, starterOffer } from "@/content/membership-offer";
 import { getPublicAccountState } from "@/lib/public-account.server";
 
@@ -85,7 +85,7 @@ export default async function MembershipPage() {
         <PublicFaq items={faq} />
       </section>
 
-      <section className="public-final-cta"><div className="public-container"><div><h2>Try IncomeNow for US$1</h2><p>Start with the Pergola Business Kit and one personal project. Browse examples first if you are still comparing.</p></div><div className="public-account-actions"><Link className="public-button public-button-light" href="/#example-ideas">Browse examples</Link><StarterOfferAction state={accountState} light /></div></div></section>
+      <section className="public-final-cta"><div className="public-container"><div><StarterOfferCopy state={accountState} defaultHeading="Try IncomeNow for US$1" defaultBody="Start with the Pergola Business Kit and one personal project. Browse examples first if you are still comparing." /></div><div className="public-account-actions"><Link className="public-button public-button-light" href="/#example-ideas">Browse examples</Link><StarterOfferAction state={accountState} light /></div></div></section>
     </PublicShell>
   );
 }

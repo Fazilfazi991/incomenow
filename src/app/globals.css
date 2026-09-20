@@ -578,7 +578,7 @@ h1, h2, h3 { font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-se
   .detail-actions .start-control, .detail-actions .primary-button { width: 100%; }
   .detail-actions .bookmark-button { padding: 8px 11px; }
   .inline-unavailable { position: fixed; z-index: 75; top: auto; right: 12px; bottom: 76px; left: 12px; width: auto; }
-  .section-nav { top: calc(58px + env(safe-area-inset-top, 0px)); margin: 8px -12px 0; border-right: 0; border-left: 0; border-radius: 0; padding: 7px 12px; }
+  .section-nav { top: calc(58px + env(safe-area-inset-top, 0px)); max-width: 100%; margin: 8px 0 0; border-right: 0; border-left: 0; border-radius: 0; padding: 7px 12px; }
   .section-nav a { padding: 6px 9px; font-size: 9px; }
   .detail-layout { margin-top: 18px; }
   .quick-facts { padding: 14px; border-radius: 13px; }

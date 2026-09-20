@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpenCheck, Boxes, ClipboardCheck, Compass, FolderKanban, Lightbulb, Search, ShieldCheck, Sparkles, Target } from "lucide-react";
 import { PublicFaq } from "@/components/public-faq";
 import { PublicIdeaGallery } from "@/components/public-idea-gallery";
-import { PublicShell, StarterOfferAction } from "@/components/public-site";
+import { PublicShell, StarterOfferAction, StarterOfferCopy } from "@/components/public-site";
 import { getPublicIdeas } from "@/content/public-content.server";
 import { getPublicAccountState } from "@/lib/public-account.server";
 
@@ -115,14 +115,14 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="public-membership-band"><div className="public-container"><div><h2>Start with one focused idea for US$1</h2><p>Browse the idea library and start with the Pergola Business Kit. The starter unlocks one idea and one personal project. Full monthly membership remains the broader option.</p></div><StarterOfferAction state={accountState} light /></div></section>
+      <section className="public-membership-band"><div className="public-container"><div><StarterOfferCopy state={accountState} defaultHeading="Start with one focused idea for US$1" defaultBody="Browse the idea library and start with the Pergola Business Kit. The starter unlocks one idea and one personal project. Full monthly membership remains the broader option." /></div><StarterOfferAction state={accountState} light /></div></section>
 
       <section id="faq" className="public-section public-container public-faq-section">
         <div className="public-section-heading"><div><h2>Questions worth asking first</h2><p>Clear answers about what IncomeNow is—and what it is not.</p></div></div>
         <PublicFaq items={faq} />
       </section>
 
-      <section className="public-final-cta"><div className="public-container"><div><Compass size={27} /><h2>Try IncomeNow for US$1</h2><p>Browse the idea library and start with the Pergola Business Kit. The starter unlocks one idea and one personal project.</p></div><StarterOfferAction state={accountState} light /></div></section>
+      <section className="public-final-cta"><div className="public-container"><div><Compass size={27} /><StarterOfferCopy state={accountState} defaultHeading="Try IncomeNow for US$1" defaultBody="Browse the idea library and start with the Pergola Business Kit. The starter unlocks one idea and one personal project." /></div><StarterOfferAction state={accountState} light /></div></section>
     </PublicShell>
   );
 }
