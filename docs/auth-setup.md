@@ -23,7 +23,7 @@ The CLI warns that local services bind to `0.0.0.0` and use shared development c
 - Recovery verification handler: `${APP_ORIGIN}/auth/recovery`; successful verification continues to `/reset-password`.
 - Google OAuth provider callback registered with Google: `https://<project-ref>.supabase.co/auth/v1/callback` for a hosted Supabase project. Use the local callback reported by the CLI when testing a local provider configuration.
 
-Allowed redirect URLs must be exact and environment-specific. Do not add wildcard production redirects. The app accepts only `/account/access`, `/app/explore`, `/app/saved`, `/app/projects`, validated UUID project routes, and `/app/ideas/*` as post-auth destinations.
+Allowed redirect URLs must be exact and environment-specific. Do not add wildcard production redirects. The app accepts only `/account/access`, `/account/settings`, `/account/getting-started`, `/app/explore`, `/app/saved`, `/app/projects`, validated UUID project routes, and `/app/ideas/*` as post-auth destinations. Onboarding continuation also rejects a self-referential `/account/getting-started` destination to prevent loops.
 
 For hosted environments, configure the Google client ID/secret and SMTP/email templates in Supabase project settings. Those are operator changes and are not performed by this repository or by Phase 2A without explicit approval.
 
@@ -95,6 +95,8 @@ The verifier checks invalid login, both user sessions, `getUser`, real Auth refr
 - Authentication is verified with `getUser`/`getClaims`; authorization never trusts user metadata.
 - `profiles` can be read by their owner; only `display_name` is user-updatable.
 - `membership_entitlements` can be read only by their owner and cannot be created or changed by authenticated or anonymous users.
+- `account_preferences` can be read only by its owner. Validated security-definer functions perform revision-checked save/skip transitions; authenticated users receive no direct insert, update, or delete grant.
+- Profile, preferences, authentication-method display, and `/account/*` routes require a verified account but never require or create membership. Onboarding state is convenience state, not authorization state.
 - Protected content calls the membership guard at its server data boundary and denies access when the entitlement lookup is unavailable.
 - The access API is dynamic and returns `Cache-Control: private, no-store`.
 - Workspace rows are owned by `auth.uid()`, visible only to active members, and hidden rather than deleted when membership becomes inactive.
@@ -106,6 +108,12 @@ The verifier checks invalid login, both user sessions, `getUser`, real Auth refr
 Create two disposable confirmed local accounts with active test entitlements, then provide their process-only values as `PHASE2B_EMAIL_A`, `PHASE2B_EMAIL_B`, and `PHASE2B_PASSWORD`. Also expose the local CLI values as `API_URL` and `ANON_KEY`, set `APP_ORIGIN=http://localhost:3000`, and run `npm run test:integration:phase2b`.
 
 The verifier checks account isolation, bookmark persistence, idempotent atomic project creation, pinned plan versions, task progress, stale-note rejection, pause locks, direct-write denial, protected route rendering, and a fresh-session read. `scripts/manage-phase-2b-test-users.mjs` is local-only support for explicitly creating or deleting the two named disposable accounts; it requires the local `SERVICE_ROLE_KEY` in process memory and never writes credentials to disk.
+
+## Phase 3B local verifier
+
+Create one disposable confirmed account without an entitlement and one with a local active entitlement. Provide process-only `PHASE3B_EMAIL_INACTIVE`, `PHASE3B_EMAIL_ACTIVE`, and `PHASE3B_PASSWORD` values, plus local `API_URL`, `ANON_KEY`, `SERVICE_ROLE_KEY`, and `APP_ORIGIN`, then run `npm run test:integration:phase3b`.
+
+`scripts/manage-phase-3b-test-users.mjs` creates or removes only the two explicitly named disposable accounts. The verifier covers both account routes, the unchanged membership boundary, optional empty/selected preference transitions, owner isolation, revision conflicts, forbidden direct writes and self-entitlement, independent profile edits, and fresh-session persistence. Delete the disposable accounts after the run; account-owned rows cascade with them.
 
 ## Hosted rollout checklist
 

@@ -17,7 +17,8 @@
     "test:db": "supabase test db",
     "test:plan-sync": "node scripts/verify-phase-2b-plan-sync.mjs",
     "test:integration:local": "node scripts/verify-phase-2a-local.mjs",
-    "test:integration:phase2b": "node scripts/verify-phase-2b-local.mjs"
+    "test:integration:phase2b": "node scripts/verify-phase-2b-local.mjs",
+    "test:integration:phase3b": "node scripts/verify-phase-3b-local.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.7",

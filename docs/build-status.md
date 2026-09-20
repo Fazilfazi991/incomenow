@@ -2,7 +2,7 @@
 
 ## Phase and stack
 
-Phase 3A is code-complete and locally verified in the workspace, building on the Phase 2B account-synced member workspace and the Phase 2A.1 authentication/access baseline. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
+Phase 3B is code-complete and locally verified in the workspace, building on the Phase 3A public entry, Phase 2B account-synced member workspace, and Phase 2A.1 authentication/access baseline. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
 
 This status deliberately distinguishes local verification from launch verification. Docker's Linux engine and the `IncomeNow` local Supabase stack were available during Phase 2A.1, but Google OAuth, a hosted Supabase project, external SMTP delivery, and production configuration were not exercised. No hosted Supabase project was contacted or changed.
 
@@ -51,7 +51,24 @@ This status deliberately distinguishes local verification from launch verificati
 - Public account actions reuse the server membership context and distinguish signed-out, active, inactive, and unavailable states. Both routes are dynamic and the optional lookup fails to a neutral unavailable state.
 - No migration, checkout integration, billing SDK, hosted setting, or production data change was introduced.
 
+## Phase 3B account onboarding and settings
+
+- `/account/getting-started` offers five optional interests, one optional experience choice, and one optional approach choice. Empty save and explicit skip are both valid; neither changes membership.
+- `/account/settings` independently saves display name and discovery preferences, displays linked auth providers from verified identity records, links to membership access, and supports sign-out.
+- Normal account entry offers unanswered onboarding once. Explicit account/member deep links are preserved, onboarding is not a middleware gate, and continuation cannot loop back to onboarding.
+- Owner-scoped preferences use stable typed IDs, RLS, explicit grants, narrow validated RPCs, server timestamps, and optimistic revision conflicts. Direct table writes are denied.
+- Authentication failure, signed-out state, missing preference rows, preference lookup failure, and membership lookup failure remain distinct. Account settings do not depend on a successful entitlement lookup.
+
 ## Verification completed
+
+- Phase 3B application checks: TypeScript and ESLint passed; Vitest/Testing Library passed 54 tests across 17 files.
+- Phase 3B database regression: 116 pgTAP assertions passed across all three suites.
+- Phase 3B real local integration: one inactive and one active disposable account passed all nine checks against the local production server—account routes, paid-route separation, empty/skip/selected preference transitions, owner isolation, stale-write conflicts, direct-write denial, self-entitlement denial, independent profile edits, and fresh-session persistence; both accounts were then removed.
+- Phase 3B optimized production build passed. Production browser interactions completed onboarding, inactive-account continuation, independent profile/preference saves, auth-method display, membership-access linking, and sign-out availability.
+- Phase 3B database lint passed, and project-plan sync remained exact at 17 stages and 37 tasks.
+- Phase 3B responsive checks at 1440, 768, 390, and 320 pixels found no horizontal overflow, framework overlay, page error, or browser-console error. Durable screenshots are in `.impeccable/review/phase-3b-*.png`: desktop artifacts are 1440×900; mobile artifacts show the 379×852 IAB content surface from a 390×900 viewport.
+- Phase 3B Impeccable finish review: `disposition: ship`, with no findings. The detector ran once and was not rerun.
+- Google-only and combined-provider auth-method mapping is covered with synthetic identity records only; a real Google OAuth journey remains launch work.
 
 - Phase 3A application checks: TypeScript and ESLint passed; Vitest/Testing Library passed 42 tests across 13 files.
 - Phase 3A database regression: 72 pgTAP assertions passed across the existing Phase 2A and Phase 2B suites.

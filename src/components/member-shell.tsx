@@ -29,7 +29,7 @@ export function MemberShell({ children, mode, savedCount = 0, identity }: Member
     return pathname.includes(`/${key}`);
   };
 
-  const accountHref = isPreview ? "/preview/not-available?feature=account" : "/account/access";
+  const accountHref = isPreview ? "/preview/not-available?feature=account" : "/account/settings";
   const supportHref = isPreview ? "/preview/not-available?feature=support" : "/account/access?notice=support";
   const homeHref = isPreview ? "/preview/explore" : "/app/explore";
   const displayName = identity?.name || "IncomeNow member";
@@ -69,7 +69,7 @@ export function MemberShell({ children, mode, savedCount = 0, identity }: Member
 
       <header className="mobile-header">
         <Link className="brand" href={homeHref}>IncomeNow<span>.in</span></Link>
-        <Link className="mobile-header-actions" href={accountHref} aria-label="Open account access">
+        <Link className="mobile-header-actions" href={accountHref} aria-label="Open account settings">
           <span className="member-label">{isPreview ? "Preview" : "Member"}</span>
           <span className="avatar"><UserRound aria-hidden="true" size={16} /></span>
         </Link>

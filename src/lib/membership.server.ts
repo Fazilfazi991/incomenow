@@ -9,6 +9,7 @@ import { createClient } from "./supabase/server";
 
 export type AccountAccessContext = {
   configuration: "ready" | "missing";
+  authentication: "verified" | "signed-out" | "unavailable";
   user: User | null;
   displayName: string | null;
   access: AccessStatus;
@@ -16,16 +17,16 @@ export type AccountAccessContext = {
 
 async function loadAccountAccessContext(): Promise<AccountAccessContext> {
   if (!isSupabaseConfigured()) {
-    return { configuration: "missing", user: null, displayName: null, access: "unavailable" };
+    return { configuration: "missing", authentication: "unavailable", user: null, displayName: null, access: "unavailable" };
   }
 
   const supabase = await createClient();
   const { data: userData, error: userError } = await supabase.auth.getUser();
   if (userError) {
-    return { configuration: "ready", user: null, displayName: null, access: "unavailable" };
+    return { configuration: "ready", authentication: "unavailable", user: null, displayName: null, access: "unavailable" };
   }
   if (!userData.user) {
-    return { configuration: "ready", user: null, displayName: null, access: "inactive" };
+    return { configuration: "ready", authentication: "signed-out", user: null, displayName: null, access: "inactive" };
   }
 
   const [profileResult, entitlementResult] = await Promise.all([
@@ -40,6 +41,7 @@ async function loadAccountAccessContext(): Promise<AccountAccessContext> {
   if (entitlementResult.error) {
     return {
       configuration: "ready",
+      authentication: "verified",
       user: userData.user,
       displayName: profileResult.data?.display_name ?? null,
       access: "unavailable",
@@ -48,6 +50,7 @@ async function loadAccountAccessContext(): Promise<AccountAccessContext> {
 
   return {
     configuration: "ready",
+    authentication: "verified",
     user: userData.user,
     displayName: profileResult.data?.display_name ?? null,
     access: evaluateEntitlement(entitlementResult.data as EntitlementRecord | null),
@@ -58,7 +61,8 @@ export const getAccountAccessContext = cache(loadAccountAccessContext);
 
 export async function requireActiveMembership(destination: string) {
   const context = await getAccountAccessContext();
-  if (!context.user) redirect(`/login?next=${encodeURIComponent(destination)}`);
+  if (context.authentication === "signed-out") redirect(`/login?next=${encodeURIComponent(destination)}`);
+  if (context.authentication === "unavailable" || !context.user) redirect("/account/access");
   if (context.access !== "active") redirect("/account/access");
   return context;
 }

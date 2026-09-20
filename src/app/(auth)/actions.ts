@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { RECOVERY_STATE_COOKIE, RECOVERY_VERIFIED_COOKIE } from "@/lib/auth-cookies";
+import { getAccountEntryDestination } from "@/lib/account.server";
 import {
   emailSchema,
   loginSchema,
@@ -35,6 +36,7 @@ export async function registerAction(_previous: AuthActionState, formData: FormD
 
   const origin = getTrustedAppOrigin();
   if (!origin) return unavailableState();
+  let destination = "/verify-email?state=sent";
 
   try {
     const supabase = await createClient();
@@ -48,34 +50,37 @@ export async function registerAction(_previous: AuthActionState, formData: FormD
     });
 
     if (error) return { status: "error", message: "Unable to create the account. Check the details or try again later." };
-    if (data.session) redirect("/account/access");
+    if (data.session) destination = await getAccountEntryDestination("/account/access", supabase);
   } catch (error) {
     if (error instanceof SupabaseConfigurationError) return unavailableState();
     throw error;
   }
 
-  redirect("/verify-email?state=sent");
+  redirect(destination);
 }
 
 export async function loginAction(_previous: AuthActionState, formData: FormData): Promise<AuthActionState> {
   const parsed = loginSchema.safeParse({ email: text(formData, "email"), password: text(formData, "password") });
   if (!parsed.success) return validationState(parsed.error);
+  let destination: string;
 
   try {
     const supabase = await createClient();
     const { error } = await supabase.auth.signInWithPassword(parsed.data);
     if (error) return { status: "error", message: "Unable to sign in. Check your credentials and verification status." };
+    destination = await getAccountEntryDestination(safeInternalDestination(text(formData, "next")), supabase);
   } catch (error) {
     if (error instanceof SupabaseConfigurationError) return unavailableState();
     throw error;
   }
 
-  redirect(safeInternalDestination(text(formData, "next")));
+  redirect(destination);
 }
 
 export async function googleAction(formData: FormData) {
   const origin = getTrustedAppOrigin();
   if (!origin) redirect("/login?error=configuration");
+  let destination: string;
 
   try {
     const supabase = await createClient();
@@ -87,12 +92,13 @@ export async function googleAction(formData: FormData) {
         scopes: "openid email profile",
       },
     });
-    if (error || !data.url) redirect("/login?error=oauth");
-    redirect(data.url);
+    destination = error || !data.url ? "/login?error=oauth" : data.url;
   } catch (error) {
-    if (error instanceof SupabaseConfigurationError) redirect("/login?error=configuration");
-    throw error;
+    if (!(error instanceof SupabaseConfigurationError)) throw error;
+    destination = "/login?error=configuration";
   }
+
+  redirect(destination);
 }
 
 export async function resendVerificationAction(_previous: AuthActionState, formData: FormData): Promise<AuthActionState> {

@@ -21,6 +21,21 @@ export type Database = {
         };
         Relationships: [];
       };
+      account_preferences: {
+        Row: {
+          user_id: string;
+          interest_categories: string[];
+          experience_level: string | null;
+          preferred_approach: string | null;
+          onboarding_state: "unanswered" | "completed" | "skipped";
+          revision: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: never;
+        Update: never;
+        Relationships: [];
+      };
       membership_entitlements: {
         Row: {
           id: string;
@@ -117,6 +132,34 @@ export type Database = {
     };
     Views: Record<string, never>;
     Functions: {
+      save_account_preferences: {
+        Args: {
+          p_interest_categories: string[];
+          p_experience_level: string | null;
+          p_preferred_approach: string | null;
+          p_expected_revision: number;
+          p_mark_completed: boolean;
+        };
+        Returns: Array<{
+          saved_interest_categories: string[];
+          saved_experience_level: string | null;
+          saved_preferred_approach: string | null;
+          saved_onboarding_state: "unanswered" | "completed" | "skipped";
+          saved_revision: number;
+          saved_updated_at: string;
+        }>;
+      };
+      skip_account_onboarding: {
+        Args: { p_expected_revision: number };
+        Returns: Array<{
+          saved_interest_categories: string[];
+          saved_experience_level: string | null;
+          saved_preferred_approach: string | null;
+          saved_onboarding_state: "unanswered" | "completed" | "skipped";
+          saved_revision: number;
+          saved_updated_at: string;
+        }>;
+      };
       start_member_project: { Args: { p_idea_id: string }; Returns: string };
       set_member_project_paused: { Args: { p_project_id: string; p_paused: boolean }; Returns: string | null };
       set_member_project_task_completed: {

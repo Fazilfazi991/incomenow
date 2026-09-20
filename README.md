@@ -1,6 +1,6 @@
 # IncomeNow
 
-IncomeNow Phase 3A adds a public homepage and membership explanation to the verified authentication and member workspace. Visitors can review honest example summaries and membership scope without a session; account-aware actions connect to the existing registration, login, access, and protected-library routes without weakening membership checks.
+IncomeNow Phase 3B adds optional account onboarding and settings to the public entry, verified authentication, and member workspace. Verified accounts can manage profile and discovery preferences whether or not membership is active; protected member content still requires a separate active entitlement.
 
 ## Runtime
 
@@ -29,11 +29,12 @@ npm run test:db
 npm run test:plan-sync
 npm run test:integration:local
 npm run test:integration:phase2b
+npm run test:integration:phase3b
 npm run build
 npm start
 ```
 
-`test:integration:local` retains the Phase 2A identity/access verifier. `test:integration:phase2b` is the opt-in two-account bookmark/workspace verifier documented in `docs/auth-setup.md`; neither script prints credentials or changes a hosted project.
+`test:integration:local` retains the Phase 2A identity/access verifier. The Phase 2B and Phase 3B scripts are opt-in two-account local verifiers documented in `docs/auth-setup.md`; none prints credentials or changes a hosted project.
 
 ## Public, account, and member routes
 
@@ -42,13 +43,15 @@ npm start
 
 - `/register`, `/login`, `/verify-email`, `/forgot-password`, `/reset-password`
 - `/account/access`
+- `/account/getting-started`
+- `/account/settings`
 - `/app/explore`
 - `/app/ideas/[slug]`
 - `/app/saved`
 - `/app/projects`
 - `/app/projects/[projectId]`
 
-Authentication does not grant membership. Protected routes require a verified session and a separate active `membership_entitlements` record checked on the server and constrained by RLS.
+Authentication does not grant membership. The three `/account/*` routes require a verified account but not active membership. Protected `/app/*` routes require both a verified session and a separate active `membership_entitlements` record checked on the server and constrained by RLS.
 
 See `docs/phase-2a-integration-results.md` for the executed local verification matrix. Google OAuth, hosted Supabase configuration, and external email delivery remain explicitly unverified.
 
@@ -72,4 +75,4 @@ The homepage receives only the explicit `PublicIdea` projection in `src/content/
 
 Checkout/payment, billing UI, admin operations, analytics, support, live demos, and real downloadable resources remain intentionally unconnected. Preview bookmarks remain device-local and are never mixed with member records. No hosted Supabase project is changed by the repository setup alone.
 
-See `docs/phase-3a-results.md` for the public-page implementation and verification record. Phase 2B evidence remains in `docs/phase-2b-results.md`.
+See `docs/phase-3b-results.md` for the onboarding/settings implementation and verification record. Earlier public and workspace evidence remains in the Phase 3A and Phase 2B result documents.

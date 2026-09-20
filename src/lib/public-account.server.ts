@@ -8,7 +8,7 @@ export async function getPublicAccountState(): Promise<PublicAccountState> {
     const context = await getAccountAccessContext();
     return resolvePublicAccountState({
       configuration: context.configuration,
-      hasUser: Boolean(context.user),
+      authentication: context.authentication,
       access: context.access,
     });
   } catch {

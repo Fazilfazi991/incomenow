@@ -1,9 +1,11 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { getTrustedAppOrigin, safeInternalDestination } from "./safe-redirect";
+import { getTrustedAppOrigin, safeInternalDestination, safeOnboardingDestination } from "./safe-redirect";
 
 describe("safe internal redirects", () => {
   it("accepts only the protected application destinations", () => {
     expect(safeInternalDestination("/account/access?confirmed=true")).toBe("/account/access?confirmed=true");
+    expect(safeInternalDestination("/account/settings")).toBe("/account/settings");
+    expect(safeInternalDestination("/account/getting-started?next=%2Fapp%2Fexplore")).toBe("/account/getting-started?next=%2Fapp%2Fexplore");
     expect(safeInternalDestination("/app/explore?q=crm")).toBe("/app/explore?q=crm");
     expect(safeInternalDestination("/app/ideas/quotation-follow-up")).toBe("/app/ideas/quotation-follow-up");
     expect(safeInternalDestination("/app/saved?type=Automation")).toBe("/app/saved?type=Automation");
@@ -15,6 +17,14 @@ describe("safe internal redirects", () => {
     for (const destination of ["https://evil.test", "//evil.test/path", "/\\evil.test", "/preview/explore", "/app/ideas", "/app/projects/not-a-uuid", "/app/admin"] ) {
       expect(safeInternalDestination(destination)).toBe("/account/access");
     }
+  });
+});
+
+describe("onboarding continuation redirects", () => {
+  it("preserves allowed deep links without allowing an onboarding loop", () => {
+    expect(safeOnboardingDestination("/app/saved?q=crm")).toBe("/app/saved?q=crm");
+    expect(safeOnboardingDestination("/account/getting-started?next=%2Faccount%2Fgetting-started")).toBe("/account/access");
+    expect(safeOnboardingDestination("https://evil.test")).toBe("/account/access");
   });
 });
 

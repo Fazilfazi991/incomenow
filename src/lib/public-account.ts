@@ -2,13 +2,14 @@ export type PublicAccountState = "signed-out" | "active" | "inactive" | "unavail
 
 export type PublicAccountSnapshot = {
   configuration: "ready" | "missing";
-  hasUser: boolean;
+  authentication: "verified" | "signed-out" | "unavailable";
   access: "active" | "inactive" | "unavailable";
 };
 
 export function resolvePublicAccountState(snapshot: PublicAccountSnapshot): PublicAccountState {
   if (snapshot.configuration === "missing") return "unavailable";
+  if (snapshot.authentication === "unavailable") return "unavailable";
   if (snapshot.access === "unavailable") return "unavailable";
-  if (!snapshot.hasUser) return "signed-out";
+  if (snapshot.authentication === "signed-out") return "signed-out";
   return snapshot.access;
 }
