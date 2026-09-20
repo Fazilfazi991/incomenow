@@ -30,6 +30,8 @@ describe("public idea projection", () => {
     expect(payload).not.toContain("private.invalid");
     expect(payload).not.toContain(source.slug);
     expect(payload).not.toContain(source.resources[0].id);
+    expect(payload).not.toContain(source.resources[0].externalUrl);
+    expect(payload).not.toContain(source.resources[1].downloadPath);
     expect(payload).not.toContain("implementationPlanVersion");
   });
 });

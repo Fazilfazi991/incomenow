@@ -1,17 +1,19 @@
-import { AlertTriangle, ArrowDown, Check, FileText, Info, LockKeyhole, Route, ShieldCheck, Users } from "lucide-react";
+import { AlertTriangle, ArrowDown, BriefcaseBusiness, Check, ExternalLink, FileText, Info, LockKeyhole, Route, ShieldCheck, Users } from "lucide-react";
 import type { Idea, IdeaSection } from "@/content/idea-schema";
 import { BookmarkButton } from "./bookmark-button";
 import { MemberBookmarkButton } from "./member-bookmark-button";
 import { IdeaPreview } from "./idea-preview";
+import { IdeaResourceAction, resourceAvailabilityLabel } from "./idea-resource-action";
 import { StartIdeaControl } from "./start-idea-control";
 
 const sectionLabels: Record<IdeaSection["type"], string> = {
-  overview: "Overview",
-  workflow: "Workflow",
-  "demo-preview": "Demo preview",
-  "action-plan": "Action plan",
-  resources: "Resources",
-  "customer-discovery": "Finding customers",
+  overview: "Opportunity",
+  "demo-preview": "Explore demo",
+  workflow: "Software",
+  resources: "Setup",
+  "customer-discovery": "Customers",
+  "sales-kit": "Sales kit",
+  "action-plan": "Delivery",
   "updates-limitations": "Updates & notes",
 };
 
@@ -54,6 +56,7 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
   }
 
   if (section.type === "demo-preview") {
+    const availableDemo = idea.resources.find((resource) => resource.type === "demo" && resource.availability === "available");
     return (
       <section className="detail-section" id={sectionId(section.type)}>
         <div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>Fictional preview</small></div>
@@ -62,7 +65,7 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
           <div className="demo-toolbar"><span><i /> {idea.title} preview</span><span>Sample data</span></div>
           <IdeaPreview variant={section.variant === "crm" ? "pipeline" : "website"} />
           <div className="demo-metrics">{section.metrics.map((metric) => <div key={metric.label}><span>{metric.label}</span><strong>{metric.value}</strong></div>)}</div>
-          <div className="locked-demo"><LockKeyhole size={16} /> Live systems and form submission are not connected in this build.</div>
+          <div className="locked-demo">{availableDemo ? <><ExternalLink size={16} /> The external demo is linked in Resources. Interactive actions are not verified.</> : <><LockKeyhole size={16} /> Live systems and form submission are not connected in this build.</>}</div>
         </div>
       </section>
     );
@@ -94,8 +97,8 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
           {linkedResources.map((resource) => (
             <article className="resource-row" key={resource.id}>
               <span className="resource-icon"><FileText size={18} /></span>
-              <div><strong>{resource.label}</strong><p>{resource.description}</p></div>
-              <span className="resource-state">{resource.availability === "sample" ? "Sample" : "Not connected"}</span>
+              <div className="resource-copy"><strong>{resource.label}</strong><p>{resource.description}</p><IdeaResourceAction resource={resource} /></div>
+              <span className="resource-state">{resourceAvailabilityLabel(resource.availability)}</span>
             </article>
           ))}
         </div>
@@ -116,6 +119,18 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
     );
   }
 
+  if (section.type === "sales-kit") {
+    return (
+      <section className="detail-section" id={sectionId(section.type)}>
+        <div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>Conversation prompts</small></div>
+        <p className="section-intro">{section.intro}</p>
+        <div className="sales-kit-grid">
+          {section.items.map((item) => <article className="section-card" key={item.title}><BriefcaseBusiness size={19} /><h3>{item.title}</h3><p>{item.detail}</p></article>)}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="detail-section" id={sectionId(section.type)}>
       <div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>Limitations</small></div>
@@ -125,14 +140,30 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
 }
 
 export function IdeaDetail({ idea, mode = "preview", existingProjectId = null }: { idea: Idea; mode?: "preview" | "member"; existingProjectId?: string | null }) {
+  const featuredResources = (idea.featuredResourceIds ?? [])
+    .map((id) => idea.resources.find((resource) => resource.id === id))
+    .filter((resource): resource is Idea["resources"][number] => Boolean(resource));
+  const title = mode === "member" ? idea.kitTitle ?? idea.title : idea.title;
+  const summary = mode === "member" ? idea.kitSummary ?? idea.summary : idea.summary;
+
   return (
     <div className="detail-page">
       <header className="detail-hero">
         <div className="tag-row"><span className="tag strong">IDEA #{idea.displayNumber}</span><span className="tag">{idea.solutionType}</span><span className="tag">{idea.industries[0]}</span></div>
         <div className="detail-hero-grid">
-          <div><h1>{idea.title}</h1><p>{idea.summary}</p></div>
+          <div><h1>{title}</h1><p>{summary}</p></div>
           <div className="detail-actions">{mode === "preview" ? <BookmarkButton ideaId={idea.id} /> : <MemberBookmarkButton ideaId={idea.id} />}<StartIdeaControl ideaId={idea.id} existingProjectId={existingProjectId} mode={mode} /></div>
         </div>
+        {mode === "member" && featuredResources.length ? (
+          <div className="kit-resource-grid" aria-label="Pergola kit resources">
+            {featuredResources.map((resource) => (
+              <article className={resource.availability === "available" ? "kit-resource-card" : "kit-resource-card unavailable"} key={resource.id}>
+                <div><strong>{resource.actionLabel ?? resource.label}</strong><span>{resource.availability === "available" ? resource.type === "demo" ? "Synthetic-data example" : "Included with your access" : "Not yet available"}</span></div>
+                <IdeaResourceAction resource={resource} />
+              </article>
+            ))}
+          </div>
+        ) : null}
       </header>
 
       <nav className="section-nav" aria-label="Idea sections">

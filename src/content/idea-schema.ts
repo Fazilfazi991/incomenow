@@ -32,8 +32,23 @@ const resourceSchema = z.object({
     "checklist",
     "script",
   ]),
-  availability: z.enum(["sample", "not-connected"]),
+  availability: z.enum(["available", "sample", "not-connected"]),
   description: z.string().min(1),
+  externalUrl: z.string().url().optional(),
+  downloadPath: z.string().regex(/^\/app\/resources\/[a-z0-9-]+$/).optional(),
+  actionLabel: z.string().min(1).optional(),
+  notice: z.string().min(1).optional(),
+}).superRefine((resource, context) => {
+  const actionTargetCount = Number(Boolean(resource.externalUrl)) + Number(Boolean(resource.downloadPath));
+  if (resource.availability === "available" && actionTargetCount !== 1) {
+    context.addIssue({ code: "custom", message: `${resource.id} is available but does not have exactly one action target` });
+  }
+  if (actionTargetCount > 0 && resource.availability !== "available") {
+    context.addIssue({ code: "custom", message: `${resource.id} has an action target but is not available` });
+  }
+  if (resource.availability === "available" && !resource.actionLabel) {
+    context.addIssue({ code: "custom", message: `${resource.id} is available but has no action label` });
+  }
 });
 
 export const implementationTaskSchema = z.object({
@@ -111,6 +126,16 @@ const updatesSectionSchema = z.object({
   notes: z.array(z.string()).min(1),
 });
 
+const salesKitSectionSchema = z.object({
+  type: z.literal("sales-kit"),
+  title: z.string(),
+  intro: z.string(),
+  items: z.array(z.object({
+    title: z.string().min(1),
+    detail: z.string().min(1),
+  })).min(1),
+});
+
 export const ideaSectionSchema = z.discriminatedUnion("type", [
   overviewSectionSchema,
   workflowSectionSchema,
@@ -118,6 +143,7 @@ export const ideaSectionSchema = z.discriminatedUnion("type", [
   actionPlanSectionSchema,
   resourcesSectionSchema,
   discoverySectionSchema,
+  salesKitSectionSchema,
   updatesSectionSchema,
 ]);
 
@@ -127,6 +153,8 @@ export const ideaSchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]+$/),
   title: z.string().min(1),
   summary: z.string().min(1),
+  kitTitle: z.string().min(1).optional(),
+  kitSummary: z.string().min(1).optional(),
   solutionType: solutionTypeSchema,
   industries: z.array(z.string().min(1)).min(1),
   technicalRequirements: z.array(z.string().min(1)),
@@ -141,6 +169,7 @@ export const ideaSchema = z.object({
   previewVariant: z.enum(["pipeline", "dispatch", "automation", "website", "scorecard", "property"]),
   cardNote: z.string().min(1),
   resources: z.array(resourceSchema),
+  featuredResourceIds: z.array(z.string().min(1)).max(3).optional(),
   sections: z.array(ideaSectionSchema),
 });
 
@@ -159,6 +188,11 @@ export const ideasSchema = z.array(ideaSchema).superRefine((ideas, context) => {
     slugs.add(idea.slug);
 
     const resourceIds = new Set(idea.resources.map((resource) => resource.id));
+    for (const resourceId of idea.featuredResourceIds ?? []) {
+      if (!resourceIds.has(resourceId)) {
+        context.addIssue({ code: "custom", message: `${idea.id} features unknown resource ${resourceId}` });
+      }
+    }
     const actionPlan = idea.sections.find((section) => section.type === "action-plan");
     if (idea.detailAvailable && (!idea.implementationPlanVersion || !actionPlan)) {
       context.addIssue({

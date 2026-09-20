@@ -10,6 +10,8 @@ describe("authenticated catalogue projection", () => {
 
     expect(Object.keys(projected.resources[0]).sort()).toEqual(["label", "type"]);
     expect(payload).not.toContain(source.resources[0].id);
+    expect(payload).not.toContain(source.resources[0].externalUrl);
+    expect(payload).not.toContain(source.resources[1].downloadPath);
     expect(projected).not.toHaveProperty("implementationPlanVersion");
     expect(payload).not.toContain("crm-validate");
     expect(payload).not.toContain("region-segment");

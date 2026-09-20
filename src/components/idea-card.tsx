@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, FileText, FlaskConical, Route, Wrench } from "lucide-react";
+import { ArrowRight, FileText, FlaskConical, ListChecks, Route, Wrench } from "lucide-react";
 import { LockKeyhole } from "lucide-react";
 import type { IdeaCatalogEntry } from "@/content/idea-catalog";
 import type { CatalogueAccess } from "@/lib/member-content.server";
@@ -53,10 +53,8 @@ export function IdeaCard({
             : access === "unavailable"
               ? "Access check unavailable"
               : null;
-  const actionLabel = projectId
-    ? "Continue project"
-    : access === "full" || access === "starter"
-      ? "Open full idea"
+  const actionLabel = access === "full" || access === "starter"
+      ? "Open kit"
       : access
         ? "View safe preview"
         : "View idea";
@@ -97,9 +95,12 @@ export function IdeaCard({
       <div className="card-footer">
         <span>{idea.fixtureLabel ?? idea.cardNote}</span>
         {bookmarkMode === "member" || idea.detailAvailable ? (
-          <Link className="primary-button card-action" href={`${basePath}/${idea.slug}`}>
-            {actionLabel} <ArrowRight aria-hidden="true" size={16} />
-          </Link>
+          <div className="card-entry-actions">
+            <Link className="primary-button card-action" href={`${basePath}/${idea.slug}`}>
+              {actionLabel} <ArrowRight aria-hidden="true" size={16} />
+            </Link>
+            {bookmarkMode === "member" && projectId ? <Link className="text-button card-checklist-link" href={`/app/projects/${projectId}`}><ListChecks aria-hidden="true" size={15} /> My checklist</Link> : null}
+          </div>
         ) : (
           <span className="unavailable-action">Detail not in Phase 1</span>
         )}

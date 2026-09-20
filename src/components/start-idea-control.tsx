@@ -11,14 +11,14 @@ export function StartIdeaControl({ ideaId, existingProjectId, mode = "preview" }
   const [pending, startTransition] = useTransition();
 
   if (mode === "member" && existingProjectId) {
-    return <Link className="primary-button" href={`/app/projects/${existingProjectId}`}>Continue project <ArrowRight size={17} /></Link>;
+    return <Link className="secondary-button" href={`/app/projects/${existingProjectId}`}>My checklist <ArrowRight size={17} /></Link>;
   }
 
   return (
     <div className="start-control">
       <button
         type="button"
-        className="primary-button"
+        className={mode === "member" ? "secondary-button" : "primary-button"}
         disabled={pending}
         onClick={() => {
           if (mode === "preview") return setVisible(true);
@@ -30,7 +30,7 @@ export function StartIdeaControl({ ideaId, existingProjectId, mode = "preview" }
           });
         }}
       >
-        {pending ? <LoaderCircle className="control-spinner" size={17} /> : <Rocket size={17} />} {pending ? "Starting…" : "Start this idea"}
+        {pending ? <LoaderCircle className="control-spinner" size={17} /> : <Rocket size={17} />} {pending ? "Starting…" : mode === "member" ? "Start my checklist" : "Start this idea"}
       </button>
       {visible && mode === "preview" ? (
         <div className="inline-unavailable" role="status">

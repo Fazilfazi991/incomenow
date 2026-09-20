@@ -2,7 +2,7 @@
 
 ## Phase and stack
 
-Phase 3C is code-complete and locally verified in the workspace, building on the completed Phase 3B onboarding/settings commit `82644aa`, Phase 3A public entry, Phase 2B account-synced workspace, and Phase 2A.1 authentication baseline. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
+Phase 3C and the owner-requested Pergola kit-first refinement are code-complete and locally verified in the workspace, building on the completed Phase 3B onboarding/settings commit `82644aa`, Phase 3A public entry, Phase 2B account-synced workspace, and Phase 2A.1 authentication baseline. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
 
 This status deliberately distinguishes local verification from launch verification. Docker's Linux engine and the `IncomeNow` local Supabase stack were available during Phase 2A.1, but Google OAuth, a hosted Supabase project, external SMTP delivery, and production configuration were not exercised. No hosted Supabase project was contacted or changed.
 
@@ -32,7 +32,7 @@ This status deliberately distinguishes local verification from launch verificati
 
 - `/preview/explore`, `/preview/saved`, and the three available detail routes retain fictional sample content and device-local bookmarks.
 - Preview routes remain server-disabled by default in production and can be enabled only with `ENABLE_PREVIEW_ROUTES=true`.
-- Updates, support, checkout/payment, admin, analytics, real downloads, and live demos remain out of scope. Account-synced bookmarks and the project workspace are now implemented separately from preview storage.
+- Updates, support, checkout/payment, admin, analytics, and unconnected catalogue resources remain out of scope. The owner-supplied Pergola source archive is the single protected download, and the separately hosted synthetic-data Pergola demo is the single external example. Account-synced bookmarks and the project workspace remain separate from preview storage.
 
 ## Phase 2B workspace
 
@@ -71,8 +71,21 @@ This status deliberately distinguishes local verification from launch verificati
 - Optional onboarding preserves safe return destinations for registered, starter, and full accounts. Saving or skipping preferences never changes access.
 - Additive migration `20260920175336_starter_offer_per_idea_access.sql` was applied to the existing local database without reset. Hosted Supabase was not contacted.
 
+## Pergola kit-first owner refinement
+
+- The unlocked Pergola route now presents “Pergola Business Kit” as the primary member experience. Catalogue, saved, and project cards lead with **Open kit**; **My checklist** is secondary and project creation remains explicit.
+- The first viewport exposes the verified public demo URL, the owner-supplied source archive through a private/no-store authenticated route, and an honest unavailable state for the missing prospect sheet.
+- Kit sections follow the requested opportunity → demo → software → setup → customers → sales kit → delivery order using validated structured content. Public and locked projections still omit sections, resource IDs, external URLs, and the protected download path.
+- The workspace retains the existing project, task, note, pause, version, and ownership records while displaying plain-language step/task copy. It uses one current-step heading, a compact **Your steps** disclosure, secondary progress/pause controls, collapsed notes that preserve drafts, and a prominent **Back to kit** action.
+- No migration or database mutation was required. Hosted Supabase, payments, deployment, domain work, Google verification, and final commercial terms remain untouched.
+
 ## Verification completed
 
+- Pergola kit-first application checks: TypeScript, ESLint, and the optimized Next.js build passed; Vitest/Testing Library passed 80 tests across 24 files.
+- The protected ZIP route is covered for a denied entitlement and a successful fresh account/idea-access decision. The public and authenticated catalogue projection tests confirm the download path is absent from safe payloads.
+- Authenticated browser review covered the kit at desktop, 390, and 320 pixels plus the simplified checklist. There was no horizontal overflow or framework overlay; the mobile section navigation was static, demo/download actions were visible early, the checklist omitted “Plan v1,” and collapsed notes preserved then discarded an unsaved test draft without a database write.
+- The Impeccable detector ran once after UI completion and reported 0 anti-patterns. Its advisory-only design-token inventory reflects existing stylesheet-wide documentation drift.
+- The owner-supplied ZIP contains 333 archive entries and no real `.env`, dependency tree, private-key pattern, service-role key pattern, password pattern, or file over 2 MB. SHA-256: `5E4DC492F2BD05869AE7FB77A4C83F66908F96FB6CD6329C4BDA1B36970345B5`.
 - Phase 3C post-review application checks: TypeScript, the exact repository ESLint command, and the optimized build passed; Vitest/Testing Library passed 70 tests across 21 files. ESLint narrowly excludes ignored `.impeccable/review/**` browser artifacts while continuing to scan application source.
 - Phase 3C database regression: 164 pgTAP assertions passed across four suites; database lint reported no schema errors.
 - Phase 3C project-plan sync remained exact at 17 stages and 37 tasks.
@@ -130,7 +143,7 @@ The public entry, local database, email-account, and access-controlled member wo
 - External SMTP/inbox delivery and production email-template configuration.
 - Production security, domain, and operational readiness review.
 - Full-membership price/currency; starter access duration; tax/refund/cancellation terms; payment provider; checkout; and subscription/webhook processing.
-- Final resource licence, real downloadable kits, production demos, and an operational publishing/admin workflow.
+- Final resource licence, the missing Pergola prospect sheet/setup guide, production readiness for the supplied source and external demo, and an operational publishing/admin workflow.
 
 Exact local Google setup values and credential locations are documented in `docs/auth-setup.md`. Hosted rollout remains a separately approved operator action.
 

@@ -421,15 +421,19 @@ Bookmark controls are outline-first and become subtle sage surfaces on hover. Re
 
 ### Project Workspace
 
-Project cards and the workspace share compact Active, Paused, and Complete pills. Active and Complete use restrained sage/green pairs; Paused alone shifts to warm caution paper. Status is always labeled in text and, where space permits, reinforced with an icon rather than communicated by color alone.
+The Pergola member journey is kit-first. Catalogue, saved, and project entry points lead with **Open kit**; the persisted project is explicitly secondary as **My checklist**. The kit hero uses the member-facing title “Pergola Business Kit,” puts the working demo and protected source download near the top, and shows unavailable customer-list material honestly rather than fabricating a file.
+
+The kit content follows one stable reading order: opportunity, example software, included software, setup and customisation, potential customers, sales kit, then delivery checklist. Structured cards, steps, prompts, and resource rows carry the detail; long generic prose should not replace this hierarchy.
+
+Project cards and the checklist share compact Active, Paused, and Complete pills. Active and Complete use restrained sage/green pairs; Paused alone shifts to warm caution paper. Status is always labeled in text and, where space permits, reinforced with an icon rather than communicated by color alone.
 
 Progress is a restrained 7px emerald track on a tonal-sage base. It is paired with completed/total copy and a tabular percentage, and is calculated from required stages only. Do not promote it into a chart or metric tile.
 
-Stage navigation uses numbered or checked circular markers inside compact controls. The selected stage receives a pale-sage field and emerald marker; completion uses the check marker independently, so selected and completed remain legible as different states. Below 900px the controls become a horizontally scrollable sequence instead of compressing into unreadable rows.
+Step navigation is disclosed behind one compact **Your steps** control. Numbered or checked markers appear only when the member opens it; the selected step receives a pale-sage field and emerald marker. This avoids a permanent project-management rail and keeps the current step as the single page heading.
 
 Checklist rows are quiet paper-like insets with a custom square check, task title, explanatory copy, and an explicit Required or Optional label. Checked rows use emerald confirmation and subdued strike-through copy. Paused projects remain readable while task and note controls are disabled.
 
-Stage notes use a bounded plain-text field, character count, one explicit Save action, and a visible Unsaved or Saved indicator. Success, conflict, and failure messages appear next to the work as semantic status notes. Navigation prompts only when it would discard a draft, offering Stay, Discard, and Save-and-continue choices.
+Personal notes are collapsed behind **Add a personal note** or **My notes**. Opening and closing the native disclosure never unmounts or clears the draft. The bounded plain-text field, character count, Save action, saved/unsaved feedback, conflict handling, and leave-page protection remain unchanged.
 
 Stage resources remain a separate supporting panel. Each row combines a quiet functional icon, title, description, and an honest availability pill such as Sample or Not connected; an explicit no-resource message replaces empty decoration.
 
@@ -450,7 +454,8 @@ Account-synced Saved Ideas preserves the idea-card comparison unit, filter contr
 - **Do** keep the derived current focus visible even when another stage is selected for review.
 - **Do** derive progress and completion from required work, while labeling optional tasks honestly.
 - **Do** keep checklist, notes, and resources as distinct paper planes with explicit saved, unsaved, paused, empty, and unavailable states.
-- **Do** stack workspace navigation, work, and resources in that order below 900px and make the primary mobile action full width.
+- **Do** keep the Pergola kit title, supporting sentence, demo action, protected source access, and honest customer-list state visible early on mobile.
+- **Do** keep checklist progress, pause/resume, all-step navigation, and personal notes visually secondary to the kit.
 - **Do** use the separate public shell for homepage and membership routes, including the horizontal desktop navigation and disclosure-based mobile menu.
 - **Do** keep public idea cards and quick previews on the explicit safe projection; label them as summaries and keep implementation plans and protected resources out.
 - **Do** keep the two offers distinct and honest: US$1/USD one-time Pergola starter with unconfigured duration, separately unpriced monthly full membership, unavailable checkout, and entitlement activation shown as a server-recorded step.
@@ -466,6 +471,7 @@ Account-synced Saved Ideas preserves the idea-card comparison unit, filter contr
 - **Don't** hide sample, unavailable, readiness, or evidence states behind aspirational copy.
 - **Don't** treat selecting a stage as advancing the project or changing its current focus.
 - **Don't** turn progress into dashboard theater, count optional tasks toward completion, or merge notes and resources into the checklist.
+- **Don't** restore a permanent stage rail, expose “Plan v1,” or make project-management language the first thing a Pergola member sees.
 - **Don't** reuse the signed-in sidebar or mobile bottom navigation on public pages.
 - **Don't** expose protected plan details, resource identifiers, private customer data, or member-only implementation material in public cards, dialogs, or client bundles.
 - **Don't** invent full-membership prices, starter duration, renewal, lifetime access, checkout availability, refund rights, testimonials, customer counts, demand validation, licence permissions, release cadence, or income outcomes.

@@ -27,6 +27,9 @@ trace.zip
 # local research and outreach working files
 /research/
 
+# owner-supplied private Pergola source archive; served only through protected delivery
+/private-resources/pergola/universalpergola-main.zip
+
 # local database exports
 *.dump
 *.backup
