@@ -95,7 +95,7 @@ export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly Pub
               alt={selected.coverArt.alt}
               className="public-dialog-art"
               position={selected.coverArt.position}
-              sizes="(max-width: 767px) 100vw, 390px"
+              sizes="(max-width: 767px) 100vw, (max-width: 1208px) 46vw, 534px"
               src={selected.coverArt.src}
             />
             <div className="public-dialog-copy">

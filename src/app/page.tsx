@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpenCheck, ClipboardCheck, Compass, FolderKanban, Lightbulb, ShieldCheck, Sparkles } from "lucide-react";
 import { ArtworkImage } from "@/components/artwork-image";
 import { HeroMotionVideo } from "@/components/hero-motion-video";
-import { PublicFaq } from "@/components/public-faq";
+import { PublicFaqSelector } from "@/components/public-faq-selector";
 import { PublicHowItWorks } from "@/components/public-how-it-works";
 import { PublicIdeaGallery } from "@/components/public-idea-gallery";
 import { PublicShell, StarterOfferAction, StarterOfferCopy } from "@/components/public-site";
@@ -45,6 +45,7 @@ export default async function HomePage() {
 
   return (
     <PublicShell state={accountState} page="home">
+      <div className="public-home">
       <section className="public-hero public-container">
         <div className="public-hero-copy">
           <span className="digital-hero-eyebrow">IDEAS · RESOURCES · GUIDANCE</span>
@@ -120,10 +121,11 @@ export default async function HomePage() {
 
       <section id="faq" className="public-section public-container public-faq-section">
         <div className="public-section-heading"><div><h2>Questions worth asking first</h2><p>Clear answers about what IncomeNow is—and what it is not.</p></div></div>
-        <PublicFaq items={faq} />
+        <PublicFaqSelector items={faq} />
       </section>
 
       <section className="public-final-cta"><div className="public-container"><div><Compass size={27} /><StarterOfferCopy state={accountState} defaultHeading="Try IncomeNow for US$1" defaultBody="Browse the idea library and start with the Pergola Business Kit. The starter unlocks one idea and one personal project." /></div><HomepageOfferAction state={accountState} light /></div></section>
+      </div>
     </PublicShell>
   );
 }
