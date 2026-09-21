@@ -106,7 +106,7 @@ Archive evidence:
 - Optional integrations found: web push and Google Sheets customer-feedback import.
 - No completed SMS provider or email-OTP second factor was found.
 
-The archive is **not published**. It contains personal staff/org-chart imagery, an internal local workbook path, QA/project references, and source capability for patient identity, care plans, clinical/treatment notes, prescriptions, medical reports, assessment reports, insurance documents, and private uploads. Malware scanning is not enabled. Redistribution approval was not supplied. The source ZIP remains outside the repository and `public/`; no source-download route exists.
+The original archive is **not published**. It contains personal staff/org-chart imagery, an internal local workbook path, QA/project references, and source capability for patient identity, care plans, clinical/treatment notes, prescriptions, medical reports, assessment reports, insurance documents, and private uploads. Application-level attachment malware scanning is not enabled. The distribution-safe phase created a separate sanitised and locally scanned archive, but redistribution approval was not supplied. The original ZIP remains outside the repository and `public/`; the protected source route remains locked pending approval.
 
 The member kit now provides:
 
@@ -114,11 +114,12 @@ The member kit now provides:
 - A source-scope matrix that separates demo observation, source inspection, and local status.
 - A fourteen-step inspected setup guide with **VERIFIED**, **OPTIONAL**, and **NOT YET VERIFIED** labels.
 - A protected, private/no-store Clinic setup-guide download for fresh active Clinic/full-member access.
+- An approval-gated Clinic source endpoint that can serve only the sanitised archive after fresh full-member access and explicit owner release approval.
 - Stack-specific tools, cost categories, sales-demo structure, discovery boundaries, and delivery checks.
 
 No Clinic prospect workbook was supplied. The prospect finder and protected CSV remain unavailable, and the Pergola workbook was not reused.
 
-Detailed static inspection, health-data findings, local package checks, and remaining production questions are recorded in `docs/clinic-source-inspection.md`.
+Detailed static inspection, health-data findings, local package checks, and remaining production questions are recorded in `docs/clinic-source-inspection.md`. Sanitisation, malware, dependency, licence, package-difference, fresh-build, and approval-gate evidence is recorded in `docs/clinic-distribution-readiness.md`.
 
 ## Verification
 
@@ -128,11 +129,11 @@ Current application verification:
 
 - `pnpm run typecheck` — passed.
 - `pnpm run lint` — passed.
-- `pnpm test` — passed: 121 tests across 35 files.
-- `pnpm run build` — passed, including the protected Clinic setup-guide route.
+- `pnpm test` — passed: 128 tests across 36 files.
+- `pnpm run build` — passed, including the protected Clinic setup-guide and approval-gated source routes.
 - Database regression — passed: 192 pgTAP assertions across five suites without a reset; linting the local `public` and `private` schemas reported no errors.
 - Project-plan sync — passed: 27 stages and 57 tasks matched the structured content.
-- Disposable-user integration — passed all 12 checks, including fresh registered/Starter denial, full-member access, and downgraded denial for the protected Clinic setup guide. Disposable accounts were removed.
+- Disposable-user integration — passed all 12 checks, including fresh registered/Starter denial, full-member access, downgraded denial for the protected Clinic setup guide, and the full-member source approval gate. Disposable accounts were removed.
 - Browser verification — passed 40 route/viewport combinations across the Clinic hub and nine activities at 1440, 768, 390, and 320 pixels, with no horizontal overflow, framework overlay, or console warning/error.
 - Client-bundle inspection found no source archive hash/name, extraction path, workstation path, service-role marker, or Clinic source-package marker in `.next/static`.
 

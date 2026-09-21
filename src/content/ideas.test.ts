@@ -36,7 +36,7 @@ describe("Clinic Operations CRM kit", () => {
     expect(clinic.implementationPlanVersion).toBe("1");
   });
 
-  it("publishes the inspected demo and protected guide while blocking source and prospects", () => {
+  it("publishes the inspected demo and protected guide while approval-gating source and blocking prospects", () => {
     expect(clinic.resources).toHaveLength(4);
     expect(clinic.resources.find((resource) => resource.id === "clinic-demo")).toMatchObject({
       availability: "available",
@@ -53,7 +53,7 @@ describe("Clinic Operations CRM kit", () => {
     expect(blockedSource.availability).toBe("not-connected");
     expect(blockedSource.downloadPath).toBeUndefined();
     expect(blockedSource.externalUrl).toBeUndefined();
-    expect(blockedSource.description).toMatch(/blocked pending sanitisation/i);
+    expect(blockedSource.description).toMatch(/prepared.*release approval pending/i);
     expect(missingProspects.availability).toBe("not-connected");
     expect(missingProspects.downloadPath).toBeUndefined();
     expect(missingProspects.externalUrl).toBeUndefined();

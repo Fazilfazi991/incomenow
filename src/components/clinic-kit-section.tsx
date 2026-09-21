@@ -1,5 +1,6 @@
 import { Boxes, Check, CheckCircle2, Download, FileArchive, Info, LockKeyhole, Search, ShieldCheck, Users } from "lucide-react";
 import type { Idea, IdeaSection } from "@/content/idea-schema";
+import { clinicDistributionState } from "@/content/clinic-distribution";
 import {
   clinicCodexPrompts,
   clinicDeliveryGuide,
@@ -44,7 +45,7 @@ function ClinicDemo({ idea, section }: { idea: Idea; section: Extract<IdeaSectio
 function ClinicSoftware({ idea, section }: { idea: Idea; section: Extract<IdeaSection, { type: "workflow" }> }) {
   const source = idea.resources.find((resource) => resource.id === "clinic-source");
   return <div className="kit-section-body">
-    <section className="clinic-input-status"><span><FileArchive aria-hidden="true" size={22} /></span><div><small>Inspected source · publication blocked</small><h2>The archive is evidence, not a member download.</h2><p>{section.description}</p></div></section>
+    <section className="clinic-input-status"><span><FileArchive aria-hidden="true" size={22} /></span><div><small>Technical package ready · approval pending</small><h2>{clinicDistributionState.statusLabel}</h2><p>{section.description}</p></div></section>
     <div className="capability-grid">{section.steps.map((step, index) => <article key={step.id}><span>{String(index + 1).padStart(2, "0")}</span><h3>{step.title}</h3><p>{step.detail}</p></article>)}</div>
     <section className="software-scope" aria-labelledby="clinic-software-scope-title"><div className="software-scope-heading"><div><span>Software scope matrix</span><h2 id="clinic-software-scope-title">What the evidence supports</h2></div><p>Local status reflects source checks, not a live clinic deployment or customer acceptance.</p></div><div className="software-scope-list">{clinicSoftwareScope.map((item) => <article key={item.feature}><div><h3>{item.feature}</h3><p>{item.purpose}</p><small>Demo: {item.demoObserved} · Source: {item.sourceInspected ? "Inspected" : "Not inspected"}</small></div><em data-status={item.localStatus}>{item.localStatus}</em></article>)}</div></section>
     <details className="kit-details" open><summary>Health-data review <ShieldCheck aria-hidden="true" size={16} /></summary><div><p>The source is broader than the commercial “Clinic Operations CRM” position. It can process highly sensitive personal and clinical information:</p><ul>{clinicHealthDataFlags.map((flag) => <li key={flag}>{flag}</li>)}</ul><p>No HIPAA, GDPR, DHA, DOH, MOHAP, security, or production-readiness claim is made. Dedicated structured diagnosis, laboratory, and imaging modules were not found, but uploaded documents and free-text notes can still contain that information.</p></div></details>

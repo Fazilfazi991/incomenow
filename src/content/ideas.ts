@@ -1,4 +1,5 @@
 import { ideasSchema, type Idea } from "./idea-schema";
+import { clinicDistributionState } from "./clinic-distribution";
 import { getCurrentProjectPlan } from "./project-plans";
 
 const crmPlan = getCurrentProjectPlan("idea-001");
@@ -229,10 +230,10 @@ const rawIdeas: Idea[] = [
       alt: "A modern clinic reception connected to abstract appointment, profile, follow-up, and reporting cards",
       position: "50% 50%",
     },
-    cardNote: "Full-member kit with an inspected synthetic demo and verified setup guide; source redistribution and prospect data remain unavailable",
+    cardNote: "Full-member kit with an inspected synthetic demo, verified setup guide, and technically prepared source package awaiting release approval",
     resources: [
       { id: "clinic-demo", label: "Clinic CRM demo", type: "demo", availability: "available", description: "Public BSmile CRM example inspected with synthetic data and without changing records.", externalUrl: "https://besmile-public-demo.vercel.app/admin", actionLabel: "Open Clinic CRM demo", notice: "Synthetic data. The demo says changes reset when the page reloads; write actions were not tested." },
-      { id: "clinic-source", label: "Clinic CRM source", type: "source", availability: "not-connected", description: "Archive inspected and validated locally, but download publication is blocked pending sanitisation and explicit redistribution approval." },
+      { id: "clinic-source", label: "Clinic CRM source", type: "source", availability: "not-connected", description: clinicDistributionState.statusLabel, notice: "Technical sanitisation passed. Owner redistribution approval has not been granted." },
       { id: "clinic-setup-guide", label: "Verified setup guide", type: "guide", availability: "available", description: "Fourteen-step guide based on the inspected Next.js, pnpm, Supabase, and Vercel architecture.", downloadPath: "/app/resources/clinic-setup-guide", actionLabel: "Download setup guide", notice: "Protected full-member resource; source ZIP is not included." },
       { id: "clinic-prospects", label: "Clinic prospect list", type: "worksheet", availability: "not-connected", description: "Clinic prospect list not connected yet. No businesses or contacts have been fabricated." },
     ],
@@ -268,13 +269,13 @@ const rawIdeas: Idea[] = [
         id: "clinic-software",
         type: "workflow",
         title: "Get the software",
-        description: "The owner-supplied archive was inspected as data, installed in an isolated temporary folder, and checked with local placeholders only. It is not published because it includes staff imagery, private-path references, and sensitive patient-record/document capability that requires sanitisation and explicit redistribution approval.",
+        description: "The owner-supplied archive was preserved unchanged. A separate distribution copy was sanitised, dependency-audited, scanned with Microsoft Defender, and verified from a fresh extraction. It remains unavailable until the owner explicitly approves redistribution.",
         steps: [
           { id: "source-receive", title: "Archive inspected", detail: "Recorded 14,202,553 bytes, 920 entries, and SHA-256 7958426B74F454EE0A346FBB18D968ED56A3063AC6B2E3BD7D1302070D731662 before execution." },
           { id: "source-verify", title: "Checks passed in isolation", detail: "pnpm install, typecheck, all 831 tests on rerun, and the production build passed. Lint completed with 25 warnings and no errors." },
-          { id: "source-publish", title: "Publication blocked safely", detail: "The ZIP stays outside the repository and public assets. Members receive evidence and the setup guide, not the unsanitised archive." },
+          { id: "source-publish", title: "Release approval pending", detail: "The sanitised ZIP stays outside Git and public assets. The protected endpoint remains locked until redistributionApproved is explicitly changed after owner approval." },
         ],
-        safeguard: "The source includes patient profiles, clinical/treatment notes, prescriptions, medical and insurance document categories, and private file uploads. It is not represented as compliant or production ready; malware scanning, email OTP, hosted acceptance, backup rehearsal, and independent security/legal review remain outstanding.",
+        safeguard: "The source includes patient profiles, clinical/treatment notes, prescriptions, medical and insurance document categories, and private file uploads. It is not represented as compliant or production ready; hosted acceptance, email OTP, backup rehearsal, and independent security/legal review remain outstanding even though the distribution copy passed technical sanitisation and local malware scanning.",
       },
       {
         id: "clinic-setup",

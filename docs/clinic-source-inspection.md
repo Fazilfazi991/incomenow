@@ -52,7 +52,7 @@ Publication blockers:
 - Attachment malware scanning is listed as missing.
 - Redistribution approval and sanitisation evidence were not supplied.
 
-The fixed source-download route requested by the brief was therefore not created. The setup guide is the only new protected Clinic download.
+At that phase boundary, the fixed source-download route was not created and the setup guide was the only protected Clinic download. The later distribution-safe phase resolved technical sanitisation and malware-scanning blockers in a separate archive; the new source route remains release-locked pending explicit owner approval. See `docs/clinic-distribution-readiness.md`.
 
 ## Actual technical stack
 
@@ -94,8 +94,8 @@ Not live-verified: hosted Auth/RLS behaviour, real CRUD, production Storage/uplo
 
 ## Remaining decisions
 
-1. Produce a sanitised redistribution package with personal imagery, private paths, QA references, and any internal/customer material removed.
-2. Obtain explicit licence and redistribution approval before offering source access.
+1. Sanitised redistribution package: completed technically; see `docs/clinic-distribution-readiness.md`.
+2. Obtain explicit licence and redistribution approval before offering source access; still pending.
 3. Decide whether sensitive clinical/patient modules belong in the commercial scope; otherwise remove or isolate them.
 4. Complete independent security/privacy/legal review and a threat-modelled acceptance plan.
 5. Add malware scanning and verify private document authorization, retention, deletion, backup, and restore.

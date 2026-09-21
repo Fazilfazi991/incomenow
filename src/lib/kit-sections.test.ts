@@ -29,6 +29,7 @@ describe("interactive kit sections", () => {
       "sales-kit", "pricing-planner", "tools", "discovery-questionnaire", "action-plan",
     ]);
     expect(activities.find((activity) => activity.slug === "demo")?.description).toMatch(/inspected synthetic demo/i);
+    expect(activities.find((activity) => activity.slug === "software")?.description).toMatch(/sanitised package evidence/i);
     expect(activities.find((activity) => activity.slug === "setup")?.description).toMatch(/fourteen-step guide/i);
     expect(activities.find((activity) => activity.slug === "tools")?.description).toMatch(/Supabase, Vercel/i);
   });

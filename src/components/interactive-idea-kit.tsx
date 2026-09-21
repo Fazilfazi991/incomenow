@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { clinicDistributionState } from "@/content/clinic-distribution";
 import {
   ArrowLeft,
   ArrowRight,
@@ -84,7 +85,7 @@ function findResourceByType(idea: Idea, type: IdeaResource["type"]) {
 
 function activityState(idea: Idea, slug: KitSectionSlug, project: KitProjectProgress | null) {
   if (slug === "demo") return findResourceByType(idea, "demo")?.availability === "available" ? "Demo available" : "Demo unavailable";
-  if (slug === "software") return findResourceByType(idea, "source")?.availability === "available" ? "Source included" : idea.id === "idea-002" ? "Source publication blocked" : "Source unavailable";
+  if (slug === "software") return findResourceByType(idea, "source")?.availability === "available" ? "Source included" : idea.id === "idea-002" ? clinicDistributionState.statusLabel : "Source unavailable";
   if (slug === "setup") return findResourceByType(idea, "guide")?.availability === "available" ? "Guide available" : "Setup guide pending";
   if (slug === "customers") return findResource(idea, "crm-discovery")?.availability === "available" ? "Prospect resource available" : "Research guide ready · sheet pending";
   if (slug === "clinics") return "Research guide ready · prospect list unavailable";
