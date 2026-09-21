@@ -36,20 +36,42 @@ describe("Clinic Operations CRM kit", () => {
     expect(clinic.implementationPlanVersion).toBe("1");
   });
 
-  it("keeps unsupplied inputs unavailable without public download targets", () => {
+  it("publishes the inspected demo and protected guide while blocking source and prospects", () => {
     expect(clinic.resources).toHaveLength(4);
-    for (const resource of clinic.resources) {
-      expect(resource.availability).toBe("not-connected");
-      expect(resource.downloadPath).toBeUndefined();
-      expect(resource.externalUrl).toBeUndefined();
-    }
+    expect(clinic.resources.find((resource) => resource.id === "clinic-demo")).toMatchObject({
+      availability: "available",
+      externalUrl: "https://besmile-public-demo.vercel.app/admin",
+      actionLabel: "Open Clinic CRM demo",
+    });
+    expect(clinic.resources.find((resource) => resource.id === "clinic-setup-guide")).toMatchObject({
+      availability: "available",
+      downloadPath: "/app/resources/clinic-setup-guide",
+      actionLabel: "Download setup guide",
+    });
+    const blockedSource = clinic.resources.find((resource) => resource.id === "clinic-source")!;
+    const missingProspects = clinic.resources.find((resource) => resource.id === "clinic-prospects")!;
+    expect(blockedSource.availability).toBe("not-connected");
+    expect(blockedSource.downloadPath).toBeUndefined();
+    expect(blockedSource.externalUrl).toBeUndefined();
+    expect(blockedSource.description).toMatch(/blocked pending sanitisation/i);
+    expect(missingProspects.availability).toBe("not-connected");
+    expect(missingProspects.downloadPath).toBeUndefined();
+    expect(missingProspects.externalUrl).toBeUndefined();
   });
 
   it("states the healthcare and privacy boundary", () => {
     const copy = JSON.stringify(clinic);
     expect(copy).toMatch(/not an EHR, EMR/i);
     expect(copy).toMatch(/does not certify HIPAA, GDPR, DHA, DOH, MOHAP/i);
+    expect(copy).toMatch(/prescriptions, medical and insurance document categories/i);
     expect(copy).not.toMatch(/HIPAA ready|DHA compliant|GDPR certified/i);
+  });
+
+  it("keeps the demo walkthrough honest about untested actions", () => {
+    const demo = clinic.sections.find((section) => section.id === "clinic-demo")!;
+    expect(JSON.stringify(demo)).toMatch(/Public; no sign-in/);
+    expect(JSON.stringify(demo)).toMatch(/Write actions.*Not tested/);
+    expect(JSON.stringify(demo)).toMatch(/Follow-ups/);
   });
 });
 

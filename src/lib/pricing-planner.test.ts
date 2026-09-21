@@ -9,7 +9,17 @@ const base: ClinicPricingInputs = {
 
 describe("Clinic pricing planner", () => {
   it("calculates direct costs, labour, delivery cost, and projected gross margin", () => {
-    expect(calculateClinicPricing(base)).toEqual({ directCosts: 80, hours: 20, labourCost: 500, deliveryCost: 580, modelledFees: 1075, grossMargin: 495, grossMarginPercent: expect.closeTo(46.0465, 3) });
+    expect(calculateClinicPricing(base)).toEqual({
+      directCosts: 80,
+      recurringTechnicalCosts: 80,
+      hours: 20,
+      labourCost: 500,
+      oneTimeDeliveryCost: 500,
+      deliveryCost: 580,
+      modelledFees: 1075,
+      grossMargin: 495,
+      grossMarginPercent: expect.closeTo(46.0465, 3),
+    });
   });
 
   it("handles zero, empty, negative, and decimal values safely", () => {

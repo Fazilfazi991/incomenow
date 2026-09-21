@@ -30,5 +30,15 @@ export function calculateClinicPricing(input: ClinicPricingInputs) {
   const modelledFees = input.setupFee + input.additionalCustomisation + input.ongoingMaintenance + input.managedHosting;
   const grossMargin = modelledFees - deliveryCost;
   const grossMarginPercent = modelledFees > 0 ? (grossMargin / modelledFees) * 100 : 0;
-  return { directCosts, hours, labourCost, deliveryCost, modelledFees, grossMargin, grossMarginPercent };
+  return {
+    directCosts,
+    recurringTechnicalCosts: directCosts,
+    hours,
+    labourCost,
+    oneTimeDeliveryCost: labourCost,
+    deliveryCost,
+    modelledFees,
+    grossMargin,
+    grossMarginPercent,
+  };
 }

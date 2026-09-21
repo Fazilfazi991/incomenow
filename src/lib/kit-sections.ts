@@ -28,13 +28,13 @@ const pergolaActivities: readonly KitActivityMeta[] = [
 
 const clinicActivities: readonly KitActivityMeta[] = [
   { slug: "opportunity", sectionId: "clinic-opportunity", title: "Why this opportunity", description: "Understand the administrative workflow and possible service layers without making demand claims.", actionLabel: "Explore opportunity", accent: "amber" },
-  { slug: "demo", sectionId: "clinic-demo", title: "Explore the Clinic CRM", description: "See the honest demo status and what must be verified before a walkthrough is published.", actionLabel: "Check demo status", accent: "blue" },
-  { slug: "software", sectionId: "clinic-software", title: "Get the software", description: "Review the protected-source boundary and the evidence needed before a download is added.", actionLabel: "Review software", accent: "violet" },
-  { slug: "setup", sectionId: "clinic-setup", title: "Setup & customise", description: "Plan a safe adaptation while exact commands remain pending source inspection.", actionLabel: "Plan setup", accent: "coral" },
+  { slug: "demo", sectionId: "clinic-demo", title: "Explore the Clinic CRM", description: "Open the inspected synthetic demo and separate observed screens from untested interactions.", actionLabel: "Explore demo", accent: "blue" },
+  { slug: "software", sectionId: "clinic-software", title: "Get the software", description: "Review the inspected source scope, local checks, publication block, and sensitive-data boundary.", actionLabel: "Review evidence", accent: "violet" },
+  { slug: "setup", sectionId: "clinic-setup", title: "Setup & customise", description: "Use the verified commands and fourteen-step guide while keeping production work explicitly unverified.", actionLabel: "Open setup guide", accent: "coral" },
   { slug: "clinics", sectionId: "clinic-prospecting", title: "Find clinics", description: "Build a focused research process without scraping or fabricating a prospect list.", actionLabel: "Plan research", accent: "cyan" },
   { slug: "conversation", sectionId: "clinic-conversation", title: "Start the conversation", description: "Adapt editable email, phone, follow-up, demo, and proposal templates.", actionLabel: "Open templates", accent: "rose" },
   { slug: "pricing", sectionId: "clinic-pricing", title: "Price your offer", description: "Model delivery cost and gross margin from your own assumptions—not an earnings promise.", actionLabel: "Open planner", accent: "emerald" },
-  { slug: "tools", sectionId: "clinic-tools", title: "Tools you'll need", description: "Separate known business tools from infrastructure that still needs source verification.", actionLabel: "Review tools", accent: "blue" },
+  { slug: "tools", sectionId: "clinic-tools", title: "Tools you'll need", description: "Review the actual Next.js, pnpm, Supabase, Vercel, communication, and ownership requirements.", actionLabel: "Review tools", accent: "blue" },
   { slug: "discovery", sectionId: "clinic-discovery", title: "Understand the clinic", description: "Use and download a clean discovery questionnaire without storing clinic answers here.", actionLabel: "Open questions", accent: "violet" },
   { slug: "delivery", sectionId: "clinic-delivery", title: "Deliver the project", description: "Use the versioned personal checklist to scope, test, deploy, and hand over responsibly.", actionLabel: "Review delivery", accent: "emerald" },
 ];

@@ -119,6 +119,9 @@ try {
   const freeClinicBody = await freeClinic.text();
   assert.match(freeClinicBody, /Published catalogue preview/);
   assert.doesNotMatch(freeClinicBody, /Before using real clinic data|clinic-admin-workflow|Clinic discovery evidence/);
+  const freeClinicGuide = await appRequest("/app/resources/clinic-setup-guide", free);
+  assert.equal(freeClinicGuide.status, 403, "registered preview access cannot download the Clinic setup guide");
+  assert.equal(freeClinicGuide.headers.get("cache-control"), "private, no-store");
 
   const freeBookmark = await free.client.from("bookmarks").insert({ idea_id: "idea-002" });
   assert.ifError(freeBookmark.error);
@@ -147,6 +150,9 @@ try {
   const starterClinic = await appRequest("/app/ideas/clinic-operations-crm", starter);
   assert.equal(starterClinic.status, 200);
   assert.match(await starterClinic.text(), /Published catalogue preview/);
+  const starterClinicGuide = await appRequest("/app/resources/clinic-setup-guide", starter);
+  assert.equal(starterClinicGuide.status, 403, "Pergola Starter cannot download the Clinic setup guide");
+  assert.equal(starterClinicGuide.headers.get("cache-control"), "private, no-store");
   const starterOther = await appRequest("/app/ideas/quotation-follow-up-automation", starter);
   assert.equal(starterOther.status, 404);
   assert.doesNotMatch(await starterOther.text(), /flow-source|Configure, test, and hand over/);
@@ -205,6 +211,8 @@ try {
 
   const disableFull = await service.from("membership_entitlements").update({ enabled: false }).eq("user_id", starter.user.id);
   assert.ifError(disableFull.error);
+  const downgradedClinicGuide = await appRequest("/app/resources/clinic-setup-guide", starter);
+  assert.equal(downgradedClinicGuide.status, 403, "removed full membership immediately removes Clinic guide access");
   const afterDowngrade = await starter.client.from("projects").select("id, idea_id").order("idea_id");
   assert.ifError(afterDowngrade.error);
   assert.deepEqual(afterDowngrade.data, [{ id: starterProjectId, idea_id: "idea-001" }]);
@@ -230,6 +238,11 @@ try {
   const fullClinicBody = await fullClinic.text();
   assert.match(fullClinicBody, /Pick the outcome you need now/);
   assert.match(fullClinicBody, /10(?:<!-- -->)? kit activities/);
+  const fullClinicGuide = await appRequest("/app/resources/clinic-setup-guide", full);
+  assert.equal(fullClinicGuide.status, 200, "full membership can download the Clinic setup guide");
+  assert.match(fullClinicGuide.headers.get("content-type") ?? "", /^text\/markdown/);
+  assert.equal(fullClinicGuide.headers.get("cache-control"), "private, no-store");
+  assert.match(await fullClinicGuide.text(), /BSmile Clinic Operations CRM — inspected setup and handover guide/);
 
   const onboarding = await appRequest("/account/getting-started?next=%2Fapp%2Fideas%2Fpergola-quotation-follow-up-crm", starter);
   assert.equal(onboarding.status, 200);
@@ -241,6 +254,7 @@ try {
       "registered-preview-browsing-and-bookmarks",
       "locked-payload-minimisation",
       "protected-prospect-and-setup-downloads",
+      "protected-clinic-setup-guide-access",
       "starter-pergola-only",
       "concurrent-idempotent-project-start",
       "starter-task-note-and-pause-persistence",

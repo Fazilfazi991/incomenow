@@ -13,13 +13,13 @@ const defaultInputs: ClinicPricingDraft = {
 };
 
 const costFields: Array<[keyof ClinicPricingInputs, string]> = [
-  ["domain", "Domain"], ["hosting", "Hosting"], ["backend", "Database / backend"],
-  ["email", "Transactional email"], ["paidApis", "Paid APIs"], ["otherSoftware", "Other software"],
+  ["domain", "Domain and DNS"], ["hosting", "Vercel / Next.js hosting"], ["backend", "Supabase database, Auth and Storage"],
+  ["email", "Transactional email, if enabled"], ["paidApis", "Web push / API services"], ["otherSoftware", "Monitoring and other software"],
 ];
 
 const hourFields: Array<[keyof ClinicPricingInputs, string]> = [
   ["customisationHours", "Customisation hours"], ["dataImportHours", "Data-import hours"],
-  ["testingHours", "Testing hours"], ["trainingHours", "Training hours"], ["supportHours", "Support hours"],
+  ["testingHours", "Testing hours"], ["trainingHours", "Training hours"], ["supportHours", "Deployment / support hours"],
 ];
 
 const feeFields: Array<[keyof ClinicPricingInputs, string]> = [
@@ -42,14 +42,15 @@ export function ClinicPricingPlanner() {
     <div className="pricing-planner">
       <div className="pricing-planner-note"><strong>Planning estimate — not a market-price recommendation.</strong><span>Use one currency consistently. Values stay in this browser view and are not saved.</span></div>
       <div className="pricing-planner-grid">
-        <fieldset><legend>Direct costs</legend>{costFields.map(([key, label]) => <label key={key}><span>{label}</span><input inputMode="decimal" min="0" onChange={(event) => update(key, event.target.value)} step="0.01" type="number" value={values[key]} /></label>)}</fieldset>
-        <fieldset><legend>Time and internal cost</legend>{hourFields.map(([key, label]) => <label key={key}><span>{label}</span><input inputMode="decimal" min="0" onChange={(event) => update(key, event.target.value)} step="0.25" type="number" value={values[key]} /></label>)}<label><span>Hourly internal cost</span><input inputMode="decimal" min="0" onChange={(event) => update("hourlyCost", event.target.value)} step="0.01" type="number" value={values.hourlyCost} /></label></fieldset>
-        <fieldset><legend>Modelled customer fees</legend>{feeFields.map(([key, label]) => <label key={key}><span>{label}</span><input inputMode="decimal" min="0" onChange={(event) => update(key, event.target.value)} step="0.01" type="number" value={values[key]} /></label>)}</fieldset>
+        <fieldset><legend>Recurring technical costs</legend>{costFields.map(([key, label]) => <label key={key}><span>{label}</span><input inputMode="decimal" min="0" onChange={(event) => update(key, event.target.value)} step="0.01" type="number" value={values[key]} /></label>)}</fieldset>
+        <fieldset><legend>One-time delivery costs</legend>{hourFields.map(([key, label]) => <label key={key}><span>{label}</span><input inputMode="decimal" min="0" onChange={(event) => update(key, event.target.value)} step="0.25" type="number" value={values[key]} /></label>)}<label><span>Hourly internal cost</span><input inputMode="decimal" min="0" onChange={(event) => update("hourlyCost", event.target.value)} step="0.01" type="number" value={values.hourlyCost} /></label></fieldset>
+        <fieldset><legend>Customer fees and optional support</legend>{feeFields.map(([key, label]) => <label key={key}><span>{label}</span><input inputMode="decimal" min="0" onChange={(event) => update(key, event.target.value)} step="0.01" type="number" value={values[key]} /></label>)}</fieldset>
       </div>
       <div className="pricing-results" aria-live="polite">
-        <article><span>Estimated delivery cost</span><strong>{formatNumber(result.deliveryCost)}</strong><small>{formatNumber(result.hours)} hours + {formatNumber(result.directCosts)} direct costs</small></article>
+        <article><span>One-time delivery cost</span><strong>{formatNumber(result.oneTimeDeliveryCost)}</strong><small>{formatNumber(result.hours)} entered hours at your internal rate</small></article>
+        <article><span>Recurring technical costs</span><strong>{formatNumber(result.recurringTechnicalCosts)}</strong><small>One entered billing period across required providers</small></article>
         <article><span>Modelled fees</span><strong>{formatNumber(result.modelledFees)}</strong><small>From your setup and optional-service assumptions</small></article>
-        <article className={result.grossMargin < 0 ? "negative" : ""}><span>Projected gross margin</span><strong>{formatNumber(result.grossMargin)}</strong><small>{formatNumber(result.grossMarginPercent)}% of modelled fees</small></article>
+        <article className={result.grossMargin < 0 ? "negative" : ""}><span>Projected gross margin</span><strong>{formatNumber(result.grossMargin)}</strong><small>After one-time delivery and one entered period of recurring costs · {formatNumber(result.grossMarginPercent)}%</small></article>
       </div>
     </div>
   );

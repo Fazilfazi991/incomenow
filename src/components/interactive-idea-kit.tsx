@@ -84,13 +84,13 @@ function findResourceByType(idea: Idea, type: IdeaResource["type"]) {
 
 function activityState(idea: Idea, slug: KitSectionSlug, project: KitProjectProgress | null) {
   if (slug === "demo") return findResourceByType(idea, "demo")?.availability === "available" ? "Demo available" : "Demo unavailable";
-  if (slug === "software") return findResourceByType(idea, "source")?.availability === "available" ? "Source included" : "Source unavailable";
+  if (slug === "software") return findResourceByType(idea, "source")?.availability === "available" ? "Source included" : idea.id === "idea-002" ? "Source publication blocked" : "Source unavailable";
   if (slug === "setup") return findResourceByType(idea, "guide")?.availability === "available" ? "Guide available" : "Setup guide pending";
   if (slug === "customers") return findResource(idea, "crm-discovery")?.availability === "available" ? "Prospect resource available" : "Research guide ready · sheet pending";
-  if (slug === "clinics") return "Research guide ready · list pending";
+  if (slug === "clinics") return "Research guide ready · prospect list unavailable";
   if (slug === "conversation") return "Editable templates ready";
   if (slug === "pricing") return "Local planning tool ready";
-  if (slug === "tools") return "Source requirements pending";
+  if (slug === "tools") return "Tools verified";
   if (slug === "discovery") return "Questionnaire ready";
   if (slug === "delivery") {
     if (project?.isComplete) return "Checklist complete";
@@ -108,7 +108,7 @@ function isLimitedActivity(idea: Idea, slug: KitSectionSlug) {
 }
 
 function FeaturedResource({ resource }: { resource: IdeaResource }) {
-  const Icon = resource.type === "demo" ? ExternalLink : resource.type === "source" ? FileArchive : LockKeyhole;
+  const Icon = resource.type === "demo" ? ExternalLink : resource.type === "source" ? FileArchive : resource.type === "guide" ? Download : LockKeyhole;
   return (
     <article className={`kit-featured-resource ${resource.type}`}>
       <span className="kit-featured-icon"><Icon aria-hidden="true" size={20} /></span>
@@ -121,6 +121,8 @@ function FeaturedResource({ resource }: { resource: IdeaResource }) {
 function KitHub({ idea, basePath, project }: Pick<InteractiveIdeaKitProps, "idea" | "basePath" | "project">) {
   const demo = findResourceByType(idea, "demo");
   const source = findResourceByType(idea, "source");
+  const guide = idea.id === "idea-002" ? findResourceByType(idea, "guide") : null;
+  const featuredResources = [demo, guide, source].filter((resource): resource is IdeaResource => Boolean(resource));
   const activities = getKitActivities(idea.id);
 
   return (
@@ -145,7 +147,7 @@ function KitHub({ idea, basePath, project }: Pick<InteractiveIdeaKitProps, "idea
             <div className="kit-explore-note"><Sparkles aria-hidden="true" size={17} /><span><strong>Explore in any order.</strong> Opening an activity does not change checklist progress.</span></div>
           )}
         </div>
-        {demo || source ? <div className="kit-featured-grid" aria-label="Direct kit resources">{demo ? <FeaturedResource resource={demo} /> : null}{source ? <FeaturedResource resource={source} /> : null}</div> : null}
+        {featuredResources.length > 0 ? <div className={`kit-featured-grid${featuredResources.length === 3 ? " three" : ""}`} aria-label="Direct kit resources">{featuredResources.map((resource) => <FeaturedResource key={resource.id} resource={resource} />)}</div> : null}
       </header>
 
       <section className="kit-activity-section" aria-labelledby="activity-map-title">

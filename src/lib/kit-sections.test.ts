@@ -28,6 +28,9 @@ describe("interactive kit sections", () => {
       "overview", "demo-preview", "workflow", "resources", "customer-discovery",
       "sales-kit", "pricing-planner", "tools", "discovery-questionnaire", "action-plan",
     ]);
+    expect(activities.find((activity) => activity.slug === "demo")?.description).toMatch(/inspected synthetic demo/i);
+    expect(activities.find((activity) => activity.slug === "setup")?.description).toMatch(/fourteen-step guide/i);
+    expect(activities.find((activity) => activity.slug === "tools")?.description).toMatch(/Supabase, Vercel/i);
   });
 
   it("validates section query values and preserves every useful legacy anchor", () => {
