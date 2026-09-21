@@ -14,8 +14,9 @@ const ideas: PublicIdea[] = [
     technicalRequirements: ["TypeScript", "Database configuration"],
     intendedCustomer: "Pergola installers",
     problemStatement: "Quotations lose momentum without clear follow-up.",
-    resourceTypes: [{ label: "Setup guide", type: "guide" }],
+    resourceTypes: [{ label: "Setup guide", type: "guide", availability: "available" }],
     previewVariant: "pipeline",
+    coverArt: { src: "/artwork/ideas/pergola-business-kit.webp", alt: "Pergola plans and materials", position: "50% 50%" },
   },
   {
     id: "idea-003",
@@ -26,8 +27,9 @@ const ideas: PublicIdea[] = [
     technicalRequirements: ["Workflow testing"],
     intendedCustomer: "Service businesses",
     problemStatement: "Manual review causes delayed follow-up.",
-    resourceTypes: [{ label: "Workflow example", type: "workflow" }],
+    resourceTypes: [{ label: "Workflow example", type: "workflow", availability: "sample" }],
     previewVariant: "automation",
+    coverArt: { src: "/artwork/ideas/quotation-follow-up-automation.webp", alt: "Quotation workflow desk", position: "50% 50%" },
   },
 ];
 

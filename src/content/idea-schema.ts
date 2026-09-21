@@ -97,6 +97,7 @@ const demoSectionSchema = z.object({
   description: z.string(),
   variant: z.enum(["crm", "website"]),
   metrics: z.array(z.object({ label: z.string(), value: z.string() })).min(2),
+  modules: z.array(z.string().min(1)).min(1).optional(),
 });
 
 const actionPlanSectionSchema = z.object({
@@ -110,6 +111,10 @@ const resourcesSectionSchema = z.object({
   title: z.string(),
   intro: z.string(),
   resourceIds: z.array(z.string()).min(1),
+  steps: z.array(z.object({
+    title: z.string().min(1),
+    detail: z.string().min(1),
+  })).min(1).optional(),
 });
 
 const discoverySectionSchema = z.object({
@@ -133,7 +138,16 @@ const salesKitSectionSchema = z.object({
   items: z.array(z.object({
     title: z.string().min(1),
     detail: z.string().min(1),
+    kind: z.enum(["email", "call", "follow-up", "demo", "proposal", "guide"]).optional(),
+    subject: z.string().min(1).optional(),
+    template: z.string().min(1).optional(),
   })).min(1),
+}).superRefine((section, context) => {
+  for (const item of section.items) {
+    if (item.kind && item.kind !== "guide" && !item.template) {
+      context.addIssue({ code: "custom", message: `${item.title} requires editable template copy` });
+    }
+  }
 });
 
 export const ideaSectionSchema = z.discriminatedUnion("type", [
@@ -146,6 +160,12 @@ export const ideaSectionSchema = z.discriminatedUnion("type", [
   salesKitSectionSchema,
   updatesSectionSchema,
 ]);
+
+const coverArtSchema = z.object({
+  src: z.string().regex(/^\/artwork\/(?:ideas|marketing\/modern)\/[a-z0-9-]+\.webp$/),
+  alt: z.string().min(1),
+  position: z.string().min(1).default("50% 50%"),
+});
 
 export const ideaSchema = z.object({
   id: z.string().regex(/^idea-\d{3}$/),
@@ -167,6 +187,8 @@ export const ideaSchema = z.object({
   implementationPlanVersion: z.string().regex(/^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/).optional(),
   fixtureLabel: z.string().optional(),
   previewVariant: z.enum(["pipeline", "dispatch", "automation", "website", "scorecard", "property"]),
+  coverArt: coverArtSchema,
+  publicCoverArt: coverArtSchema.optional(),
   cardNote: z.string().min(1),
   resources: z.array(resourceSchema),
   featuredResourceIds: z.array(z.string().min(1)).max(3).optional(),

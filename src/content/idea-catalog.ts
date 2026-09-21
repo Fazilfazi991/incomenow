@@ -14,13 +14,14 @@ export type IdeaCatalogEntry = Pick<
   | "detailAvailable"
   | "fixtureLabel"
   | "previewVariant"
+  | "coverArt"
   | "cardNote"
   | "intendedCustomer"
   | "technicalRequirements"
   | "marketEvidence"
 > & {
   problemStatement: string;
-  resources: Array<Pick<Idea["resources"][number], "label" | "type">>;
+  resources: Array<Pick<Idea["resources"][number], "label" | "type" | "availability">>;
 };
 
 export function toIdeaCatalogEntry(idea: Idea): IdeaCatalogEntry {
@@ -29,7 +30,7 @@ export function toIdeaCatalogEntry(idea: Idea): IdeaCatalogEntry {
     id: idea.id,
     displayNumber: idea.displayNumber,
     slug: idea.slug,
-    title: idea.title,
+    title: idea.kitTitle ?? idea.title,
     summary: idea.summary,
     solutionType: idea.solutionType,
     industries: idea.industries,
@@ -38,11 +39,12 @@ export function toIdeaCatalogEntry(idea: Idea): IdeaCatalogEntry {
     detailAvailable: idea.detailAvailable,
     fixtureLabel: idea.fixtureLabel,
     previewVariant: idea.previewVariant,
+    coverArt: idea.coverArt,
     cardNote: idea.cardNote,
     intendedCustomer: idea.intendedCustomer,
     technicalRequirements: [...idea.technicalRequirements],
     marketEvidence: idea.marketEvidence,
     problemStatement: overview?.friction ?? idea.summary,
-    resources: idea.resources.map(({ label, type }) => ({ label, type })),
+    resources: idea.resources.map(({ label, type, availability }) => ({ label, type, availability })),
   };
 }

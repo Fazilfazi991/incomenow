@@ -51,7 +51,7 @@ export function PublicAccountActions({ state, compact = false }: { state: Public
 export function StarterOfferAction({ state, light = false }: { state: PublicAccountState; light?: boolean }) {
   const className = `public-button ${light ? "public-button-light" : "public-button-primary"} public-button-large`;
   if (state === "full") return <Link className={className} href="/app/explore">Open idea library <ArrowRight size={17} /></Link>;
-  if (state === "starter") return <Link className={className} href="/app/ideas/pergola-quotation-follow-up-crm">Open your starter idea <ArrowRight size={17} /></Link>;
+  if (state === "starter") return <Link className={className} href="/app/ideas/pergola-quotation-follow-up-crm">Open your starter <ArrowRight size={17} /></Link>;
   if (state === "unavailable") return <Link className={className} href="/account/access">Check account access <ArrowRight size={17} /></Link>;
   if (state === "registered") return <Link className={className} href="/membership?offer=starter#starter-offer">Try IncomeNow for US$1 <ArrowRight size={17} /></Link>;
   const next = encodeURIComponent("/membership?offer=starter");
@@ -85,15 +85,6 @@ export function StarterOfferCopy({
     );
   }
 
-  if (state === "unavailable") {
-    return (
-      <>
-        <h2>Check your account access</h2>
-        <p>We could not confirm your current access. Review your account status before choosing an offer.</p>
-      </>
-    );
-  }
-
   return (
     <>
       <h2>{defaultHeading}</h2>
@@ -104,6 +95,7 @@ export function StarterOfferCopy({
 
 function PublicHeader({ state, page }: { state: PublicAccountState; page: "home" | "membership" }) {
   const root = page === "home" ? "" : "/";
+  const showHeaderAccountAction = page !== "home" || state !== "unavailable";
   return (
     <header className="public-header">
       <div className="public-header-inner">
@@ -114,8 +106,8 @@ function PublicHeader({ state, page }: { state: PublicAccountState; page: "home"
           <Link href="/membership" aria-current={page === "membership" ? "page" : undefined}>Membership</Link>
           <Link href={`${root}#faq`}>FAQ</Link>
         </nav>
-        <div className="public-header-actions"><PublicAccountActions state={state} compact /></div>
-        <PublicMobileMenu root={root}><PublicAccountActions state={state} /></PublicMobileMenu>
+        <div className="public-header-actions">{showHeaderAccountAction ? <PublicAccountActions state={state} compact /> : null}</div>
+        <PublicMobileMenu root={root}>{showHeaderAccountAction ? <PublicAccountActions state={state} /> : null}</PublicMobileMenu>
       </div>
     </header>
   );

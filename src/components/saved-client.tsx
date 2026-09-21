@@ -7,6 +7,7 @@ import { ArrowRight, Bookmark, Filter, RotateCcw, Search, X } from "lucide-react
 import type { IdeaCatalogEntry } from "@/content/idea-catalog";
 import type { SolutionType } from "@/content/idea-schema";
 import { filterIdeas, type IdeaSort } from "@/lib/idea-filter";
+import { ArtworkImage } from "./artwork-image";
 import { IdeaCard } from "./idea-card";
 import { useBookmarks } from "./bookmark-provider";
 
@@ -80,7 +81,8 @@ export function SavedClient({ catalog }: { catalog: IdeaCatalogEntry[] }) {
       </section>
 
       {!savedIdeas.length ? (
-        <section className="empty-state saved-empty">
+        <section className="empty-state saved-empty empty-state-illustrated">
+          <ArtworkImage alt="An open portfolio box waiting for a saved idea" className="empty-state-art" sizes="320px" src="/artwork/marketing/empty-portfolio.webp" />
           <Bookmark aria-hidden="true" size={28} />
           <h2>Your shortlist starts here</h2>
           <p>Save promising ideas from the exploration library to compare their workflows and resources here.</p>

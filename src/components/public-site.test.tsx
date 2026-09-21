@@ -1,7 +1,7 @@
 import { cleanup, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it } from "vitest";
-import { PublicAccountActions, StarterOfferCopy } from "./public-site";
+import { PublicAccountActions, StarterOfferAction, StarterOfferCopy } from "./public-site";
 
 describe("public account actions", () => {
   afterEach(cleanup);
@@ -70,5 +70,30 @@ describe("starter offer copy", () => {
     render(<StarterOfferCopy state="full" defaultHeading="Try IncomeNow for US$1" defaultBody="Starter details" />);
     expect(screen.getByRole("heading", { name: "Explore your full idea library" })).toBeInTheDocument();
     expect(screen.queryByText(/US\$1/)).not.toBeInTheDocument();
+  });
+
+  it("keeps neutral marketing copy when account status is unavailable", () => {
+    render(<StarterOfferCopy state="unavailable" defaultHeading="Explore practical ideas" defaultBody="Public examples remain available." />);
+    expect(screen.getByRole("heading", { name: "Explore practical ideas" })).toBeInTheDocument();
+    expect(screen.getByText("Public examples remain available.")).toBeInTheDocument();
+    expect(screen.queryByText("Check your account access")).not.toBeInTheDocument();
+  });
+});
+
+describe("starter offer action", () => {
+  afterEach(cleanup);
+
+  it("uses the correct account-aware hero destination and label", () => {
+    const { rerender } = render(<StarterOfferAction state="signed-out" />);
+    expect(screen.getByRole("link", { name: "Try IncomeNow for US$1" })).toHaveAttribute("href", expect.stringContaining("/register?next="));
+
+    rerender(<StarterOfferAction state="starter" />);
+    expect(screen.getByRole("link", { name: "Open your starter" })).toHaveAttribute("href", "/app/ideas/pergola-quotation-follow-up-crm");
+
+    rerender(<StarterOfferAction state="full" />);
+    expect(screen.getByRole("link", { name: "Open idea library" })).toHaveAttribute("href", "/app/explore");
+
+    rerender(<StarterOfferAction state="unavailable" />);
+    expect(screen.getByRole("link", { name: "Check account access" })).toHaveAttribute("href", "/account/access");
   });
 });

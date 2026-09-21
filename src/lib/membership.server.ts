@@ -2,7 +2,7 @@ import "server-only";
 
 import { cache } from "react";
 import { redirect } from "next/navigation";
-import type { User } from "@supabase/supabase-js";
+import { isAuthSessionMissingError, type User } from "@supabase/supabase-js";
 import {
   evaluateEntitlement,
   evaluateIdeaAccess,
@@ -42,7 +42,9 @@ async function loadAccountAccessContext(): Promise<AccountAccessContext> {
 
   const supabase = await createClient();
   const { data: userData, error: userError } = await supabase.auth.getUser();
-  if (userError) return { ...unavailableContext, configuration: "ready" };
+  if (userError && !isAuthSessionMissingError(userError)) {
+    return { ...unavailableContext, configuration: "ready" };
+  }
   if (!userData.user) {
     return {
       configuration: "ready",

@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { ArrowRight, Check, Info, LockKeyhole, ShieldAlert } from "lucide-react";
+import { ArrowRight, Check, Clock3, Info, LockKeyhole, ShieldAlert } from "lucide-react";
 import type { IdeaCatalogEntry } from "@/content/idea-catalog";
 import { STARTER_IDEA_ID } from "@/content/membership-offer";
 import type { CatalogueAccess } from "@/lib/member-content.server";
-import { IdeaPreview } from "./idea-preview";
+import { ArtworkImage } from "./artwork-image";
 import { MemberBookmarkButton } from "./member-bookmark-button";
 
 export function LockedIdeaDetail({
@@ -29,7 +29,13 @@ export function LockedIdeaDetail({
 
       <div className="locked-preview-grid">
         <section className="locked-preview-main">
-          <div className="public-dialog-art"><IdeaPreview variant={idea.previewVariant} /></div>
+          <ArtworkImage
+            alt={idea.coverArt.alt}
+            className="public-dialog-art locked-cover-art"
+            position={idea.coverArt.position}
+            sizes="(max-width: 900px) 100vw, 65vw"
+            src={idea.coverArt.src}
+          />
           <div className="section-card prose-card">
             <span className="locked-preview-kicker"><Info size={15} /> Published catalogue preview</span>
             <h2>What this idea explores</h2>
@@ -44,7 +50,7 @@ export function LockedIdeaDetail({
             <h2>Published resource types</h2>
             <p>These labels describe the intended kit. They are not download links or proof that every resource is ready.</p>
             <ul className="locked-resource-list">
-              {idea.resources.map((resource) => <li key={`${resource.type}-${resource.label}`}><Check size={15} /> {resource.label}</li>)}
+              {idea.resources.map((resource) => <li className={resource.availability} key={`${resource.type}-${resource.label}`}>{resource.availability === "not-connected" ? <Clock3 size={15} /> : <Check size={15} />}<span>{resource.label}</span><em>{resource.availability === "available" ? "Available" : resource.availability === "sample" ? "Sample" : "Not connected"}</em></li>)}
             </ul>
           </section>
         </section>

@@ -4,40 +4,20 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, ChevronDown, CirclePause, FileText, LoaderCircle, Play, Save, X } from "lucide-react";
 import { loadStageNoteAction, saveStageNoteAction, setProjectPausedAction, setTaskCompletedAction } from "@/app/app/actions";
+import { projectStageCopy, projectTaskCopy } from "@/content/project-copy";
 import type { MemberProjectWorkspace } from "@/lib/workspace.server";
 import { IdeaResourceAction, resourceAvailabilityLabel } from "./idea-resource-action";
-
-const stageCopy: Record<string, { title: string; summary?: string }> = {
-  "crm-validate": { title: "Check the customer problem" },
-  "crm-adapt": { title: "Explore and tailor the example" },
-  "crm-offer": { title: "Decide what you will sell", summary: "Define the setup, training, handover, and support you will include." },
-  "crm-research": { title: "Find suitable potential customers" },
-  "crm-pilot": { title: "Show the example and agree a first project" },
-  "crm-launch": { title: "Test, hand over, and support" },
-};
-
-const taskCopy: Record<string, { title: string; description?: string }> = {
-  "scope-sheet": {
-    title: "List what your customer will receive",
-    description: "Your package might include branding changes, agreed configuration, and a handover session. Confirm the actual work before quoting.",
-  },
-  "ownership-support": { title: "Agree ownership and support limits" },
-  "field-inventory": { title: "List the information the customer needs" },
-  "scope-trim": { title: "Remove what the customer does not need" },
-  "permission-tests": { title: "Check who can see and change information" },
-  "recovery-ownership": { title: "Agree backup, recovery, and ownership" },
-};
 
 function formatSavedAt(value: string) {
   return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date(value));
 }
 
 function displayStage(stage: MemberProjectWorkspace["stages"][number]) {
-  return { ...stage, title: stageCopy[stage.id]?.title ?? stage.title, summary: stageCopy[stage.id]?.summary ?? stage.summary };
+  return projectStageCopy(stage);
 }
 
 function displayTask(task: MemberProjectWorkspace["stages"][number]["tasks"][number]) {
-  return { ...task, title: taskCopy[task.id]?.title ?? task.title, description: taskCopy[task.id]?.description ?? task.description };
+  return projectTaskCopy(task);
 }
 
 export function ProjectWorkspace({ initialProject, selectedStageId }: { initialProject: MemberProjectWorkspace; selectedStageId: string }) {
@@ -109,6 +89,7 @@ export function ProjectWorkspace({ initialProject, selectedStageId }: { initialP
 
   const toggleTask = (taskId: string, completed: boolean) => {
     const previous = project;
+    const completesStage = completed && selected.tasks.filter((task) => task.required).every((task) => task.id === taskId || Boolean(task.completedAt));
     setFeedback(null);
     setPendingTask(taskId);
     setProject((current) => ({ ...current, stages: current.stages.map((stage) => stage.id === selected.id ? { ...stage, tasks: stage.tasks.map((task) => task.id === taskId ? { ...task, completedAt: completed ? new Date().toISOString() : null } : task) } : stage) }));
@@ -120,6 +101,7 @@ export function ProjectWorkspace({ initialProject, selectedStageId }: { initialP
         setFeedback(result.error);
       } else {
         setProject((current) => ({ ...current, stages: current.stages.map((stage) => stage.id === selected.id ? { ...stage, tasks: stage.tasks.map((task) => task.id === taskId ? { ...task, completedAt: result.data?.completedAt ?? null } : task) } : stage) }));
+        setFeedback(completesStage ? "Step complete — progress saved." : completed ? "Task marked complete — progress saved." : "Task reopened — progress saved.");
         router.refresh();
       }
     });

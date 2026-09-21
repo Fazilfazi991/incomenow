@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { startTransition, useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Filter, RotateCcw, Search, ShieldCheck, X } from "lucide-react";
+import { ArrowRight, CircleAlert, Filter, FolderKanban, RotateCcw, Search, Sparkles, X } from "lucide-react";
 import type { IdeaCatalogEntry } from "@/content/idea-catalog";
 import type { BrowseableIdea } from "@/lib/member-content.server";
 import type { Readiness, SolutionType } from "@/content/idea-schema";
@@ -17,6 +18,46 @@ const solutionOptions: Array<SolutionType | "all"> = [
   "Web tool",
   "Digital service",
 ];
+
+function ExploreAccountFeature({ source }: { source: BrowseableIdea[] }) {
+  const pergola = source.find((idea) => idea.id === "idea-001");
+  const fullMember = source.some((idea) => idea.access === "full");
+
+  if (!pergola) return null;
+  if (pergola.access === "unavailable") {
+    return (
+      <aside className="explore-account-feature warning">
+        <CircleAlert aria-hidden="true" size={19} />
+        <div><strong>Access temporarily unavailable</strong><span>Your safe catalogue is still here while the account check is retried.</span></div>
+        <Link href="/app/explore">Retry</Link>
+      </aside>
+    );
+  }
+
+  if (pergola.access === "starter" || fullMember) {
+    const continueChecklist = Boolean(pergola.projectId);
+    return (
+      <aside className="explore-account-feature active">
+        <FolderKanban aria-hidden="true" size={19} />
+        <div>
+          <strong>{fullMember ? "Continue your library" : "Your Pergola starter"}</strong>
+          <span>{continueChecklist ? "Your saved Pergola checklist is ready." : fullMember ? "Open any included published kit." : "Open the kit and choose your next activity."}</span>
+        </div>
+        <Link href={continueChecklist ? `/app/projects/${pergola.projectId}` : `/app/ideas/${pergola.slug}`}>
+          {continueChecklist ? "Continue checklist" : "Open kit"} <ArrowRight aria-hidden="true" size={15} />
+        </Link>
+      </aside>
+    );
+  }
+
+  return (
+    <aside className="explore-account-feature">
+      <Sparkles aria-hidden="true" size={19} />
+      <div><strong>Start with the Pergola kit for US$1</strong><span>One focused business kit and one personal project.</span></div>
+      <Link href="/membership?offer=starter#starter-offer">Review starter <ArrowRight aria-hidden="true" size={15} /></Link>
+    </aside>
+  );
+}
 
 export function ExploreClient({ source, mode = "preview" }: { source: Array<IdeaCatalogEntry | BrowseableIdea>; mode?: "preview" | "member" }) {
   const router = useRouter();
@@ -60,14 +101,11 @@ export function ExploreClient({ source, mode = "preview" }: { source: Array<Idea
     <div className="page-stack">
       <header className="page-heading explore-heading">
         <div>
-          <div className="context-row"><span className="preview-dot" /> {mode === "member" ? "Account library — previews stay browseable" : "Local preview — sample data"} <span aria-hidden="true">•</span> Curated opportunity blueprints</div>
+          <div className="context-row"><span className="preview-dot" /> {mode === "member" ? "Your idea library" : "Local sample library"}</div>
           <h1>Explore ideas</h1>
-          <p>Discover practical business opportunities, review safe summaries, and see which ideas your account can open in full.</p>
+          <p>Find a business idea, explore the kit, and choose your next move.</p>
         </div>
-        <div className="trust-strip" role="group" aria-label="Preview content status">
-          <span><ShieldCheck aria-hidden="true" size={18} /> Structured patterns</span>
-          <span><ShieldCheck aria-hidden="true" size={18} /> Sample resources</span>
-        </div>
+        {mode === "member" ? <ExploreAccountFeature source={source as BrowseableIdea[]} /> : null}
       </header>
 
       <section className="filter-panel" aria-label="Idea discovery controls">
@@ -126,7 +164,7 @@ export function ExploreClient({ source, mode = "preview" }: { source: Array<Idea
       </section>
 
       {results.length ? (
-        <section className="idea-grid" aria-label="Idea results">
+        <section className="idea-grid idea-grid-transition" aria-label="Idea results" key={searchParams.toString()}>
           {results.map((idea) => <IdeaCard idea={idea} key={idea.id} basePath={mode === "member" ? "/app/ideas" : "/preview/ideas"} bookmarkMode={mode} access={"access" in idea ? idea.access : undefined} projectId={"projectId" in idea ? idea.projectId : null} />)}
         </section>
       ) : (

@@ -34,9 +34,10 @@ Members move from discovery to evaluation to implementation. Ideas can describe 
 - Phase 3A adds the public homepage, membership explanation, safe example previews, and account-aware entry actions.
 - Phase 3B adds optional onboarding and owner-scoped account settings without making either a paid-access gate.
 - Phase 3C adds registered catalogue browsing, the US$1 Pergola Starter Pass, per-idea grants, and project authorization tied to the relevant idea.
+- Phase 4A turns the protected Pergola kit into a locally verified implementation package: inspected CRM scope, a member setup guide, a protected 77-business research list, five editable sales templates, and a practical delivery handover guide.
 - Preview routes use fictional sample data and device-local bookmark persistence.
 - Verified accounts may browse safe catalogue metadata, search, filter, and manage bookmarks without a purchase. Full idea records and project operations require a fresh server-side full-membership or matching per-idea grant check; unknown access fails closed for paid data while the safe preview remains available.
-- Checkout/payment, billing UI, admin, analytics, hosted rollout, and real resource delivery remain disconnected.
+- Checkout/payment, billing UI, IncomeNow admin/analytics, hosted rollout, and production service delivery remain disconnected. The owner-supplied Pergola CRM source and member research export are delivered only through fresh server-authorized, private/no-store routes.
 - The Starter Pass is proposed at US$1/USD as a one-time purchase with no automatic renewal. Its access duration, taxes, refund terms, payment provider, checkout, and final resource licence remain unconfigured; full-membership price and currency also remain unconfigured.
 - Idea content is maintained through Codex and the backend; no CMS or content-editor admin is required.
 
@@ -49,7 +50,7 @@ The approved visual authority is the Stitch export in `stitch/stitch_incomenow_e
 - Desktop and mobile Stitch screenshots and exported HTML for 20 named screen groups.
 - A dedicated Editorial Venture Discovery design-system document.
 - Approved member-library references for Explore, Saved, IDEA #001, and IDEA #003.
-- No dedicated IDEA #004 detail reference, downloadable product packages, live demo URLs, customer evidence, or production service credentials are provided.
+- The owner has supplied the Universal Pergola CRM source archive and a prospect-research workbook; a synthetic-data public CRM demo URL is also available. Static package checks and local application tests have passed, but no production service credentials, customer evidence, or hosted CRM acceptance evidence are provided.
 
 ## Product Principles
 

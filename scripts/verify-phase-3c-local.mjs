@@ -103,14 +103,17 @@ try {
 
   const freeExplore = await appRequest("/app/explore", free);
   const freeExploreBody = await freeExplore.text();
-  assert.match(freeExploreBody, /Available with the US\$1 starter/);
-  assert.doesNotMatch(freeExploreBody, /crm-validate|region-segment|Suggested contractor workflow to investigate/);
+  assert.match(freeExploreBody, /US\$1 Pergola starter/);
+  assert.doesNotMatch(freeExploreBody, /crm-validate|region-segment|Explore in any order/);
 
   const freePergola = await appRequest("/app/ideas/pergola-quotation-follow-up-crm", free);
   assert.equal(freePergola.status, 200);
   const freePergolaBody = await freePergola.text();
   assert.match(freePergolaBody, /Published catalogue preview/);
-  assert.doesNotMatch(freePergolaBody, /crm-validate|region-segment|Starter readiness and operating responsibilities|crm-source/);
+  assert.doesNotMatch(freePergolaBody, /crm-validate|region-segment|Explore in any order|crm-source|pergola-potential-customers/);
+  const freeProspects = await appRequest("/app/resources/pergola-potential-customers", free);
+  assert.equal(freeProspects.status, 403, "registered preview access cannot download the protected prospect export");
+  assert.equal(freeProspects.headers.get("cache-control"), "private, no-store");
 
   const freeBookmark = await free.client.from("bookmarks").insert({ idea_id: "idea-003" });
   assert.ifError(freeBookmark.error);
@@ -123,7 +126,19 @@ try {
 
   const starterPergola = await appRequest("/app/ideas/pergola-quotation-follow-up-crm", starter);
   assert.equal(starterPergola.status, 200);
-  assert.match(await starterPergola.text(), /Suggested contractor workflow to investigate/);
+  assert.match(await starterPergola.text(), /Explore in any order/);
+  const starterProspects = await appRequest("/app/resources/pergola-potential-customers", starter);
+  assert.equal(starterProspects.status, 200);
+  assert.match(starterProspects.headers.get("content-type") ?? "", /^text\/csv/);
+  assert.equal(starterProspects.headers.get("cache-control"), "private, no-store");
+  const starterProspectCsv = await starterProspects.text();
+  assert.equal(starterProspectCsv.trimEnd().split(/\r?\n/).length, 78, "the protected export contains one header and 77 records");
+  assert.doesNotMatch(starterProspectCsv, /Outreach Status|All Emails|Google Search Query|Contact Name|Lead Score/);
+  const starterGuide = await appRequest("/app/resources/pergola-setup-guide", starter);
+  assert.equal(starterGuide.status, 200);
+  assert.match(starterGuide.headers.get("content-type") ?? "", /^text\/markdown/);
+  assert.equal(starterGuide.headers.get("cache-control"), "private, no-store");
+  assert.match(await starterGuide.text(), /Universal Pergola CRM — local setup and handover guide/);
   const starterOther = await appRequest("/app/ideas/quotation-follow-up-automation", starter);
   assert.equal(starterOther.status, 200);
   assert.doesNotMatch(await starterOther.text(), /flow-source|Configure, test, and hand over/);
@@ -196,10 +211,12 @@ try {
   const revokedProjects = await starter.client.from("projects").select("id");
   assert.ifError(revokedProjects.error);
   assert.deepEqual(revokedProjects.data, []);
+  const revokedProspects = await appRequest("/app/resources/pergola-potential-customers", starter);
+  assert.equal(revokedProspects.status, 403, "revoked idea access immediately removes protected download access");
 
   const fullExplore = await appRequest("/app/explore", full);
   assert.equal(fullExplore.status, 200);
-  assert.match(await fullExplore.text(), /Included with full membership/);
+  assert.match(await fullExplore.text(), /Full-member access/);
 
   const onboarding = await appRequest("/account/getting-started?next=%2Fapp%2Fideas%2Fpergola-quotation-follow-up-crm", starter);
   assert.equal(onboarding.status, 200);
@@ -210,6 +227,7 @@ try {
     checks: [
       "registered-preview-browsing-and-bookmarks",
       "locked-payload-minimisation",
+      "protected-prospect-and-setup-downloads",
       "starter-pergola-only",
       "concurrent-idempotent-project-start",
       "starter-task-note-and-pause-persistence",

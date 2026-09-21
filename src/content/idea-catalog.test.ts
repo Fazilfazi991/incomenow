@@ -8,7 +8,8 @@ describe("authenticated catalogue projection", () => {
     const projected = toIdeaCatalogEntry(source);
     const payload = JSON.stringify(projected);
 
-    expect(Object.keys(projected.resources[0]).sort()).toEqual(["label", "type"]);
+    expect(Object.keys(projected.resources[0]).sort()).toEqual(["availability", "label", "type"]);
+    expect(Object.keys(projected.coverArt).sort()).toEqual(["alt", "position", "src"]);
     expect(payload).not.toContain(source.resources[0].id);
     expect(payload).not.toContain(source.resources[0].externalUrl);
     expect(payload).not.toContain(source.resources[1].downloadPath);

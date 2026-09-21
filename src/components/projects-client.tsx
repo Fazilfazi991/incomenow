@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, CheckCircle2, CirclePause, FolderKanban, LoaderCircle, Play, Search, X } from "lucide-react";
 import { setProjectPausedAction } from "@/app/app/actions";
 import type { MemberProjectSummary } from "@/lib/workspace.server";
+import { ArtworkImage } from "./artwork-image";
 
 type ProjectFilter = "all" | "active" | "paused" | "complete";
 
@@ -62,7 +63,7 @@ export function ProjectsClient({ projects }: { projects: MemberProjectSummary[] 
       </section>
 
       {!projects.length ? (
-        <section className="empty-state"><FolderKanban size={29} /><h2>No projects yet</h2><p>Open a detailed idea and start its implementation plan. Saving an idea does not create a project.</p><Link className="primary-button" href="/app/explore">Explore ideas <ArrowRight size={16} /></Link></section>
+        <section className="empty-state empty-state-illustrated"><ArtworkImage alt="An open portfolio box waiting for a selected idea" className="empty-state-art" sizes="320px" src="/artwork/marketing/empty-portfolio.webp" /><FolderKanban size={29} /><h2>No projects yet</h2><p>Open a detailed idea and start its implementation plan. Saving an idea does not create a project.</p><Link className="primary-button" href="/app/explore">Explore ideas <ArrowRight size={16} /></Link></section>
       ) : results.length ? (
         <section className="project-grid" aria-label="Project results">
           {results.map((project) => {
@@ -70,6 +71,7 @@ export function ProjectsClient({ projects }: { projects: MemberProjectSummary[] 
             return (
               <article className="project-card" key={project.id}>
                 <div className="project-card-top"><span className={`project-status ${state}`}>{state === "complete" ? <CheckCircle2 size={14} /> : state === "paused" ? <CirclePause size={14} /> : <Play size={14} />}{state === "complete" ? "Complete" : state === "paused" ? "Paused" : "Active"}</span><span>IDEA #{project.idea.displayNumber}</span></div>
+                <ArtworkImage alt={project.idea.coverArt.alt} className="project-card-art" position={project.idea.coverArt.position} sizes="(max-width: 767px) calc(100vw - 48px), 40vw" src={project.idea.coverArt.src} />
                 <div><h2>{project.idea.title}</h2><p>{project.progress.isComplete ? "Implementation checklist complete." : `Current focus: ${project.currentStageTitle}`}</p>{!project.progress.isComplete ? <p className="project-next-action"><strong>Next action:</strong> {project.nextActionTitle}</p> : null}</div>
                 <div className="project-progress"><div><span>{project.progress.completed} of {project.progress.total} stages complete</span><strong>{project.progress.percent}%</strong></div><div className="progress-track"><i style={{ width: `${project.progress.percent}%` }} /></div></div>
                 <div className="project-card-actions"><Link className="primary-button" href={`/app/ideas/${project.idea.slug}`}>Open kit <ArrowRight size={15} /></Link><div className="project-card-secondary"><Link className="text-button" href={`/app/projects/${project.id}`}>My checklist</Link>{state !== "complete" ? <button type="button" className="text-button" disabled={pending && pendingId === project.id} onClick={() => togglePaused(project)}>{pending && pendingId === project.id ? <LoaderCircle className="control-spinner" size={15} /> : project.pausedAt ? <Play size={15} /> : <CirclePause size={15} />}{project.pausedAt ? "Resume" : "Pause"}</button> : null}</div></div>

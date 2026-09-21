@@ -2,7 +2,7 @@
 
 ## Phase and stack
 
-Phase 3C and the owner-requested Pergola kit-first refinement are code-complete and locally verified in the workspace, building on the completed Phase 3B onboarding/settings commit `82644aa`, Phase 3A public entry, Phase 2B account-synced workspace, and Phase 2A.1 authentication baseline. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
+Phase 4A Pergola commercial-readiness work is code-complete and locally verified in the workspace, building on Phase 3C per-idea access and the owner-requested kit-first/interactive refinements, Phase 3B onboarding/settings, Phase 3A public entry, Phase 2B account-synced workspace, and Phase 2A.1 authentication. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
 
 This status deliberately distinguishes local verification from launch verification. Docker's Linux engine and the `IncomeNow` local Supabase stack were available during Phase 2A.1, but Google OAuth, a hosted Supabase project, external SMTP delivery, and production configuration were not exercised. No hosted Supabase project was contacted or changed.
 
@@ -32,7 +32,7 @@ This status deliberately distinguishes local verification from launch verificati
 
 - `/preview/explore`, `/preview/saved`, and the three available detail routes retain fictional sample content and device-local bookmarks.
 - Preview routes remain server-disabled by default in production and can be enabled only with `ENABLE_PREVIEW_ROUTES=true`.
-- Updates, support, checkout/payment, admin, analytics, and unconnected catalogue resources remain out of scope. The owner-supplied Pergola source archive is the single protected download, and the separately hosted synthetic-data Pergola demo is the single external example. Account-synced bookmarks and the project workspace remain separate from preview storage.
+- Updates, support, checkout/payment, admin, analytics, and unconnected catalogue resources remain out of scope. The owner-supplied Pergola source archive, inspected setup guide, and cleaned prospect export are protected member downloads; the separately hosted synthetic-data Pergola demo remains the external example. Account-synced bookmarks and the project workspace remain separate from preview storage.
 
 ## Phase 2B workspace
 
@@ -74,13 +74,56 @@ This status deliberately distinguishes local verification from launch verificati
 ## Pergola kit-first owner refinement
 
 - The unlocked Pergola route now presents “Pergola Business Kit” as the primary member experience. Catalogue, saved, and project cards lead with **Open kit**; **My checklist** is secondary and project creation remains explicit.
-- The first viewport exposes the verified public demo URL, the owner-supplied source archive through a private/no-store authenticated route, and an honest unavailable state for the missing prospect sheet.
+- The first viewport exposes the verified public demo URL and the owner-supplied source archive through a private/no-store authenticated route. The customer activity now exposes a separately protected, cleaned member research export.
 - Kit sections follow the requested opportunity → demo → software → setup → customers → sales kit → delivery order using validated structured content. Public and locked projections still omit sections, resource IDs, external URLs, and the protected download path.
 - The workspace retains the existing project, task, note, pause, version, and ownership records while displaying plain-language step/task copy. It uses one current-step heading, a compact **Your steps** disclosure, secondary progress/pause controls, collapsed notes that preserve drafts, and a prominent **Back to kit** action.
 - No migration or database mutation was required. Hosted Supabase, payments, deployment, domain work, Google verification, and final commercial terms remain untouched.
 
+## Pergola interactive-kit refinement
+
+- The unlocked Pergola URL now defaults to a compact activity hub instead of rendering seven complete sections in one document. Its seven cards open validated `?section=` views with direct links, refresh safety, Browser Back, Back to kit, a native activity selector, and redirects for the former `#section-*` anchors.
+- Demo and protected-source actions remain directly available from the hub. Focused views use existing protected content and permissions: opportunity model, inspected demo modules, offline/UAT source boundary, verified customisation steps, inspected setup guidance, a protected prospect explorer/export, five editable sales templates with copy confirmation, a delivery handover guide, and the existing personal checklist.
+- Checklist continuation appears only when persisted tasks or notes provide meaningful progress. Kit visits, demo opens, ZIP downloads, and template copies never create progress. Existing six-stage progress, ownership, plan version, pause state, tasks, and notes remain unchanged.
+- Shared motion now covers press feedback, card hover/selection, one-time section entry, native disclosures, clipboard confirmation, task-save feedback, and reduced-motion suppression. No animation package or persistence was added.
+- No migration, database reset, hosted change, payment activation, push, or deployment was performed.
+
+## Modern digital art direction and motion pass
+
+- The rejected warm/printed-kit **Tangible Fieldwork** direction is retired for new public work. The first owner-review slice is intentionally limited to the homepage hero, interactive How it works explanation, and public covers for Pergola, Quotation Follow-up Automation, and Local-Service Lead Website.
+- The hero now pairs the fixed headline “Find an idea. Build your version.” and exact owner-approved supporting copy with a seamless 7.2-second derivative of the supplied 8-second 1280×720 motion graphic. It autoplays muted and inline, loops continuously, pauses below 35% visibility or when the tab is hidden, prefers a 599 KB VP9 WebM with a 1.19 MB H.264 MP4 fallback, and uses a 1280×720 closing-frame WebP poster when reduced motion is requested or playback fails.
+- How it works now uses one selectable Discover → Explore the kit → Adapt your version → Prepare your offer explanation. Selection is expressed with text, border, check icon, `aria-selected`, and a shared tab panel; it does not update real project progress.
+- Three original local 16:10 covers use a cool-neutral 3D family with emerald/cyan/blue/violet accents. A scoped `publicCoverArt` field keeps these owner-review assets on public examples and the homepage starter preview without changing current member catalogue artwork.
+- Unknown account state keeps neutral marketing headings and public examples. The existing compact header account check is the sole account-error action; repeated homepage bands use neutral public destinations instead.
+- The clean signed-out Supabase correction remains: only the official `AuthSessionMissingError` is treated as signed out; genuine auth, token, configuration, and data failures remain fail-closed as unavailable.
+- No migration, database reset, shared database mutation, hosted change, payment activation, push, deployment, or release-blocked archive change was performed.
+
+## Phase 4A Pergola commercial readiness
+
+- The supplied prospect workbook was inspected as one 191-record research sheet and normalised into a private structured artifact. Eligibility is deterministic: HIGH or MEDIUM research priority, at least one primary contact route, no prior contacted/failed outreach state, and first occurrence by normalised company/domain key. The resulting member dataset contains 77 records—51 HIGH and 26 MEDIUM—with 34 published primary emails, 76 published primary phones, and 69 recorded quote forms.
+- The member customer activity now supports company/domain search plus state, city, category, research-priority, and contact-availability filters. Results retain source links, checked dates, explicit missing-contact/quote-form states, copy-success feedback, and a protected UTF-8 CSV export. Internal IDs, enrichment columns, lead scores, search queries, notes, owner/next-action fields, secondary contacts, and outreach status are excluded.
+- The Universal Pergola source package was inspected in an isolated temporary folder. Its stack is Next.js 16.3.5, React 19.3, TypeScript 5.9, Tailwind CSS 4.3, Supabase SSR/JS, PostgreSQL/RLS/Auth/Storage, Zod, pdf-lib, and npm lockfile workflows. The package exposes CRM modules for categories/products, enquiries, customers, site visits, quotations, projects, payments, tasks, feedback, reports, and PDF documents. Messaging and payment gateways are not implemented.
+- Isolated package validation passed `npm ci --ignore-scripts` with zero reported vulnerabilities and `npm run check` with 47 tests, type generation/type checking, lint, and production build. No package database, hosted service, migration, seed, or deployment command was run; live Auth/Storage/CRUD behavior remains unverified.
+- Software, setup, sales, and delivery activities now distinguish included, locally verified, and not-yet-verified capabilities. The setup activity contains twelve labelled steps and three safe Codex prompts; the sales activity contains five editable templates; delivery contains a twelve-point customer handover guide.
+- Prospect CSV and setup Markdown routes repeat the existing fresh server-side IDEA #001 access decision, return private/no-store attachments, and fail closed. Signed-out/registered-preview, starter, full-member, revoked, and unavailable behavior continues to use the Phase 3C access model; no migration was required.
+- With owner approval, the original ZIP-containing commit was amended. `private-resources/pergola/universalpergola-main.zip` remains local with SHA-256 `5E4DC492F2BD05869AE7FB77A4C83F66908F96FB6CD6329C4BDA1B36970345B5`, is ignored by a narrow path rule, and is absent from reachable local `main` history. Nothing was pushed or deployed.
+- Full implementation and evidence details are recorded in `docs/phase-4a-pergola-kit-readiness.md`.
+
 ## Verification completed
 
+- Phase 4A application checks passed: TypeScript, ESLint, the optimized Next.js build, and 107 Vitest/Testing Library tests across 32 files.
+- Phase 4A database regression passed all 164 pgTAP assertions across four suites without a reset; database schema/migrations were unchanged.
+- The refreshed Phase 3C disposable-user integration passed eleven checks, including locked payload minimisation, protected prospect/setup downloads, starter-only authorization, revocation, full-membership behavior, owner isolation, project reuse, and optional onboarding. Disposable accounts were removed.
+- Browser verification covered the protected customer, setup, and sales activities at 1440, 768, 390, and 320 pixels. Search, state filtering, copy feedback, protected-resource presentation, mobile navigation, and zero horizontal overflow passed; there was no framework error overlay. Captures are in `artifacts/phase-4a/`.
+- The source workbook SHA-256 is `39E2FBD76E3E5BA2E368040531832629A89C759A14EF77EFCF85BB428DF73A3F`; the cleaned JSON artifact SHA-256 is `A0DD71787EE3E21E5600FCB1BF7D8849D6C846119D027D16ECC2DB90C9C40443`; the deterministic member CSV SHA-256 is `6B70264AE7433D0369C5E7E7C40A93897974F7DEEF6967FE3C62E4AF2C6E78AA`.
+
+- Visual-pass application checks: TypeScript, ESLint, 90 Vitest/Testing Library tests across 27 files, and the optimized Next.js build passed.
+- Visual-pass browser review covered 1440, 768, 390, and 320 pixels across the public home, membership, preview Explore, quick-preview dialog, mobile menu, authenticated Explore, Saved, and Projects surfaces. Reviewed routes had no horizontal overflow, framework overlay, or broken artwork.
+- Visual-pass captures are in `.impeccable/review/visual-pass-*.png`; the durable contact sheet is `artifacts/visual-pass/artwork-contact-sheet.png`.
+- The Impeccable detector ran once after this UI was stable and returned advisory design-token inventory only. This is not owner approval.
+- Interactive-kit application checks: TypeScript, ESLint, and the optimized Next.js build passed; Vitest/Testing Library passed 87 tests across 26 files.
+- Interactive-kit browser review covered 1440, 768, 390, and 320 pixels; hub/section/Back, direct refresh, legacy-anchor full-load redirect, compact selector, editable sales copy, starter/locked behavior, and existing checklist reads passed with no horizontal overflow, framework overlay, or browser-console warning/error.
+- Interactive-kit review captures are in `.impeccable/review/interactive-kit-{hub-desktop,hub-mobile,sales-mobile}.png`. The available browser-control surface did not expose local recording, so no interaction video was produced.
+- The Impeccable detector ran once after the interactive UI was complete and returned advisory design-token inventory across the existing shared stylesheet. This is not owner approval.
 - Pergola kit-first application checks: TypeScript, ESLint, and the optimized Next.js build passed; Vitest/Testing Library passed 80 tests across 24 files.
 - The protected ZIP route is covered for a denied entitlement and a successful fresh account/idea-access decision. The public and authenticated catalogue projection tests confirm the download path is absent from safe payloads.
 - Authenticated browser review covered the kit at desktop, 390, and 320 pixels plus the simplified checklist. There was no horizontal overflow or framework overlay; the mobile section navigation was static, demo/download actions were visible early, the checklist omitted “Plan v1,” and collapsed notes preserved then discarded an unsaved test draft without a database write.
@@ -143,10 +186,10 @@ The public entry, local database, email-account, and access-controlled member wo
 - External SMTP/inbox delivery and production email-template configuration.
 - Production security, domain, and operational readiness review.
 - Full-membership price/currency; starter access duration; tax/refund/cancellation terms; payment provider; checkout; and subscription/webhook processing.
-- Final resource licence, the missing Pergola prospect sheet/setup guide, production readiness for the supplied source and external demo, and an operational publishing/admin workflow.
+- Final resource/source-data licence and redistribution approval; production readiness for the supplied source and external demo; real customer acceptance, backup/recovery rehearsal, messaging/payment integrations if later required; and an operational publishing/admin workflow.
 
 Exact local Google setup values and credential locations are documented in `docs/auth-setup.md`. Hosted rollout remains a separately approved operator action.
 
 ## Visual evidence
 
-The selected Stitch references are recorded in `docs/design-map.md`. Phase 3C homepage and membership captures are in `.impeccable/review/phase-3c-{home,membership}-{1440,768,390,320}.png`; the review directory is intentionally ignored local evidence. Earlier Phase 3A captures remain in `artifacts/screenshots/phase-3a/`, and authentication captures remain in `.impeccable/review/`. Durable public, authentication, saved-idea, project, workspace, starter, and per-idea-access patterns are synchronized in `DESIGN.md` and `.impeccable/design.json`.
+The selected Stitch references are recorded in `docs/design-map.md`. Phase 4A protected-kit captures are in `artifacts/phase-4a/`. Phase 3C homepage and membership captures are in `.impeccable/review/phase-3c-{home,membership}-{1440,768,390,320}.png`; the review directory is intentionally ignored local evidence. Earlier Phase 3A captures remain in `artifacts/screenshots/phase-3a/`, and authentication captures remain in `.impeccable/review/`. Durable public, authentication, saved-idea, project, workspace, starter, and per-idea-access patterns are synchronized in `DESIGN.md` and `.impeccable/design.json`.

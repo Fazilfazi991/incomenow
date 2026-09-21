@@ -5,20 +5,34 @@ import { useState, useTransition } from "react";
 import { ArrowRight, LoaderCircle, Rocket, X } from "lucide-react";
 import { startProjectAction } from "@/app/app/actions";
 
-export function StartIdeaControl({ ideaId, existingProjectId, mode = "preview" }: { ideaId?: string; existingProjectId?: string | null; mode?: "preview" | "member" }) {
+export function StartIdeaControl({
+  ideaId,
+  existingProjectId,
+  mode = "preview",
+  appearance = "secondary",
+  startLabel = "Start my checklist",
+  existingLabel = "My checklist",
+}: {
+  ideaId?: string;
+  existingProjectId?: string | null;
+  mode?: "preview" | "member";
+  appearance?: "primary" | "secondary";
+  startLabel?: string;
+  existingLabel?: string;
+}) {
   const [visible, setVisible] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
   if (mode === "member" && existingProjectId) {
-    return <Link className="secondary-button" href={`/app/projects/${existingProjectId}`}>My checklist <ArrowRight size={17} /></Link>;
+    return <Link className={`${appearance}-button`} href={`/app/projects/${existingProjectId}`}>{existingLabel} <ArrowRight size={17} /></Link>;
   }
 
   return (
     <div className="start-control">
       <button
         type="button"
-        className={mode === "member" ? "secondary-button" : "primary-button"}
+        className={mode === "member" ? `${appearance}-button` : "primary-button"}
         disabled={pending}
         onClick={() => {
           if (mode === "preview") return setVisible(true);
@@ -30,7 +44,7 @@ export function StartIdeaControl({ ideaId, existingProjectId, mode = "preview" }
           });
         }}
       >
-        {pending ? <LoaderCircle className="control-spinner" size={17} /> : <Rocket size={17} />} {pending ? "Starting…" : mode === "member" ? "Start my checklist" : "Start this idea"}
+        {pending ? <LoaderCircle className="control-spinner" size={17} /> : <Rocket size={17} />} {pending ? "Starting…" : mode === "member" ? startLabel : "Start this idea"}
       </button>
       {visible && mode === "preview" ? (
         <div className="inline-unavailable" role="status">

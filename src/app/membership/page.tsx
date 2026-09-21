@@ -4,6 +4,7 @@ import { BookOpen, Check, CircleDollarSign, Cloud, Code2, CreditCard, ExternalLi
 import { PublicFaq } from "@/components/public-faq";
 import { PublicAccountActions, PublicShell, StarterOfferAction, StarterOfferCopy } from "@/components/public-site";
 import { fullMembershipOffer, starterOffer } from "@/content/membership-offer";
+import type { PublicAccountState } from "@/lib/public-account";
 import { getPublicAccountState } from "@/lib/public-account.server";
 
 export const dynamic = "force-dynamic";
@@ -22,6 +23,19 @@ const faq = [
   { question: "What licence applies to the resources?", answer: "Final permissions remain to be approved. Review the applicable resource rights before reuse or distribution." },
 ] as const;
 
+function MembershipHeroCopy({ state }: { state: PublicAccountState }) {
+  if (state === "starter") {
+    return <><h1>Your Pergola starter is already active.</h1><p>Open the kit or continue its personal checklist. Full monthly membership remains a separate option for all included published kits.</p></>;
+  }
+  if (state === "full") {
+    return <><h1>Your full idea library is already active.</h1><p>Open any included published kit or continue your existing work. You do not need to purchase the Pergola starter separately.</p></>;
+  }
+  if (state === "unavailable") {
+    return <><h1>Compare access while we recheck your account.</h1><p>The offers remain visible, but paid access stays closed until the server can confirm your current entitlement.</p></>;
+  }
+  return <><h1>Start with one idea. Expand when the wider library fits.</h1><p>Choose the US$1 one-time Pergola starter or compare it with the separately priced monthly membership for all included published kits.</p></>;
+}
+
 export default async function MembershipPage() {
   const accountState = await getPublicAccountState();
   return (
@@ -29,27 +43,28 @@ export default async function MembershipPage() {
       <section className="membership-hero public-container">
         <div className="membership-hero-copy">
           <nav aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><span>Membership</span></nav>
-          <h1>Start with one idea.<br />Upgrade when the wider library fits.</h1>
-          <p>Browse safe catalogue previews, begin with the Pergola Business Kit through the proposed US$1 Starter Pass, or use full monthly membership for all included published ideas.</p>
+          <MembershipHeroCopy state={accountState} />
           <div className="membership-proof">
             <div><Library size={20} /><span><strong>Focused idea library</strong><small>Opportunities organised by customer and solution.</small></span></div>
             <div><FolderKanban size={20} /><span><strong>Personal project tools</strong><small>Save progress, checklists, decisions, and notes.</small></span></div>
           </div>
         </div>
-        <div className="membership-offer-grid" aria-label="IncomeNow offers">
-          <article id="starter-offer" className="membership-price-card starter-offer-card">
-            <div><span>{starterOffer.name}</span><strong>{starterOffer.priceLabel}</strong><small>Proposed one-time purchase · {starterOffer.currency}</small></div>
-            <ul><li><Check size={16} /> Pergola Business Kit only</li><li><Check size={16} /> One personal Pergola project</li><li><Check size={16} /> Account bookmarks and progress</li><li><Check size={16} /> No automatic monthly renewal</li></ul>
-            <StarterOfferAction state={accountState} />
-            <p><CreditCard size={15} /> Checkout is not connected in this local build.</p>
-            <small>Access duration, refund terms, taxes, and final resource rights remain unconfigured.</small>
-          </article>
-          <article id="full-membership" className="membership-price-card full-membership-card">
-            <div><span>{fullMembershipOffer.name}</span><strong>{fullMembershipOffer.priceLabel}</strong><small>{fullMembershipOffer.billingInterval} subscription · currency unconfigured</small></div>
-            <ul><li><Check size={16} /> All included published ideas</li><li><Check size={16} /> One project per account and idea</li><li><Check size={16} /> Idea-specific published resources</li><li><Check size={16} /> Separate voluntary upgrade</li></ul>
-            <PublicAccountActions state={accountState} />
-            <p><CreditCard size={15} /> Monthly checkout is not connected.</p>
-          </article>
+        <div className="membership-comparison" aria-label="Compare IncomeNow access options">
+          <div className="membership-comparison-head" id="starter-offer">
+            <span>{starterOffer.name}</span><strong>{starterOffer.priceLabel}</strong><small>One-time proposal · {starterOffer.currency}</small>
+          </div>
+          <div className="membership-comparison-head" id="full-membership">
+            <span>{fullMembershipOffer.name}</span><strong>{fullMembershipOffer.priceLabel}</strong><small>{fullMembershipOffer.billingInterval} · currency unconfigured</small>
+          </div>
+          <div className="membership-comparison-row"><span>Idea access</span><strong>Pergola Business Kit only</strong><strong>All included published kits</strong></div>
+          <div className="membership-comparison-row"><span>Projects</span><strong>One Pergola project</strong><strong>One project per included idea</strong></div>
+          <div className="membership-comparison-row"><span>Resources</span><strong>Pergola demo, source, and kit content</strong><strong>Published resources for each included kit</strong></div>
+          <div className="membership-comparison-row"><span>Billing</span><strong>No automatic monthly renewal</strong><strong>Monthly price still unconfigured</strong></div>
+          <div className="membership-comparison-actions">
+            <div><StarterOfferAction state={accountState} /></div>
+            <div><PublicAccountActions state={accountState} compact /></div>
+          </div>
+          <p className="membership-checkout-note"><CreditCard size={15} /> Checkout is not connected. Starter duration, refunds, taxes, and final resource rights remain unconfigured.</p>
         </div>
       </section>
 

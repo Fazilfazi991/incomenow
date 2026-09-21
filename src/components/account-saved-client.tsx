@@ -8,6 +8,7 @@ import type { SolutionType } from "@/content/idea-schema";
 import type { BrowseableIdea } from "@/lib/member-content.server";
 import { filterIdeas, type IdeaSort } from "@/lib/idea-filter";
 import { IdeaCard } from "./idea-card";
+import { ArtworkImage } from "./artwork-image";
 import { useMemberBookmarks } from "./member-bookmark-provider";
 
 const solutionOptions: Array<SolutionType | "all"> = ["all", "Custom CRM", "Lead-generation website", "Automation", "Web tool", "Digital service"];
@@ -61,7 +62,7 @@ export function AccountSavedClient({ initialIdeaIds, catalog }: { initialIdeaIds
       </section>
 
       {!savedIdeas.length ? (
-        <section className="empty-state saved-empty"><Bookmark aria-hidden="true" size={28} /><h2>Your shortlist starts here</h2><p>Save promising ideas from the exploration library. Your shortlist follows this account across sessions.</p><Link className="primary-button" href="/app/explore">Explore ideas <ArrowRight size={16} /></Link></section>
+        <section className="empty-state saved-empty empty-state-illustrated"><ArtworkImage alt="An open portfolio box waiting for a saved idea" className="empty-state-art" sizes="320px" src="/artwork/marketing/empty-portfolio.webp" /><Bookmark aria-hidden="true" size={28} /><h2>Your shortlist starts here</h2><p>Save promising ideas from the exploration library. Your shortlist follows this account across sessions.</p><Link className="primary-button" href="/app/explore">Explore ideas <ArrowRight size={16} /></Link></section>
       ) : results.length ? (
         <section className="idea-grid saved-grid" aria-label="Saved idea results">
           {results.map((idea) => <div className="saved-card-wrap" key={idea.id}><IdeaCard idea={idea} savedView bookmarkMode="member" basePath="/app/ideas" access={idea.access} projectId={idea.projectId} onRemove={() => setLastRemoved(idea.id)} /><button type="button" className="remove-link" onClick={async () => { if (await setSaved(idea.id, false)) setLastRemoved(idea.id); }}>Remove from saved</button></div>)}

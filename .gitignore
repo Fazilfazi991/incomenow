@@ -29,6 +29,8 @@ trace.zip
 
 # owner-supplied private Pergola source archive; served only through protected delivery
 /private-resources/pergola/universalpergola-main.zip
+/video1/
+/video1.zip
 
 # local database exports
 *.dump

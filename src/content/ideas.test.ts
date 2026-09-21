@@ -1,6 +1,32 @@
 import { describe, expect, it } from "vitest";
 import { ideas } from "./ideas";
 
+describe("idea catalogue artwork and claims", () => {
+  it("provides one local, descriptive cover for every catalogue idea", () => {
+    expect(ideas).toHaveLength(6);
+    expect(new Set(ideas.map((idea) => idea.coverArt.src)).size).toBe(ideas.length);
+    ideas.forEach((idea) => {
+      expect(idea.coverArt.src).toMatch(/^\/artwork\/ideas\/[a-z0-9-]+\.webp$/);
+      expect(idea.coverArt.alt.length).toBeGreaterThan(20);
+    });
+  });
+
+  it("keeps the three public showcase covers separate from member catalogue artwork", () => {
+    const publicShowcaseIdeas = ideas.filter((idea) => ["idea-001", "idea-003", "idea-004"].includes(idea.id));
+    expect(publicShowcaseIdeas.map((idea) => idea.publicCoverArt?.src)).toEqual([
+      "/artwork/marketing/modern/pergola-kit.webp",
+      "/artwork/marketing/modern/automation-kit.webp",
+      "/artwork/marketing/modern/lead-website-kit.webp",
+    ]);
+    expect(publicShowcaseIdeas.every((idea) => idea.publicCoverArt?.src !== idea.coverArt.src)).toBe(true);
+  });
+
+  it("does not advertise unsupported speed, margin, or compatibility claims", () => {
+    const catalogueCopy = ideas.map((idea) => `${idea.summary} ${idea.cardNote}`).join(" ");
+    expect(catalogueCopy).not.toMatch(/high-margin|launch:\s*2 weeks|works with your tools/i);
+  });
+});
+
 describe("Pergola demo resource", () => {
   const pergola = ideas.find((idea) => idea.id === "idea-001")!;
   const demo = pergola.resources.find((resource) => resource.id === "crm-demo")!;
@@ -14,8 +40,9 @@ describe("Pergola demo resource", () => {
     });
   });
 
-  it("connects the protected source ZIP while keeping the missing prospect sheet honest", () => {
+  it("connects the protected source, setup guide, and member-safe prospect export", () => {
     const source = pergola.resources.find((resource) => resource.id === "crm-source")!;
+    const guide = pergola.resources.find((resource) => resource.id === "crm-guide")!;
     const discovery = pergola.resources.find((resource) => resource.id === "crm-discovery")!;
 
     expect(source.availability).toBe("available");
@@ -23,9 +50,11 @@ describe("Pergola demo resource", () => {
     expect(source.downloadPath).toBe("/app/resources/pergola-source");
     expect(source.actionLabel).toBe("Download source ZIP");
     expect(source.description).toMatch(/offline\/UAT foundation/i);
-    expect(discovery.availability).toBe("not-connected");
+    expect(guide).toMatchObject({ availability: "available", downloadPath: "/app/resources/pergola-setup-guide" });
+    expect(discovery.availability).toBe("available");
     expect(discovery.externalUrl).toBeUndefined();
-    expect(discovery.description).toMatch(/prospect sheet has not been supplied/i);
+    expect(discovery.downloadPath).toBe("/app/resources/pergola-potential-customers");
+    expect(discovery.description).toMatch(/member-safe projection/i);
   });
 
   it("orders the member kit from opportunity through delivery", () => {
@@ -48,5 +77,15 @@ describe("Pergola demo resource", () => {
     expect(preview.description).toContain("categories");
     expect(preview.description).toMatch(/individual records, actions.+were not tested/i);
     expect(preview.metrics).toContainEqual({ label: "Actions", value: "Not tested" });
+  });
+
+  it("provides inspected setup steps and five editable sales templates without fabricating results", () => {
+    const setup = pergola.sections.find((section) => section.type === "resources")!;
+    const sales = pergola.sections.find((section) => section.type === "sales-kit")!;
+
+    expect(setup.steps).toHaveLength(4);
+    expect(setup.steps?.map((step) => step.detail).join(" ")).toMatch(/offline\/UAT foundation/i);
+    expect(sales.items.filter((item) => item.template).map((item) => item.kind)).toEqual(["email", "call", "follow-up", "demo", "proposal"]);
+    expect(sales.items.filter((item) => item.template).every((item) => item.template?.includes("["))).toBe(true);
   });
 });

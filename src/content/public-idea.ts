@@ -14,8 +14,10 @@ export type PublicIdea = {
   resourceTypes: ReadonlyArray<{
     label: string;
     type: Idea["resources"][number]["type"];
+    availability: Idea["resources"][number]["availability"];
   }>;
   previewVariant: Idea["previewVariant"];
+  coverArt: Idea["coverArt"];
 };
 
 export function isPublicIdeaId(id: string): id is (typeof publicIdeaIds)[number] {
@@ -28,13 +30,14 @@ export function toPublicIdea(idea: Idea): PublicIdea {
   return {
     id: idea.id,
     displayNumber: idea.displayNumber,
-    title: idea.title,
+    title: idea.kitTitle ?? idea.title,
     summary: idea.summary,
     solutionType: idea.solutionType,
     technicalRequirements: [...idea.technicalRequirements],
     intendedCustomer: idea.intendedCustomer,
     problemStatement: overview?.friction ?? idea.summary,
-    resourceTypes: idea.resources.map(({ label, type }) => ({ label, type })),
+    resourceTypes: idea.resources.map(({ label, type, availability }) => ({ label, type, availability })),
     previewVariant: idea.previewVariant,
+    coverArt: idea.publicCoverArt ?? idea.coverArt,
   };
 }

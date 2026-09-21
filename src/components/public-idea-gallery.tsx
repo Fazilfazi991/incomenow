@@ -1,12 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, Check, X } from "lucide-react";
+import { ArrowRight, Check, Clock3, X } from "lucide-react";
 import Link from "next/link";
 import type { PublicIdea } from "@/content/public-idea";
 import { STARTER_IDEA_ID } from "@/content/membership-offer";
 import type { PublicAccountState } from "@/lib/public-account";
-import { IdeaPreview } from "./idea-preview";
+import { ArtworkImage } from "./artwork-image";
 
 export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly PublicIdea[]; accountState: PublicAccountState }) {
   const [selected, setSelected] = useState<PublicIdea | null>(null);
@@ -26,7 +26,7 @@ export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly Pub
       : accountState === "full"
         ? "/app/explore"
         : accountState === "unavailable"
-          ? "/account/access"
+          ? "/membership"
           : "/membership?offer=starter#starter-offer";
 
   useEffect(() => {
@@ -60,7 +60,13 @@ export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly Pub
       <div className="public-idea-grid">
         {ideas.map((idea) => (
           <article className="public-idea-card" key={idea.id}>
-            <div className="public-idea-art"><IdeaPreview variant={idea.previewVariant} /></div>
+            <ArtworkImage
+              alt={idea.coverArt.alt}
+              className="public-idea-art"
+              position={idea.coverArt.position}
+              sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 980px) 46vw, 31vw"
+              src={idea.coverArt.src}
+            />
             <div className="public-idea-copy">
               <div className="public-card-meta"><span>{idea.solutionType}</span><small>Idea {idea.displayNumber}</small></div>
               <h3>{idea.title}</h3>
@@ -85,7 +91,13 @@ export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly Pub
         <div className="public-dialog-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && closePreview()}>
           <div ref={dialog} className="public-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="public-preview-title">
             <button ref={closeButton} className="public-dialog-close" type="button" onClick={closePreview} aria-label="Close preview"><X size={20} /></button>
-            <div className="public-dialog-art"><IdeaPreview variant={selected.previewVariant} /></div>
+            <ArtworkImage
+              alt={selected.coverArt.alt}
+              className="public-dialog-art"
+              position={selected.coverArt.position}
+              sizes="(max-width: 767px) 100vw, 390px"
+              src={selected.coverArt.src}
+            />
             <div className="public-dialog-copy">
               <div className="public-card-meta"><span>{selected.solutionType}</span><small>Idea {selected.displayNumber}</small></div>
               <h2 id="public-preview-title">{selected.title}</h2>
@@ -96,8 +108,8 @@ export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly Pub
                 <div><dt>Technical requirements</dt><dd>{selected.technicalRequirements.join(" · ")}</dd></div>
               </dl>
               <div className="public-preview-resources">
-                <strong>Sample resource types</strong>
-                <ul>{selected.resourceTypes.map((resource) => <li key={`${resource.type}-${resource.label}`}><Check size={14} /> {resource.label}</li>)}</ul>
+                <strong>Resource status</strong>
+                <ul>{selected.resourceTypes.map((resource) => <li className={resource.availability} key={`${resource.type}-${resource.label}`}>{resource.availability === "not-connected" ? <Clock3 size={14} /> : <Check size={14} />} <span>{resource.label}</span><em>{resource.availability === "available" ? "Available" : resource.availability === "sample" ? "Sample" : "Not connected"}</em></li>)}</ul>
               </div>
               <p className="public-dialog-note">This is a public summary only. Implementation plans and member resources stay inside the protected library.</p>
               <Link className="public-button public-button-primary public-dialog-membership" href={offerDestination}>
@@ -106,7 +118,7 @@ export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly Pub
                   : accountState === "starter"
                     ? "Open your starter idea"
                     : accountState === "unavailable"
-                      ? "Check account access"
+                      ? "See what membership includes"
                       : selected.id === STARTER_IDEA_ID
                         ? "Start with the Pergola kit for US$1"
                         : "Try IncomeNow for US$1 — the starter includes the Pergola kit"}

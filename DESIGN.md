@@ -2,6 +2,12 @@
 name: IncomeNow
 description: A calm blueprint library for evaluating practical business opportunities.
 colors:
+  public-canvas: "#f8fafc"
+  public-ink: "#101828"
+  public-line: "#d9e1e9"
+  digital-cyan: "#22c7d6"
+  digital-blue: "#2563eb"
+  digital-violet: "#6d4ce8"
   canvas: "#eefdf3"
   canvas-paper: "#f6f7f4"
   surface: "#ffffff"
@@ -17,6 +23,12 @@ colors:
   line-soft: "#e4e7e1"
   navigation-active: "#caeadc"
   selection-mint: "#9bf5c8"
+  activity-amber: "#9b6819"
+  activity-blue: "#276b9d"
+  activity-violet: "#6854a1"
+  activity-coral: "#a64f43"
+  activity-cyan: "#247780"
+  activity-rose: "#994f6b"
   warning-bg: "#fff4d6"
   warning-ink: "#684b00"
   error: "#9a221b"
@@ -71,6 +83,11 @@ spacing:
   xl: "20px"
   2xl: "24px"
   3xl: "28px"
+motion:
+  press: "120ms ease-out"
+  state: "180ms ease-out"
+  enter: "320ms cubic-bezier(.16, 1, .3, 1)"
+  reduced: "0.01ms"
 components:
   button-primary:
     backgroundColor: "{colors.action}"
@@ -210,30 +227,34 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Calm Blueprint Library"**
+**Creative North Star: "The Modern Opportunity Workspace"**
 
-IncomeNow feels like a practical working library: orderly enough for fast comparison, warm enough for sustained reading, and confident without behaving like a sales dashboard. Pale sage working planes, white paper-like cards, forest anchors, and compact schematic previews make each opportunity feel like a blueprint to examine rather than a promise to chase.
+IncomeNow is a modern interactive platform for discovering and building digital business opportunities. The public experience is contemporary, clear, energetic, and product-shaped: cool-white surfaces, charcoal typography, crisp interface geometry, deliberate depth, and a restrained emerald action voice. Cyan, blue, and violet are controlled illustration accents rather than competing call-to-action colours.
 
-The system is editorial and operational at once. Manrope gives headings and milestones architectural weight; Inter keeps filters, metadata, resources, and evidence easy to scan. Information density is managed with disciplined grouping, botanical micro-borders, restrained elevation, and one emerald action voice. Promotional gradients, neon urgency, speculative earnings theater, and generic analytics-dashboard chrome are outside this visual world.
+The system is editorial and operational at once. Manrope gives headings and milestones architectural weight; Inter keeps filters, metadata, resources, and evidence easy to scan. Information density is managed with disciplined grouping, cool-neutral boundaries, restrained elevation, and one emerald action voice. Promotional gradients, neon urgency, speculative earnings theater, crypto motifs, and generic glowing AI imagery are outside this visual world.
+
+The former **Tangible Fieldwork** direction is retired. New public artwork must not use printed kits, rustic desks, sepia or golden-hour grading, decorative leaves, Mediterranean landscapes, vintage clocks, or staged paper stacks. Public covers use clean contemporary objects and illustrative workflow cues; hero and process motion use semantic HTML/SVG/CSS rather than flattened fake screenshots. Artwork carries subject only. Offer terms, access, resource availability, progress, and interface labels stay in live HTML and must never be baked into an image.
 
 Account-synced work extends the same library metaphor into a project desk. Saved Ideas keeps the comparison language intact, while My Projects and the workspace add durable status, required-task progress, stage notes, and explicit save feedback without shifting into generic productivity-software chrome.
 
-The public website is a separate reading-room shell, not a disguised member dashboard. Its horizontal desktop header, disclosure-based mobile navigation, split editorial hero, semantic library preview, public idea cards, and dark closing invitation help visitors understand the product before entering the account flow. Phase 3C adds one prominent US$1 Starter Pass for the Pergola Business Kit beside a separately unpriced monthly membership. Public copy and previews stay literal: unavailable checkout, unconfigured starter duration and refund/licence terms, sample resources, and the absence of income guarantees are shown as constraints rather than polished away.
+The public website is a separate product-explanation shell, not a disguised member dashboard. Its horizontal desktop header, disclosure-based mobile navigation, short promise, approved hero motion graphic, selectable process map, modern public covers, and dark closing invitation help visitors understand the product before entering the account flow. Phase 3C adds one prominent US$1 Starter Pass for the Pergola Business Kit beside a separately unpriced monthly membership. Public copy and previews stay literal: unavailable checkout, unconfigured starter duration and refund/licence terms, sample resources, and the absence of income guarantees are shown as constraints rather than polished away.
 
 **Key Characteristics:**
 
-- Calm botanical palette with high-contrast forest anchors.
-- White structural cards on a pale sage working canvas.
+- Cool-white public surfaces with high-contrast charcoal structure.
+- Focused emerald actions with controlled cyan, blue, and violet illustration accents.
 - Manrope headings paired with neutral, legible Inter utility copy.
 - Compact metadata, resource pills, and schematic previews for fast comparison.
 - Responsive navigation that becomes a persistent bottom bar on mobile.
 - Account-owned state is made visible through honest status, progress, save, and recovery feedback.
+- Member kits use focused activity maps and one activity per view instead of document-like stacks of complete sections.
+- Motion is quick, functional, non-blocking, and removed when reduced motion is requested.
 - A dedicated public header and footer that lead into account-aware entry actions without borrowing the protected member shell.
 - Public explanation patterns pair editorial persuasion with explicit limits, sample-only previews, and no unapproved commercial claims.
 
 ## Colors
 
-The palette uses paper whites and mineral sages as the working field, then reserves dark forest and focused emerald for structure, selection, and action.
+Public marketing surfaces use cool whites and slate neutrals as the working field, then reserve dark charcoal for structure and focused emerald for selection and action. Existing member-workspace sage tokens remain valid for operational screens until those routes receive a separately reviewed direction.
 
 ### Primary
 
@@ -250,6 +271,7 @@ The palette uses paper whites and mineral sages as the working field, then reser
 - **Selection Mint** (`selection-mint`): A bright but controlled mint for text selection and rare positive emphasis.
 - **Caution Paper / Caution Ink** (`warning-bg`, `warning-ink`): A warm pair for local-preview limitations and recoverable notices.
 - **Error Brick / Error Wash** (`error`, `error-bg`): A restrained red pair for genuine errors and warning callouts.
+- **Kit Activity Accents** (`activity-amber`, `activity-blue`, `activity-violet`, `activity-coral`, `activity-cyan`, `activity-rose`): Scope-limited identifiers for Pergola activity cards and section headers. They distinguish tasks; they never replace Focused Emerald for primary actions or become a site-wide theme.
 
 ### Neutral
 
@@ -265,7 +287,7 @@ The palette uses paper whites and mineral sages as the working field, then reser
 
 **The One Action Voice Rule.** Focused Emerald carries primary interaction; do not introduce a second saturated CTA color.
 
-**The Paper-and-Sage Rule.** Separate information with white and tonal sage planes before reaching for stronger borders or shadows.
+**The Cool-Neutral Public Rule.** On public product-explanation surfaces, separate information with white and cool-neutral planes before stronger borders or shadows. The older paper-and-sage-only rule does not govern new public artwork.
 
 ## Typography
 
@@ -292,7 +314,7 @@ The palette uses paper whites and mineral sages as the working field, then reser
 
 ## Layout
 
-The public website uses its own shell. A sticky, lightly translucent desktop header spans a centered 1240px inner row, while public sections and the footer use a centered 1180px container with 48px total viewport gutters. The homepage first viewport is a two-column split: the editorial promise leads on the left and a slightly rotated, semantic library preview provides product evidence on the right. The membership first viewport uses the same split logic with explanatory copy on the left and a bounded two-card offer grid on the right; the cards stack before copy becomes cramped.
+The public website uses its own shell. A sticky, lightly translucent desktop header spans a centered 1240px inner row, while public sections and the footer use a centered 1180px container with 48px total viewport gutters. The homepage first viewport is a two-column split: the short product promise and account-aware actions lead on the left; a seamless 7.2-second derivative of the owner-approved 8-second, 16:9 motion graphic is contained on the right with no fake browser chrome or overlaid copy. It autoplays muted and inline, loops continuously, and pauses when substantially offscreen or when the tab is hidden. Reduced-motion and blocked-autoplay states show the approved closing-frame poster instead. The same contained 16:9 composition sits below the actions on mobile; a dedicated portrait asset remains a future enhancement. The membership first viewport remains unchanged pending a separate review.
 
 At 980px and below, public navigation and hero spacing compress, four-column process and benefit groups become two columns, and the public idea gallery holds two columns. At 767px and below, the desktop public navigation is replaced by a disclosure menu in the header; heroes, idea grids, membership scope, FAQ, and footer stack into one column; actions expand to the available width; and the quick-preview dialog becomes a bottom sheet. The 360px guard breakpoint tightens public gutters to 10px per side and removes nonessential preview chrome before shrinking decision-critical copy. Public mobile navigation is intentionally different from the signed-in member bottom bar.
 
@@ -306,7 +328,9 @@ Authentication uses a bounded white card, never a full-bleed form. On desktop th
 
 Account-synced Saved Ideas reuses the comparison grid and filter grammar instead of inventing a second card system. Its account ownership is communicated in the heading, empty state, removal feedback, and Undo treatment. Project lists use a two-column desktop grid and a single column below 768px; cards lead with status, current focus, next action, required-stage progress, and one primary continuation action.
 
-The project workspace is capped at 1440px. A full-width white project header establishes identity, status, plan version, the derived current focus, and overall required-stage progress. Below it, desktop uses a flexible content-left / 280px right-rail topology: checklist and stage notes occupy the primary work surface, while stage navigation and stage resources share the narrower rail. Below 900px, the layout stacks in task order—horizontal stage sequence, work surface, then resources. Below 768px, panels tighten, checklist metadata wraps beneath task copy, note actions may wrap, and the primary project and note actions expand to the available width.
+The Pergola kit hub is a responsive activity map inside the existing member shell. Its compact hero keeps the external demo and protected source actions directly available, then arranges seven outcome cards in a varied 12-column desktop composition. At 980px cards settle into two columns; below 768px they become one complete activity per row. Selecting a card opens one naturally scrolling activity view with Back to kit, a native compact selector, and a single onward action. Query-string section state provides direct links, refresh safety, and browser history without shipping the protected full kit as client state.
+
+The project workspace is capped at 1440px and stays separate from the seven kit activities. A compact white project header establishes identity, status, the derived current focus, and overall required-stage progress. The checklist keeps one selected step, disclosed step navigation, private notes, resources, pause state, and required-task progress. Below 768px, panels tighten, checklist metadata wraps beneath task copy, note actions may wrap, and the primary project and note actions expand to the available width.
 
 The selected stage and the current focus are separate concepts. Selection answers “what am I viewing?” and is expressed by the active stage control plus the “Viewing stage” heading. Current focus answers “where is the next unfinished required work?” and remains project-level truth in the header and project cards even when the member reviews another stage. Completion and percentage are derived from required work; optional tasks never inflate progress.
 
@@ -316,13 +340,17 @@ The selected stage and the current focus are separate concepts. Selection answer
 
 **The Evidence-Before-Entry Rule.** The public first viewport pairs the product promise with a visible product-shaped preview before asking visitors to create an account.
 
+**The Motion-Is-Illustrative Rule.** The approved hero motion explains opportunity discovery, relevant resources, and offer preparation. It never represents a purchase, download, sent message, project completion, customer win, or income event.
+
 **The Work-First Workspace Rule.** On desktop, the active work surface owns the wide left column; navigation and reference material support it from the right rail. Below 900px, navigation precedes work and resources follow it.
+
+**The Kit-Is-Not-Progress Rule.** Opening, reading, downloading, or copying from a kit activity never advances the personal checklist. Only confirmed persisted checklist work creates continuation or completion treatment.
 
 **The Selected-Is-Not-Current Rule.** Never relabel a reviewed stage as the project’s current focus unless it is actually the next unfinished required stage.
 
 ## Elevation & Depth
 
-The system is flat by default and uses tonal layering before shadow. Resting cards sit on white with a soft botanical outline and a nearly imperceptible ambient shadow. Hovered cards rise by 2px and receive a broader two-part diffusion. Popovers, transient messages, and advanced filters receive the strongest shadow so depth always communicates interaction or temporary state.
+The system is flat by default and uses tonal layering before shadow. Resting member cards retain their existing quiet boundaries. New public product-explanation surfaces use cool-neutral outlines and slightly crisper layered shadows; the approved 16:9 hero media container is the only dark focal inset in this pass. Hovered cards rise by 2px and receive a broader two-part diffusion. Popovers and transient messages receive the strongest shadow so depth always communicates interaction or temporary state.
 
 ### Shadow Vocabulary
 
@@ -348,6 +376,14 @@ The form language balances modular discipline with approachable softness. Large 
 ## Components
 
 Components feel tactile and confident: quiet at rest, exact in hierarchy, and visibly responsive without ornamental effects.
+
+### Motion
+
+- **Press (120ms):** Buttons and activity cards compress to 0.98–0.99 scale on activation; navigation is never delayed for the effect.
+- **State (180ms):** Hover, border, shadow, tab, disclosure, and icon changes use short ease-out transitions.
+- **Enter (320ms):** A newly selected kit view fades and rises by 10px while focus moves to its heading. The transition runs once per view and does not lock controls.
+- **Acknowledgement:** Copy, note-save, task-save, and genuine stage-completion feedback use one brief confirmation treatment and literal saved/copy wording.
+- **Reduced motion:** `prefers-reduced-motion: reduce` collapses non-essential transitions and animations to 0.01ms, removes smooth scrolling, and prevents repeating motion.
 
 ### Buttons
 
@@ -421,9 +457,11 @@ Bookmark controls are outline-first and become subtle sage surfaces on hover. Re
 
 ### Project Workspace
 
-The Pergola member journey is kit-first. Catalogue, saved, and project entry points lead with **Open kit**; the persisted project is explicitly secondary as **My checklist**. The kit hero uses the member-facing title “Pergola Business Kit,” puts the working demo and protected source download near the top, and shows unavailable customer-list material honestly rather than fabricating a file.
+The Pergola member journey is kit-first. Catalogue, saved, and project entry points lead with **Open kit**; the persisted project is explicitly secondary as **My checklist**. The kit hero uses the member-facing title “Pergola Business Kit” and keeps the working demo and protected source download directly available. Meaningful persisted work receives a compact checklist continuation; an empty/new checklist receives no fabricated percentage.
 
-The kit content follows one stable reading order: opportunity, example software, included software, setup and customisation, potential customers, sales kit, then delivery checklist. Structured cards, steps, prompts, and resource rows carry the detail; long generic prose should not replace this hierarchy.
+The default kit view shows only seven activity cards: opportunity, CRM demo, software, customisation, potential customers, sales conversation, and delivery. Full content is never repeated below the cards. Each activity opens as one focused server-selected view through a validated `section` URL parameter. Old `#section-*` anchors redirect to their matching activity. Sections remain independently available after entitlement verification; there are no sequencing locks.
+
+Opportunity uses customer/problem/offer cards and a proposed-model flow. Demo uses the real external URL, observed module names, and synthetic/reset limitations. Software distinguishes inspected source-package capabilities from the hosted demo and still-unverified production operation. Setup keeps the protected ZIP and offline/UAT boundary visible, adds a twelve-part inspected guide, and offers safe copyable Codex prompts without secrets. Customer research includes a protected 77-business member list with search, filters, copy feedback, source links, and a CSV download; its copy consistently describes possible research targets rather than confirmed buyers. Sales supplies five editable templates—introduction, phone opening, follow-up, demo structure, and proposal outline—with local-only drafts and clipboard confirmation that never implies sending. Delivery adds a twelve-point handover guide while retaining the existing one-project checklist and deriving saved completion only from genuine persisted stages.
 
 Project cards and the checklist share compact Active, Paused, and Complete pills. Active and Complete use restrained sage/green pairs; Paused alone shifts to warm caution paper. Status is always labeled in text and, where space permits, reinforced with an icon rather than communicated by color alone.
 

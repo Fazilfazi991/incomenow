@@ -15,6 +15,7 @@ describe("public idea projection", () => {
     const payload = JSON.stringify(toPublicIdea(source));
 
     expect(Object.keys(toPublicIdea(source)).sort()).toEqual([
+      "coverArt",
       "displayNumber",
       "id",
       "intendedCustomer",
@@ -33,5 +34,11 @@ describe("public idea projection", () => {
     expect(payload).not.toContain(source.resources[0].externalUrl);
     expect(payload).not.toContain(source.resources[1].downloadPath);
     expect(payload).not.toContain("implementationPlanVersion");
+  });
+
+  it("uses the scoped modern cover without exposing the extra source field", () => {
+    const payload = toPublicIdea(ideas[0]);
+    expect(payload.coverArt.src).toBe("/artwork/marketing/modern/pergola-kit.webp");
+    expect(payload).not.toHaveProperty("publicCoverArt");
   });
 });
