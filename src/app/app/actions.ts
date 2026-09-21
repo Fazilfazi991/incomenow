@@ -17,7 +17,7 @@ export type WorkspaceActionResult<T = undefined> =
 
 function validIdeaId(value: unknown) {
   const result = ideaIdSchema.safeParse(value);
-  return result.success && getIdeaById(result.data) ? result.data : null;
+  return result.success && getIdeaById(result.data)?.published ? result.data : null;
 }
 
 export async function setBookmarkAction(ideaIdValue: string, saved: boolean): Promise<WorkspaceActionResult> {

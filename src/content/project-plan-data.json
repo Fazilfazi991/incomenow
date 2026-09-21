@@ -70,6 +70,115 @@
       }
     }
   },
+  "idea-002": {
+    "currentVersion": "1",
+    "versions": {
+      "1": {
+        "stages": [
+          {
+            "id": "clinic-opportunity",
+            "title": "Understand the clinic opportunity",
+            "summary": "Choose one administrative workflow to investigate without assuming demand.",
+            "resourceIds": [],
+            "tasks": [
+              { "id": "clinic-admin-workflow", "title": "Choose one administrative workflow", "description": "Name the enquiry, appointment, follow-up, payment, task, or reporting workflow you will investigate first.", "required": true },
+              { "id": "clinic-claim-boundary", "title": "Write the operations-software boundary", "description": "Record that the offer is not an EHR, EMR, clinical decision system, or compliance-certified product.", "required": true }
+            ]
+          },
+          {
+            "id": "clinic-explore",
+            "title": "Explore the CRM",
+            "summary": "Review only the demo capabilities that have been supplied and verified.",
+            "resourceIds": ["clinic-demo"],
+            "tasks": [
+              { "id": "clinic-demo-status", "title": "Confirm the demo evidence available", "description": "Record the supplied URL, synthetic-data notice, observed navigation, and any unverified areas.", "required": true },
+              { "id": "clinic-demo-walkthrough", "title": "Prepare a bounded walkthrough", "description": "Plan a short walkthrough using only verified features and synthetic data.", "required": true }
+            ]
+          },
+          {
+            "id": "clinic-segment",
+            "title": "Choose a clinic segment",
+            "summary": "Keep the first discovery effort focused on one clinic category and location.",
+            "resourceIds": [],
+            "tasks": [
+              { "id": "clinic-category", "title": "Choose one clinic category", "description": "Select one discovery target such as dental, physiotherapy, aesthetic, wellness, or another specialty clinic.", "required": true },
+              { "id": "clinic-location", "title": "Choose one location", "description": "Define a practical city or region for the initial research.", "required": true }
+            ]
+          },
+          {
+            "id": "clinic-research",
+            "title": "Research potential customers",
+            "summary": "Build a small list from published business information without inventing buyers.",
+            "resourceIds": ["clinic-prospects"],
+            "tasks": [
+              { "id": "clinic-research-list", "title": "Create a verified research list", "description": "Record clinic name, website, category, location, published business contact route, source, and last checked date.", "required": true },
+              { "id": "clinic-contact-check", "title": "Verify contact routes", "description": "Check each business and contact route manually before respectful one-to-one outreach.", "required": true }
+            ]
+          },
+          {
+            "id": "clinic-package",
+            "title": "Define your service package",
+            "summary": "Turn the proposed work into a bounded scope with clear responsibilities.",
+            "resourceIds": [],
+            "tasks": [
+              { "id": "clinic-scope", "title": "Write inclusions and exclusions", "description": "List configuration, customisation, training, handover, integrations, and work that is explicitly excluded.", "required": true },
+              { "id": "clinic-cost-model", "title": "Model delivery cost", "description": "Use your own direct-cost, time, and fee assumptions without treating the result as a market-price recommendation.", "required": true }
+            ]
+          },
+          {
+            "id": "clinic-prepare-demo",
+            "title": "Prepare the CRM demo",
+            "summary": "Use fictional records and match the walkthrough to the researched workflow.",
+            "resourceIds": ["clinic-demo"],
+            "tasks": [
+              { "id": "clinic-fictional-data", "title": "Prepare fictional demonstration data", "description": "Confirm the walkthrough contains no real clinic or patient information.", "required": true },
+              { "id": "clinic-demo-relevance", "title": "Map the demo to the workflow", "description": "Select only verified features that relate to the clinic's administrative process.", "required": true }
+            ]
+          },
+          {
+            "id": "clinic-conversations",
+            "title": "Speak with clinics",
+            "summary": "Learn how the current administrative process works before proposing software.",
+            "resourceIds": [],
+            "tasks": [
+              { "id": "clinic-discovery-conversations", "title": "Run discovery conversations", "description": "Ask about current processes, roles, exceptions, permissions, systems of record, and ownership without collecting patient details.", "required": true },
+              { "id": "clinic-evidence-notes", "title": "Record evidence and mismatches", "description": "Document what the example does not match and which assumptions remain unverified.", "required": true }
+            ]
+          },
+          {
+            "id": "clinic-scope-project",
+            "title": "Scope a customer implementation",
+            "summary": "Agree workflow, data, infrastructure, acceptance, and support boundaries.",
+            "resourceIds": ["clinic-setup-guide"],
+            "tasks": [
+              { "id": "clinic-data-responsibilities", "title": "Agree data responsibilities", "description": "Document preparation, authorisation, import, validation, retention, backup, and recovery ownership.", "required": true },
+              { "id": "clinic-acceptance", "title": "Define acceptance checks", "description": "Write testable outcomes, dependencies, exclusions, and the process for changes.", "required": true }
+            ]
+          },
+          {
+            "id": "clinic-customise-test",
+            "title": "Customise and test",
+            "summary": "Configure the agreed scope and verify it with synthetic or authorised test data.",
+            "resourceIds": ["clinic-source", "clinic-setup-guide"],
+            "tasks": [
+              { "id": "clinic-configure", "title": "Configure the agreed workflow", "description": "Apply only the approved branding, statuses, fields, roles, permissions, and reports.", "required": true },
+              { "id": "clinic-test", "title": "Test important and failure flows", "description": "Verify permissions, appointments, follow-ups, applicable billing logic, errors, edge cases, backups, and recovery.", "required": true }
+            ]
+          },
+          {
+            "id": "clinic-handover",
+            "title": "Deploy and hand over",
+            "summary": "Transfer a reviewed system with clear ownership, training, limitations, and support.",
+            "resourceIds": ["clinic-setup-guide"],
+            "tasks": [
+              { "id": "clinic-deployment-ownership", "title": "Confirm production ownership", "description": "Record who owns the domain, hosting, backend, credentials, costs, backups, and recovery process.", "required": true },
+              { "id": "clinic-staff-handover", "title": "Complete staff handover", "description": "Brief staff, transfer credentials securely, document unresolved limitations, and agree future support.", "required": true }
+            ]
+          }
+        ]
+      }
+    }
+  },
   "idea-003": {
     "currentVersion": "1",
     "versions": {

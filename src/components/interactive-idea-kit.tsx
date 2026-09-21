@@ -22,17 +22,20 @@ import {
   Sparkles,
   Users,
   WandSparkles,
+  Calculator,
+  ListChecks,
 } from "lucide-react";
 import { pergolaCodexPrompts, pergolaDeliveryGuide, pergolaSetupGuide, pergolaSoftwareScope } from "@/content/pergola-kit-readiness";
 import type { Idea, IdeaSection } from "@/content/idea-schema";
 import { projectStageCopy } from "@/content/project-copy";
-import { getKitActivity, getKitSection, kitActivities, kitSectionHref, type KitSectionSlug } from "@/lib/kit-sections";
+import { getKitActivities, getKitActivity, getKitSection, kitSectionHref, type KitSectionSlug } from "@/lib/kit-sections";
 import type { PergolaProspect } from "@/lib/pergola-prospects";
 import { IdeaResourceAction, resourceAvailabilityLabel } from "./idea-resource-action";
 import { CopyTextButton, KitSectionSelector, KitViewFocus, LegacyKitHashRedirect, SalesTemplateWorkbench, type SalesTemplate } from "./kit-interactions";
 import { MemberBookmarkButton } from "./member-bookmark-button";
 import { ProspectExplorer } from "./prospect-explorer";
 import { StartIdeaControl } from "./start-idea-control";
+import { ClinicKitSection } from "./clinic-kit-section";
 
 type IdeaResource = Idea["resources"][number];
 
@@ -64,6 +67,11 @@ const activityIcons: Record<KitSectionSlug, typeof Compass> = {
   customers: Users,
   sales: MessageSquareText,
   delivery: ClipboardCheck,
+  clinics: Users,
+  conversation: MessageSquareText,
+  pricing: Calculator,
+  tools: Boxes,
+  discovery: ListChecks,
 };
 
 function findResource(idea: Idea, id: string) {
@@ -79,6 +87,11 @@ function activityState(idea: Idea, slug: KitSectionSlug, project: KitProjectProg
   if (slug === "software") return findResourceByType(idea, "source")?.availability === "available" ? "Source included" : "Source unavailable";
   if (slug === "setup") return findResourceByType(idea, "guide")?.availability === "available" ? "Guide available" : "Setup guide pending";
   if (slug === "customers") return findResource(idea, "crm-discovery")?.availability === "available" ? "Prospect resource available" : "Research guide ready · sheet pending";
+  if (slug === "clinics") return "Research guide ready · list pending";
+  if (slug === "conversation") return "Editable templates ready";
+  if (slug === "pricing") return "Local planning tool ready";
+  if (slug === "tools") return "Source requirements pending";
+  if (slug === "discovery") return "Questionnaire ready";
   if (slug === "delivery") {
     if (project?.isComplete) return "Checklist complete";
     if (project?.meaningful) return "Checklist in progress";
@@ -90,6 +103,7 @@ function activityState(idea: Idea, slug: KitSectionSlug, project: KitProjectProg
 function isLimitedActivity(idea: Idea, slug: KitSectionSlug) {
   if (slug === "setup") return findResourceByType(idea, "guide")?.availability !== "available";
   if (slug === "customers") return findResource(idea, "crm-discovery")?.availability !== "available";
+  if (idea.id === "idea-002" && ["demo", "software", "setup", "clinics", "tools"].includes(slug)) return true;
   return false;
 }
 
@@ -107,13 +121,14 @@ function FeaturedResource({ resource }: { resource: IdeaResource }) {
 function KitHub({ idea, basePath, project }: Pick<InteractiveIdeaKitProps, "idea" | "basePath" | "project">) {
   const demo = findResourceByType(idea, "demo");
   const source = findResourceByType(idea, "source");
+  const activities = getKitActivities(idea.id);
 
   return (
     <KitViewFocus viewKey="hub">
-      <LegacyKitHashRedirect />
+      <LegacyKitHashRedirect enabled={idea.id === "idea-001"} />
       <header className="kit-hub-hero">
         <div className="kit-hub-heading">
-          <div className="tag-row"><span className="tag strong">IDEA #{idea.displayNumber}</span><span className="tag">Starter business kit</span></div>
+          <div className="tag-row"><span className="tag strong">IDEA #{idea.displayNumber}</span><span className="tag">{idea.id === "idea-001" ? "Starter business kit" : "Full-member business kit"}</span></div>
           <h1 data-kit-view-title tabIndex={-1}>{idea.kitTitle ?? idea.title}</h1>
           <p>{idea.kitSummary ?? idea.summary} Choose any activity—there is no required reading order.</p>
         </div>
@@ -134,9 +149,9 @@ function KitHub({ idea, basePath, project }: Pick<InteractiveIdeaKitProps, "idea
       </header>
 
       <section className="kit-activity-section" aria-labelledby="activity-map-title">
-        <div className="kit-activity-heading"><div><span>Your activity map</span><h2 id="activity-map-title">Pick the outcome you need now</h2></div><p>Seven kit activities, separate from your six-stage personal checklist.</p></div>
+        <div className="kit-activity-heading"><div><span>Your activity map</span><h2 id="activity-map-title">Pick the outcome you need now</h2></div><p>{activities.length} kit activities, separate from your {idea.id === "idea-002" ? "ten-stage" : "six-stage"} personal checklist.</p></div>
         <div className="kit-activity-grid">
-          {kitActivities.map((activity, index) => {
+          {activities.map((activity, index) => {
             const Icon = activityIcons[activity.slug];
             const limited = isLimitedActivity(idea, activity.slug);
             const complete = activity.slug === "delivery" && project?.isComplete;
@@ -160,25 +175,25 @@ function KitHub({ idea, basePath, project }: Pick<InteractiveIdeaKitProps, "idea
   );
 }
 
-function SectionHeader({ activity, basePath }: { activity: ReturnType<typeof getKitActivity>; basePath: string }) {
+function SectionHeader({ activity, activities, basePath }: { activity: ReturnType<typeof getKitActivity>; activities: ReturnType<typeof getKitActivities>; basePath: string }) {
   const Icon = activityIcons[activity.slug];
   return (
     <>
       <div className="kit-section-toolbar">
         <Link className="kit-back-link" href={basePath}><ArrowLeft aria-hidden="true" size={16} /> Back to kit</Link>
-        <KitSectionSelector activeSection={activity.slug} />
+        <KitSectionSelector activeSection={activity.slug} activities={activities} />
       </div>
       <header className="kit-section-heading" data-accent={activity.accent}>
         <span className="kit-section-icon"><Icon aria-hidden="true" size={24} /></span>
-        <div><span>Kit activity {kitActivities.findIndex((item) => item.slug === activity.slug) + 1} of 7</span><h1 data-kit-view-title tabIndex={-1}>{activity.title}</h1><p>{activity.description}</p></div>
+        <div><span>Kit activity {activities.findIndex((item) => item.slug === activity.slug) + 1} of {activities.length}</span><h1 data-kit-view-title tabIndex={-1}>{activity.title}</h1><p>{activity.description}</p></div>
       </header>
     </>
   );
 }
 
-function SectionNext({ basePath, slug }: { basePath: string; slug: KitSectionSlug }) {
-  const index = kitActivities.findIndex((activity) => activity.slug === slug);
-  const next = kitActivities[index + 1];
+function SectionNext({ activities, basePath, slug }: { activities: ReturnType<typeof getKitActivities>; basePath: string; slug: KitSectionSlug }) {
+  const index = activities.findIndex((activity) => activity.slug === slug);
+  const next = activities[index + 1];
   return (
     <div className="kit-section-next">
       <Link className="secondary-button" href={basePath}>Back to all activities</Link>
@@ -313,22 +328,25 @@ function DeliverySection({ idea, section, project }: { idea: Idea; section: Extr
 }
 
 function FocusedKitSection({ idea, basePath, selectedSection, project, prospects }: InteractiveIdeaKitProps & { selectedSection: KitSectionSlug }) {
-  const activity = getKitActivity(selectedSection);
-  const section = getKitSection(idea.sections, selectedSection);
+  const activities = getKitActivities(idea.id);
+  const activity = getKitActivity(idea.id, selectedSection);
+  const section = getKitSection(idea.sections, activity);
   if (!section) return null;
 
   return (
     <KitViewFocus viewKey={selectedSection}>
       <main className="kit-focused-view">
-        <SectionHeader activity={activity} basePath={basePath} />
-        {section.type === "overview" ? <OpportunitySection idea={idea} section={section} /> : null}
-        {section.type === "demo-preview" ? <DemoSection idea={idea} section={section} /> : null}
-        {section.type === "workflow" ? <SoftwareSection idea={idea} section={section} /> : null}
-        {section.type === "resources" ? <SetupSection idea={idea} section={section} /> : null}
-        {section.type === "customer-discovery" ? <CustomersSection idea={idea} prospects={prospects} section={section} /> : null}
-        {section.type === "sales-kit" ? <SalesSection section={section} /> : null}
-        {section.type === "action-plan" ? <DeliverySection idea={idea} project={project} section={section} /> : null}
-        <SectionNext basePath={basePath} slug={selectedSection} />
+        <SectionHeader activity={activity} activities={activities} basePath={basePath} />
+        {idea.id === "idea-002" ? <ClinicKitSection idea={idea} project={project} section={section} /> : <>
+          {section.type === "overview" ? <OpportunitySection idea={idea} section={section} /> : null}
+          {section.type === "demo-preview" ? <DemoSection idea={idea} section={section} /> : null}
+          {section.type === "workflow" ? <SoftwareSection idea={idea} section={section} /> : null}
+          {section.type === "resources" ? <SetupSection idea={idea} section={section} /> : null}
+          {section.type === "customer-discovery" ? <CustomersSection idea={idea} prospects={prospects} section={section} /> : null}
+          {section.type === "sales-kit" ? <SalesSection section={section} /> : null}
+          {section.type === "action-plan" ? <DeliverySection idea={idea} project={project} section={section} /> : null}
+        </>}
+        <SectionNext activities={activities} basePath={basePath} slug={selectedSection} />
       </main>
     </KitViewFocus>
   );

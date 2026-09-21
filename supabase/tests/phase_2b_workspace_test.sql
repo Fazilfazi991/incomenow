@@ -64,7 +64,7 @@ select is(
 select is((select count(*) from public.projects where idea_id = 'idea-001'), 1::bigint, 'idempotent start still leaves one project');
 
 set local "request.jwt.claim.sub" = '00000000-0000-0000-0000-0000000002b2';
-select lives_ok($$select public.start_member_project('idea-003')$$, 'B can start its own project');
+select lives_ok($$select public.start_member_project('idea-002')$$, 'B can start its own published Clinic project');
 
 reset role;
 create temporary table phase2b_project_ids as
@@ -164,8 +164,8 @@ select results_eq(
 );
 select is_empty('select id from public.projects', 'inactive membership hides projects without deleting them');
 select lives_ok(
-  $$insert into public.bookmarks (idea_id) values ('idea-003')$$,
-  'registered accounts can bookmark another published catalogue idea'
+  $$insert into public.bookmarks (idea_id) values ('idea-002')$$,
+  'registered accounts can bookmark the other published catalogue idea'
 );
 select throws_ok(
   $$select public.start_member_project('idea-004')$$,
@@ -183,7 +183,7 @@ set local role authenticated;
 set local "request.jwt.claim.sub" = '00000000-0000-0000-0000-0000000002a1';
 select results_eq(
   'select idea_id from public.bookmarks order by idea_id',
-  array['idea-001'::text, 'idea-003'::text],
+  array['idea-001'::text, 'idea-002'::text],
   'restored membership keeps the same account bookmarks'
 );
 select is((select count(*) from public.projects), 1::bigint, 'restored membership reveals the same project');
@@ -245,7 +245,7 @@ set local "request.jwt.claim.sub" = '00000000-0000-0000-0000-0000000002a1';
 select lives_ok($$delete from public.bookmarks where idea_id = 'idea-001'$$, 'A can remove its own bookmark');
 select results_eq(
   'select idea_id from public.bookmarks',
-  array['idea-003'::text],
+  array['idea-002'::text],
   'removed bookmark is gone while the other account bookmark remains'
 );
 

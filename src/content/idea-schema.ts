@@ -68,6 +68,7 @@ export const implementationStageSchema = z.object({
 });
 
 const overviewSectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
   type: z.literal("overview"),
   title: z.string(),
   body: z.array(z.string()).min(1),
@@ -77,6 +78,7 @@ const overviewSectionSchema = z.object({
 });
 
 const workflowSectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
   type: z.literal("workflow"),
   title: z.string(),
   description: z.string(),
@@ -92,6 +94,7 @@ const workflowSectionSchema = z.object({
 });
 
 const demoSectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
   type: z.literal("demo-preview"),
   title: z.string(),
   description: z.string(),
@@ -101,12 +104,14 @@ const demoSectionSchema = z.object({
 });
 
 const actionPlanSectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
   type: z.literal("action-plan"),
   title: z.string(),
   stages: z.array(implementationStageSchema).min(1),
 });
 
 const resourcesSectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
   type: z.literal("resources"),
   title: z.string(),
   intro: z.string(),
@@ -118,6 +123,7 @@ const resourcesSectionSchema = z.object({
 });
 
 const discoverySectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
   type: z.literal("customer-discovery"),
   title: z.string(),
   audiences: z.array(z.string()).min(1),
@@ -126,12 +132,14 @@ const discoverySectionSchema = z.object({
 });
 
 const updatesSectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
   type: z.literal("updates-limitations"),
   title: z.string(),
   notes: z.array(z.string()).min(1),
 });
 
 const salesKitSectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
   type: z.literal("sales-kit"),
   title: z.string(),
   intro: z.string(),
@@ -150,6 +158,41 @@ const salesKitSectionSchema = z.object({
   }
 });
 
+const pricingPlannerSectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  type: z.literal("pricing-planner"),
+  title: z.string().min(1),
+  intro: z.string().min(1),
+  packageStructures: z.array(z.object({
+    title: z.string().min(1),
+    items: z.array(z.string().min(1)).min(1),
+  })).min(1),
+});
+
+const toolsSectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  type: z.literal("tools"),
+  title: z.string().min(1),
+  intro: z.string().min(1),
+  tools: z.array(z.object({
+    name: z.string().min(1),
+    purpose: z.string().min(1),
+    requirement: z.enum(["Required", "Optional", "Confirm from source"]),
+    ownership: z.string().min(1),
+    costNote: z.string().min(1),
+  })).min(1),
+});
+
+const questionnaireSectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  type: z.literal("discovery-questionnaire"),
+  title: z.string().min(1),
+  intro: z.string().min(1),
+  questions: z.array(z.string().min(1)).min(1),
+  privacyTitle: z.string().min(1),
+  privacyBody: z.array(z.string().min(1)).min(1),
+});
+
 export const ideaSectionSchema = z.discriminatedUnion("type", [
   overviewSectionSchema,
   workflowSectionSchema,
@@ -159,6 +202,9 @@ export const ideaSectionSchema = z.discriminatedUnion("type", [
   discoverySectionSchema,
   salesKitSectionSchema,
   updatesSectionSchema,
+  pricingPlannerSectionSchema,
+  toolsSectionSchema,
+  questionnaireSectionSchema,
 ]);
 
 const coverArtSchema = z.object({
@@ -183,6 +229,7 @@ export const ideaSchema = z.object({
   readiness: readinessSchema,
   marketEvidence: marketEvidenceSchema,
   addedOrder: z.number().int().nonnegative(),
+  published: z.boolean(),
   detailAvailable: z.boolean(),
   implementationPlanVersion: z.string().regex(/^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/).optional(),
   fixtureLabel: z.string().optional(),
@@ -210,6 +257,7 @@ export const ideasSchema = z.array(ideaSchema).superRefine((ideas, context) => {
     slugs.add(idea.slug);
 
     const resourceIds = new Set(idea.resources.map((resource) => resource.id));
+    const sectionIds = new Set<string>();
     for (const resourceId of idea.featuredResourceIds ?? []) {
       if (!resourceIds.has(resourceId)) {
         context.addIssue({ code: "custom", message: `${idea.id} features unknown resource ${resourceId}` });
@@ -223,6 +271,10 @@ export const ideasSchema = z.array(ideaSchema).superRefine((ideas, context) => {
       });
     }
     for (const section of idea.sections) {
+      if (sectionIds.has(section.id)) {
+        context.addIssue({ code: "custom", message: `${idea.id} has duplicate section ${section.id}` });
+      }
+      sectionIds.add(section.id);
       if (section.type === "resources") {
         for (const resourceId of section.resourceIds) {
           if (!resourceIds.has(resourceId)) {

@@ -1,7 +1,5 @@
 import type { Idea } from "./idea-schema";
 
-export const publicIdeaIds = ["idea-001", "idea-003", "idea-004"] as const;
-
 export type PublicIdea = {
   id: string;
   displayNumber: string;
@@ -19,10 +17,6 @@ export type PublicIdea = {
   previewVariant: Idea["previewVariant"];
   coverArt: Idea["coverArt"];
 };
-
-export function isPublicIdeaId(id: string): id is (typeof publicIdeaIds)[number] {
-  return publicIdeaIds.includes(id as (typeof publicIdeaIds)[number]);
-}
 
 export function toPublicIdea(idea: Idea): PublicIdea {
   const overview = idea.sections.find((section) => section.type === "overview");

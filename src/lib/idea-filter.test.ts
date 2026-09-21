@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ideas, getIdeaBySlug } from "@/content/ideas";
+import { ideas, getIdeaBySlug, publishedIdeas } from "@/content/ideas";
 import { filterIdeas, hasActiveFilters } from "./idea-filter";
 
 describe("idea discovery filters", () => {
@@ -22,6 +22,12 @@ describe("idea discovery filters", () => {
   it("recognises cleared filters", () => {
     expect(hasActiveFilters({ solutionType: "all", readiness: "all", query: "" })).toBe(false);
     expect(filterIdeas(ideas, { solutionType: "all", readiness: "all" })).toHaveLength(6);
+  });
+
+  it("cannot discover unpublished ideas when the canonical published catalogue is used", () => {
+    expect(filterIdeas(publishedIdeas, {}).map((idea) => idea.id)).toEqual(["idea-001", "idea-002"]);
+    expect(filterIdeas(publishedIdeas, { query: "#003" })).toEqual([]);
+    expect(filterIdeas(publishedIdeas, { query: "real estate" })).toEqual([]);
   });
 });
 

@@ -15,16 +15,19 @@ const sectionLabels: Record<IdeaSection["type"], string> = {
   "sales-kit": "Sales kit",
   "action-plan": "Delivery",
   "updates-limitations": "Updates & notes",
+  "pricing-planner": "Pricing",
+  tools: "Tools",
+  "discovery-questionnaire": "Discovery",
 };
 
-function sectionId(type: IdeaSection["type"]) {
-  return `section-${type}`;
+function sectionId(section: IdeaSection) {
+  return `section-${section.id}`;
 }
 
 function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) {
   if (section.type === "overview") {
     return (
-      <section className="detail-section" id={sectionId(section.type)}>
+      <section className="detail-section" id={sectionId(section)}>
         <div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>Analysis & model</small></div>
         <div className="overview-grid">
           <div className="section-card prose-card">{section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
@@ -38,7 +41,7 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
 
   if (section.type === "workflow") {
     return (
-      <section className="detail-section" id={sectionId(section.type)}>
+      <section className="detail-section" id={sectionId(section)}>
         <div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>Illustrative architecture</small></div>
         <p className="section-intro">{section.description}</p>
         <div className="workflow-board">
@@ -58,7 +61,7 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
   if (section.type === "demo-preview") {
     const availableDemo = idea.resources.find((resource) => resource.type === "demo" && resource.availability === "available");
     return (
-      <section className="detail-section" id={sectionId(section.type)}>
+      <section className="detail-section" id={sectionId(section)}>
         <div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>Fictional preview</small></div>
         <p className="section-intro">{section.description}</p>
         <div className="demo-shell">
@@ -73,7 +76,7 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
 
   if (section.type === "action-plan") {
     return (
-      <section className="detail-section" id={sectionId(section.type)}>
+      <section className="detail-section" id={sectionId(section)}>
         <div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>{section.stages.length} stages</small></div>
         <div className="stage-list">
           {section.stages.map((stage, index) => (
@@ -90,7 +93,7 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
   if (section.type === "resources") {
     const linkedResources = section.resourceIds.map((id) => idea.resources.find((resource) => resource.id === id)).filter((resource): resource is Idea["resources"][number] => Boolean(resource));
     return (
-      <section className="detail-section" id={sectionId(section.type)}>
+      <section className="detail-section" id={sectionId(section)}>
         <div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>Sample assets</small></div>
         <p className="section-intro">{section.intro}</p>
         <div className="resource-list">
@@ -108,7 +111,7 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
 
   if (section.type === "customer-discovery") {
     return (
-      <section className="detail-section" id={sectionId(section.type)}>
+      <section className="detail-section" id={sectionId(section)}>
         <div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>Discovery guide</small></div>
         <div className="discovery-grid">
           <div className="section-card"><Users size={20} /><h3>Who to investigate</h3><ul>{section.audiences.map((audience) => <li key={audience}>{audience}</li>)}</ul></div>
@@ -121,7 +124,7 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
 
   if (section.type === "sales-kit") {
     return (
-      <section className="detail-section" id={sectionId(section.type)}>
+      <section className="detail-section" id={sectionId(section)}>
         <div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>Conversation prompts</small></div>
         <p className="section-intro">{section.intro}</p>
         <div className="sales-kit-grid">
@@ -131,12 +134,19 @@ function DetailSection({ idea, section }: { idea: Idea; section: IdeaSection }) 
     );
   }
 
-  return (
-    <section className="detail-section" id={sectionId(section.type)}>
+  if (section.type === "updates-limitations") return (
+    <section className="detail-section" id={sectionId(section)}>
       <div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>Limitations</small></div>
       <div className="updates-grid">{section.notes.map((note) => <div className="callout" key={note}><Info size={17} /><p>{note}</p></div>)}</div>
     </section>
   );
+
+  const items = section.type === "pricing-planner"
+    ? section.packageStructures.map((item) => `${item.title}: ${item.items.join(", ")}`)
+    : section.type === "tools"
+      ? section.tools.map((item) => `${item.name}: ${item.purpose}`)
+      : section.questions;
+  return <section className="detail-section" id={sectionId(section)}><div className="section-title-row"><span className="section-marker" /><h2>{section.title}</h2><small>Kit activity</small></div><p className="section-intro">{section.intro}</p><div className="updates-grid">{items.map((item) => <div className="callout" key={item}><Info size={17} /><p>{item}</p></div>)}</div></section>;
 }
 
 export function IdeaDetail({ idea, mode = "preview", existingProjectId = null }: { idea: Idea; mode?: "preview" | "member"; existingProjectId?: string | null }) {
@@ -167,11 +177,11 @@ export function IdeaDetail({ idea, mode = "preview", existingProjectId = null }:
       </header>
 
       <nav className="section-nav" aria-label="Idea sections">
-        {idea.sections.map((section) => <a href={`#${sectionId(section.type)}`} key={section.type}>{sectionLabels[section.type]}</a>)}
+        {idea.sections.map((section) => <a href={`#${sectionId(section)}`} key={section.id}>{sectionLabels[section.type]}</a>)}
       </nav>
 
       <div className="detail-layout">
-        <div className="detail-content">{idea.sections.map((section) => <DetailSection idea={idea} section={section} key={section.type} />)}</div>
+        <div className="detail-content">{idea.sections.map((section) => <DetailSection idea={idea} section={section} key={section.id} />)}</div>
         <aside className="quick-facts">
           <h2>Quick facts</h2>
           <dl>

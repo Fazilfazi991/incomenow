@@ -65,7 +65,7 @@ export default async function HomePage() {
 
       <section id="example-ideas" className="public-section public-section-tinted digital-example-section">
         <div className="public-container">
-          <div className="public-section-heading public-section-heading-split"><div><span className="digital-section-kicker">PUBLIC EXAMPLES</span><h2>Three opportunities, three different delivery models</h2><p>Safe public summaries from the same stable records used by the member library.</p></div><Link href="/membership">See what membership includes <ArrowRight size={16} /></Link></div>
+          <div className="public-section-heading public-section-heading-split"><div><span className="digital-section-kicker">PUBLIC EXAMPLES</span><h2>Two real kits, two practical service directions</h2><p>Pergola is the US$1 starter. Clinic Operations CRM is another kit in the growing IncomeNow library and requires full membership for complete access.</p></div><Link href="/membership">See what membership includes <ArrowRight size={16} /></Link></div>
           <PublicIdeaGallery ideas={ideas} accountState={accountState} />
           <p className="public-honesty-note"><ShieldCheck size={16} /> Illustrations represent each industry idea. Resource availability is labelled from the same records used by the member library.</p>
         </div>
@@ -101,8 +101,8 @@ export default async function HomePage() {
 
       <section className="public-section public-container public-includes">
         <div className="public-includes-preview">
-          <div className="public-document-preview"><span>Opportunity brief</span><h3>Local-service lead website</h3><p>Define the buyer, service area, and provider handoff before building.</p><div><i /><i /><i /></div></div>
-          <div className="public-checklist-preview"><strong>Personal project</strong><span><i /> Research demand</span><span><i /> Interview providers</span><span><i /> Define the first offer</span></div>
+          <div className="public-document-preview"><span>Opportunity brief</span><h3>Clinic Operations CRM</h3><p>Understand one administrative workflow before adapting the software or proposing a service.</p><div><i /><i /><i /></div></div>
+          <div className="public-checklist-preview"><strong>Personal project</strong><span><i /> Choose a clinic segment</span><span><i /> Map the workflow</span><span><i /> Define a bounded offer</span></div>
         </div>
         <div className="public-includes-copy">
           <h2>More than a list of ideas</h2>

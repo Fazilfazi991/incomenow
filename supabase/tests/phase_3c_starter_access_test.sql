@@ -123,7 +123,7 @@ select is(
   (select id from public.projects where idea_id = 'idea-001'),
   'full-membership upgrade reuses the starter project'
 );
-select lives_ok($$select public.start_member_project('idea-003')$$, 'full membership can start another included idea');
+select lives_ok($$select public.start_member_project('idea-002')$$, 'full membership can start the published Clinic idea');
 select is((select count(*) from public.projects), 2::bigint, 'full membership is not restricted to one total project');
 
 reset role;

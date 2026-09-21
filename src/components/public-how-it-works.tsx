@@ -68,7 +68,7 @@ export function PublicHowItWorks() {
               <i />
             </div>
           ))}
-          <div className="digital-process-card"><small>{stage.title}</small><strong>{active === 0 ? "Three public examples" : active === 1 ? "Guidance + resources" : active === 2 ? "Your scoped version" : "A clear first approach"}</strong><span>Review, adapt, continue <ArrowRight size={14} /></span></div>
+          <div className="digital-process-card"><small>{stage.title}</small><strong>{active === 0 ? "Two published kits" : active === 1 ? "Guidance + resources" : active === 2 ? "Your scoped version" : "A clear first approach"}</strong><span>Review, adapt, continue <ArrowRight size={14} /></span></div>
         </div>
       </div>
     </div>

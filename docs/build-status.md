@@ -2,7 +2,7 @@
 
 ## Phase and stack
 
-Phase 4A Pergola commercial-readiness work is code-complete and locally verified in the workspace, building on Phase 3C per-idea access and the owner-requested kit-first/interactive refinements, Phase 3B onboarding/settings, Phase 3A public entry, Phase 2B account-synced workspace, and Phase 2A.1 authentication. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
+The Clinic publication phase is code-complete and locally verified in the workspace. The live catalogue now contains IDEA #001 Pergola Business Kit and IDEA #002 Clinic Operations CRM Kit, building on Phase 4A Pergola readiness, Phase 3C per-idea access, the kit-first refinements, Phase 3B onboarding/settings, Phase 3A public entry, Phase 2B account-synced workspace, and Phase 2A.1 authentication. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
 
 This status deliberately distinguishes local verification from launch verification. Docker's Linux engine and the `IncomeNow` local Supabase stack were available during Phase 2A.1, but Google OAuth, a hosted Supabase project, external SMTP delivery, and production configuration were not exercised. No hosted Supabase project was contacted or changed.
 
@@ -45,10 +45,10 @@ This status deliberately distinguishes local verification from launch verificati
 
 ## Phase 3A public entry
 
-- `/` is a public homepage with the approved hero, four-step explanation, three stable example ideas, public quick previews, capability explanation, membership introduction, FAQ, and real account-entry links.
+- `/` is a public homepage with the approved hero, four-step explanation, the two currently published real kits, public quick previews, capability explanation, membership introduction, FAQ, and real account-entry links.
 - `/membership` presents one monthly IncomeNow membership with `Price to be confirmed`, explicit checkout unavailability, implemented inclusions, separate member responsibilities, a four-step future access journey, licence caution, and FAQ.
 - A shared public header/footer remains distinct from authentication and protected-member shells. The mobile header uses a disclosure menu instead of member navigation.
-- The public example client receives an explicit allowlisted `PublicIdea` projection for ideas 001, 003, and 004. Full idea objects, plan stages/tasks, resource IDs/locations, bookmarks, and notes remain outside the client payload.
+- The public example client receives a reduced `PublicIdea` projection derived from each canonical idea's publication state. Full idea objects, plan stages/tasks, resource IDs/locations, bookmarks, and notes remain outside the client payload.
 - Public account actions reuse the server membership context and distinguish signed-out, active, inactive, and unavailable states. Both routes are dynamic and the optional lookup fails to a neutral unavailable state.
 - No migration, checkout integration, billing SDK, hosted setting, or production data change was introduced.
 
@@ -108,7 +108,23 @@ This status deliberately distinguishes local verification from launch verificati
 - With owner approval, the original ZIP-containing commit was amended. `private-resources/pergola/universalpergola-main.zip` remains local with SHA-256 `5E4DC492F2BD05869AE7FB77A4C83F66908F96FB6CD6329C4BDA1B36970345B5`, is ignored by a narrow path rule, and is absent from reachable local `main` history. Nothing was pushed or deployed.
 - Full implementation and evidence details are recorded in `docs/phase-4a-pergola-kit-readiness.md`.
 
+## Clinic Operations CRM publication
+
+- IDEA #002 is now the published **Clinic Operations CRM Kit**, positioned strictly as administrative operations software for independent clinics and small clinic groups. It does not claim EHR/EMR functionality, healthcare certification, regulatory compliance, market demand, customer outcomes, or earnings.
+- Canonical `published` state now drives ordinary homepage examples, the authenticated catalogue, search/filter counts, saved discovery, bookmark/start validation, and direct member routes. Only IDEA #001 and #002 are published; unfinished IDEA #003, #004, #005, and #034 content is preserved but unavailable through ordinary catalogue and direct-member flows.
+- Registered and Pergola Starter accounts can view and save the Clinic safe preview. Clinic full content and project creation require fresh full-membership authorization. The US$1 offer continues to unlock only the Pergola kit and its one project.
+- The reusable interactive kit supports per-idea activity counts. Clinic has ten focused activities covering opportunity, CRM exploration, software, setup, research, conversation, pricing, tools, discovery, and delivery; direct section URLs, refresh, Browser Back, Back to kit, compact navigation, and mobile layouts reuse the established kit grammar.
+- The Clinic price planner is local component state, calculates delivery cost and projected gross margin only from member assumptions, and is labelled as a planning estimate rather than an earnings or market-price recommendation. The discovery questionnaire is copyable/downloadable and is not stored centrally.
+- Clinic plan v1 adds ten immutable stages and twenty required tasks without changing Pergola's plan. Additive migration `20260921105604_clinic_plan_v1.sql` adds database publication state, publishes only 001/002, inserts the Clinic plan, and makes bookmark/project admission reject unpublished ideas. It was applied to the existing local database without reset; hosted Supabase was not contacted.
+- Available inputs are the authored Clinic kit content, generated illustrative cover, calculator, questionnaire, templates, and project plan. No Clinic demo URL, source ZIP, prospect spreadsheet, or approved CRM screenshots were actually supplied, so the relevant resources remain explicitly unavailable and no software commands or infrastructure assumptions are presented as verified.
+- The detailed implementation, access, migration, asset, limitation, and verification record is in `docs/clinic-kit-results.md`.
+
 ## Verification completed
+
+- Clinic publication application checks passed: TypeScript, ESLint, the optimized Next.js production build, and 114 Vitest/Testing Library tests across 33 files.
+- Database regression passed 192 pgTAP assertions across five suites without a reset; linting the local `public` and `private` application schemas reported no errors. Project-plan sync matched 27 stages and 57 tasks.
+- The refreshed Phase 3C disposable-user integration passed eleven checks, including Clinic safe previews for registered/Starter accounts, full Clinic access, hidden-idea denial, starter-only Pergola authorization, project ownership/reuse, grant removal, and optional onboarding. Its disposable accounts were removed.
+- Browser checks covered the Clinic hub, price planner, discovery questionnaire, hidden direct route, and the two-card Explore catalogue at 1440, 768, 390, and 320 pixels. There was no horizontal overflow or framework overlay; all ten activity cards and responsive calculator controls remained usable.
 
 - Phase 4A application checks passed: TypeScript, ESLint, the optimized Next.js build, and 107 Vitest/Testing Library tests across 32 files.
 - Phase 4A database regression passed all 164 pgTAP assertions across four suites without a reset; database schema/migrations were unchanged.

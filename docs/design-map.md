@@ -6,11 +6,12 @@ The design-system source is `editorial_venture_discovery/DESIGN.md`. It defines 
 
 | Screen | Reference folders | Variants | Planned route | Phase status |
 | --- | --- | --- | --- | --- |
-| Explore Ideas | `incomenow_explore_ideas_desktop`, `incomenow_explore_ideas_mobile` | Desktop/mobile | `/preview/explore`, `/app/explore` | Preview implemented in Phase 1; authenticated safe catalogue and per-idea access states added in Phase 3C |
+| Explore Ideas | `incomenow_explore_ideas_desktop`, `incomenow_explore_ideas_mobile` | Desktop/mobile | `/preview/explore`, `/app/explore` | Authenticated catalogue uses the canonical publication state and currently exposes only IDEA #001 and #002 |
 | Saved Ideas | `incomenow_saved_ideas_desktop`, `incomenow_saved_ideas_mobile` | Desktop/mobile | `/preview/saved`, `/app/saved` | Preview implemented in Phase 1; account-synced member route added in Phase 2B |
 | Idea #001 detail | `incomenow_idea_detail_desktop`, `incomenow_idea_detail_mobile` | Desktop/mobile | `/preview/ideas/pergola-quotation-follow-up-crm`, `/app/ideas/pergola-quotation-follow-up-crm` | Phase 3C makes Pergola the starter idea, with safe locked preview and full server-authorized detail states |
-| Idea #003 detail | `incomenow_idea_003_automation_desktop`, `incomenow_idea_003_automation_mobile` | Desktop/mobile | `/preview/ideas/quotation-follow-up-automation` | Implemented in Phase 1 |
-| Idea #004 detail | No dedicated export; inherits approved idea-detail system | Missing dedicated reference | `/preview/ideas/local-service-lead-generation` | Implemented in Phase 1 with brief-authorized content |
+| Idea #002 detail | No dedicated Stitch export; reuses the approved modern kit hub | Responsive app implementation | `/app/ideas/clinic-operations-crm` | Published as a full-member Clinic Operations CRM kit; registered and Pergola Starter accounts receive a safe locked preview |
+| Idea #003 detail | `incomenow_idea_003_automation_desktop`, `incomenow_idea_003_automation_mobile` | Desktop/mobile | `/preview/ideas/quotation-follow-up-automation` | Historical development preview only; unpublished and unavailable through ordinary member/public catalogue routes |
+| Idea #004 detail | No dedicated export; inherits approved idea-detail system | Missing dedicated reference | `/preview/ideas/local-service-lead-generation` | Historical development preview only; unpublished and unavailable through ordinary member/public catalogue routes |
 | My Projects | `incomenow_my_projects_desktop`, `incomenow_my_projects_mobile` | Desktop/mobile | `/app/projects` | Implemented with real member-owned project state in Phase 2B |
 | Project workspace | `incomenow_project_workspace_desktop`, `incomenow_project_workspace_mobile` | Desktop/mobile | `/app/projects/[projectId]` | Implemented with versioned stages, tasks, notes, and resources in Phase 2B |
 | Latest Updates | `incomenow_latest_updates_desktop`, `incomenow_latest_updates_mobile` | Desktop/mobile | `/app/updates` | Deferred |
@@ -39,4 +40,6 @@ The design-system source is `editorial_venture_discovery/DESIGN.md`. It defines 
 - Phase 3A keeps its public header/footer separate from the authentication shell and persistent member navigation. At 767px and below, the public header uses its approved disclosure menu; it never renders member-only navigation or a fabricated avatar.
 - Phase 3B removes Stitch fixture controls and sample identity/billing claims. Its account shell remains available without paid access.
 - Phase 3C opens the member shell and safe catalogue to every verified account, labels starter and full access separately, and keeps locked idea pages within the same editorial detail grammar without rendering paid sections or start controls.
+- Publication now comes from each canonical idea record. IDEA #001 and #002 are published; unfinished IDEA #003, #004, #005, and #034 remain preserved for development but do not enter ordinary catalogue, homepage, search, count, saved-discovery, or direct-member flows.
+- Clinic reuses the kit hub as a ten-activity system rather than a long page. Its calculator, tools matrix, discovery questionnaire, workflow diagram, and unavailable-resource panels use the existing member visual language and responsive breakpoints.
 - The reusable public quick preview becomes a bottom sheet on mobile. It is driven only by the explicit public projection and does not link to preview-mode routes.

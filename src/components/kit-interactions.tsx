@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Check, Clipboard, FileText, Mail, MessageSquareText, Phone, Presentation } from "lucide-react";
-import { kitActivities, legacyKitHashMap, type KitSectionSlug } from "@/lib/kit-sections";
+import { legacyKitHashMap, type KitActivityMeta, type KitSectionSlug } from "@/lib/kit-sections";
 
 export function KitViewFocus({ viewKey, children }: { viewKey: string; children: React.ReactNode }) {
   const viewRef = useRef<HTMLDivElement>(null);
@@ -16,19 +16,19 @@ export function KitViewFocus({ viewKey, children }: { viewKey: string; children:
   return <div className="kit-view-enter" ref={viewRef}>{children}</div>;
 }
 
-export function LegacyKitHashRedirect() {
+export function LegacyKitHashRedirect({ enabled = false }: { enabled?: boolean }) {
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
-    const slug = legacyKitHashMap[window.location.hash.slice(1)];
+    const slug = enabled ? legacyKitHashMap[window.location.hash.slice(1)] : undefined;
     if (slug) router.replace(`${pathname}?section=${slug}`);
-  }, [pathname, router]);
+  }, [enabled, pathname, router]);
 
   return null;
 }
 
-export function KitSectionSelector({ activeSection }: { activeSection: KitSectionSlug }) {
+export function KitSectionSelector({ activeSection, activities }: { activeSection: KitSectionSlug; activities: readonly KitActivityMeta[] }) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -40,7 +40,7 @@ export function KitSectionSelector({ activeSection }: { activeSection: KitSectio
         value={activeSection}
         onChange={(event) => router.push(`${pathname}?section=${event.target.value}`)}
       >
-        {kitActivities.map((activity, index) => <option value={activity.slug} key={activity.slug}>{index + 1}. {activity.title}</option>)}
+        {activities.map((activity, index) => <option value={activity.slug} key={activity.slug}>{index + 1}. {activity.title}</option>)}
       </select>
     </label>
   );
@@ -142,7 +142,7 @@ export function SalesTemplateWorkbench({ templates }: { templates: SalesTemplate
           <textarea value={drafts[activeIndex]} onChange={(event) => setDrafts((current) => current.map((value, index) => index === activeIndex ? event.target.value : value))} />
         </label>
         <div className="sales-editor-actions">
-          <p>Replace every [placeholder] before using this copy. Copying does not send a message.</p>
+          <p>Replace every [placeholder] before using this copy. Edits stay in this view and reset when you leave or refresh; copying does not send a message.</p>
           <button className={copyState === "copied" ? "primary-button confirmed" : "primary-button"} onClick={copyTemplate} type="button">
             {copyState === "copied" ? <Check aria-hidden="true" size={16} /> : <Clipboard aria-hidden="true" size={16} />}
             {copyState === "copied" ? "Copied to clipboard" : copyState === "error" ? "Copy failed — try again" : "Copy template"}

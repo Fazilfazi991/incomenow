@@ -11,19 +11,45 @@ describe("idea catalogue artwork and claims", () => {
     });
   });
 
-  it("keeps the three public showcase covers separate from member catalogue artwork", () => {
-    const publicShowcaseIdeas = ideas.filter((idea) => ["idea-001", "idea-003", "idea-004"].includes(idea.id));
-    expect(publicShowcaseIdeas.map((idea) => idea.publicCoverArt?.src)).toEqual([
-      "/artwork/marketing/modern/pergola-kit.webp",
-      "/artwork/marketing/modern/automation-kit.webp",
-      "/artwork/marketing/modern/lead-website-kit.webp",
+  it("publishes only the two complete kits with distinct modern covers", () => {
+    const published = ideas.filter((idea) => idea.published);
+    expect(published.map((idea) => idea.id)).toEqual(["idea-001", "idea-002"]);
+    expect(published.map((idea) => idea.coverArt.src)).toEqual([
+      "/artwork/ideas/pergola-business-kit.webp",
+      "/artwork/ideas/clinic-operations-crm.webp",
     ]);
-    expect(publicShowcaseIdeas.every((idea) => idea.publicCoverArt?.src !== idea.coverArt.src)).toBe(true);
   });
 
   it("does not advertise unsupported speed, margin, or compatibility claims", () => {
     const catalogueCopy = ideas.map((idea) => `${idea.summary} ${idea.cardNote}`).join(" ");
     expect(catalogueCopy).not.toMatch(/high-margin|launch:\s*2 weeks|works with your tools/i);
+  });
+});
+
+describe("Clinic Operations CRM kit", () => {
+  const clinic = ideas.find((idea) => idea.id === "idea-002")!;
+
+  it("uses the stable identity, approved summary, and ten focused activities", () => {
+    expect(clinic.slug).toBe("clinic-operations-crm");
+    expect(clinic.summary).toBe("A practical clinic operations system you can adapt, demonstrate, and offer to independent clinics.");
+    expect(clinic.sections).toHaveLength(10);
+    expect(clinic.implementationPlanVersion).toBe("1");
+  });
+
+  it("keeps unsupplied inputs unavailable without public download targets", () => {
+    expect(clinic.resources).toHaveLength(4);
+    for (const resource of clinic.resources) {
+      expect(resource.availability).toBe("not-connected");
+      expect(resource.downloadPath).toBeUndefined();
+      expect(resource.externalUrl).toBeUndefined();
+    }
+  });
+
+  it("states the healthcare and privacy boundary", () => {
+    const copy = JSON.stringify(clinic);
+    expect(copy).toMatch(/not an EHR, EMR/i);
+    expect(copy).toMatch(/does not certify HIPAA, GDPR, DHA, DOH, MOHAP/i);
+    expect(copy).not.toMatch(/HIPAA ready|DHA compliant|GDPR certified/i);
   });
 });
 

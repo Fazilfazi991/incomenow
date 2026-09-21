@@ -6,7 +6,7 @@ import { IdeaDetail } from "@/components/idea-detail";
 import { InteractiveIdeaKit, type KitProjectProgress } from "@/components/interactive-idea-kit";
 import { LockedIdeaDetail } from "@/components/locked-idea-detail";
 import { projectStageCopy } from "@/content/project-copy";
-import { isKitSectionSlug } from "@/lib/kit-sections";
+import { isInteractiveKitIdea, isKitSectionSlug } from "@/lib/kit-sections";
 import { getIdeaRouteContent } from "@/lib/member-content.server";
 import { getPergolaProspects } from "@/lib/pergola-prospects.server";
 import { getMemberProject } from "@/lib/workspace.server";
@@ -25,8 +25,8 @@ export default async function MemberIdeaPage({ params, searchParams }: IdeaPageP
   const content = await getIdeaRouteContent(slug);
   if (!content) notFound();
 
-  const hasInteractiveKit = content.kind === "full" && content.idea.id === "idea-001";
-  const selectedSection = typeof requestedSection === "string" && isKitSectionSlug(requestedSection) ? requestedSection : null;
+  const hasInteractiveKit = content.kind === "full" && isInteractiveKitIdea(content.idea.id);
+  const selectedSection = hasInteractiveKit && typeof requestedSection === "string" && isKitSectionSlug(content.idea.id, requestedSection) ? requestedSection : null;
   if (hasInteractiveKit && requestedSection !== undefined && !selectedSection) redirect(`/app/ideas/${encodeURIComponent(slug)}`);
 
   let projectProgress: KitProjectProgress | null = null;

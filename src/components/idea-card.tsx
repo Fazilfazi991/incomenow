@@ -48,6 +48,7 @@ export function IdeaCard({
   bookmarkMode = "preview",
   access,
   projectId = null,
+  preloadCover = false,
 }: {
   idea: IdeaCardData;
   savedView?: boolean;
@@ -56,6 +57,7 @@ export function IdeaCard({
   bookmarkMode?: "preview" | "member" | "disabled";
   access?: CatalogueAccess;
   projectId?: string | null;
+  preloadCover?: boolean;
 }) {
   const canOpen = access === "full" || access === "starter";
   const actionLabel = canOpen ? "Open kit" : access ? "Preview idea" : "View idea";
@@ -79,6 +81,7 @@ export function IdeaCard({
         alt={idea.coverArt.alt}
         className="idea-cover"
         position={idea.coverArt.position}
+        preload={preloadCover}
         sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1120px) 44vw, 29vw"
         src={idea.coverArt.src}
       />

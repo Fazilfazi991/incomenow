@@ -35,8 +35,10 @@ Members move from discovery to evaluation to implementation. Ideas can describe 
 - Phase 3B adds optional onboarding and owner-scoped account settings without making either a paid-access gate.
 - Phase 3C adds registered catalogue browsing, the US$1 Pergola Starter Pass, per-idea grants, and project authorization tied to the relevant idea.
 - Phase 4A turns the protected Pergola kit into a locally verified implementation package: inspected CRM scope, a member setup guide, a protected 77-business research list, five editable sales templates, and a practical delivery handover guide.
+- The Clinic publication phase adds IDEA #002 as the second real kit, with a ten-activity operations-software experience and an immutable Clinic project plan. The canonical live catalogue now contains only IDEA #001 Pergola and IDEA #002 Clinic; unfinished IDEA #003, #004, #005, and #034 content remains preserved but unpublished.
 - Preview routes use fictional sample data and device-local bookmark persistence.
 - Verified accounts may browse safe catalogue metadata, search, filter, and manage bookmarks without a purchase. Full idea records and project operations require a fresh server-side full-membership or matching per-idea grant check; unknown access fails closed for paid data while the safe preview remains available.
+- Clinic is included only for full members. A registered account or Pergola Starter can browse and save its safe preview but cannot open the full Clinic kit or create its project. The US$1 Starter Pass continues to unlock only Pergola.
 - Checkout/payment, billing UI, IncomeNow admin/analytics, hosted rollout, and production service delivery remain disconnected. The owner-supplied Pergola CRM source and member research export are delivered only through fresh server-authorized, private/no-store routes.
 - The Starter Pass is proposed at US$1/USD as a one-time purchase with no automatic renewal. Its access duration, taxes, refund terms, payment provider, checkout, and final resource licence remain unconfigured; full-membership price and currency also remain unconfigured.
 - Idea content is maintained through Codex and the backend; no CMS or content-editor admin is required.
@@ -51,6 +53,7 @@ The approved visual authority is the Stitch export in `stitch/stitch_incomenow_e
 - A dedicated Editorial Venture Discovery design-system document.
 - Approved member-library references for Explore, Saved, IDEA #001, and IDEA #003.
 - The owner has supplied the Universal Pergola CRM source archive and a prospect-research workbook; a synthetic-data public CRM demo URL is also available. Static package checks and local application tests have passed, but no production service credentials, customer evidence, or hosted CRM acceptance evidence are provided.
+- Clinic content, illustrative cover art, pricing planner, questionnaire, sales templates, and project plan are available locally. No Clinic demo URL, source archive, prospect spreadsheet, or approved product screenshots have been supplied or verified, so those resource states remain explicitly unavailable.
 
 ## Product Principles
 

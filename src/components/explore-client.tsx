@@ -165,7 +165,7 @@ export function ExploreClient({ source, mode = "preview" }: { source: Array<Idea
 
       {results.length ? (
         <section className="idea-grid idea-grid-transition" aria-label="Idea results" key={searchParams.toString()}>
-          {results.map((idea) => <IdeaCard idea={idea} key={idea.id} basePath={mode === "member" ? "/app/ideas" : "/preview/ideas"} bookmarkMode={mode} access={"access" in idea ? idea.access : undefined} projectId={"projectId" in idea ? idea.projectId : null} />)}
+          {results.map((idea, index) => <IdeaCard idea={idea} key={idea.id} basePath={mode === "member" ? "/app/ideas" : "/preview/ideas"} bookmarkMode={mode} access={"access" in idea ? idea.access : undefined} projectId={"projectId" in idea ? idea.projectId : null} preloadCover={index === 0} />)}
         </section>
       ) : (
         <section className="empty-state">

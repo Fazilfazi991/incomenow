@@ -11,6 +11,7 @@ export type IdeaCatalogEntry = Pick<
   | "industries"
   | "readiness"
   | "addedOrder"
+  | "published"
   | "detailAvailable"
   | "fixtureLabel"
   | "previewVariant"
@@ -36,6 +37,7 @@ export function toIdeaCatalogEntry(idea: Idea): IdeaCatalogEntry {
     industries: idea.industries,
     readiness: idea.readiness,
     addedOrder: idea.addedOrder,
+    published: idea.published,
     detailAvailable: idea.detailAvailable,
     fixtureLabel: idea.fixtureLabel,
     previewVariant: idea.previewVariant,

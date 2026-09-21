@@ -63,7 +63,7 @@ export async function getMemberSavedIdeaIds(destination = "/app/explore") {
 function buildSummary(project: ProjectRow, tasks: TaskRow[]): MemberProjectSummary | null {
   const idea = getIdeaById(project.idea_id);
   const plan = getProjectPlanDefinition(project.idea_id, project.plan_version);
-  if (!idea || !plan) return null;
+  if (!idea?.published || !plan) return null;
   const taskById = new Map(tasks.map((task) => [task.task_id, task]));
   const stageInputs = plan.stages.map((stage) => ({
     stage,
@@ -134,6 +134,7 @@ export async function getMemberProject(projectId: string): Promise<MemberProject
 }
 
 export async function getMemberProjectIdForIdea(ideaId: string) {
+  if (!getIdeaById(ideaId)?.published) return null;
   await requireVerifiedAccount("/app/explore");
   const supabase = await createClient();
   const { data, error } = await supabase.from("projects").select("id").eq("idea_id", ideaId).maybeSingle();

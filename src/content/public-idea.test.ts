@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { ideas } from "./ideas";
-import { isPublicIdeaId, publicIdeaIds, toPublicIdea } from "./public-idea";
+import { ideas, publishedIdeas } from "./ideas";
+import { toPublicIdea } from "./public-idea";
 
 describe("public idea projection", () => {
   it("selects only the approved stable records", () => {
-    expect(ideas.filter((idea) => isPublicIdeaId(idea.id)).map((idea) => idea.id)).toEqual(publicIdeaIds);
+    expect(publishedIdeas.map((idea) => idea.id)).toEqual(["idea-001", "idea-002"]);
+    expect(ideas.filter((idea) => !idea.published).map((idea) => idea.id)).toEqual(["idea-003", "idea-004", "idea-005", "idea-034"]);
   });
 
   it("serialises only explicitly permitted public fields", () => {

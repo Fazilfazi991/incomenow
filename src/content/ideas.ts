@@ -2,10 +2,11 @@ import { ideasSchema, type Idea } from "./idea-schema";
 import { getCurrentProjectPlan } from "./project-plans";
 
 const crmPlan = getCurrentProjectPlan("idea-001");
+const clinicPlan = getCurrentProjectPlan("idea-002");
 const automationPlan = getCurrentProjectPlan("idea-003");
 const leadPlan = getCurrentProjectPlan("idea-004");
 
-if (!crmPlan || !automationPlan || !leadPlan) {
+if (!crmPlan || !clinicPlan || !automationPlan || !leadPlan) {
   throw new Error("Detailed ideas require trusted implementation plans.");
 }
 
@@ -26,6 +27,7 @@ const rawIdeas: Idea[] = [
     readiness: "Sample blueprint",
     marketEvidence: "Not yet validated",
     addedOrder: 6,
+    published: true,
     detailAvailable: true,
     implementationPlanVersion: crmPlan.version,
     previewVariant: "pipeline",
@@ -85,6 +87,7 @@ const rawIdeas: Idea[] = [
     featuredResourceIds: ["crm-demo", "crm-source", "crm-discovery"],
     sections: [
       {
+        id: "opportunity",
         type: "overview",
         title: "The opportunity",
         body: [
@@ -97,6 +100,7 @@ const rawIdeas: Idea[] = [
         businessModel: "Proposed offer: a deliberately scoped setup and handover project, with optional hosting or support only when responsibilities, data protection, third-party costs, response times, and change limits are written down.",
       },
       {
+        id: "demo",
         type: "demo-preview",
         title: "Explore the example software",
         description: "The separate public demonstration uses synthetic data and shows navigation for enquiries, customers, site visits, quotations, commercial documents, projects, payments, tasks, feedback, reports, accounts, products, and categories. Visitor access to the dashboard was verified; individual records, actions, persistence, messaging, payments, and integrations were not tested.",
@@ -109,6 +113,7 @@ const rawIdeas: Idea[] = [
         modules: ["Enquiries", "Customers", "Site visits", "Quotations", "Projects", "Payments", "Tasks", "Reports", "Products", "Categories"],
       },
       {
+        id: "software",
         type: "workflow",
         title: "What the software includes",
         description: "Use these observed sections to decide which parts matter to a customer. The archive and public demo are a starting point, not proof that every action is ready for live use.",
@@ -122,6 +127,7 @@ const rawIdeas: Idea[] = [
         safeguard: "Use fictional data while exploring. Before handling customer records, review permissions, backups, retention, message approval, and recovery responsibilities.",
       },
       {
+        id: "setup",
         type: "resources",
         title: "Setup and customisation",
         intro: "Use the inspected guide with the protected source archive, then decide what to rename, remove, configure, and test for a specific pergola business. Local package checks passed; live database, hosted services, and production deployment remain separate verification work.",
@@ -134,6 +140,7 @@ const rawIdeas: Idea[] = [
         ],
       },
       {
+        id: "customers",
         type: "customer-discovery",
         title: "Potential customers",
         audiences: ["Owner-operators who quote and install", "Sales or survey staff in pergola businesses", "Operations staff who receive won-work handovers", "Veranda, awning, and outdoor-carpentry specialists with comparable workflows"],
@@ -150,6 +157,7 @@ const rawIdeas: Idea[] = [
         guidance: "After interviews, write a narrow problem statement and demonstration scenario using fictional data. Define the proposed offer with inclusions, exclusions, acceptance checks, handover responsibilities, support boundaries, third-party costs, and a change process. Prepare outreach around the observed workflow—not unsupported savings or sales claims—and test interest before custom development.",
       },
       {
+        id: "sales",
         type: "sales-kit",
         title: "Sales kit",
         intro: "Edit these five practical templates for one researched business at a time. Replace every placeholder with verified context and never imply prior interest, results, or urgency that you cannot support.",
@@ -189,6 +197,7 @@ const rawIdeas: Idea[] = [
         ],
       },
       {
+        id: "delivery",
         type: "action-plan",
         title: "Delivery checklist",
         stages: crmPlan.stages,
@@ -198,32 +207,189 @@ const rawIdeas: Idea[] = [
   {
     id: "idea-002",
     displayNumber: "002",
-    slug: "washing-machine-repair-crm",
-    title: "Washing-Machine Repair CRM",
-    summary: "Track technician routes, diagnostic reports, spare-part inventory, and post-service warranty milestones.",
+    slug: "clinic-operations-crm",
+    title: "Clinic Operations CRM Kit",
+    summary: "A practical clinic operations system you can adapt, demonstrate, and offer to independent clinics.",
+    kitTitle: "Clinic Operations CRM Kit",
+    kitSummary: "Understand a clinic workflow, shape a responsible operations-software offer, and prepare a bounded implementation.",
     solutionType: "Custom CRM",
-    industries: ["Repair Services"],
-    technicalRequirements: ["Web application configuration"],
-    intendedCustomer: "Independent appliance-repair teams",
-    proposedBusinessModel: "Implementation service",
-    readiness: "Concept ready",
+    industries: ["Clinic Operations", "Business Services"],
+    technicalRequirements: ["CRM configuration", "Workflow discovery", "Access and privacy review"],
+    intendedCustomer: "Independent clinics and small clinic groups with an administrative team",
+    proposedBusinessModel: "Scoped operations CRM implementation with optional separately agreed support",
+    readiness: "Sample blueprint",
     marketEvidence: "Not yet validated",
     addedOrder: 5,
-    detailAvailable: false,
-    fixtureLabel: "Preview only — full kit not yet published",
-    previewVariant: "dispatch",
+    published: true,
+    detailAvailable: true,
+    implementationPlanVersion: clinicPlan.version,
+    previewVariant: "pipeline",
     coverArt: {
-      src: "/artwork/ideas/washing-machine-repair-crm.webp",
-      alt: "A washing machine in a repair workshop with diagnostic tools and spare parts",
+      src: "/artwork/ideas/clinic-operations-crm.webp",
+      alt: "A modern clinic reception connected to abstract appointment, profile, follow-up, and reporting cards",
       position: "50% 50%",
     },
-    cardNote: "Workflow discovery required",
+    cardNote: "Full kit for members; demo, source, screenshots, and prospect list await owner inputs",
     resources: [
-      { id: "repair-demo", label: "Demo", type: "demo", availability: "not-connected", description: "Fixture label only." },
-      { id: "repair-source", label: "Source code", type: "source", availability: "not-connected", description: "Fixture label only." },
-      { id: "repair-guide", label: "Sales guide", type: "guide", availability: "not-connected", description: "Fixture label only." },
+      { id: "clinic-demo", label: "Clinic CRM demo", type: "demo", availability: "not-connected", description: "Clinic CRM demo will be added after the owner supplies a URL and its visitor-accessible features are inspected." },
+      { id: "clinic-source", label: "Clinic CRM source", type: "source", availability: "not-connected", description: "Source archive not supplied. No protected download is available yet." },
+      { id: "clinic-setup-guide", label: "Verified setup guide", type: "guide", availability: "not-connected", description: "Exact setup steps and commands will be added only after the source archive is safely inspected and locally verified." },
+      { id: "clinic-prospects", label: "Clinic prospect list", type: "worksheet", availability: "not-connected", description: "Clinic prospect list not connected yet. No businesses or contacts have been fabricated." },
     ],
-    sections: [],
+    featuredResourceIds: ["clinic-demo", "clinic-source", "clinic-prospects"],
+    sections: [
+      {
+        id: "clinic-opportunity",
+        type: "overview",
+        title: "Turn one clinic workflow into a repeatable software service",
+        body: [
+          "Independent clinics may coordinate new enquiries, appointments, follow-ups, customer or patient administration, staff tasks, payments, and day-to-day reporting across several tools.",
+          "The opportunity is to understand one clinic's actual administrative process, then adapt a focused operations system around it. This is not an EHR, EMR, medical-records platform, or clinical decision system.",
+          "Possible service layers include initial configuration, branding, agreed workflow changes, appropriate data import, staff onboarding, separately agreed hosting or maintenance, and additional modules later.",
+        ],
+        friction: "Administrative hand-offs can become difficult to see when enquiries, appointments, follow-ups, tasks, and payment status live in separate places.",
+        validation: "Ask a clinic team to map its real process and confirm every status, owner, exception, permission, and system of record before proposing changes.",
+        businessModel: "Possible ways to structure the service: a bounded initial configuration, customer-specific customisation and onboarding, then optional support only where ownership and responsibilities are agreed.",
+      },
+      {
+        id: "clinic-demo",
+        type: "demo-preview",
+        title: "Explore the Clinic CRM",
+        description: "Clinic CRM demo will be added after the owner supplies a URL. No live screens, features, or workflow have been verified in this phase.",
+        variant: "crm",
+        metrics: [
+          { label: "Demo URL", value: "Not supplied" },
+          { label: "Screenshots", value: "Not supplied" },
+          { label: "Feature review", value: "Pending" },
+        ],
+      },
+      {
+        id: "clinic-software",
+        type: "workflow",
+        title: "Get the software",
+        description: "The source archive has not been supplied. This activity records the inspection boundary and will show verified capabilities only after the actual package is reviewed.",
+        steps: [
+          { id: "source-receive", title: "Receive and inspect", detail: "Keep the archive outside public assets and inspect its structure, documentation, environment examples, dependencies, and licensing before executing scripts." },
+          { id: "source-verify", title: "Verify in isolation", detail: "Run only appropriate local checks after static inspection, using fictional data and no hosted-service changes." },
+          { id: "source-publish", title: "Publish verified scope", detail: "Describe features as included, locally verified, present but unverified, or not included—never infer them from a demo." },
+        ],
+        safeguard: "No source download exists until the owner supplies the archive and it passes the protected-resource review.",
+      },
+      {
+        id: "clinic-setup",
+        type: "resources",
+        title: "Setup & customise",
+        intro: "The exact setup guide is waiting for the source archive. For now, use this planning sequence without treating any command, infrastructure, or feature as verified.",
+        resourceIds: ["clinic-source", "clinic-setup-guide"],
+        steps: [
+          { title: "Confirm requirements", detail: "Identify the actual runtime, package manager, backend, authentication, storage, and third-party services from the source." },
+          { title: "Plan the clinic adaptation", detail: "Map branding, workflow states, staff roles, permissions, and reports before changing code or schema." },
+          { title: "Test with synthetic data", detail: "Verify important administrative flows, permissions, errors, backups, and recovery without real clinic or patient information." },
+          { title: "Prepare handover", detail: "Document account ownership, deployment, credentials, training, unresolved limitations, and support boundaries." },
+        ],
+      },
+      {
+        id: "clinic-prospecting",
+        type: "customer-discovery",
+        title: "Find clinics",
+        audiences: ["Dental clinics", "Aesthetic or dermatology clinics", "Physiotherapy clinics", "Chiropractic clinics", "Wellness clinics", "Specialty clinics", "Small medical centres"],
+        questions: [
+          "Search one clinic category and location using public business sources.",
+          "Record clinic name, website, country, city, clinic type, published business contact route, source, and last checked date.",
+          "Verify each business and contact route manually before any respectful one-to-one outreach.",
+        ],
+        guidance: "Try focused searches such as dental clinic Dubai, aesthetic clinic Abu Dhabi, physiotherapy clinic Dubai, dental clinic London, or aesthetic clinic Manchester. The categories are discovery targets, not proof of demand. Do not scrape or invent leads.",
+      },
+      {
+        id: "clinic-conversation",
+        type: "sales-kit",
+        title: "Start the conversation",
+        intro: "Edit these templates for one researched clinic. Keep placeholders visible until verified, ask about the real workflow first, and make no savings, patient-volume, revenue, or compliance claims.",
+        items: [
+          {
+            title: "Email",
+            kind: "email",
+            detail: "A concise first message that asks whether the administrative workflow is relevant.",
+            subject: "Quick question about your clinic workflow",
+            template: "Hi [Name],\n\nI was looking at [Clinic] and wanted to ask how your team currently manages appointments, enquiries and follow-ups.\n\nI've been working on a clinic operations system designed to bring those workflows into one place.\n\nIf improving that process is relevant for your team, I can show you a short demo and first understand how your current workflow works.\n\nRegards,\n[Your name]",
+          },
+          {
+            title: "Phone",
+            kind: "call",
+            detail: "A short permission-based opening without implying an existing relationship.",
+            template: "Hi, I'm [Name]. I wanted to ask a quick question about how your clinic currently handles enquiries, appointments and follow-ups. I've been working on a system around this type of workflow and wanted to see whether it's relevant for your clinic.",
+          },
+          {
+            title: "Follow-up",
+            kind: "follow-up",
+            detail: "A respectful follow-up with no fabricated urgency.",
+            subject: "Following up on my clinic workflow question",
+            template: "Hi [Name],\n\nI'm following up on the note I sent on [date] about [specific administrative workflow]. I don't want to assume this is a priority for [Clinic].\n\nIf it is relevant, I can first learn how your current process works and then show only the parts of the operations example that relate to it. If not, no reply is needed.\n\nRegards,\n[Your name]",
+          },
+          {
+            title: "Demo",
+            kind: "demo",
+            detail: "Use this order only after a real demo is supplied and verified.",
+            template: "1. Ask about the current administrative workflow.\n\n2. Show only verified CRM features that relate to it.\n\n3. Ask what does not match.\n\n4. Explain only what can actually be customised.\n\n5. Confirm one appropriate next step and restate any unverified boundaries.",
+          },
+          {
+            title: "Proposal",
+            kind: "proposal",
+            detail: "A scope structure with placeholders, not fixed commercial terms.",
+            template: "CURRENT PROBLEM\n[Confirmed administrative problem]\n\nAGREED WORKFLOW\n[Current and proposed workflow]\n\nINCLUDED FEATURES\n[Verified included features]\n\nCUSTOMISATION\n[Agreed changes]\n\nEXCLUSIONS\n[Clinical records, integrations, or other work not included]\n\nDATA / IMPORT RESPONSIBILITIES\n[Ownership, preparation, validation, retention]\n\nHOSTING, TRAINING, AND SUPPORT\n[Accounts, costs, handover, response boundaries]\n\nPRICE\n[Customer-specific quotation]\n\nNEXT STEP\n[Decision and acceptance checks]",
+          },
+        ],
+      },
+      {
+        id: "clinic-pricing",
+        type: "pricing-planner",
+        title: "Price your offer",
+        intro: "Model delivery cost and projected gross margin from your own assumptions. This is a planning estimate—not a market-price recommendation.",
+        packageStructures: [
+          { title: "Starter implementation", items: ["Branding", "Basic setup", "Deployment", "Handover"] },
+          { title: "Custom implementation", items: ["Workflow changes", "Data migration", "Additional reports or features", "Training"] },
+          { title: "Managed support", items: ["Agreed hosting management", "Backups", "Maintenance", "Support"] },
+        ],
+      },
+      {
+        id: "clinic-tools",
+        type: "tools",
+        title: "Tools you'll need",
+        intro: "The source package has not been supplied, so infrastructure requirements remain unverified. Prefer customer-owned long-term production accounts where practical and document any developer-managed account explicitly.",
+        tools: [
+          { name: "Codex", purpose: "Inspect and adapt code with reviewed instructions", requirement: "Optional", ownership: "Member", costNote: "Use an existing suitable plan where available" },
+          { name: "Git", purpose: "Version control and change review", requirement: "Required", ownership: "Customer or shared by agreement", costNote: "Free options exist" },
+          { name: "Runtime / package manager", purpose: "Install, run, test, and build the CRM", requirement: "Confirm from source", ownership: "Implementation environment", costNote: "Do not choose until source inspection" },
+          { name: "Hosting", purpose: "Run the production application", requirement: "Confirm from source", ownership: "Customer-owned where practical", costNote: "Compare only after verified requirements" },
+          { name: "Database / backend", purpose: "Store authorised operational data", requirement: "Confirm from source", ownership: "Customer-owned where practical", costNote: "Capacity, backups, and support affect cost" },
+          { name: "Domain", purpose: "Customer-facing address", requirement: "Optional", ownership: "Customer", costNote: "Annual registration cost varies" },
+          { name: "Transactional email", purpose: "System messages only if supported and agreed", requirement: "Confirm from source", ownership: "Customer", costNote: "Verify provider, consent, and volume" },
+          { name: "File storage", purpose: "Store authorised files only if supported", requirement: "Confirm from source", ownership: "Customer", costNote: "Security and retention need review" },
+          { name: "Demo URL", purpose: "Show a synthetic-data example", requirement: "Optional", ownership: "Member or customer by agreement", costNote: "Not connected yet" },
+          { name: "Professional email and proposal", purpose: "One-to-one business communication", requirement: "Optional", ownership: "Member", costNote: "Avoid unnecessary paid tools" },
+        ],
+      },
+      {
+        id: "clinic-discovery",
+        type: "discovery-questionnaire",
+        title: "Understand the clinic",
+        intro: "Use this questionnaire in a private conversation, then keep the clinic's answers in an appropriately secured customer-owned process—not in IncomeNow.",
+        questions: [
+          "How do new enquiries currently arrive?", "Who handles appointments?", "How are cancellations or no-shows managed?", "Who knows when follow-up is needed?", "What information must staff see?", "How are payments currently tracked?", "How many staff members need access?", "What roles and permissions are required?", "Which reports matter?", "Is existing data being imported?", "What needs to stay exactly as it is today?", "Who will manage the software after handover?", "What backup and recovery expectations exist?", "Which integrations are actually required?",
+        ],
+        privacyTitle: "Before using real clinic data",
+        privacyBody: [
+          "Clinic software can involve sensitive personal information. Confirm the actual data processed, permissions, security responsibilities, retention, backups, recovery, local requirements, and customer expectations before production use.",
+          "This kit does not certify HIPAA, GDPR, DHA, DOH, MOHAP, or any other healthcare or security compliance. Use synthetic data for demonstrations and never put sensitive patient information into this questionnaire or an AI prompt.",
+        ],
+      },
+      {
+        id: "clinic-delivery",
+        type: "action-plan",
+        title: "Deliver the project",
+        stages: clinicPlan.stages,
+      },
+    ],
   },
   {
     id: "idea-003",
@@ -239,6 +405,7 @@ const rawIdeas: Idea[] = [
     readiness: "Setup ready",
     marketEvidence: "Not yet validated",
     addedOrder: 4,
+    published: false,
     detailAvailable: true,
     implementationPlanVersion: automationPlan.version,
     previewVariant: "automation",
@@ -261,6 +428,7 @@ const rawIdeas: Idea[] = [
     ],
     sections: [
       {
+        id: "automation-opportunity",
         type: "overview",
         title: "The opportunity",
         body: ["This idea connects quotation records with an internal follow-up process using tools the customer has authorised.", "The sample creates staff tasks and audit entries; it does not automatically message customers."],
@@ -269,6 +437,7 @@ const rawIdeas: Idea[] = [
         businessModel: "A fixed-scope configuration project followed by an optional maintenance agreement for schema and connection changes.",
       },
       {
+        id: "automation-workflow",
         type: "workflow",
         title: "See how the workflow could work",
         description: "An illustrative weekday check evaluates quotation state and creates one internal task when the agreed conditions are met.",
@@ -282,19 +451,21 @@ const rawIdeas: Idea[] = [
         safeguard: "A unique quotation ID plus follow-up event key prevents duplicate tasks when a scheduler retries.",
       },
       {
+        id: "automation-plan",
         type: "action-plan",
         title: "Configure, test, and hand over",
         stages: automationPlan.stages,
       },
-      { type: "resources", title: "Workflow resources", intro: "Every resource is a sample record in this preview and has no connected download.", resourceIds: ["automation-flow", "automation-map", "automation-guide", "automation-tests"] },
+      { id: "automation-resources", type: "resources", title: "Workflow resources", intro: "Every resource is a sample record in this preview and has no connected download.", resourceIds: ["automation-flow", "automation-map", "automation-guide", "automation-tests"] },
       {
+        id: "automation-discovery",
         type: "customer-discovery",
         title: "Find a workflow worth improving",
         audiences: ["Consultancies", "Specialty trades", "Digital agencies", "Fabrication shops"],
         questions: ["Where do quotations live after they are sent?", "Who owns the next action when a quote goes cold?", "Which existing tools must remain in use?"],
         guidance: "Confirm access rights, third-party subscription costs, and maintenance responsibilities in writing before implementation.",
       },
-      { type: "updates-limitations", title: "Updates and important notes", notes: ["No production workflow or customer messaging is connected.", "Compatibility, authentication, rate limits, and field schemas must be verified in each customer environment."] },
+      { id: "automation-limitations", type: "updates-limitations", title: "Updates and important notes", notes: ["No production workflow or customer messaging is connected.", "Compatibility, authentication, rate limits, and field schemas must be verified in each customer environment."] },
     ],
   },
   {
@@ -311,6 +482,7 @@ const rawIdeas: Idea[] = [
     readiness: "Concept ready",
     marketEvidence: "Discovery in progress",
     addedOrder: 3,
+    published: false,
     detailAvailable: true,
     implementationPlanVersion: leadPlan.version,
     previewVariant: "website",
@@ -333,6 +505,7 @@ const rawIdeas: Idea[] = [
     ],
     sections: [
       {
+        id: "lead-opportunity",
         type: "overview",
         title: "The opportunity",
         body: ["The sample separates two audiences: visitors who need a service and providers who may accept relevant enquiries.", "The idea should begin with local demand and partner discovery, not a generic directory build."],
@@ -341,6 +514,7 @@ const rawIdeas: Idea[] = [
         businessModel: "A scoped website and enquiry-handling service. Partner terms and any commercial model remain to be validated.",
       },
       {
+        id: "lead-demo",
         type: "demo-preview",
         title: "Preview the visitor and provider journey",
         description: "The wireframe demonstrates service-area entry, a focused enquiry form, and a provider handoff. It does not submit or route real enquiries.",
@@ -352,19 +526,21 @@ const rawIdeas: Idea[] = [
         ],
       },
       {
+        id: "lead-plan",
         type: "action-plan",
         title: "Research and prepare the service",
         stages: leadPlan.stages,
       },
-      { type: "resources", title: "Website and enquiry resources", intro: "These sample resources describe the intended kit. Nothing is downloadable or connected in Phase 1.", resourceIds: ["lead-template", "lead-research", "lead-partner", "lead-enquiry"] },
+      { id: "lead-resources", type: "resources", title: "Website and enquiry resources", intro: "These sample resources describe the intended kit. Nothing is downloadable or connected in Phase 1.", resourceIds: ["lead-template", "lead-research", "lead-partner", "lead-enquiry"] },
       {
+        id: "lead-discovery",
         type: "customer-discovery",
         title: "Research both sides of the marketplace",
         audiences: ["Visitors who recently hired a local provider", "Independent local service businesses", "Trade associations and referral partners"],
         questions: ["What made a provider feel trustworthy?", "Which details determine whether an enquiry is worth accepting?", "How quickly must a provider respond?"],
         guidance: "Do not collect real enquiries until consent, retention, partner routing, and response ownership are documented.",
       },
-      { type: "updates-limitations", title: "Updates and important notes", notes: ["The site preview uses fictional records and no real form endpoint.", "Demand, partner appetite, commercial terms, and data handling remain unvalidated."] },
+      { id: "lead-limitations", type: "updates-limitations", title: "Updates and important notes", notes: ["The site preview uses fictional records and no real form endpoint.", "Demand, partner appetite, commercial terms, and data handling remain unvalidated."] },
     ],
   },
   {
@@ -381,6 +557,7 @@ const rawIdeas: Idea[] = [
     readiness: "Concept ready",
     marketEvidence: "Not yet validated",
     addedOrder: 2,
+    published: false,
     detailAvailable: false,
     fixtureLabel: "Preview only — full kit not yet published",
     previewVariant: "scorecard",
@@ -411,6 +588,7 @@ const rawIdeas: Idea[] = [
     readiness: "Concept ready",
     marketEvidence: "Not yet validated",
     addedOrder: 1,
+    published: false,
     detailAvailable: false,
     fixtureLabel: "Preview only — full kit not yet published",
     previewVariant: "property",
@@ -431,7 +609,8 @@ const rawIdeas: Idea[] = [
 
 export const ideas = ideasSchema.parse(rawIdeas);
 
-export const detailedIdeas = ideas.filter((idea) => idea.detailAvailable);
+export const publishedIdeas = ideas.filter((idea) => idea.published);
+export const detailedIdeas = publishedIdeas.filter((idea) => idea.detailAvailable);
 
 export function getIdeaBySlug(slug: string) {
   return ideas.find((idea) => idea.slug === slug);

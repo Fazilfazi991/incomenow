@@ -1,7 +1,7 @@
 import "server-only";
 
 import { STARTER_IDEA_ID } from "@/content/membership-offer";
-import { ideas, getIdeaBySlug } from "@/content/ideas";
+import { publishedIdeas, getIdeaBySlug } from "@/content/ideas";
 import { toIdeaCatalogEntry, type IdeaCatalogEntry } from "@/content/idea-catalog";
 import type { Idea } from "@/content/idea-schema";
 import { createClient } from "./supabase/server";
@@ -33,7 +33,7 @@ export async function getBrowseableIdeaCatalog(): Promise<BrowseableIdea[]> {
   const { data: projects } = await supabase.from("projects").select("id, idea_id");
   const projectByIdea = new Map((projects ?? []).map((project) => [project.idea_id, project.id]));
 
-  return ideas.map((idea) => {
+  return publishedIdeas.map((idea) => {
     const decision = getIdeaAccessDecision(context, idea.id);
     return {
       ...toIdeaCatalogEntry(idea),
@@ -45,7 +45,7 @@ export async function getBrowseableIdeaCatalog(): Promise<BrowseableIdea[]> {
 
 export async function getIdeaRouteContent(slug: string): Promise<IdeaRouteContent | null> {
   const idea = getIdeaBySlug(slug);
-  if (!idea) return null;
+  if (!idea?.published) return null;
 
   const context = await requireVerifiedAccount(`/app/ideas/${encodeURIComponent(slug)}`);
   const decision = getIdeaAccessDecision(context, idea.id);
