@@ -10,7 +10,7 @@ Date: 2026-09-21
 - Archive entries: 920
 - Uncompressed archive content: 17,683,048 bytes
 - SHA-256: `7958426B74F454EE0A346FBB18D968ED56A3063AC6B2E3BD7D1302070D731662`
-- Redistribution status: **not approved; publication blocked**
+- Redistribution status: **sanitised distribution ZIP approved on 2026-09-21 for authorised full-member delivery; original archive remains blocked**
 - Clinic prospect workbook: subsequently supplied and integrated as a separate protected member-safe projection; see `docs/clinic-prospect-integration.md`
 
 The archive was inspected as data before execution and extracted only to an isolated temporary folder outside IncomeNow. It was never placed in `public/`, committed, migrated into IncomeNow, or connected to a hosted backend.
@@ -95,7 +95,7 @@ Not live-verified: hosted Auth/RLS behaviour, real CRUD, production Storage/uplo
 ## Remaining decisions
 
 1. Sanitised redistribution package: completed technically; see `docs/clinic-distribution-readiness.md`.
-2. Obtain explicit licence and redistribution approval before offering source access; still pending.
+2. Sanitised package redistribution approval: completed on 2026-09-21 for authorised full-member delivery only; the original archive remains excluded.
 3. Decide whether sensitive clinical/patient modules belong in the commercial scope; otherwise remove or isolate them.
 4. Complete independent security/privacy/legal review and a threat-modelled acceptance plan.
 5. Add malware scanning and verify private document authorization, retention, deletion, backup, and restore.

@@ -48,12 +48,16 @@ describe("Clinic Operations CRM kit", () => {
       downloadPath: "/app/resources/clinic-setup-guide",
       actionLabel: "Download setup guide",
     });
-    const blockedSource = clinic.resources.find((resource) => resource.id === "clinic-source")!;
+    const approvedSource = clinic.resources.find((resource) => resource.id === "clinic-source")!;
     const prospects = clinic.resources.find((resource) => resource.id === "clinic-prospects")!;
-    expect(blockedSource.availability).toBe("not-connected");
-    expect(blockedSource.downloadPath).toBeUndefined();
-    expect(blockedSource.externalUrl).toBeUndefined();
-    expect(blockedSource.description).toMatch(/prepared.*release approval pending/i);
+    expect(approvedSource).toMatchObject({
+      availability: "available",
+      downloadPath: "/app/resources/clinic-source",
+      actionLabel: "Download source ZIP",
+      description: "Source package available.",
+    });
+    expect(approvedSource.externalUrl).toBeUndefined();
+    expect(approvedSource.notice).toMatch(/production configuration.*privacy\/security review.*backups.*recovery.*customer-specific acceptance/i);
     expect(prospects).toMatchObject({
       availability: "available",
       downloadPath: "/app/resources/clinic-uae-potential-customers",

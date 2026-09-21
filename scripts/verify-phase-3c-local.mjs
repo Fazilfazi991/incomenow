@@ -110,6 +110,8 @@ try {
   assert.equal(signedOutClinicFinder.status, 307, "signed-out visitors cannot open the protected Clinic finder");
   const signedOutClinicCsv = await fetch(`${process.env.APP_ORIGIN}/app/resources/clinic-uae-potential-customers`, { redirect: "manual" });
   assert.equal(signedOutClinicCsv.status, 307, "signed-out visitors cannot download the Clinic prospect CSV");
+  const signedOutClinicSource = await fetch(`${process.env.APP_ORIGIN}/app/resources/clinic-source`, { redirect: "manual" });
+  assert.equal(signedOutClinicSource.status, 307, "signed-out visitors cannot download the Clinic source package");
 
   for (const account of [free, starter, full, expired]) {
     const response = await appRequest("/app/explore", account);
@@ -138,7 +140,7 @@ try {
   assert.equal(freeClinicGuide.status, 403, "registered preview access cannot download the Clinic setup guide");
   assert.equal(freeClinicGuide.headers.get("cache-control"), "private, no-store");
   const freeClinicSource = await appRequest("/app/resources/clinic-source", free);
-  assert.equal(freeClinicSource.status, 403, "registered preview access cannot inspect the Clinic source release state");
+  assert.equal(freeClinicSource.status, 403, "registered preview access cannot download the Clinic source package");
   assert.equal(freeClinicSource.headers.get("cache-control"), "private, no-store");
   const freeClinicFinder = await appRequest("/app/ideas/clinic-operations-crm?section=clinics", free);
   assert.equal(freeClinicFinder.status, 200);
@@ -178,7 +180,7 @@ try {
   assert.equal(starterClinicGuide.status, 403, "Pergola Starter cannot download the Clinic setup guide");
   assert.equal(starterClinicGuide.headers.get("cache-control"), "private, no-store");
   const starterClinicSource = await appRequest("/app/resources/clinic-source", starter);
-  assert.equal(starterClinicSource.status, 403, "Pergola Starter cannot inspect the Clinic source release state");
+  assert.equal(starterClinicSource.status, 403, "Pergola Starter cannot download the Clinic source package");
   assert.equal(starterClinicSource.headers.get("cache-control"), "private, no-store");
   const starterClinicFinder = await appRequest("/app/ideas/clinic-operations-crm?section=clinics", starter);
   assert.equal(starterClinicFinder.status, 200);
@@ -246,7 +248,7 @@ try {
   const downgradedClinicGuide = await appRequest("/app/resources/clinic-setup-guide", starter);
   assert.equal(downgradedClinicGuide.status, 403, "removed full membership immediately removes Clinic guide access");
   const downgradedClinicSource = await appRequest("/app/resources/clinic-source", starter);
-  assert.equal(downgradedClinicSource.status, 403, "removed full membership cannot inspect the Clinic source release state");
+  assert.equal(downgradedClinicSource.status, 403, "removed full membership cannot download the Clinic source package");
   const downgradedClinicProspects = await appRequest("/app/resources/clinic-uae-potential-customers", starter);
   assert.equal(downgradedClinicProspects.status, 403, "removed full membership immediately removes Clinic prospect access");
   const afterDowngrade = await starter.client.from("projects").select("id, idea_id").order("idea_id");
@@ -260,6 +262,8 @@ try {
   assert.equal(expiredStart.error?.code, "42501");
   const expiredClinicProspects = await appRequest("/app/resources/clinic-uae-potential-customers", expired);
   assert.equal(expiredClinicProspects.status, 403, "expired full membership cannot download Clinic prospect data");
+  const expiredClinicSource = await appRequest("/app/resources/clinic-source", expired);
+  assert.equal(expiredClinicSource.status, 403, "expired full membership cannot download the Clinic source package");
   const revoke = await service.from("idea_access_grants").update({ revoked_at: new Date().toISOString() }).eq("user_id", starter.user.id);
   assert.ifError(revoke.error);
   const revokedProjects = await starter.client.from("projects").select("id");
@@ -301,15 +305,25 @@ try {
   assert.equal(fullClinicGuide.headers.get("cache-control"), "private, no-store");
   assert.match(await fullClinicGuide.text(), /BSmile Clinic Operations CRM — inspected setup and handover guide/);
   const fullClinicSource = await appRequest("/app/resources/clinic-source", full);
-  assert.equal(fullClinicSource.status, 423, "full membership remains release-gated until owner redistribution approval");
+  assert.equal(fullClinicSource.status, 200, "active full membership can download the owner-approved Clinic source package");
+  assert.equal(fullClinicSource.headers.get("content-type"), "application/zip");
   assert.equal(fullClinicSource.headers.get("cache-control"), "private, no-store");
-  assert.doesNotMatch(fullClinicSource.headers.get("content-type") ?? "", /^application\/zip/);
-  assert.match(await fullClinicSource.text(), /release approval pending/i);
+  assert.equal(fullClinicSource.headers.get("content-disposition"), 'attachment; filename="clinic-operations-crm-distribution.zip"');
+  assert.equal(fullClinicSource.headers.get("x-content-type-options"), "nosniff");
+  const fullClinicSourceBuffer = Buffer.from(await fullClinicSource.arrayBuffer());
+  assert.equal(fullClinicSourceBuffer.byteLength, 1_687_530, "the protected Clinic source has the owner-approved byte size");
+  assert.equal(
+    createHash("sha256").update(fullClinicSourceBuffer).digest("hex").toUpperCase(),
+    "58600C10281677E528625F0E3B17EBB981352BFFB30366A0E5903E4DED836CDE",
+    "the protected Clinic source matches the owner-approved sanitised package",
+  );
 
   const revokeFull = await service.from("membership_entitlements").update({ revoked_at: new Date().toISOString() }).eq("user_id", full.user.id);
   assert.ifError(revokeFull.error);
   const revokedFullClinicProspects = await appRequest("/app/resources/clinic-uae-potential-customers", full);
   assert.equal(revokedFullClinicProspects.status, 403, "revoked full membership immediately removes Clinic prospect access");
+  const revokedFullClinicSource = await appRequest("/app/resources/clinic-source", full);
+  assert.equal(revokedFullClinicSource.status, 403, "revoked full membership immediately removes Clinic source access");
 
   const onboarding = await appRequest("/account/getting-started?next=%2Fapp%2Fideas%2Fpergola-quotation-follow-up-crm", starter);
   assert.equal(onboarding.status, 200);
@@ -321,7 +335,7 @@ try {
       "registered-preview-browsing-and-bookmarks",
       "locked-payload-minimisation",
       "protected-prospect-and-setup-downloads",
-      "protected-clinic-setup-guide-and-source-release-gate",
+      "protected-clinic-setup-guide-and-approved-source-download",
       "protected-clinic-finder-and-csv",
       "starter-pergola-only",
       "concurrent-idempotent-project-start",

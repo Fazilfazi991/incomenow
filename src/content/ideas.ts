@@ -233,7 +233,7 @@ const rawIdeas: Idea[] = [
     cardNote: "Full-member kit with an inspected synthetic demo, verified setup guide, and protected UAE clinic research dataset",
     resources: [
       { id: "clinic-demo", label: "Clinic CRM demo", type: "demo", availability: "available", description: "Public BSmile CRM example inspected with synthetic data and without changing records.", externalUrl: "https://besmile-public-demo.vercel.app/admin", actionLabel: "Open Clinic CRM demo", notice: "Synthetic data. The demo says changes reset when the page reloads; write actions were not tested." },
-      { id: "clinic-source", label: "Clinic CRM source", type: "source", availability: "not-connected", description: clinicDistributionState.statusLabel, notice: "Technical sanitisation passed. Owner redistribution approval has not been granted." },
+      { id: "clinic-source", label: "Clinic CRM source", type: "source", availability: "available", description: clinicDistributionState.statusLabel, downloadPath: "/app/resources/clinic-source", actionLabel: "Download source ZIP", notice: "Owner-approved sanitised package for authorised full members. It still requires production configuration, privacy/security review, backups and recovery planning, and customer-specific acceptance." },
       { id: "clinic-setup-guide", label: "Verified setup guide", type: "guide", availability: "available", description: "Fourteen-step guide based on the inspected Next.js, pnpm, Supabase, and Vercel architecture.", downloadPath: "/app/resources/clinic-setup-guide", actionLabel: "Download setup guide", notice: "Protected full-member resource; source ZIP is not included." },
       { id: "clinic-prospects", label: "UAE clinic prospect list", type: "worksheet", availability: "available", description: "Protected member-safe projection of public business research for Dubai and Abu Dhabi clinics.", downloadPath: "/app/resources/clinic-uae-potential-customers", actionLabel: "Download clinic CSV", notice: "Full-member resource. Potential businesses to research — not confirmed buyers." },
     ],
@@ -269,11 +269,11 @@ const rawIdeas: Idea[] = [
         id: "clinic-software",
         type: "workflow",
         title: "Get the software",
-        description: "The owner-supplied archive was preserved unchanged. A separate distribution copy was sanitised, dependency-audited, scanned with Microsoft Defender, and verified from a fresh extraction. It remains unavailable until the owner explicitly approves redistribution.",
+        description: "The owner-supplied archive was preserved unchanged. A separate distribution copy was sanitised, dependency-audited, scanned with Microsoft Defender, verified from a fresh extraction, and approved for authorised full-member delivery.",
         steps: [
           { id: "source-receive", title: "Archive inspected", detail: "Recorded 14,202,553 bytes, 920 entries, and SHA-256 7958426B74F454EE0A346FBB18D968ED56A3063AC6B2E3BD7D1302070D731662 before execution." },
           { id: "source-verify", title: "Checks passed in isolation", detail: "pnpm install, typecheck, all 831 tests on rerun, and the production build passed. Lint completed with 25 warnings and no errors." },
-          { id: "source-publish", title: "Release approval pending", detail: "The sanitised ZIP stays outside Git and public assets. The protected endpoint remains locked until redistributionApproved is explicitly changed after owner approval." },
+          { id: "source-publish", title: "Sanitised package approved", detail: "Owner approval applies only to the fixed sanitised ZIP with SHA-256 58600C10281677E528625F0E3B17EBB981352BFFB30366A0E5903E4DED836CDE. It stays outside Git and public assets and is available only through the protected full-member route." },
         ],
         safeguard: "The source includes patient profiles, clinical/treatment notes, prescriptions, medical and insurance document categories, and private file uploads. It is not represented as compliant or production ready; hosted acceptance, email OTP, backup rehearsal, and independent security/legal review remain outstanding even though the distribution copy passed technical sanitisation and local malware scanning.",
       },

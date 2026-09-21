@@ -87,7 +87,7 @@ function findResourceByType(idea: Idea, type: IdeaResource["type"]) {
 
 function activityState(idea: Idea, slug: KitSectionSlug, project: KitProjectProgress | null) {
   if (slug === "demo") return findResourceByType(idea, "demo")?.availability === "available" ? "Demo available" : "Demo unavailable";
-  if (slug === "software") return findResourceByType(idea, "source")?.availability === "available" ? "Source included" : idea.id === "idea-002" ? clinicDistributionState.statusLabel : "Source unavailable";
+  if (slug === "software") return findResourceByType(idea, "source")?.availability === "available" ? idea.id === "idea-002" ? clinicDistributionState.statusLabel : "Source included" : idea.id === "idea-002" ? clinicDistributionState.statusLabel : "Source unavailable";
   if (slug === "setup") return findResourceByType(idea, "guide")?.availability === "available" ? "Guide available" : "Setup guide pending";
   if (slug === "customers") return findResource(idea, "crm-discovery")?.availability === "available" ? "Prospect resource available" : "Research guide ready · sheet pending";
   if (slug === "clinics") return findResource(idea, "clinic-prospects")?.availability === "available" ? "100 clinic prospects ready" : "Research guide ready · prospect list unavailable";

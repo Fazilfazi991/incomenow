@@ -2,9 +2,9 @@
 
 Date: 2026-09-21
 
-Status: **READY FOR OWNER REDISTRIBUTION APPROVAL**
+Status: **OWNER-APPROVED FOR PROTECTED FULL-MEMBER DISTRIBUTION**
 
-Technical sanitisation is complete. Redistribution remains disabled because owner approval has not been granted.
+Technical sanitisation is complete. On 2026-09-21, the owner approved only the exact sanitised distribution package identified below for delivery to authorised IncomeNow full members. The preserved original archive remains excluded.
 
 ## Preserved original
 
@@ -96,13 +96,13 @@ The source archive did not contain Git history, so historical secret scanning is
 
 ## Licence and redistribution inventory
 
-- **Owner-created source:** ownership is asserted by supply of the archive but no redistribution licence or approval was included. The package is marked `private` and `UNLICENSED`.
+- **Owner authorization:** on 2026-09-21 the owner explicitly approved the sanitised package with SHA-256 `58600C10281677E528625F0E3B17EBB981352BFFB30366A0E5903E4DED836CDE` for delivery to authorised IncomeNow full members. The approval does not cover the original archive or grant unrestricted resale/redistribution rights. The project remains marked `private` and `UNLICENSED`.
 - **Open-source dependencies:** `pnpm licenses list --json` reported 486 installed package licence records. Groups include MIT, ISC, Apache-2.0, BSD, MPL-2.0, Python-2.0, Creative Commons, BlueOak, 0BSD, Zlib, and combined expressions; no unknown/unlicensed dependency group was reported.
 - **Font:** the bundled Manjari files include `src/assets/fonts/OFL-Manjari.txt`.
 - **Icons:** Lucide is installed as an ISC-licensed dependency.
 - **Third-party or unknown-rights assets:** project branding plus the remaining icons/images require owner confirmation. Personal portraits and branded letterhead were excluded.
 
-This inventory is technical evidence, not a legal conclusion. Owner approval must confirm the right to distribute every retained project-specific asset and the application source.
+This inventory is technical evidence, not a legal conclusion. Owner approval is recorded for the fixed sanitised package and stated member-delivery scope; no independent legal review of retained project-specific asset rights was performed.
 
 ## Fresh-package verification
 
@@ -122,14 +122,17 @@ The final ZIP was extracted to a new temporary directory with no `node_modules` 
 Canonical application state:
 
 - `technicalPackageReady: true`
-- `redistributionApproved: false`
+- `redistributionApproved: true`
+- `approvalDate: 2026-09-21`
+- `approvedPackageSha256: 58600C10281677E528625F0E3B17EBB981352BFFB30366A0E5903E4DED836CDE`
+- `approvedPackageSizeBytes: 1,687,530`
 
-The protected `/app/resources/clinic-source` handler performs a fresh verified-account and IDEA #002 access check, fails closed when access is unavailable, and can serve only the sanitised fixed-name ZIP with `application/zip` and `Cache-Control: private, no-store`. While approval remains false, even a full member receives **Source package prepared — release approval pending.** and no archive bytes.
+The protected `/app/resources/clinic-source` handler performs a fresh verified-account and IDEA #002 access check, additionally requires the decision source to be `full-membership`, and fails closed when access is unavailable. It can serve only `clinic-operations-crm-distribution.zip` from the ignored private-resource path. Before returning bytes, it verifies the exact approved size and SHA-256. Successful responses retain `application/zip`, the fixed attachment filename, `Cache-Control: private, no-store`, and `X-Content-Type-Options: nosniff`.
 
-Signed-out, registered/free, Pergola Starter, expired/revoked, unavailable-access, full-member approval-pending, approved full-member, and missing-file behavior are covered by route/integration tests. The approved branch is test-only; production state remains locked.
+Signed-out, registered/free, Pergola Starter, active non-membership grant, expired/revoked, unavailable-access, approved full-member, hash-mismatch, and missing-file behavior are covered by route and local integration tests. The original archive is never read by the route.
 
-## Remaining decision
+## Remaining technical and legal boundaries
 
-The owner must explicitly approve redistribution and confirm rights for the retained source and assets. That approval should be a separate, deliberate change to `redistributionApproved`; it must not be inferred from technical readiness.
+Approval changes the narrow delivery gate only. The package is not represented as healthcare compliant, production certified, production ready, or independently security audited. Customer-specific production configuration, privacy/security/legal review, retention and deletion decisions, attachment scanning, hosted acceptance, backup/recovery rehearsal, monitoring, and operational ownership remain required.
 
-No push, deployment, hosted Supabase mutation, credential rotation, source publication, or redistribution was performed.
+No push, deployment, hosted Supabase mutation, credential rotation, or original-archive publication was performed. The approved sanitised source route is enabled only in the local implementation pending owner review.

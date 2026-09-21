@@ -48,7 +48,9 @@ describe("public idea projection", () => {
     const payload = JSON.stringify(toPublicIdea(clinic));
 
     expect(payload).toContain("UAE clinic prospect list");
+    expect(payload).toContain("Clinic CRM source");
     expect(payload).not.toContain("clinic-uae-potential-customers");
+    expect(payload).not.toContain("/app/resources/clinic-source");
     expect(payload).not.toMatch(/primaryEmail|primaryPhone|whatsappNumber|contactFormUrl|bookingUrl|sourceUrl/);
   });
 });

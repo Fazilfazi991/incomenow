@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
@@ -6,8 +7,11 @@ const mocks = vi.hoisted(() => ({
   getIdeaAccessDecision: vi.fn(),
   distribution: {
     technicalPackageReady: true as boolean,
-    redistributionApproved: false as boolean,
-    statusLabel: "Source package prepared — release approval pending.",
+    redistributionApproved: true as boolean,
+    approvalDate: "2026-09-21",
+    approvedPackageSha256: "" as string,
+    approvedPackageSizeBytes: 0 as number,
+    statusLabel: "Source package available.",
   },
 }));
 
@@ -23,12 +27,17 @@ vi.mock("@/content/clinic-distribution", () => ({
 
 import { GET } from "./route";
 
+const approvedFixture = Buffer.from([0x50, 0x4b, 0x03, 0x04]);
+
 describe("protected Clinic distribution archive", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mocks.requireVerifiedAccount.mockResolvedValue({ user: { id: "member-1" } });
     mocks.distribution.technicalPackageReady = true;
-    mocks.distribution.redistributionApproved = false;
+    mocks.distribution.redistributionApproved = true;
+    mocks.distribution.approvedPackageSha256 = createHash("sha256").update(approvedFixture).digest("hex").toUpperCase();
+    mocks.distribution.approvedPackageSizeBytes = approvedFixture.byteLength;
+    mocks.readFile.mockResolvedValue(approvedFixture);
   });
 
   it("propagates the verified-account guard before checking access or release state", async () => {
@@ -40,12 +49,20 @@ describe("protected Clinic distribution archive", () => {
     expect(mocks.readFile).not.toHaveBeenCalled();
   });
 
-  it("denies registered and Pergola-only accounts before revealing release state", async () => {
+  it.each(["registered/free", "Pergola Starter", "expired full membership", "revoked full membership"])("denies %s access before reading the archive", async () => {
     mocks.getIdeaAccessDecision.mockReturnValue({ status: "inactive", source: null });
     const response = await GET();
 
     expect(response.status).toBe(403);
     expect(response.headers.get("cache-control")).toBe("private, no-store");
+    expect(mocks.readFile).not.toHaveBeenCalled();
+  });
+
+  it("does not treat a non-membership idea grant as full-member source access", async () => {
+    mocks.getIdeaAccessDecision.mockReturnValue({ status: "active", source: "starter" });
+    const response = await GET();
+
+    expect(response.status).toBe(403);
     expect(mocks.readFile).not.toHaveBeenCalled();
   });
 
@@ -59,11 +76,12 @@ describe("protected Clinic distribution archive", () => {
   });
 
   it("keeps the technically ready archive locked until owner approval", async () => {
+    mocks.distribution.redistributionApproved = false;
     mocks.getIdeaAccessDecision.mockReturnValue({ status: "active", source: "full-membership" });
     const response = await GET();
 
     expect(response.status).toBe(423);
-    expect(await response.text()).toContain("release approval pending");
+    expect(await response.text()).toBe("Source package release is not approved.");
     expect(response.headers.get("cache-control")).toBe("private, no-store");
     expect(mocks.readFile).not.toHaveBeenCalled();
   });
@@ -79,21 +97,33 @@ describe("protected Clinic distribution archive", () => {
   });
 
   it("serves only the sanitised archive after both access and release approval", async () => {
-    mocks.distribution.redistributionApproved = true;
     mocks.getIdeaAccessDecision.mockReturnValue({ status: "active", source: "full-membership" });
-    mocks.readFile.mockResolvedValue(Buffer.from([0x50, 0x4b, 0x03, 0x04]));
     const response = await GET();
+    const downloaded = Buffer.from(await response.arrayBuffer());
 
     expect(response.status).toBe(200);
     expect(response.headers.get("content-type")).toBe("application/zip");
     expect(response.headers.get("cache-control")).toBe("private, no-store");
-    expect(response.headers.get("content-disposition")).toContain("clinic-operations-crm-distribution.zip");
+    expect(response.headers.get("content-disposition")).toBe('attachment; filename="clinic-operations-crm-distribution.zip"');
+    expect(response.headers.get("content-length")).toBe(String(approvedFixture.byteLength));
+    expect(response.headers.get("x-content-type-options")).toBe("nosniff");
     expect(mocks.readFile).toHaveBeenCalledWith(expect.stringMatching(/private-resources[\\/]clinic[\\/]clinic-operations-crm-distribution\.zip$/));
-    expect(new Uint8Array(await response.arrayBuffer())).toEqual(new Uint8Array([0x50, 0x4b, 0x03, 0x04]));
+    expect(mocks.readFile).not.toHaveBeenCalledWith(expect.stringMatching(/besmile-production-readiness\.zip$/));
+    expect(downloaded).toEqual(approvedFixture);
+    expect(createHash("sha256").update(downloaded).digest("hex").toUpperCase()).toBe(mocks.distribution.approvedPackageSha256);
+  });
+
+  it("fails closed when the fixed package no longer matches the owner-approved SHA-256", async () => {
+    mocks.getIdeaAccessDecision.mockReturnValue({ status: "active", source: "full-membership" });
+    mocks.readFile.mockResolvedValue(Buffer.from([0x50, 0x4b, 0x03, 0x05]));
+    const response = await GET();
+
+    expect(response.status).toBe(503);
+    expect(response.headers.get("cache-control")).toBe("private, no-store");
+    expect(await response.text()).toBe("The approved source package is temporarily unavailable.");
   });
 
   it("does not expose a filesystem path when an approved archive is unavailable", async () => {
-    mocks.distribution.redistributionApproved = true;
     mocks.getIdeaAccessDecision.mockReturnValue({ status: "active", source: "full-membership" });
     mocks.readFile.mockRejectedValue(new Error("missing local file"));
     const response = await GET();
