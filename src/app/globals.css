@@ -2129,6 +2129,9 @@ h1, h2, h3 { font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-se
 .clinic-input-status { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; align-items: center; gap: 15px; padding: 19px; background: linear-gradient(135deg, #f7faf9, #edf5f6); }
 .clinic-input-status > span { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 13px; background: white; color: #3c7280; box-shadow: 0 4px 13px rgba(22,69,75,.08); }
 .clinic-input-status p { max-width: 70ch; margin-top: 6px; color: var(--muted); font-size: 12px; }
+.clinic-source-status { grid-template-columns: 46px minmax(0, 1fr); align-items: start; }
+.clinic-source-status > .resource-external-action { grid-column: 2; margin-top: 0; }
+.clinic-source-status .resource-external-note { flex-basis: 100%; }
 .clinic-verification-list ul, .clinic-verification-list ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
 .clinic-verification-list li { border-radius: 10px; background: #f4f8f6; color: #3d534a; font-size: 12px; }
 .clinic-verification-list ul li { padding: 11px 12px 11px 30px; }
