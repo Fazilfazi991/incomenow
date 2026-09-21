@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { createServerClient } from "@supabase/ssr";
 import { createClient } from "@supabase/supabase-js";
 
@@ -80,6 +80,16 @@ try {
   });
   assert.ifError(expiredGrant.error);
 
+  const expiredFullMembership = await service.from("membership_entitlements").insert({
+    user_id: expiredSeed.user.id,
+    enabled: true,
+    starts_at: new Date(Date.now() - 172_800_000).toISOString(),
+    expires_at: new Date(Date.now() - 86_400_000).toISOString(),
+    source: "complimentary",
+    source_reference: `phase3c-${suffix}-expired-full`,
+  });
+  assert.ifError(expiredFullMembership.error);
+
   const fullGrant = await service.from("membership_entitlements").insert({
     user_id: fullSeed.user.id,
     enabled: true,
@@ -95,6 +105,11 @@ try {
     signIn(expiredSeed.email),
     signIn(otherSeed.email),
   ]);
+
+  const signedOutClinicFinder = await fetch(`${process.env.APP_ORIGIN}/app/ideas/clinic-operations-crm?section=clinics`, { redirect: "manual" });
+  assert.equal(signedOutClinicFinder.status, 307, "signed-out visitors cannot open the protected Clinic finder");
+  const signedOutClinicCsv = await fetch(`${process.env.APP_ORIGIN}/app/resources/clinic-uae-potential-customers`, { redirect: "manual" });
+  assert.equal(signedOutClinicCsv.status, 307, "signed-out visitors cannot download the Clinic prospect CSV");
 
   for (const account of [free, starter, full, expired]) {
     const response = await appRequest("/app/explore", account);
@@ -125,6 +140,12 @@ try {
   const freeClinicSource = await appRequest("/app/resources/clinic-source", free);
   assert.equal(freeClinicSource.status, 403, "registered preview access cannot inspect the Clinic source release state");
   assert.equal(freeClinicSource.headers.get("cache-control"), "private, no-store");
+  const freeClinicFinder = await appRequest("/app/ideas/clinic-operations-crm?section=clinics", free);
+  assert.equal(freeClinicFinder.status, 200);
+  assert.doesNotMatch(await freeClinicFinder.text(), /clinic-prospect-explorer|100 UAE clinics to research/);
+  const freeClinicProspects = await appRequest("/app/resources/clinic-uae-potential-customers", free);
+  assert.equal(freeClinicProspects.status, 403, "registered preview access cannot download Clinic prospect data");
+  assert.equal(freeClinicProspects.headers.get("cache-control"), "private, no-store");
 
   const freeBookmark = await free.client.from("bookmarks").insert({ idea_id: "idea-002" });
   assert.ifError(freeBookmark.error);
@@ -159,6 +180,11 @@ try {
   const starterClinicSource = await appRequest("/app/resources/clinic-source", starter);
   assert.equal(starterClinicSource.status, 403, "Pergola Starter cannot inspect the Clinic source release state");
   assert.equal(starterClinicSource.headers.get("cache-control"), "private, no-store");
+  const starterClinicFinder = await appRequest("/app/ideas/clinic-operations-crm?section=clinics", starter);
+  assert.equal(starterClinicFinder.status, 200);
+  assert.doesNotMatch(await starterClinicFinder.text(), /clinic-prospect-explorer|100 UAE clinics to research/);
+  const starterClinicProspects = await appRequest("/app/resources/clinic-uae-potential-customers", starter);
+  assert.equal(starterClinicProspects.status, 403, "Pergola Starter cannot download Clinic prospect data");
   const starterOther = await appRequest("/app/ideas/quotation-follow-up-automation", starter);
   assert.equal(starterOther.status, 404);
   assert.doesNotMatch(await starterOther.text(), /flow-source|Configure, test, and hand over/);
@@ -221,6 +247,8 @@ try {
   assert.equal(downgradedClinicGuide.status, 403, "removed full membership immediately removes Clinic guide access");
   const downgradedClinicSource = await appRequest("/app/resources/clinic-source", starter);
   assert.equal(downgradedClinicSource.status, 403, "removed full membership cannot inspect the Clinic source release state");
+  const downgradedClinicProspects = await appRequest("/app/resources/clinic-uae-potential-customers", starter);
+  assert.equal(downgradedClinicProspects.status, 403, "removed full membership immediately removes Clinic prospect access");
   const afterDowngrade = await starter.client.from("projects").select("id, idea_id").order("idea_id");
   assert.ifError(afterDowngrade.error);
   assert.deepEqual(afterDowngrade.data, [{ id: starterProjectId, idea_id: "idea-001" }]);
@@ -230,6 +258,8 @@ try {
 
   const expiredStart = await expired.client.rpc("start_member_project", { p_idea_id: "idea-001" });
   assert.equal(expiredStart.error?.code, "42501");
+  const expiredClinicProspects = await appRequest("/app/resources/clinic-uae-potential-customers", expired);
+  assert.equal(expiredClinicProspects.status, 403, "expired full membership cannot download Clinic prospect data");
   const revoke = await service.from("idea_access_grants").update({ revoked_at: new Date().toISOString() }).eq("user_id", starter.user.id);
   assert.ifError(revoke.error);
   const revokedProjects = await starter.client.from("projects").select("id");
@@ -246,6 +276,25 @@ try {
   const fullClinicBody = await fullClinic.text();
   assert.match(fullClinicBody, /Pick the outcome you need now/);
   assert.match(fullClinicBody, /10(?:<!-- -->)? kit activities/);
+  const fullClinicFinder = await appRequest("/app/ideas/clinic-operations-crm?section=clinics", full);
+  assert.equal(fullClinicFinder.status, 200, "full membership can open the protected Clinic finder");
+  const fullClinicFinderBody = await fullClinicFinder.text();
+  assert.ok(fullClinicFinderBody.includes("100 UAE clinics to research"), "full finder shows the protected research heading");
+  assert.ok(fullClinicFinderBody.includes('<strong>100</strong><span>clinics</span>'), "full finder shows the 100-clinic summary");
+  const fullClinicProspects = await appRequest("/app/resources/clinic-uae-potential-customers", full);
+  assert.equal(fullClinicProspects.status, 200, "full membership can download the Clinic prospect CSV");
+  assert.match(fullClinicProspects.headers.get("content-type") ?? "", /^text\/csv/);
+  assert.equal(fullClinicProspects.headers.get("cache-control"), "private, no-store");
+  const fullClinicProspectCsvBuffer = Buffer.from(await fullClinicProspects.arrayBuffer());
+  assert.equal(fullClinicProspectCsvBuffer.byteLength, 39_106, "the protected Clinic export has the reviewed deterministic byte size");
+  assert.equal(
+    createHash("sha256").update(fullClinicProspectCsvBuffer).digest("hex").toUpperCase(),
+    "6C66A8490A548F21C252AAA7AF67056321E14B219FB5810810E393AED2EC9223",
+    "the protected Clinic export matches the reviewed deterministic hash",
+  );
+  const fullClinicProspectCsv = fullClinicProspectCsvBuffer.toString("utf8");
+  assert.equal(fullClinicProspectCsv.trimEnd().split(/\r?\n/).length, 101, "the protected Clinic export contains one header and 100 records");
+  assert.doesNotMatch(fullClinicProspectCsv, /Priority Reason|Research Notes|Email Source URL|Phone Source URL|Email Status|Business Description|LinkedIn|Instagram|Domain/);
   const fullClinicGuide = await appRequest("/app/resources/clinic-setup-guide", full);
   assert.equal(fullClinicGuide.status, 200, "full membership can download the Clinic setup guide");
   assert.match(fullClinicGuide.headers.get("content-type") ?? "", /^text\/markdown/);
@@ -256,6 +305,11 @@ try {
   assert.equal(fullClinicSource.headers.get("cache-control"), "private, no-store");
   assert.doesNotMatch(fullClinicSource.headers.get("content-type") ?? "", /^application\/zip/);
   assert.match(await fullClinicSource.text(), /release approval pending/i);
+
+  const revokeFull = await service.from("membership_entitlements").update({ revoked_at: new Date().toISOString() }).eq("user_id", full.user.id);
+  assert.ifError(revokeFull.error);
+  const revokedFullClinicProspects = await appRequest("/app/resources/clinic-uae-potential-customers", full);
+  assert.equal(revokedFullClinicProspects.status, 403, "revoked full membership immediately removes Clinic prospect access");
 
   const onboarding = await appRequest("/account/getting-started?next=%2Fapp%2Fideas%2Fpergola-quotation-follow-up-crm", starter);
   assert.equal(onboarding.status, 200);
@@ -268,6 +322,7 @@ try {
       "locked-payload-minimisation",
       "protected-prospect-and-setup-downloads",
       "protected-clinic-setup-guide-and-source-release-gate",
+      "protected-clinic-finder-and-csv",
       "starter-pergola-only",
       "concurrent-idempotent-project-start",
       "starter-task-note-and-pause-persistence",

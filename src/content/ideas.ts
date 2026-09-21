@@ -230,12 +230,12 @@ const rawIdeas: Idea[] = [
       alt: "A modern clinic reception connected to abstract appointment, profile, follow-up, and reporting cards",
       position: "50% 50%",
     },
-    cardNote: "Full-member kit with an inspected synthetic demo, verified setup guide, and technically prepared source package awaiting release approval",
+    cardNote: "Full-member kit with an inspected synthetic demo, verified setup guide, and protected UAE clinic research dataset",
     resources: [
       { id: "clinic-demo", label: "Clinic CRM demo", type: "demo", availability: "available", description: "Public BSmile CRM example inspected with synthetic data and without changing records.", externalUrl: "https://besmile-public-demo.vercel.app/admin", actionLabel: "Open Clinic CRM demo", notice: "Synthetic data. The demo says changes reset when the page reloads; write actions were not tested." },
       { id: "clinic-source", label: "Clinic CRM source", type: "source", availability: "not-connected", description: clinicDistributionState.statusLabel, notice: "Technical sanitisation passed. Owner redistribution approval has not been granted." },
       { id: "clinic-setup-guide", label: "Verified setup guide", type: "guide", availability: "available", description: "Fourteen-step guide based on the inspected Next.js, pnpm, Supabase, and Vercel architecture.", downloadPath: "/app/resources/clinic-setup-guide", actionLabel: "Download setup guide", notice: "Protected full-member resource; source ZIP is not included." },
-      { id: "clinic-prospects", label: "Clinic prospect list", type: "worksheet", availability: "not-connected", description: "Clinic prospect list not connected yet. No businesses or contacts have been fabricated." },
+      { id: "clinic-prospects", label: "UAE clinic prospect list", type: "worksheet", availability: "available", description: "Protected member-safe projection of public business research for Dubai and Abu Dhabi clinics.", downloadPath: "/app/resources/clinic-uae-potential-customers", actionLabel: "Download clinic CSV", notice: "Full-member resource. Potential businesses to research — not confirmed buyers." },
     ],
     featuredResourceIds: ["clinic-demo", "clinic-setup-guide", "clinic-source"],
     sections: [
@@ -300,7 +300,7 @@ const rawIdeas: Idea[] = [
           "Record clinic name, website, country, city, clinic type, published business contact route, source, and last checked date.",
           "Verify each business and contact route manually before any respectful one-to-one outreach.",
         ],
-        guidance: "Try focused searches such as dental clinic Dubai, aesthetic clinic Abu Dhabi, physiotherapy clinic Dubai, dental clinic London, or aesthetic clinic Manchester. The categories are discovery targets, not proof of demand. Do not scrape or invent leads.",
+        guidance: "Try focused searches such as dental clinic Dubai, aesthetic clinic Dubai, physiotherapy clinic Dubai, dental clinic Abu Dhabi, dermatology clinic Abu Dhabi, or physiotherapy clinic Abu Dhabi. The categories are discovery targets, not proof of demand. Do not bulk scrape or invent leads.",
       },
       {
         id: "clinic-conversation",

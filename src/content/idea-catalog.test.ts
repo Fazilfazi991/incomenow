@@ -18,4 +18,13 @@ describe("authenticated catalogue projection", () => {
     expect(payload).not.toContain("region-segment");
     expect(payload).not.toContain("Starter readiness and operating responsibilities");
   });
+
+  it("keeps protected Clinic prospect records and download routes out of browse payloads", () => {
+    const clinic = ideas.find((idea) => idea.id === "idea-002")!;
+    const payload = JSON.stringify(toIdeaCatalogEntry(clinic));
+
+    expect(payload).toContain("UAE clinic prospect list");
+    expect(payload).not.toContain("clinic-uae-potential-customers");
+    expect(payload).not.toMatch(/primaryEmail|primaryPhone|whatsappNumber|contactFormUrl|bookingUrl|sourceUrl/);
+  });
 });

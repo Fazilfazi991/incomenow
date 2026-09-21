@@ -11,7 +11,7 @@ Date: 2026-09-21
 - Uncompressed archive content: 17,683,048 bytes
 - SHA-256: `7958426B74F454EE0A346FBB18D968ED56A3063AC6B2E3BD7D1302070D731662`
 - Redistribution status: **not approved; publication blocked**
-- Clinic prospect workbook: not supplied
+- Clinic prospect workbook: subsequently supplied and integrated as a separate protected member-safe projection; see `docs/clinic-prospect-integration.md`
 
 The archive was inspected as data before execution and extracted only to an isolated temporary folder outside IncomeNow. It was never placed in `public/`, committed, migrated into IncomeNow, or connected to a hosted backend.
 
@@ -100,4 +100,4 @@ Not live-verified: hosted Auth/RLS behaviour, real CRUD, production Storage/uplo
 4. Complete independent security/privacy/legal review and a threat-modelled acceptance plan.
 5. Add malware scanning and verify private document authorization, retention, deletion, backup, and restore.
 6. Select customer-owned production accounts, domain, email infrastructure, monitoring, backup, and recovery ownership.
-7. Supply a separate Clinic prospect workbook if a member-safe finder/export is desired.
+7. Clinic prospect workbook and member-safe finder/export: completed separately; see `docs/clinic-prospect-integration.md`.

@@ -36,7 +36,7 @@ describe("Clinic Operations CRM kit", () => {
     expect(clinic.implementationPlanVersion).toBe("1");
   });
 
-  it("publishes the inspected demo and protected guide while approval-gating source and blocking prospects", () => {
+  it("publishes the inspected demo, protected guide, and Clinic prospect export while approval-gating source", () => {
     expect(clinic.resources).toHaveLength(4);
     expect(clinic.resources.find((resource) => resource.id === "clinic-demo")).toMatchObject({
       availability: "available",
@@ -49,14 +49,17 @@ describe("Clinic Operations CRM kit", () => {
       actionLabel: "Download setup guide",
     });
     const blockedSource = clinic.resources.find((resource) => resource.id === "clinic-source")!;
-    const missingProspects = clinic.resources.find((resource) => resource.id === "clinic-prospects")!;
+    const prospects = clinic.resources.find((resource) => resource.id === "clinic-prospects")!;
     expect(blockedSource.availability).toBe("not-connected");
     expect(blockedSource.downloadPath).toBeUndefined();
     expect(blockedSource.externalUrl).toBeUndefined();
     expect(blockedSource.description).toMatch(/prepared.*release approval pending/i);
-    expect(missingProspects.availability).toBe("not-connected");
-    expect(missingProspects.downloadPath).toBeUndefined();
-    expect(missingProspects.externalUrl).toBeUndefined();
+    expect(prospects).toMatchObject({
+      availability: "available",
+      downloadPath: "/app/resources/clinic-uae-potential-customers",
+      actionLabel: "Download clinic CSV",
+    });
+    expect(prospects.externalUrl).toBeUndefined();
   });
 
   it("states the healthcare and privacy boundary", () => {

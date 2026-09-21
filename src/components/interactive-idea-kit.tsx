@@ -31,6 +31,7 @@ import type { Idea, IdeaSection } from "@/content/idea-schema";
 import { projectStageCopy } from "@/content/project-copy";
 import { getKitActivities, getKitActivity, getKitSection, kitSectionHref, type KitSectionSlug } from "@/lib/kit-sections";
 import type { PergolaProspect } from "@/lib/pergola-prospects";
+import type { ClinicProspect } from "@/lib/clinic-prospects";
 import { IdeaResourceAction, resourceAvailabilityLabel } from "./idea-resource-action";
 import { CopyTextButton, KitSectionSelector, KitViewFocus, LegacyKitHashRedirect, SalesTemplateWorkbench, type SalesTemplate } from "./kit-interactions";
 import { MemberBookmarkButton } from "./member-bookmark-button";
@@ -58,6 +59,7 @@ type InteractiveIdeaKitProps = {
   selectedSection: KitSectionSlug | null;
   project: KitProjectProgress | null;
   prospects: PergolaProspect[];
+  clinicProspects: ClinicProspect[] | null;
 };
 
 const activityIcons: Record<KitSectionSlug, typeof Compass> = {
@@ -88,7 +90,7 @@ function activityState(idea: Idea, slug: KitSectionSlug, project: KitProjectProg
   if (slug === "software") return findResourceByType(idea, "source")?.availability === "available" ? "Source included" : idea.id === "idea-002" ? clinicDistributionState.statusLabel : "Source unavailable";
   if (slug === "setup") return findResourceByType(idea, "guide")?.availability === "available" ? "Guide available" : "Setup guide pending";
   if (slug === "customers") return findResource(idea, "crm-discovery")?.availability === "available" ? "Prospect resource available" : "Research guide ready · sheet pending";
-  if (slug === "clinics") return "Research guide ready · prospect list unavailable";
+  if (slug === "clinics") return findResource(idea, "clinic-prospects")?.availability === "available" ? "100 clinic prospects ready" : "Research guide ready · prospect list unavailable";
   if (slug === "conversation") return "Editable templates ready";
   if (slug === "pricing") return "Local planning tool ready";
   if (slug === "tools") return "Tools verified";
@@ -104,7 +106,7 @@ function activityState(idea: Idea, slug: KitSectionSlug, project: KitProjectProg
 function isLimitedActivity(idea: Idea, slug: KitSectionSlug) {
   if (slug === "setup") return findResourceByType(idea, "guide")?.availability !== "available";
   if (slug === "customers") return findResource(idea, "crm-discovery")?.availability !== "available";
-  if (idea.id === "idea-002" && ["demo", "software", "setup", "clinics", "tools"].includes(slug)) return true;
+  if (idea.id === "idea-002" && ["demo", "software", "setup", "tools"].includes(slug)) return true;
   return false;
 }
 
@@ -330,7 +332,7 @@ function DeliverySection({ idea, section, project }: { idea: Idea; section: Extr
   );
 }
 
-function FocusedKitSection({ idea, basePath, selectedSection, project, prospects }: InteractiveIdeaKitProps & { selectedSection: KitSectionSlug }) {
+function FocusedKitSection({ idea, basePath, selectedSection, project, prospects, clinicProspects }: InteractiveIdeaKitProps & { selectedSection: KitSectionSlug }) {
   const activities = getKitActivities(idea.id);
   const activity = getKitActivity(idea.id, selectedSection);
   const section = getKitSection(idea.sections, activity);
@@ -340,7 +342,7 @@ function FocusedKitSection({ idea, basePath, selectedSection, project, prospects
     <KitViewFocus viewKey={selectedSection}>
       <main className="kit-focused-view">
         <SectionHeader activity={activity} activities={activities} basePath={basePath} />
-        {idea.id === "idea-002" ? <ClinicKitSection idea={idea} project={project} section={section} /> : <>
+        {idea.id === "idea-002" ? <ClinicKitSection clinicProspects={clinicProspects} idea={idea} project={project} section={section} /> : <>
           {section.type === "overview" ? <OpportunitySection idea={idea} section={section} /> : null}
           {section.type === "demo-preview" ? <DemoSection idea={idea} section={section} /> : null}
           {section.type === "workflow" ? <SoftwareSection idea={idea} section={section} /> : null}

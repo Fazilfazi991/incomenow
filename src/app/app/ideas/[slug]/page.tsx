@@ -8,6 +8,7 @@ import { LockedIdeaDetail } from "@/components/locked-idea-detail";
 import { projectStageCopy } from "@/content/project-copy";
 import { isInteractiveKitIdea, isKitSectionSlug } from "@/lib/kit-sections";
 import { getIdeaRouteContent } from "@/lib/member-content.server";
+import { getClinicProspects } from "@/lib/clinic-prospects.server";
 import { getPergolaProspects } from "@/lib/pergola-prospects.server";
 import { getMemberProject } from "@/lib/workspace.server";
 
@@ -31,6 +32,9 @@ export default async function MemberIdeaPage({ params, searchParams }: IdeaPageP
 
   let projectProgress: KitProjectProgress | null = null;
   const prospects = hasInteractiveKit && selectedSection === "customers" ? await getPergolaProspects() : [];
+  const clinicProspects = hasInteractiveKit && content.idea.id === "idea-002" && selectedSection === "clinics" && content.access === "full"
+    ? await getClinicProspects()
+    : null;
   if (hasInteractiveKit && content.projectId) {
     const project = await getMemberProject(content.projectId);
     if (project) {
@@ -64,7 +68,7 @@ export default async function MemberIdeaPage({ params, searchParams }: IdeaPageP
       </div>
       {content.kind === "full"
         ? hasInteractiveKit
-          ? <InteractiveIdeaKit basePath={`/app/ideas/${content.idea.slug}`} idea={content.idea} project={projectProgress} prospects={prospects} selectedSection={selectedSection} />
+          ? <InteractiveIdeaKit basePath={`/app/ideas/${content.idea.slug}`} clinicProspects={clinicProspects} idea={content.idea} project={projectProgress} prospects={prospects} selectedSection={selectedSection} />
           : <IdeaDetail idea={content.idea} mode="member" existingProjectId={content.projectId} />
         : <LockedIdeaDetail idea={content.idea} access={content.access} />}
     </div>

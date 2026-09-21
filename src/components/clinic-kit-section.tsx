@@ -1,5 +1,6 @@
 import { Boxes, Check, CheckCircle2, Download, FileArchive, Info, LockKeyhole, Search, ShieldCheck, Users } from "lucide-react";
 import type { Idea, IdeaSection } from "@/content/idea-schema";
+import type { ClinicProspect } from "@/lib/clinic-prospects";
 import { clinicDistributionState } from "@/content/clinic-distribution";
 import {
   clinicCodexPrompts,
@@ -13,6 +14,7 @@ import {
 } from "@/content/clinic-kit-readiness";
 import { projectStageCopy } from "@/content/project-copy";
 import { ClinicPricingPlanner, ClinicQuestionnaireActions } from "./clinic-kit-tools";
+import { ClinicProspectExplorer } from "./clinic-prospect-explorer";
 import { IdeaResourceAction, resourceAvailabilityLabel } from "./idea-resource-action";
 import { CopyTextButton, SalesTemplateWorkbench, type SalesTemplate } from "./kit-interactions";
 import type { KitProjectProgress } from "./interactive-idea-kit";
@@ -64,8 +66,14 @@ function ClinicSetup({ idea, section }: { idea: Idea; section: Extract<IdeaSecti
   </div>;
 }
 
-function ClinicProspecting({ section }: { section: Extract<IdeaSection, { type: "customer-discovery" }> }) {
-  return <div className="kit-section-body"><section className="clinic-input-status"><span><Search aria-hidden="true" size={22} /></span><div><small>Research process ready</small><h2>Clinic prospect list not connected yet.</h2><p>No businesses or contacts have been invented. Build a small, verifiable list from published business sources.</p></div></section><section className="customer-audiences"><div><span>Discovery targets—not proof of demand</span><h2>Clinic categories to research</h2></div><div>{section.audiences.map((audience) => <span key={audience}><Users aria-hidden="true" size={15} />{audience}</span>)}</div></section><div className="clinic-research-fields"><article><span>Suggested searches</span><p>dental clinic Dubai<br />aesthetic clinic Abu Dhabi<br />physiotherapy clinic Dubai<br />dental clinic London<br />aesthetic clinic Manchester</p></article><article><span>Record only published business details</span><p>Clinic name · Website · Country · City · Clinic type · Business email · Business phone · Contact form · Source · Last checked date</p></article></div><details className="kit-details" open><summary>Safe research method <ShieldCheck aria-hidden="true" size={16} /></summary><div><ol>{section.questions.map((question) => <li key={question}>{question}</li>)}</ol><p>{section.guidance}</p></div></details></div>;
+function ClinicProspecting({ section, prospects }: { section: Extract<IdeaSection, { type: "customer-discovery" }>; prospects: ClinicProspect[] | null }) {
+  return <div className="kit-section-body">
+    <section className="clinic-input-status clinic-prospect-intro"><span><Search aria-hidden="true" size={22} /></span><div><small>Protected full-member research resource</small><h2>100 UAE clinics to research</h2><p>Explore independent clinics and small medical centres in Dubai and Abu Dhabi using publicly listed business contact routes.</p><p className="clinic-prospect-caution">Potential businesses to research — not confirmed buyers. Contact information comes from publicly available business sources and may change. Verify the clinic and contact route before outreach. The list is non-exclusive.</p></div></section>
+    {prospects ? <ClinicProspectExplorer downloadPath="/app/resources/clinic-uae-potential-customers" records={prospects} salesTemplatesPath="/app/ideas/clinic-operations-crm?section=conversation" /> : <div className="kit-limitation"><LockKeyhole aria-hidden="true" size={18} /><p><strong>Full membership required.</strong> The protected Clinic prospect dataset is not included with the Pergola Starter.</p></div>}
+    <section className="customer-audiences"><div><span>Discovery targets—not proof of demand</span><h2>How to research more clinics</h2></div><div>{section.audiences.map((audience) => <span key={audience}><Users aria-hidden="true" size={15} />{audience}</span>)}</div></section>
+    <div className="clinic-research-fields"><article><span>Suggested Dubai searches</span><p>dental clinic Dubai<br />aesthetic clinic Dubai<br />physiotherapy clinic Dubai</p></article><article><span>Suggested Abu Dhabi searches</span><p>dental clinic Abu Dhabi<br />dermatology clinic Abu Dhabi<br />physiotherapy clinic Abu Dhabi</p></article></div>
+    <details className="kit-details" open><summary>Safe research method <ShieldCheck aria-hidden="true" size={16} /></summary><div><ol>{section.questions.map((question) => <li key={question}>{question}</li>)}</ol><p>{section.guidance}</p><p>Prefer the clinic&apos;s official website as evidence. Do not bulk scrape business data or infer private contact details.</p></div></details>
+  </div>;
 }
 
 function ClinicConversation({ section }: { section: Extract<IdeaSection, { type: "sales-kit" }> }) {
@@ -90,12 +98,12 @@ function ClinicDelivery({ idea, section, project }: { idea: Idea; section: Extra
   return <div className="kit-section-body"><section className="delivery-summary"><div><span>Optional personal workspace</span><h2>{project?.meaningful ? project.nextActionTitle : "Turn the kit into one practical delivery plan"}</h2><p>Your private task progress and notes are separate from reading these activities.</p></div>{project?.meaningful ? <div className="delivery-progress"><strong>{project.completedStageCount}/{project.totalStageCount}</strong><span>checklist stages complete</span></div> : null}<StartIdeaControl appearance="primary" existingLabel="Open my Clinic project" existingProjectId={project?.id ?? null} ideaId={idea.id} mode="member" startLabel="Start my Clinic project" /></section><section className="delivery-readiness"><div><span>Delivery boundary</span><h2>Checks before a clinic handover</h2><p>Adapt these to the agreed scope and record evidence in the personal project. Deployment does not certify healthcare compliance.</p></div><ol>{clinicDeliveryGuide.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol></section><ol className="delivery-stage-map">{section.stages.map((stage, index) => { const saved = progressByStage.get(stage.id); const display = projectStageCopy(stage); return <li className={saved?.complete ? "complete" : ""} key={stage.id}><span>{saved?.complete ? <Check aria-hidden="true" size={15} /> : index + 1}</span><div><h3>{display.title}</h3><p>{display.summary}</p></div>{saved?.complete ? <em>Saved complete</em> : null}</li>; })}</ol></div>;
 }
 
-export function ClinicKitSection({ idea, section, project }: { idea: Idea; section: IdeaSection; project: KitProjectProgress | null }) {
+export function ClinicKitSection({ idea, section, project, clinicProspects }: { idea: Idea; section: IdeaSection; project: KitProjectProgress | null; clinicProspects: ClinicProspect[] | null }) {
   if (section.type === "overview") return <ClinicOpportunity idea={idea} section={section} />;
   if (section.type === "demo-preview") return <ClinicDemo idea={idea} section={section} />;
   if (section.type === "workflow") return <ClinicSoftware idea={idea} section={section} />;
   if (section.type === "resources") return <ClinicSetup idea={idea} section={section} />;
-  if (section.type === "customer-discovery") return <ClinicProspecting section={section} />;
+  if (section.type === "customer-discovery") return <ClinicProspecting prospects={clinicProspects} section={section} />;
   if (section.type === "sales-kit") return <ClinicConversation section={section} />;
   if (section.type === "pricing-planner") return <ClinicPricing section={section} />;
   if (section.type === "tools") return <ClinicTools section={section} />;

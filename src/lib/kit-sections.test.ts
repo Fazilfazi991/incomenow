@@ -31,6 +31,7 @@ describe("interactive kit sections", () => {
     expect(activities.find((activity) => activity.slug === "demo")?.description).toMatch(/inspected synthetic demo/i);
     expect(activities.find((activity) => activity.slug === "software")?.description).toMatch(/sanitised package evidence/i);
     expect(activities.find((activity) => activity.slug === "setup")?.description).toMatch(/fourteen-step guide/i);
+    expect(activities.find((activity) => activity.slug === "clinics")?.description).toMatch(/protected UAE clinic dataset/i);
     expect(activities.find((activity) => activity.slug === "tools")?.description).toMatch(/Supabase, Vercel/i);
   });
 

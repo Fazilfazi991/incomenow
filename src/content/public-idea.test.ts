@@ -42,4 +42,13 @@ describe("public idea projection", () => {
     expect(payload.coverArt.src).toBe("/artwork/marketing/modern/pergola-kit.webp");
     expect(payload).not.toHaveProperty("publicCoverArt");
   });
+
+  it("exposes only aggregate resource availability for the Clinic prospect dataset", () => {
+    const clinic = ideas.find((idea) => idea.id === "idea-002")!;
+    const payload = JSON.stringify(toPublicIdea(clinic));
+
+    expect(payload).toContain("UAE clinic prospect list");
+    expect(payload).not.toContain("clinic-uae-potential-customers");
+    expect(payload).not.toMatch(/primaryEmail|primaryPhone|whatsappNumber|contactFormUrl|bookingUrl|sourceUrl/);
+  });
 });

@@ -117,7 +117,7 @@ The member kit now provides:
 - An approval-gated Clinic source endpoint that can serve only the sanitised archive after fresh full-member access and explicit owner release approval.
 - Stack-specific tools, cost categories, sales-demo structure, discovery boundaries, and delivery checks.
 
-No Clinic prospect workbook was supplied. The prospect finder and protected CSV remain unavailable, and the Pergola workbook was not reused.
+The owner subsequently supplied a separate UAE Clinic prospect workbook, CSV, and research summary. The raw files remain unchanged, ignored, and unserved. A strict 100-record member-safe projection now powers the full-member **Find clinics** activity and a protected generated CSV; the Pergola workbook was not reused. Counts, field exclusions, normalization, hashes, access behavior, and security evidence are recorded in `docs/clinic-prospect-integration.md`.
 
 Detailed static inspection, health-data findings, local package checks, and remaining production questions are recorded in `docs/clinic-source-inspection.md`. Sanitisation, malware, dependency, licence, package-difference, fresh-build, and approval-gate evidence is recorded in `docs/clinic-distribution-readiness.md`.
 
@@ -129,13 +129,13 @@ Current application verification:
 
 - `pnpm run typecheck` — passed.
 - `pnpm run lint` — passed.
-- `pnpm test` — passed: 128 tests across 36 files.
-- `pnpm run build` — passed, including the protected Clinic setup-guide and approval-gated source routes.
+- `pnpm test` — passed: 146 tests across 39 files.
+- `pnpm run build` — passed, including the protected Clinic setup-guide, approval-gated source route, and full-member prospect CSV route.
 - Database regression — passed: 192 pgTAP assertions across five suites without a reset; linting the local `public` and `private` schemas reported no errors.
 - Project-plan sync — passed: 27 stages and 57 tasks matched the structured content.
-- Disposable-user integration — passed all 12 checks, including fresh registered/Starter denial, full-member access, downgraded denial for the protected Clinic setup guide, and the full-member source approval gate. Disposable accounts were removed.
-- Browser verification — passed 40 route/viewport combinations across the Clinic hub and nine activities at 1440, 768, 390, and 320 pixels, with no horizontal overflow, framework overlay, or console warning/error.
-- Client-bundle inspection found no source archive hash/name, extraction path, workstation path, service-role marker, or Clinic source-package marker in `.next/static`.
+- Disposable-user integration — passed all 13 checks, including fresh registered/Starter prospect denial, full-member finder and deterministic CSV access, expired/downgraded/revoked denial, the Clinic setup-guide gate, and the source-release gate. Disposable accounts were removed.
+- Browser verification — passed the prospect finder at 1440, 768, 390, and 320 pixels. Filters, live counts, empty-state recovery, detail disclosure, clipboard feedback, safe external actions, 768px cards, and stacked 320px actions worked without horizontal overflow or console warning/error.
+- Client-output inspection found no sampled clinic name, domain, email, or phone in `.next/static` or `public/`. Raw research and the separate distribution archive remain untracked, and no raw Clinic data file is present under `public/`.
 
 Clinic source-package verification, executed separately in an isolated temporary folder with local placeholder build configuration:
 
@@ -151,4 +151,4 @@ Local owner-review route (requires a full-member account):
 
 ## Deferred and unchanged
 
-No push, deployment, hosted Supabase mutation, payment activation, admin/analytics work, Google OAuth configuration, domain work, source redistribution, prospect publication, or final commercial-term decision was performed. Pergola remains the only US$1 Starter kit. The Clinic CRM is not described as production ready or compliant.
+No push, deployment, hosted Supabase mutation, payment activation, admin/analytics work, Google OAuth configuration, domain work, source redistribution, clinic outreach, new lead research, or final commercial-term decision was performed. Pergola remains the only US$1 Starter kit. The Clinic CRM is not described as production ready or compliant.

@@ -2140,6 +2140,76 @@ h1, h2, h3 { font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-se
 .clinic-research-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .clinic-research-fields article { padding: 17px; }
 .clinic-research-fields p { margin-top: 8px; color: #40584e; font-size: 12px; line-height: 1.75; }
+.clinic-prospect-intro { align-items: start; }
+.clinic-prospect-intro .clinic-prospect-caution { max-width: 88ch; padding-top: 8px; border-top: 1px solid rgba(53,90,78,.12); color: #3e5d53; font-size: 11px; }
+.clinic-prospect-explorer { overflow: hidden; border: 1px solid #bfd8d2; border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); }
+.clinic-prospect-summary { display: grid; grid-template-columns: 1.1fr repeat(3, 1fr); gap: 1px; background: #d6e4df; border-bottom: 1px solid #d6e4df; }
+.clinic-prospect-summary article { min-width: 0; display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 3px 8px; padding: 15px 16px; background: #f6faf8; }
+.clinic-prospect-summary article.primary { background: #173d32; color: white; }
+.clinic-prospect-summary strong { grid-row: 1 / span 2; font-family: var(--font-manrope); font-size: 28px; font-variant-numeric: tabular-nums; line-height: 1; }
+.clinic-prospect-summary span { color: #294d40; font-size: 11px; font-weight: 760; }
+.clinic-prospect-summary small { color: #698077; font-size: 9px; }
+.clinic-prospect-summary .primary span, .clinic-prospect-summary .primary small { color: rgba(255,255,255,.72); }
+.clinic-prospect-coverage { border-bottom: 1px solid #dce7e2; background: #f7faf8; }
+.clinic-prospect-coverage summary { min-height: 40px; display: flex; align-items: center; gap: 6px; padding: 0 15px; color: #4d675d; font-size: 10px; font-weight: 700; cursor: pointer; list-style: none; }
+.clinic-prospect-coverage summary::-webkit-details-marker { display: none; }
+.clinic-prospect-coverage[open] summary svg { transform: rotate(180deg); }
+.clinic-prospect-coverage > div { display: flex; flex-wrap: wrap; gap: 7px; padding: 0 15px 13px; }
+.clinic-prospect-coverage > div span { padding: 5px 8px; border-radius: 7px; background: #e7f2ed; color: #355d4e; font-size: 9px; font-weight: 700; }
+.clinic-prospect-toolbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 14px; background: #edf6f2; }
+.clinic-prospect-search { min-height: 44px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 9px; padding: 0 11px; border: 1px solid #b7cec5; border-radius: 10px; background: #f9fcfa; color: #386857; }
+.clinic-prospect-search:focus-within { border-color: var(--action); outline: 3px solid rgba(25,122,86,.13); }
+.clinic-prospect-search input { min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 12px; }
+.clinic-prospect-search button { width: 32px; height: 32px; display: grid; place-items: center; border: 0; border-radius: 8px; background: transparent; color: #547467; }
+.clinic-prospect-search button:hover { background: #e7f2ed; }
+.clinic-prospect-download { min-height: 44px; }
+.clinic-prospect-filters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 12px 14px; border-bottom: 1px solid #dce7e2; }
+.clinic-prospect-filters label { display: grid; gap: 4px; color: #5c7168; font-size: 8px; font-weight: 760; letter-spacing: .05em; text-transform: uppercase; }
+.clinic-prospect-filters select { min-width: 0; min-height: 40px; padding: 0 28px 0 9px; border: 1px solid #c8d9d2; border-radius: 8px; background: #f8fbf9; color: #294e40; font-size: 10px; text-transform: none; }
+.clinic-prospect-filters select:focus { border-color: var(--action); outline: 3px solid rgba(25,122,86,.13); }
+.clinic-prospect-results-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; padding: 15px; }
+.clinic-prospect-results-heading > div > span, .clinic-detail-heading > div > span, .clinic-detail-grid section > span { color: #60756c; font-size: 9px; font-weight: 780; letter-spacing: .08em; text-transform: uppercase; }
+.clinic-prospect-results-heading h2 { margin-top: 2px; font-size: 21px; font-variant-numeric: tabular-nums; }
+.clinic-prospect-results-heading p { max-width: 520px; color: #657970; font-size: 10px; line-height: 1.45; text-align: right; }
+.clinic-prospect-results-heading p strong { color: #34594c; }
+.clinic-prospect-list-header, .clinic-prospect-row { display: grid; grid-template-columns: 1.22fr .85fr 1.05fr 1.28fr .58fr .72fr; gap: 10px; }
+.clinic-prospect-list-header { padding: 9px 14px; background: #173d32; color: #deebe6; font-size: 8px; font-weight: 760; letter-spacing: .07em; text-transform: uppercase; }
+.clinic-prospect-record { content-visibility: auto; contain-intrinsic-size: 68px; border-top: 1px solid #e1e9e5; }
+.clinic-prospect-record.expanded { background: #fbfdfc; }
+.clinic-prospect-row { align-items: center; padding: 13px 14px; }
+.clinic-prospect-row > div { min-width: 0; }
+.clinic-prospect-row strong { display: block; overflow-wrap: anywhere; color: #173e32; font-size: 10px; line-height: 1.4; }
+.clinic-prospect-row span { display: block; margin-top: 2px; overflow-wrap: anywhere; color: #657970; font-size: 9px; line-height: 1.35; }
+.clinic-prospect-company > strong { font-size: 11px; }
+.clinic-contact-indicators { display: flex; flex-wrap: wrap; gap: 4px; }
+.clinic-contact-indicators span { min-height: 22px; display: inline-flex; align-items: center; gap: 3px; margin: 0; padding: 3px 5px; border-radius: 6px; background: #f0f3f1; color: #78877f; font-size: 8px; font-weight: 700; }
+.clinic-contact-indicators span.available { background: #e2f3ea; color: #246247; }
+.clinic-priority { width: fit-content; display: inline-flex !important; align-items: center; margin: 0 !important; padding: 4px 7px; border-radius: 999px; font-size: 8px !important; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.clinic-priority[data-priority="HIGH"] { background: #fff1cf; color: #765000; }
+.clinic-priority[data-priority="MEDIUM"] { background: #e6efeb; color: #496359; }
+.clinic-prospect-row-action button { min-height: 34px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 6px 9px; border: 1px solid #b9d0c7; border-radius: 8px; background: #f7fbf9; color: #245a47; font-size: 9px; font-weight: 750; }
+.clinic-prospect-row-action button:hover { border-color: #77a994; background: #ebf5f0; }
+.clinic-prospect-row-action button[aria-expanded="true"] svg { transform: rotate(180deg); }
+.clinic-prospect-details { margin: 0 14px 14px; padding: 16px; border: 1px solid #cdded7; border-radius: 13px; background: #f3f8f5; }
+.clinic-detail-heading { display: flex; align-items: start; justify-content: space-between; gap: 18px; }
+.clinic-detail-heading h3 { margin-top: 3px; font-size: 19px; }
+.clinic-detail-heading p { display: flex; align-items: center; gap: 5px; margin-top: 4px; color: #63786e; font-size: 10px; }
+.clinic-detail-grid { display: grid; grid-template-columns: 1fr 1.2fr .9fr; gap: 10px; margin-top: 13px; }
+.clinic-detail-grid section { min-width: 0; padding: 12px; border-radius: 10px; background: white; }
+.clinic-detail-grid h4 { margin-top: 5px; color: #244c3d; font-size: 12px; }
+.clinic-detail-grid p, .clinic-detail-grid dd { margin-top: 5px; overflow-wrap: anywhere; color: #5d7168; font-size: 10px; line-height: 1.45; }
+.clinic-detail-grid section:last-child p { display: flex; align-items: start; gap: 5px; }
+.clinic-detail-grid dl { display: grid; gap: 6px; margin-top: 7px; }
+.clinic-detail-grid dl > div { display: grid; grid-template-columns: 66px minmax(0, 1fr); gap: 8px; }
+.clinic-detail-grid dt { color: #345c4d; font-size: 9px; font-weight: 760; }
+.clinic-detail-grid dd { margin: 0; }
+.clinic-detail-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.clinic-detail-actions a, .clinic-detail-actions button { min-height: 34px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 6px 8px; border: 1px solid #b8d0c6; border-radius: 8px; background: white; color: #245b48; font-size: 9px; font-weight: 750; }
+.clinic-detail-actions a:hover, .clinic-detail-actions button:hover { border-color: #76a68f; background: #e8f4ee; }
+.clinic-prospect-empty { display: grid; justify-items: center; padding: 44px 20px; border-top: 1px solid #dce7e2; color: #5b7368; text-align: center; }
+.clinic-prospect-empty h3 { margin-top: 9px; color: #244f3e; font-size: 16px; }
+.clinic-prospect-empty p { margin-top: 4px; font-size: 10px; }
+.clinic-prospect-empty button { margin-top: 14px; }
 .pricing-planner { display: grid; gap: 14px; }
 .pricing-planner-note { display: flex; justify-content: space-between; gap: 18px; padding: 14px 16px; border-radius: 13px; background: #e9f5ef; color: #254c3d; font-size: 11px; }
 .pricing-planner-note span { color: #557067; text-align: right; }
@@ -2190,6 +2260,23 @@ h1, h2, h3 { font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-se
   .clinic-tools-head { display: none; }
   .clinic-tools-table article { grid-template-columns: 1fr 1fr; }
   .clinic-tools-table article strong { grid-column: 1 / -1; font-size: 13px; }
+  .clinic-prospect-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .clinic-prospect-summary { grid-template-columns: 1fr 1fr; }
+  .clinic-prospect-toolbar { grid-template-columns: 1fr; }
+  .clinic-prospect-download { width: 100%; }
+  .clinic-prospect-results-heading { align-items: start; flex-direction: column; gap: 6px; }
+  .clinic-prospect-results-heading p { text-align: left; }
+  .clinic-prospect-list-header { display: none; }
+  .clinic-prospect-row { grid-template-columns: 1fr; gap: 10px; padding: 14px; }
+  .clinic-prospect-row > div:nth-child(6) { display: block; }
+  .clinic-prospect-row > div:not(.clinic-prospect-company)::before { content: attr(data-label); display: block; margin-bottom: 4px; color: #667e73; font-size: 8px; font-weight: 760; letter-spacing: .06em; text-transform: uppercase; }
+  .clinic-contact-indicators { gap: 5px; }
+  .clinic-prospect-row-action button { width: 100%; min-height: 42px; justify-content: space-between; }
+  .clinic-prospect-details { margin: 0 10px 12px; padding: 14px; }
+  .clinic-detail-heading { flex-direction: column; gap: 8px; }
+  .clinic-detail-grid { grid-template-columns: 1fr; }
+  .clinic-detail-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .clinic-detail-actions a, .clinic-detail-actions button { min-height: 42px; }
 }
 
 @media (max-width: 767px) {
@@ -2204,6 +2291,23 @@ h1, h2, h3 { font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-se
   .clinic-tools-table article { grid-template-columns: 1fr; gap: 5px; }
   .clinic-tools-table article strong { grid-column: auto; }
   .clinic-privacy-boundary { grid-template-columns: 1fr; padding: 16px; }
+  .clinic-prospect-summary { grid-template-columns: 1fr 1fr; }
+  .clinic-prospect-toolbar { grid-template-columns: 1fr; }
+  .clinic-prospect-download { width: 100%; }
+  .clinic-prospect-filters { grid-template-columns: 1fr 1fr; }
+  .clinic-prospect-results-heading { align-items: start; flex-direction: column; gap: 6px; }
+  .clinic-prospect-results-heading p { text-align: left; }
+  .clinic-prospect-list-header { display: none; }
+  .clinic-prospect-row { grid-template-columns: 1fr; gap: 10px; padding: 14px; }
+  .clinic-prospect-row > div:nth-child(6) { display: block; }
+  .clinic-prospect-row > div:not(.clinic-prospect-company)::before { content: attr(data-label); display: block; margin-bottom: 4px; color: #667e73; font-size: 8px; font-weight: 760; letter-spacing: .06em; text-transform: uppercase; }
+  .clinic-contact-indicators { gap: 5px; }
+  .clinic-prospect-row-action button { width: 100%; min-height: 42px; justify-content: space-between; }
+  .clinic-prospect-details { margin: 0 10px 12px; padding: 14px; }
+  .clinic-detail-heading { flex-direction: column; gap: 8px; }
+  .clinic-detail-grid { grid-template-columns: 1fr; }
+  .clinic-detail-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .clinic-detail-actions a, .clinic-detail-actions button { min-height: 42px; }
 }
 
 @media (max-width: 390px) {
@@ -2211,4 +2315,8 @@ h1, h2, h3 { font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-se
   .pricing-planner input { width: 100%; text-align: left; }
   .questionnaire-actions { display: grid; }
   .questionnaire-actions button { width: 100%; }
+  .clinic-prospect-summary { grid-template-columns: 1fr; }
+  .clinic-prospect-summary article { min-height: 68px; }
+  .clinic-prospect-filters { grid-template-columns: 1fr; }
+  .clinic-detail-actions { grid-template-columns: 1fr; }
 }
