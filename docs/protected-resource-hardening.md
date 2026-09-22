@@ -39,3 +39,14 @@ This task did not link or migrate Supabase project `imwiqfmafuamcgqswcfy`, creat
 ## History cleanup
 
 Remote inspection after `git fetch --all --prune` found neither affected commit on a remote branch and no protected-path history on `origin/main`. The local release branch is rebuilt so the two datasets and the prior premium readiness modules are absent from every commit intended for origin. Existing remote refs are unchanged. Unreachable local objects may remain until normal repository maintenance; no destructive garbage collection is required.
+
+Auditable rewrite mapping:
+
+| Previous local commit | Sanitised replacement |
+| --- | --- |
+| `23853e2b7e685712e8f29425d0a93e35c85fee54` | `ac3248480b919542332ca32908ed9c906b8a1da7` |
+| `49f85d26bcc41faa8894d563825a565cf6eb1072` | `a2eae137aa4f6571440586de60718c8697388bed` |
+| `18989b3bb1f9999288e77c91c4e13aa27eeff97c` | `40944013df583929f367b711daa6e79656c89f4a` |
+| `072a7496b6c9fffaed181cd8194d6924d71b1546` | `99bd2813024489f1e26b55d9ede71b843dc63e6c` |
+
+The final follow-up commit re-adds only the small public identifiers/types for the three readiness modules. `git log integration/ideas-003-004-005 -- private-resources` is empty, and the readiness paths have no predecessor containing premium content on the sanitised branch.
