@@ -112,6 +112,8 @@ try {
   assert.equal(signedOutClinicCsv.status, 307, "signed-out visitors cannot download the Clinic prospect CSV");
   const signedOutClinicSource = await fetch(`${process.env.APP_ORIGIN}/app/resources/clinic-source`, { redirect: "manual" });
   assert.equal(signedOutClinicSource.status, 307, "signed-out visitors cannot download the Clinic source package");
+  const signedOutPergolaSource = await fetch(`${process.env.APP_ORIGIN}/app/resources/pergola-source`, { redirect: "manual" });
+  assert.equal(signedOutPergolaSource.status, 307, "signed-out visitors cannot download the Pergola source package");
 
   for (const account of [free, starter, full, expired]) {
     const response = await appRequest("/app/explore", account);
@@ -131,6 +133,9 @@ try {
   const freeProspects = await appRequest("/app/resources/pergola-potential-customers", free);
   assert.equal(freeProspects.status, 403, "registered preview access cannot download the protected prospect export");
   assert.equal(freeProspects.headers.get("cache-control"), "private, no-store");
+  const freePergolaSource = await appRequest("/app/resources/pergola-source", free);
+  assert.equal(freePergolaSource.status, 403, "registered preview access cannot download the Pergola source package");
+  assert.equal(freePergolaSource.headers.get("cache-control"), "private, no-store");
   const freeClinic = await appRequest("/app/ideas/clinic-operations-crm", free);
   assert.equal(freeClinic.status, 200);
   const freeClinicBody = await freeClinic.text();
@@ -173,6 +178,19 @@ try {
   assert.match(starterGuide.headers.get("content-type") ?? "", /^text\/markdown/);
   assert.equal(starterGuide.headers.get("cache-control"), "private, no-store");
   assert.match(await starterGuide.text(), /Universal Pergola CRM — local setup and handover guide/);
+  const starterSource = await appRequest("/app/resources/pergola-source", starter);
+  assert.equal(starterSource.status, 200, "Pergola Starter can download the owner-approved Pergola source package");
+  assert.equal(starterSource.headers.get("content-type"), "application/zip");
+  assert.equal(starterSource.headers.get("cache-control"), "private, no-store");
+  assert.equal(starterSource.headers.get("content-disposition"), 'attachment; filename="universalpergola-main.zip"');
+  assert.equal(starterSource.headers.get("x-content-type-options"), "nosniff");
+  const starterSourceBuffer = Buffer.from(await starterSource.arrayBuffer());
+  assert.equal(starterSourceBuffer.byteLength, 754_291, "the protected Pergola source has the owner-approved byte size");
+  assert.equal(
+    createHash("sha256").update(starterSourceBuffer).digest("hex").toUpperCase(),
+    "5E4DC492F2BD05869AE7FB77A4C83F66908F96FB6CD6329C4BDA1B36970345B5",
+    "the protected Pergola source matches the owner-approved package",
+  );
   const starterClinic = await appRequest("/app/ideas/clinic-operations-crm", starter);
   assert.equal(starterClinic.status, 200);
   assert.match(await starterClinic.text(), /Published catalogue preview/);
@@ -192,6 +210,8 @@ try {
   const starterAccountingBody = await starterAccounting.text();
   assert.match(starterAccountingBody, /Published catalogue preview/);
   assert.doesNotMatch(starterAccountingBody, /Pick the outcome you need now|accounting-opportunity|Configure, test, and hand over/);
+  const starterAccountingGuide = await appRequest("/app/resources/accounting-setup-guide", starter);
+  assert.equal(starterAccountingGuide.status, 403, "Pergola Starter cannot download the Accounting setup guide");
   const starterZeroDebt = await appRequest("/app/ideas/zerodebt-personal-finance-saas", starter);
   assert.equal(starterZeroDebt.status, 200);
   const starterZeroDebtBody = await starterZeroDebt.text();
@@ -272,6 +292,8 @@ try {
 
   const expiredStart = await expired.client.rpc("start_member_project", { p_idea_id: "idea-001" });
   assert.equal(expiredStart.error?.code, "42501");
+  const expiredPergolaSource = await appRequest("/app/resources/pergola-source", expired);
+  assert.equal(expiredPergolaSource.status, 403, "expired access cannot download the Pergola source package");
   const expiredClinicProspects = await appRequest("/app/resources/clinic-uae-potential-customers", expired);
   assert.equal(expiredClinicProspects.status, 403, "expired full membership cannot download Clinic prospect data");
   const expiredClinicSource = await appRequest("/app/resources/clinic-source", expired);
@@ -283,6 +305,8 @@ try {
   assert.deepEqual(revokedProjects.data, []);
   const revokedProspects = await appRequest("/app/resources/pergola-potential-customers", starter);
   assert.equal(revokedProspects.status, 403, "revoked idea access immediately removes protected download access");
+  const revokedPergolaSource = await appRequest("/app/resources/pergola-source", starter);
+  assert.equal(revokedPergolaSource.status, 403, "revoked idea access immediately removes Pergola source access");
 
   const fullExplore = await appRequest("/app/explore", full);
   assert.equal(fullExplore.status, 200);
@@ -332,6 +356,11 @@ try {
   const fullAccounting = await appRequest("/app/ideas/ai-accounting-finance-operations", full);
   assert.equal(fullAccounting.status, 200);
   assert.match(await fullAccounting.text(), /12(?:<!-- -->)? kit activities/);
+  const fullAccountingGuide = await appRequest("/app/resources/accounting-setup-guide", full);
+  assert.equal(fullAccountingGuide.status, 200, "full membership can download the Accounting setup guide");
+  assert.match(fullAccountingGuide.headers.get("content-type") ?? "", /^text\/markdown/);
+  assert.equal(fullAccountingGuide.headers.get("cache-control"), "private, no-store");
+  assert.match(await fullAccountingGuide.text(), /FYNTA Accounting & Finance Operations — inspected setup and handover guide/);
   const fullZeroDebt = await appRequest("/app/ideas/zerodebt-personal-finance-saas", full);
   assert.equal(fullZeroDebt.status, 200);
   assert.match(await fullZeroDebt.text(), /13(?:<!-- -->)? kit activities/);
