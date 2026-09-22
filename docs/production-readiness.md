@@ -144,6 +144,8 @@ Executed on `release/five-ideas-v1` after the production-preparation changes:
 
 The protected-resource dry-run verified all seven local inputs without a network request. A separate opt-in integration run against an isolated local private Supabase bucket passed both tests, including exact hashes and structured data/guide loaders.
 
+A tracked-only clean clone of local commit `849014c` also passed install, lint, typecheck, production build and the application suite. Its expected unavailable-resource result was 192 tests passed and 18 artifact-dependent/opt-in checks skipped; no protected artifact was present or reconstructed.
+
 ## Migration preparation
 
 The production dry-run was **not executed** because backup verification did not pass and the current CLI profile cannot access the named production project. Do not link a different project, merge unsafe history, or bypass this gate.
