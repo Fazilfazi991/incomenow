@@ -1,8 +1,6 @@
 import "server-only";
 
 import { createHash } from "node:crypto";
-import { readFile, stat } from "node:fs/promises";
-import path from "node:path";
 import type { ZodType } from "zod";
 import type { Idea } from "@/content/idea-schema";
 import {
@@ -15,6 +13,7 @@ import {
   type PrivateKitContent,
 } from "@/content/private-kit-content";
 import { privateResourceManifest, type PrivateResourceId } from "./private-resource-manifest.server";
+import { createPrivateResourceStore } from "./private-resource-store.server";
 
 const resourceByIdeaAndKind = {
   "idea-001": { source: "pergola-source", prospects: "pergola-prospects", guide: "pergola-setup-guide" },
@@ -32,15 +31,11 @@ const manifestIdByIdeaResourceId: Partial<Record<string, PrivateResourceId>> = {
   "accounting-setup-guide": "accounting-setup-guide",
 };
 
-function resourcePath(resourceId: PrivateResourceId) {
-  return path.join(/* turbopackIgnore: true */ process.cwd(), ...privateResourceManifest[resourceId].relativePath);
-}
-
 export async function isPrivateResourceProvisioned(resourceId: PrivateResourceId) {
   const expected = privateResourceManifest[resourceId];
   try {
-    const file = await stat(resourcePath(resourceId));
-    return file.isFile() && file.size === expected.sizeBytes;
+    const metadata = await createPrivateResourceStore().getMetadata(resourceId);
+    return metadata?.sizeBytes === expected.sizeBytes;
   } catch {
     return false;
   }
@@ -48,7 +43,7 @@ export async function isPrivateResourceProvisioned(resourceId: PrivateResourceId
 
 export async function readVerifiedPrivateResource(resourceId: PrivateResourceId) {
   const expected = privateResourceManifest[resourceId];
-  const bytes = await readFile(resourcePath(resourceId));
+  const bytes = Buffer.from(await createPrivateResourceStore().read(resourceId));
   const sha256 = createHash("sha256").update(bytes).digest("hex").toUpperCase();
   if (bytes.byteLength !== expected.sizeBytes || sha256 !== expected.sha256) {
     throw new Error(`Private resource verification failed: ${resourceId}`);
