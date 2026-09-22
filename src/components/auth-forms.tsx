@@ -5,7 +5,6 @@ import { useFormStatus } from "react-dom";
 import Link from "next/link";
 import { Eye, EyeOff, LoaderCircle, Mail, ShieldAlert } from "lucide-react";
 import {
-  googleAction,
   loginAction,
   registerAction,
   requestPasswordResetAction,
@@ -56,12 +55,12 @@ function PasswordField({
   );
 }
 
-function GoogleButton({ next }: { next?: string }) {
+function GoogleButton() {
   return (
-    <form action={googleAction}>
-      <input type="hidden" name="next" value={next ?? "/account/access"} />
-      <button className="google-button" type="submit"><GoogleMark />Continue with Google</button>
-    </form>
+    <button className="google-button" type="button" disabled aria-describedby="google-availability">
+      <GoogleMark />Google sign-in coming soon
+      <span className="sr-only" id="google-availability">Email and password are available now.</span>
+    </button>
   );
 }
 
@@ -69,7 +68,7 @@ export function RegisterForm({ next }: { next?: string }) {
   const [state, action] = useActionState(registerAction, initialAuthState);
   return (
     <div className="auth-form-stack">
-      <GoogleButton next={next} />
+      <GoogleButton />
       <div className="auth-divider"><span>or sign up with email</span></div>
       <form action={action} className="auth-form">
         <input type="hidden" name="next" value={next ?? "/account/access"} />
@@ -90,7 +89,7 @@ export function LoginForm({ next, notice }: { next?: string; notice?: string }) 
   return (
     <div className="auth-form-stack">
       {notice ? <div className="auth-feedback success" role="status">{notice}</div> : null}
-      <GoogleButton next={next} />
+      <GoogleButton />
       <div className="auth-divider"><span>or log in with email</span></div>
       <form action={action} className="auth-form">
         <input type="hidden" name="next" value={next ?? "/account/access"} />

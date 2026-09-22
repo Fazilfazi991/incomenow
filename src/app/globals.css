@@ -896,7 +896,8 @@ h1, h2, h3 { font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-se
 .auth-form-stack { margin-top: 28px; }
 .google-button, .auth-primary, .auth-secondary { width: 100%; min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 15px; border-radius: 9px; font-size: 14px; font-weight: 700; }
 .google-button { border: 1px solid #cfd9d3; background: #fff; color: #253b31; }
-.google-button:hover, .auth-secondary:hover { background: #f6faf7; }
+.google-button:not(:disabled):hover, .auth-secondary:hover { background: #f6faf7; }
+.google-button:disabled { cursor: not-allowed; background: #f6f8f6; color: #64736b; }
 .google-mark { width: 19px; height: 19px; }
 .auth-divider { display: flex; align-items: center; gap: 12px; color: #74827b; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
 .auth-divider::before, .auth-divider::after { content: ""; height: 1px; flex: 1; background: var(--line-soft); }

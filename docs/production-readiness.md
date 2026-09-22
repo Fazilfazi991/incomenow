@@ -27,44 +27,50 @@ The pre-sanitisation commits `18989b3…` and `072a749…` remain as unreachable
 
 ## Production backup
 
-**BACKUP NOT VERIFIED — no authorised logical database connection was available.**
+**BACKUP VERIFIED — both custom archives are structurally valid, their aggregate data matches production, and both restored successfully in an isolated disposable PostgreSQL 17 environment.**
 
 - Project: `incomenow`
 - Project ref: `imwiqfmafuamcgqswcfy`
 - Environment: production
 - Checked in Chrome: project is healthy, on the Free plan, and reports no scheduled backups.
-- Supabase CLI: `2.117.0`
-- The current CLI profile does not contain this project, and no production database password is present in the release workspace.
-- No password was reset, no key was created, and no dump or restore was attempted using a substitute project.
-- Backup files, sizes and SHA-256 values: none, because no valid backup could be created.
+- Source PostgreSQL: `17.6`; backup client: `pg_dump 17.11`; Supabase CLI: `2.117.0`.
+- Backup creation UTC: `2026-09-22T10:50:38.352115Z`.
+- Storage objects requiring backup: `0` (`0` buckets and `0` objects).
+- Aggregate SQL returned `0` Auth users and `0` identities. A final pre-migration recheck at `2026-09-22T11:45:05Z` returned the same exact counts.
+- Essential Auth counts were also `0` for sessions, refresh tokens, MFA factors, MFA challenges and audit-log entries.
+- The password was never written to Git, documentation, command output or either archive.
 
-A default Supabase CLI schema dump is insufficient for this release: it excludes managed `auth` and `storage` schemas and contains neither data nor custom roles by default. The owner-approved backup procedure must therefore capture and verify, outside Git:
+### Auth count discrepancy resolved
 
-1. application/private schema definitions;
-2. application data;
-3. Auth identities and relevant Auth metadata using a supported scoped Auth recovery/export procedure;
-4. custom roles and required grants;
-5. Storage metadata, plus object bytes separately once member resources exist;
-6. SHA-256 and byte size for every export; and
-7. an isolated restore that reconciles the ten Auth identities without exposing emails, password hashes, tokens, or other sensitive fields in logs.
+The production Dashboard still renders `Total: 10 users (estimated)` while its user grid contains no rows. This is not a record count. Production metadata reports `pg_class.reltuples = -1` for `auth.users`, meaning the table has no analyzed row statistic. Supabase Studio's optimized Users page uses an `EXPLAIN` planner estimate when `reltuples = -1`; production `EXPLAIN (FORMAT JSON) SELECT * FROM auth.users` reports `Plan Rows: 10`. The exact `COUNT(*)` is `0`. The apparent ten users were therefore PostgreSQL's default plan estimate for a never-analyzed table, surfaced by the Dashboard as explicitly estimated—not ten Auth records. This behavior matches Supabase Studio's current [`getUsersCountSQL`](https://github.com/supabase/supabase/blob/master/packages/pg-meta/src/sql/studio/auth/get-users-count.ts) implementation.
 
-Production migration dry-run and production migration are blocked until that procedure ends in `BACKUP VERIFIED`.
+| Archive | Included schema | Bytes | SHA-256 | Verification |
+| --- | --- | ---: | --- | --- |
+| `incomenow-production-auth.backup` | `auth` | 99,847 | `BC958CE907028B7ABD4BB1619A9521B67335149F5013ED446B7539798D8F5F65` | Valid custom archive; 257 TOC entries; required user, identity, session and refresh-token table/data sections present; full isolated restore passed with 27 Auth tables and all essential aggregate counts matching production. |
+| `incomenow-production-public.backup` | `public` | 1,652 | `BD3A8A4D199F8738EB5078E9A8F6EADE0323C3A3AEC13F446155E0E3DE3189BA` | Valid custom archive; 8 TOC entries; full isolated restore passed with zero public tables, matching production. |
+
+The restricted backup directory and metadata remain outside the repository under `Documents/IncomeNow-private-backups/imwiqfmafuamcgqswcfy/20260922T104922Z`. The Auth artifact was created from project `imwiqfmafuamcgqswcfy` through the Supabase shared session pooler with SSL using `pg_dump 17.11`, custom format, and `--schema=auth`; credentials are omitted. Its archive is data-inclusive: the table of contents contains `TABLE DATA` sections for users, identities, sessions, refresh tokens, MFA factors, MFA challenges and audit-log entries. It was not created from local Supabase or either disposable restore database; the contemporaneous metadata records the production project ref and connection method, and the archive predates the disposable restore environments.
+
+On `2026-09-22`, both archives were restored twice into separate disposable `postgres:17-alpine` containers using `--no-owner` and `--no-privileges`. The final recheck restored 27 Auth base tables, all seven required Auth tables and the `auth.uid()`, `auth.role()`, `auth.email()` and `auth.jwt()` helper functions. Users, identities, sessions, refresh tokens, MFA factors, MFA challenges and audit-log entries all exactly matched the current production aggregate value of zero. The restored public schema contained zero tables. Each disposable container was removed after verification. No restore was attempted against production.
 
 ## Production Auth and origin
 
-### Current observed state
+### Current configured state
 
-- Chrome showed ten Auth identities and Google disabled.
+- Supabase Site URL: `https://incomenow.vercel.app`.
+- Exact redirect allowlist: `https://incomenow.vercel.app/auth/callback`, `https://incomenow.vercel.app/auth/confirm`, and `https://incomenow.vercel.app/auth/recovery`.
+- Email/password is enabled; email confirmation is required.
+- Google remains disabled in Supabase.
+- Login and registration now show a disabled “Google sign-in coming soon” control. The existing server-side Google action remains in the codebase for a future approved launch.
+- Local browser verification confirmed no active Google submit action, no framework overlay and no console warning/error.
 - No entitlement, starter grant, project access, or paid state was changed.
-- Exact provider aggregation and intent could not be independently verified without an authorised database export/read connection. Do not infer that all identities are intentional solely because they exist.
 - The profile-backfill migration inserts missing `public.profiles` rows from `auth.users` with `on conflict do nothing`; it does not insert membership entitlements or IDEA grants.
-- Supabase Site URL is still `http://localhost:3000` with no production redirect URLs.
 - Vercel currently has one valid production domain: `https://incomenow.vercel.app`.
 - `incomenow.in` is not attached to the Vercel project and did not resolve in DNS when checked.
 
 ### Required final URL configuration
 
-The brand target remains `https://incomenow.in`, but it is not yet an operable production origin. After DNS and Vercel domain verification, configure:
+The current production-preparation origin is `https://incomenow.vercel.app`. The brand target remains `https://incomenow.in`, but it is not yet an operable production origin. After DNS and Vercel domain verification, replace the Site URL, all three exact redirects and `APP_ORIGIN` together:
 
 - Application `APP_ORIGIN`: `https://incomenow.in`
 - Supabase Site URL: `https://incomenow.in`
@@ -74,16 +80,11 @@ The brand target remains `https://incomenow.in`, but it is not yet an operable p
 - Email confirmation destination: `https://incomenow.in/auth/confirm`
 - Password recovery destination: `https://incomenow.in/auth/recovery`
 
-Use exact production paths. Do not add a production wildcard. If the owner elects to launch first on the existing Vercel domain, apply the same paths under `https://incomenow.vercel.app` and set `APP_ORIGIN` consistently; do not mix origins.
+Use exact production paths. Do not add a production wildcard or mix origins.
 
 ### Google decision
 
-Owner decision is required before launch:
-
-1. **Email/password first:** keep Google disabled in Supabase and replace the working-looking Google action with a clear unavailable/coming-soon state before deployment.
-2. **Enable Google:** create and approve the Google OAuth application, set JavaScript origin to the final production origin, set Google’s authorised redirect URI to `https://imwiqfmafuamcgqswcfy.supabase.co/auth/v1/callback`, enable the provider in Supabase, and test the application callback at the selected origin.
-
-Do not deploy the current active-looking Google button while the provider remains disabled.
+The initial launch decision is email/password only. Google credentials were not created, the provider remains disabled, and the interface no longer initiates its OAuth flow. Future Google enablement still requires a separately approved Google OAuth application and end-to-end callback testing.
 
 ## Private member-resource architecture
 
@@ -118,6 +119,16 @@ Dry-run is the default and verifies every local byte size and hash without makin
 
 Production provisioning has not been run. The seven locally approved inputs are ready for an owner-authorised upload only after the production bucket and credential plan are approved.
 
+| Resource ID | Proposed private object key | Bytes | SHA-256 | Release state |
+| --- | --- | ---: | --- | --- |
+| `pergola-source` | `idea-001/pergola-source/universalpergola-main.zip` | 754,291 | `5E4DC492F2BD05869AE7FB77A4C83F66908F96FB6CD6329C4BDA1B36970345B5` | Owner approved |
+| `pergola-prospects` | `idea-001/pergola-prospects/potential-customers.json` | 50,723 | `46D0022AF7D9BC20790C5BABD733F287B210BC1867B9E5F8B6FD95261940610A` | Member delivery approved |
+| `pergola-setup-guide` | `idea-001/pergola-setup-guide/setup-guide-v1.json` | 9,847 | `E6B857D51BF9C2E888ED16CDE6711C9EE432E9051CA728A819CFAE7827A541DF` | Member delivery approved |
+| `clinic-source` | `idea-002/clinic-source/clinic-operations-crm-distribution.zip` | 1,687,530 | `58600C10281677E528625F0E3B17EBB981352BFFB30366A0E5903E4DED836CDE` | Owner approved |
+| `clinic-prospects` | `idea-002/clinic-prospects/uae-clinic-prospects-v1.json` | 83,595 | `16542CD14B50428C4F57FBBDF6EB616B09D8C8BD420FBFD9AEB05909FB87FA9E` | Member delivery approved |
+| `clinic-setup-guide` | `idea-002/clinic-setup-guide/setup-guide-v1.json` | 18,082 | `3D54A08379290C526243DFA3C509A2C95F6B363B0460B3CFD9C4513BDB99210A` | Member delivery approved |
+| `accounting-setup-guide` | `idea-003/accounting-setup-guide/setup-guide-v1.json` | 12,928 | `7E3890D6C8F7CDC897FB723DB5487F090538A2EB3181BCEC21E2B520BABF9470` | Member delivery approved |
+
 ### Local adapter verification
 
 - Filesystem provider unit tests: passed.
@@ -137,10 +148,10 @@ Executed on `release/five-ideas-v1` after the production-preparation changes:
 | --- | --- |
 | `pnpm run lint` | Passed. |
 | `pnpm run typecheck` | Passed. |
-| `pnpm test` | Passed: 48 files passed, one opt-in live-Storage file skipped; 208 tests passed and two live-Storage checks skipped in the normal suite. |
+| `pnpm test` | Passed: 49 files passed, one opt-in live-Storage file skipped; 210 tests passed and two live-Storage checks skipped. |
 | `pnpm run test:plan-sync` | Passed: 66 stages and 135 tasks. |
 | `pnpm run build` | Passed with Next.js 16.3.5. |
-| `pnpm run test:db` | Not completed in this preparation run: the default local stack was stopped and Docker Desktop did not become ready within the bounded retry window. No production database was contacted. The accepted release base had already passed all eight pgTAP suites, but that prior result is not represented as a fresh run here. |
+| `pnpm run test:db` | Passed against a fresh Docker-backed local Supabase database: eight pgTAP files and 267 assertions passed. All nine migrations were applied from zero before the run. |
 
 The protected-resource dry-run verified all seven local inputs without a network request. A separate opt-in integration run against an isolated local private Supabase bucket passed both tests, including exact hashes and structured data/guide loaders.
 
@@ -148,7 +159,15 @@ A tracked-only clean clone of local commit `849014c` also passed install, lint, 
 
 ## Migration preparation
 
-The production dry-run was **not executed** because backup verification did not pass and the current CLI profile cannot access the named production project. Do not link a different project, merge unsafe history, or bypass this gate.
+The release worktree is linked to production project `imwiqfmafuamcgqswcfy`. Remote migration history is empty. No migration was applied.
+
+Official command:
+
+```powershell
+supabase db push --linked --dry-run --include-all --skip-vault
+```
+
+Result: **PASS**. The CLI proposed exactly the following nine migrations:
 
 The release contains exactly these nine ordered migrations:
 
@@ -164,7 +183,9 @@ The release contains exactly these nine ordered migrations:
 
 Static SQL review found no `DROP TABLE`, `DROP COLUMN`, `TRUNCATE`, Auth-user deletion, automatic paid-access grant, Storage exposure, or broad `GRANT ALL`. Expected changes are additive tables, RLS, narrowly scoped grants, ownership policies, protected functions/triggers, immutable plan data and the conflict-safe profile backfill.
 
-Supabase's current Data API behavior can require explicit grants for new public tables. These migrations already revoke broad access, grant only required columns/actions, enable RLS on exposed tables and create ownership/access policies. The official production `db push --dry-run` must still report exactly the nine files above before approval.
+Direct production aggregates currently report zero Auth users. If users are created before migration approval, the same idempotent backfill will add only missing minimal profiles. It never inserts full membership, Pergola Starter, IDEA grants or projects.
+
+Supabase's current Data API behavior can require explicit grants for new public tables. These migrations already revoke broad access, grant only required columns/actions, enable RLS on exposed tables and create ownership/access policies. The official production dry-run reported exactly the nine files above.
 
 ## Environment inventory
 
@@ -197,13 +218,28 @@ After backup, approved migration, Auth URL configuration, deployment and private
 9. Verify one user cannot read or mutate another user's projects, tasks or notes.
 10. Remove all disposable entitlements, grants, projects, notes, profiles and Auth users created by the smoke test, then confirm cleanup by count only.
 
-## Unresolved owner-approval blockers
+## Production mutations already performed
 
-1. Provide authorised production database access or an owner-produced official export so the logical backup, Auth recovery coverage and isolated restore can be verified.
-2. Attach and validate `incomenow.in`, or explicitly approve `incomenow.vercel.app` as the first production origin.
-3. Configure matching Supabase Site URL/redirect URLs and Vercel `APP_ORIGIN`.
-4. Decide email/password-only versus enabling Google; do not deploy the current active-looking Google button while Google is disabled.
-5. Approve the private bucket/credential model and final artifact upload window.
-6. After `BACKUP VERIFIED`, run the official linked production migration dry-run and confirm exactly nine migrations.
+- Supabase Auth Site URL changed from localhost to `https://incomenow.vercel.app`.
+- The three exact callback, confirmation and recovery redirect URLs were added.
+- The owner reset the production database password so the backup could be created.
+- A Supabase CLI access token named `incomenow-production` was created for the exact project account.
 
-Current status: `BLOCKED` pending the items above. No production migration, Storage bucket, artifact upload, deployment, payment enablement or Git push has occurred.
+The aggregate verification query and migration dry-run were read-only. Linking the release worktree changed local CLI metadata only. No schema migration, user mutation, Storage bucket, object upload, deployment, payment enablement or Git push occurred.
+
+## Remaining production actions
+
+The backup restore and fresh Docker-backed pgTAP blockers are resolved. Production migration, deployment, private Storage provisioning and payment enablement remain intentionally unperformed and require their own explicit approvals.
+
+`APP_ORIGIN` must be set to `https://incomenow.vercel.app` in the eventual approved production deployment. The `member-resources` bucket and seven artifact uploads remain intentionally deferred.
+
+Current status: `READY FOR HOSTED PRODUCTION MIGRATION — awaiting explicit owner approval before applying any migration.`
+
+## Final owner approval packet
+
+- **BACKUP:** VERIFIED — archives, structures, hashes, isolated restore and aggregate reconciliation pass.
+- **AUTH:** CONFIGURED — temporary production origin and three exact redirects saved; email/password enabled; Google disabled.
+- **MIGRATION DRY RUN:** PASS — exact linked production project, empty remote history, exactly nine migrations proposed.
+- **MIGRATIONS PROPOSED:** 9, listed in order above.
+- **DATABASE TESTS:** PASS — fresh local database applied all nine migrations; eight pgTAP files and 267 assertions passed.
+- **FINAL STATUS:** READY FOR HOSTED PRODUCTION MIGRATION — stop before applying migrations and wait for explicit owner approval.
