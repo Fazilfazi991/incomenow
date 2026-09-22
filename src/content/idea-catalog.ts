@@ -20,6 +20,7 @@ export type IdeaCatalogEntry = Pick<
   | "intendedCustomer"
   | "technicalRequirements"
   | "marketEvidence"
+  | "safePreview"
 > & {
   problemStatement: string;
   resources: Array<Pick<Idea["resources"][number], "label" | "type" | "availability">>;
@@ -46,6 +47,7 @@ export function toIdeaCatalogEntry(idea: Idea): IdeaCatalogEntry {
     intendedCustomer: idea.intendedCustomer,
     technicalRequirements: [...idea.technicalRequirements],
     marketEvidence: idea.marketEvidence,
+    safePreview: idea.safePreview,
     problemStatement: overview?.friction ?? idea.summary,
     resources: idea.resources.map(({ label, type, availability }) => ({ label, type, availability })),
   };

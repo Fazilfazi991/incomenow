@@ -1,6 +1,6 @@
 begin;
 create extension if not exists pgtap with schema extensions;
-select plan(17);
+select plan(18);
 
 select has_table('public', 'profiles', 'profiles table exists');
 select has_table('public', 'membership_entitlements', 'membership_entitlements table exists');
@@ -24,6 +24,11 @@ select is(
   (select display_name from public.profiles where user_id = '00000000-0000-0000-0000-0000000000a1'),
   'User A',
   'safe display metadata is copied into the profile'
+);
+select is(
+  (select count(*) from auth.users as users left join public.profiles as profiles on profiles.user_id = users.id where profiles.user_id is null),
+  0::bigint,
+  'every existing auth user has a profile after the integration backfill'
 );
 
 set local role authenticated;

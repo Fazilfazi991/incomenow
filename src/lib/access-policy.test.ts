@@ -34,6 +34,8 @@ describe("idea capability policy", () => {
   it("lets an active grant authorise only its bound idea", () => {
     expect(evaluateIdeaAccess({ ideaId: "idea-001", fullMembership: "inactive", grants: [starterGrant], grantLookup: "ready", now })).toEqual({ status: "active", source: "starter" });
     expect(evaluateIdeaAccess({ ideaId: "idea-003", fullMembership: "inactive", grants: [starterGrant], grantLookup: "ready", now })).toEqual({ status: "inactive", source: null });
+    expect(evaluateIdeaAccess({ ideaId: "idea-004", fullMembership: "inactive", grants: [starterGrant], grantLookup: "ready", now })).toEqual({ status: "inactive", source: null });
+    expect(evaluateIdeaAccess({ ideaId: "idea-005", fullMembership: "inactive", grants: [starterGrant], grantLookup: "ready", now })).toEqual({ status: "inactive", source: null });
   });
 
   it("fails closed for expired grants and unresolved lookups", () => {

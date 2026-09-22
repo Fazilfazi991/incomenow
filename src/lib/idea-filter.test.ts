@@ -7,14 +7,14 @@ describe("idea discovery filters", () => {
     expect(filterIdeas(ideas, { query: "pergola" }).map((idea) => idea.id)).toEqual(["idea-001"]);
     expect(filterIdeas(ideas, { query: "#003" }).map((idea) => idea.id)).toEqual(["idea-003"]);
     expect(filterIdeas(ideas, { query: "real estate" }).map((idea) => idea.id)).toEqual(["idea-034"]);
-    expect(filterIdeas(ideas, { query: "digital service" }).map((idea) => idea.id)).toEqual(["idea-005"]);
+    expect(filterIdeas(ideas, { query: "consumer saas" }).map((idea) => idea.id)).toEqual(["idea-004", "idea-005"]);
   });
 
   it("combines solution, industry, and readiness filters", () => {
     const results = filterIdeas(ideas, {
-      solutionType: "Automation",
-      industry: "Professional Services",
-      readiness: "Setup ready",
+      solutionType: "Web tool",
+      industry: "Accounting Operations",
+      readiness: "Sample blueprint",
     });
     expect(results.map((idea) => idea.id)).toEqual(["idea-003"]);
   });
@@ -25,25 +25,25 @@ describe("idea discovery filters", () => {
   });
 
   it("cannot discover unpublished ideas when the canonical published catalogue is used", () => {
-    expect(filterIdeas(publishedIdeas, {}).map((idea) => idea.id)).toEqual(["idea-001", "idea-002"]);
-    expect(filterIdeas(publishedIdeas, { query: "#003" })).toEqual([]);
+    expect(filterIdeas(publishedIdeas, {}).map((idea) => idea.id)).toEqual(["idea-001", "idea-002", "idea-003", "idea-004", "idea-005"]);
+    expect(filterIdeas(publishedIdeas, { query: "#003" }).map((idea) => idea.id)).toEqual(["idea-003"]);
     expect(filterIdeas(publishedIdeas, { query: "real estate" })).toEqual([]);
   });
 });
 
 describe("idea routes and optional sections", () => {
   it("resolves valid slugs and rejects unknown slugs", () => {
-    expect(getIdeaBySlug("quotation-follow-up-automation")?.id).toBe("idea-003");
+    expect(getIdeaBySlug("ai-accounting-finance-operations")?.id).toBe("idea-003");
     expect(getIdeaBySlug("not-an-idea")).toBeUndefined();
   });
 
   it("supports idea-specific optional sections", () => {
     const crm = getIdeaBySlug("pergola-quotation-follow-up-crm");
-    const automation = getIdeaBySlug("quotation-follow-up-automation");
+    const accounting = getIdeaBySlug("ai-accounting-finance-operations");
     expect(crm?.sections.some((section) => section.type === "demo-preview")).toBe(true);
     expect(crm?.sections.some((section) => section.type === "workflow")).toBe(true);
-    expect(automation?.sections.some((section) => section.type === "workflow")).toBe(true);
-    expect(automation?.sections.some((section) => section.type === "demo-preview")).toBe(false);
+    expect(accounting?.sections.some((section) => section.type === "workflow")).toBe(true);
+    expect(accounting?.sections.some((section) => section.type === "demo-preview")).toBe(true);
   });
 
   it("links every resource section to an idea resource", () => {

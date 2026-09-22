@@ -187,9 +187,21 @@ try {
   assert.doesNotMatch(await starterClinicFinder.text(), /clinic-prospect-explorer|100 UAE clinics to research/);
   const starterClinicProspects = await appRequest("/app/resources/clinic-uae-potential-customers", starter);
   assert.equal(starterClinicProspects.status, 403, "Pergola Starter cannot download Clinic prospect data");
-  const starterOther = await appRequest("/app/ideas/quotation-follow-up-automation", starter);
-  assert.equal(starterOther.status, 404);
-  assert.doesNotMatch(await starterOther.text(), /flow-source|Configure, test, and hand over/);
+  const starterAccounting = await appRequest("/app/ideas/ai-accounting-finance-operations", starter);
+  assert.equal(starterAccounting.status, 200);
+  const starterAccountingBody = await starterAccounting.text();
+  assert.match(starterAccountingBody, /Published catalogue preview/);
+  assert.doesNotMatch(starterAccountingBody, /Pick the outcome you need now|accounting-opportunity|Configure, test, and hand over/);
+  const starterZeroDebt = await appRequest("/app/ideas/zerodebt-personal-finance-saas", starter);
+  assert.equal(starterZeroDebt.status, 200);
+  const starterZeroDebtBody = await starterZeroDebt.text();
+  assert.match(starterZeroDebtBody, /Published catalogue preview/);
+  assert.doesNotMatch(starterZeroDebtBody, /Pick the outcome you need now|zerodebt-opportunity/);
+  const starterResumi = await appRequest("/app/ideas/resumi-resume-builder-saas", starter);
+  assert.equal(starterResumi.status, 200);
+  const starterResumiBody = await starterResumi.text();
+  assert.match(starterResumiBody, /Published catalogue preview/);
+  assert.doesNotMatch(starterResumiBody, /Pick the outcome you need now|resumi-opportunity/);
 
   const concurrentStarts = await Promise.all([
     starter.client.rpc("start_member_project", { p_idea_id: "idea-001" }),
@@ -317,6 +329,17 @@ try {
     "58600C10281677E528625F0E3B17EBB981352BFFB30366A0E5903E4DED836CDE",
     "the protected Clinic source matches the owner-approved sanitised package",
   );
+  const fullAccounting = await appRequest("/app/ideas/ai-accounting-finance-operations", full);
+  assert.equal(fullAccounting.status, 200);
+  assert.match(await fullAccounting.text(), /12(?:<!-- -->)? kit activities/);
+  const fullZeroDebt = await appRequest("/app/ideas/zerodebt-personal-finance-saas", full);
+  assert.equal(fullZeroDebt.status, 200);
+  assert.match(await fullZeroDebt.text(), /13(?:<!-- -->)? kit activities/);
+  const fullResumi = await appRequest("/app/ideas/resumi-resume-builder-saas", full);
+  assert.equal(fullResumi.status, 200);
+  assert.match(await fullResumi.text(), /14(?:<!-- -->)? kit activities/);
+  const fullResumiSource = await appRequest("/app/resources/resumi-source", full);
+  assert.equal(fullResumiSource.status, 423, "Resumi source remains locked without redistribution approval");
 
   const revokeFull = await service.from("membership_entitlements").update({ revoked_at: new Date().toISOString() }).eq("user_id", full.user.id);
   assert.ifError(revokeFull.error);
@@ -337,6 +360,7 @@ try {
       "protected-prospect-and-setup-downloads",
       "protected-clinic-setup-guide-and-approved-source-download",
       "protected-clinic-finder-and-csv",
+      "published-accounting-zerodebt-resumi-access",
       "starter-pergola-only",
       "concurrent-idempotent-project-start",
       "starter-task-note-and-pause-persistence",

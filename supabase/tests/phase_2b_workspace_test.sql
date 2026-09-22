@@ -212,16 +212,17 @@ set local "request.jwt.claim.sub" = '00000000-0000-0000-0000-0000000002b2';
 select is((select plan_version from public.projects where idea_id = 'idea-001'), '2', 'new projects use controlled plan version two');
 
 reset role;
-insert into private.workspace_plan_versions (idea_id, version, is_current) values ('idea-005', '1', true);
+update private.workspace_idea_definitions set published = true where idea_id = 'idea-034';
+insert into private.workspace_plan_versions (idea_id, version, is_current) values ('idea-034', '1', true);
 insert into private.workspace_stage_definitions (idea_id, plan_version, stage_id, position)
-values ('idea-005', '1', 'broken-stage', 1);
+values ('idea-034', '1', 'broken-stage', 1);
 insert into private.workspace_task_definitions (idea_id, plan_version, stage_id, task_id, position, required)
-values ('idea-005', '1', 'broken-stage', 'optional-task', 1, false);
+values ('idea-034', '1', 'broken-stage', 'optional-task', 1, false);
 
 set local role authenticated;
 set local "request.jwt.claim.sub" = '00000000-0000-0000-0000-0000000002a1';
 select throws_ok(
-  $$select public.start_member_project('idea-005')$$,
+  $$select public.start_member_project('idea-034')$$,
   '22023',
   'Project definition unavailable',
   'a plan without required tasks is rejected'
@@ -229,7 +230,7 @@ select throws_ok(
 
 reset role;
 select is(
-  (select count(*) from public.projects where user_id = '00000000-0000-0000-0000-0000000002a1' and idea_id = 'idea-005'),
+  (select count(*) from public.projects where user_id = '00000000-0000-0000-0000-0000000002a1' and idea_id = 'idea-034'),
   0::bigint,
   'failed project creation leaves no partial project'
 );

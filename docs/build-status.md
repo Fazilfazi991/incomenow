@@ -2,9 +2,9 @@
 
 ## Phase and stack
 
-The Clinic publication phase is code-complete and locally verified in the workspace. The live catalogue now contains IDEA #001 Pergola Business Kit and IDEA #002 Clinic Operations CRM Kit, building on Phase 4A Pergola readiness, Phase 3C per-idea access, the kit-first refinements, Phase 3B onboarding/settings, Phase 3A public entry, Phase 2B account-synced workspace, and Phase 2A.1 authentication. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
+The controlled IDEA #003–#005 integration is implemented on `integration/ideas-003-004-005` and awaiting owner review. The canonical live catalogue contains IDEA #001 Pergola Business Kit, IDEA #002 Clinic Operations CRM Kit, IDEA #003 AI Accounting & Finance Operations Kit, IDEA #004 ZeroDebt Personal Finance SaaS Kit, and IDEA #005 Resumi — Resume Builder SaaS Kit. IDEA #034 remains unpublished. The app uses Next.js 16 App Router, React 19, TypeScript, Supabase SSR/Auth, PostgreSQL RLS migrations, Zod, Tailwind CSS 4, Vitest/Testing Library, and pgTAP database tests.
 
-This status deliberately distinguishes local verification from launch verification. Docker's Linux engine and the `IncomeNow` local Supabase stack were available during Phase 2A.1, but Google OAuth, a hosted Supabase project, external SMTP delivery, and production configuration were not exercised. No hosted Supabase project was contacted or changed.
+This status deliberately distinguishes local verification from launch verification. The hosted Supabase project `imwiqfmafuamcgqswcfy` was inspected read-only and is labelled production. It has no public application tables or migration history, no Storage buckets, no connected Git repository, and ten existing Auth users. No hosted migration, account mutation, Storage change, push, or deployment was performed. The exact production migration plan and blockers are recorded in `docs/ideas-003-005-integration.md`.
 
 ## Implemented account flows
 
@@ -122,9 +122,48 @@ This status deliberately distinguishes local verification from launch verificati
 - The original-versus-distribution inventory, package hash, sanitisation, dependency, malware, licence, fresh verification, and approval gate are in `docs/clinic-distribution-readiness.md`.
 - The Clinic prospect source hashes, aggregate reconciliation, approved projection, excluded fields, protected CSV, authorization matrix, and member experience are in `docs/clinic-prospect-integration.md`.
 
+## IDEA #003 AI Accounting & Finance Operations Kit
+
+- The former IDEA #003 quotation-automation draft is replaced by a published, full-member-only Accounting kit. Registered and Pergola Starter accounts receive only the safe catalogue projection and may save it; full records, resource targets, project creation, and the protected setup guide require fresh full-membership authorization.
+- The kit uses twelve focused activities: opportunity, local demo evidence, software scope, setup/customisation, accounting workflow, optional AI, prospect research, editable conversation templates, pricing, package structure, safe delivery, and the private project workspace.
+- Demo evidence remains local and synthetic. The member kit shows no active public-demo link and does not expose localhost. The inspected source stays unavailable because redistribution is not approved; only the protected Markdown setup guide is downloadable.
+- Optional AI is disabled by default and presented as a separately approved customer-owned configuration. The kit records what exists, the demo's fail-closed HTTP 503 state, what is unconfigured and untested, safe prompt boundaries, required human review, and a non-advice warning.
+- Pricing is local browser state and calculates recurring technical costs, delivery hours/internal cost, customer fee assumptions, and projected gross margin without a currency default, fixed commercial terms, market-price claim, or earnings promise.
+- Project plan version 2 adds twelve immutable stages and twenty-four required tasks while preserving the former version 1 definition for any historical reference. Additive migration `20260921160723_accounting_kit_plan_v2.sql` publishes IDEA #003 and makes version 2 current. It has not been applied to the shared local or any hosted database in this isolated build task.
+- Full implementation, evidence boundaries, changed files, verification, and merge considerations are recorded in `docs/idea-003-accounting-kit-results.md`.
+
+## IDEA #005 — Resumi Resume Builder SaaS Kit
+
+- IDEA #005 is published as the full-member **Resumi — Resume Builder SaaS Kit** with safe verified-account catalogue previews, fourteen focused member activities, an assumption-led scenario planner and an additive fourteen-stage/twenty-eight-task workspace plan. Pergola Starter access remains limited to IDEA #001.
+- Public and safe-preview projections omit protected activity content, source paths, package metadata and download URLs. Full kit/project operations continue to use fresh server-side authorization and fail closed.
+- The supplied public product was exercised with synthetic data only. Guest building, deterministic score changes, template switching, preview and the rule-based cover-letter flow were observed. Payments remain disabled and generative AI, job matching, interview outcomes and ATS compatibility are not claimed.
+- The source at commit `3ed78e615e746cb9e7e70d3f53625532bfeda9bd` passed lint, type and optimized-build checks, but production readiness is blocked by critical dependency advisories, an unsafe profile-plan update boundary, anonymous resume-capture privacy/abuse risks, incomplete payment entitlement handling, database hardening work and unresolved licence/asset rights.
+- A sanitized ignored package was prepared outside `public/`: `resumi-resume-builder-distribution.zip`, SHA-256 `7059EB44A050C8BA28A30B265AAE9B4B76034DB584DFD769522D52849744B6A9`, 2,407,231 bytes, 169 entries. The exact extracted archive passed lint, type and optimized webpack-build checks using the inspected dependency tree. `redistributionApproved` remains false; no download action is connected and the protected route remains locked.
+- Application verification passed ESLint, TypeScript, 169 Vitest/Testing Library tests across 42 files, project-plan synchronization at 41 stages/85 tasks, and the optimized Next.js 16.3.5 production build. Database regression passed 219 pgTAP assertions across six suites without a reset; local `public` and `private` schema lint reported no errors.
+- Authenticated browser verification used a disposable local full-member account, then removed it. The Resumi hub, all fourteen activity links, source-approval lock, direct navigation, scenario-planner zero state and desktop layout rendered without a framework overlay or server error. Responsive rules collapse new three/two-column layouts at 900/767/390px; the current browser-control surface did not expose deterministic viewport resizing, so dedicated 768/390/320 captures remain a review item rather than a claimed result.
+- Detailed implementation, source and package evidence is in `docs/resumi-kit-results.md`, `docs/resumi-source-inspection.md` and `docs/resumi-distribution-readiness.md`.
+
+## Controlled IDEA #003–#005 integration
+
+- Accounting, ZeroDebt, and Resumi are combined additively with the current Clinic/main state. The canonical catalogue publishes IDEA #001–#005 and preserves IDEA #034 as unpublished.
+- Fresh-from-zero and Clinic-state upgrade verification passed with nine ordered migrations. The final database contains 7 plan versions, 66 stages, and 135 tasks; current plans contain 55 stages and 112 tasks.
+- Eight pgTAP files / 267 assertions passed on both final disposable database states, database lint reported no schema errors, and repository plan synchronization passed.
+- The refreshed disposable-account integration passed 14 checks covering safe previews, starter-only access, full-member #003–#005 access, expired/revoked denial, Clinic protected resources, project uniqueness, notes/tasks/pause, project reuse, and cross-user isolation. Disposable accounts were deleted.
+- Final application checks passed: ESLint, TypeScript, 46 Vitest files / 191 tests, plan synchronization, and the optimized Next.js 16.3.5 production build.
+- Chrome checks covered the five-card homepage at 1280, 1024, 768, 390, and 320 pixels with no horizontal overflow; the full-member Accounting, ZeroDebt, and Resumi hubs rendered without console errors or framework overlays. The Resumi hub was also checked at 768, 390, and 320 pixels.
+- The production Supabase project was inspected read-only. It remains unlinked and unmigrated; no hosted Auth, Storage, database, Git, push, or deployment mutation occurred. The production plan and explicit approval gate are in `docs/ideas-003-005-integration.md`.
+
 ## Verification completed
 
 - Clinic application checks passed: TypeScript, ESLint, the optimized Next.js production build, and 151 Vitest/Testing Library tests across 39 files.
+- IDEA #003 application checks passed from the installed local binaries: TypeScript, ESLint, the optimized Next.js 16.3.5 build, and 135 Vitest/Testing Library tests across 38 files. The host-intercepted `pnpm run` wrapper stopped at its dependency preflight because an `unrs-resolver` build script was not approved; dependency declarations, build approvals, manifests, and lockfiles were left unchanged.
+- IDEA #003 database regression passed 217 pgTAP assertions across six suites in a disposable Supabase project on non-default ports; database lint reported no errors. The shared local and hosted databases were not mutated.
+- Project-plan sync passed at 39 stages and 81 tasks, including preserved Accounting plan version 1 and the new 12-stage/24-task version 2.
+- Production browser checks covered the Accounting hub at 1440, 1024, 768, 390, and 320 pixels plus the mobile sales, pricing, and project workflows. All measured document widths matched their viewports; five editable templates retained an unsaved draft while switching tabs; the pricing planner recalculated from synthetic inputs; and project start opened the owner-scoped 12-stage checklist.
+- The protected Accounting setup guide returned a private/no-store Markdown attachment to an isolated full member and no attachment to a signed-out request. The source remained unavailable.
+- A production `.next/static` scan found no inspected source commit, protected guide/delivery text, sales-template marker, or disposable QA credential. Screenshots are in `artifacts/idea-003-accounting-kit/`.
+
+- Clinic real-asset application checks passed: TypeScript, ESLint, the optimized Next.js production build, and 121 Vitest/Testing Library tests across 35 files.
 - Database regression passed 192 pgTAP assertions across five suites without a reset; linting the local `public` and `private` application schemas reported no errors. Project-plan sync matched 27 stages and 57 tasks.
 - The refreshed disposable-user integration passed thirteen checks, including free/Starter source denial, active-full-member delivery of the exact approved Clinic ZIP and SHA-256, expired/downgraded/revoked denial, setup-guide authorization, protected prospect finder/CSV access, starter-only Pergola authorization, owner isolation/reuse, grant removal, and optional onboarding. Its disposable accounts were removed.
 - Browser checks covered the protected Clinic finder at 1440, 768, 390, and 320 pixels. Combined filters, live counts, the no-results reset, one-record detail disclosure, clipboard success, guarded WhatsApp/form/source actions, mobile cards, full-width 320px actions, and the 768px card breakpoint passed with no horizontal overflow or console warning/error.
@@ -212,4 +251,4 @@ Exact local Google setup values and credential locations are documented in `docs
 
 ## Visual evidence
 
-The selected Stitch references are recorded in `docs/design-map.md`. Phase 4A protected-kit captures are in `artifacts/phase-4a/`. Phase 3C homepage and membership captures are in `.impeccable/review/phase-3c-{home,membership}-{1440,768,390,320}.png`; the review directory is intentionally ignored local evidence. Earlier Phase 3A captures remain in `artifacts/screenshots/phase-3a/`, and authentication captures remain in `.impeccable/review/`. Durable public, authentication, saved-idea, project, workspace, starter, and per-idea-access patterns are synchronized in `DESIGN.md` and `.impeccable/design.json`.
+The selected Stitch references are recorded in `docs/design-map.md`. IDEA #003 kit, sales, pricing, and project captures are in `artifacts/idea-003-accounting-kit/`. Phase 4A protected-kit captures are in `artifacts/phase-4a/`. Phase 3C homepage and membership captures are in `.impeccable/review/phase-3c-{home,membership}-{1440,768,390,320}.png`; the review directory is intentionally ignored local evidence. Earlier Phase 3A captures remain in `artifacts/screenshots/phase-3a/`, and authentication captures remain in `.impeccable/review/`. Durable public, authentication, saved-idea, project, workspace, starter, and per-idea-access patterns are synchronized in `DESIGN.md` and `.impeccable/design.json`.

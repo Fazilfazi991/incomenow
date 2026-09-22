@@ -16,6 +16,7 @@ export type PublicIdea = {
   }>;
   previewVariant: Idea["previewVariant"];
   coverArt: Idea["coverArt"];
+  safePreview?: Idea["safePreview"];
 };
 
 export function toPublicIdea(idea: Idea): PublicIdea {
@@ -33,5 +34,6 @@ export function toPublicIdea(idea: Idea): PublicIdea {
     resourceTypes: idea.resources.map(({ label, type, availability }) => ({ label, type, availability })),
     previewVariant: idea.previewVariant,
     coverArt: idea.publicCoverArt ?? idea.coverArt,
+    ...(idea.safePreview ? { safePreview: idea.safePreview } : {}),
   };
 }

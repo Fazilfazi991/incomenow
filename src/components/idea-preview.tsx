@@ -1,7 +1,22 @@
 import type { Idea } from "@/content/idea-schema";
 import { ArrowRight, Check, Clock3, MapPin, Send, Wrench } from "lucide-react";
+import type { CSSProperties } from "react";
 
 export function IdeaPreview({ variant }: { variant: Idea["previewVariant"] }) {
+  if (variant === "finance") {
+    return (
+      <div className="idea-preview finance-preview" role="img" aria-label="Illustrative debt balances converging toward zero">
+        <div className="preview-heading"><span><i /> Debt payoff path</span><small>scenario</small></div>
+        <div className="finance-lines">
+          <div><span>Card</span><b style={{ "--debt-width": "82%" } as CSSProperties} /></div>
+          <div><span>Loan</span><b style={{ "--debt-width": "58%" } as CSSProperties} /></div>
+          <div><span>Vehicle</span><b style={{ "--debt-width": "36%" } as CSSProperties} /></div>
+        </div>
+        <div className="finance-zero"><span>Payoff path</span><strong>₹0</strong></div>
+      </div>
+    );
+  }
+
   if (variant === "pipeline") {
     return (
       <div className="idea-preview pipeline-preview" role="img" aria-label="Illustrative pipeline preview">

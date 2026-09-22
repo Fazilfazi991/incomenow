@@ -7,6 +7,7 @@ import type { PublicIdea } from "@/content/public-idea";
 import { STARTER_IDEA_ID } from "@/content/membership-offer";
 import type { PublicAccountState } from "@/lib/public-account";
 import { ArtworkImage } from "./artwork-image";
+import { SafeIdeaPreview } from "./safe-idea-preview";
 
 export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly PublicIdea[]; accountState: PublicAccountState }) {
   const [selected, setSelected] = useState<PublicIdea | null>(null);
@@ -107,6 +108,7 @@ export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly Pub
                 <div><dt>Intended customer</dt><dd>{selected.intendedCustomer}</dd></div>
                 <div><dt>Technical requirements</dt><dd>{selected.technicalRequirements.join(" · ")}</dd></div>
               </dl>
+              {selected.safePreview ? <SafeIdeaPreview preview={selected.safePreview} /> : null}
               <div className="public-preview-resources">
                 <strong>Resource status</strong>
                 <ul>{selected.resourceTypes.map((resource) => <li className={resource.availability} key={`${resource.type}-${resource.label}`}>{resource.availability === "not-connected" ? <Clock3 size={14} /> : <Check size={14} />} <span>{resource.label}</span><em>{resource.availability === "available" ? "Available" : resource.availability === "sample" ? "Sample" : "Not connected"}</em></li>)}</ul>

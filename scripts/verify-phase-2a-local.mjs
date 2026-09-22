@@ -158,7 +158,7 @@ if (expectedAccess === "active") {
 
   for (const [path, marker] of [
     ["/app/ideas/pergola-quotation-follow-up-crm", "Pergola Quotation"],
-    ["/app/ideas/quotation-follow-up-automation", "Quotation Follow-up Automation"],
+    ["/app/ideas/ai-accounting-finance-operations", "AI Accounting & Finance Operations Kit"],
     ["/app/ideas/local-service-lead-generation", "Local-Service Lead Website"],
   ]) {
     const detail = await appRequest(path, accountA);

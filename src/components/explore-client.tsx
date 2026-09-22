@@ -17,6 +17,7 @@ const solutionOptions: Array<SolutionType | "all"> = [
   "Automation",
   "Web tool",
   "Digital service",
+  "Consumer SaaS",
 ];
 
 function ExploreAccountFeature({ source }: { source: BrowseableIdea[] }) {
@@ -155,7 +156,7 @@ export function ExploreClient({ source, mode = "preview" }: { source: Array<Idea
               className={(filters.solutionType ?? "all") === type ? "filter-chip active" : "filter-chip"}
               onClick={() => updateParams({ type })}
             >
-              {type === "all" ? "All ideas" : type === "Custom CRM" ? "Custom CRMs" : type === "Lead-generation website" ? "Lead-generation websites" : type === "Automation" ? "Automations" : type === "Web tool" ? "Web tools" : "Digital services"}
+              {type === "all" ? "All ideas" : type === "Custom CRM" ? "Custom CRMs" : type === "Lead-generation website" ? "Lead-generation websites" : type === "Automation" ? "Automations" : type === "Web tool" ? "Web tools" : type === "Consumer SaaS" ? "Consumer SaaS" : "Digital services"}
             </button>
           ))}
         </div>

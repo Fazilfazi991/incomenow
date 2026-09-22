@@ -25,6 +25,16 @@ import {
   WandSparkles,
   Calculator,
   ListChecks,
+  Bot,
+  BrainCircuit,
+  Code2,
+  CreditCard,
+  FileStack,
+  Gauge,
+  Megaphone,
+  Rocket,
+  Search,
+  TrendingUp,
 } from "lucide-react";
 import { pergolaCodexPrompts, pergolaDeliveryGuide, pergolaSetupGuide, pergolaSoftwareScope } from "@/content/pergola-kit-readiness";
 import type { Idea, IdeaSection } from "@/content/idea-schema";
@@ -38,6 +48,11 @@ import { MemberBookmarkButton } from "./member-bookmark-button";
 import { ProspectExplorer } from "./prospect-explorer";
 import { StartIdeaControl } from "./start-idea-control";
 import { ClinicKitSection } from "./clinic-kit-section";
+import { AccountingKitSection } from "./accounting-kit-section";
+import { ZeroDebtKitSection } from "./zerodebt-kit-section";
+import { zeroDebtSourceDownloadEnabled, zeroDebtSourceState } from "@/content/zerodebt-source-state";
+import { ResumiKitSection } from "./resumi-kit-section";
+import { resumiDistributionState } from "@/content/resumi-distribution";
 
 type IdeaResource = Idea["resources"][number];
 
@@ -75,6 +90,26 @@ const activityIcons: Record<KitSectionSlug, typeof Compass> = {
   pricing: Calculator,
   tools: Boxes,
   discovery: ListChecks,
+  "accounting-workflow": Route,
+  "ai-workflow": Sparkles,
+  prospects: Users,
+  packages: Boxes,
+  project: ClipboardCheck,
+  product: PackageCheck,
+  source: FileArchive,
+  rebrand: Code2,
+  telegram: Bot,
+  ai: BrainCircuit,
+  "business-model": Calculator,
+  subscriptions: CreditCard,
+  advertising: Megaphone,
+  launch: Rocket,
+  growth: TrendingUp,
+  operate: ClipboardCheck,
+  templates: FileStack,
+  ats: Gauge,
+  premium: CreditCard,
+  seo: Search,
 };
 
 function findResource(idea: Idea, id: string) {
@@ -88,18 +123,33 @@ function findResourceByType(idea: Idea, type: IdeaResource["type"]) {
 function activityState(idea: Idea, slug: KitSectionSlug, project: KitProjectProgress | null) {
   if (slug === "demo") return findResourceByType(idea, "demo")?.availability === "available" ? "Demo available" : "Demo unavailable";
   if (slug === "software") return findResourceByType(idea, "source")?.availability === "available" ? idea.id === "idea-002" ? clinicDistributionState.statusLabel : "Source included" : idea.id === "idea-002" ? clinicDistributionState.statusLabel : "Source unavailable";
+  if (slug === "source") return idea.id === "idea-005" ? resumiDistributionState.statusLabel : zeroDebtSourceState.statusLabel;
   if (slug === "setup") return findResourceByType(idea, "guide")?.availability === "available" ? "Guide available" : "Setup guide pending";
   if (slug === "customers") return findResource(idea, "crm-discovery")?.availability === "available" ? "Prospect resource available" : "Research guide ready · sheet pending";
   if (slug === "clinics") return findResource(idea, "clinic-prospects")?.availability === "available" ? "100 clinic prospects ready" : "Research guide ready · prospect list unavailable";
+  if (slug === "prospects") return "Research guide ready · prospect list unavailable";
   if (slug === "conversation") return "Editable templates ready";
   if (slug === "pricing") return "Local planning tool ready";
+  if (slug === "packages") return "Scope examples ready";
+  if (slug === "accounting-workflow") return "Workflow guide ready";
+  if (slug === "ai-workflow") return "Optional · disabled by default";
   if (slug === "tools") return "Tools verified";
   if (slug === "discovery") return "Questionnaire ready";
-  if (slug === "delivery") {
+  if (slug === "project" || (slug === "delivery" && idea.id !== "idea-003")) {
     if (project?.isComplete) return "Checklist complete";
     if (project?.meaningful) return "Checklist in progress";
     return "Optional checklist";
   }
+  if (slug === "operate") {
+    if (project?.isComplete) return "Project complete";
+    if (project?.meaningful) return "Project in progress";
+    return idea.id === "idea-005" ? "Optional project" : "13-stage plan ready";
+  }
+  if (idea.id === "idea-005" && slug === "premium") return "Payments disabled";
+  if (idea.id === "idea-005" && ["product", "rebrand", "templates", "ats", "ai", "growth", "seo", "launch"].includes(slug)) return "Guide ready";
+  if (idea.id === "idea-005" && slug === "business-model") return "Scenario planner ready";
+  if (idea.id === "idea-004" && ["telegram", "ai", "subscriptions", "advertising"].includes(slug)) return "Guide only · not connected";
+  if (idea.id === "idea-004" && slug === "business-model") return "Local scenario tool ready";
   return slug === "sales" ? "Editable templates ready" : "Ready to explore";
 }
 
@@ -107,6 +157,10 @@ function isLimitedActivity(idea: Idea, slug: KitSectionSlug) {
   if (slug === "setup") return findResourceByType(idea, "guide")?.availability !== "available";
   if (slug === "customers") return findResource(idea, "crm-discovery")?.availability !== "available";
   if (idea.id === "idea-002" && ["demo", "software", "setup", "tools"].includes(slug)) return true;
+  if (idea.id === "idea-003" && ["demo", "software", "prospects", "ai-workflow"].includes(slug)) return true;
+  if (idea.id === "idea-004" && slug === "source") return !zeroDebtSourceDownloadEnabled;
+  if (idea.id === "idea-004" && ["telegram", "ai", "subscriptions", "advertising"].includes(slug)) return true;
+  if (idea.id === "idea-005" && ["source", "premium", "ai"].includes(slug)) return true;
   return false;
 }
 
@@ -124,8 +178,10 @@ function FeaturedResource({ resource }: { resource: IdeaResource }) {
 function KitHub({ idea, basePath, project }: Pick<InteractiveIdeaKitProps, "idea" | "basePath" | "project">) {
   const demo = findResourceByType(idea, "demo");
   const source = findResourceByType(idea, "source");
-  const guide = idea.id === "idea-002" ? findResourceByType(idea, "guide") : null;
-  const featuredResources = [demo, guide, source].filter((resource): resource is IdeaResource => Boolean(resource));
+  const guide = idea.id !== "idea-001" ? findResourceByType(idea, "guide") : null;
+  const configuredResources = (idea.featuredResourceIds ?? []).map((id) => findResource(idea, id));
+  const featuredResources = (configuredResources.length > 0 ? configuredResources : [demo, guide, source])
+    .filter((resource): resource is IdeaResource => Boolean(resource));
   const activities = getKitActivities(idea.id);
 
   return (
@@ -154,12 +210,12 @@ function KitHub({ idea, basePath, project }: Pick<InteractiveIdeaKitProps, "idea
       </header>
 
       <section className="kit-activity-section" aria-labelledby="activity-map-title">
-        <div className="kit-activity-heading"><div><span>Your activity map</span><h2 id="activity-map-title">Pick the outcome you need now</h2></div><p>{activities.length} kit activities, separate from your {idea.id === "idea-002" ? "ten-stage" : "six-stage"} personal checklist.</p></div>
+        <div className="kit-activity-heading"><div><span>Your activity map</span><h2 id="activity-map-title">Pick the outcome you need now</h2></div><p>{activities.length} kit activities, separate from your {idea.sections.find((section) => section.type === "action-plan")?.stages.length ?? 0}-stage personal checklist.</p></div>
         <div className="kit-activity-grid">
           {activities.map((activity, index) => {
             const Icon = activityIcons[activity.slug];
             const limited = isLimitedActivity(idea, activity.slug);
-            const complete = activity.slug === "delivery" && project?.isComplete;
+            const complete = ["delivery", "operate"].includes(activity.slug) && project?.isComplete;
             return (
               <Link
                 className={`kit-activity-card activity-${activity.slug}${limited ? " limited" : ""}${complete ? " complete" : ""}`}
@@ -342,7 +398,7 @@ function FocusedKitSection({ idea, basePath, selectedSection, project, prospects
     <KitViewFocus viewKey={selectedSection}>
       <main className="kit-focused-view">
         <SectionHeader activity={activity} activities={activities} basePath={basePath} />
-        {idea.id === "idea-002" ? <ClinicKitSection clinicProspects={clinicProspects} idea={idea} project={project} section={section} /> : <>
+        {idea.id === "idea-002" ? <ClinicKitSection clinicProspects={clinicProspects} idea={idea} project={project} section={section} /> : idea.id === "idea-003" ? <AccountingKitSection idea={idea} project={project} section={section} /> : idea.id === "idea-004" ? <ZeroDebtKitSection idea={idea} project={project} section={section} /> : idea.id === "idea-005" ? <ResumiKitSection idea={idea} project={project} section={section} /> : <>
           {section.type === "overview" ? <OpportunitySection idea={idea} section={section} /> : null}
           {section.type === "demo-preview" ? <DemoSection idea={idea} section={section} /> : null}
           {section.type === "workflow" ? <SoftwareSection idea={idea} section={section} /> : null}

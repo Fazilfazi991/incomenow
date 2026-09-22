@@ -2,26 +2,27 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { IdeaDetail } from "@/components/idea-detail";
-import { detailedIdeas, getIdeaBySlug } from "@/content/ideas";
+import { PublicIdeaDetail } from "@/components/public-idea-detail";
+import { getIdeaBySlug, publishedIdeas } from "@/content/ideas";
+import { toPublicIdea } from "@/content/public-idea";
 
 type IdeaPageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return detailedIdeas.map((idea) => ({ slug: idea.slug }));
+  return publishedIdeas.filter((idea) => idea.detailAvailable).map((idea) => ({ slug: idea.slug }));
 }
 
 export async function generateMetadata({ params }: IdeaPageProps): Promise<Metadata> {
   const { slug } = await params;
   const idea = getIdeaBySlug(slug);
-  if (!idea?.detailAvailable) return { title: "Idea not found" };
+  if (!idea?.published || !idea.detailAvailable) return { title: "Idea not found" };
   return { title: `IDEA #${idea.displayNumber} — ${idea.title}`, description: idea.summary };
 }
 
 export default async function IdeaPage({ params }: IdeaPageProps) {
   const { slug } = await params;
   const idea = getIdeaBySlug(slug);
-  if (!idea?.detailAvailable) notFound();
+  if (!idea?.published || !idea.detailAvailable) notFound();
 
   return (
     <div className="idea-route">
@@ -29,7 +30,7 @@ export default async function IdeaPage({ params }: IdeaPageProps) {
         <Link href="/preview/explore"><ArrowLeft size={16} /> Back to ideas</Link>
         <span>Local preview — sample opportunity</span>
       </div>
-      <IdeaDetail idea={idea} />
+      <PublicIdeaDetail idea={toPublicIdea(idea)} />
     </div>
   );
 }

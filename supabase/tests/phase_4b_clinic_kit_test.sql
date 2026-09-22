@@ -6,8 +6,8 @@ select has_column('private', 'workspace_idea_definitions', 'published', 'workspa
 select has_function('private', 'idea_is_published', array['text'], 'publication helper exists');
 select results_eq(
   $$select idea_id from private.workspace_idea_definitions where published order by idea_id$$,
-  array['idea-001'::text, 'idea-002'::text],
-  'only Pergola and Clinic are published'
+  array['idea-001'::text, 'idea-002'::text, 'idea-003'::text, 'idea-004'::text, 'idea-005'::text],
+  'Pergola, Clinic, Accounting, ZeroDebt, and Resumi are published'
 );
 select is((select version from private.workspace_plan_versions where idea_id = 'idea-002' and is_current), '1', 'Clinic plan version one is current');
 select is((select count(*) from private.workspace_stage_definitions where idea_id = 'idea-002' and plan_version = '1'), 10::bigint, 'Clinic plan has ten immutable stages');
@@ -46,8 +46,8 @@ select is((select saved_revision from public.save_member_project_stage_note((sel
 select lives_ok($$select public.set_member_project_paused((select id from public.projects), true)$$, 'Clinic project can be paused');
 select throws_ok($$select public.set_member_project_task_completed((select id from public.projects), 'clinic-opportunity', 'clinic-claim-boundary', true)$$, '55000', 'Resume the project before editing progress', 'paused Clinic project rejects progress edits');
 select lives_ok($$select public.set_member_project_paused((select id from public.projects), false)$$, 'Clinic project can resume');
-select throws_ok($$insert into public.bookmarks (idea_id) values ('idea-003')$$, '42501', null, 'unpublished ideas cannot be newly bookmarked');
-select throws_ok($$select public.start_member_project('idea-003')$$, '22023', 'Project definition unavailable', 'even full members cannot start an unpublished idea');
+select throws_ok($$insert into public.bookmarks (idea_id) values ('idea-034')$$, '42501', null, 'unpublished ideas cannot be newly bookmarked');
+select throws_ok($$select public.start_member_project('idea-034')$$, '22023', 'Project definition unavailable', 'even full members cannot start an unpublished idea');
 
 reset role;
 create temporary table phase4b_project_ids as select user_id, id from public.projects where idea_id = 'idea-002';

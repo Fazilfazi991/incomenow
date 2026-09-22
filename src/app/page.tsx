@@ -66,7 +66,7 @@ export default async function HomePage() {
 
       <section id="example-ideas" className="public-section public-section-tinted digital-example-section">
         <div className="public-container">
-          <div className="public-section-heading public-section-heading-split"><div><span className="digital-section-kicker">PUBLIC EXAMPLES</span><h2>Two real kits, two practical service directions</h2><p>Pergola is the US$1 starter. Clinic Operations CRM is another kit in the growing IncomeNow library and requires full membership for complete access.</p></div><Link href="/membership">See what membership includes <ArrowRight size={16} /></Link></div>
+          <div className="public-section-heading public-section-heading-split"><div><span className="digital-section-kicker">PUBLIC EXAMPLES</span><h2>Five practical kits, several ways to build</h2><p>Pergola is the US$1 starter. Clinic Operations CRM, Accounting, ZeroDebt, and Resumi require full membership for complete access.</p></div><Link href="/membership">See what membership includes <ArrowRight size={16} /></Link></div>
           <PublicIdeaGallery ideas={ideas} accountState={accountState} />
           <p className="public-honesty-note"><ShieldCheck size={16} /> Illustrations represent each industry idea. Resource availability is labelled from the same records used by the member library.</p>
         </div>

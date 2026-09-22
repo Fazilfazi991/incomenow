@@ -17,4 +17,12 @@ describe("versioned project plans", () => {
   it("returns null for a plan version that is not in repository content", () => {
     expect(getProjectPlanDefinition("idea-001", "missing")).toBeNull();
   });
+
+  it("keeps the previous Accounting plan while making the twelve-stage kit plan current", () => {
+    expect(getProjectPlanDefinition("idea-003", "1")?.stages).toHaveLength(6);
+    const current = getCurrentProjectPlan("idea-003");
+    expect(current?.version).toBe("2");
+    expect(current?.stages).toHaveLength(12);
+    expect(current?.stages.flatMap((stage) => stage.tasks)).toHaveLength(24);
+  });
 });

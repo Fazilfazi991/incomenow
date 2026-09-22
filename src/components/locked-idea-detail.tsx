@@ -5,6 +5,7 @@ import { STARTER_IDEA_ID } from "@/content/membership-offer";
 import type { CatalogueAccess } from "@/lib/member-content.server";
 import { ArtworkImage } from "./artwork-image";
 import { MemberBookmarkButton } from "./member-bookmark-button";
+import { SafeIdeaPreview } from "./safe-idea-preview";
 
 export function LockedIdeaDetail({
   idea,
@@ -33,9 +34,11 @@ export function LockedIdeaDetail({
             alt={idea.coverArt.alt}
             className="public-dialog-art locked-cover-art"
             position={idea.coverArt.position}
+            preload
             sizes="(max-width: 900px) 100vw, 65vw"
             src={idea.coverArt.src}
           />
+          {idea.safePreview ? <SafeIdeaPreview preview={idea.safePreview} /> : null}
           <div className="section-card prose-card">
             <span className="locked-preview-kicker"><Info size={15} /> Published catalogue preview</span>
             <h2>What this idea explores</h2>

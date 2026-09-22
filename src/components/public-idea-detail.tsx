@@ -1,0 +1,12 @@
+import Link from "next/link";
+import { ArrowRight, Check, Clock3, Info, LockKeyhole } from "lucide-react";
+import type { PublicIdea } from "@/content/public-idea";
+import { ArtworkImage } from "./artwork-image";
+import { SafeIdeaPreview } from "./safe-idea-preview";
+
+export function PublicIdeaDetail({ idea }: { idea: PublicIdea }) {
+  return <div className="detail-page locked-detail-page">
+    <header className="detail-hero"><div className="tag-row"><span className="tag strong">IDEA #{idea.displayNumber}</span><span className="tag">{idea.solutionType}</span><span className="tag">Public preview</span></div><div className="detail-hero-grid"><div><h1>{idea.title}</h1><p>{idea.summary}</p></div></div></header>
+    <div className="locked-preview-grid"><main className="locked-preview-main"><ArtworkImage alt={idea.coverArt.alt} className="public-dialog-art locked-cover-art" position={idea.coverArt.position} preload sizes="(max-width: 900px) 100vw, 65vw" src={idea.coverArt.src} />{idea.safePreview ? <SafeIdeaPreview preview={idea.safePreview} /> : <section className="section-card prose-card"><span className="locked-preview-kicker"><Info size={15} /> Published catalogue preview</span><h2>What this idea explores</h2><p>{idea.problemStatement}</p></section>}<section className="section-card"><h2>Published resource types</h2><p>These labels describe the intended kit. They are not download links or proof that every resource is ready.</p><ul className="locked-resource-list">{idea.resourceTypes.map((resource) => <li className={resource.availability} key={`${resource.type}-${resource.label}`}>{resource.availability === "not-connected" ? <Clock3 size={15} /> : <Check size={15} />}<span>{resource.label}</span><em>{resource.availability === "available" ? "Available" : resource.availability === "sample" ? "Sample" : "Not connected"}</em></li>)}</ul></section></main><aside className="locked-access-card"><LockKeyhole size={24} /><h2>Implementation content stays protected</h2><p>Create a verified account to bookmark catalogue ideas. Full implementation activities and project tools require the matching paid access; the starter pass unlocks only IDEA #001.</p><div className="access-actions"><Link className="primary-button" href="/register">Create an account <ArrowRight size={16} /></Link><Link className="text-button" href="/membership">See membership</Link></div></aside></div>
+  </div>;
+}

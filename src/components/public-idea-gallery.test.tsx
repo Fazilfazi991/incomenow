@@ -21,15 +21,15 @@ const ideas: PublicIdea[] = [
   {
     id: "idea-003",
     displayNumber: "003",
-    title: "Quotation Follow-up Automation",
+    title: "AI Accounting & Finance Operations Kit",
     summary: "Another public summary.",
-    solutionType: "Automation",
-    technicalRequirements: ["Workflow testing"],
-    intendedCustomer: "Service businesses",
-    problemStatement: "Manual review causes delayed follow-up.",
-    resourceTypes: [{ label: "Workflow example", type: "workflow", availability: "sample" }],
-    previewVariant: "automation",
-    coverArt: { src: "/artwork/ideas/quotation-follow-up-automation.webp", alt: "Quotation workflow desk", position: "50% 50%" },
+    solutionType: "Web tool",
+    technicalRequirements: ["Finance-workflow testing"],
+    intendedCustomer: "Small service businesses",
+    problemStatement: "Finance records and approvals are difficult to review across disconnected tools.",
+    resourceTypes: [{ label: "Accounting setup guide", type: "guide", availability: "available" }],
+    previewVariant: "scorecard",
+    coverArt: { src: "/artwork/ideas/quotation-follow-up-automation.webp", alt: "Finance operations workflow", position: "50% 50%" },
   },
 ];
 
@@ -42,8 +42,8 @@ describe("public idea quick preview", () => {
     const triggers = screen.getAllByRole("button", { name: "Quick preview" });
 
     await user.click(triggers[1]);
-    const dialog = screen.getByRole("dialog", { name: "Quotation Follow-up Automation" });
-    expect(dialog).toHaveTextContent("Service businesses");
+    const dialog = screen.getByRole("dialog", { name: "AI Accounting & Finance Operations Kit" });
+    expect(dialog).toHaveTextContent("Small service businesses");
     expect(dialog).not.toHaveTextContent("Pergola installers");
     expect(screen.getByRole("link", { name: "Try IncomeNow for US$1 — the starter includes the Pergola kit" })).toHaveAttribute("href", expect.stringContaining("/register?next="));
     expect(screen.getByRole("button", { name: "Close preview" })).toHaveFocus();

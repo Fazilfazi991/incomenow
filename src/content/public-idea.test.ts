@@ -4,8 +4,8 @@ import { toPublicIdea } from "./public-idea";
 
 describe("public idea projection", () => {
   it("selects only the approved stable records", () => {
-    expect(publishedIdeas.map((idea) => idea.id)).toEqual(["idea-001", "idea-002"]);
-    expect(ideas.filter((idea) => !idea.published).map((idea) => idea.id)).toEqual(["idea-003", "idea-004", "idea-005", "idea-034"]);
+    expect(publishedIdeas.map((idea) => idea.id)).toEqual(["idea-001", "idea-002", "idea-003", "idea-004", "idea-005"]);
+    expect(ideas.filter((idea) => !idea.published).map((idea) => idea.id)).toEqual(["idea-034"]);
   });
 
   it("serialises only explicitly permitted public fields", () => {
@@ -52,5 +52,31 @@ describe("public idea projection", () => {
     expect(payload).not.toContain("clinic-uae-potential-customers");
     expect(payload).not.toContain("/app/resources/clinic-source");
     expect(payload).not.toMatch(/primaryEmail|primaryPhone|whatsappNumber|contactFormUrl|bookingUrl|sourceUrl/);
+  });
+
+  it("publishes the ZeroDebt safe preview without protected sections or source coordinates", () => {
+    const zeroDebt = ideas.find((idea) => idea.id === "idea-004")!;
+    const projected = toPublicIdea(zeroDebt);
+    const payload = JSON.stringify(projected);
+
+    expect(projected.safePreview?.productFlow).toHaveLength(4);
+    expect(payload).toContain("Turn scattered debt balances");
+    expect(payload).not.toContain("zerodebt-license-approval");
+    expect(payload).not.toContain("app/api/telegram/webhook");
+    expect(payload).not.toContain("e5d3b4f600993414a5a277f64bc6d0c95da02c3e");
+    expect(payload).not.toContain("FinancePublic.git");
+    expect(payload).not.toContain("implementationPlanVersion");
+  });
+
+  it("keeps Resumi implementation sections and source location out of the public payload", () => {
+    const resumi = ideas.find((idea) => idea.id === "idea-005")!;
+    const payload = JSON.stringify(toPublicIdea(resumi));
+
+    expect(payload).toContain("Resumi — Resume Builder SaaS Kit");
+    expect(payload).toContain("Sanitised source package");
+    expect(payload).not.toContain("resumi-source");
+    expect(payload).not.toContain("resumiDistributionState");
+    expect(payload).not.toContain("3ed78e615e746cb9e7e70d3f53625532bfeda9bd");
+    expect(payload).not.toContain("https://github.com");
   });
 });

@@ -20,9 +20,17 @@ All current owner-review covers were generated for IncomeNow with OpenAI’s bui
 
 The How it works visual remains a semantic React/HTML/CSS composition so controls, labels, focus, and safe public content remain inspectable and accessible. The browser selects one hero source; it does not load both. The VP9 WebM materially reduces transfer size versus the H.264 fallback. Both derivatives rotate the timeline at the original midpoint and use an 0.8-second crossfade over the original end/start boundary, leaving the exported start and end on the same continuous point.
 
+## Verified product evidence
+
+| Path | Size | Placement | Accessible description | Provenance |
+| --- | ---: | --- | --- | --- |
+| `/artwork/ideas/zerodebt-personal-finance-saas.webp` | 1440×900 · 43 KB | IDEA #004 catalogue, safe preview, and protected demo activity | The verified ZeroDebt overview showing synthetic debt, cash-flow, and payoff information | Browser capture of the Phase 1 local synthetic demo at verified commit `b0763b7`; no real account or financial data |
+
+This screenshot is product evidence, not generated imagery. Its synthetic-demo notice remains visible in the image, and nearby live HTML repeats the public-deployment and financial-information boundaries.
+
 ## Legacy local assets
 
-The eight earlier illustrations under `/artwork/ideas/` and `/artwork/marketing/` remain local because existing uncommitted member-route work still references them. They are not the approved direction for new public work. `/artwork/marketing/homepage-hero.webp` is no longer rendered on the homepage. Do not propagate or regenerate the legacy warm set while this limited direction awaits owner review.
+The earlier illustrations under `/artwork/ideas/` and `/artwork/marketing/` remain local because existing member routes reference them. They are not the approved direction for new public work. The verified ZeroDebt screenshot above is the documented exception. `/artwork/marketing/homepage-hero.webp` is no longer rendered on the homepage. Do not propagate or regenerate the legacy warm set while this limited direction awaits owner review.
 
 ## Runtime rules
 

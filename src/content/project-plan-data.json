@@ -180,7 +180,7 @@
     }
   },
   "idea-003": {
-    "currentVersion": "1",
+    "currentVersion": "2",
     "versions": {
       "1": {
         "stages": [
@@ -247,64 +247,610 @@
         ]
       }
         ]
-      }
+      },
+        "2": {
+          "stages": [
+            {
+              "id": "accounting-opportunity",
+              "title": "Confirm the customer and operating problem",
+              "summary": "Record the real finance workflow, responsible people, authoritative systems, and professional-review boundary.",
+              "resourceIds": [
+                "accounting-delivery-checklist"
+              ],
+              "tasks": [
+                {
+                  "id": "accounting-map-current-workflow",
+                  "title": "Map the current finance workflow",
+                  "description": "Document source records, review, approval, posting, reconciliation, reporting, and period-close ownership.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-confirm-boundaries",
+                  "title": "Confirm advice and evidence boundaries",
+                  "description": "Record the qualified adviser, jurisdiction, currencies, tax/VAT expectations, and claims the implementation must not make.",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "accounting-demo",
+              "title": "Prepare a relevant synthetic demonstration",
+              "summary": "Use verified demo evidence and fictional records without presenting localhost or untested actions as public proof.",
+              "resourceIds": [
+                "accounting-demo"
+              ],
+              "tasks": [
+                {
+                  "id": "accounting-demo-scope",
+                  "title": "Choose the relevant demo areas",
+                  "description": "Select only the dashboard, trading-party, sales, purchase, banking, journal, or reporting areas tied to discovery.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-demo-boundary",
+                  "title": "State the demo boundary",
+                  "description": "Record that data is synthetic, browser-local, resettable, and not production or AI evidence.",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "accounting-software",
+              "title": "Define the included software scope",
+              "summary": "Separate verified source evidence from customer configuration, integrations, and production work.",
+              "resourceIds": [
+                "accounting-source",
+                "accounting-setup-guide"
+              ],
+              "tasks": [
+                {
+                  "id": "accounting-select-modules",
+                  "title": "Select included modules",
+                  "description": "List included, excluded, optional, and later modules based on the customer's workflow.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-record-unverified",
+                  "title": "Record unverified dependencies",
+                  "description": "List product-mode Auth/RLS, posting, storage, integrations, reports, backups, recovery, and other acceptance work.",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "accounting-setup",
+              "title": "Prepare the private implementation environment",
+              "summary": "Use an authorised source copy, locked dependencies, isolated services, synthetic data, and secret-safe configuration.",
+              "resourceIds": [
+                "accounting-setup-guide"
+              ],
+              "tasks": [
+                {
+                  "id": "accounting-private-source",
+                  "title": "Confirm private source authority",
+                  "description": "Record the approved source revision and keep it outside public assets and member downloads.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-isolated-environment",
+                  "title": "Prepare isolated customer services",
+                  "description": "Define customer-owned development, database, Auth, hosting, email, monitoring, and recovery accounts without production data.",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "accounting-workflow",
+              "title": "Configure finance workflows and controls",
+              "summary": "Agree records, statuses, roles, approvals, reversals, reconciliation, reports, and audit evidence.",
+              "resourceIds": [
+                "accounting-delivery-checklist"
+              ],
+              "tasks": [
+                {
+                  "id": "accounting-roles-controls",
+                  "title": "Define roles and controls",
+                  "description": "Record who may create, review, approve, post, reconcile, reverse, export, and administer each record type.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-business-config",
+                  "title": "Approve business configuration",
+                  "description": "Confirm entities, fiscal periods, accounts, currencies, documents, numbering, payment terms, and tax/VAT review.",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "accounting-ai",
+              "title": "Decide whether optional AI is in scope",
+              "summary": "Keep AI disabled unless the customer approves purpose, provider, data, review, cost, tests, and a safe off switch.",
+              "resourceIds": [
+                "accounting-ai-prompts"
+              ],
+              "tasks": [
+                {
+                  "id": "accounting-ai-decision",
+                  "title": "Record the AI decision",
+                  "description": "Mark AI out of scope or approve one narrow assistive task, provider owner, model, region, budget, and data boundary.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-ai-controls",
+                  "title": "Define human review and failure controls",
+                  "description": "Prevent automatic posting or payment and test unsafe input, incorrect output, outage, rate limit, cost, and disablement.",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "accounting-prospects",
+              "title": "Research suitable businesses",
+              "summary": "Build a small verified list without fabricating contacts, buying intent, or market demand.",
+              "resourceIds": [],
+              "tasks": [
+                {
+                  "id": "accounting-research-list",
+                  "title": "Build a sourced research list",
+                  "description": "Record business name, website, category, location, published contact route, source, and last-checked date.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-verify-relevance",
+                  "title": "Verify relevance and contact route",
+                  "description": "Check each business manually and write one evidence-based reason the workflow may be relevant before outreach.",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "accounting-conversation",
+              "title": "Run discovery conversations",
+              "summary": "Use editable templates to learn the workflow without unsupported claims or unverified promises.",
+              "resourceIds": [],
+              "tasks": [
+                {
+                  "id": "accounting-discovery-call",
+                  "title": "Run one workflow-first discovery call",
+                  "description": "Ask about records, controls, systems, friction, data, advisers, ownership, and acceptance needs before demonstrating.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-confirm-notes",
+                  "title": "Confirm discovery notes",
+                  "description": "Send a factual recap for correction and keep assumptions visibly separate from customer-confirmed requirements.",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "accounting-pricing",
+              "title": "Model delivery costs and fees",
+              "summary": "Estimate recurring costs, delivery hours, internal cost, customer fees, and projected gross margin from explicit assumptions.",
+              "resourceIds": [],
+              "tasks": [
+                {
+                  "id": "accounting-cost-model",
+                  "title": "Record cost and hour assumptions",
+                  "description": "Enter hosting, database, optional AI, monitoring, discovery, configuration, migration, testing, training, and handover assumptions.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-review-margin",
+                  "title": "Review the projected margin",
+                  "description": "Check exclusions, contingency, recurring period, taxes, customer terms, and whether the result is commercially acceptable.",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "accounting-package",
+              "title": "Agree a bounded customer package",
+              "summary": "Choose setup, customisation, migration, training, support, maintenance, and later-module scope without fixed assumptions.",
+              "resourceIds": [],
+              "tasks": [
+                {
+                  "id": "accounting-package-scope",
+                  "title": "Write inclusions and exclusions",
+                  "description": "Define modules, workflows, integrations, data, training, professional review, AI, support, and work that is explicitly excluded.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-acceptance",
+                  "title": "Define acceptance evidence",
+                  "description": "Agree test cases, responsible reviewers, reconciliations, report checks, data sign-off, and the decision to accept or reject delivery.",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "accounting-delivery",
+              "title": "Configure, migrate, and test safely",
+              "summary": "Implement the accepted scope with synthetic-first testing, least privilege, reconciled data, backups, and rollback.",
+              "resourceIds": [
+                "accounting-delivery-checklist"
+              ],
+              "tasks": [
+                {
+                  "id": "accounting-configure-test",
+                  "title": "Configure and test the agreed scope",
+                  "description": "Verify roles, records, approvals, posting, reconciliation, reports, errors, duplicates, integrations, and audit evidence.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-migrate-reconcile",
+                  "title": "Rehearse and reconcile authorised migration",
+                  "description": "Map, trial, validate, reconcile, document rejected rows, and obtain customer sign-off before production import.",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "id": "accounting-handover",
+              "title": "Deploy, train, and hand over",
+              "summary": "Transfer accepted software, customer-owned accounts, recovery, training, limitations, and support responsibilities.",
+              "resourceIds": [
+                "accounting-setup-guide",
+                "accounting-delivery-checklist"
+              ],
+              "tasks": [
+                {
+                  "id": "accounting-deploy-recover",
+                  "title": "Verify deployment and recovery",
+                  "description": "Record the release, environment, monitoring, backup, restore, rollback, incident contacts, and customer recovery access.",
+                  "required": true
+                },
+                {
+                  "id": "accounting-train-handover",
+                  "title": "Complete training and handover",
+                  "description": "Train with fictional records and transfer ownership, known limitations, adviser boundaries, maintenance, support, and offboarding.",
+                  "required": true
+                }
+              ]
+            }
+          ]
+        }
     }
   },
   "idea-004": {
+    "currentVersion": "2",
+    "versions": {
+      "1": {
+        "stages": [
+          {
+            "id": "lead-niche",
+            "title": "Choose one service and area",
+            "summary": "Keep the initial research narrow enough to validate.",
+            "resourceIds": ["lead-research"],
+            "tasks": [
+              { "id": "service-category", "title": "Define the service category", "description": "Choose one specific service with a clear buyer need.", "required": true },
+              { "id": "postcode-cluster", "title": "Choose a postcode cluster", "description": "Bound the initial demand and provider research geographically.", "required": true }
+            ]
+          },
+          {
+            "id": "lead-buyers",
+            "title": "Interview recent buyers",
+            "summary": "Understand how people search, compare, and decide.",
+            "resourceIds": ["lead-research"],
+            "tasks": [
+              { "id": "urgency-signals", "title": "Ask about urgency", "description": "Record when and why a buyer needed a provider quickly.", "required": true },
+              { "id": "trust-questions", "title": "Record trust and qualification questions", "description": "Capture the evidence buyers use to compare providers.", "required": true }
+            ]
+          },
+          {
+            "id": "lead-partners",
+            "title": "Discover provider partners",
+            "summary": "Confirm capacity, coverage, and response expectations.",
+            "resourceIds": ["lead-partner"],
+            "tasks": [
+              { "id": "provider-interviews", "title": "Interview five providers", "description": "Confirm coverage, availability, fit, and response expectations.", "required": true },
+              { "id": "manual-handoff", "title": "Agree a manual pilot handoff", "description": "Define who receives, qualifies, and follows up each enquiry.", "required": true }
+            ]
+          },
+          {
+            "id": "lead-prototype",
+            "title": "Prototype the enquiry journey",
+            "summary": "Use fictional submissions and clear consent language.",
+            "resourceIds": ["lead-template", "lead-enquiry"],
+            "tasks": [
+              { "id": "landing-page", "title": "Draft the landing page", "description": "Explain the service, area, handoff, and limitations clearly.", "required": true },
+              { "id": "qualification-fields", "title": "Prototype qualification fields", "description": "Collect only the information needed for the agreed handoff.", "required": true }
+            ]
+          },
+          {
+            "id": "lead-pilot",
+            "title": "Run a bounded pilot",
+            "summary": "Track response quality without promising lead volume.",
+            "resourceIds": ["lead-enquiry", "lead-partner"],
+            "tasks": [
+              { "id": "manual-routing", "title": "Route enquiries manually", "description": "Use the documented consent and partner handoff process.", "required": true },
+              { "id": "response-review", "title": "Review response times and fit", "description": "Record whether enquiries were suitable and handled promptly.", "required": true }
+            ]
+          }
+        ]
+      },
+      "2": {
+        "stages": [
+          {
+            "id": "zerodebt-opportunity",
+            "title": "Understand the product opportunity",
+            "summary": "Choose the user problem and the responsible scope before changing the software.",
+            "resourceIds": [],
+            "tasks": [
+              { "id": "zerodebt-user-segment", "title": "Choose one initial user segment", "description": "Name the people whose debt-tracking workflow you will investigate first.", "required": true },
+              { "id": "zerodebt-safety-boundary", "title": "Write the financial-information boundary", "description": "State that the product organises user-entered information and scenarios; it does not provide regulated financial advice.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-explore",
+            "title": "Explore the verified demo",
+            "summary": "Inspect the synthetic workflow and separate observed behaviour from untested production claims.",
+            "resourceIds": ["zerodebt-demo"],
+            "tasks": [
+              { "id": "zerodebt-demo-walkthrough", "title": "Complete the demo walkthrough", "description": "Review overview, debts, transactions, accounts, debt strategy, Telegram, and AI status using synthetic data.", "required": true },
+              { "id": "zerodebt-demo-notes", "title": "Record evidence and limitations", "description": "Write down which behaviours were verified locally and which integrations remain disabled or untested.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-product",
+            "title": "Define the product scope",
+            "summary": "Select the smallest useful feature set and its safety rules.",
+            "resourceIds": ["zerodebt-product-guide"],
+            "tasks": [
+              { "id": "zerodebt-core-features", "title": "Choose the core features", "description": "Select the debt, transaction, account, budget, goal, and payoff tools needed for the first release.", "required": true },
+              { "id": "zerodebt-data-rules", "title": "Document financial data rules", "description": "Define user ownership, validation, deletion, logging, export, and recovery requirements.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-source",
+            "title": "Review source governance",
+            "summary": "Confirm technical readiness and redistribution authority as separate gates.",
+            "resourceIds": ["zerodebt-source"],
+            "tasks": [
+              { "id": "zerodebt-source-review", "title": "Review the inspected source matrix", "description": "Check the recorded stack, verification evidence, integration boundaries, and unresolved production work.", "required": true },
+              { "id": "zerodebt-license-approval", "title": "Obtain redistribution approval", "description": "Record explicit ownership or licensing approval before packaging or distributing source code.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-rebrand",
+            "title": "Plan the rebrand",
+            "summary": "Replace identity and legal copy without changing financial calculations accidentally.",
+            "resourceIds": ["zerodebt-rebrand-guide"],
+            "tasks": [
+              { "id": "zerodebt-brand-inventory", "title": "Inventory brand surfaces", "description": "List application metadata, logos, icons, landing copy, manifest, legal pages, support routes, and screenshots.", "required": true },
+              { "id": "zerodebt-rebrand-acceptance", "title": "Define rebrand acceptance checks", "description": "Check light and dark assets, mobile icons, metadata, accessibility text, legal ownership, and responsive screens.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-telegram",
+            "title": "Configure Telegram safely",
+            "summary": "Plan an isolated bot, authenticated linking, confirmation, limits, and observable failures.",
+            "resourceIds": ["zerodebt-telegram-guide"],
+            "tasks": [
+              { "id": "zerodebt-telegram-architecture", "title": "Review the Telegram architecture", "description": "Trace linking, secret validation, draft expiry, confirmation, idempotency, ownership checks, and rate limits.", "required": true },
+              { "id": "zerodebt-telegram-isolation", "title": "Prepare isolated bot configuration", "description": "Use a separate bot, environment-managed secrets, a dedicated webhook, and synthetic acceptance data.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-ai",
+            "title": "Decide whether to enable AI",
+            "summary": "Treat AI as an optional, costed interpretation layer—not the financial calculation engine.",
+            "resourceIds": ["zerodebt-ai-guide"],
+            "tasks": [
+              { "id": "zerodebt-ai-data-review", "title": "Approve the AI data boundary", "description": "Review the user-scoped context, redaction, retention, deletion, timeout, and abuse controls before enabling a provider.", "required": true },
+              { "id": "zerodebt-ai-cost-cap", "title": "Set provider and cost limits", "description": "Choose a model, monthly allowance, timeout, disable switch, monitoring owner, and fallback behaviour.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-business-model",
+            "title": "Model the business",
+            "summary": "Compare revenue structures using explicit assumptions rather than earnings promises.",
+            "resourceIds": ["zerodebt-business-model-guide"],
+            "tasks": [
+              { "id": "zerodebt-model-choice", "title": "Choose a model to test", "description": "Compare free, premium subscription, advertising, and partnership options against user trust and operating cost.", "required": true },
+              { "id": "zerodebt-scenario", "title": "Build a scenario from your assumptions", "description": "Record active users, conversion, price, ad RPM, usage, technical costs, and calculated gross margin.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-subscriptions",
+            "title": "Plan subscriptions",
+            "summary": "Design billing, entitlement, cancellation, tax, and support boundaries before connecting payments.",
+            "resourceIds": ["zerodebt-subscription-guide"],
+            "tasks": [
+              { "id": "zerodebt-tier-design", "title": "Define free and premium boundaries", "description": "Write clear feature, quota, data, cancellation, and support rules for each proposed tier.", "required": true },
+              { "id": "zerodebt-billing-architecture", "title": "Map billing and entitlement events", "description": "Document checkout, webhook verification, idempotency, subscription states, refunds, and server-side access checks.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-advertising",
+            "title": "Evaluate advertising",
+            "summary": "Decide whether ads fit a sensitive financial product before adding any SDK or placement.",
+            "resourceIds": ["zerodebt-advertising-guide"],
+            "tasks": [
+              { "id": "zerodebt-ad-policy", "title": "Write the advertising policy", "description": "Define prohibited categories, sensitive-data boundaries, consent, frequency, placement, and age or geography constraints.", "required": true },
+              { "id": "zerodebt-ad-experiment", "title": "Design a reversible ad experiment", "description": "Specify a small placement, success and trust metrics, kill switch, and review owner without connecting a live network.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-launch",
+            "title": "Prepare the launch",
+            "summary": "Complete privacy, security, reliability, support, and store-readiness checks.",
+            "resourceIds": ["zerodebt-launch-checklist"],
+            "tasks": [
+              { "id": "zerodebt-launch-evidence", "title": "Complete the launch evidence checklist", "description": "Verify authentication, RLS, backups, recovery, deletion, analytics consent, legal pages, accessibility, and responsive behaviour.", "required": true },
+              { "id": "zerodebt-launch-operations", "title": "Assign launch ownership", "description": "Name owners for incidents, support, costs, provider dashboards, credentials, rollbacks, and status communication.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-growth",
+            "title": "Plan responsible growth",
+            "summary": "Choose education-led acquisition loops that preserve trust.",
+            "resourceIds": ["zerodebt-growth-guide"],
+            "tasks": [
+              { "id": "zerodebt-growth-channel", "title": "Choose one growth channel", "description": "Select a bounded SEO, free-tool, content, social, community, or referral experiment.", "required": true },
+              { "id": "zerodebt-growth-measure", "title": "Define a learning metric", "description": "Measure activation, useful recurring behaviour, retention, referral quality, and support burden—not vanity traffic alone.", "required": true }
+            ]
+          },
+          {
+            "id": "zerodebt-operate",
+            "title": "Operate and improve",
+            "summary": "Run the product with clear metrics, review rhythms, and user-safety controls.",
+            "resourceIds": ["zerodebt-operating-guide"],
+            "tasks": [
+              { "id": "zerodebt-operating-dashboard", "title": "Create the operating dashboard", "description": "Track activation, debt-entry completion, payoff-plan use, retention, error rate, support volume, cost, and deletion requests.", "required": true },
+              { "id": "zerodebt-review-rhythm", "title": "Schedule the review rhythm", "description": "Assign weekly product, monthly cost and privacy, and quarterly security and recovery reviews.", "required": true }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "idea-005": {
     "currentVersion": "1",
     "versions": {
       "1": {
         "stages": [
-      {
-        "id": "lead-niche",
-        "title": "Choose one service and area",
-        "summary": "Keep the initial research narrow enough to validate.",
-        "resourceIds": ["lead-research"],
-        "tasks": [
-          { "id": "service-category", "title": "Define the service category", "description": "Choose one specific service with a clear buyer need.", "required": true },
-          { "id": "postcode-cluster", "title": "Choose a postcode cluster", "description": "Bound the initial demand and provider research geographically.", "required": true }
-        ]
-      },
-      {
-        "id": "lead-buyers",
-        "title": "Interview recent buyers",
-        "summary": "Understand how people search, compare, and decide.",
-        "resourceIds": ["lead-research"],
-        "tasks": [
-          { "id": "urgency-signals", "title": "Ask about urgency", "description": "Record when and why a buyer needed a provider quickly.", "required": true },
-          { "id": "trust-questions", "title": "Record trust and qualification questions", "description": "Capture the evidence buyers use to compare providers.", "required": true }
-        ]
-      },
-      {
-        "id": "lead-partners",
-        "title": "Discover provider partners",
-        "summary": "Confirm capacity, coverage, and response expectations.",
-        "resourceIds": ["lead-partner"],
-        "tasks": [
-          { "id": "provider-interviews", "title": "Interview five providers", "description": "Confirm coverage, availability, fit, and response expectations.", "required": true },
-          { "id": "manual-handoff", "title": "Agree a manual pilot handoff", "description": "Define who receives, qualifies, and follows up each enquiry.", "required": true }
-        ]
-      },
-      {
-        "id": "lead-prototype",
-        "title": "Prototype the enquiry journey",
-        "summary": "Use fictional submissions and clear consent language.",
-        "resourceIds": ["lead-template", "lead-enquiry"],
-        "tasks": [
-          { "id": "landing-page", "title": "Draft the landing page", "description": "Explain the service, area, handoff, and limitations clearly.", "required": true },
-          { "id": "qualification-fields", "title": "Prototype qualification fields", "description": "Collect only the information needed for the agreed handoff.", "required": true }
-        ]
-      },
-      {
-        "id": "lead-pilot",
-        "title": "Run a bounded pilot",
-        "summary": "Track response quality without promising lead volume.",
-        "resourceIds": ["lead-enquiry", "lead-partner"],
-        "tasks": [
-          { "id": "manual-routing", "title": "Route enquiries manually", "description": "Use the documented consent and partner handoff process.", "required": true },
-          { "id": "response-review", "title": "Review response times and fit", "description": "Record whether enquiries were suitable and handled promptly.", "required": true }
-        ]
-      }
+          {
+            "id": "resumi-understand",
+            "title": "Understand the opportunity",
+            "summary": "Define the job-seeker task and the evidence boundary.",
+            "resourceIds": [],
+            "tasks": [
+              { "id": "resumi-need", "title": "Choose one job-search need", "description": "Write the specific resume or application task the product should help one audience complete.", "required": true },
+              { "id": "resumi-claims", "title": "Set the claims boundary", "description": "Remove guarantees about interviews, jobs, ATS acceptance, traffic, conversion, or revenue.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-explore",
+            "title": "Explore Resumi",
+            "summary": "Walk through the live product with fictional information.",
+            "resourceIds": ["resumi-demo", "resumi-builder"],
+            "tasks": [
+              { "id": "resumi-live-walkthrough", "title": "Complete the live walkthrough", "description": "Use fictional information to inspect editing, scoring, templates, preview, PDF options and cover letters.", "required": true },
+              { "id": "resumi-evidence-notes", "title": "Record evidence and limitations", "description": "Separate observed live behaviour from source-only, disabled and future features.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-audience",
+            "title": "Choose an audience",
+            "summary": "Select one user group and application context.",
+            "resourceIds": [],
+            "tasks": [
+              { "id": "resumi-audience-segment", "title": "Define the initial segment", "description": "Choose a narrow audience such as fresh graduates, career changers, or UAE job seekers.", "required": true },
+              { "id": "resumi-audience-task", "title": "Map the application task", "description": "Describe what the user brings, what they need to finish, and what a useful outcome looks like.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-model",
+            "title": "Choose a business model",
+            "summary": "Model one approach from conservative assumptions.",
+            "resourceIds": ["resumi-monetisation"],
+            "tasks": [
+              { "id": "resumi-model-choice", "title": "Choose a model to test", "description": "Select free plus premium, freemium plus AI, one-time, partnerships, advertising, or a bounded hybrid.", "required": true },
+              { "id": "resumi-model-costs", "title": "Record assumptions and costs", "description": "Enter your own traffic, conversion, pricing and operating assumptions without treating the result as a forecast.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-rebrand-plan",
+            "title": "Rebrand the product",
+            "summary": "Change identity, metadata and support details as one system.",
+            "resourceIds": ["resumi-rebrand-guide"],
+            "tasks": [
+              { "id": "resumi-brand-map", "title": "Map brand locations", "description": "Identify product name, logo, palette, domain, support, email, metadata and legal touchpoints before editing.", "required": true },
+              { "id": "resumi-brand-accept", "title": "Review the rebrand", "description": "Verify public pages, builder, account areas, emails, metadata, icons and social previews use the approved identity.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-template-plan",
+            "title": "Configure templates",
+            "summary": "Select and test layouts for the chosen audience.",
+            "resourceIds": ["resumi-template-guide"],
+            "tasks": [
+              { "id": "resumi-template-scope", "title": "Choose the template scope", "description": "Decide which existing templates to keep, adapt or hide before adding new designs.", "required": true },
+              { "id": "resumi-template-test", "title": "Test content and PDF behaviour", "description": "Verify switching, long content, page breaks, photos, typography, preview and PDF output.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-backend",
+            "title": "Configure backend and auth",
+            "summary": "Prepare data, access, admin and recovery controls.",
+            "resourceIds": ["resumi-source"],
+            "tasks": [
+              { "id": "resumi-backend-access", "title": "Review access and admin controls", "description": "Fix privilege boundaries, validate RLS and keep service-role credentials server-side before production use.", "required": true },
+              { "id": "resumi-backend-lifecycle", "title": "Define the data lifecycle", "description": "Document guest sync, consent, retention, deletion, backups, recovery and incident ownership.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-career-tools",
+            "title": "Configure AI or career features",
+            "summary": "Include only tools with clear value, privacy and cost controls.",
+            "condition": "Complete only for tools included in the launch scope",
+            "resourceIds": ["resumi-scoring-guide"],
+            "tasks": [
+              { "id": "resumi-career-scope", "title": "Define each tool state", "description": "Mark each tool live, retained but disabled, future, or excluded and keep the interface copy consistent.", "required": true },
+              { "id": "resumi-career-safeguards", "title": "Add provider safeguards", "description": "For provider-backed tools, document data sent, credentials, quotas, rate limits, failure behaviour and a non-AI path.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-premium-boundary",
+            "title": "Define the free and premium boundary",
+            "summary": "Decide what remains useful for free before enabling payment work.",
+            "resourceIds": ["resumi-premium-guide"],
+            "tasks": [
+              { "id": "resumi-premium-value", "title": "Write the premium value proposition", "description": "State which optional value is paid and why the free product remains useful.", "required": true },
+              { "id": "resumi-premium-readiness", "title": "List payment completion work", "description": "Cover webhook verification, entitlements, idempotency, refunds, failures, reconciliation and support before activation.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-content",
+            "title": "Prepare SEO and content",
+            "summary": "Create an initial original content cluster around real intent.",
+            "resourceIds": ["resumi-seo"],
+            "tasks": [
+              { "id": "resumi-content-cluster", "title": "Choose the first content cluster", "description": "Select a small set of related role, audience or country intents the product can serve well.", "required": true },
+              { "id": "resumi-content-quality", "title": "Create original useful pages", "description": "Include reviewed examples, specific guidance, clear intent match and a relevant builder action without doorway duplication.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-production-test",
+            "title": "Test production flows",
+            "summary": "Verify critical user, privacy and recovery paths before launch.",
+            "resourceIds": ["resumi-launch"],
+            "tasks": [
+              { "id": "resumi-production-user-flow", "title": "Test the user journey", "description": "Verify guest and account builders, persistence, templates, scoring, preview, PDF, mobile, errors and accessibility.", "required": true },
+              { "id": "resumi-production-ops", "title": "Test operating safeguards", "description": "Verify access controls, admin security, deletion, backups, recovery, monitoring and support escalation.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-launch-plan",
+            "title": "Launch",
+            "summary": "Release a bounded product with clear ownership and monitoring.",
+            "resourceIds": ["resumi-launch"],
+            "tasks": [
+              { "id": "resumi-launch-decision", "title": "Complete the launch decision", "description": "Confirm brand, domain, infrastructure, auth, email, privacy, support, content and production acceptance evidence.", "required": true },
+              { "id": "resumi-launch-monitor", "title": "Set launch monitoring", "description": "Assign owners for errors, support, usage signals, backups, recovery and rollback decisions.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-acquire",
+            "title": "Acquire initial users",
+            "summary": "Test one permitted acquisition channel and learn from completion behaviour.",
+            "resourceIds": ["resumi-seo"],
+            "tasks": [
+              { "id": "resumi-acquire-channel", "title": "Run one bounded channel test", "description": "Choose a permitted SEO, community, referral, directory, partnership or content experiment for the selected audience.", "required": true },
+              { "id": "resumi-acquire-quality", "title": "Review user quality", "description": "Compare builder starts, meaningful progress, previews and downloads without inventing demand or conversion claims.", "required": true }
+            ]
+          },
+          {
+            "id": "resumi-improve-plan",
+            "title": "Measure and improve",
+            "summary": "Use evidence to choose the next product improvement.",
+            "resourceIds": [],
+            "tasks": [
+              { "id": "resumi-improve-funnel", "title": "Review the product funnel", "description": "Measure defined visitor, builder, completion, preview, download, return and optional premium events with consent-aware analytics.", "required": true },
+              { "id": "resumi-improve-next", "title": "Choose one next improvement", "description": "Prioritise one evidenced friction point and define its acceptance and privacy requirements before implementation.", "required": true }
+            ]
+          }
         ]
       }
     }

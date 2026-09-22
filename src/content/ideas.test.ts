@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { ideas } from "./ideas";
+import { zeroDebtSourceDownloadEnabled, zeroDebtSourceState } from "./zerodebt-source-state";
 
 describe("idea catalogue artwork and claims", () => {
   it("provides one local, descriptive cover for every catalogue idea", () => {
@@ -11,18 +12,127 @@ describe("idea catalogue artwork and claims", () => {
     });
   });
 
-  it("publishes only the two complete kits with distinct modern covers", () => {
+  it("publishes the five completed kits with distinct covers", () => {
     const published = ideas.filter((idea) => idea.published);
-    expect(published.map((idea) => idea.id)).toEqual(["idea-001", "idea-002"]);
+    expect(published.map((idea) => idea.id)).toEqual(["idea-001", "idea-002", "idea-003", "idea-004", "idea-005"]);
     expect(published.map((idea) => idea.coverArt.src)).toEqual([
       "/artwork/ideas/pergola-business-kit.webp",
       "/artwork/ideas/clinic-operations-crm.webp",
+      "/artwork/ideas/quotation-follow-up-automation.webp",
+      "/artwork/ideas/zerodebt-personal-finance-saas.webp",
+      "/artwork/ideas/resumi-resume-builder-saas.webp",
     ]);
   });
 
   it("does not advertise unsupported speed, margin, or compatibility claims", () => {
     const catalogueCopy = ideas.map((idea) => `${idea.summary} ${idea.cardNote}`).join(" ");
     expect(catalogueCopy).not.toMatch(/high-margin|launch:\s*2 weeks|works with your tools/i);
+  });
+});
+
+describe("AI Accounting & Finance Operations kit", () => {
+  const accounting = ideas.find((idea) => idea.id === "idea-003")!;
+
+  it("publishes twelve focused full-member activities on immutable plan version two", () => {
+    expect(accounting.slug).toBe("ai-accounting-finance-operations");
+    expect(accounting.published).toBe(true);
+    expect(accounting.sections).toHaveLength(12);
+    expect(accounting.implementationPlanVersion).toBe("2");
+  });
+
+  it("keeps the local demo and source unavailable while publishing only the protected guide", () => {
+    const demo = accounting.resources.find((resource) => resource.id === "accounting-demo")!;
+    const source = accounting.resources.find((resource) => resource.id === "accounting-source")!;
+    const guide = accounting.resources.find((resource) => resource.id === "accounting-setup-guide")!;
+
+    expect(demo.availability).toBe("not-connected");
+    expect(demo.externalUrl).toBeUndefined();
+    expect(source.availability).toBe("not-connected");
+    expect(source.externalUrl).toBeUndefined();
+    expect(source.downloadPath).toBeUndefined();
+    expect(guide).toMatchObject({ availability: "available", downloadPath: "/app/resources/accounting-setup-guide" });
+  });
+
+  it("states the synthetic-data, optional-AI, and professional-advice boundaries", () => {
+    const copy = JSON.stringify(accounting);
+    expect(copy).toMatch(/browser-local synthetic data/i);
+    expect(copy).toMatch(/AI is optional, disabled by default/i);
+    expect(copy).toMatch(/does not replace professional accounting, tax, legal, financial, or audit advice/i);
+    expect(copy).toMatch(/do not imply accounting expertise, guaranteed savings, compliance, production readiness, or proven demand/i);
+  });
+});
+
+describe("ZeroDebt Personal Finance SaaS kit", () => {
+  const zeroDebt = ideas.find((idea) => idea.id === "idea-004")!;
+
+  it("uses the approved identity, safe preview, and thirteen-stage plan", () => {
+    expect(zeroDebt.slug).toBe("zerodebt-personal-finance-saas");
+    expect(zeroDebt.solutionType).toBe("Consumer SaaS");
+    expect(zeroDebt.sections).toHaveLength(13);
+    expect(zeroDebt.implementationPlanVersion).toBe("2");
+    expect(zeroDebt.sections.find((section) => section.type === "action-plan")?.stages).toHaveLength(13);
+    expect(zeroDebt.safePreview?.resourceTeasers).toHaveLength(5);
+  });
+
+  it("publishes the approved synthetic demo while keeping source redistribution disabled", () => {
+    const demo = zeroDebt.resources.find((resource) => resource.id === "zerodebt-demo")!;
+    const source = zeroDebt.resources.find((resource) => resource.id === "zerodebt-source")!;
+    expect(demo).toMatchObject({
+      availability: "available",
+      externalUrl: "https://zerodebt-public-demo.vercel.app",
+      actionLabel: "Open ZeroDebt demo",
+      notice: "Synthetic financial data · Changes reset",
+    });
+    expect(source.availability).toBe("not-connected");
+    expect(demo).not.toHaveProperty("downloadPath");
+    expect(source).not.toHaveProperty("externalUrl");
+    expect(source).not.toHaveProperty("downloadPath");
+    expect(source.notice).toBe("Source release approval pending.");
+    expect(zeroDebtSourceState.technicalSourceInspected).toBe(true);
+    expect(zeroDebtSourceState.redistributionApproved).toBe(false);
+    expect(zeroDebtSourceState.publicDemoDeployed).toBe(true);
+    expect(zeroDebtSourceDownloadEnabled).toBe(false);
+    expect(JSON.stringify(zeroDebt)).toMatch(/not financial advice|financial advice/i);
+    expect(JSON.stringify(zeroDebt)).not.toMatch(/guaranteed income|earn \$?\d|guaranteed return/i);
+  });
+});
+
+describe("Resumi Resume Builder SaaS kit", () => {
+  const resumi = ideas.find((idea) => idea.id === "idea-005")!;
+
+  it("uses the approved identity, full-member access shape, and fourteen focused activities", () => {
+    expect(resumi.slug).toBe("resumi-resume-builder-saas");
+    expect(resumi.title).toBe("Resumi — Resume Builder SaaS Kit");
+    expect(resumi.sections).toHaveLength(14);
+    expect(resumi.implementationPlanVersion).toBe("1");
+    expect(resumi.published).toBe(true);
+    expect(resumi.detailAvailable).toBe(true);
+  });
+
+  it("links the verified live product while keeping source release disabled", () => {
+    expect(resumi.resources.find((resource) => resource.id === "resumi-demo")).toMatchObject({
+      availability: "available",
+      externalUrl: "https://resumi.live",
+      actionLabel: "Open Resumi",
+    });
+    expect(resumi.resources.find((resource) => resource.id === "resumi-builder")).toMatchObject({
+      availability: "available",
+      externalUrl: "https://www.resumi.live/builder/guest",
+      actionLabel: "Try the resume builder",
+    });
+    expect(resumi.resources.find((resource) => resource.id === "resumi-source")).toMatchObject({
+      availability: "not-connected",
+      description: "Source package prepared — release approval required.",
+    });
+  });
+
+  it("keeps product, ATS, AI, payments, privacy, public-source and outcome claims accurate", () => {
+    const copy = JSON.stringify(resumi);
+    expect(copy).toMatch(/No generative AI provider is connected/i);
+    expect(copy).toMatch(/paid plans are not offered/i);
+    expect(copy).toMatch(/public repository is public|GitHub repository is public/i);
+    expect(copy).toMatch(/real resumes can contain extensive personal information/i);
+    expect(copy).not.toMatch(/guaranteed interview|guaranteed job|ATS certified|exclusive source/i);
   });
 });
 

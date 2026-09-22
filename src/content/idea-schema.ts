@@ -6,6 +6,7 @@ export const solutionTypeSchema = z.enum([
   "Automation",
   "Web tool",
   "Digital service",
+  "Consumer SaaS",
 ]);
 
 export const readinessSchema = z.enum([
@@ -213,6 +214,21 @@ const coverArtSchema = z.object({
   position: z.string().min(1).default("50% 50%"),
 });
 
+const safePreviewSchema = z.object({
+  headline: z.string().min(1),
+  supportingCopy: z.string().min(1),
+  problemBullets: z.array(z.string().min(1)).min(2),
+  question: z.string().min(1),
+  productFlow: z.array(z.string().min(1)).min(2),
+  businessFlow: z.array(z.string().min(1)).min(2),
+  differentiators: z.array(z.object({
+    title: z.string().min(1),
+    detail: z.string().min(1),
+  })).min(2),
+  resourceTeasers: z.array(z.string().min(1)).min(1),
+  notice: z.string().min(1),
+});
+
 export const ideaSchema = z.object({
   id: z.string().regex(/^idea-\d{3}$/),
   displayNumber: z.string().regex(/^\d{3}$/),
@@ -233,10 +249,11 @@ export const ideaSchema = z.object({
   detailAvailable: z.boolean(),
   implementationPlanVersion: z.string().regex(/^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/).optional(),
   fixtureLabel: z.string().optional(),
-  previewVariant: z.enum(["pipeline", "dispatch", "automation", "website", "scorecard", "property"]),
+  previewVariant: z.enum(["pipeline", "dispatch", "automation", "website", "scorecard", "property", "finance"]),
   coverArt: coverArtSchema,
   publicCoverArt: coverArtSchema.optional(),
   cardNote: z.string().min(1),
+  safePreview: safePreviewSchema.optional(),
   resources: z.array(resourceSchema),
   featuredResourceIds: z.array(z.string().min(1)).max(3).optional(),
   sections: z.array(ideaSectionSchema),
