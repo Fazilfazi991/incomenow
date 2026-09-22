@@ -13,7 +13,7 @@ This is not a production-readiness claim. Hosted Supabase, live CRM authenticati
 - Owner CRM archive: `private-resources/pergola/universalpergola-main.zip`
 - Archive SHA-256: `5E4DC492F2BD05869AE7FB77A4C83F66908F96FB6CD6329C4BDA1B36970345B5`
 - Cleaned private JSON artifact: `private-resources/pergola/potential-customers.json`
-- JSON SHA-256: `A0DD71787EE3E21E5600FCB1BF7D8849D6C846119D027D16ECC2DB90C9C40443`
+- Current preserved local JSON SHA-256: `46D0022AF7D9BC20790C5BABD733F287B210BC1867B9E5F8B6FD95261940610A`
 - Deterministic member CSV SHA-256: `6B70264AE7433D0369C5E7E7C40A93897974F7DEEF6967FE3C62E4AF2C6E78AA`
 
 The source workbook remains outside the repository. The source ZIP remains local and protected by the existing authenticated download route, but a narrow ignore rule prevents it from re-entering Git. No source package or member dataset is placed in `public/` or a client bundle.
@@ -99,6 +99,8 @@ Copy confirmation never implies a message was sent. The guidance requires verifi
 ## Git-history correction
 
 The owner approved removing the source ZIP from reachable local Git history. The original ZIP-containing commit was amended to `b89629bda9157c032f6b7180f594d2df67ec6d3b`; a narrow `/private-resources/pergola/universalpergola-main.zip` ignore rule prevents accidental restaging. The local archive retains its original hash and remains available to the protected route. No push, publish, or deployment occurred.
+
+The later release-hardening pass also untracked the 77-record member projection and moved the premium readiness content to an ignored server artifact. Current local hashes are `46D0022AF7D9BC20790C5BABD733F287B210BC1867B9E5F8B6FD95261940610A` for the 50,723-byte prospect JSON and `E6B857D51BF9C2E888ED16CDE6711C9EE432E9051CA728A819CFAE7827A541DF` for the 9,847-byte guide artifact. Both are loaded only after current IDEA #001 access succeeds.
 
 ## IncomeNow verification
 

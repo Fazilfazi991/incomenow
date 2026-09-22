@@ -6,6 +6,7 @@ import { toIdeaCatalogEntry, type IdeaCatalogEntry } from "@/content/idea-catalo
 import type { Idea } from "@/content/idea-schema";
 import { createClient } from "./supabase/server";
 import { getIdeaAccessDecision, requireVerifiedAccount } from "./membership.server";
+import { withPrivateResourceAvailability } from "./private-resources.server";
 
 export type CatalogueAccess = "full" | "starter" | "starter-available" | "locked" | "not-published" | "unavailable";
 
@@ -33,23 +34,25 @@ export async function getBrowseableIdeaCatalog(): Promise<BrowseableIdea[]> {
   const { data: projects } = await supabase.from("projects").select("id, idea_id");
   const projectByIdea = new Map((projects ?? []).map((project) => [project.idea_id, project.id]));
 
-  return publishedIdeas.map((idea) => {
+  return Promise.all(publishedIdeas.map(async (sourceIdea) => {
+    const idea = await withPrivateResourceAvailability(sourceIdea);
     const decision = getIdeaAccessDecision(context, idea.id);
     return {
       ...toIdeaCatalogEntry(idea),
       access: decision.status === "active" && !idea.detailAvailable ? "not-published" : catalogueAccess(idea.id, decision),
       projectId: projectByIdea.get(idea.id) ?? null,
     };
-  });
+  }));
 }
 
 export async function getIdeaRouteContent(slug: string): Promise<IdeaRouteContent | null> {
-  const idea = getIdeaBySlug(slug);
-  if (!idea?.published) return null;
+  const sourceIdea = getIdeaBySlug(slug);
+  if (!sourceIdea?.published) return null;
 
   const context = await requireVerifiedAccount(`/app/ideas/${encodeURIComponent(slug)}`);
-  const decision = getIdeaAccessDecision(context, idea.id);
-  const access = catalogueAccess(idea.id, decision);
+  const decision = getIdeaAccessDecision(context, sourceIdea.id);
+  const access = catalogueAccess(sourceIdea.id, decision);
+  const idea = await withPrivateResourceAvailability(sourceIdea);
   if (decision.status !== "active" || !idea.detailAvailable) {
     return {
       kind: "preview",

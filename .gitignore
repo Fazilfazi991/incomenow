@@ -29,7 +29,12 @@ trace.zip
 
 # owner-supplied private Pergola source archive; served only through protected delivery
 /private-resources/pergola/universalpergola-main.zip
+/private-resources/pergola/potential-customers.json
+/private-resources/pergola/setup-guide-v1.json
 /private-resources/clinic/clinic-operations-crm-distribution.zip
+/private-resources/clinic/uae-clinic-prospects-v1.json
+/private-resources/clinic/setup-guide-v1.json
+/private-resources/accounting/setup-guide-v1.json
 /private-resources/zerodebt/
 /private-resources/resumi/resumi-resume-builder-distribution.zip
 /video1/

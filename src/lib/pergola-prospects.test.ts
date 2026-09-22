@@ -1,11 +1,11 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { createPergolaProspectCsv, pergolaProspectDatasetSchema, type PergolaProspect } from "./pergola-prospects";
 
 const artifactPath = path.join(process.cwd(), "private-resources", "pergola", "potential-customers.json");
 
-describe("Pergola prospect projection", () => {
+describe.skipIf(!existsSync(artifactPath))("Pergola prospect projection", () => {
   it("contains the approved 77-record projection without internal research fields or raw Excel dates", () => {
     const raw = readFileSync(artifactPath, "utf8");
     const dataset = pergolaProspectDatasetSchema.parse(JSON.parse(raw));

@@ -173,7 +173,7 @@ This status deliberately distinguishes local verification from launch verificati
 - Phase 4A database regression passed all 164 pgTAP assertions across four suites without a reset; database schema/migrations were unchanged.
 - The refreshed Phase 3C disposable-user integration passed eleven checks, including locked payload minimisation, protected prospect/setup downloads, starter-only authorization, revocation, full-membership behavior, owner isolation, project reuse, and optional onboarding. Disposable accounts were removed.
 - Browser verification covered the protected customer, setup, and sales activities at 1440, 768, 390, and 320 pixels. Search, state filtering, copy feedback, protected-resource presentation, mobile navigation, and zero horizontal overflow passed; there was no framework error overlay. Captures are in `artifacts/phase-4a/`.
-- The source workbook SHA-256 is `39E2FBD76E3E5BA2E368040531832629A89C759A14EF77EFCF85BB428DF73A3F`; the cleaned JSON artifact SHA-256 is `A0DD71787EE3E21E5600FCB1BF7D8849D6C846119D027D16ECC2DB90C9C40443`; the deterministic member CSV SHA-256 is `6B70264AE7433D0369C5E7E7C40A93897974F7DEEF6967FE3C62E4AF2C6E78AA`.
+- The source workbook SHA-256 is `39E2FBD76E3E5BA2E368040531832629A89C759A14EF77EFCF85BB428DF73A3F`; the current preserved local JSON artifact SHA-256 is `46D0022AF7D9BC20790C5BABD733F287B210BC1867B9E5F8B6FD95261940610A`; the deterministic member CSV SHA-256 is `6B70264AE7433D0369C5E7E7C40A93897974F7DEEF6967FE3C62E4AF2C6E78AA`.
 
 - Visual-pass application checks: TypeScript, ESLint, 90 Vitest/Testing Library tests across 27 files, and the optimized Next.js build passed.
 - Visual-pass browser review covered 1440, 768, 390, and 320 pixels across the public home, membership, preview Explore, quick-preview dialog, mobile menu, authenticated Explore, Saved, and Projects surfaces. Reviewed routes had no horizontal overflow, framework overlay, or broken artwork.
@@ -237,6 +237,14 @@ This status deliberately distinguishes local verification from launch verificati
 - Cleanup: the final fresh two-account integration cycle passed, then both disposable accounts and their cascade-owned workspace rows were removed.
 
 ## Remaining launch blockers
+
+### Protected-resource release hardening
+
+- Protected source ZIPs, the Pergola/Clinic prospect datasets, and premium Pergola/Clinic/Accounting readiness artifacts are untracked, narrowly ignored, outside `public/`, and loaded only after fresh server-side authorization.
+- The metadata-only manifest pins fixed filenames, byte sizes, SHA-256 values, approval states, and idea IDs. Missing or mismatched artifacts fail closed and are labelled unavailable without breaking a clean tracked-only build.
+- The provisioned Pergola archive is 754,291 bytes with SHA-256 `5E4DC492F2BD05869AE7FB77A4C83F66908F96FB6CD6329C4BDA1B36970345B5`; the protected Clinic archive remains 1,687,530 bytes with SHA-256 `58600C10281677E528625F0E3B17EBB981352BFFB30366A0E5903E4DED836CDE`.
+- Production artifact delivery remains pending. The documented design uses private object storage and a fresh IncomeNow authorization decision; no production Supabase or Storage operation occurred.
+
 
 The public entry, local database, email-account, and access-controlled member workspace are implemented, but the platform is not production-ready. The following remain unexecuted:
 

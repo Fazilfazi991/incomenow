@@ -1,6 +1,7 @@
-import { renderPergolaSetupGuideMarkdown } from "@/content/pergola-kit-readiness";
 import { STARTER_IDEA_ID } from "@/content/membership-offer";
 import { getIdeaAccessDecision, requireVerifiedAccount } from "@/lib/membership.server";
+import { renderPrivateSetupGuideMarkdown } from "@/lib/private-guide-renderer";
+import { loadPergolaPrivateKitContent } from "@/lib/private-resources.server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -19,7 +20,20 @@ export async function GET() {
     });
   }
 
-  const guide = renderPergolaSetupGuideMarkdown();
+  let guide: string;
+  try {
+    const content = await loadPergolaPrivateKitContent();
+    guide = renderPrivateSetupGuideMarkdown({
+      title: content.markdown.title,
+      introduction: content.markdown.introduction,
+      steps: content.setupGuide,
+      promptHeading: content.markdown.promptHeading,
+      prompts: content.codexPrompts,
+      warning: content.markdown.warning,
+    });
+  } catch {
+    return new Response("The setup guide is temporarily unavailable.", { status: 503, headers: { "Cache-Control": "private, no-store" } });
+  }
   const body = new TextEncoder().encode(guide);
   return new Response(body, {
     headers: {

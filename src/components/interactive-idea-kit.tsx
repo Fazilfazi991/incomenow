@@ -36,7 +36,7 @@ import {
   Search,
   TrendingUp,
 } from "lucide-react";
-import { pergolaCodexPrompts, pergolaDeliveryGuide, pergolaSetupGuide, pergolaSoftwareScope } from "@/content/pergola-kit-readiness";
+import type { PergolaPrivateKitContent, PrivateKitContent } from "@/content/private-kit-content";
 import type { Idea, IdeaSection } from "@/content/idea-schema";
 import { projectStageCopy } from "@/content/project-copy";
 import { getKitActivities, getKitActivity, getKitSection, kitSectionHref, type KitSectionSlug } from "@/lib/kit-sections";
@@ -73,8 +73,9 @@ type InteractiveIdeaKitProps = {
   basePath: string;
   selectedSection: KitSectionSlug | null;
   project: KitProjectProgress | null;
-  prospects: PergolaProspect[];
+  prospects: PergolaProspect[] | null;
   clinicProspects: ClinicProspect[] | null;
+  privateKitContent: PrivateKitContent | null;
 };
 
 const activityIcons: Record<KitSectionSlug, typeof Compass> = {
@@ -291,7 +292,11 @@ function DemoSection({ idea, section }: { idea: Idea; section: Extract<IdeaSecti
   );
 }
 
-function SoftwareSection({ idea, section }: { idea: Idea; section: Extract<IdeaSection, { type: "workflow" }> }) {
+function PrivateContentUnavailable() {
+  return <div className="kit-limitation"><LockKeyhole aria-hidden="true" size={18} /><p><strong>Private member resource unavailable.</strong> The approved artifact has not been provisioned in this environment.</p></div>;
+}
+
+function SoftwareSection({ content, idea, section }: { content: PergolaPrivateKitContent | null; idea: Idea; section: Extract<IdeaSection, { type: "workflow" }> }) {
   const source = findResourceByType(idea, "source");
   return (
     <div className="kit-section-body">
@@ -300,9 +305,10 @@ function SoftwareSection({ idea, section }: { idea: Idea; section: Extract<IdeaS
       <section className="software-scope" aria-labelledby="software-scope-title">
         <div className="software-scope-heading"><div><span>Source package scope</span><h2 id="software-scope-title">What was actually found</h2></div><p>“Verified locally” means the package’s offline automated check passed. It does not mean a live customer workflow or hosted service was tested.</p></div>
         <div className="software-scope-list">
-          {pergolaSoftwareScope.map((item) => <article key={item.feature}><div><h3>{item.feature}</h3><p>{item.whatItDoes}</p></div><em data-status={item.status}>{item.status}</em></article>)}
+          {content?.softwareScope.map((item) => <article key={item.feature}><div><h3>{item.feature}</h3><p>{item.whatItDoes}</p></div><em data-status={item.status}>{item.status}</em></article>)}
         </div>
       </section>
+      {!content ? <PrivateContentUnavailable /> : null}
       <div className="source-boundary-grid">
         <article><span>Public demo</span><strong>Synthetic example</strong><p>Useful for seeing the navigation and presentation. It is not evidence that every source-package action behaves identically.</p></article>
         <article><span>Source package</span><strong>Code inspected and built</strong><p>The archive passed its offline tests, typecheck, lint, and production build in an isolated folder.</p></article>
@@ -314,17 +320,17 @@ function SoftwareSection({ idea, section }: { idea: Idea; section: Extract<IdeaS
   );
 }
 
-function SetupSection({ idea, section }: { idea: Idea; section: Extract<IdeaSection, { type: "resources" }> }) {
+function SetupSection({ content, idea, section }: { content: PergolaPrivateKitContent | null; idea: Idea; section: Extract<IdeaSection, { type: "resources" }> }) {
   const resources = section.resourceIds.map((id) => findResource(idea, id)).filter((resource): resource is IdeaResource => Boolean(resource));
   return (
     <div className="kit-section-body">
       <p className="kit-lead">{section.intro}</p>
       <ol className="setup-steps">{(section.steps ?? []).map((step, index) => <li key={step.title}><span>{index + 1}</span><div><h2>{step.title}</h2><p>{step.detail}</p></div></li>)}</ol>
       <div className="kit-resource-list">{resources.map((resource) => <article className={resource.availability === "not-connected" ? "unavailable" : ""} key={resource.id}><span><Download aria-hidden="true" size={18} /></span><div><h3>{resource.label}</h3><p>{resource.description}</p><IdeaResourceAction resource={resource} /></div><em>{resourceAvailabilityLabel(resource.availability)}</em></article>)}</div>
-      <section className="setup-guide" aria-labelledby="setup-guide-title">
+      {content ? <section className="setup-guide" aria-labelledby="setup-guide-title">
         <div className="setup-guide-heading"><span>Inspected member guide</span><h2 id="setup-guide-title">Set up, adapt, test, and hand over the CRM</h2><p>Follow the status on each step. Only the package install and offline quality checks were executed in this phase.</p></div>
         <div className="setup-guide-sections">
-          {pergolaSetupGuide.map((item, index) => (
+          {content.setupGuide.map((item, index) => (
             <details className="setup-guide-step" key={item.id} open={index === 0}>
               <summary><span>{item.label}</span><div><strong>{item.title}</strong><em>{item.status}</em></div></summary>
               <div><p>{item.body}</p>{"commands" in item && item.commands ? <pre><code>{item.commands.join("\n")}</code></pre> : null}</div>
@@ -333,20 +339,20 @@ function SetupSection({ idea, section }: { idea: Idea; section: Extract<IdeaSect
         </div>
         <div className="codex-prompt-list">
           <div><span>Safe Codex helpers</span><h3>Copy a prompt without including secrets</h3></div>
-          {pergolaCodexPrompts.map((prompt, index) => <article key={prompt}><p>{prompt}</p><CopyTextButton label={`Copy prompt ${index + 1}`} text={prompt} /></article>)}
+          {content.codexPrompts.map((prompt, index) => <article key={prompt}><p>{prompt}</p><CopyTextButton label={`Copy prompt ${index + 1}`} text={prompt} /></article>)}
           <p className="codex-secret-warning"><ShieldCheck aria-hidden="true" size={16} /> Never paste passwords, private keys, connection strings, customer exports, or other secrets into an AI prompt.</p>
         </div>
-      </section>
+      </section> : <PrivateContentUnavailable />}
     </div>
   );
 }
 
-function CustomersSection({ idea, prospects, section }: { idea: Idea; prospects: PergolaProspect[]; section: Extract<IdeaSection, { type: "customer-discovery" }> }) {
+function CustomersSection({ idea, prospects, section }: { idea: Idea; prospects: PergolaProspect[] | null; section: Extract<IdeaSection, { type: "customer-discovery" }> }) {
   const prospectResource = findResource(idea, "crm-discovery");
   return (
     <div className="kit-section-body">
       <div className="customer-resource-state available"><Users aria-hidden="true" size={20} /><div><span>Potential customers</span><h2>Research businesses that may fit this offer and decide which ones are worth approaching.</h2><p>Potential businesses to research — not confirmed buyers. Contact details come from published business sources and may change. Verify the company and contact route before outreach. This list is non-exclusive.</p></div>{prospectResource ? <IdeaResourceAction resource={prospectResource} /> : null}</div>
-      <ProspectExplorer downloadPath={prospectResource?.downloadPath ?? "/app/resources/pergola-potential-customers"} records={prospects} />
+      {prospects ? <ProspectExplorer downloadPath={prospectResource?.downloadPath ?? "/app/resources/pergola-potential-customers"} records={prospects} /> : <PrivateContentUnavailable />}
       <section className="customer-audiences"><div><span>Research context</span><h2>Who this offer may fit</h2></div><div>{section.audiences.map((audience) => <span key={audience}><Users aria-hidden="true" size={15} />{audience}</span>)}</div></section>
       <details className="kit-details interview-questions" open><summary>Interview questions <MessageSquareText aria-hidden="true" size={16} /></summary><div><ol>{section.questions.map((question) => <li key={question}>{question}</li>)}</ol></div></details>
       <details className="kit-details"><summary>Turn research into a bounded offer <BriefcaseBusiness aria-hidden="true" size={16} /></summary><div><p>{section.guidance}</p></div></details>
@@ -366,7 +372,7 @@ function SalesSection({ section }: { section: Extract<IdeaSection, { type: "sale
   );
 }
 
-function DeliverySection({ idea, section, project }: { idea: Idea; section: Extract<IdeaSection, { type: "action-plan" }>; project: KitProjectProgress | null }) {
+function DeliverySection({ content, idea, section, project }: { content: PergolaPrivateKitContent | null; idea: Idea; section: Extract<IdeaSection, { type: "action-plan" }>; project: KitProjectProgress | null }) {
   const progressByStage = new Map(project?.stages.map((stage) => [stage.id, stage]));
   return (
     <div className="kit-section-body">
@@ -375,10 +381,10 @@ function DeliverySection({ idea, section, project }: { idea: Idea; section: Extr
         {project?.meaningful ? <div className="delivery-progress"><strong>{project.completedStageCount}/{project.totalStageCount}</strong><span>checklist stages complete</span></div> : null}
         <StartIdeaControl appearance="primary" existingLabel="Open my personal checklist" existingProjectId={project?.id ?? null} ideaId={idea.id} mode="member" startLabel="Start my personal checklist" />
       </section>
-      <section className="delivery-readiness" aria-labelledby="delivery-readiness-title">
+      {content ? <section className="delivery-readiness" aria-labelledby="delivery-readiness-title">
         <div><span>Customer handover guide</span><h2 id="delivery-readiness-title">Complete these checks before delivery</h2><p>This practical guide does not update project progress. Use your personal checklist to record your own work.</p></div>
-        <ol>{pergolaDeliveryGuide.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol>
-      </section>
+        <ol>{content.deliveryGuide.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol>
+      </section> : <PrivateContentUnavailable />}
       <ol className="delivery-stage-map">{section.stages.map((stage, index) => {
         const saved = progressByStage.get(stage.id);
         const display = projectStageCopy(stage);
@@ -388,7 +394,7 @@ function DeliverySection({ idea, section, project }: { idea: Idea; section: Extr
   );
 }
 
-function FocusedKitSection({ idea, basePath, selectedSection, project, prospects, clinicProspects }: InteractiveIdeaKitProps & { selectedSection: KitSectionSlug }) {
+function FocusedKitSection({ idea, basePath, selectedSection, project, prospects, clinicProspects, privateKitContent }: InteractiveIdeaKitProps & { selectedSection: KitSectionSlug }) {
   const activities = getKitActivities(idea.id);
   const activity = getKitActivity(idea.id, selectedSection);
   const section = getKitSection(idea.sections, activity);
@@ -398,14 +404,14 @@ function FocusedKitSection({ idea, basePath, selectedSection, project, prospects
     <KitViewFocus viewKey={selectedSection}>
       <main className="kit-focused-view">
         <SectionHeader activity={activity} activities={activities} basePath={basePath} />
-        {idea.id === "idea-002" ? <ClinicKitSection clinicProspects={clinicProspects} idea={idea} project={project} section={section} /> : idea.id === "idea-003" ? <AccountingKitSection idea={idea} project={project} section={section} /> : idea.id === "idea-004" ? <ZeroDebtKitSection idea={idea} project={project} section={section} /> : idea.id === "idea-005" ? <ResumiKitSection idea={idea} project={project} section={section} /> : <>
+        {idea.id === "idea-002" ? <ClinicKitSection clinicProspects={clinicProspects} content={privateKitContent?.ideaId === "idea-002" ? privateKitContent : null} idea={idea} project={project} section={section} /> : idea.id === "idea-003" ? <AccountingKitSection content={privateKitContent?.ideaId === "idea-003" ? privateKitContent : null} idea={idea} project={project} section={section} /> : idea.id === "idea-004" ? <ZeroDebtKitSection idea={idea} project={project} section={section} /> : idea.id === "idea-005" ? <ResumiKitSection idea={idea} project={project} section={section} /> : <>
           {section.type === "overview" ? <OpportunitySection idea={idea} section={section} /> : null}
           {section.type === "demo-preview" ? <DemoSection idea={idea} section={section} /> : null}
-          {section.type === "workflow" ? <SoftwareSection idea={idea} section={section} /> : null}
-          {section.type === "resources" ? <SetupSection idea={idea} section={section} /> : null}
+          {section.type === "workflow" ? <SoftwareSection content={privateKitContent?.ideaId === "idea-001" ? privateKitContent : null} idea={idea} section={section} /> : null}
+          {section.type === "resources" ? <SetupSection content={privateKitContent?.ideaId === "idea-001" ? privateKitContent : null} idea={idea} section={section} /> : null}
           {section.type === "customer-discovery" ? <CustomersSection idea={idea} prospects={prospects} section={section} /> : null}
           {section.type === "sales-kit" ? <SalesSection section={section} /> : null}
-          {section.type === "action-plan" ? <DeliverySection idea={idea} project={project} section={section} /> : null}
+          {section.type === "action-plan" ? <DeliverySection content={privateKitContent?.ideaId === "idea-001" ? privateKitContent : null} idea={idea} project={project} section={section} /> : null}
         </>}
         <SectionNext activities={activities} basePath={basePath} slug={selectedSection} />
       </main>

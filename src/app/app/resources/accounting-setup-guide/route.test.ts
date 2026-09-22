@@ -1,11 +1,13 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const { requireVerifiedAccount, getIdeaAccessDecision } = vi.hoisted(() => ({
+const { requireVerifiedAccount, getIdeaAccessDecision, loadAccountingPrivateKitContent } = vi.hoisted(() => ({
   requireVerifiedAccount: vi.fn(),
   getIdeaAccessDecision: vi.fn(),
+  loadAccountingPrivateKitContent: vi.fn(),
 }));
 
 vi.mock("@/lib/membership.server", () => ({ requireVerifiedAccount, getIdeaAccessDecision }));
+vi.mock("@/lib/private-resources.server", () => ({ loadAccountingPrivateKitContent }));
 
 import { GET } from "./route";
 
@@ -13,6 +15,11 @@ describe("protected Accounting setup guide", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     requireVerifiedAccount.mockResolvedValue({ user: { id: "member-1" } });
+    loadAccountingPrivateKitContent.mockResolvedValue({
+      markdown: { title: "FYNTA Accounting & Finance Operations — inspected setup and handover guide", introduction: "Inspected guide.", promptHeading: "Safe optional-AI prompts", warning: "AI output requires human review." },
+      setupGuide: [{ id: "test", label: "01", title: "Install", status: "VERIFIED", body: "Install exactly.", commands: ["npm ci"] }],
+      safePrompts: ["Inspect safely."],
+    });
   });
 
   it("refuses registered and Pergola-only accounts", async () => {

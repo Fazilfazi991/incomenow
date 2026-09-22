@@ -1,9 +1,7 @@
-import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 import { clinicDistributionDownloadEnabled, clinicDistributionState } from "@/content/clinic-distribution";
 import { CLINIC_IDEA_ID } from "@/content/clinic-kit-readiness";
 import { getIdeaAccessDecision, requireVerifiedAccount } from "@/lib/membership.server";
+import { readVerifiedPrivateResource } from "@/lib/private-resources.server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -37,14 +35,7 @@ export async function GET() {
   }
 
   try {
-    const archive = await readFile(path.join(process.cwd(), "private-resources", "clinic", downloadName));
-    const archiveSha256 = createHash("sha256").update(archive).digest("hex").toUpperCase();
-    if (archive.byteLength !== clinicDistributionState.approvedPackageSizeBytes || archiveSha256 !== clinicDistributionState.approvedPackageSha256) {
-      return new Response("The approved source package is temporarily unavailable.", {
-        status: 503,
-        headers: { "Cache-Control": "private, no-store" },
-      });
-    }
+    const archive = await readVerifiedPrivateResource("clinic-source");
     return new Response(new Uint8Array(archive), {
       headers: {
         "Cache-Control": "private, no-store",

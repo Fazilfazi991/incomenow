@@ -28,8 +28,9 @@ Server-only artifact: `private-resources/clinic/uae-clinic-prospects-v1.json`
 - Schema version: 1.
 - Dataset version: 2026-09-21.
 - Records: 100.
-- JSON size: 81,581 bytes.
-- JSON SHA-256: `0EA73A9186FBFCCD9BF431B2A39F0814BA32F106B24A3FC4FBFD5DC4D00CD4CB`.
+- Current preserved local JSON size: 83,595 bytes.
+- Current preserved local JSON SHA-256: `16542CD14B50428C4F57FBBDF6EB616B09D8C8BD420FBFD9AEB05909FB87FA9E`.
+- Release state: untracked, narrowly ignored, and verified by the server-only manifest before parsing.
 
 Distribution:
 

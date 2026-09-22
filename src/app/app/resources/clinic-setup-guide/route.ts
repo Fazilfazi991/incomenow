@@ -1,5 +1,7 @@
-import { CLINIC_IDEA_ID, renderClinicSetupGuideMarkdown } from "@/content/clinic-kit-readiness";
+import { CLINIC_IDEA_ID } from "@/content/clinic-kit-readiness";
 import { getIdeaAccessDecision, requireVerifiedAccount } from "@/lib/membership.server";
+import { renderPrivateSetupGuideMarkdown } from "@/lib/private-guide-renderer";
+import { loadClinicPrivateKitContent } from "@/lib/private-resources.server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -18,7 +20,20 @@ export async function GET() {
     });
   }
 
-  const guide = renderClinicSetupGuideMarkdown();
+  let guide: string;
+  try {
+    const content = await loadClinicPrivateKitContent();
+    guide = renderPrivateSetupGuideMarkdown({
+      title: content.markdown.title,
+      introduction: content.markdown.introduction,
+      steps: content.setupGuide,
+      promptHeading: content.markdown.promptHeading,
+      prompts: content.codexPrompts,
+      warning: content.markdown.warning,
+    });
+  } catch {
+    return new Response("The setup guide is temporarily unavailable.", { status: 503, headers: { "Cache-Control": "private, no-store" } });
+  }
   const body = new TextEncoder().encode(guide);
   return new Response(body, {
     headers: {

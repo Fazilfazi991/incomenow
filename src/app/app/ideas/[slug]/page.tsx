@@ -10,6 +10,7 @@ import { isInteractiveKitIdea, isKitSectionSlug } from "@/lib/kit-sections";
 import { getIdeaRouteContent } from "@/lib/member-content.server";
 import { getClinicProspects } from "@/lib/clinic-prospects.server";
 import { getPergolaProspects } from "@/lib/pergola-prospects.server";
+import { loadPrivateKitContent } from "@/lib/private-resources.server";
 import { getMemberProject } from "@/lib/workspace.server";
 
 export const metadata: Metadata = { title: "Member idea" };
@@ -31,9 +32,12 @@ export default async function MemberIdeaPage({ params, searchParams }: IdeaPageP
   if (hasInteractiveKit && requestedSection !== undefined && !selectedSection) redirect(`/app/ideas/${encodeURIComponent(slug)}`);
 
   let projectProgress: KitProjectProgress | null = null;
-  const prospects = hasInteractiveKit && selectedSection === "customers" ? await getPergolaProspects() : [];
+  const privateKitContent = hasInteractiveKit ? await loadPrivateKitContent(content.idea.id) : null;
+  const prospects = hasInteractiveKit && selectedSection === "customers"
+    ? await getPergolaProspects().catch(() => null)
+    : null;
   const clinicProspects = hasInteractiveKit && content.idea.id === "idea-002" && selectedSection === "clinics" && content.access === "full"
-    ? await getClinicProspects()
+    ? await getClinicProspects().catch(() => null)
     : null;
   if (hasInteractiveKit && content.projectId) {
     const project = await getMemberProject(content.projectId);
@@ -68,7 +72,7 @@ export default async function MemberIdeaPage({ params, searchParams }: IdeaPageP
       </div>
       {content.kind === "full"
         ? hasInteractiveKit
-          ? <InteractiveIdeaKit basePath={`/app/ideas/${content.idea.slug}`} clinicProspects={clinicProspects} idea={content.idea} project={projectProgress} prospects={prospects} selectedSection={selectedSection} />
+          ? <InteractiveIdeaKit basePath={`/app/ideas/${content.idea.slug}`} clinicProspects={clinicProspects} idea={content.idea} privateKitContent={privateKitContent} project={projectProgress} prospects={prospects} selectedSection={selectedSection} />
           : <IdeaDetail idea={content.idea} mode="member" existingProjectId={content.projectId} />
         : <LockedIdeaDetail idea={content.idea} access={content.access} />}
     </div>

@@ -1,14 +1,11 @@
 import "server-only";
 
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 import { pergolaProspectDatasetSchema } from "./pergola-prospects";
-
-const datasetPath = path.join(process.cwd(), "private-resources", "pergola", "potential-customers.json");
+import { readVerifiedPrivateResource } from "./private-resources.server";
 
 export async function getPergolaProspectDataset() {
-  const raw = await readFile(datasetPath, "utf8");
-  return pergolaProspectDatasetSchema.parse(JSON.parse(raw));
+  const raw = await readVerifiedPrivateResource("pergola-prospects");
+  return pergolaProspectDatasetSchema.parse(JSON.parse(raw.toString("utf8")));
 }
 
 export async function getPergolaProspects() {

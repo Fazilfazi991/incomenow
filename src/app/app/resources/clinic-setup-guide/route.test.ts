@@ -1,11 +1,13 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const { requireVerifiedAccount, getIdeaAccessDecision } = vi.hoisted(() => ({
+const { requireVerifiedAccount, getIdeaAccessDecision, loadClinicPrivateKitContent } = vi.hoisted(() => ({
   requireVerifiedAccount: vi.fn(),
   getIdeaAccessDecision: vi.fn(),
+  loadClinicPrivateKitContent: vi.fn(),
 }));
 
 vi.mock("@/lib/membership.server", () => ({ requireVerifiedAccount, getIdeaAccessDecision }));
+vi.mock("@/lib/private-resources.server", () => ({ loadClinicPrivateKitContent }));
 
 import { GET } from "./route";
 
@@ -13,6 +15,11 @@ describe("protected Clinic setup guide", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     requireVerifiedAccount.mockResolvedValue({ user: { id: "member-1" } });
+    loadClinicPrivateKitContent.mockResolvedValue({
+      markdown: { title: "BSmile Clinic Operations CRM — inspected setup and handover guide", introduction: "Inspected guide.", promptHeading: "Safe Codex prompts", warning: "Never paste passwords." },
+      setupGuide: [{ id: "test", label: "01", title: "Install", status: "VERIFIED", body: "Install exactly.", commands: ["pnpm install --frozen-lockfile"] }],
+      codexPrompts: ["Inspect safely."],
+    });
   });
 
   it("refuses registered and Pergola-only accounts when Clinic access is inactive", async () => {

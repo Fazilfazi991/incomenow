@@ -40,8 +40,7 @@ function HomepageOfferAction({ state, light = false }: { state: PublicAccountSta
 
 export default async function HomePage() {
   const accountStatePromise = getPublicAccountState();
-  const ideas = getPublicIdeas();
-  const accountState = await accountStatePromise;
+  const [ideas, accountState] = await Promise.all([getPublicIdeas(), accountStatePromise]);
 
   return (
     <PublicShell state={accountState} page="home">

@@ -141,4 +141,6 @@ Merge requirement: apply the migration once in the intended target only after re
 
 ## Stop point
 
+Release hardening moved the Accounting readiness/evidence/guide payload out of tracked TypeScript and into the ignored 12,928-byte `setup-guide-v1.json` artifact pinned by SHA-256 `7E3890D6C8F7CDC897FB723DB5487F090538A2EB3181BCEC21E2B520BABF9470`. Active full membership is checked before the artifact is read; missing or mismatched provisioning returns an unavailable state and no guide payload.
+
 No push, merge, deployment, hosted-service mutation, checkout/payment work, Accounting source publication, public-demo deployment, or external customer contact was performed. The phase is ready for owner and independent review, not production launch.

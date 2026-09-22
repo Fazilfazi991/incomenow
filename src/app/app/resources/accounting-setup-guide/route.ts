@@ -1,5 +1,7 @@
-import { ACCOUNTING_IDEA_ID, renderAccountingSetupGuideMarkdown } from "@/content/accounting-kit-readiness";
+import { ACCOUNTING_IDEA_ID } from "@/content/accounting-kit-readiness";
 import { getIdeaAccessDecision, requireVerifiedAccount } from "@/lib/membership.server";
+import { renderPrivateSetupGuideMarkdown } from "@/lib/private-guide-renderer";
+import { loadAccountingPrivateKitContent } from "@/lib/private-resources.server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -18,7 +20,21 @@ export async function GET() {
     });
   }
 
-  const body = new TextEncoder().encode(renderAccountingSetupGuideMarkdown());
+  let guide: string;
+  try {
+    const content = await loadAccountingPrivateKitContent();
+    guide = renderPrivateSetupGuideMarkdown({
+      title: content.markdown.title,
+      introduction: content.markdown.introduction,
+      steps: content.setupGuide,
+      promptHeading: content.markdown.promptHeading,
+      prompts: content.safePrompts,
+      warning: content.markdown.warning,
+    });
+  } catch {
+    return new Response("The setup guide is temporarily unavailable.", { status: 503, headers: { "Cache-Control": "private, no-store" } });
+  }
+  const body = new TextEncoder().encode(guide);
   return new Response(body, {
     headers: {
       "Cache-Control": "private, no-store",

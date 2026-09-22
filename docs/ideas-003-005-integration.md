@@ -158,3 +158,9 @@ Post-approval smoke plan:
 No source ZIP, prospect workbook, or research file was moved to hosted Storage. Existing private server-side resources remain outside `public/` and Git. If serverless production later requires object storage, design a private bucket and signed, freshly authorized download policy separately; never use a public bucket for protected packages.
 
 Remaining work is owner-authorized production migration, backup verification, final Auth URLs/providers, hosted environment values, hosted smoke tests, domain/Google verification, and any separately approved private-Storage design. Payment processing, final commercial terms, automatic renewal, push, and deployment remain deferred.
+
+## Protected artifact hardening
+
+The post-integration release-hardening pass removed the Pergola and Clinic prospect datasets and the Pergola, Clinic, and Accounting premium readiness content from tracked release history. The exact local files remain in narrowly ignored fixed locations and are verified through the tracked metadata-only manifest before an authorized server request can use them. The approved Pergola source ZIP was copied from the owner's canonical ignored main-worktree copy and verified at 754,291 bytes with SHA-256 `5E4DC492F2BD05869AE7FB77A4C83F66908F96FB6CD6329C4BDA1B36970345B5`.
+
+A clean tracked-only checkout advertises these private resources as unavailable and still builds. A separately provisioned review checkout restores exact-hash downloads, the 77-record Pergola projection, the 100-record Clinic projection, and the three private guides. Future production delivery requires a separately approved private artifact store; no hosted Supabase or Storage mutation was made. See `docs/protected-resource-hardening.md`.

@@ -1,7 +1,6 @@
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 import { STARTER_IDEA_ID } from "@/content/membership-offer";
 import { getIdeaAccessDecision, requireVerifiedAccount } from "@/lib/membership.server";
+import { readVerifiedPrivateResource } from "@/lib/private-resources.server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -21,7 +20,7 @@ export async function GET() {
   }
 
   try {
-    const archive = await readFile(path.join(process.cwd(), "private-resources", "pergola", downloadName));
+    const archive = await readVerifiedPrivateResource("pergola-source");
     return new Response(new Uint8Array(archive), {
       headers: {
         "Cache-Control": "private, no-store",
