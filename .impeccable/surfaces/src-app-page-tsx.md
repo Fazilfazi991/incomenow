@@ -2,25 +2,32 @@
 version: 1
 slug: "src-app-page-tsx"
 primary_target: "src/app/page.tsx"
-related_targets: ["src/app/membership/page.tsx","src/components/public-site.tsx","src/components/public-idea-gallery.tsx","src/app/globals.css"]
+related_targets: ["src/components/homepage/vault-home.tsx","src/components/homepage/vault-home.css","src/components/homepage/membership-capacity.tsx","src/components/homepage/execution-flow.tsx","src/lib/membership-capacity.ts","src/components/public-site.tsx","src/components/public-idea-gallery.tsx","src/components/public-faq.tsx"]
 ---
 
-# Phase 3C public discovery and starter surfaces
+# Limited opportunity vault homepage
 
-Mode: Persuade. A signed-out or returning visitor should understand the opportunity-library model, inspect three honest examples, and choose the correct registered, starter, or full-membership path without being promised income, checkout, or unavailable resources.
+Mode: Persuade. Visitors compare the two published public opportunities, understand implementation support and the 600-active-member model, then explore or create an account. The owner confirms membership is open; Stripe remains disconnected.
 
 ## Direction contract
 
-THESIS: A calm public reading room that lets practical founders examine the library before they create an account. It extends the approved Stitch public homepage and membership compositions without turning IncomeNow into a generic SaaS landing page.
+THESIS: A serious opportunity vault organized around starting a business, with a capacity instrument as its signature. The user's dark, premium, original anime-tech brief replaces the homepage world only.
 
-OWN-WORLD: Pale sage fields, structural white panels, forest editorial anchors, focused emerald actions, Manrope headings, Inter utility copy, thin botanical rules, and compact interface schematics taken directly from the approved public Stitch exports.
+OWN-WORLD: Carbon surfaces, mineral-white text, sharp lime allocation markings, fine structural rules, condensed Barlow display lettering, and tabular measurements. Member and authentication visual systems stay intact.
 
-STORY: Visitors learn the four-step method, inspect allowlisted summaries for ideas 001, 003, and 004, understand what a kit and workspace contain, review the US$1 one-time Pergola starter beside the separately unpriced monthly membership, and follow an account-aware action that never grants access or implies checkout exists.
+STORY: Find a published opportunity, inspect its execution system, understand limited membership and the $14.99 monthly offer, then use existing account/starter actions. No invented opportunities, paid activation, or customer activity.
 
-FIRST VIEWPORT: Desktop pairs the two-line promise with a credible fictional library preview and visible section navigation. Mobile keeps the wordmark and menu reachable, stacks the promise before the preview, and preserves full-width primary actions without horizontal overflow.
+FIRST VIEWPORT: Large left-aligned promise and two immediate actions beside a full capacity dial. Mobile stacks the promise and readable allocation instrument. Public opportunity files and alternating dense and quiet passages carry the rest of the page.
 
-FORM: Brief-pinned approved Stitch references; no concept seed applies. Signature interaction: Quick preview opens a focused, keyboard-safe public idea sheet containing only the explicit public projection, then restores focus to its trigger on close.
+FORM: Brief-pinned access instrument; seed 1d5c7ff5 acknowledged, with the explicit brief overriding the catalog assignment. Signature interactions are the execution-stage selector and keyboard-safe public opportunity preview. Demo counts are labelled and excluded from production.
 
-FINISH: The build ends only after public/locked-content boundary tests, route/build/database regressions, four-width visual checks for both routes, one detector pass, design documentation, and a reviewed local phase commit. Push and deployment require separate approval.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
 
-SEED: brief-pinned-public-homepage-and-membership
+SEED: 1d5c7ff5, assigned grounded4; explicit owner brief pins the selected direction and overrides the catalog assignment. The finish reviewer corroborates this rationale.
+
+Motion assessment: CTA press feedback (120ms scale .98); fine-pointer opportunity hover (180ms translateY -3px); stage swap (180ms opacity). Reduced motion removes movement. Animated counts, looping backgrounds, auto-scrolling strips, and delayed entrances are rejected because they impede reading or lack a functional purpose.
+
+Scope: homepage presentation and opt-in shared-component variants. Authentication, entitlement checks, current starter offer, payment configuration, production data, and other routes are preserved. Local preview first; no production deployment.
+
+
+Recorded implementation: DESIGN.md and .impeccable/design.json merge the shipped homepage appearance while preserving member/auth/starter and other route systems. Source uses 1100px, 800px, 600px, and 360px vault breakpoints plus shared disclosure navigation. Reused Pergola and Clinic WebP covers have adjacent provenance sidecars; original generation prompts are unavailable. The finish review requested removal of the hero eyebrow and movement of closing capacity below copy; both are corrected in source and final production recaptures.

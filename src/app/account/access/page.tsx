@@ -6,6 +6,9 @@ import { STARTER_IDEA_ID } from "@/content/membership-offer";
 import { getIdeaById } from "@/content/ideas";
 import { getAccountAccessContext, getIdeaAccessDecision } from "@/lib/membership.server";
 import { getMemberProjectIdForIdea } from "@/lib/workspace.server";
+import { getBillingAccount } from "@/lib/billing-store.server";
+import { getMembershipBillingView } from "@/lib/billing-view.server";
+import { cancelMembershipAtPeriodEnd, manageMembershipBilling } from "@/app/membership/billing-actions";
 
 export const metadata: Metadata = { title: "Account access" };
 export const dynamic = "force-dynamic";
@@ -15,6 +18,7 @@ type AccessPageProps = { searchParams: Promise<{ notice?: string }> };
 const notices: Record<string, string> = {
   updates: "Member update feeds are not available yet.",
   support: "A connected support channel is not available yet.",
+  "cancellation-requested": "Cancellation was requested for the end of your paid period. Your paid access and capacity slot remain valid until that period ends.",
 };
 
 export default async function AccountAccessPage({ searchParams }: AccessPageProps) {
@@ -33,6 +37,8 @@ export default async function AccountAccessPage({ searchParams }: AccessPageProp
   }
 
   const fullActive = context.fullMembership === "active";
+  const [billingAccount,billingView]=await Promise.all([getBillingAccount(context.user.id),getMembershipBillingView()]);
+  const subscription=billingAccount?.subscription;
   const starterDecision = getIdeaAccessDecision(context, STARTER_IDEA_ID);
   const starterActive = !fullActive && starterDecision.status === "active" && starterDecision.source === "starter";
   const unavailable = !fullActive && !starterActive && (context.fullMembership === "unavailable" || context.ideaGrantLookup === "unavailable");
@@ -51,6 +57,8 @@ export default async function AccountAccessPage({ searchParams }: AccessPageProp
         </div>
         <dl className="access-details"><div><dt>Account</dt><dd>{context.displayName || "No display name"}</dd></div><div><dt>Email</dt><dd>{context.user.email}</dd></div><div><dt>Catalogue previews</dt><dd>Allowed</dd></div><div><dt>Full content</dt><dd>{fullActive ? "All included published ideas" : starterActive ? "Pergola idea only" : unavailable ? "Pending a fresh access check" : "No paid idea access"}</dd></div></dl>
         {notice ? <div className="access-notice" role="status">{notice}</div> : null}
+        {fullActive&&subscription?.state==="cancel_at_period_end"&&subscription.entitlement_ends_at&&<p role="status">Membership active until {new Intl.DateTimeFormat("en-US",{dateStyle:"long",timeZone:"UTC"}).format(new Date(subscription.entitlement_ends_at))} (UTC). Your slot remains occupied through this paid period.</p>}
+        {billingAccount?.waitlist_state==="waiting"&&<p role="status">You are on the membership waitlist.</p>}
         <div className="access-actions">
           {fullActive ? <Link className="primary-button" href="/app/explore">Open idea library <ArrowRight size={16} /></Link> : null}
           {starterActive ? <Link className="primary-button" href={starterProjectId ? `/app/projects/${starterProjectId}` : `/app/ideas/${starterIdea.slug}`}>{starterProjectId ? "Continue starter project" : "Open starter idea"} <ArrowRight size={16} /></Link> : null}
@@ -58,6 +66,9 @@ export default async function AccountAccessPage({ searchParams }: AccessPageProp
           {!fullActive && !starterActive && !unavailable ? <Link className="secondary-button" href="/membership?offer=starter#starter-offer">View the US$1 starter</Link> : null}
           {unavailable ? <Link className="secondary-button" href="/account/access">Retry access check</Link> : null}
           <Link className="secondary-button" href="/account/settings">Account settings</Link>
+          {!fullActive&&!unavailable&&<Link className="secondary-button" href="/membership">{starterActive?"Upgrade to full membership":"Review full membership"}</Link>}
+          {subscription?.provider_subscription_id&&billingView.portalAvailable&&<form action={manageMembershipBilling}><button className="secondary-button" type="submit">Manage Billing</button></form>}
+          {fullActive&&subscription?.state==="active"&&billingView.billingConfigured&&<form action={cancelMembershipAtPeriodEnd}><button className="secondary-button" type="submit">Cancel at period end</button></form>}
         </div>
       </section>
     </AccountShell>

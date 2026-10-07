@@ -1,0 +1,95 @@
+# IncomeNow billing implementation and live-readiness report
+
+Historical preparation snapshot. The owner subsequently authorized production rollout. Real Stripe TEST E2E is now complete; current implementation, hosted migration, LIVE object, deployment and gate status are recorded in [stripe-membership-rollout.md](stripe-membership-rollout.md).
+
+7 October 2026. This report describes the combined local implementation after coordination with the preparation chat. The preparation report remains a historical snapshot.
+
+**Local application and PostgreSQL verification completed; real Stripe payment E2E remains pending at the owner's request. Live billing is disabled in code. Nothing has been committed, pushed or deployed.** The only Stripe mutations performed were creation of the explicitly requested TEST Product and recurring TEST Price. No Stripe customers, subscriptions, portal configurations, webhook endpoints, tax, payout, bank or live objects were changed.
+
+## Implementation report
+
+1. **Starting commit:** `94ef8a35c7e2ec41bf49400df2a586497f70f770`.
+2. **Branch:** `codex/stripe-membership`. Substantial pre-existing homepage, acquisition, authentication-attribution, design and capacity preparation work was preserved. The owner authorized coordination between the two chats; ownership was respected during preparation.
+3. **Files changed in this billing phase:**
+   - `package.json`, `package-lock.json`: pinned Stripe SDK 23.0.0; new isolated billing-test command. Existing preparation test command retained.
+   - `.env.example`: server-only configuration names and safe comments. Ignored `.env.local`: test mode and the two non-secret Stripe object IDs only; no key was obtained or committed.
+   - `src/lib/billing-config.ts`, `stripe.server.ts`, `billing-store.server.ts`, `billing-checkout.server.ts`, `billing-projection.ts`, `billing-webhook.server.ts`, `billing-view.server.ts` and their tests: configuration, provider verification, service-only database bridge, Checkout, reconciliation and UI state.
+   - `src/app/membership/billing-actions.ts`, `membership/return/page.tsx`, `api/stripe/webhook/route.ts` and its tests, `api/billing/reconcile/route.ts`: authenticated mutations, read-only return page, signed webhook and protected scheduled reconciliation endpoint.
+   - `src/app/admin/membership/page.tsx`, `actions.ts`: operational metrics and account-bound waitlist invitation allocation.
+   - `src/components/membership-billing-controls.tsx` and tests; existing homepage, `/membership`, account access, capacity presentation/tests and public-page tests: shared terms, configuration-aware controls, verified occupancy and cancellation dates.
+   - `src/types/database.ts`: service-only command RPC typing.
+   - `scripts/verify-stripe-billing-local.mjs`, the additive migration below, this report, `docs/stripe-membership-audit.md` and README link.
+4. **Database migrations:** new `20261007103932_stripe_membership_billing.sql`, generated with the Supabase CLI. It extends the preserved `20261007102952_full_membership_capacity_foundation.sql` and depends on existing auth and acquisition migrations. No migration was applied to a hosted project or existing application database. The test harness applied the relevant migrations to a disposable network-isolated PostgreSQL 17 container and removed it afterwards.
+5. **Stripe TEST objects created:** Product `prod_VOfiAYZA57kAGz`; Price `price_1UNsMbPDKvZxI4vzbTOtIxee`. Dashboard verified IncomeNow Membership, USD 14.99, recurring monthly, no trial. [Test product](https://dashboard.stripe.com/acct_1Tt7qJPDKvZxI4vz/test/products/prod_VOfiAYZA57kAGz). Evidence: `.impeccable/review/stripe-billing/stripe-test-product.jpg`.
+6. **Environment variables:** see the configuration table below. No publishable Stripe key is needed for this server-created, hosted Checkout redirect flow; there is no client-side Stripe SDK or Elements form.
+7. **Capacity architecture:** reuse the private singleton policy row, subscriptions and numbered claim ledger. Every service command locks the singleton before modifying membership capacity. A reservation consumes a numbered claim before any Stripe request; activation converts that same claim. No network request runs inside the transaction.
+8. **Exact active-slot definition:** a full entitlement counts as active when enabled, unrevoked, start is absent or at/before database `now()`, and expiry is absent or strictly after `now()`. This includes legacy full grants. Normal Stripe access has a finite paid-invoice window. Cancellation retains active status through that window; expiry closes access without relying on a browser visit. Starter grants never enter this count. Past-due/unpaid periods receive no extra grace: only the last confirmed paid window remains valid.
+9. **Concurrency protection:** singleton row locking, one claim per user/subscription, primary-key slot numbers constrained to 1–600, and a guard on full-entitlement writes. The guard also prevents operator-created full grants from bypassing occupied/reserved capacity; unexpired future grants conservatively block billing cutover until reconciled. Real concurrent PostgreSQL connections competing at 599 claims produced exactly one winner and one capacity rejection; count remained 600. Reservations/uncertain renewals are reported separately from active paid access, and cannot be advertised as available.
+10. **Checkout:** verified, non-anonymous, email-confirmed account; fresh entitlement check; server-owned Product/Price verification against shared US$14.99/month terms; atomic reservation and customer mapping; persisted origin/expiry; stable provider idempotency keys; reuse existing open Checkout. Browser price/user-ID input is never used. Customer creation occurs after capacity allocation. Unknown API outcomes preserve the claim. Checkout is restricted to card and disables promotions/adaptive pricing. Success and cancel URLs never grant access.
+11. **Webhook:** `/api/stripe/webhook`, Node runtime; raw-body Stripe signature validation; reject live events; identify a candidate from metadata, then independently retrieve and validate the stored Checkout/customer/subscription/price bindings. A per-subscription database lease serializes provider reads. A fencing token rejects a stalled worker after its lease has been replaced. Fetch current subscription and paid invoice instead of projecting stale event payloads. Event idempotency, entitlement/claim state and acquisition payment recording commit together. Historical invoice events record their actual invoice without replacing current entitlement with an old period. Unrelated products are ignored. Unknown IncomeNow bindings and transient failures return 503 so Stripe can retry.
+12. **Cancellation:** authenticated action requests `cancel_at_period_end=true`; verified webhook projects it. Paid access and its claim stay until the existing paid-through date. A deleted/cancelled subscription with remaining paid time retains that date. The Billing Portal must use a test configuration with period-end cancellation and subscription changes disabled; the action verifies that configuration. Closing new checkout does not disable existing members' billing management. Revoked grants are not silently restored by webhook processing.
+13. **Waitlist:** verified account email, normalized and deduplicated server-side; ordinary users cannot edit authoritative states. Admin-only invitation action reserves the next eligible account's slot atomically for 24 hours. Invitation is visible only in that account's membership page; it is not a bearer URL. An invited account can use its own reserved slot even when general availability is zero. Expired unused invitations release their holds on maintenance/capacity/reservation checks. Paid conversion records the subscription. No queue position or delivery date is invented, and no email is sent.
+14. **Admin:** `/admin/membership`, guarded by the existing database-backed acquisition admin allowlist. Displays active/maximum, allocatable slots, checkout/renewal holds, cancellations, waitlist, payment/expiry issues and a labelled derived monthly run rate. Run rate equals currently paid subscriptions to this monthly plan × US$14.99; it is not Stripe's net revenue metric and excludes complimentary grants, refunds, taxes and fees.
+15. **RLS/security:** private tables all keep RLS; no PUBLIC/anon/authenticated private access. New customer mapping is private with RLS. Public command RPC explicitly revokes ordinary-role execution and checks the service-role claim. Service key stays behind `server-only`. Account identity comes from `auth.getUser()`, admin permission from database allowlist, and full access from the existing fresh entitlement/RLS checks. Metadata, onboarding, URLs, success redirects and client state cannot promote an account. Existing starter and protected-content boundaries were retained. Actual database role tests rejected anonymous/ordinary access and spoofed service claims.
+16. **Tests:** combined Vitest suite: 53 files, 234 tests passed. New tests cover exact terms, wrong/live configuration rejection, current-state reconciliation, cryptographic signature rejection, replay handling, unknown IDs, API timeout holds, Checkout reuse, capacity denial, account/starter/full controls and invitation state. Isolated PostgreSQL: 33 assertions passed, including migration syntax, allocation/activation, past-due window retention, replay, fencing, cancellation, expiry, waitlist duplicates/invitations, operator grant capacity and the actual final-slot race. Mocked Stripe tests are not real Stripe E2E evidence.
+17. **Build/type/lint:** production webpack build and TypeScript passed during combined verification; final checks and browser evidence are recorded below. ESLint uses a temporary root `NODE_PATH` because the existing dependencies resolve through a shared worktree. No source rule was disabled to work around that environment.
+18. **End-to-end Stripe result:** NOT RUN. Owner chose “Finish locally with Stripe E2E pending.” No test card was submitted and no test subscription/payment was created. Product/Price creation and Dashboard verification are the only provider operations verified live against the TEST account.
+19. **Not tested:** actual Checkout payment, Stripe-to-local webhook delivery, real provider retry/out-of-order delivery, portal configuration/session, actual provider cancellation/time advancement, hosted PostgREST transport and deployed scheduling. Authenticated account/admin layouts are covered in component/server tests where available; browser verification uses the anonymous, configuration-closed production preview. No claim is made that the existing application or hosted database has the new schema.
+20. **Live-mode readiness:** NOT READY for activation. Complete test environment wiring and the full test journey first. The implementation intentionally rejects live keys, live prices, live invoices, live sessions/subscriptions and live webhook events. An approved live implementation change and repeat verification are required; changing one environment variable cannot turn live charging on.
+21. **Remaining risks/operational requirements:** legacy/full grants require approved adoption into the claim ledger before checkout cutover; flags remain false. Unresolved session-creation timeouts are recovered by searching the mapped customer's sessions, but if no provider outcome can be established the hold remains quarantined and visible for operator review. Normal renewals with missing confirmations also retain a capacity hold after access expires. This intentionally favors underfilling over overselling. Configure reconciliation and log monitoring before rollout. Any paid recovery after a confirmed lapse can require operator remediation if capacity was subsequently filled; it never allocates slot 601. Refund/credit/tax/trial/discount strategy and abnormal billing changes require approved follow-up policies; this initial offer accepts exact US$14.99 paid invoices only. Automatic email delivery is not connected.
+22. **Push/deploy/secret status:** no commit, push or deployment. `.env.local` is ignored; `.env.example` is the only tracked environment file. Focused source/docs/scripts/migration key-pattern scan found no real Stripe secret, webhook secret, Supabase secret key or private key. No real billing/customer records were created by this phase. Pre-existing unrelated changes remain in the working tree.
+
+## Required configuration
+
+| Name | Purpose / safe local state |
+| --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Intended local/test database API; do not accidentally use production |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Existing SSR public key |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-only service key for the intended test database |
+| `APP_ORIGIN` | Exact local/approved test origin used for redirects; no path or credentials |
+| `STRIPE_BILLING_MODE` | `test` only in this implementation |
+| `STRIPE_SECRET_KEY` | Existing `sk_test_` or appropriately scoped `rk_test_`; never in chat/source/public variables |
+| `STRIPE_WEBHOOK_SECRET` | Signing secret for the intended TEST endpoint or Stripe CLI listener |
+| `STRIPE_INCOMENOW_MEMBERSHIP_PRODUCT_ID` | `prod_VOfiAYZA57kAGz` |
+| `STRIPE_INCOMENOW_MEMBERSHIP_PRICE_ID` | `price_1UNsMbPDKvZxI4vzbTOtIxee` |
+| `STRIPE_BILLING_PORTAL_CONFIGURATION_ID` | TEST portal configuration: period-end cancellation; disable subscription changes |
+| `BILLING_RECONCILIATION_SECRET` | Server-only bearer value for the scheduled reconciliation caller |
+
+Existing acquisition, canonical-origin and analytics environment variables retain their existing purposes. Database `checkout_enabled` and `waitlist_enabled` remain false after migrations; they are independent of frontend display terms. Do not enable hosted gates without explicit approval and legacy-grant reconciliation.
+
+## Remaining TEST journey
+
+1. Prepare an isolated Supabase test environment with the ordered migrations, no production users and the required server keys.
+2. Configure the existing TEST secret key, TEST Portal configuration and a signed webhook listener pointing to `/api/stripe/webhook` with API version `2026-09-30.endive` (Stripe SDK 23.0.0).
+3. Enable database checkout/waitlist gates only in that authorized test database after verifying legacy grants/capacity.
+4. Create a verified non-member; open membership; reserve a slot; pay with an official Stripe test card; verify provider event delivery, paid window, full content/project access and aggregate increase.
+5. Open billing management, cancel at period end, verify access/count retention, then simulate confirmed period end and verify access closes/slot reopens.
+6. Exercise declined payment, abandoned/expired Checkout, provider retry, renewal, out-of-order events and API/database outages; reconcile quarantined holds.
+7. Fill capacity using test fixtures; verify final-slot competition and waitlist/invitation expiry/conversion through the actual API/UI.
+
+No real card should be used. This journey was deferred, not simulated as completed.
+
+## Live readiness and Vercel actions requiring separate approval
+
+- Approve legacy-grant adoption and confirm no more than 600 valid full entitlements; preserve starter records. If existing production grants already exceed capacity, resolve that separately without silently removing access.
+- After TEST E2E passes, review an implementation change that validates expected livemode centrally and carries that mode through Price/invoice/session/subscription/webhook checks and acquisition recording. Current code hard-rejects live data and records test payments as `livemode=false`.
+- Create or identify a LIVE Product and US$14.99 monthly LIVE Price only after explicit approval; configure approved live Portal behavior. Do not reuse TEST IDs.
+- Configure production secrets in environment-managed Vercel settings, never public variables or tracked files. Confirm origin and Supabase project/service key pairing.
+- Apply reviewed ordered migrations to the approved hosted database only after approval. Review service RPC grants, RLS and existing data before gates open.
+- Configure a LIVE webhook destination for `/api/stripe/webhook` and its signing secret after approval. Events: `checkout.session.completed`, `checkout.session.expired`, `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`, `invoice.paid`, `invoice.payment_failed`. Select the reviewed API version matching the SDK.
+- Configure a scheduled authenticated GET to `/api/billing/reconcile` every five minutes with `Authorization: Bearer <BILLING_RECONCILIATION_SECRET>`. The handler uses a 300-second maximum and a bounded processing deadline; verify the chosen Vercel plan/runtime supports it. No `vercel.json` cron or deployed automation was created here.
+- Establish failure/hold log review, refund/recovery procedures and approved tax/refund/resource terms. Invite email delivery needs separately authorized sender/service configuration.
+- Run the full verification again against the intended environment; show the final diff, exclude secrets and customer data, then obtain explicit approval before push/deployment or live checkout.
+
+## Final local verification evidence
+
+Browser captures live under ignored `.impeccable/review/stripe-billing/` and contain no payment credentials.
+
+- Final `next build --webpack`: passed, including Next.js TypeScript validation, static generation and all new route compilation.
+- Final standalone `tsc --noEmit`: passed.
+- Final ESLint: passed. Focused UI regression: 2 files / 16 tests passed after the last billing-management availability change. Combined suite: 53 files / 234 tests passed; isolated PostgreSQL billing harness: 33 assertions passed.
+- Chrome visual inspection: membership at 1440 × 1000, 390 × 844 and 320 × 780; homepage at 1440 × 1000 and 320 × 780. No horizontal overflow. Offer controls and capacity disclosure remained readable on narrow mobile. The production homepage contained no illustrative 200-member count. Temporary viewport override was reset.
+- Browser environment limitation: Supabase account verification was unavailable, so the membership preview displayed its safe account-recheck state. Checkout, waitlist and production occupancy stayed closed/unknown because environment/database wiring is incomplete. This validates the failure-state layout, not a signed-in purchasing journey.
+- Production HTTP checks: unauthenticated reconciliation returned 401; incomplete webhook configuration returned 503; membership return and membership admin redirected to login (307) with the correct return path.
+- `git diff --check`: passed. `.env.local` and evidence images are ignored. Focused key-pattern scan returned no matches. No dedicated secret-scanner executable was installed.
+- Evidence files: `stripe-test-product.jpg`, `membership-desktop.jpg`, `membership-mobile.jpg`, `membership-mobile-controls.jpg`, `membership-320-controls.jpg`, `home-desktop.jpg`, `home-mobile-320.jpg`.

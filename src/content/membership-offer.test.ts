@@ -16,11 +16,11 @@ describe("IncomeNow offer configuration", () => {
     });
   });
 
-  it("keeps duration and the separate monthly price explicitly unconfigured", () => {
+  it("keeps starter duration unresolved and approved monthly pricing separate from checkout", () => {
     expect(starterOffer.accessDuration).toBe("unconfigured");
     expect(fullMembershipOffer.billingInterval).toBe("Monthly");
-    expect(fullMembershipOffer.amountMinor).toBeNull();
-    expect(fullMembershipOffer.currency).toBeNull();
+    expect(fullMembershipOffer.amountMinor).toBe(1499);
+    expect(fullMembershipOffer.currency).toBe("USD");
     expect(fullMembershipOffer.checkoutAvailable).toBe(false);
   });
 });

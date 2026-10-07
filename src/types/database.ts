@@ -164,6 +164,7 @@ export type Database = {
     };
     Views: Record<string, never>;
     Functions: {
+      membership_billing_command: { Args: { p_operation: string; p_input?: Json }; Returns: Json };
       save_account_preferences: {
         Args: {
           p_interest_categories: string[];
@@ -201,6 +202,27 @@ export type Database = {
       save_member_project_stage_note: {
         Args: { p_project_id: string; p_stage_id: string; p_content: string; p_expected_revision: number };
         Returns: Array<{ saved_content: string; saved_revision: number; saved_updated_at: string }>;
+      };
+      capture_acquisition_visit: {
+        Args: {
+          p_visitor_id: string;
+          p_session_id: string;
+          p_source_key: string | null;
+          p_hostname: string;
+          p_landing_path: string;
+          p_referrer: string | null;
+          p_user_agent_hash: string;
+        };
+        Returns: Json;
+      };
+      lock_acquisition_user_attribution: {
+        Args: { p_visitor_id: string | null };
+        Returns: boolean;
+      };
+      is_acquisition_admin: { Args: Record<never, never>; Returns: boolean };
+      get_acquisition_race: {
+        Args: { p_start_at: string | null; p_end_at: string | null; p_bucket?: "hour" | "day" };
+        Returns: Json;
       };
     };
     Enums: Record<string, never>;

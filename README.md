@@ -1,5 +1,7 @@
 # IncomeNow
 
+Local Stripe test billing implementation and rollout boundaries: [billing readiness report](docs/stripe-membership-readiness.md). Run `npm run test:stripe-billing` for disposable PostgreSQL billing/concurrency checks. Real Stripe payment E2E and live activation remain pending; no deployment is authorized.
+
 IncomeNow currently publishes two real implementation kits: IDEA #001 Pergola Business Kit and IDEA #002 Clinic Operations CRM Kit. Authentication remains separate from paid access: a verified account can browse and bookmark both safe previews, the US$1 one-time Starter Pass opens only Pergola and its one project, and full membership opens both published kits.
 
 ## Runtime
@@ -74,6 +76,6 @@ The homepage receives only the explicit `PublicIdea` projection in `src/content/
 
 ## Phase boundaries
 
-Checkout/payment, billing UI, admin operations, analytics, support, and Clinic production resources remain intentionally unconnected. The verified Pergola demo and protected owner-supplied Pergola resources remain available under their existing access checks; Clinic demo/source/prospect/screenshot states remain unavailable until the actual inputs are supplied and inspected. Starter duration, taxes, refunds, and final resource rights are not configured. Preview bookmarks remain device-local and are never mixed with account bookmarks. No hosted Supabase project is changed by the repository setup alone.
+Checkout/payment, billing UI, support, and Clinic production resources remain intentionally unconnected. A provider-neutral acquisition attribution foundation and protected `/admin/race` dashboard are present, but they do not activate checkout or a provider webhook; see `docs/acquisition-architecture.md`. The verified Pergola demo and protected owner-supplied Pergola resources remain available under their existing access checks; Clinic demo/source/prospect/screenshot states remain unavailable until the actual inputs are supplied and inspected. Starter duration, taxes, refunds, and final resource rights are not configured. Preview bookmarks remain device-local and are never mixed with account bookmarks. No hosted Supabase project is changed by the repository setup alone.
 
 See `docs/clinic-kit-results.md` for the current two-kit catalogue, Clinic access boundary, migration, and verification record. `docs/phase-3c-results.md` remains the starter implementation record; earlier onboarding, public, and workspace evidence remains in the Phase 3B, Phase 3A, and Phase 2B result documents.

@@ -1,7 +1,15 @@
 ---
 name: IncomeNow
-description: A calm blueprint library for evaluating practical business opportunities.
+description: A premium public opportunity vault alongside the approved member implementation workspace.
 colors:
+  vault-carbon: "#0d1110"
+  vault-surface: "#151b18"
+  vault-panel: "#1b231e"
+  vault-ink: "#f0f3e9"
+  vault-muted: "#b1bcb3"
+  vault-accent: "#c5f783"
+  vault-accent-hover: "#d6ffa7"
+  vault-rule: "#354139"
   public-canvas: "#f8fafc"
   public-ink: "#101828"
   public-line: "#d9e1e9"
@@ -34,6 +42,25 @@ colors:
   error: "#9a221b"
   error-bg: "#ffdad6"
 typography:
+  vault-display:
+    fontFamily: "Barlow Condensed, Manrope, sans-serif"
+    fontSize: "clamp(4rem, 7.7vw, 6rem)"
+    fontWeight: 600
+    lineHeight: 0.98
+    letterSpacing: "-0.025em"
+  vault-headline:
+    fontFamily: "Barlow Condensed, Manrope, sans-serif"
+    fontSize: "clamp(2.5rem, 4.5vw, 3.5rem)"
+    fontWeight: 600
+    lineHeight: 1.06
+    letterSpacing: "-0.025em"
+  vault-body:
+    fontFamily: "Inter, sans-serif"
+    fontSize: "16px"
+    lineHeight: 1.7
+  vault-instrument-label:
+    fontFamily: "ui-monospace, monospace"
+    fontSize: "10px"
   display:
     fontFamily: "Manrope, ui-sans-serif, system-ui, sans-serif"
     fontSize: "clamp(2rem, 4vw, 3.25rem)"
@@ -69,6 +96,9 @@ typography:
     lineHeight: 1.2
     letterSpacing: "0.07em"
 rounded:
+  vault-control: "6px"
+  vault-card: "12px"
+  vault-seat: "2px"
   tag: "7px"
   control: "9px"
   compact-card: "13px"
@@ -89,6 +119,34 @@ motion:
   enter: "320ms cubic-bezier(.16, 1, .3, 1)"
   reduced: "0.01ms"
 components:
+  vault-button-accent:
+    backgroundColor: "{colors.vault-accent}"
+    textColor: "{colors.vault-carbon}"
+    rounded: "{rounded.vault-control}"
+    padding: "14px 22px"
+    height: "52px"
+  vault-button-accent-hover:
+    backgroundColor: "{colors.vault-accent-hover}"
+    textColor: "{colors.vault-carbon}"
+  vault-button-outline:
+    textColor: "{colors.vault-ink}"
+    rounded: "{rounded.vault-control}"
+    padding: "14px 22px"
+    height: "52px"
+  vault-capacity:
+    backgroundColor: "{colors.vault-surface}"
+    textColor: "{colors.vault-ink}"
+    rounded: "{rounded.vault-card}"
+  vault-membership-card:
+    backgroundColor: "{colors.vault-surface}"
+    textColor: "{colors.vault-ink}"
+    rounded: "{rounded.vault-card}"
+    padding: "30px"
+  vault-stage-selected:
+    backgroundColor: "{colors.vault-accent}"
+    textColor: "{colors.vault-carbon}"
+    padding: "17px"
+    height: "88px"
   button-primary:
     backgroundColor: "{colors.action}"
     textColor: "{colors.surface}"
@@ -227,37 +285,32 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Modern Opportunity Workspace"**
+**Creative North Star: "The Opportunity Vault and Workspace"**
 
-IncomeNow is a modern interactive platform for discovering and building digital business opportunities. The public experience is contemporary, clear, energetic, and product-shaped: cool-white surfaces, charcoal typography, crisp interface geometry, deliberate depth, and a restrained emerald action voice. Cyan, blue, and violet are controlled illustration accents rather than competing call-to-action colours.
+The homepage is the owner's approved premium opportunity vault: carbon planes, mineral-white copy, sharp lime allocation markings, fine structural rules, and condensed display lettering. Its signature is a readable capacity instrument beside the promise, followed by numbered opportunity files and an execution-stage selector. The implementation resolves the brief's anime-tech energy through original precise interface geometry.
 
-The system is editorial and operational at once. Manrope gives headings and milestones architectural weight; Inter keeps filters, metadata, resources, and evidence easy to scan. Information density is managed with disciplined grouping, cool-neutral boundaries, restrained elevation, and one emerald action voice. Promotional gradients, neon urgency, speculative earnings theater, crypto motifs, and generic glowing AI imagery are outside this visual world.
+The vault direction is scoped to `/` through an opt-in appearance. Existing member, authentication, starter, membership, and other routes retain their approved Manrope/Inter, emerald, white, and sage systems. The member workspace remains editorial and operational: information is grouped with compact metadata, schematic previews, restrained elevation, and explicit account-owned status. Saved Ideas, My Projects, and focused implementation kits preserve their existing visual grammar.
 
-The former **Tangible Fieldwork** direction is retired. New public artwork must not use printed kits, rustic desks, sepia or golden-hour grading, decorative leaves, Mediterranean landscapes, vintage clocks, or staged paper stacks. Public covers use clean contemporary objects and illustrative workflow cues; hero and process motion use semantic HTML/SVG/CSS rather than flattened fake screenshots. Artwork carries subject only. Offer terms, access, resource availability, progress, and interface labels stay in live HTML and must never be baked into an image.
-
-Account-synced work extends the same library metaphor into a project desk. Saved Ideas keeps the comparison language intact, while My Projects and the workspace add durable status, required-task progress, stage notes, and explicit save feedback without shifting into generic productivity-software chrome.
-
-The public website is a separate product-explanation shell, not a disguised member dashboard. Its horizontal desktop header, disclosure-based mobile navigation, short promise, approved hero motion graphic, selectable process map, modern public covers, and dark closing invitation help visitors understand the product before entering the account flow. Phase 3C adds one prominent US$1 Starter Pass for the Pergola Business Kit beside a separately unpriced monthly membership. Public copy and previews stay literal: unavailable checkout, unconfigured starter duration and refund/licence terms, sample resources, and the absence of income guarantees are shown as constraints rather than polished away.
+Artwork carries subject only; offer terms, access, resource availability, progress, and interface labels remain live HTML. The homepage presents the approved $14.99 monthly offer and maximum 600 active memberships while keeping registration, paid entitlement, and pending Stripe checkout separate. Production occupancy is unknown unless a verified count is supplied; labelled preview fixtures never represent customer activity. The membership route shares the same approved US$14.99/month configuration and 600-active model; checkout remains disconnected.
 
 **Key Characteristics:**
 
-- Cool-white public surfaces with high-contrast charcoal structure.
-- Focused emerald actions with controlled cyan, blue, and violet illustration accents.
-- Manrope headings paired with neutral, legible Inter utility copy.
-- Compact metadata, resource pills, and schematic previews for fast comparison.
-- Responsive navigation that becomes a persistent bottom bar on mobile.
-- Account-owned state is made visible through honest status, progress, save, and recovery feedback.
-- Member kits use focused activity maps and one activity per view instead of document-like stacks of complete sections.
-- Motion is quick, functional, non-blocking, and removed when reduced motion is requested.
-- A dedicated public header and footer that lead into account-aware entry actions without borrowing the protected member shell.
-- Public explanation patterns pair editorial persuasion with explicit limits, sample-only previews, and no unapproved commercial claims.
+- Homepage carbon planes, mineral-white text, and one lime action and allocation voice.
+- Homepage Barlow Condensed display headings, Manrope card titles, Inter reading copy, and monospace instrument labels.
+- A capacity instrument that communicates the model without fabricated occupancy.
+- Numbered opportunity files and a keyboard-operable execution selector.
+- Preserved sage member surfaces, bounded white authentication cards, and emerald operational controls.
+- Separate public disclosure navigation and persistent member mobile navigation.
+- Account-owned work shows honest status, required-task progress, save feedback, and recovery.
+- Functional motion acknowledges input and selection; reduced motion removes movement.
 
 ## Colors
 
-Public marketing surfaces use cool whites and slate neutrals as the working field, then reserve dark charcoal for structure and focused emerald for selection and action. Existing member-workspace sage tokens remain valid for operational screens until those routes receive a separately reviewed direction.
+The homepage uses carbon, mineral-white, and lime under its vault appearance. Other public surfaces retain cool-white/slate treatment; member and authentication screens retain sage/emerald. These are route-scoped systems.
 
 ### Primary
 
+- **Vault Lime** (`vault-accent`, `vault-accent-hover`): Homepage actions, selected execution stages, allocation plane, and capacity markings; hover lightens the action fill.
 - **Focused Emerald** (`action`): The sole primary action voice for buttons, active filters, progress marks, and functional icons.
 - **Deep Emerald** (`action-hover`): The hover state for committed actions; it deepens the control without introducing another hue.
 
@@ -275,6 +328,8 @@ Public marketing surfaces use cool whites and slate neutrals as the working fiel
 
 ### Neutral
 
+- **Vault Carbon / Surface / Panel** (`vault-carbon`, `vault-surface`, `vault-panel`): Homepage canvas, bounded cards and alternate sections, then preview/dialog and hover planes.
+- **Mineral White / Vault Muted / Structural Rule** (`vault-ink`, `vault-muted`, `vault-rule`): Homepage reading hierarchy and one-pixel structural boundaries.
 - **Sage Canvas** (`canvas`): The principal application background and quiet connective tissue between modules.
 - **Warm Paper** (`canvas-paper`): A subtly warmer inset plane for metrics, unavailable states, and demonstration framing.
 - **Structural White** (`surface`): The card, panel, sidebar, and control surface.
@@ -285,19 +340,29 @@ Public marketing surfaces use cool whites and slate neutrals as the working fiel
 
 ### Named Rules
 
-**The One Action Voice Rule.** Focused Emerald carries primary interaction; do not introduce a second saturated CTA color.
+**The One Action Voice Rule.** Vault Lime carries homepage interaction; Focused Emerald carries incumbent operational interaction. Keep one action voice within each route.
 
-**The Cool-Neutral Public Rule.** On public product-explanation surfaces, separate information with white and cool-neutral planes before stronger borders or shadows. The older paper-and-sage-only rule does not govern new public artwork.
+**The Scoped Vault Rule.** Carbon/lime belongs to the homepage appearance; preserve other route palettes until separately authorized.
 
 ## Typography
 
-**Display Font:** Manrope (with ui-sans-serif, system-ui, sans-serif fallback)
+**Homepage Display Font:** Barlow Condensed (600 and 700 loaded on `/`; display headings use 600, with Manrope and sans-serif fallback).
+
+**Incumbent Display Font:** Manrope (with ui-sans-serif, system-ui, sans-serif fallback)
 
 **Body Font:** Inter (with ui-sans-serif, system-ui, sans-serif fallback)
 
 **Character:** Manrope is geometric, compact, and architectural; Inter is neutral and quiet under dense operational content. Together they make numbered ideas feel considered and specific rather than promotional.
 
 ### Hierarchy
+
+- **Vault Display**: Hero uses `vault-display`; at 800px and below it becomes 64px, and at 600px and below uses `clamp(3.8rem, 15vw, 5.1rem)`. Closing display uses `clamp(3.8rem, 7vw, 6rem)`, becoming `clamp(3.6rem, 14.5vw, 5rem)` on mobile.
+- **Vault Headline**: Shared section titles use `vault-headline`; mobile resolves to 41px. Allocation and offer sections use the same condensed voice at larger local sizes.
+- **Vault Measurement**: Capacity numerals use Barlow Condensed, weight 600, tabular figures, 88px/unit line-height. Price uses 72px. These are presentation measures, not member progress styles.
+- **Vault Copy**: Hero description uses `vault-body`; card copy uses 14px/1.65 and benefits/process descriptions use 13px/1.7. Card titles remain Manrope at 22px, becoming 21px on mobile.
+- **Vault Instrument Labels**: Monospace identifies instruments, files, allocation, and numbered processes. Heading eyebrows are not part of the system.
+
+Incumbent member/authentication and other-route roles remain unchanged:
 
 - **Display** (760, fluid up to 3.25rem, 1.05): Idea-detail titles and the most consequential route headings.
 - **Headline** (750, fluid up to 3rem, 1.04): Library and shortlist page titles; compresses to 27px on mobile.
@@ -308,15 +373,17 @@ Public marketing surfaces use cool whites and slate neutrals as the working fiel
 
 ### Named Rules
 
-**The Two-Voice Rule.** Use Manrope only for headings, numbers, and branded milestones; all operational text remains Inter.
+**The Two-Voice Rule.** Incumbent headings and milestones use Manrope with Inter operational copy. The homepage adds Barlow Condensed display headings and numerals while retaining Manrope card titles and Inter reading copy.
 
 **The Compact Metadata Rule.** Uppercase and tracking belong to short labels, never to paragraphs or primary actions.
 
 ## Layout
 
-The public website uses its own shell. A sticky, lightly translucent desktop header spans a centered 1240px inner row, while public sections and the footer use a centered 1180px container with 48px total viewport gutters. The homepage first viewport is a two-column split: the short product promise and account-aware actions lead on the left; a seamless 7.2-second derivative of the owner-approved 8-second, 16:9 motion graphic is contained on the right with no fake browser chrome or overlaid copy. It autoplays muted and inline, loops continuously, and pauses when substantially offscreen or when the tab is hidden. Reduced-motion and blocked-autoplay states show the approved closing-frame poster instead. The same contained 16:9 composition sits below the actions on mobile; a dedicated portrait asset remains a future enhancement. The membership first viewport remains unchanged pending a separate review.
+The homepage uses an opt-in vault public shell. Its relative, opaque header and page container cap at 1320px with 40px inline padding; the desktop header has an 88px minimum height. The hero uses a 1.3:1 composition with a 72px gap and 76px/84px vertical padding. The capacity instrument remains a readable complete component. Opportunities use two columns with 24px gutters, benefits and onboarding use four columns, and stage tabs use six. Allocation and offer sections have separate two-column compositions.
 
-At 980px and below, public navigation and hero spacing compress, four-column process and benefit groups become two columns, and the public idea gallery holds two columns. At 767px and below, the desktop public navigation is replaced by a disclosure menu in the header; heroes, idea grids, membership scope, FAQ, and footer stack into one column; actions expand to the available width; and the quick-preview dialog becomes a bottom sheet. The 360px guard breakpoint tightens public gutters to 10px per side and removes nonessential preview chrome before shrinking decision-critical copy. Public mobile navigation is intentionally different from the signed-in member bottom bar.
+At 1100px, major gaps compress and hero proportions become 1.2:1. At 800px, gutters become 24px, stage tabs form three-by-two rows, benefits/onboarding become two columns, and hero actions stack. At 600px, gutters become 20px, header minimum becomes 72px, hero/opportunity/offer/allocation/FAQ layouts become single columns, and the dial retains a 240px diameter. Onboarding becomes numbered rows. At 360px, gutters become 16px and benefits become one column. Public navigation retains its shared 767px disclosure breakpoint independently of vault content stacking.
+
+Other public routes retain their horizontal header, centered 1180px content, 48px total gutters, and 980px/767px/360px responsive patterns. The membership first viewport, starter offer, and authentication entry flow keep existing styling. The old homepage motion-media and miniature library-preview direction is retired on `/`.
 
 The desktop shell uses a fixed 228px navigation rail and a centered content region capped at 1320px. Page content begins with 20px/24px/56px block-and-inline padding, while the Explore grid presents three equal columns with 22px gutters above 1120px, two columns from 768–1120px, and one column below 768px. Detail pages pair flexible content with a 278px quick-facts rail, collapsing to one column below 900px.
 
@@ -340,9 +407,9 @@ The selected stage and the current focus are separate concepts. Selection answer
 
 **The Separate-Shell Rule.** Public pages use the public header, footer, section rhythm, and disclosure menu; protected member routes keep the rail and persistent mobile bottom navigation.
 
-**The Evidence-Before-Entry Rule.** The public first viewport pairs the product promise with a visible product-shaped preview before asking visitors to create an account.
+**The Evidence-Before-Entry Rule.** The homepage pairs its promise with capacity and immediate exploration actions; safe opportunity files provide product evidence before account entry.
 
-**The Motion-Is-Illustrative Rule.** The approved hero motion explains opportunity discovery, relevant resources, and offer preparation. It never represents a purchase, download, sent message, project completion, customer win, or income event.
+**The Selection-Is-Explanation Rule.** Homepage stage selection changes explanatory content only; it never advances project work or represents a customer outcome.
 
 **The Work-First Workspace Rule.** On desktop, the active work surface owns the wide left column; navigation and reference material support it from the right rail. Below 900px, navigation precedes work and resources follow it.
 
@@ -352,7 +419,7 @@ The selected stage and the current focus are separate concepts. Selection answer
 
 ## Elevation & Depth
 
-The system is flat by default and uses tonal layering before shadow. Resting member cards retain their existing quiet boundaries. New public product-explanation surfaces use cool-neutral outlines and slightly crisper layered shadows; the approved 16:9 hero media container is the only dark focal inset in this pass. Hovered cards rise by 2px and receive a broader two-part diffusion. Popovers and transient messages receive the strongest shadow so depth always communicates interaction or temporary state.
+The homepage uses flat tonal layers and structural rules. Its header, opportunity cards, mobile menu, and preview dialog explicitly remove shadows. Fine-pointer card hover rises 3px without adding a shadow; dialog backdrop uses `rgba(3, 8, 5, .86)`. Member cards and other incumbent routes retain their existing shadow vocabulary; temporary panels and messages receive stronger diffusion.
 
 ### Shadow Vocabulary
 
@@ -361,7 +428,6 @@ The system is flat by default and uses tonal layering before shadow. Resting mem
 - **Popover Float** (`0 12px 32px -4px rgba(16, 45, 37, 0.16)`): Advanced filters and anchored disclosure panels.
 - **Toast Float** (`0 12px 32px rgba(16, 45, 37, 0.22)`): High-priority reversible feedback above navigation.
 - **Authentication Focus** (`0 8px 30px rgba(16, 45, 37, 0.07)`): The bounded desktop credential card; mobile tightens this to a smaller 6px/20px diffusion.
-- **Public Preview Lift** (`0 24px 55px rgba(16, 45, 37, 0.12)`): The tilted semantic library preview in the homepage hero.
 - **Membership Offer Lift** (`0 24px 50px rgba(16, 45, 37, 0.11)`): The paired starter and full-membership offer cards in the membership split hero.
 - **Quick Preview Focus** (`0 30px 80px rgba(0, 0, 0, 0.28)`): The public idea dialog or mobile sheet above its dimmed backdrop.
 
@@ -371,16 +437,32 @@ The system is flat by default and uses tonal layering before shadow. Resting mem
 
 ## Shapes
 
-The form language balances modular discipline with approachable softness. Large cards, authentication cards, and filter panels use 16px corners, while authentication cards tighten to 14px on mobile; inset panels and standard containers use 13–14px corners, controls use 8–10px corners, and compact metadata tags use 7px corners. Public hero previews use 22px corners, the membership offer card uses 20px, and the quick-preview dialog uses 18px before becoming an 18px top-corner sheet on mobile. Counts, filter chips, resource pills, and avatars use circular or pill geometry. Borders stay at 1px and use botanical neutral lines; clipping is reserved for previews, cards, dialogs, and layered containers.
+The homepage uses 6px action/stage-control corners, 12px instrument/opportunity/allocation/offer corners, 2px allocation-cell corners, and one-pixel boundaries.
 
-**The Nested Radius Rule.** Child surfaces are always tighter than the container around them, preserving a clear physical hierarchy.
+The incumbent form language balances modular discipline with approachable softness. Large cards, authentication cards, and filter panels use 16px corners, while authentication cards tighten to 14px on mobile; inset panels and standard containers use 13–14px corners, controls use 8–10px corners, and compact metadata tags use 7px corners. The existing membership offer card uses 20px, and the quick-preview dialog uses 18px before becoming an 18px top-corner sheet on mobile. Counts, filter chips, resource pills, and avatars use circular or pill geometry. Borders stay at 1px and use botanical neutral lines; clipping is reserved for previews, cards, dialogs, and layered containers.
+
+**The Nested Radius Rule.** Incumbent nested paper surfaces use tighter child corners; the vault retains its own compact control/card scale.
 
 ## Components
 
 Components feel tactile and confident: quiet at rest, exact in hierarchy, and visibly responsive without ornamental effects.
 
+### Homepage Vault Components
+
+The public shell and gallery expose an opt-in vault appearance; reuse safe structured `PublicIdea` records rather than hardcoding an opportunity page.
+
+- **Actions:** Accent/outline actions use 52px minimum height, 6px corners, 14px/22px padding, 14px copy at weight 650, and 24px icon gap. Accent hover uses `vault-accent-hover`; outline hover uses `vault-panel`. Focus uses a 2px lime outline with 5px offset, becoming carbon on the lime allocation plane.
+- **Capacity:** A bounded surface, functional header/footer, decorative SVG dial, tabular numeral, literal caption, and 40px model-link target. Unknown production occupancy shows the maximum without a filled occupancy arc. Verified counts may draw the proportional arc; preview fixtures are explicitly labelled. Presentation neither enforces the cap nor grants entitlement.
+- **Opportunity files:** Numbered header, reused cover, metadata, Manrope title, summary, and lime Open opportunity action. Covers use a 2.3 aspect ratio and `saturate(.65)`, becoming 1.8 on mobile. The shared keyboard-safe preview uses dark panels and keeps protected content omitted.
+- **Execution selector:** Six tabs select one explanation and three outputs. Arrow Left/Right, Home, and End move selection and focus. The selected tab owns the tab stop and ARIA relationships identify the shared panel. Selection never changes project progress.
+- **Allocation:** The lime plane carries the 600-active model with a bordered 10-column seat field. Unknown occupancy remains an explicit maximum; demo/verified values carry their source. No waitlist enrollment is simulated.
+- **Monthly offer:** A bounded card presents $14.99/month, included scope, account-aware action, and pending Stripe truth. Full members open their library; signup never grants membership. The US$1 Pergola starter remains separate and unchanged.
+- **FAQ/close:** Native disclosures use structural dividers, 14px questions, and 13px answers. Closing capacity text follows heading and body, before the exploration action; it is not a heading eyebrow.
+- **Cover provenance:** `public/artwork/marketing/modern/pergola-kit.webp` and `public/artwork/ideas/clinic-operations-crm.webp` are unchanged reused assets. Adjacent `.webp.json` files record reuse; original generation prompts are unavailable and have not been reconstructed.
+
 ### Motion
 
+- **Vault feedback:** CTA press uses 120ms scale .98; fine-pointer opportunity hover uses 180ms translateY(-3px); stage copy uses a 180ms opacity fade. Easing is `cubic-bezier(.16, 1, .3, 1)`. Reduced motion removes animation and transforms and reduces transition duration to .01ms. Animated counts, looping backgrounds, and delayed entrances are absent.
 - **Press (120ms):** Buttons and activity cards compress to 0.98–0.99 scale on activation; navigation is never delayed for the effect.
 - **State (180ms):** Hover, border, shadow, tab, disclosure, and icon changes use short ease-out transitions.
 - **Enter (320ms):** A newly selected kit view fades and rises by 10px while focus moves to its heading. The transition runs once per view and does not lock controls.
@@ -425,17 +507,17 @@ Components feel tactile and confident: quiet at rest, exact in hierarchy, and vi
 
 ### Public Shell and Navigation
 
-- **Desktop:** A sticky translucent header keeps the IncomeNow wordmark, centered section links, and one account-aware action visible without adopting member-rail chrome. The footer uses the darkest forest field, a short product statement, only implemented routes, and the explicit “No income guarantees” note.
-- **Mobile:** A 40px disclosure control opens a bounded white menu below the wordmark. Navigation links and the correct account state stack as full-width actions; this menu closes when a destination is chosen.
+- **Desktop:** Homepage uses its relative carbon header; other public routes retain the sticky translucent wordmark/section-link/account-action header without member-rail chrome. The footer uses the darkest forest field, a short product statement, only implemented routes, and the explicit “No income guarantees” note.
+- **Mobile:** A 40px disclosure control opens a bounded menu below the wordmark, dark on the homepage and white on other routes. Navigation links and the correct account state stack as full-width actions; this menu closes when a destination is chosen.
 - **Account awareness:** Signed-out, registered-preview, starter, full-membership, and temporarily unavailable states route visitors to registration, access review, the canonical starter idea/project, or the broader library without implying that checkout or entitlement activation is available.
 
-### Public Hero and Library Preview
+### Homepage Hero
 
-The homepage hero pairs a concise two-line promise with a fictional but semantically structured library preview: toolbar, search field, navigation labels, and idea rows. The preview behaves as product evidence, not decorative imagery. On narrow screens it keeps the idea rows and removes the miniature sidebar before sacrificing the headline or actions.
+The homepage pairs a concise condensed promise and exploration/process actions with a full capacity instrument. It contains no looping hero film or miniature library UI. Mobile presents the instrument after the copy as a complete readable component.
 
 ### Public Idea Cards and Quick Preview
 
-Public idea cards keep the protected library’s schematic visual language but expose only a deliberately safe summary projection. Each card combines the schematic, solution type, idea number, title, summary, and one “Quick preview” action. The desktop quick preview is a centered two-column dialog; below 768px it becomes a full-width bottom sheet. It traps keyboard focus, closes with Escape or the close control, restores focus to its trigger, and always labels the content as a public summary with protected implementation material omitted.
+Outside the homepage, public cards retain schematic visual language; homepage cards use the vault files above. Both expose only a deliberately safe summary projection. Each card combines the schematic, solution type, idea number, title, summary, and one “Quick preview” action. The desktop quick preview is a centered two-column dialog; below 768px it becomes a full-width bottom sheet. It traps keyboard focus, closes with Escape or the close control, restores focus to its trigger, and always labels the content as a public summary with protected implementation material omitted.
 
 ### Public FAQ
 
@@ -443,11 +525,11 @@ FAQ rows use native disclosure semantics, one botanical divider per row, a Manro
 
 ### Membership Offer, Scope, and Access Steps
 
-The membership page presents two explicit offers without simulating checkout. The primary Starter Pass shows US$1/USD, one-time, the canonical Pergola kit, and one personal project; it does not claim renewal, lifetime access, or a configured duration. The separate monthly membership keeps price and currency unconfigured and covers all included published ideas. Account-aware actions never ask starter or full members to buy redundant access. A paired scope panel keeps the boundary between product access and member responsibility explicit, while the access steps separate signup, offer review, future payment, and server-recorded entitlement. On mobile the offer cards and steps become one readable vertical sequence.
+The membership page presents two explicit offers without simulating checkout. The primary Starter Pass shows US$1/USD, one-time, the canonical Pergola kit, and one personal project; it does not claim renewal, lifetime access, or a configured duration. The separate monthly membership presents US$14.99/USD per month and a maximum of 600 active members, and covers all included published ideas, execution kits, resources, and projects. Cancellation at period end retains access and its slot until actual entitlement end. Account-aware actions never ask starter or full members to buy redundant access. A paired scope panel keeps the boundary between product access and member responsibility explicit, while the access steps separate signup, offer review, future payment, and server-recorded entitlement. On mobile the offer cards and steps become one readable vertical sequence.
 
 ### Inverse Final CTA
 
-Public pages close with a deep-forest band, white heading, muted mint supporting copy, and account-aware actions. It is an invitation to inspect or enter the existing flow, never a countdown, earnings promise, or simulated checkout.
+Other public pages retain a deep-forest band, white heading, muted mint copy, and account-aware actions. The homepage uses its centered surface/carbon closing section. It is an invitation to inspect or enter the existing flow, never a countdown, earnings promise, or simulated checkout.
 
 ### Idea Preview
 
@@ -485,8 +567,8 @@ Account-synced Saved Ideas preserves the idea-card comparison unit, filter contr
 
 ### Do:
 
-- **Do** preserve the Sage Canvas → Structural White → tonal-sage inset hierarchy.
-- **Do** reserve Focused Emerald for primary actions, active filters, functional icons, and clear progress states.
+- **Do** preserve the sage/white/tonal-sage hierarchy in member/authentication routes and the carbon/surface/panel hierarchy on the homepage.
+- **Do** reserve Focused Emerald for incumbent operational interaction and Vault Lime for homepage action, selection, and allocation.
 - **Do** pair Manrope headings with Inter utility copy and keep metadata compact.
 - **Do** use schematic previews and explicit evidence labels to make ideas comparable.
 - **Do** keep mobile navigation persistent and safe-area-aware while presenting one complete card per row.
@@ -498,21 +580,22 @@ Account-synced Saved Ideas preserves the idea-card comparison unit, filter contr
 - **Do** keep checklist progress, pause/resume, all-step navigation, and personal notes visually secondary to the kit.
 - **Do** use the separate public shell for homepage and membership routes, including the horizontal desktop navigation and disclosure-based mobile menu.
 - **Do** keep public idea cards and quick previews on the explicit safe projection; label them as summaries and keep implementation plans and protected resources out.
-- **Do** keep the two offers distinct and honest: US$1/USD one-time Pergola starter with unconfigured duration, separately unpriced monthly full membership, unavailable checkout, and entitlement activation shown as a server-recorded step.
+- **Do** keep US$1/USD one-time Pergola starter scope separate from the shared approved US$14.99 monthly presentation and 600-active model, pending Stripe checkout, and server-recorded paid entitlement.
 - **Do** pair persuasive public sections with concrete product-shaped evidence, responsibility boundaries, and native FAQ disclosures.
-- **Do** use the inverse forest CTA only as a calm closing invitation with account-aware destinations.
+- **Do** keep closing invitations consistent with their route appearance and existing destinations.
+- **Do** label fixture counts and unknown production occupancy and distinguish the maximum 600-active model from implemented enforcement.
 
 ### Don't:
 
 - **Don't** introduce hustle-culture styling, speculative earnings graphics, neon tickers, or unsupported urgency.
 - **Don't** turn the member library into a generic analytics dashboard of charts and KPI tiles.
 - **Don't** add decorative gradients, glass panels, or heavy shadows that weaken the paper-and-sage material system.
-- **Don't** use saturated color on passive surfaces when tonal sage or a botanical line can provide the hierarchy.
+- **Don't** saturate passive member surfaces when sage hierarchy suffices; the homepage allocation plane is a scoped lime exception.
 - **Don't** hide sample, unavailable, readiness, or evidence states behind aspirational copy.
 - **Don't** treat selecting a stage as advancing the project or changing its current focus.
 - **Don't** turn progress into dashboard theater, count optional tasks toward completion, or merge notes and resources into the checklist.
 - **Don't** restore a permanent stage rail, expose “Plan v1,” or make project-management language the first thing a Pergola member sees.
 - **Don't** reuse the signed-in sidebar or mobile bottom navigation on public pages.
 - **Don't** expose protected plan details, resource identifiers, private customer data, or member-only implementation material in public cards, dialogs, or client bundles.
-- **Don't** invent full-membership prices, starter duration, renewal, lifetime access, checkout availability, refund rights, testimonials, customer counts, demand validation, licence permissions, release cadence, or income outcomes.
+- **Don't** change the approved homepage price or invent starter duration, renewal, lifetime access, checkout availability, refund rights, testimonials, customer counts, demand validation, licence permissions, release cadence, or income outcomes.
 - **Don't** let account creation read as payment confirmation or active membership; authentication and entitlement remain separate truths.
