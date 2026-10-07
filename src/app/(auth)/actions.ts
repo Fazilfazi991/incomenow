@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { RECOVERY_STATE_COOKIE, RECOVERY_VERIFIED_COOKIE } from "@/lib/auth-cookies";
+import { lockCurrentUserAttribution } from "@/lib/acquisition.server";
 import { getAccountEntryDestination } from "@/lib/account.server";
 import {
   emailSchema,
@@ -51,7 +52,10 @@ export async function registerAction(_previous: AuthActionState, formData: FormD
     });
 
     if (error) return { status: "error", message: "Unable to create the account. Check the details or try again later." };
-    if (data.session) destination = await getAccountEntryDestination(next, supabase);
+    if (data.session) {
+      await lockCurrentUserAttribution(supabase);
+      destination = await getAccountEntryDestination(next, supabase);
+    }
   } catch (error) {
     if (error instanceof SupabaseConfigurationError) return unavailableState();
     throw error;
@@ -69,6 +73,7 @@ export async function loginAction(_previous: AuthActionState, formData: FormData
     const supabase = await createClient();
     const { error } = await supabase.auth.signInWithPassword(parsed.data);
     if (error) return { status: "error", message: "Unable to sign in. Check your credentials and verification status." };
+    await lockCurrentUserAttribution(supabase);
     destination = await getAccountEntryDestination(safeInternalDestination(text(formData, "next")), supabase);
   } catch (error) {
     if (error instanceof SupabaseConfigurationError) return unavailableState();

@@ -93,42 +93,43 @@ export function StarterOfferCopy({
   );
 }
 
-function PublicHeader({ state, page }: { state: PublicAccountState; page: "home" | "membership" }) {
+function PublicHeader({ state, page, vault = false }: { state: PublicAccountState; page: "home" | "membership" | "privacy"; vault?: boolean }) {
   const root = page === "home" ? "" : "/";
   const showHeaderAccountAction = page !== "home" || state !== "unavailable";
   return (
     <header className="public-header">
       <div className="public-header-inner">
-        <Link className="public-wordmark" href="/" aria-label="IncomeNow home">IncomeNow<span>.in</span></Link>
+        <Link className="public-wordmark" href="/" aria-label="IncomeNow home">IncomeNow{!vault && <span>.in</span>}</Link>
         <nav className="public-nav" aria-label="Main navigation">
           <Link href={`${root}#how-it-works`}>How it works</Link>
-          <Link href={`${root}#example-ideas`}>Example ideas</Link>
+          <Link href={`${root}#example-ideas`}>{vault ? "Opportunities" : "Example ideas"}</Link>
           <Link href="/membership" aria-current={page === "membership" ? "page" : undefined}>Membership</Link>
           <Link href={`${root}#faq`}>FAQ</Link>
         </nav>
         <div className="public-header-actions">{showHeaderAccountAction ? <PublicAccountActions state={state} compact /> : null}</div>
-        <PublicMobileMenu root={root}>{showHeaderAccountAction ? <PublicAccountActions state={state} /> : null}</PublicMobileMenu>
+        <PublicMobileMenu root={root} opportunityLabel={vault ? "Opportunities" : "Example ideas"}>{showHeaderAccountAction ? <PublicAccountActions state={state} /> : null}</PublicMobileMenu>
       </div>
     </header>
   );
 }
 
-function PublicFooter() {
+function PublicFooter({ vault = false }: { vault?: boolean }) {
   return (
     <footer className="public-footer">
       <div className="public-footer-inner">
         <div>
-          <Link className="public-wordmark public-wordmark-light" href="/">IncomeNow<span>.in</span></Link>
-          <p>Practical digital business ideas, organised for careful validation and implementation.</p>
+          <Link className="public-wordmark public-wordmark-light" href="/">IncomeNow{!vault && <span>.in</span>}</Link>
+          <p>{vault ? "Pick a business. Get the system. Start." : "Practical digital business ideas, organised for careful validation and implementation."}</p>
         </div>
         <nav aria-label="Footer navigation">
           <Link href="/#how-it-works">How it works</Link>
-          <Link href="/#example-ideas">Example ideas</Link>
+          <Link href="/#example-ideas">{vault ? "Opportunities" : "Example ideas"}</Link>
           <Link href="/membership">Membership</Link>
           <Link href="/login">Member login</Link>
+          <Link href="/privacy">Privacy</Link>
         </nav>
         <div className="public-footer-meta">
-          <span>© {new Date().getFullYear()} IncomeNow.in</span>
+          <span>© {new Date().getFullYear()} {vault ? "IncomeNow" : "IncomeNow.in"}</span>
           <span>Independent ideas. No income guarantees.</span>
         </div>
       </div>
@@ -136,12 +137,12 @@ function PublicFooter() {
   );
 }
 
-export function PublicShell({ state, page, children }: { state: PublicAccountState; page: "home" | "membership"; children: React.ReactNode }) {
+export function PublicShell({ state, page, children, appearance = "default" }: { state: PublicAccountState; page: "home" | "membership" | "privacy"; children: React.ReactNode; appearance?: "default" | "vault" }) {
   return (
-    <div className="public-site">
-      <PublicHeader state={state} page={page} />
+    <div className={`public-site${appearance === "vault" ? " vault-home" : ""}`}>
+      <PublicHeader state={state} page={page} vault={appearance === "vault"} />
       <main>{children}</main>
-      <PublicFooter />
+      <PublicFooter vault={appearance === "vault"} />
     </div>
   );
 }

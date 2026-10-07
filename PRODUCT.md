@@ -46,7 +46,7 @@ Members move from discovery to evaluation to implementation. Ideas can describe 
 - Verified accounts may browse safe catalogue metadata, search, filter, and manage bookmarks without a purchase. Full idea records and project operations require a fresh server-side full-membership or matching per-idea grant check; unknown access fails closed for paid data while the safe preview remains available.
 - Clinic, Accounting, ZeroDebt, and Resumi are included only for full members. A registered account or Pergola Starter can browse and save their safe previews but cannot open their full kits, protected resources, or projects. The US$1 Starter Pass continues to unlock only Pergola.
 - Checkout/payment, billing UI, IncomeNow admin/analytics, hosted rollout, and production service delivery remain disconnected. The owner-supplied Pergola CRM source and member research export are delivered only through fresh server-authorized, private/no-store routes.
-- The Starter Pass is proposed at US$1/USD as a one-time purchase with no automatic renewal. Its access duration, taxes, refund terms, payment provider, checkout, and final resource licence remain unconfigured; full-membership price and currency also remain unconfigured.
+- The Starter Pass is proposed at US$1/USD as a one-time purchase with no automatic renewal. Its access duration, taxes, refund terms, payment provider, checkout, and final resource licence remain unconfigured; full membership is presented at US$14.99/month, USD, with a 600-active-member cap. Checkout and hosted capacity enforcement remain disconnected. Shared product configuration lives in src/lib/membership-config.ts.
 - Idea content is maintained through Codex and the backend; no CMS or content-editor admin is required.
 
 ## Brand Commitments

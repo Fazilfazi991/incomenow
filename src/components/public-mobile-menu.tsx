@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useRef, useState } from "react";
 
-export function PublicMobileMenu({ root, children }: { root: string; children: React.ReactNode }) {
+export function PublicMobileMenu({ root, children, opportunityLabel = "Example ideas" }: { root: string; children: React.ReactNode; opportunityLabel?: string }) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const [open, setOpen] = useState(false);
 
@@ -21,7 +21,7 @@ export function PublicMobileMenu({ root, children }: { root: string; children: R
       <div>
         <nav aria-label="Mobile navigation">
           <Link href={`${root}#how-it-works`} onClick={close}>How it works</Link>
-          <Link href={`${root}#example-ideas`} onClick={close}>Example ideas</Link>
+          <Link href={`${root}#example-ideas`} onClick={close}>{opportunityLabel}</Link>
           <Link href="/membership" onClick={close}>Membership</Link>
           <Link href={`${root}#faq`} onClick={close}>FAQ</Link>
         </nav>

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-20T15:49:52.1294267Z",
+  "generatedAt": "2026-10-07T10:25:35.002544Z",
   "title": "Design System: IncomeNow",
   "extensions": {
     "colorMeta": {
@@ -8,151 +8,396 @@
         "role": "neutral",
         "displayName": "Sage Canvas",
         "canonical": "#eefdf3",
-        "tonalRamp": ["#111e18", "#24352e", "#40574d", "#789989", "#a7b8ae", "#d5dfd9", "#e8f7ed", "#eefdf3"]
+        "tonalRamp": [
+          "#111e18",
+          "#24352e",
+          "#40574d",
+          "#789989",
+          "#a7b8ae",
+          "#d5dfd9",
+          "#e8f7ed",
+          "#eefdf3"
+        ]
       },
       "canvas-paper": {
         "role": "neutral",
         "displayName": "Warm Paper",
         "canonical": "#f6f7f4",
-        "tonalRamp": ["#18251f", "#344a3f", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#e4e7e1", "#f6f7f4"]
+        "tonalRamp": [
+          "#18251f",
+          "#344a3f",
+          "#5b6b63",
+          "#789989",
+          "#a7b8ae",
+          "#d5dfd9",
+          "#e4e7e1",
+          "#f6f7f4"
+        ]
       },
       "surface": {
         "role": "neutral",
         "displayName": "Structural White",
         "canonical": "#ffffff",
-        "tonalRamp": ["#18251f", "#344a3f", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#f6f7f4", "#ffffff"]
+        "tonalRamp": [
+          "#18251f",
+          "#344a3f",
+          "#5b6b63",
+          "#789989",
+          "#a7b8ae",
+          "#d5dfd9",
+          "#f6f7f4",
+          "#ffffff"
+        ]
       },
       "surface-low": {
         "role": "neutral",
         "displayName": "Low Sage Surface",
         "canonical": "#e8f7ed",
-        "tonalRamp": ["#102d25", "#315248", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#e8f7ed", "#f7fff9"]
+        "tonalRamp": [
+          "#102d25",
+          "#315248",
+          "#5b6b63",
+          "#789989",
+          "#a7b8ae",
+          "#d5dfd9",
+          "#e8f7ed",
+          "#f7fff9"
+        ]
       },
       "surface-mid": {
         "role": "neutral",
         "displayName": "Mid Sage Surface",
         "canonical": "#e2f2e8",
-        "tonalRamp": ["#102d25", "#315248", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#e2f2e8", "#f6fff9"]
+        "tonalRamp": [
+          "#102d25",
+          "#315248",
+          "#5b6b63",
+          "#789989",
+          "#a7b8ae",
+          "#d5dfd9",
+          "#e2f2e8",
+          "#f6fff9"
+        ]
       },
       "surface-high": {
         "role": "neutral",
         "displayName": "High Sage Surface",
         "canonical": "#ddece2",
-        "tonalRamp": ["#102d25", "#315248", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#ddece2", "#f3fbf5"]
+        "tonalRamp": [
+          "#102d25",
+          "#315248",
+          "#5b6b63",
+          "#789989",
+          "#a7b8ae",
+          "#d5dfd9",
+          "#ddece2",
+          "#f3fbf5"
+        ]
       },
       "forest": {
         "role": "secondary",
         "displayName": "Blueprint Forest",
         "canonical": "#102d25",
-        "tonalRamp": ["#061b15", "#102d25", "#174835", "#197a56", "#52a981", "#80d8ad", "#c9eadd", "#eefdf3"]
+        "tonalRamp": [
+          "#061b15",
+          "#102d25",
+          "#174835",
+          "#197a56",
+          "#52a981",
+          "#80d8ad",
+          "#c9eadd",
+          "#eefdf3"
+        ]
       },
       "action": {
         "role": "primary",
         "displayName": "Focused Emerald",
         "canonical": "#197a56",
-        "tonalRamp": ["#062119", "#0b3d2d", "#0f5d40", "#197a56", "#52a981", "#80d8ad", "#c9eadd", "#eefdf3"]
+        "tonalRamp": [
+          "#062119",
+          "#0b3d2d",
+          "#0f5d40",
+          "#197a56",
+          "#52a981",
+          "#80d8ad",
+          "#c9eadd",
+          "#eefdf3"
+        ]
       },
       "action-hover": {
         "role": "primary",
         "displayName": "Deep Emerald",
         "canonical": "#136043",
-        "tonalRamp": ["#051b14", "#0a3326", "#104c37", "#136043", "#438f6c", "#72bd99", "#bce5d1", "#effaf4"]
+        "tonalRamp": [
+          "#051b14",
+          "#0a3326",
+          "#104c37",
+          "#136043",
+          "#438f6c",
+          "#72bd99",
+          "#bce5d1",
+          "#effaf4"
+        ]
       },
       "ink": {
         "role": "neutral",
         "displayName": "Editorial Ink",
         "canonical": "#18251f",
-        "tonalRamp": ["#101814", "#18251f", "#344a3f", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#f6f7f4"]
+        "tonalRamp": [
+          "#101814",
+          "#18251f",
+          "#344a3f",
+          "#5b6b63",
+          "#789989",
+          "#a7b8ae",
+          "#d5dfd9",
+          "#f6f7f4"
+        ]
       },
       "muted": {
         "role": "neutral",
         "displayName": "Quiet Slate Sage",
         "canonical": "#5b6b63",
-        "tonalRamp": ["#15211b", "#2a3a32", "#40574d", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#f3f7f4"]
+        "tonalRamp": [
+          "#15211b",
+          "#2a3a32",
+          "#40574d",
+          "#5b6b63",
+          "#789989",
+          "#a7b8ae",
+          "#d5dfd9",
+          "#f3f7f4"
+        ]
       },
       "line": {
         "role": "neutral",
         "displayName": "Botanical Line",
         "canonical": "#d5dfd9",
-        "tonalRamp": ["#18251f", "#344a3f", "#5b6b63", "#789989", "#a7b8ae", "#bec9c1", "#d5dfd9", "#f4f8f5"]
+        "tonalRamp": [
+          "#18251f",
+          "#344a3f",
+          "#5b6b63",
+          "#789989",
+          "#a7b8ae",
+          "#bec9c1",
+          "#d5dfd9",
+          "#f4f8f5"
+        ]
       },
       "line-soft": {
         "role": "neutral",
         "displayName": "Soft Line",
         "canonical": "#e4e7e1",
-        "tonalRamp": ["#18251f", "#344a3f", "#5b6b63", "#789989", "#a7b8ae", "#d5dfd9", "#e4e7e1", "#f8faf7"]
+        "tonalRamp": [
+          "#18251f",
+          "#344a3f",
+          "#5b6b63",
+          "#789989",
+          "#a7b8ae",
+          "#d5dfd9",
+          "#e4e7e1",
+          "#f8faf7"
+        ]
       },
       "navigation-active": {
         "role": "secondary",
         "displayName": "Navigation Sage",
         "canonical": "#caeadc",
-        "tonalRamp": ["#08241b", "#123a2c", "#1d5842", "#34765a", "#659e83", "#98c5ae", "#caeadc", "#f0fbf5"]
+        "tonalRamp": [
+          "#08241b",
+          "#123a2c",
+          "#1d5842",
+          "#34765a",
+          "#659e83",
+          "#98c5ae",
+          "#caeadc",
+          "#f0fbf5"
+        ]
       },
       "selection-mint": {
         "role": "tertiary",
         "displayName": "Selection Mint",
         "canonical": "#9bf5c8",
-        "tonalRamp": ["#062419", "#0d3e2b", "#155b40", "#237b58", "#4ca77d", "#76d3a3", "#9bf5c8", "#eefff6"]
+        "tonalRamp": [
+          "#062419",
+          "#0d3e2b",
+          "#155b40",
+          "#237b58",
+          "#4ca77d",
+          "#76d3a3",
+          "#9bf5c8",
+          "#eefff6"
+        ]
       },
       "activity-amber": {
         "role": "tertiary",
         "displayName": "Opportunity Amber",
         "canonical": "#9b6819",
-        "tonalRamp": ["#2f1c00", "#5c3b08", "#9b6819", "#c99a50", "#f1d59d", "#fff3d9"]
+        "tonalRamp": [
+          "#2f1c00",
+          "#5c3b08",
+          "#9b6819",
+          "#c99a50",
+          "#f1d59d",
+          "#fff3d9"
+        ]
       },
       "activity-blue": {
         "role": "tertiary",
         "displayName": "Demo Blue",
         "canonical": "#276b9d",
-        "tonalRamp": ["#0b263d", "#174c72", "#276b9d", "#71a6cd", "#c8daed", "#e7f3ff"]
+        "tonalRamp": [
+          "#0b263d",
+          "#174c72",
+          "#276b9d",
+          "#71a6cd",
+          "#c8daed",
+          "#e7f3ff"
+        ]
       },
       "activity-violet": {
         "role": "tertiary",
         "displayName": "Software Violet",
         "canonical": "#6854a1",
-        "tonalRamp": ["#251a47", "#473577", "#6854a1", "#9f8dcc", "#dcd5ee", "#f0ecff"]
+        "tonalRamp": [
+          "#251a47",
+          "#473577",
+          "#6854a1",
+          "#9f8dcc",
+          "#dcd5ee",
+          "#f0ecff"
+        ]
       },
       "activity-coral": {
         "role": "tertiary",
         "displayName": "Setup Coral",
         "canonical": "#a64f43",
-        "tonalRamp": ["#3a1510", "#713229", "#a64f43", "#d18b81", "#edd4cd", "#fff0ed"]
+        "tonalRamp": [
+          "#3a1510",
+          "#713229",
+          "#a64f43",
+          "#d18b81",
+          "#edd4cd",
+          "#fff0ed"
+        ]
       },
       "activity-cyan": {
         "role": "tertiary",
         "displayName": "Research Cyan",
         "canonical": "#247780",
-        "tonalRamp": ["#0b2b2f", "#15545b", "#247780", "#70adb2", "#bde1e2", "#e5f7f7"]
+        "tonalRamp": [
+          "#0b2b2f",
+          "#15545b",
+          "#247780",
+          "#70adb2",
+          "#bde1e2",
+          "#e5f7f7"
+        ]
       },
       "activity-rose": {
         "role": "tertiary",
         "displayName": "Conversation Rose",
         "canonical": "#994f6b",
-        "tonalRamp": ["#381724", "#6d3047", "#994f6b", "#c58aa0", "#ead4dc", "#fcecf2"]
+        "tonalRamp": [
+          "#381724",
+          "#6d3047",
+          "#994f6b",
+          "#c58aa0",
+          "#ead4dc",
+          "#fcecf2"
+        ]
       },
       "warning-bg": {
         "role": "tertiary",
         "displayName": "Caution Paper",
         "canonical": "#fff4d6",
-        "tonalRamp": ["#2b1d00", "#4a3300", "#684b00", "#8a670d", "#b38f38", "#d9bb70", "#f1dda4", "#fff4d6"]
+        "tonalRamp": [
+          "#2b1d00",
+          "#4a3300",
+          "#684b00",
+          "#8a670d",
+          "#b38f38",
+          "#d9bb70",
+          "#f1dda4",
+          "#fff4d6"
+        ]
       },
       "warning-ink": {
         "role": "tertiary",
         "displayName": "Caution Ink",
         "canonical": "#684b00",
-        "tonalRamp": ["#211600", "#3d2900", "#684b00", "#8a670d", "#b38f38", "#d9bb70", "#f1dda4", "#fff4d6"]
+        "tonalRamp": [
+          "#211600",
+          "#3d2900",
+          "#684b00",
+          "#8a670d",
+          "#b38f38",
+          "#d9bb70",
+          "#f1dda4",
+          "#fff4d6"
+        ]
       },
       "error": {
         "role": "tertiary",
         "displayName": "Error Brick",
         "canonical": "#9a221b",
-        "tonalRamp": ["#310505", "#5c0c0b", "#7b1713", "#9a221b", "#bf5049", "#df857e", "#f2b9b4", "#fff1ef"]
+        "tonalRamp": [
+          "#310505",
+          "#5c0c0b",
+          "#7b1713",
+          "#9a221b",
+          "#bf5049",
+          "#df857e",
+          "#f2b9b4",
+          "#fff1ef"
+        ]
       },
       "error-bg": {
         "role": "tertiary",
         "displayName": "Error Wash",
         "canonical": "#ffdad6",
-        "tonalRamp": ["#310505", "#5c0c0b", "#7b1713", "#9a221b", "#bf5049", "#df857e", "#ffdad6", "#fff5f4"]
+        "tonalRamp": [
+          "#310505",
+          "#5c0c0b",
+          "#7b1713",
+          "#9a221b",
+          "#bf5049",
+          "#df857e",
+          "#ffdad6",
+          "#fff5f4"
+        ]
+      },
+      "vault-carbon": {
+        "role": "neutral",
+        "displayName": "Vault Carbon"
+      },
+      "vault-surface": {
+        "role": "neutral",
+        "displayName": "Vault Surface"
+      },
+      "vault-panel": {
+        "role": "neutral",
+        "displayName": "Vault Panel"
+      },
+      "vault-ink": {
+        "role": "neutral",
+        "displayName": "Mineral White"
+      },
+      "vault-muted": {
+        "role": "neutral",
+        "displayName": "Vault Muted"
+      },
+      "vault-accent": {
+        "role": "primary",
+        "displayName": "Vault Lime"
+      },
+      "vault-accent-hover": {
+        "role": "primary",
+        "displayName": "Vault Lime Hover"
+      },
+      "vault-rule": {
+        "role": "neutral",
+        "displayName": "Structural Rule"
       }
     },
     "typographyMeta": {
@@ -179,6 +424,22 @@
       "label": {
         "displayName": "Label",
         "purpose": "Compact context, resource, and section metadata."
+      },
+      "vault-display": {
+        "displayName": "Vault Display",
+        "purpose": "Homepage-scoped role extracted from vault-home.css."
+      },
+      "vault-headline": {
+        "displayName": "Vault Headline",
+        "purpose": "Homepage-scoped role extracted from vault-home.css."
+      },
+      "vault-body": {
+        "displayName": "Vault Body",
+        "purpose": "Homepage-scoped role extracted from vault-home.css."
+      },
+      "vault-instrument-label": {
+        "displayName": "Vault Instrument Label",
+        "purpose": "Homepage-scoped role extracted from vault-home.css."
       }
     },
     "shadows": [
@@ -206,11 +467,6 @@
         "name": "authentication-focus",
         "value": "0 8px 30px rgba(16, 45, 37, 0.07)",
         "purpose": "The bounded desktop credential card; mobile tightens to a 6px by 20px diffusion."
-      },
-      {
-        "name": "public-preview-lift",
-        "value": "0 24px 55px rgba(16, 45, 37, 0.12)",
-        "purpose": "The tilted semantic library preview in the public homepage hero."
       },
       {
         "name": "membership-offer-lift",
@@ -263,6 +519,16 @@
         "name": "reduced-motion",
         "value": "0.01ms",
         "purpose": "Effective transition and animation duration when reduced motion is requested."
+      },
+      {
+        "name": "vault-press",
+        "value": "120ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "CTA press scale .98."
+      },
+      {
+        "name": "vault-selection",
+        "value": "180ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Stage opacity and fine-pointer card lift -3px; removed by reduced motion."
       }
     ],
     "breakpoints": [
@@ -289,8 +555,36 @@
       {
         "name": "narrow-mobile",
         "value": "360px"
+      },
+      {
+        "name": "vault-gap-compression",
+        "value": "1100px"
+      },
+      {
+        "name": "vault-compact",
+        "value": "800px"
+      },
+      {
+        "name": "vault-stack",
+        "value": "600px"
       }
-    ]
+    ],
+    "homepageScope": {
+      "target": "src/app/page.tsx",
+      "appearance": "vault",
+      "capacityTruth": "600 active maximum; production occupancy unknown unless verified; labelled preview fixtures; no enforcement or entitlement granting.",
+      "reusedArtwork": [
+        {
+          "path": "public/artwork/marketing/modern/pergola-kit.webp",
+          "provenance": "Adjacent reuse sidecar; original generation prompt unavailable."
+        },
+        {
+          "path": "public/artwork/ideas/clinic-operations-crm.webp",
+          "provenance": "Adjacent reuse sidecar; original generation prompt unavailable."
+        }
+      ],
+      "opportunityAction": "Open opportunity; shared default appearance retains Quick preview."
+    }
   },
   "components": [
     {
@@ -464,107 +758,86 @@
       "description": "A calm deep-forest closing invitation with account-aware destinations and no urgency or unsupported claims.",
       "html": "<section class=\"ds-public-final\"><div><h2>Choose an idea worth validating</h2><p>Review the public examples, then use the existing account journey when you are ready.</p></div><a href=\"#\">Explore example ideas</a></section>",
       "css": ".ds-public-final { width: min(100%, 1180px); display: flex; align-items: center; justify-content: space-between; gap: 45px; padding: 68px 32px; background: var(--forest, #102d25); color: #fff; font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .ds-public-final h2 { margin: 0; font: 760 34px/1.08 Manrope, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.045em; } .ds-public-final p { margin: 8px 0 0; color: #c8ddd4; font-size: 14px; } .ds-public-final > a { min-height: 40px; display: inline-flex; align-items: center; justify-content: center; padding: 8px 15px; border-radius: 8px; background: #f4fff7; color: #084c36; font-size: 13px; font-weight: 720; text-decoration: none; } .ds-public-final > a:hover { background: #fff; } .ds-public-final > a:focus-visible { outline: 3px solid rgba(155,245,200,.45); outline-offset: 2px; } @media (max-width: 767px) { .ds-public-final { align-items: stretch; flex-direction: column; padding: 54px 22px; } .ds-public-final > a { width: 100%; } }"
+    },
+    {
+      "name": "Vault Accent Action",
+      "kind": "button",
+      "refersTo": "vault-button-accent",
+      "description": "Homepage exploration or account-aware action.",
+      "html": "<a href=\"#\" class=\"ds-vault\">Explore opportunities</a>",
+      "css": ".ds-vault{display:inline-flex;min-height:52px;align-items:center;justify-content:center;gap:24px;padding:14px 22px;font:650 14px Inter,sans-serif;border-radius:6px;text-decoration:none;transition:transform 120ms cubic-bezier(.16,1,.3,1),background 180ms cubic-bezier(.16,1,.3,1)}.ds-vault:active{transform:scale(.98)}.ds-vault:focus-visible{outline:2px solid #c5f783;outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-vault{transition-duration:.01ms}.ds-vault:active{transform:none}}.ds-vault{background:#c5f783;color:#0d1110}.ds-vault:hover{background:#d6ffa7}"
+    },
+    {
+      "name": "Vault Outline Action",
+      "kind": "button",
+      "refersTo": "vault-button-outline",
+      "description": "Homepage secondary process action.",
+      "html": "<a href=\"#\" class=\"ds-vault\">How IncomeNow works</a>",
+      "css": ".ds-vault{display:inline-flex;min-height:52px;align-items:center;justify-content:center;gap:24px;padding:14px 22px;font:650 14px Inter,sans-serif;border-radius:6px;text-decoration:none;transition:transform 120ms cubic-bezier(.16,1,.3,1),background 180ms cubic-bezier(.16,1,.3,1)}.ds-vault:active{transform:scale(.98)}.ds-vault:focus-visible{outline:2px solid #c5f783;outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-vault{transition-duration:.01ms}.ds-vault:active{transform:none}}.ds-vault{border:1px solid #354139;color:#f0f3e9;background:transparent}.ds-vault:hover{background:#1b231e}"
+    },
+    {
+      "name": "Vault Execution Tab",
+      "kind": "custom",
+      "refersTo": "vault-stage-selected",
+      "description": "Selected explanatory stage, separate from project work.",
+      "html": "<button class=\"ds-vault-tab\" type=\"button\" role=\"tab\" aria-selected=\"true\"><span>01</span>Discover</button>",
+      "css": ".ds-vault-tab{display:flex;flex-wrap:wrap;gap:12px;min-height:88px;padding:17px;border:1px solid #354139;border-radius:6px;background:#c5f783;color:#0d1110;text-align:left;font:600 14px Inter,sans-serif}.ds-vault-tab span{width:100%;font:400 11px ui-monospace,monospace}.ds-vault-tab:hover{background:#c5f783}.ds-vault-tab:focus-visible{outline:2px solid #fff;outline-offset:-5px}"
+    },
+    {
+      "name": "Vault Membership Card",
+      "kind": "card",
+      "refersTo": "vault-membership-card",
+      "description": "Approved homepage monthly presentation and pending Stripe truth.",
+      "html": "<article class=\"ds-vault-offer\"><header>INCOMENOW MEMBERSHIP</header><div><strong>$14.99</strong><span>/ month</span></div><p>Maximum 600 active memberships.</p><small>Account registration is open. Stripe checkout is not connected, so creating an account does not activate paid membership.</small></article>",
+      "css": ".ds-vault-offer{border:1px solid #354139;background:#151b18;color:#f0f3e9;border-radius:12px;padding:30px;font-family:Inter,sans-serif}.ds-vault-offer header{font-size:11px;font-weight:600;letter-spacing:.03em}.ds-vault-offer>div{display:flex;align-items:baseline;gap:12px;margin-top:27px}.ds-vault-offer strong{font:600 72px/1 \"Barlow Condensed\",sans-serif;letter-spacing:-.025em}.ds-vault-offer span,.ds-vault-offer p{font-size:13px;color:#b1bcb3}.ds-vault-offer small{display:block;margin-top:16px;font-size:11px;line-height:1.65;color:#b1bcb3}"
     }
   ],
   "narrative": {
-    "northStar": "The Modern Opportunity Workspace",
-    "overview": "IncomeNow is a modern interactive platform for discovering and building digital business opportunities. New public surfaces use cool whites, charcoal typography, crisp interface geometry, deliberate depth, emerald actions, and controlled cyan, blue, or violet illustration accents.\n\nThe former warm Tangible Fieldwork and printed-kit direction is retired for new public artwork. Do not use rustic desks, sepia grading, paper stacks, decorative leaves, Mediterranean scenery, vintage clocks, crypto motifs, money graphics, or generic glowing AI imagery. Keep product labels, offer terms, access state, and resource truth in live HTML.\n\nThe homepage first viewport pairs the short product promise and account-aware actions with a seamless 7.2-second derivative of the owner-approved 8-second 16:9 motion graphic in a separate contained media surface. It autoplays muted and inline, loops continuously, and pauses when substantially offscreen or when the tab is hidden. Reduced-motion and blocked-autoplay states use the approved closing-frame poster. The selectable How it works explanation remains semantic and keyboard operable without implying real project completion.\n\nExisting protected member routes keep their approved operational structure until separately reviewed. Public copy and previews stay literal: unavailable checkout, unconfigured starter duration and refund/licence terms, sample resources, and the absence of income guarantees remain visible constraints.",
+    "northStar": "The Opportunity Vault and Workspace",
+    "overview": "The homepage is the owner's approved premium opportunity vault: carbon planes, mineral-white copy, sharp lime allocation markings, fine structural rules, and condensed display lettering. Its signature is a readable capacity instrument beside the promise, followed by numbered opportunity files and an execution-stage selector. The implementation resolves the brief's anime-tech energy through original precise interface geometry.\n\nThe vault direction is scoped to `/` through an opt-in appearance. Existing member, authentication, starter, membership, and other routes retain their approved Manrope/Inter, emerald, white, and sage systems. The member workspace remains editorial and operational: information is grouped with compact metadata, schematic previews, restrained elevation, and explicit account-owned status. Saved Ideas, My Projects, and focused implementation kits preserve their existing visual grammar.\n\nArtwork carries subject only; offer terms, access, resource availability, progress, and interface labels remain live HTML. The homepage presents the approved $14.99 monthly offer and maximum 600 active memberships while keeping registration, paid entitlement, and pending Stripe checkout separate. Production occupancy is unknown unless a verified count is supplied; labelled preview fixtures never represent customer activity. The membership route shares the approved US$14.99/month configuration and 600-active model; checkout remains disconnected.",
     "keyCharacteristics": [
-      "Cool-white public surfaces with high-contrast charcoal structure.",
-      "Focused emerald actions with controlled cyan, blue, and violet illustration accents.",
-      "Manrope headings paired with neutral, legible Inter utility copy.",
-      "Compact metadata, resource pills, and schematic previews for fast comparison.",
-      "Responsive navigation that becomes a persistent bottom bar on mobile.",
-      "Account-owned state is made visible through honest status, progress, save, and recovery feedback.",
-      "A dedicated public header and footer that lead into account-aware entry actions without borrowing the protected member shell.",
-      "Public explanation patterns pair editorial persuasion with explicit limits, sample-only previews, and no unapproved commercial claims."
+      "Homepage carbon planes, mineral-white text, and one lime action and allocation voice.",
+      "Homepage Barlow Condensed display headings, Manrope card titles, Inter reading copy, and monospace instrument labels.",
+      "A capacity instrument that communicates the model without fabricated occupancy.",
+      "Numbered opportunity files and a keyboard-operable execution selector.",
+      "Preserved sage member surfaces, bounded white authentication cards, and emerald operational controls.",
+      "Separate public disclosure navigation and persistent member mobile navigation.",
+      "Account-owned work shows honest status, required-task progress, save feedback, and recovery.",
+      "Functional motion acknowledges input and selection; reduced motion removes movement."
     ],
-    "rules": [
-      {
-        "name": "The One Action Voice Rule",
-        "body": "Focused Emerald carries primary interaction; do not introduce a second saturated CTA color.",
-        "section": "colors"
-      },
-      {
-        "name": "The Cool-Neutral Public Rule",
-        "body": "Use white and cool-neutral planes for public product explanation; the older paper-and-sage-only rule does not govern new public artwork.",
-        "section": "colors"
-      },
-      {
-        "name": "The Two-Voice Rule",
-        "body": "Use Manrope only for headings, numbers, and branded milestones; all operational text remains Inter.",
-        "section": "typography"
-      },
-      {
-        "name": "The Compact Metadata Rule",
-        "body": "Uppercase and tracking belong to short labels, never to paragraphs or primary actions.",
-        "section": "typography"
-      },
-      {
-        "name": "The Whole-Card Mobile Rule",
-        "body": "Mobile prioritizes one complete decision unit at a time: one card column, full-width action, and persistent navigation.",
-        "section": "layout"
-      },
-      {
-        "name": "The Separate-Shell Rule",
-        "body": "Public pages use the public header, footer, section rhythm, and disclosure menu; protected member routes keep the rail and persistent mobile bottom navigation.",
-        "section": "layout"
-      },
-      {
-        "name": "The Evidence-Before-Entry Rule",
-        "body": "The public first viewport pairs the product promise with a visible product-shaped preview before asking visitors to create an account.",
-        "section": "layout"
-      },
-      {
-        "name": "The Work-First Workspace Rule",
-        "body": "On desktop, the active work surface owns the wide left column; navigation and reference material support it from the right rail. Below 900px, navigation precedes work and resources follow it.",
-        "section": "layout"
-      },
-      {
-        "name": "The Selected-Is-Not-Current Rule",
-        "body": "Never relabel a reviewed stage as the project’s current focus unless it is actually the next unfinished required stage.",
-        "section": "layout"
-      },
-      {
-        "name": "The Flat-by-Default Rule",
-        "body": "A shadow must communicate hierarchy, hover, or transient UI; it is not decoration.",
-        "section": "elevation"
-      },
-      {
-        "name": "The Nested Radius Rule",
-        "body": "Child surfaces are always tighter than the container around them, preserving a clear physical hierarchy.",
-        "section": "shapes"
-      }
-    ],
+    "rules": [],
     "dos": [
-      "Do use cool-white and slate public surfaces while preserving the existing member workspace until separately reviewed.",
-      "Do reserve Focused Emerald for primary actions, active filters, functional icons, and clear progress states.",
-      "Do pair Manrope headings with Inter utility copy and keep metadata compact.",
-      "Do use schematic previews and explicit evidence labels to make ideas comparable.",
-      "Do keep mobile navigation persistent and safe-area-aware while presenting one complete card per row.",
-      "Do keep authentication forms inside a bounded white card over the sage field, including on mobile.",
-      "Do keep the derived current focus visible even when another stage is selected for review.",
-      "Do derive progress and completion from required work, while labeling optional tasks honestly.",
-      "Do keep checklist, notes, and resources as distinct paper planes with explicit saved, unsaved, paused, empty, and unavailable states.",
-      "Do stack workspace navigation, work, and resources in that order below 900px and make the primary mobile action full width.",
-      "Do use the separate public shell for homepage and membership routes, including the horizontal desktop navigation and disclosure-based mobile menu.",
-      "Do keep public idea cards and quick previews on the explicit safe projection; label them as summaries and keep implementation plans and protected resources out.",
-      "Do keep the two offers distinct and honest: US$1/USD one-time Pergola starter with unconfigured duration, separately unpriced monthly full membership, unavailable checkout, and server-recorded activation.",
-      "Do pair persuasive public sections with concrete product-shaped evidence, responsibility boundaries, and native FAQ disclosures.",
-      "Do use the inverse forest CTA only as a calm closing invitation with account-aware destinations."
+      "**Do** preserve the sage/white/tonal-sage hierarchy in member/authentication routes and the carbon/surface/panel hierarchy on the homepage.",
+      "**Do** reserve Focused Emerald for incumbent operational interaction and Vault Lime for homepage action, selection, and allocation.",
+      "**Do** pair Manrope headings with Inter utility copy and keep metadata compact.",
+      "**Do** use schematic previews and explicit evidence labels to make ideas comparable.",
+      "**Do** keep mobile navigation persistent and safe-area-aware while presenting one complete card per row.",
+      "**Do** keep authentication forms inside a bounded white card over the sage field, including on mobile.",
+      "**Do** keep the derived current focus visible even when another stage is selected for review.",
+      "**Do** derive progress and completion from required work, while labeling optional tasks honestly.",
+      "**Do** keep checklist, notes, and resources as distinct paper planes with explicit saved, unsaved, paused, empty, and unavailable states.",
+      "**Do** keep the Pergola kit title, supporting sentence, demo action, protected source access, and honest customer-list state visible early on mobile.",
+      "**Do** keep checklist progress, pause/resume, all-step navigation, and personal notes visually secondary to the kit.",
+      "**Do** use the separate public shell for homepage and membership routes, including the horizontal desktop navigation and disclosure-based mobile menu.",
+      "**Do** keep public idea cards and quick previews on the explicit safe projection; label them as summaries and keep implementation plans and protected resources out.",
+      "**Do** keep US$1/USD one-time Pergola starter scope separate from the shared approved US$14.99 monthly presentation and 600-active model, pending Stripe checkout, and server-recorded paid entitlement.",
+      "**Do** pair persuasive public sections with concrete product-shaped evidence, responsibility boundaries, and native FAQ disclosures.",
+      "**Do** keep closing invitations consistent with their route appearance and existing destinations.",
+      "**Do** label fixture counts and unknown production occupancy and distinguish the maximum 600-active model from implemented enforcement."
     ],
     "donts": [
-      "Don't introduce hustle-culture styling, speculative earnings graphics, neon tickers, or unsupported urgency.",
-      "Don't turn the member library into a generic analytics dashboard of charts and KPI tiles.",
-      "Don't add decorative gradients, glass panels, or heavy shadows that weaken the crisp digital hierarchy.",
-      "Don't revive rustic desks, printed kits, sepia grading, paper stacks, botanical lifestyle staging, or vintage props in new public assets.",
-      "Don't hide sample, unavailable, readiness, or evidence states behind aspirational copy.",
-      "Don't treat selecting a stage as advancing the project or changing its current focus.",
-      "Don't turn progress into dashboard theater, count optional tasks toward completion, or merge notes and resources into the checklist.",
-      "Don't reuse the signed-in sidebar or mobile bottom navigation on public pages.",
-      "Don't expose protected plan details, resource identifiers, private customer data, or member-only implementation material in public cards, dialogs, or client bundles.",
-      "Don't invent full-membership prices, starter duration, renewal, lifetime access, checkout availability, refund rights, testimonials, customer counts, demand validation, licence permissions, release cadence, or income outcomes.",
-      "Don't let account creation read as payment confirmation or active membership; authentication and entitlement remain separate truths."
+      "**Don't** introduce hustle-culture styling, speculative earnings graphics, neon tickers, or unsupported urgency.",
+      "**Don't** turn the member library into a generic analytics dashboard of charts and KPI tiles.",
+      "**Don't** add decorative gradients, glass panels, or heavy shadows that weaken the paper-and-sage material system.",
+      "**Don't** saturate passive member surfaces when sage hierarchy suffices; the homepage allocation plane is a scoped lime exception.",
+      "**Don't** hide sample, unavailable, readiness, or evidence states behind aspirational copy.",
+      "**Don't** treat selecting a stage as advancing the project or changing its current focus.",
+      "**Don't** turn progress into dashboard theater, count optional tasks toward completion, or merge notes and resources into the checklist.",
+      "**Don't** restore a permanent stage rail, expose “Plan v1,” or make project-management language the first thing a Pergola member sees.",
+      "**Don't** reuse the signed-in sidebar or mobile bottom navigation on public pages.",
+      "**Don't** expose protected plan details, resource identifiers, private customer data, or member-only implementation material in public cards, dialogs, or client bundles.",
+      "**Don't** change the approved homepage price or invent starter duration, renewal, lifetime access, checkout availability, refund rights, testimonials, customer counts, demand validation, licence permissions, release cadence, or income outcomes.",
+      "**Don't** let account creation read as payment confirmation or active membership; authentication and entitlement remain separate truths."
     ]
   }
 }

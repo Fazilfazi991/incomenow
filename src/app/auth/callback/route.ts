@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAccountEntryDestination } from "@/lib/account.server";
+import { lockCurrentUserAttribution } from "@/lib/acquisition.server";
 import { getTrustedAppOrigin, safeInternalDestination } from "@/lib/safe-redirect";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
@@ -20,5 +21,6 @@ export async function GET(request: Request) {
   const supabase = await createClient();
   const { error } = await supabase.auth.exchangeCodeForSession(code);
   if (error) return NextResponse.redirect(new URL("/login?error=oauth", origin));
+  await lockCurrentUserAttribution(supabase);
   return NextResponse.redirect(new URL(await getAccountEntryDestination(destination, supabase), origin));
 }

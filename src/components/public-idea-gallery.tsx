@@ -9,7 +9,7 @@ import type { PublicAccountState } from "@/lib/public-account";
 import { ArtworkImage } from "./artwork-image";
 import { SafeIdeaPreview } from "./safe-idea-preview";
 
-export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly PublicIdea[]; accountState: PublicAccountState }) {
+export function PublicIdeaGallery({ ideas, accountState, appearance = "default" }: { ideas: readonly PublicIdea[]; accountState: PublicAccountState; appearance?: "default" | "vault" }) {
   const [selected, setSelected] = useState<PublicIdea | null>(null);
   const lastTrigger = useRef<HTMLButtonElement | null>(null);
   const dialog = useRef<HTMLDivElement | null>(null);
@@ -61,6 +61,7 @@ export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly Pub
       <div className="public-idea-grid">
         {ideas.map((idea) => (
           <article className="public-idea-card" key={idea.id}>
+            {appearance === "vault" && <div className="vault-file-heading"><strong>#{idea.displayNumber}</strong><span>PUBLIC OPPORTUNITY</span></div>}
             <ArtworkImage
               alt={idea.coverArt.alt}
               className="public-idea-art"
@@ -81,7 +82,7 @@ export function PublicIdeaGallery({ ideas, accountState }: { ideas: readonly Pub
                 }}
                 aria-haspopup="dialog"
               >
-                Quick preview <ArrowRight aria-hidden="true" size={16} />
+                {appearance === "vault" ? "Open opportunity" : "Quick preview"} <ArrowRight aria-hidden="true" size={16} />
               </button>
             </div>
           </article>

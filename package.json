@@ -15,6 +15,8 @@
     "supabase:stop": "supabase stop",
     "supabase:reset": "supabase db reset",
     "test:db": "supabase test db",
+    "test:membership-capacity": "node scripts/verify-membership-capacity-local.mjs",
+    "test:stripe-billing": "node scripts/verify-stripe-billing-local.mjs",
     "test:plan-sync": "node scripts/verify-phase-2b-plan-sync.mjs",
     "test:integration:local": "node scripts/verify-phase-2a-local.mjs",
     "test:integration:phase2b": "node scripts/verify-phase-2b-local.mjs",
@@ -29,6 +31,7 @@
     "next": "16.3.5",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "stripe": "23.0.0",
     "zod": "4.6.5"
   },
   "devDependencies": {
