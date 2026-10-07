@@ -6,7 +6,7 @@ Real Stripe TEST E2E and production database preparation are complete. **The mem
 | --- | --- | --- |
 | 1 | Original starting commit | `94ef8a35c7e2ec41bf49400df2a586497f70f770` |
 | 2 | Implementation commit | `654c6c8ea8a97a8dcefe236fd22264d87744d62d`; the delivery response reports the subsequent report commit/branch HEAD. |
-| 3 | Branch / merge | `codex/stripe-membership-launch`, based on sanitized `origin/main` at `949eadb10c132dcf336b01aed555236aa808ae13`. Production merge remains pending. The older local branch was preserved and must not be pushed because its ancestry contains protected resource payloads. |
+| 3 | Branch / merge | `codex/stripe-membership-launch`, pushed normally and opened as [draft PR #1](https://github.com/Fazilfazi991/incomenow/pull/1), based on sanitized `origin/main` at `949eadb10c132dcf336b01aed555236aa808ae13`. Production merge remains pending. The older local branch was preserved and must not be pushed because its ancestry contains protected resource payloads. |
 | 4 | Production deployment | Existing site [www.millionmonk.com](https://www.millionmonk.com); existing [Vercel deployment](https://incomenow-nugty11yz-faziils-projects.vercel.app), ID `dpl_3JtxGPspfJDrEdejb2cU3VEjLGF2`, READY, commit `949eadb...`. This is the previous deployment, not the billing rollout. |
 | 5 | TEST E2E | Passed actual application Checkout, official declined/success cards, real subscription/invoices/webhooks, paid access, Portal cancellation, retained access, confirmed expiry and slot release, renewal, failed invoice, application final-slot competition, waitlist/invitation conversion and expiry, authenticated reconciliation. |
 | 6 | TEST Product / Price | `prod_VOfiAYZA57kAGz` / `price_1UNsMbPDKvZxI4vzbTOtIxee` |
@@ -29,7 +29,7 @@ Real Stripe TEST E2E and production database preparation are complete. **The mem
 | 23 | TypeScript | Standalone `tsc --noEmit` and final build TypeScript validation passed |
 | 24 | ESLint | Passed |
 | 25 | Production build | Final `next build --webpack` passed, all billing/admin/auth/resource routes compiled |
-| 26 | Security scan | Tracked source scan passed; sanitized candidate ancestry scan passed across 23 predecessor commits / 630 unique text blobs. Final release ancestry rechecked before push. No actual Stripe keys, signing secrets, Supabase secret/service JWTs, private keys or protected resource payloads. Runtime secrets, sessions, captures and paid artifacts stay ignored. |
+| 26 | Security scan | Tracked source scan passed; pushed release ancestry passed across 25 commits / 723 unique text blobs, and the subsequent documentation update was rechecked before push. No actual Stripe keys, signing secrets, Supabase secret/service JWTs, private keys or protected resource payloads. Runtime secrets, sessions, captures and paid artifacts stay ignored. |
 | 27 | Browser checks | Merged local TEST homepage and membership visually inspected at 1440, 768, 430, 390 and 320 pixels; no horizontal overflow. All five ideas retained. Real protected-resource expiry denied access. New production browser smoke remains pending deployment. |
 | 28 | Admin verification | Real isolated TEST admin action reserved an account-bound invitation and successful TEST payment converted it. Production aggregate metrics verified via service RPC: one complimentary member and zero paid run rate. Production has no admin role; owner identity and authenticated production admin browser verification remain pending. |
 | 29 | Remaining blockers / risks | Existing LIVE secret is permanently masked in Stripe. Dedicated LIVE key creation awaits action-time confirmation, or the owner may securely supply an existing key. Need a real owner admin identity and an eligible verified real non-member for non-charging LIVE Checkout smoke. Main integration, billing deployment, LIVE API validation, webhook/scheduler activation, production smoke and enrollment activation remain pending. |
@@ -63,6 +63,8 @@ Applied new migrations, in order:
 Production database policy now expects LIVE mode. A real service request with LIVE mode succeeds; TEST mode is rejected, and anonymous execution is denied. Both gates remain false. No existing starter grants were present to migrate; starter/full isolation is exercised by the database and entitlement suites.
 
 All seven approved private Storage artifacts were downloaded read-only and matched their fixed sizes and SHA-256 hashes. Ignored local copies restored the complete private-resource tests. Existing plan registries and all five published ideas remain intact. Four older private workspace registry tables have pre-existing RLS settings; they were not changed as unrelated billing work.
+
+With the owner's explicit approval, hosted Supabase Auth's Site URL was updated to `https://www.millionmonk.com`. Its `/auth/callback`, `/auth/confirm` and `/auth/recovery` URLs were added while preserving the corresponding three `https://incomenow.vercel.app` URLs. A subsequent configuration read verified the canonical Site URL and all six redirects. Google sign-in remains disabled, email auto-confirm remains disabled, and signup remains enabled; these authentication settings were preserved.
 
 ## Resume the authorized rollout
 
